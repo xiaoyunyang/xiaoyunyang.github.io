@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+  <script type="text/javascript" src="js/materialize.js"></script>
+  <script type="text/javascript" src="js/underscore-min.js"></script>
+  <script type="text/javascript" src="js/d3.v3.min.js"></script>
+
+  <script src="build/react-with-addons.js"></script>
+  <script src="build/react-dom.js"></script>
+  <script src="build/JSXTransformer.js"></script>
+  <script src="https://npmcdn.com/react-router/umd/ReactRouter.min.js"></script>
+
+  <link rel='stylesheet' type='text/css' href="css/main.css">
+
+  <title>Dashboard</title>
+</head>
+
+<body>
+  <nav class=" grey lighten-4">
+    <div class="nav-wrapper">
+      <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <a href="#!" class="brand-logo">Andrew Fenner</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sass.html">Add</a></li>
+        <li><a href="badges.html">Explore</a></li>
+        <li><a href="badges.html">Edit Profile</a></li>
+      </ul>
+      <div class="right hide-on-med-and-down">
+        <form>
+          <div class="input-field">
+            <input id="search" type="search" required>
+            <label for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+
+      </div>
+
+
+      <ul class="side-nav" id="mobile-menu">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div id="content"></div>
+    <div class="main-content row">
+
+    <div class="col s12 m8 l8">
+      <!-- Grey navigation panel -->
+      <ul class="collection with-header ll-listing">
+        <li class="collection-header"><h4>Binders</h4></li>
+        <li class="collection-item"><a href="">Red</a>
+          <p>Short description</p>
+        </li>
+        <li class="collection-item">
+          <a href="">Blue</a>
+          <p>Short description</p>
+        </li>
+        <li class="collection-item">
+          <a href="">Green</a>
+          <p>Short description</p>
+        </li>
+        <li class="collection-item">
+          <a href="">Brown</a>
+          <p>Short description</p>
+        </li>
+      </ul>
+    </div>
+ 
+  
+
+  </div>
+  <script type="text/jsx">
+    var dataset = "hello";
+    var user = "xyang";
+
+
+
+    function loadUserData() {
+      var filePath = "testData/"+user+".json";
+      d3.json(filePath, function(error, json) {
+        if(error) return console.warn("failed to load tagfilter:  "+error);
+        dataset = json;
+        render();
+      });
+
+    }
+function render() {
+    var Dashboard = React.createClass({ 
+      getInitialState: function() { 
+        return { 
+          user: dataset.user,
+          binders: [],
+          tags: [],
+          pThruT: [],
+          myB: [],
+          recB: []
+        }
+      },
+      componentWillMount: function(){ //constructor
+        this.setState(
+          { 
+            user: dataset.user,
+            binders: dataset.binders,
+            tags: dataset.tags,
+            pThruT: dataset.pThruT,
+            myB: dataset.myB,
+            recB: dataset.recB 
+          }  
+        );
+      },
+      componentDidMount: function() {
+        $('.collapsible').collapsible();
+      },
+      render: function () { 
+        return (
+          <div className="side-nav fixed">
+            <ul className="collection with-header">
+                <li className="collection-header" id="user-info">{this.state.user.name}</li>
+            </ul>
+            <ul className="collapsible" data-collapsible="expandable">
+              <SideBinders binders={this.state.binders}/>
+              <SideTags tags={this.state.tags}/>
+            </ul>
+          </div>
+
+        );
+      }
+    });
+    var SideBinders = React.createClass({ 
+      
+      render: function () { 
+
+        return (
+          <li>
+                <div className="collapsible-header">Binders</div>
+                <div className="collapsible-body">
+                  <ul className="collection with-header valign"> {
+                    this.props.binders.map(function(item) {
+                      return (
+                        <li className="collection-item"><a href="">{item.alias}</a></li>
+                      );
+                    })
+                  }</ul>
+                </div>
+              </li>
+        );
+      }
+    });
+
+    var SideTags = React.createClass({ 
+      
+      render: function () { 
+
+        return (
+          <li>
+            <div className="collapsible-header">Tags</div>
+            <div className="collapsible-body">
+              <ul className="collection with-header valign"> {
+                this.props.tags.map(function(item) {
+                  return (
+                    <li className="collection-item"><a href="">{item.tag} ({item.count})</a></li>
+                  );
+                })
+              }</ul>
+            </div>
+          </li>
+        );
+      }
+    });
+
+    
+    ReactDOM.render(<Dashboard/>, document.getElementById('content'));
+
+}
+
+
+    $(document).ready(function () {
+      
+      $('select').material_select();
+      $('.button-collapse').sideNav();
+      $('.collapsible').collapsible({
+        accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+      });
+      loadUserData();
+      
+    });
+
+
+</script>
+
+</body>
+
+</html>
+

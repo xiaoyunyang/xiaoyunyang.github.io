@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+  <script type="text/javascript" src="js/materialize.js"></script>
+  <script type="text/javascript" src="js/underscore-min.js"></script>
+  <script src="js/backbone-min.js"></script>
+  <script src="js/application.js"></script>
+
+  <link rel='stylesheet' type='text/css' href="css/main.css">
+  <title>Dash</title>
+</head>
+
+<body>
+    <!-- Page Layout here -->
+  <nav class=" grey lighten-4">
+    <div class="nav-wrapper">
+      <a href="#" data-activates="mobile-menu" class="button-collapse right"><i class="mdi-navigation-menu"></i></a>
+      <a href="#!" class="brand-logo">Xiaoyun Yang</a>
+      <ul class="pills right hide-on-med-and-down">
+        <li class="home-pill"><a href="#home">Home</a></li>
+        <li class="life-pill"><a href="#life">Life</a></li>
+        <li class="hack-pill"><a href="#hack">Hack</a></li>
+        <li class="about-pill"><a href="#about">About</a></li>
+        <li class="contact-pill"><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="right hide-on-med-and-down">
+        <form>
+          <div class="input-field">
+            <input id="search" type="search" required>
+            <label for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+
+      </div>
+      <ul class="pills side-nav" id="mobile-menu">
+        <li class="home-pill"><a href="#home">Home</a></li>
+        <li class="life-pill"><a href="#life">Life</a></li>
+        <li class="hack-pill"><a href="#hack">Hack</a></li>
+        <li class="about-pill"><a href="#about">About</a></li>
+        <li class="contact-pill"><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="perm side-nav fixed">
+  
+    <ul id="slide-out" class="collection with-header">
+      <li>
+        <li class="collection-header">Xiaoyun Yang</li>
+      </li>
+    </ul>
+
+
+    <ul id="slide-out" class="collapsible" data-collapsible="expandable">
+      <li>
+        <div class="collapsible-header active">Blog</div>
+        <div class="collapsible-body">
+          <ul class="collection with-header valign">
+            <li class="collection-item"><a href="">Colleges</a></li>
+            <li class="collection-item"><a href="">Blue</a></li>
+            <li class="collection-item"><a href="">Green</a></li>
+            <li class="collection-item"><a href="">Brown</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header active">Tags</div>
+        <div class="collapsible-body">
+          <ul class="collection with-header valign">
+            <li class="collection-item"><a href="">Tag1</a></li>
+            <li class="collection-item"><a href="">Tag2</a></li>
+            <li class="collection-item"><a href="">Tag3</a></li>
+            <li class="collection-item"><a href="">Tag4</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="no-padding">
+    </ul>
+  </div>
+
+  <div class="main-content row">
+    <div class="col s12 m8 l8">
+      <!---====== Home ===========-->
+      <div id="home-page" class="pages">
+        <ul class="collection with-header ll-listing">
+          <li class="collection-header"><h4>Home Page</h4></li>
+          <li class="collection-item"><a href="">Red</a>
+            <p>Short description</p>
+          </li>
+          <li class="collection-item">
+            <a href="">Blue</a>
+            <p>Short description</p>
+          </li>
+          <li class="collection-item">
+            <a href="">Green</a>
+            <p>Short description</p>
+          </li>
+          <li class="collection-item">
+            <a href="">Brown</a>
+            <p>Short description</p>
+          </li>
+        </ul>
+      </div>
+      <!---====== Life ===========-->
+      <div id="life-page" class="pages">
+        <ul class="collection with-header ll-listing">
+          <li class="collection-header"><h4>Life Page</h4></li>
+          <li class="collection-item"><a href="">Red</a>
+            <p>Short description</p>
+          </li>
+          <li class="collection-item">
+            <a href="">Blue</a>
+            <p>Short description</p>
+          </li>
+          <li class="collection-item">
+            <a href="">Green</a>
+            <p>Short description</p>
+          </li>
+          <li class="collection-item">
+            <a href="">Brown</a>
+            <p>Short description</p>
+          </li>
+        </ul>
+      </div>
+      <!---====== Hack ===========-->
+      <div id="hack-page" class="pages">Hi I'm the hack page!</div>
+      <!---====== About ===========-->
+      <div id="about-page" class="pages">Hi I'm the about page!</div>
+      <!---====== Contact ===========-->
+      <div id="contact-page" class="pages">Hi I'm the contact page!</div>
+    </div>
+    
+
+
+
+
+    <div class="col s12 m8 l3">
+      <h5>Similar Curators</h5>
+      <ul id="slide-out" class="collapsible" data-collapsible="expandable">
+        <li>
+          <div class="collapsible-header"><a href="">xyang</a><i class="material-icons right">keyboard_arrow_down</i></div>
+
+          <div class="collapsible-body"> <p>Because you both collected #tag1 and #tag2</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><a href="">kbusch</a><i class="material-icons right">loyalty</i></div>
+          <div class="collapsible-body"> <p>Because you both collected #tag2</p></div>
+        </li>
+        <li class="no-padding">
+      </ul>
+      <h5>Tags wordcloud</h5>
+    </div>
+    
+
+
+  </div>
+
+
+<script type='text/javascript'>
+
+$(document).ready(function () {
+    $('select').material_select();
+    $('.button-collapse').sideNav({
+      edge: 'right',
+      closeOnClick: true
+    });
+});
+
+
+
+
+</script>
+
+</body>
+
+</html>
+
