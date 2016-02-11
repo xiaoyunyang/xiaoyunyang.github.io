@@ -7,8 +7,17 @@ html {
 img {
     width: 100%;
 }
-
-
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -142px; 
+}
+footer.theme-color {
+    background-color: #00897b;
+}
 .section-heading {
     margin-top: 20px;
     position: relative;

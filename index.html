@@ -1,37 +1,216 @@
-<!doctype html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8">
-	<title>Backbone.js Routes Example</title>
+  <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+  <script type="text/javascript" src="js/materialize.js"></script>
+  <script type="text/javascript" src="js/underscore-min.js"></script>
+  <script src="js/backbone-min.js"></script>
+  <script src="js/application.js"></script>
 
-	<link rel="stylesheet" href="css/bootstrap-1.2.0.min.css" />
-	<link rel="stylesheet" href="css/styles.css" />
-
-	<script type="text/javascript" src="js/jquery-2.1.3.js"></script>
-	<script src="js/underscore-min.js"></script>
-	<script src="js/backbone-min.js"></script>
-	<script src="js/try/application.js"></script>
-
+  <link rel='stylesheet' type='text/css' href="css/main.css">
+  <title>Dash</title>
 </head>
 
 <body>
+<div class="page-wrap">
+    <!-- Page Layout here -->
+  <nav class=" grey lighten-4">
+    <div class="nav-wrapper">
+      <a href="#" data-activates="mobile-menu" class="button-collapse right"><i class="mdi-navigation-menu"></i></a>
+      <a href="#!" class="brand-logo">Xiaoyun Yang</a>
+      <ul class="pills right hide-on-med-and-down">
+        <li class="home-pill"><a href="#home">Home</a></li>
+        <li class="life-pill"><a href="#life">Life</a></li>
+        <li class="hack-pill"><a href="#hack">Hack</a></li>
+        <li class="about-pill"><a href="#about">About</a></li>
+        <li class="contact-pill"><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="right hide-on-med-and-down">
+        <form>
+          <div class="input-field">
+            <input id="search" type="search" required>
+            <label for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
 
-<a href="https://github.com/ryanricard/backbone-routes-example" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+      </div>
+      <ul class="pills side-nav" id="mobile-menu">
+        <li class="home-pill"><a href="#home">Home</a></li>
+        <li class="life-pill"><a href="#life">Life</a></li>
+        <li class="hack-pill"><a href="#hack">Hack</a></li>
+        <li class="about-pill"><a href="#about">About</a></li>
+        <li class="contact-pill"><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="perm side-nav fixed">
+  
+    <ul id="slide-out" class="collection with-header">
+      <li>
+        <li class="collection-header">Xiaoyun Yang</li>
+      </li>
+    </ul>
 
-<ul class="pills">
-	<li class="home-pill"><a>Home</a></li>
-	<li class="about-pill"><a>About</a></li>
-	<li class="contact-pill"><a>Contact</a></li>
-</ul>
 
-<div id="home-page" class="pages">Hi I'm the home page!</div>
-<div id="about-page" class="pages">Hi I'm the about page!</div>
-<div id="contact-page" class="pages">Hi I'm the contact page!</div>
+    <ul id="slide-out" class="collapsible" data-collapsible="expandable">
+      <li>
+        <div class="collapsible-header active">DataViz</div>
+        <div class="collapsible-body">
+          <ul class="collection with-header valign">
+            <li class="collection-item"><a href="">Colleges</a></li>
+            <li class="collection-item"><a href="">Democracy</a></li>
+            <li class="collection-item"><a href="">Spices</a></li>
+            <li class="collection-item"><a href="">Travel</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header active">Blog</div>
+        <div class="collapsible-body">
+          <ul class="collection with-header valign">
+            <li class="collection-item"><a href="">#Programming</a></li>
+            <li class="collection-item"><a href="">#Philosophy</a></li>
+            <li class="collection-item"><a href="">#German</a></li>
+            <li class="collection-item"><a href="">#TopTens</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div style="height: 100%;" class="main-content row">
+    <div class="col s12 m8 l8">
+      <!---====== Home ===========-->
+      <div id="home-page" class="pages">
+        <ul class="collection with-header ll-listing">
+          <li class="collection-header"><h4>Home Page</h4></li>
+          <li class="collection-item"><a href="">Red</a>
+            <p>Short description</p>
+          </li>
+          <li class="collection-item">
+            <a href="">Blue</a>
+            <p>Short description</p>
+          </li>
+          <li class="collection-item">
+            <a href="">Green</a>
+            <p>Short description</p>
+          </li>
+          <li class="collection-item">
+            <a href="">Brown</a>
+            <p>Short description</p>
+          </li>
+        </ul>
+      </div>
+      <!---====== Life ===========-->
+      <div id="life-page" class="pages">
+        <ul class="collection with-header ll-listing">
+          <li class="collection-header"><h4>Life Page</h4></li>
+          <li class="collection-item"><a href="">Red</a>
+            <p>Short description</p>
+          </li>
+          <li class="collection-item">
+            <a href="">Blue</a>
+            <p>Short description</p>
+          </li>
+          <li class="collection-item">
+            <a href="">Green</a>
+            <p>Short description</p>
+          </li>
+          <li class="collection-item">
+            <a href="">Brown</a>
+            <p>Short description</p>
+          </li>
+        </ul>
+      </div>
+      <!---====== Hack ===========-->
+      <div id="hack-page" class="pages">Hi I'm the hack page!</div>
+      <!---====== About ===========-->
+      <div id="about-page" class="pages">Hi I'm the about page!</div>
+      <!---====== Contact ===========-->
+      <div id="contact-page" class="pages">
+          <h4>Do you have a ton of boring data you like me to visualize for you?</h4>
+          <a href="mailto:xyang232@gmail.com?Subject=DataVis%20Request" class="waves-light btn-large">
+            Send me DataViz request 
+            <i class="material-icons right">send</i>
+          </a>
+        <p>
+           
+        </p>
+
+
+
+      </div>
+    </div>
+    
+    <div class="col s12 m8 l3">
+      <h5>Similar Curators</h5>
+      <ul id="slide-out" class="collapsible" data-collapsible="expandable">
+        <li>
+          <div class="collapsible-header"><a href="">xyang</a><i class="material-icons right">keyboard_arrow_down</i></div>
+
+          <div class="collapsible-body"> <p>Because you both collected #tag1 and #tag2</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><a href="">kbusch</a><i class="material-icons right">loyalty</i></div>
+          <div class="collapsible-body"> <p>Because you both collected #tag2</p></div>
+        </li>
+        <li class="no-padding">
+      </ul>
+      <h5>Tags wordcloud</h5>
+    </div>
+
+  </div>
+</div>
+
+  <footer class="page-footer theme-color">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Xiaoyun Yang</h5>
+          <p class="grey-text text-lighten-4">Programmer, entrepreneur, engineer, curator, writer</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        Copyright 2016 Xiaoyun Yang
+        <div class="social-icons right">
+          <a class = "tooltipped" data-position="top" data-delay="50" data-tooltip="Where I curate things about entrepreneurship" href="https://www.facebook.com/looseleafUS/?fref=ts">
+            <i class="fa fa-facebook fa-lg"></i>
+          </a>
+          <a class = "tooltipped" data-position="top" data-delay="50" data-tooltip="My E-resume" href="https://www.linkedin.com/in/xiaoyun-yang-380a9874">
+            <i class="fa fa-linkedin fa-lg"></i>
+          </a>
+          <a class = "tooltipped" data-position="top" data-delay="50" data-tooltip="My open source projects" href="https://github.com/xiaoyunyang">
+            <i class="fa fa-github fa-lg"></i>
+          </a>
+          <a class = "tooltipped" data-position="top" data-delay="50" data-tooltip="Email me" href="mailto:xyang232@gmail.com">
+            <i class="fa fa-envelope fa-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <script type='text/javascript'>
+
+    $(document).ready(function () {
+        $('select').material_select();
+        $('.button-collapse').sideNav({
+          edge: 'right',
+          closeOnClick: true
+        });
+    });
+
+
+
+
+  </script>
 
 </body>
+
 </html>
+
