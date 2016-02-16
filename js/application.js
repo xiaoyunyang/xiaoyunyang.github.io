@@ -7,9 +7,10 @@ $(function(){
 			"": "home",
 			"home": "home",
 			"life": "life",
-			"hack": "hack",
+			"writing": "writing",
 			"about": "about",
-			"contact": "contact"
+			"contact": "contact",
+			"cost": "cost"
 		},
 
 		deselectPills: function(){
@@ -44,9 +45,9 @@ $(function(){
 			this.showPage('div#life-page');
 			this.selectPill('li.life-pill');
 		},
-		hack: function() {
-			this.showPage('div#hack-page');
-			this.selectPill('li.hack-pill');
+		writing: function() {
+			this.showPage('div#writing-page');
+			this.selectPill('li.writing-pill');
 		},
 
 		about: function() {
@@ -57,8 +58,11 @@ $(function(){
 		contact: function() {
 			this.showPage('div#contact-page');
 			this.selectPill('li.contact-pill');
-		}
-
+		},
+		cost: function() {
+			this.showPage('div#cost-page');
+			this.selectPill('li.cost-pill');
+		},
 	});
 
 	var ApplicationView = Backbone.View.extend({
@@ -70,7 +74,7 @@ $(function(){
 		events: {
 			'click ul.pills li.home-pill a': 'displayHome',
 			'click ul.pills li.home-pill a': 'displayLife',
-			'click ul.pills li.home-pill a': 'displayHack',
+			'click ul.pills li.home-pill a': 'displayWriting',
 			'click ul.pills li.about-pill a': 'displayAbout',
 			'click ul.pills li.contact-pill a': 'displayContact'
 		},
@@ -94,9 +98,9 @@ $(function(){
 			this.router.navigate("life", true);
 		},
 
-		displayHack: function(){
+		displayWriting: function(){
 			//update url and pass true to execute route method
-			this.router.navigate("hack", true);
+			this.router.navigate("writing", true);
 		},
 
 		displayAbout: function(){
@@ -108,6 +112,10 @@ $(function(){
 		displayContact: function(){
 			//update url and pass true to execute route method
 			this.router.navigate("contact", true);
+		},
+		displayCost: function(){
+			//update url and pass true to execute route method
+			this.router.navigate("cost", true);
 		}
 
 	});

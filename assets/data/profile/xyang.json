@@ -1,0 +1,15 @@
+{
+	"user": {"username":"xyang","name":"Xiaoyun Yang"},
+	"binders": [
+		{"name":"Cost of Living","alias":"cost","description":"Map"},
+		{"name":"English Monarchy","alias":"english","description":"Timeline"},
+		{"name":"Spices","alias":"spices","description":"Chart"},
+		{"name":"Travel","alias":"travel","description":"graph"}
+	],
+	"tags":[
+		{"tag":"Programming","count":1},
+		{"tag":"Philosophy","count":2},
+		{"tag":"German","count":1},
+		{"tag":"TopTens","count":1}
+	]
+}

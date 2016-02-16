@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+  <script type="text/javascript" src="js/materialize.js"></script>
+  <script type="text/javascript" src="js/underscore-min.js"></script>
+  <script src="js/backbone-min.js"></script>
+  <script src="js/application.js"></script>
+
+  <link rel='stylesheet' type='text/css' href="assets/css/main.css">
+  <title>Timeline</title>
+  <style>
+    .state{
+      fill: none;
+      stroke: #a9a9a9;
+      stroke-width: 1;
+    }
+    .state:hover{
+      fill-opacity:0.5;
+    }
+    #tooltip {   
+      position: absolute;           
+      text-align: center;
+      padding: 20px;             
+      margin: 10px;
+      font: 12px sans-serif;        
+      background: lightsteelblue;   
+      border: 1px;      
+      border-radius: 2px;           
+      pointer-events: none;         
+    }
+    #tooltip h4{
+      margin:0;
+      font-size:14px;
+    }
+    #tooltip{
+      background:rgba(0,0,0,0.9);
+      border:1px solid grey;
+      border-radius:5px;
+      font-size:12px;
+      width:auto;
+      padding:4px;
+      color:white;
+      opacity:0;
+    }
+    #tooltip table{
+      table-layout:fixed;
+      max-width: 80px;
+    }
+    #tooltip tr td{
+      padding:0;
+      margin:0;
+    }
+    #tooltip tr td:nth-child(1){
+      width:50px;
+    }
+    #tooltip tr td:nth-child(2){
+      text-align:center;
+    }
+  </style>
+</head>
+
+
+<body>
+<div style="margin-bottom: 40px;" class="page-wrap">
+    <!-- Page Layout here -->
+  <nav class=" grey lighten-4">
+    <div class="nav-wrapper">
+      <a href="#" data-activates="mobile-menu" class="button-collapse right"><i class="mdi-navigation-menu"></i></a>
+      <a href="#!" class="brand-logo">Xiaoyun Yang</a>
+      <ul class="pills right hide-on-med-and-down">
+        <li class="home-pill"><a href="#home">Home</a></li>
+        <li class="life-pill"><a href="#life">Life</a></li>
+        <li class="hack-pill"><a href="#hack">Hack</a></li>
+        <li class="about-pill"><a href="#about">About</a></li>
+        <li class="contact-pill"><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="right hide-on-med-and-down">
+        <form>
+          <div class="input-field">
+            <input id="search" type="search" required>
+            <label for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+
+      </div>
+      <ul class="pills side-nav" id="mobile-menu">
+        <li class="home-pill"><a href="#home">Home</a></li>
+        <li class="life-pill"><a href="#life">Life</a></li>
+        <li class="hack-pill"><a href="#hack">Hack</a></li>
+        <li class="about-pill"><a href="#about">About</a></li>
+        <li class="contact-pill"><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="perm side-nav fixed">
+  
+    <ul id="slide-out" class="collection with-header">
+      <li>
+        <li class="collection-header">Xiaoyun Yang</li>
+      </li>
+    </ul>
+
+
+    <ul id="slide-out" class="collapsible" data-collapsible="expandable">
+      <li>
+        <div class="collapsible-header active">DataViz</div>
+        <div class="collapsible-body">
+          <ul class="collection with-header valign">
+            <li class="collection-item cost-pill"><a href="/cost">Cost of Living</a></li>
+            <li class="collection-item"><a href="">Democracy</a></li>
+            <li class="collection-item"><a href="">Spices</a></li>
+            <li class="collection-item"><a href="">Travel</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header active">Blog</div>
+        <div class="collapsible-body">
+          <ul class="collection with-header valign">
+            <li class="collection-item"><a href="">#Programming</a></li>
+            <li class="collection-item"><a href="">#Philosophy</a></li>
+            <li class="collection-item"><a href="">#German</a></li>
+            <li class="collection-item"><a href="">#TopTens</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="main-content row">
+    <div class="col s12 m8 l8">
+      <!---====== Home ===========-->
+      <div id="home-page" class="pages">
+        <div id="tooltip"></div><!-- div to hold tooltip. -->
+        <svg width="960" height="600" id="statesvg"></svg> <!-- svg to hold the map. -->
+      </div>
+      <!---====== Life ===========-->
+      <div id="life-page" class="pages">Hi I'm the life page!
+        <div id="content"></div>
+
+      </div>
+
+      <div id="hack-page" class="pages">Hi I'm the hack page!
+
+      </div>
+      <!---====== About ===========-->
+      <div id="about-page" class="pages">Hi I'm the about page!</div>
+      <!---====== Contact ===========-->
+      <div id="contact-page" class="pages">Hi I'm the contact page!
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<footer class="page-footer theme-color">
+  <div class="container">
+    <div class="row">
+
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      Copyright 2016 Xiaoyun Yang
+      <div class="social-icons right">
+        <a class = "tooltipped" data-position="top" data-delay="50" data-tooltip="Where I curate things about entrepreneurship" href="https://www.facebook.com/looseleafUS/?fref=ts">
+          <i class="fa fa-facebook fa-lg"></i>
+        </a>
+        <a class = "tooltipped" data-position="top" data-delay="50" data-tooltip="My E-resume" href="https://www.linkedin.com/in/xiaoyun-yang-380a9874">
+          <i class="fa fa-linkedin fa-lg"></i>
+        </a>
+        <a class = "tooltipped" data-position="top" data-delay="50" data-tooltip="My open source projects" href="https://github.com/xiaoyunyang">
+          <i class="fa fa-github fa-lg"></i>
+        </a>
+        <a class = "tooltipped" data-position="top" data-delay="50" data-tooltip="Email me" href="mailto:xyang232@gmail.com">
+          <i class="fa fa-envelope fa-lg"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>    
+
+<script src="js/uStates.js"></script> <!-- creates uStates. -->
+<script src="js/d3.v3.min.js"></script>
+<script src="js/map.js"></script>
+
+</body>
+
+
+</html>
