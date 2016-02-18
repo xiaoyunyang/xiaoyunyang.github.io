@@ -11,7 +11,7 @@ var Home = React.createClass({
                 monthly Basic Allowance for Housing (BAH) for new recruits in the military.
               </p>
             </li>
-            <li className="collection-item"><a href="#cost">Bad English Diary</a>
+            <li className="collection-item"><a href="#writing">Bad English Diary</a>
               <p>
                 A book about how one girl who immigrated to the U.S. with no prior English skills learned English by keeping a diary written in Bad English.
                 The book transcribes the diary entries with corrections for how to write it in proper English instead.

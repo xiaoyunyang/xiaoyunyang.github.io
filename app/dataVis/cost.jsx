@@ -1,11 +1,11 @@
 var Cost = React.createClass({
-  getInitialState: function() { 
-    return { 
+  getInitialState: function() {
+    return {
       mapData
     }
   },
   componentWillMount: function() {
-    d3.csv("../../assets/data/usmap/2016e1nodep.csv", function(error, data) {
+    d3.csv("assets/data/usmap/2016e1nodep.csv", function(error, data) {
       if(error) {
           console.log(error);
       } else {
@@ -26,7 +26,7 @@ var Cost = React.createClass({
       </div>
       <div className="col s12 m8 l2">
         <h5>Monthly Cost of Living ($/Mo)</h5>
-        <p>The cost of living by state based on BAH rate for new recruits in the military 
+        <p>The cost of living by state based on BAH rate for new recruits in the military
           Source: <a target="_blank" href="http://www.stripes.com/polopoly_fs/1.384271.1450203758!/menu/standard/file/2016%20%20BAH%20Rates.pdf">2016 BAH Rate</a> for E1 with no dependent
         </p>
         <div id="state-cost-detail"></div>
@@ -42,13 +42,13 @@ function toJson(bahData) {
   var arr = []
   bahData.forEach(function(d,i){
     mapData[d.state]={
-      low:bahData[i].low, 
-      high:bahData[i].high, 
-      avg:bahData[i].avg, 
+      low:bahData[i].low,
+      high:bahData[i].high,
+      avg:bahData[i].avg,
       color: d3.interpolate("#ffffcc", "#800026")(bahData[i].high/2000)
-    }; 
+    };
   });
-  return mapData; 
+  return mapData;
 }
 
 function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */

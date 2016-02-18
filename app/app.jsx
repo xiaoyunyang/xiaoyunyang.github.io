@@ -74,7 +74,7 @@ var SideBinders = React.createClass({
           <ul className="collection with-header valign pills"> {
             this.props.binders.map(function(item) {
               return (
-                <li key={item.alias} className="collection-item"><a href={"#"+item.alias}>{item.name}</a></li>
+                <li key={item.alias} className={"collection-item "+item.alias+"-pill"}><a href={"#"+item.alias}>{item.name}</a></li>
               );
             })
           }</ul>

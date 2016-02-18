@@ -128,7 +128,12 @@ header, main, footer {
 .side-nav .collection.with-header .collection-item a:hover {
     background-color: #9e9e9e;
 }
-
+.side-nav .collapsible-body li.active a, .side-nav.fixed .collapsible-body li.active a {
+    color: #383435;
+}
+.side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {
+    background-color: #9e9e9e;
+}
 .side-nav .collapsible-body li {
     padding-left: 30px;
     background-color: #383435;
