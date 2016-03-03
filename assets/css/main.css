@@ -1,5 +1,6 @@
 @import url("materialize.min.css");
 @import url("map.css");
+@import url("pie.css");
 @import url("../font/font-awesome/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 html {
@@ -11,6 +12,16 @@ img {
 html, body {
   height: 100%;
 }
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    white-space: nowrap;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
 .page-wrap {
   min-height: 76%;
   /* equal to footer height */

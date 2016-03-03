@@ -8,7 +8,7 @@ var Main = React.createClass({
         <div className="col s12 m8 l10">
           <div id="home-page" className="pages">The Home Page</div>
           <div id="life-page" className="pages">The life page</div>
-          <div id="cost-page" className="pages">
+          <div id="map-page" className="pages">
             <h4>Monthly Cost of Living (/Mo)</h4>
             <div id="tooltip"></div>
             <svg width="960" height="600" id="statesvg"></svg>
@@ -17,7 +17,7 @@ var Main = React.createClass({
           <div id="about-page" className="pages">The about page</div>
           <div id="contact-page" className="pages">The Contact Page</div>
         </div>
-    
+
         <div className="col s12 m8 l2">
           <h5>Similar Curators</h5>
           <ul id="slide-out" className="collapsible" data-collapsible="expandable">

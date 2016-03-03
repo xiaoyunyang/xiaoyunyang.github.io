@@ -1,4 +1,4 @@
-var Cost = React.createClass({
+var Map = React.createClass({
   getInitialState: function() {
     return {
       mapData
@@ -35,7 +35,7 @@ var Cost = React.createClass({
     );
   }
 });
-ReactDOM.render(<Cost/>, document.getElementById('cost'));
+ReactDOM.render(<Map/>, document.getElementById('map'));
 
 function toJson(bahData) {
   var mapData ={};

@@ -10,7 +10,9 @@ $(function(){
 			"writing": "writing",
 			"about": "about",
 			"contact": "contact",
-			"cost": "cost"
+			"map": "map",
+			"pie": "pie"
+
 		},
 
 		deselectPills: function(){
@@ -59,10 +61,14 @@ $(function(){
 			this.showPage('div#contact-page');
 			this.selectPill('li.contact-pill');
 		},
-		cost: function() {
-			this.showPage('div#cost-page');
-			this.selectPill('li.cost-pill');
+		map: function() {
+			this.showPage('div#map-page');
+			this.selectPill('li.map-pill');
 		},
+		pie: function() {
+			this.showPage('div#pie-page');
+			this.selectPill('li.pie-pill');
+		}
 	});
 
 	var ApplicationView = Backbone.View.extend({
@@ -115,7 +121,7 @@ $(function(){
 		},
 		displayCost: function(){
 			//update url and pass true to execute route method
-			this.router.navigate("cost", true);
+			this.router.navigate("map", true);
 		}
 
 	});
@@ -124,4 +130,3 @@ $(function(){
 	new ApplicationView();
 
 });
-
