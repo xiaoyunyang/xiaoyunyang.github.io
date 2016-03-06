@@ -11,9 +11,9 @@ function loadUserData() {
 
 }
 function render() {
-  var SideNav = React.createClass({ 
-    getInitialState: function() { 
-      return { 
+  var SideNav = React.createClass({
+    getInitialState: function() {
+      return {
         user: dataset.user,
         binders: [],
         tags: []
@@ -21,17 +21,17 @@ function render() {
     },
     componentWillMount: function(){ //constructor
       this.setState(
-        { 
+        {
           user: dataset.user,
           binders: dataset.binders,
           tags: dataset.tags,
-        }  
+        }
       );
     },
     componentDidMount: function() {
       $('.collapsible').collapsible();
     },
-    render: function () { 
+    render: function () {
       return (
         <div className="perm side-nav fixed">
           <ul className="collection with-header">
@@ -46,7 +46,7 @@ function render() {
       );
     }
   });
-  
+
   ReactDOM.render(<TopNav/>, document.getElementById('react-top-nav'));
   ReactDOM.render(<SideNav/>, document.getElementById('react-side-nav'));
 }
@@ -62,11 +62,11 @@ $(document).ready(function () {
     accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
   loadUserData();
-  
+
 });
 
-var SideBinders = React.createClass({ 
-  render: function () { 
+var SideBinders = React.createClass({
+  render: function () {
     return (
       <li>
         <div className="collapsible-header active">DataVis</div>
@@ -84,8 +84,8 @@ var SideBinders = React.createClass({
   }
 });
 
-var SideTags = React.createClass({ 
-  render: function () { 
+var SideTags = React.createClass({
+  render: function () {
     return (
       <li>
         <div className="collapsible-header active">Blog</div>
