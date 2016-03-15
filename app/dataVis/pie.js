@@ -4,8 +4,8 @@ function mountPieChart(data) {
 
 /* ------- CONSTANTS -------*/
 var divId = "#pie-chart";
-var width = 600,
-    height = 400,
+var width = 600;
+var height = 400,
 	radius = Math.min(width, height) / 2;
 
 var pie = d3.layout.pie()
@@ -138,10 +138,10 @@ function pieChart(data, divId, width, height) {
 		.remove();
 
 	slice
-		.on("mouseover",sliceMouseover);// sliceMmouseover is defined below.
+		.on("mouseover",sliceMouseover)// sliceMmouseover is defined below.
+    .on("click",sliceClick);// sliceMmouseover is defined below.
 
-	/* ------- SLICE ARC INNER -------*/
-
+	/* ------- SLICE EVENTS -------*/
 	function sliceMouseover(d) {
 		d3.select("#selected-label").text(d.data.label);
 
@@ -183,7 +183,10 @@ function pieChart(data, divId, width, height) {
 			.remove();
 
 	}
-
+  function sliceClick(d) {
+    console.log(d.data.label+", "+d.value);
+    d3.select('#pie-chart-desc').text(d.data.label+", "+d.value);
+  }
 
 	/* ------- TEXT LABELS -------*/
 
