@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <style>
+      rect.bordered {
+        stroke: #E6E6E6;
+        stroke-width:2px;
+        cursor: pointer;
+      }
+      rect.selected-bordered {
+        stroke: red;
+        stroke-width:2px;
+      }
+      text.mono {
+        font-size: 9pt;
+        font-family: Consolas, courier;
+        fill: #aaa;
+      }
+
+      text.axis-taglabel {
+        fill: #000;
+      }
+
+      text.axis-mediatype {
+        fill: #000;
+      }
+      text.media-label {
+        cursor: pointer;
+      }
+      text.tag-label {
+        cursor: pointer;
+      }
+      text.selected-mediatype {
+        fill: red;
+        font-weight: bold;
+      }
+      text.selected-taglabel {
+        fill: red;
+        font-weight: bold;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="chart"></div>
+    <div id="dataset-picker"></div>
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script type="text/javascript" src="matrix.js"></script>
+
+
+
+
+  </body>
+</html>

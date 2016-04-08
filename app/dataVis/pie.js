@@ -184,7 +184,7 @@ function pieChart(data, divId, width, height) {
 
 	}
   function sliceClick(d) {
-    console.log(d.data.label+", "+d.value);
+    //console.log(d.data.label+", "+d.value);
     d3.select('#pie-chart-desc').text(d.data.label+", "+d.value);
   }
 

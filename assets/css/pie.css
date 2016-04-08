@@ -9,6 +9,7 @@
 }
 path.slice{
 	stroke-width:2px;
+	cursor: pointer;
 }
 path.slice:hover {  opacity:0.8; }
 

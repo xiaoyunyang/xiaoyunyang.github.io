@@ -6,6 +6,10 @@
 html {
     font-family: "Helvetica Neue";
 }
+
+.title>a:hover {
+    text-decoration: underline;
+}
 img {
     width: 100%;
 }
@@ -185,7 +189,10 @@ header, main, footer {
     text-shadow:0 1px 1px #fff;
     margin:4px;
 }
-.tagcloud a:hover{color:#E87500;}
+.tagcloud a:hover{
+  color:#E87500;
+  cursor: pointer;
+}
 
 .tagcloud a span{
     display:inline-block;

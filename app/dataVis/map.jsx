@@ -20,16 +20,19 @@ var Map = React.createClass({
   render: function() {
     return (
     <div>
-      <div className="col s12 m8 l10">
-        <div id="tooltip"></div>
-        <svg width="960" height="600" id="statesvg"></svg>
-      </div>
-      <div className="col s12 m8 l2">
+
+      <div className="col s12 m8 l6">
         <h5>Monthly Cost of Living ($/Mo)</h5>
         <p>The cost of living by state based on BAH rate for new recruits in the military
           Source: <a target="_blank" href="http://www.stripes.com/polopoly_fs/1.384271.1450203758!/menu/standard/file/2016%20%20BAH%20Rates.pdf">2016 BAH Rate</a> for E1 with no dependent
         </p>
+      </div>
+      <div className="col s12 m8 l6">
         <div id="state-cost-detail"></div>
+      </div>
+      <div className="col s12 m8 l10">
+        <div id="tooltip"></div>
+        <svg width="960" height="600" id="statesvg"></svg>
       </div>
     </div>
     );

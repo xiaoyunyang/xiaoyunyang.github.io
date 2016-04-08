@@ -11,8 +11,8 @@ $(function(){
 			"about": "about",
 			"contact": "contact",
 			"map": "map",
-			"pie": "pie"
-
+			"pie": "pie",
+			"matrix": "matrix"
 		},
 
 		deselectPills: function(){
@@ -68,6 +68,10 @@ $(function(){
 		pie: function() {
 			this.showPage('div#pie-page');
 			this.selectPill('li.pie-pill');
+		},
+		matrix: function() {
+			this.showPage('div#matrix-page');
+			this.selectPill('li.matrix-pill');
 		}
 	});
 

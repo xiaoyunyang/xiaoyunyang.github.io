@@ -88,7 +88,7 @@ var SideTags = React.createClass({
   render: function () {
     return (
       <li>
-        <div className="collapsible-header active">Blog</div>
+        <div className="collapsible-header active">Likes</div>
         <div className="collapsible-body">
           <ul className="collection with-header valign"> {
             this.props.tags.map(function(item) {
