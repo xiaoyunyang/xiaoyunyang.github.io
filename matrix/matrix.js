@@ -5,7 +5,7 @@ var margin = { top: 50, right: 0, bottom: 100, left: 50 },
     gridSize = Math.floor(width / 24),
     legendElementWidth = gridSize*2,
     buckets = 9,
-    colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"], // alternatively colorbrewer.YlGnBu[9]
+    colors = ["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"], // alternatively colorbrewer.YlGnBu[9]
     datasets = ["data.csv", "data2.csv"];
 
 //anonymous function
@@ -25,15 +25,18 @@ var heatmapChart = function(data) {
     labels.tags = tags;
     labels.media = media;
 
+    //resetGrid();
+    svg.selectAll(".tag-label").remove();
+    svg.selectAll(".media-label").remove();
     var tagLabels = svg.selectAll(".tag-label")
         .data(labels.tags)
         .enter().append("text")
-          .text(function (d) { return d; })
-          .attr("x", 0)
-          .attr("y", function (d, i) { return i * gridSize; })
-          .style("text-anchor", "end")
-          .attr("transform", "translate(-6," + gridSize / 1.5 + ")")
-          .attr("class", function (d, i) { return ((i >= 0 && i <= 4) ? "tag-label mono axis axis-taglabel" : "tag-label mono axis"); });
+        .text(function (d) { return d; })
+        .attr("x", 0)
+        .attr("y", function (d, i) { return i * gridSize; })
+        .style("text-anchor", "end")
+        .attr("transform", "translate(-6," + gridSize / 1.5 + ")")
+        .attr("class", function (d, i) { return ((i >= 0 && i <= 4) ? "tag-label mono axis axis-taglabel" : "tag-label mono axis"); });
 
     var mediaLabels = svg.selectAll(".media-label")
         .data(labels.media)
@@ -86,9 +89,9 @@ var heatmapChart = function(data) {
 
     function resetGrid() {
       //reset everything
-      boxes.classed("selected-bordered", false);
-      mediaLabels.classed("selected-mediatype", false);
-      tagLabels.classed("selected-taglabel", false);
+      svg.selectAll(".box").classed("selected-bordered", false);
+      svg.selectAll(".media-label").classed("selected-mediatype", false);
+      svg.selectAll(".tag-label").classed("selected-taglabel", false);
     }
     //Interaction with the media label
     svg.selectAll(".media-label").on("mouseover", mediaLabelMouseover);

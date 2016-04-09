@@ -33,7 +33,6 @@ var key = function(d){ return d.data.label; };
 
 /* ------- FUNCTIONS WITH SIDE EFFECTS -------*/
 
-
 d3.select(".randomize")
 	.on("click", function(){
 		pieChart(randomData(), divId, width, height);
