@@ -2,6 +2,8 @@
 <meta charset="utf-8">
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <style>
       rect.bordered {
         stroke: #969696;
@@ -11,6 +13,11 @@
       rect.selected-bordered {
         stroke: #E6E6E6;
         stroke-width:2px;
+      }
+      svg text {
+        /*font-family: 'FontAwesome';*/
+        font-family: 'Material Icons';
+        font-size: 25px;
       }
       text.mono {
         font-size: 9pt;
@@ -34,23 +41,55 @@
       text.selected-mediatype {
         fill: #238b45;
         font-weight: bold;
+        font-size: 30px;
       }
       text.selected-taglabel {
         fill: #238b45;
         font-weight: bold;
       }
+      #tooltip {
+        position: absolute;
+        width: auto;
+        height: 40px;
+        padding: 10px;
+        background-color: rgba(0,0,0,0.9);
+        border:1px solid grey;
+        border-radius:5px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+        color:white;
+      }
+
+      #tooltip.hidden {
+        display: none;
+      }
+
+      #tooltip p {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+      }
     </style>
 
   </head>
   <body>
-    <div id="chart"></div>
+    <br>
+    <div id="chart">
+      <div id="tooltip" class="hidden">
+        <p><strong>Media Type: </strong></p>
+        <p><span id="value">media</span></p>
+      </div>
+    </div>
+
     <div id="dataset-picker"></div>
     <script src="http://d3js.org/d3.v3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
     <script type="text/javascript" src="matrix.js"></script>
-
-
-
-
   </body>
 </html>
