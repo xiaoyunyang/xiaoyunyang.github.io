@@ -9,8 +9,11 @@ var margin = { top: 80, right: 0, bottom: 100, left: 80 },
     mediaIcons = {Image: '\ue3f4', Video: '\ue04a', Answer: '\ue8fd', Article: '\ue02f', Code: '\ue86f', Tutorial: '\ue8fd'  } //Materials
     //mediaIcons = {Image: '\uf03e', Video: '\uf16a', Answer: '\uf059', Article: '\ue02f', Code: '\uf121', Tutorial: '\ue8fd'  } //FontAwesome
     mediaImages = {Image: 'oatmeal/0.png', Video: 'oatmeal/1.png', Answer: 'oatmeal/2.png', Article: 'oatmeal/3.png', Code: 'oatmeal/4.png', Tutorial: 'oatmeal/5.png'  }
-    colors = ["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"], // alternatively colorbrewer.YlGnBu[9]
-    datasets = ["data.csv", "data2.csv"];
+    //colors = ["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"], // alternatively colorbrewer.YlGnBu[9]
+    colors = {green: colorbrewer.Greens[9], red: colorbrewer.Reds[9], blue: colorbrewer.Blues[9], purple: colorbrewer.Purples[9]}
+    datasets = ["data.csv", "data2.csv"]
+    mediaTypes = ["icon", "image"]
+    colorThemes = ["green", "red", "blue", "purple"];
 
 //anonymous function
 var objKey = function(d, i) {return Object.keys(d)[i]};
@@ -22,7 +25,7 @@ var svg = d3.select("#chart").append("svg")
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var heatmapChart = function(data) {
+var heatmapChart = function(data, mediaType, colorTheme) {
     var tags = _.unique(data.map(function(d){return objVal(d,0)}));
     var media = _.unique(data.map(function(d){return objVal(d,1)}));
     var values = data.map(function(d){return objVal(d,2)});
@@ -45,7 +48,7 @@ var heatmapChart = function(data) {
         .attr("class", "tag-label");
 
     var mediaLabels = svg.selectAll(".media-label");
-    bindMediaLabel("image", mediaLabels, labels.media);
+    bindMediaLabel(mediaType, mediaLabels, labels.media);
 
     function bindMediaLabel(type, mediaLabels, data) {
       if(type=="icon") {
@@ -85,10 +88,9 @@ var heatmapChart = function(data) {
       }
 
     }
-
     var colorScale = d3.scale.quantile()
         .domain([0, d3.max(data, function (d) { return parseFloat(objVal(d,2)); })])
-        .range(colors);
+        .range(colors[colorTheme]);
 
     var boxes = svg.selectAll(".box")
         .data(data, function(d) {return objVal(d,0)+':'+objVal(d,1);});
@@ -211,7 +213,7 @@ var heatmapChart = function(data) {
           .attr("y", height)
           .attr("width", legendElementWidth)
           .attr("height", gridSize / 2)
-          .style("fill", function(d, i) { return colors[i]; });
+          .style("fill", function(d, i) { return colors[colorTheme][i]; });
 
     legend.append("text")
           .attr("class", "mono")
@@ -222,20 +224,27 @@ var heatmapChart = function(data) {
     legend.exit().remove();
 };
 
+
+//Initialize
+var state = {};
+state.mediaType = mediaTypes[0];
+state.colorTheme = colorThemes[0];
 d3.csv("data.csv", function(error, data) {
   if(error) {
     console.log(error);
   } else {
-    heatmapChart(data)
+    state.data = data;
+    heatmapChart(state.data, state.mediaType, state.colorTheme)
   }
 });
 
-var datasetpicker = d3.select("#dataset-picker").selectAll(".dataset-button")
-  .data(datasets);
+var datasetPicker = d3.select("#dataset-picker").selectAll(".dataset-button").data(datasets);
+var mediaTypePicker = d3.select("#mediatype-picker").selectAll(".mediatype-button").data(mediaTypes);
+var colorsPicker = d3.select("#colors-picker").selectAll(".colors-button").data(colorThemes);
 
-datasetpicker.enter()
+datasetPicker.enter()
   .append("input")
-  .attr("value", function(d){ return "Dataset " + d })
+  .attr("value", function(d){ return "Dataset: " + d })
   .attr("type", "button")
   .attr("class", "dataset-button")
   .on("click", function(d) {
@@ -243,7 +252,27 @@ datasetpicker.enter()
       if(error) {
         console.log(error);
       } else {
-        heatmapChart(data);
+        state.data = data;
+        heatmapChart(state.data, state.mediaType, state.colorTheme);
       }
     });
-});
+  });
+
+mediaTypePicker.enter()
+  .append("input")
+  .attr("value", function(d){ return "MediaType: " + d })
+  .attr("type", "button")
+  .attr("class", "Mediatype-button")
+  .on("click", function(d) {
+    state.mediaType = d;
+    heatmapChart(state.data, state.mediaType, state.colorTheme);
+  });
+colorsPicker.enter()
+  .append("input")
+  .attr("value", function(d){ return "MediaType: " + d })
+  .attr("type", "button")
+  .attr("class", "colors-button")
+  .on("click", function(d) {
+    state.colorTheme = d;
+    heatmapChart(state.data, state.mediaType, state.colorTheme);
+  });

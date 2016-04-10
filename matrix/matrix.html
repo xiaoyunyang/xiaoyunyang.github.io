@@ -26,14 +26,15 @@
       }
       text.selected-mediatype {
         transition: all 0.3s ease;
-        fill: #238b45;
+        fill: black;
+        /*fill: #238b45;*/
         font-weight: bold;
         font-size: 32px;
       }
       image.mediatype-image {
       }
       image.selected-mediatype {
-        transition: all 0.01s ease;
+        transition: all 0.3s ease;
       }
 
       text.axis-mediatype {
@@ -53,7 +54,8 @@
       }
       text.selected-taglabel {
         transition: all 0.3s ease;
-        fill: #238b45;
+        /*fill: #238b45;*/
+        fill: black;
         font-weight: bold;
         font-size: 18px;
       }
@@ -90,18 +92,23 @@
   </head>
   <body>
     <br><br>
+    <div id="dataset-picker"></div>
+    <br>
+    <div id="mediatype-picker"></div>
+    <br>
+    <div id="colors-picker"></div>
     <div id="chart">
       <div id="tooltip" class="hidden">
         <p><strong id="title">Title</strong></p>
         <p><span id="value">Value</span></p>
       </div>
     </div>
-    
 
-    <div id="dataset-picker"></div>
+
     <script src="http://d3js.org/d3.v3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <script type="text/javascript" src="colorbrewer.js"></script>
     <script type="text/javascript" src="matrix.js"></script>
   </body>
 </html>
