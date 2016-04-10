@@ -14,10 +14,30 @@
         stroke: #E6E6E6;
         stroke-width:2px;
       }
-      svg text {
+
+      .media-label {
+        cursor: pointer;
+      }
+      .mediatype-icon {
+        fill: #969696;
         /*font-family: 'FontAwesome';*/
         font-family: 'Material Icons';
         font-size: 25px;
+      }
+      text.selected-mediatype {
+        transition: all 0.3s ease;
+        fill: #238b45;
+        font-weight: bold;
+        font-size: 32px;
+      }
+      image.mediatype-image {
+      }
+      image.selected-mediatype {
+        transition: all 0.01s ease;
+      }
+
+      text.axis-mediatype {
+        fill: #969696;
       }
       text.mono {
         font-size: 9pt;
@@ -25,28 +45,19 @@
         fill: #aaa;
       }
 
-      text.axis-taglabel {
-        fill: #000;
-      }
-
-      text.axis-mediatype {
-        fill: #000;
-      }
-      text.media-label {
+      .tag-label {
         cursor: pointer;
-      }
-      text.tag-label {
-        cursor: pointer;
-      }
-      text.selected-mediatype {
-        fill: #238b45;
-        font-weight: bold;
-        font-size: 30px;
+        fill: #969696;
+        font-size: 14px;
+        font-family: Futura;
       }
       text.selected-taglabel {
+        transition: all 0.3s ease;
         fill: #238b45;
         font-weight: bold;
+        font-size: 18px;
       }
+
       #tooltip {
         position: absolute;
         width: auto;
@@ -78,13 +89,14 @@
 
   </head>
   <body>
-    <br>
+    <br><br>
     <div id="chart">
       <div id="tooltip" class="hidden">
-        <p><strong>Media Type: </strong></p>
-        <p><span id="value">media</span></p>
+        <p><strong id="title">Title</strong></p>
+        <p><span id="value">Value</span></p>
       </div>
     </div>
+    
 
     <div id="dataset-picker"></div>
     <script src="http://d3js.org/d3.v3.js"></script>

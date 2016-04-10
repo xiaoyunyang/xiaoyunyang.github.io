@@ -8,6 +8,7 @@ var margin = { top: 80, right: 0, bottom: 100, left: 80 },
     buckets = 9,
     mediaIcons = {Image: '\ue3f4', Video: '\ue04a', Answer: '\ue8fd', Article: '\ue02f', Code: '\ue86f', Tutorial: '\ue8fd'  } //Materials
     //mediaIcons = {Image: '\uf03e', Video: '\uf16a', Answer: '\uf059', Article: '\ue02f', Code: '\uf121', Tutorial: '\ue8fd'  } //FontAwesome
+    mediaImages = {Image: 'oatmeal/0.png', Video: 'oatmeal/1.png', Answer: 'oatmeal/2.png', Article: 'oatmeal/3.png', Code: 'oatmeal/4.png', Tutorial: 'oatmeal/5.png'  }
     colors = ["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"], // alternatively colorbrewer.YlGnBu[9]
     datasets = ["data.csv", "data2.csv"];
 
@@ -32,6 +33,7 @@ var heatmapChart = function(data) {
     //resetGrid();
     svg.selectAll(".tag-label").remove();
     svg.selectAll(".media-label").remove();
+
     var tagLabels = svg.selectAll(".tag-label")
         .data(labels.tags)
         .enter().append("text")
@@ -40,23 +42,49 @@ var heatmapChart = function(data) {
         .attr("y", function (d, i) { return i * gridSize; })
         .style("text-anchor", "end")
         .attr("transform", "translate(-6," + gridSize / 1.5 + ")")
-        .attr("class", function (d, i) { return ((i >= 0 && i <= 4) ? "tag-label mono axis axis-taglabel" : "tag-label mono axis"); });
+        .attr("class", "tag-label");
 
-    var mediaLabels = svg.selectAll(".media-label")
-        .data(labels.media)
-        .enter().append("text")
-        .attr("font-family","FontAwesome")
-        .text(function(d) { return mediaIcons[d]; })
-        .attr("value", function(d) {return d;})
-        //.text(function(d) { return d; })
-        .attr("x", function(d, i) { return i * gridSize; })
-        .attr("y", 0)
-        .attr("class", "media-label axis-mediatype")
-        .attr("transform", "translate(" + gridSize / 6 + ", -2)")
-        //.style("text-anchor", "middle");
+    var mediaLabels = svg.selectAll(".media-label");
+    bindMediaLabel("image", mediaLabels, labels.media);
 
-        //.attr("class", function(d, i) { return ((i >= 7 && i <= 16) ? "media-label mono axis axis-mediatype" : "media-label mono axis"); })
+    function bindMediaLabel(type, mediaLabels, data) {
+      if(type=="icon") {
+        mediaLabels.data(data)
+          .enter().append("text")
+          .attr("x", function(d, i) { return i * gridSize; })
+          .attr("y", 0)
+          .attr("class", "media-label mediatype-icon")
+          .attr("transform", "translate(" + gridSize / 6 + ", -2)")
+          .attr("value", function(d) {return d;})
+          .text(function(d) { return mediaIcons[d]; })
+          .attr("font-family","FontAwesome");
+      } else if(type == "image") {
+        mediaLabels.data(data)
+          .enter().append("svg:image")
+          .attr("x", function(d, i) { return i * gridSize; })
+          .attr("y", 0)
+          .attr("width", 35)
+          .attr("height", 35)
+          .attr("xlink:href", function(d) {return mediaImages[d];})
+          .attr("class", "media-label mediatype-image")
+          .attr("transform", "translate(2 , -30)")
+          //.attr("transform", "translate(" + gridSize / 6 + ", -22)")
+          .attr("value", function(d) {return d;});
+      } else if(type == "text") {
+        mediaLabels.data(data)
+          .enter().append("text")
+          .attr("x", function(d, i) { return i * gridSize; })
+          .attr("y", 0)
+          .attr("class", "media-label axis-mediatype")
+          .attr("transform", "translate(" + gridSize / 2 + ", -2)")
+          .attr("value", function(d) {return d;})
+          .text(function(d) { return d; })
+          .style("text-anchor", "middle")
+          .attr("class", "media-label mono");
+          //.attr("class", function(d, i) { return ((i >= data.length/2) ? "media-label mono axis axis-mediatype" : "media-label mono axis"); })
+      }
 
+    }
 
     var colorScale = d3.scale.quantile()
         .domain([0, d3.max(data, function (d) { return parseFloat(objVal(d,2)); })])
@@ -84,45 +112,72 @@ var heatmapChart = function(data) {
 
     boxes.exit().remove();
 
+    function resetGrid() {
+      //reset everything
+      svg.selectAll(".box").classed("selected-bordered", false);
+      svg.selectAll(".tag-label").classed("selected-taglabel", false);
+      mediaLabelUnhighlight();
+    }
+
+    /********************
+     **  Interactions  **
+    /********************/
 
     //Interaction with the boxes
-    svg.selectAll(".box").on("mouseover", boxMouseover);
-
+    svg.selectAll(".box")
+       .on("mouseover", boxMouseover)
+       .on("mouseout", boxMouseout);
 
     function boxMouseover(d,i) {
       resetGrid();
       //highlight selected box and corresponding labels
       d3.select(this).classed("selected-bordered", true);
-      mediaLabels.filter(function(m) {return m == objVal(d,1)})
-                 .classed("selected-mediatype", true)
-                 .attr("transform", "translate(" + gridSize / 8 + ", -2)");
-      tagLabels.filter(function(m) {return m == objVal(d,0)}).classed("selected-taglabel", true);
+      var selectedMediaLabel = svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
+      mediaLabelHighlight(selectedMediaLabel);
+      svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)}).classed("selected-taglabel", true);
     }
 
-    function resetGrid() {
-      //reset everything
-      svg.selectAll(".box").classed("selected-bordered", false);
-      svg.selectAll(".media-label")
-         .classed("selected-mediatype", false)
-         .attr("transform", "translate(" + gridSize / 6 + ", -2)");
-      svg.selectAll(".tag-label").classed("selected-taglabel", false);
+    function mediaLabelHighlight(selected) {
+      selected.classed("selected-mediatype", true)
+              .attr("width", 50)
+              .attr("height", 50)
+              .attr("transform", function(d) {
+                if(selected.classed("mediatype-image")) {
+                  return "translate(-6 , -40)"
+                } else if(selected.classed("mediatype-icon")) {
+                  return "translate(" + gridSize/9 + ", -2)"
+                }
+              });
+    }
+
+    function mediaLabelUnhighlight(s) {
+      svg.selectAll(".media-label").classed("selected-mediatype", false)
+              .attr("width", 35)
+              .attr("height", 35);
+      svg.selectAll(".mediatype-icon").attr("transform", "translate(" + gridSize / 6 + ", -2)");
+      svg.selectAll(".mediatype-image").attr("transform", "translate(1 , -30)");
+    }
+
+
+    function boxMouseout(d,i) {
+      resetGrid();
     }
 
     //Interaction with the media label
     svg.selectAll(".media-label")
        .on("mouseover", mediaLabelMouseover)
        .on("mouseout", mediaLabelMouseout);;
+
+    //Interaction with the mediaLabel
     function mediaLabelMouseover(d) {
       resetGrid();
-      d3.select(this)
-        .classed("selected-mediatype", true)
-        .attr("transform", "translate(" + gridSize / 8 + ", -2)");
-      //console.log(this.getAttribute("value"));
-      //add tooltip//Get this bar's x/y values, then augment for the tooltip
-      var xPosition = parseFloat(d3.select(this).attr("x"))+margin.left-gridSize/2;
-      //var yPosition = d3.event.pageY-tooltipHeight;
-      var yPosition = $("#chart").position().top + parseFloat(d3.select(this).attr("y"))-tooltipHeight;
+      mediaLabelHighlight(d3.select(this));
+
       //Update the tooltip position and value
+      var xPosition = parseFloat(d3.select(this).attr("x"))+margin.left-gridSize/2;
+      var yPosition = $("#chart").position().top + parseFloat(d3.select(this).attr("y"))-tooltipHeight;
+
+      d3.select("#tooltip").select("#title").text("Media Type");
       d3.select("#tooltip")
         .style("left", xPosition  + "px")
         .style("top", yPosition + "px")
@@ -131,13 +186,14 @@ var heatmapChart = function(data) {
 
       //Show the tooltip
       d3.select("#tooltip").classed("hidden", false);
-
     }
+
     function mediaLabelMouseout(d,i) {
       //Hide the tooltip
       d3.select("#tooltip").classed("hidden", true);
     }
-    //Interaction with the tag label
+
+    //Interaction with the tagLabel
     svg.selectAll(".tag-label").on("mouseover", tagLabelMouseover);
     function tagLabelMouseover(d) {
       resetGrid();
