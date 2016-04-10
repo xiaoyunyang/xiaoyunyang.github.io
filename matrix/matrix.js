@@ -8,7 +8,8 @@ var margin = { top: 80, right: 0, bottom: 100, left: 80 },
     buckets = 9,
     mediaIcons = {Image: '\ue3f4', Video: '\ue04a', Answer: '\ue8fd', Article: '\ue02f', Code: '\ue86f', Tutorial: '\ue8fd'  } //Materials
     //mediaIcons = {Image: '\uf03e', Video: '\uf16a', Answer: '\uf059', Article: '\ue02f', Code: '\uf121', Tutorial: '\ue8fd'  } //FontAwesome
-    mediaImages = {Image: 'oatmeal/0.png', Video: 'oatmeal/1.png', Answer: 'oatmeal/2.png', Article: 'oatmeal/3.png', Code: 'oatmeal/4.png', Tutorial: 'oatmeal/5.png'  }
+    //mediaImages = {Image: 'oatmeal/0.png', Video: 'oatmeal/1.png', Answer: 'oatmeal/2.png', Article: 'oatmeal/3.png', Code: 'oatmeal/4.png', Tutorial: 'oatmeal/5.png'  }
+    mediaImages = {Jake: 'uifaces/0.jpg', Adam: 'uifaces/1.jpg', Rob: 'uifaces/2.jpg', Tom: 'uifaces/3.jpg', Valerie: 'uifaces/4.jpg', Tutorial: 'uifaces/5.jpg'  }
     //colors = ["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"], // alternatively colorbrewer.YlGnBu[9]
     colors = {green: colorbrewer.Greens[9], red: colorbrewer.Reds[9], blue: colorbrewer.Blues[9], purple: colorbrewer.Purples[9]}
     datasets = ["data.csv", "data2.csv"]
@@ -66,11 +67,11 @@ var heatmapChart = function(data, mediaType, colorTheme) {
           .enter().append("svg:image")
           .attr("x", function(d, i) { return i * gridSize; })
           .attr("y", 0)
-          .attr("width", 35)
-          .attr("height", 35)
+          .attr("width", 25)
+          .attr("height", 25)
           .attr("xlink:href", function(d) {return mediaImages[d];})
           .attr("class", "media-label mediatype-image")
-          .attr("transform", "translate(2 , -30)")
+          .attr("transform", "translate(3 , -35)")
           //.attr("transform", "translate(" + gridSize / 6 + ", -22)")
           .attr("value", function(d) {return d;});
       } else if(type == "text") {
@@ -141,11 +142,11 @@ var heatmapChart = function(data, mediaType, colorTheme) {
 
     function mediaLabelHighlight(selected) {
       selected.classed("selected-mediatype", true)
-              .attr("width", 50)
-              .attr("height", 50)
+              .attr("width", 40)
+              .attr("height", 40)
               .attr("transform", function(d) {
                 if(selected.classed("mediatype-image")) {
-                  return "translate(-6 , -40)"
+                  return "translate(-3 , -40)"
                 } else if(selected.classed("mediatype-icon")) {
                   return "translate(" + gridSize/9 + ", -2)"
                 }
@@ -154,10 +155,10 @@ var heatmapChart = function(data, mediaType, colorTheme) {
 
     function mediaLabelUnhighlight(s) {
       svg.selectAll(".media-label").classed("selected-mediatype", false)
-              .attr("width", 35)
-              .attr("height", 35);
+              .attr("width", 25)
+              .attr("height", 25);
       svg.selectAll(".mediatype-icon").attr("transform", "translate(" + gridSize / 6 + ", -2)");
-      svg.selectAll(".mediatype-image").attr("transform", "translate(1 , -30)");
+      svg.selectAll(".mediatype-image").attr("transform", "translate(3 , -35)");
     }
 
 
@@ -192,6 +193,7 @@ var heatmapChart = function(data, mediaType, colorTheme) {
 
     function mediaLabelMouseout(d,i) {
       //Hide the tooltip
+      resetGrid();
       d3.select("#tooltip").classed("hidden", true);
     }
 
@@ -253,6 +255,7 @@ datasetPicker.enter()
         console.log(error);
       } else {
         state.data = data;
+        state.mediaType = (d=="data2.csv") ? "image" : "icon";
         heatmapChart(state.data, state.mediaType, state.colorTheme);
       }
     });
