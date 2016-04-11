@@ -71,7 +71,7 @@ var heatmapChart = function(data, mediaType, colorTheme) {
           .attr("height", 25)
           .attr("xlink:href", function(d) {return mediaImages[d];})
           .attr("class", "media-label mediatype-image")
-          .attr("transform", "translate(3 , -35)")
+          .attr("transform", "translate(4 , -30)")
           //.attr("transform", "translate(" + gridSize / 6 + ", -22)")
           .attr("value", function(d) {return d;});
       } else if(type == "text") {
@@ -138,15 +138,29 @@ var heatmapChart = function(data, mediaType, colorTheme) {
       var selectedMediaLabel = svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
       mediaLabelHighlight(selectedMediaLabel);
       svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)}).classed("selected-taglabel", true);
+
+      //Update the tooltip position and value
+      var xPosition = gridSize*8;
+      var yPosition = $("#chart").position().top + parseFloat(d3.select(this).attr("y"))+tooltipHeight*3;
+
+      d3.select("#tooltip").select("#title").text("Value:");
+      d3.select("#tooltip")
+        .style("left", xPosition  + "px")
+        .style("top", yPosition + "px")
+        .select("#value")
+        .text(d.value + " thing(s) in this collection");
+
+      //Show the tooltip
+      d3.select("#tooltip").classed("hidden", false);
     }
 
     function mediaLabelHighlight(selected) {
       selected.classed("selected-mediatype", true)
-              .attr("width", 40)
-              .attr("height", 40)
+              .attr("width", 38)
+              .attr("height", 38)
               .attr("transform", function(d) {
                 if(selected.classed("mediatype-image")) {
-                  return "translate(-3 , -40)"
+                  return "translate(0 , -40)"
                 } else if(selected.classed("mediatype-icon")) {
                   return "translate(" + gridSize/9 + ", -2)"
                 }
@@ -158,12 +172,13 @@ var heatmapChart = function(data, mediaType, colorTheme) {
               .attr("width", 25)
               .attr("height", 25);
       svg.selectAll(".mediatype-icon").attr("transform", "translate(" + gridSize / 6 + ", -2)");
-      svg.selectAll(".mediatype-image").attr("transform", "translate(3 , -35)");
+      svg.selectAll(".mediatype-image").attr("transform", "translate(4 , -30)");
     }
 
 
     function boxMouseout(d,i) {
       resetGrid();
+      d3.select("#tooltip").classed("hidden", true); //Hide the tooltip
     }
 
     //Interaction with the media label
@@ -192,9 +207,8 @@ var heatmapChart = function(data, mediaType, colorTheme) {
     }
 
     function mediaLabelMouseout(d,i) {
-      //Hide the tooltip
       resetGrid();
-      d3.select("#tooltip").classed("hidden", true);
+      d3.select("#tooltip").classed("hidden", true); //Hide the tooltip
     }
 
     //Interaction with the tagLabel
