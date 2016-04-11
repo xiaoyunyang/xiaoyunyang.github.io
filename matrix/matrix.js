@@ -15,7 +15,11 @@ var margin = { top: 80, right: 0, bottom: 100, left: 80 },
     datasets = ["data.csv", "data2.csv"]
     mediaTypes = ["icon", "image"]
     colorThemes = ["green", "red", "blue", "purple"];
-
+var state = {};
+state.boxClicked = false;
+state.clickedBox = null;
+state.clickedMediaLabel = null;
+state.clickedTagLabel = null;
 //anonymous function
 var objKey = function(d, i) {return Object.keys(d)[i]};
 var objVal = function(d, i) {return d[objKey(d,i)];}
@@ -34,9 +38,10 @@ var heatmapChart = function(data, mediaType, colorTheme) {
     labels.tags = tags;
     labels.media = media;
 
-    //resetGrid();
     svg.selectAll(".tag-label").remove();
     svg.selectAll(".media-label").remove();
+
+    resetGrid();
 
     var tagLabels = svg.selectAll(".tag-label")
         .data(labels.tags)
@@ -87,8 +92,8 @@ var heatmapChart = function(data, mediaType, colorTheme) {
           .attr("class", "media-label mono");
           //.attr("class", function(d, i) { return ((i >= data.length/2) ? "media-label mono axis axis-mediatype" : "media-label mono axis"); })
       }
-
     }
+
     var colorScale = d3.scale.quantile()
         .domain([0, d3.max(data, function (d) { return parseFloat(objVal(d,2)); })])
         .range(colors[colorTheme]);
@@ -115,12 +120,20 @@ var heatmapChart = function(data, mediaType, colorTheme) {
 
     boxes.exit().remove();
 
+
     function resetGrid() {
       //reset everything
-      svg.selectAll(".box").classed("selected-bordered", false);
-      svg.selectAll(".tag-label").classed("selected-taglabel", false);
+      svg.selectAll(".box").classed("selected-bordered", false).classed("clicked-bordered", false);
+      svg.selectAll(".tag-label").classed("selected-taglabel", false).classed("clicked-taglabel", false);
       mediaLabelUnhighlight();
+      if(state.boxClicked) {
+        state.clickedBox.classed("clicked-bordered", true);
+        state.clickedTagLabel.classed("clicked-taglabel", true);
+        mediaLabelHighlight(state.clickedMediaLabel);
+      }
     }
+
+
 
     /********************
      **  Interactions  **
@@ -129,10 +142,28 @@ var heatmapChart = function(data, mediaType, colorTheme) {
     //Interaction with the boxes
     svg.selectAll(".box")
        .on("mouseover", boxMouseover)
-       .on("mouseout", boxMouseout);
+       .on("mouseout", boxMouseout)
+       .on("click", boxClick);
 
+    function boxClick(d,i) {
+      resetGrid();
+      d3.select(this).classed("clicked-bordered", true);
+
+      var selectedMediaLabel = svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
+      mediaLabelHighlight(selectedMediaLabel);
+
+      var selectedTagLabel = svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)});
+      selectedTagLabel.classed("clicked-taglabel", true);
+
+      state.boxClicked = true;
+      state.clickedBox = d3.select(this);
+      state.clickedMediaLabel = selectedMediaLabel;
+      state.clickedTagLabel = selectedTagLabel;
+
+    }
     function boxMouseover(d,i) {
       resetGrid();
+
       //highlight selected box and corresponding labels
       d3.select(this).classed("selected-bordered", true);
       var selectedMediaLabel = svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
@@ -213,6 +244,7 @@ var heatmapChart = function(data, mediaType, colorTheme) {
 
     //Interaction with the tagLabel
     svg.selectAll(".tag-label").on("mouseover", tagLabelMouseover);
+
     function tagLabelMouseover(d) {
       resetGrid();
       d3.select(this).classed("selected-taglabel", true);
@@ -242,7 +274,7 @@ var heatmapChart = function(data, mediaType, colorTheme) {
 
 
 //Initialize
-var state = {};
+
 state.mediaType = mediaTypes[0];
 state.colorTheme = colorThemes[0];
 d3.csv("data.csv", function(error, data) {
@@ -282,6 +314,7 @@ mediaTypePicker.enter()
   .attr("class", "Mediatype-button")
   .on("click", function(d) {
     state.mediaType = d;
+    state.boxClicked = false;
     heatmapChart(state.data, state.mediaType, state.colorTheme);
   });
 colorsPicker.enter()
@@ -291,5 +324,6 @@ colorsPicker.enter()
   .attr("class", "colors-button")
   .on("click", function(d) {
     state.colorTheme = d;
+    state.boxClicked = false;
     heatmapChart(state.data, state.mediaType, state.colorTheme);
   });
