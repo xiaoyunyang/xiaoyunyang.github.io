@@ -25,7 +25,7 @@ var List = React.createClass({
     return (
       <div>
         <div className="col s12 m8 l8">
-          <h4>Latest Projects</h4>
+          <h4>Latest Projects and Bookmarks</h4>
           <ul className="collection with-header ll-listing"> {
             this.props.myList.map(function(d, i) {
               if(d.key<0) {
@@ -35,6 +35,7 @@ var List = React.createClass({
                     <span className="title">
                       <a target="_blank" href={d.url}>{d.title} <i className="tiny material-icons">open_in_new</i></a>
                     </span>
+                    <p> - Created by: {d.username}</p>
                     <p>{d.description}</p>
                     <Tags tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} />
                   </li>
@@ -46,8 +47,10 @@ var List = React.createClass({
                     <span className="title">
                       <a href={d.url}>{d.title}</a>
                     </span>
+                    <p> - Created by: {d.username}</p>
                     <p>{d.description}</p>
                     <Tags tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} />
+
                   </li>
                 );
               }
