@@ -24,13 +24,15 @@ state.clickedTagLabel = null;
 var objKey = function(d, i) {return Object.keys(d)[i]};
 var objVal = function(d, i) {return d[objKey(d,i)];}
 
-var svg = d3.select("#chart").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var heatmapChart = function(data, mediaType, colorTheme) {
+
+var heatmapChart = function(divId, data, mediaType, colorTheme) {
+  var svg = d3.select(divId).append("svg")
+              .attr("width", width + margin.left + margin.right)
+              .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
     var tags = _.unique(data.map(function(d){return objVal(d,0)}));
     var media = _.unique(data.map(function(d){return objVal(d,1)}));
     var values = data.map(function(d){return objVal(d,2)});
@@ -111,7 +113,7 @@ var heatmapChart = function(data, mediaType, colorTheme) {
         .attr("class", "box bordered")
         .attr("width", gridSize - padding*2)
         .attr("height", gridSize - padding*2)
-        .style("fill", colors[0]);
+        .style("fill", "white");
 
     boxes.transition().duration(1000)
         .style("fill", function(d) { return colorScale(objVal(d,2));});
@@ -119,6 +121,7 @@ var heatmapChart = function(data, mediaType, colorTheme) {
     boxes.select("title").text(function(d) { return objVal(d,2);});
 
     boxes.exit().remove();
+
 
 
     function resetGrid() {
@@ -172,17 +175,17 @@ var heatmapChart = function(data, mediaType, colorTheme) {
 
       //Update the tooltip position and value
       var xPosition = gridSize*8;
-      var yPosition = $("#chart").position().top + parseFloat(d3.select(this).attr("y"))+tooltipHeight*3;
+      var yPosition = $(divId).position().top + parseFloat(d3.select(this).attr("y"))+tooltipHeight*3;
 
-      d3.select("#tooltip").select("#title").text("Value:");
-      d3.select("#tooltip")
+      d3.select(divId).selectAll(".tooltip").selectAll(".title").text("Value:");
+      d3.select(divId).selectAll(".tooltip")
         .style("left", xPosition  + "px")
         .style("top", yPosition + "px")
-        .select("#value")
+        .selectAll(".value")
         .text(d.value + " thing(s) in this collection");
 
       //Show the tooltip
-      d3.select("#tooltip").classed("hidden", false);
+      d3.select(divId).selectAll(".tooltip").classed("hidden", false);
     }
 
     function mediaLabelHighlight(selected) {
@@ -209,7 +212,7 @@ var heatmapChart = function(data, mediaType, colorTheme) {
 
     function boxMouseout(d,i) {
       resetGrid();
-      d3.select("#tooltip").classed("hidden", true); //Hide the tooltip
+      d3.select(divId).selectAll(".tooltip").classed("hidden", true); //Hide the tooltip
     }
 
     //Interaction with the media label
@@ -224,22 +227,22 @@ var heatmapChart = function(data, mediaType, colorTheme) {
 
       //Update the tooltip position and value
       var xPosition = parseFloat(d3.select(this).attr("x"))+margin.left-gridSize/2;
-      var yPosition = $("#chart").position().top + parseFloat(d3.select(this).attr("y"))-tooltipHeight;
+      var yPosition = $(divId).position().top + parseFloat(d3.select(this).attr("y"))-tooltipHeight;
 
-      d3.select("#tooltip").select("#title").text("Media Type");
-      d3.select("#tooltip")
+      d3.select(divId).selectAll(".tooltip").selectAll(".title").text("Media Type");
+      d3.select(divId).selectAll(".tooltip")
         .style("left", xPosition  + "px")
         .style("top", yPosition + "px")
-        .select("#value")
+        .selectAll(".value")
         .text(d);
 
       //Show the tooltip
-      d3.select("#tooltip").classed("hidden", false);
+      d3.select(divId).selectAll(".tooltip").classed("hidden", false);
     }
 
     function mediaLabelMouseout(d,i) {
       resetGrid();
-      d3.select("#tooltip").classed("hidden", true); //Hide the tooltip
+      d3.select(divId).selectAll(".tooltip").classed("hidden", true); //Hide the tooltip
     }
 
     //Interaction with the tagLabel
@@ -282,7 +285,14 @@ d3.csv("data.csv", function(error, data) {
     console.log(error);
   } else {
     state.data = data;
-    heatmapChart(state.data, state.mediaType, state.colorTheme)
+    heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
+  }
+});
+d3.csv("data2.csv", function(error, data) {
+  if(error) {
+    console.log(error);
+  } else {
+    heatmapChart("#chart2", data, mediaTypes[1], state.colorTheme);
   }
 });
 
@@ -302,7 +312,8 @@ datasetPicker.enter()
       } else {
         state.data = data;
         state.mediaType = (d=="data2.csv") ? "image" : "icon";
-        heatmapChart(state.data, state.mediaType, state.colorTheme);
+        d3.select("#chart").selectAll("svg").remove();
+        heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
       }
     });
   });
@@ -315,7 +326,8 @@ mediaTypePicker.enter()
   .on("click", function(d) {
     state.mediaType = d;
     state.boxClicked = false;
-    heatmapChart(state.data, state.mediaType, state.colorTheme);
+    d3.select("#chart").selectAll("svg").remove();
+    heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
   });
 colorsPicker.enter()
   .append("input")
@@ -325,5 +337,6 @@ colorsPicker.enter()
   .on("click", function(d) {
     state.colorTheme = d;
     state.boxClicked = false;
-    heatmapChart(state.data, state.mediaType, state.colorTheme);
+    d3.select("#chart").selectAll("svg").remove();
+    heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
   });
