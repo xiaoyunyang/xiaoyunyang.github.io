@@ -1,8 +1,8 @@
 var margin = { top: 80, right: 0, bottom: 100, left: 80 },
     padding = 2;
-    width = 960 - margin.left - margin.right,
+    width = 400 - margin.left - margin.right,
     height = 430 - margin.top - margin.bottom,
-    gridSize = Math.floor(width / 24),
+    gridSize = Math.floor(width / 8),
     legendElementWidth = gridSize*2,
     tooltipHeight = 20,
     buckets = 9,
@@ -154,8 +154,8 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
 
       var selectedMediaLabel = svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
       mediaLabelHighlight(selectedMediaLabel);
-
       var selectedTagLabel = svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)});
+
       selectedTagLabel.classed("clicked-taglabel", true);
 
       state.boxClicked = true;

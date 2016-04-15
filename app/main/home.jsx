@@ -35,7 +35,7 @@ var List = React.createClass({
                     <span className="title">
                       <a target="_blank" href={d.url}>{d.title} <i className="tiny material-icons">open_in_new</i></a>
                     </span>
-                    <p> - Created by: {d.username}</p>
+                    <p> - Bookmarked by: {d.username}</p>
                     <p>{d.description}</p>
                     <Tags tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} />
                   </li>
@@ -47,7 +47,7 @@ var List = React.createClass({
                     <span className="title">
                       <a href={d.url}>{d.title}</a>
                     </span>
-                    <p> - Created by: {d.username}</p>
+                    <p> - Bookmarked by: {d.username}</p>
                     <p>{d.description}</p>
                     <Tags tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} />
 

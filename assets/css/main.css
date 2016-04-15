@@ -2,7 +2,7 @@
 @import url("map.css");
 @import url("pie.css");
 @import url("../font/font-awesome/css/font-awesome.min.css");
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("google-api-icons.css");
 html {
     font-family: "Helvetica Neue";
 }
