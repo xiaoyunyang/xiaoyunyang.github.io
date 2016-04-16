@@ -27,12 +27,11 @@ state.heatmapChart = null;
 var objKey = function(d, i) {return Object.keys(d)[i]};
 var objVal = function(d, i) {return d[objKey(d,i)];}
 
-var heatmapChart = function(divId, data, mediaType, colorTheme) {
-    //Anonymous Functions
-    var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
-    var media = function(data) {return _.unique(data.map(function(d){return objVal(d,1)}));};
-    var values = function(data) {return data.map(function(d){return objVal(d,2)});};
+var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
+var media = function(data) {return _.unique(data.map(function(d){return objVal(d,1)}));};
+var values = function(data) {return data.map(function(d){return objVal(d,2)});};
 
+var heatmapChart = function(divId, data, mediaType, colorTheme) {
     //private state variables
     var chart = {};
     chart.tags = tags(data);
@@ -261,6 +260,7 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
 };
 
 heatmapChart.prototype.changeColor = function(divId,colorTheme, data) {
+console.log(tags(data).length)
    var colorScale = d3.scale.quantile()
            .domain([0, d3.max(data, function (d) { return parseFloat(objVal(d,2)); })])
            .range(colors[colorTheme]);
@@ -268,30 +268,33 @@ heatmapChart.prototype.changeColor = function(divId,colorTheme, data) {
    svg.selectAll(".box").transition().duration(1000)
       .style("fill", function(d) { return colorScale(objVal(d,2));});
 
+
    svg.selectAll(".legend").remove();
 
    var legend = svg.selectAll(".legend")
         .data([0].concat(colorScale.quantiles()), function(d) { return d; });
 
-  legend.enter().append("g")
-        .attr("class", "legend");
+   var legendY = tags(data).length * gridSize + margin.top * 1.5;
 
-  legend.append("rect")
-        .attr("x", function(d, i) { return legendElementWidth * i; })
-        .attr("y", height)
-        .attr("width", legendElementWidth)
-        .attr("height", gridSize / 2)
-        .style("fill", function(d, i) { return colors[colorTheme][i]; });
+   legend.enter().append("g")
+         .attr("class", "legend");
 
-  legend.append("text")
-        .attr("class", "mono")
-        .text(function(d) { return "≥ " + Math.round(d); })
-        .attr("x", function(d, i) { return legendElementWidth * i; })
-        .attr("y", height + gridSize);
+   legend.append("rect")
+         .attr("x", function(d, i) { return legendElementWidth * i; })
+         .attr("y", legendY)
+         .attr("width", legendElementWidth)
+         .attr("height", gridSize / 2)
+         .style("fill", function(d, i) { return colors[colorTheme][i]; });
 
-  legend.exit().remove();
+   legend.append("text")
+         .attr("class", "mono")
+         .text(function(d) { return "≥ " + Math.round(d); })
+         .attr("x", function(d, i) { return legendElementWidth * i; })
+         .attr("y", legendY + gridSize);
 
-  svg.selectAll(".legend").selectAll("rect").transition().duration(1000)
+   legend.exit().remove();
+
+   svg.selectAll(".legend").selectAll("rect").transition().duration(1000)
 
 }
 
