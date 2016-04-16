@@ -11,7 +11,7 @@ var margin = { top: 80, right: 0, bottom: 100, left: 80 },
     //mediaImages = {Image: 'oatmeal/0.png', Video: 'oatmeal/1.png', Answer: 'oatmeal/2.png', Article: 'oatmeal/3.png', Code: 'oatmeal/4.png', Tutorial: 'oatmeal/5.png'  }
     mediaImages = {Jake: 'uifaces/0.jpg', Adam: 'uifaces/1.jpg', Rob: 'uifaces/2.jpg', Tom: 'uifaces/3.jpg', Valerie: 'uifaces/4.jpg', Tutorial: 'uifaces/5.jpg'  }
     //colors = ["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"], // alternatively colorbrewer.YlGnBu[9]
-    colors = {green: colorbrewer.Greens[9], red: colorbrewer.Reds[9], blue: colorbrewer.Blues[9], purple: colorbrewer.Purples[9]}
+    colors = {green: colorbrewer.Greens[4], red: colorbrewer.Reds[4], blue: colorbrewer.Blues[4], purple: colorbrewer.Purples[4]}
     datasets = ["data.csv", "data2.csv"]
     mediaTypes = ["icon", "image"]
     colorThemes = ["green", "red", "blue", "purple"];
@@ -21,6 +21,8 @@ state.boxClicked = false;
 state.clickedBox = null;
 state.clickedMediaLabel = null;
 state.clickedTagLabel = null;
+state.heatmapChart = null;
+
 //anonymous function
 var objKey = function(d, i) {return Object.keys(d)[i]};
 var objVal = function(d, i) {return d[objKey(d,i)];}
@@ -36,12 +38,6 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
     chart.tags = tags(data);
     chart.media = media(data);
     chart.svg = createNew(divId);
-
-    var colorScale = d3.scale.quantile()
-        .domain([0, d3.max(data, function (d) { return parseFloat(objVal(d,2)); })])
-        .range(colors[colorTheme]);
-
-
 
     function createNew(divId) {
       return d3.select(divId).append("svg")
@@ -124,13 +120,15 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
         .attr("height", gridSize - padding*2)
         .style("fill", "white");
 
-    boxes.transition().duration(1000)
-        .style("fill", function(d) { return colorScale(objVal(d,2));});
-
     boxes.select("title").text(function(d) { return objVal(d,2);});
 
     boxes.exit().remove();
 
+    heatmapChart.prototype.changeColor(divId,colorTheme,data);
+
+    /********************
+     **  Interactions  **
+    /********************/
     function resetGrid() {
       //reset everything
       chart.svg.selectAll(".box").classed("selected-bordered", false).classed("clicked-bordered", false);
@@ -147,11 +145,6 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
       }
     }
 
-
-
-    /********************
-     **  Interactions  **
-    /********************/
 
     //Interaction with the boxes
     chart.svg.selectAll(".box")
@@ -264,27 +257,43 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
       d3.select(this).classed("selected-taglabel", true);
     }
 
-    var legend = chart.svg.selectAll(".legend")
+
+};
+
+heatmapChart.prototype.changeColor = function(divId,colorTheme, data) {
+   var colorScale = d3.scale.quantile()
+           .domain([0, d3.max(data, function (d) { return parseFloat(objVal(d,2)); })])
+           .range(colors[colorTheme]);
+   var svg = d3.select(divId).selectAll("svg");
+   svg.selectAll(".box").transition().duration(1000)
+      .style("fill", function(d) { return colorScale(objVal(d,2));});
+
+   svg.selectAll(".legend").remove();
+
+   var legend = svg.selectAll(".legend")
         .data([0].concat(colorScale.quantiles()), function(d) { return d; });
 
-    legend.enter().append("g")
+  legend.enter().append("g")
         .attr("class", "legend");
 
-    legend.append("rect")
-          .attr("x", function(d, i) { return legendElementWidth * i; })
-          .attr("y", height)
-          .attr("width", legendElementWidth)
-          .attr("height", gridSize / 2)
-          .style("fill", function(d, i) { return colors[colorTheme][i]; });
+  legend.append("rect")
+        .attr("x", function(d, i) { return legendElementWidth * i; })
+        .attr("y", height)
+        .attr("width", legendElementWidth)
+        .attr("height", gridSize / 2)
+        .style("fill", function(d, i) { return colors[colorTheme][i]; });
 
-    legend.append("text")
-          .attr("class", "mono")
-          .text(function(d) { return "≥ " + Math.round(d); })
-          .attr("x", function(d, i) { return legendElementWidth * i; })
-          .attr("y", height + gridSize);
+  legend.append("text")
+        .attr("class", "mono")
+        .text(function(d) { return "≥ " + Math.round(d); })
+        .attr("x", function(d, i) { return legendElementWidth * i; })
+        .attr("y", height + gridSize);
 
-    legend.exit().remove();
-};
+  legend.exit().remove();
+
+  svg.selectAll(".legend").selectAll("rect").transition().duration(1000)
+
+}
 
 
 //Initialize
@@ -296,7 +305,7 @@ d3.csv("data.csv", function(error, data) {
     console.log(error);
   } else {
     state.data = data;
-    heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
+    state.heatmapChart = new heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
   }
 });
 d3.csv("data2.csv", function(error, data) {
@@ -324,7 +333,7 @@ datasetPicker.enter()
         state.data = data;
         state.mediaType = (d=="data2.csv") ? "image" : "icon";
         d3.select("#chart").selectAll("svg").remove();
-        heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
+        state.heatmapChart = new heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
       }
     });
   });
@@ -338,7 +347,7 @@ mediaTypePicker.enter()
     state.mediaType = d;
     state.boxClicked = false;
     d3.select("#chart").selectAll("svg").remove();
-    heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
+    state.heatmapChart = new heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
   });
 colorsPicker.enter()
   .append("input")
@@ -347,7 +356,7 @@ colorsPicker.enter()
   .attr("class", "colors-button")
   .on("click", function(d) {
     state.colorTheme = d;
-    state.boxClicked = false;
-    d3.select("#chart").selectAll("svg").remove();
-    heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
+    //d3.select("#chart").selectAll("svg").remove();
+    //heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
+    state.heatmapChart.changeColor("#chart", state.colorTheme, state.data);
   });
