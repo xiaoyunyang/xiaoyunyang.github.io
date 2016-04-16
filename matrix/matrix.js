@@ -16,6 +16,7 @@ var margin = { top: 80, right: 0, bottom: 100, left: 80 },
     mediaTypes = ["icon", "image"]
     colorThemes = ["green", "red", "blue", "purple"];
 var state = {};
+state.svg = null;
 state.boxClicked = false;
 state.clickedBox = null;
 state.clickedMediaLabel = null;
@@ -24,29 +25,39 @@ state.clickedTagLabel = null;
 var objKey = function(d, i) {return Object.keys(d)[i]};
 var objVal = function(d, i) {return d[objKey(d,i)];}
 
-
-
 var heatmapChart = function(divId, data, mediaType, colorTheme) {
-  var svg = d3.select(divId).append("svg")
-              .attr("width", width + margin.left + margin.right)
-              .attr("height", height + margin.top + margin.bottom)
-              .append("g")
-              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    //Anonymous Functions
+    var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
+    var media = function(data) {return _.unique(data.map(function(d){return objVal(d,1)}));};
+    var values = function(data) {return data.map(function(d){return objVal(d,2)});};
 
-    var tags = _.unique(data.map(function(d){return objVal(d,0)}));
-    var media = _.unique(data.map(function(d){return objVal(d,1)}));
-    var values = data.map(function(d){return objVal(d,2)});
-    var labels = {};
-    labels.tags = tags;
-    labels.media = media;
+    //private state variables
+    var chart = {};
+    chart.tags = tags(data);
+    chart.media = media(data);
+    chart.svg = createNew(divId);
 
-    svg.selectAll(".tag-label").remove();
-    svg.selectAll(".media-label").remove();
+    var colorScale = d3.scale.quantile()
+        .domain([0, d3.max(data, function (d) { return parseFloat(objVal(d,2)); })])
+        .range(colors[colorTheme]);
+
+
+
+    function createNew(divId) {
+      return d3.select(divId).append("svg")
+               .attr("width", width + margin.left + margin.right)
+               .attr("height", height + margin.top + margin.bottom)
+               .append("g")
+               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    }
+
+    chart.svg.selectAll(".tag-label").remove();
+    chart.svg.selectAll(".media-label").remove();
 
     resetGrid();
 
-    var tagLabels = svg.selectAll(".tag-label")
-        .data(labels.tags)
+    var tagLabels = chart.svg.selectAll(".tag-label")
+        .data(chart.tags)
         .enter().append("text")
         .text(function (d) { return d; })
         .attr("x", 0)
@@ -55,8 +66,10 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
         .attr("transform", "translate(-6," + gridSize / 1.5 + ")")
         .attr("class", "tag-label");
 
-    var mediaLabels = svg.selectAll(".media-label");
-    bindMediaLabel(mediaType, mediaLabels, labels.media);
+    var mediaLabels = chart.svg.selectAll(".media-label");
+
+
+    bindMediaLabel(mediaType, mediaLabels, chart.media);
 
     function bindMediaLabel(type, mediaLabels, data) {
       if(type=="icon") {
@@ -96,18 +109,14 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
       }
     }
 
-    var colorScale = d3.scale.quantile()
-        .domain([0, d3.max(data, function (d) { return parseFloat(objVal(d,2)); })])
-        .range(colors[colorTheme]);
-
-    var boxes = svg.selectAll(".box")
-        .data(data, function(d) {return objVal(d,0)+':'+objVal(d,1);});
+    var boxes = chart.svg.selectAll(".box")
+                   .data(data, function(d) {return objVal(d,0)+':'+objVal(d,1);});
 
     //boxes.append("title"); //The tooltip
 
     boxes.enter().append("rect")
-        .attr("x", function(d) { return (_.indexOf(labels.media, objVal(d,1))) * gridSize + padding; })
-        .attr("y", function(d) { return (_.indexOf(labels.tags, objVal(d,0))) * gridSize + padding; })
+        .attr("x", function(d) { return (_.indexOf(chart.media, objVal(d,1))) * gridSize + padding; })
+        .attr("y", function(d) { return (_.indexOf(chart.tags, objVal(d,0))) * gridSize + padding; })
         .attr("rx", 4)
         .attr("ry", 4)
         .attr("class", "box bordered")
@@ -122,13 +131,11 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
 
     boxes.exit().remove();
 
-
-
     function resetGrid() {
       //reset everything
-      svg.selectAll(".box").classed("selected-bordered", false).classed("clicked-bordered", false);
-      svg.selectAll(".tag-label").classed("selected-taglabel", false).classed("clicked-taglabel", false);
-      svg.selectAll(".media-label").classed("selected-medialabel", false).classed("clicked-medialabel", false);
+      chart.svg.selectAll(".box").classed("selected-bordered", false).classed("clicked-bordered", false);
+      chart.svg.selectAll(".tag-label").classed("selected-taglabel", false).classed("clicked-taglabel", false);
+      chart.svg.selectAll(".media-label").classed("selected-medialabel", false).classed("clicked-medialabel", false);
       mediaLabelUnhighlight();
 
       //...but highlight the the selected box and corresponding mediaLabel, and tagLabel
@@ -147,7 +154,7 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
     /********************/
 
     //Interaction with the boxes
-    svg.selectAll(".box")
+    chart.svg.selectAll(".box")
        .on("mouseover", boxMouseover)
        .on("mouseout", boxMouseout)
        .on("click", boxClick);
@@ -155,8 +162,8 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
     function boxClick(d,i) {
       resetGrid();
       var clickedBox = d3.select(this);
-      var clickedMediaLabel = svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
-      var clickedTagLabel = svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)});
+      var clickedMediaLabel = chart.svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
+      var clickedTagLabel = chart.svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)});
 
       //mediaLabelHighlight(clickedMediaLabel);
       state.boxClicked = true;
@@ -173,9 +180,9 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
 
       //highlight selected box and corresponding labels
       d3.select(this).classed("selected-bordered", true);
-      var selectedMediaLabel = svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
+      var selectedMediaLabel = chart.svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
       mediaLabelHighlight(selectedMediaLabel);
-      svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)}).classed("selected-taglabel", true);
+      chart.svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)}).classed("selected-taglabel", true);
 
       //Update the tooltip position and value
       var xPosition = gridSize*8;
@@ -206,11 +213,11 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
     }
 
     function mediaLabelUnhighlight() {
-      svg.selectAll(".media-label").classed("selected-medialabel", false)
+      chart.svg.selectAll(".media-label").classed("selected-medialabel", false)
          .attr("width", 25)
          .attr("height", 25);
-      svg.selectAll(".mediatype-icon").attr("transform", "translate(" + gridSize / 6 + ", -2)");
-      svg.selectAll(".mediatype-image").attr("transform", "translate(4 , -30)");
+      chart.svg.selectAll(".mediatype-icon").attr("transform", "translate(" + gridSize / 6 + ", -2)");
+      chart.svg.selectAll(".mediatype-image").attr("transform", "translate(4 , -30)");
     }
 
 
@@ -220,7 +227,7 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
     }
 
     //Interaction with the media label
-    svg.selectAll(".media-label")
+    chart.svg.selectAll(".media-label")
        .on("mouseover", mediaLabelMouseover)
        .on("mouseout", mediaLabelMouseout);;
 
@@ -250,14 +257,14 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
     }
 
     //Interaction with the tagLabel
-    svg.selectAll(".tag-label").on("mouseover", tagLabelMouseover);
+    chart.svg.selectAll(".tag-label").on("mouseover", tagLabelMouseover);
 
     function tagLabelMouseover(d) {
       resetGrid();
       d3.select(this).classed("selected-taglabel", true);
     }
 
-    var legend = svg.selectAll(".legend")
+    var legend = chart.svg.selectAll(".legend")
         .data([0].concat(colorScale.quantiles()), function(d) { return d; });
 
     legend.enter().append("g")
