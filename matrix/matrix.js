@@ -154,16 +154,25 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
     function boxClick(d,i) {
       resetGrid();
       var clickedBox = d3.select(this);
-      var clickedMediaLabel = chart.svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
-      var clickedTagLabel = chart.svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)});
 
-      //mediaLabelHighlight(clickedMediaLabel);
-      state.boxClicked = true;
-      state.clickedBox = clickedBox;
-      state.clickedMediaLabel = clickedMediaLabel;
-      state.clickedTagLabel = clickedTagLabel;
-      //resetGrid unhighlight everything box highlights the clicked box and
-      //corresponding tagLabels and mediaLabels depending on the state variables above
+      if(this.classList.contains("clicked-bordered")) {
+        state.boxClicked = false;
+        state.clickedBox = clickedBox;
+        state.clickedMediaLabel = clickedMediaLabel;
+        state.clickedTagLabel = clickedTagLabel;
+      } else {
+        var clickedMediaLabel = chart.svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
+        var clickedTagLabel = chart.svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)});
+
+        //mediaLabelHighlight(clickedMediaLabel);
+        state.boxClicked = true;
+        state.clickedBox = clickedBox;
+        state.clickedMediaLabel = clickedMediaLabel;
+        state.clickedTagLabel = clickedTagLabel;
+        //resetGrid unhighlight everything box highlights the clicked box and
+        //corresponding tagLabels and mediaLabels depending on the state variables above
+
+      }
       resetGrid();
 
     }
@@ -255,12 +264,9 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
       resetGrid();
       d3.select(this).classed("selected-taglabel", true);
     }
-
-
 };
 
 heatmapChart.prototype.changeColor = function(divId,colorTheme, data) {
-console.log(tags(data).length)
    var colorScale = d3.scale.quantile()
            .domain([0, d3.max(data, function (d) { return parseFloat(objVal(d,2)); })])
            .range(colors[colorTheme]);
