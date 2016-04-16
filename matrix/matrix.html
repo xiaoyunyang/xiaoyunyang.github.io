@@ -2,9 +2,9 @@
 <meta charset="utf-8">
 <html>
   <head>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--<link href="../assets/css/google-api-icons.css" rel="stylesheet">-->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
     <style>
       rect.bordered {
         stroke: #969696;
@@ -29,9 +29,15 @@
         font-family: 'Material Icons';
         font-size: 25px;
       }
-      text.selected-mediatype {
+      text.selected-medialabel {
         transition: all 0.3s ease;
         fill: black;
+        /*fill: #238b45;*/
+        font-weight: bold;
+        font-size: 32px;
+      }
+      text.clicked-medialabel {
+        fill: red;
         /*fill: #238b45;*/
         font-weight: bold;
         font-size: 32px;
@@ -64,10 +70,10 @@
         font-weight: bold;
         font-size: 18px;
       }
+
       text.clicked-taglabel {
-        transition: all 0.3s ease;
         /*fill: #238b45;*/
-        fill: black;
+        fill: red;
         font-weight: bold;
         font-size: 18px;
 

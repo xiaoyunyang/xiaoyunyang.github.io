@@ -6,7 +6,7 @@ var margin = { top: 80, right: 0, bottom: 100, left: 80 },
     legendElementWidth = gridSize*2,
     tooltipHeight = 20,
     buckets = 9,
-    mediaIcons = {Image: '\ue3f4', Video: '\ue04a', Answer: '\ue8fd', Article: '\ue02f', Code: '\ue86f', Tutorial: '\ue8fd'  } //Materials
+    mediaIcons = {Image: '\ue3f4', Video: '\ue04a', Conversation: '\ue8af', Article: '\ue02f', Code: '\ue86f', Tutorial: '\ue8fd'  } //Materials
     //mediaIcons = {Image: '\uf03e', Video: '\uf16a', Answer: '\uf059', Article: '\ue02f', Code: '\uf121', Tutorial: '\ue8fd'  } //FontAwesome
     //mediaImages = {Image: 'oatmeal/0.png', Video: 'oatmeal/1.png', Answer: 'oatmeal/2.png', Article: 'oatmeal/3.png', Code: 'oatmeal/4.png', Tutorial: 'oatmeal/5.png'  }
     mediaImages = {Jake: 'uifaces/0.jpg', Adam: 'uifaces/1.jpg', Rob: 'uifaces/2.jpg', Tom: 'uifaces/3.jpg', Valerie: 'uifaces/4.jpg', Tutorial: 'uifaces/5.jpg'  }
@@ -67,8 +67,8 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
           .attr("class", "media-label mediatype-icon")
           .attr("transform", "translate(" + gridSize / 6 + ", -2)")
           .attr("value", function(d) {return d;})
-          .text(function(d) { return mediaIcons[d]; })
-          .attr("font-family","FontAwesome");
+          //.attr("font-family","FontAwesome")
+          .text(function(d) { return mediaIcons[d]; });
       } else if(type == "image") {
         mediaLabels.data(data)
           .enter().append("svg:image")
@@ -128,10 +128,14 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
       //reset everything
       svg.selectAll(".box").classed("selected-bordered", false).classed("clicked-bordered", false);
       svg.selectAll(".tag-label").classed("selected-taglabel", false).classed("clicked-taglabel", false);
+      svg.selectAll(".media-label").classed("selected-medialabel", false).classed("clicked-medialabel", false);
       mediaLabelUnhighlight();
+
+      //...but highlight the the selected box and corresponding mediaLabel, and tagLabel
       if(state.boxClicked) {
         state.clickedBox.classed("clicked-bordered", true);
         state.clickedTagLabel.classed("clicked-taglabel", true);
+        state.clickedMediaLabel.classed("clicked-medialabel", true);
         mediaLabelHighlight(state.clickedMediaLabel);
       }
     }
@@ -150,18 +154,18 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
 
     function boxClick(d,i) {
       resetGrid();
-      d3.select(this).classed("clicked-bordered", true);
+      var clickedBox = d3.select(this);
+      var clickedMediaLabel = svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
+      var clickedTagLabel = svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)});
 
-      var selectedMediaLabel = svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
-      mediaLabelHighlight(selectedMediaLabel);
-      var selectedTagLabel = svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)});
-
-      selectedTagLabel.classed("clicked-taglabel", true);
-
+      //mediaLabelHighlight(clickedMediaLabel);
       state.boxClicked = true;
-      state.clickedBox = d3.select(this);
-      state.clickedMediaLabel = selectedMediaLabel;
-      state.clickedTagLabel = selectedTagLabel;
+      state.clickedBox = clickedBox;
+      state.clickedMediaLabel = clickedMediaLabel;
+      state.clickedTagLabel = clickedTagLabel;
+      //resetGrid unhighlight everything box highlights the clicked box and
+      //corresponding tagLabels and mediaLabels depending on the state variables above
+      resetGrid();
 
     }
     function boxMouseover(d,i) {
@@ -189,7 +193,7 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
     }
 
     function mediaLabelHighlight(selected) {
-      selected.classed("selected-mediatype", true)
+      selected.classed("selected-medialabel", true)
               .attr("width", 38)
               .attr("height", 38)
               .attr("transform", function(d) {
@@ -201,10 +205,10 @@ var heatmapChart = function(divId, data, mediaType, colorTheme) {
               });
     }
 
-    function mediaLabelUnhighlight(s) {
-      svg.selectAll(".media-label").classed("selected-mediatype", false)
-              .attr("width", 25)
-              .attr("height", 25);
+    function mediaLabelUnhighlight() {
+      svg.selectAll(".media-label").classed("selected-medialabel", false)
+         .attr("width", 25)
+         .attr("height", 25);
       svg.selectAll(".mediatype-icon").attr("transform", "translate(" + gridSize / 6 + ", -2)");
       svg.selectAll(".mediatype-image").attr("transform", "translate(4 , -30)");
     }
