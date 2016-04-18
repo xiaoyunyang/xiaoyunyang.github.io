@@ -35,7 +35,7 @@ var List = React.createClass({
                     <span className="entry-header">
                       <a target="_blank" href={d.url}>{d.title} <i className="tiny material-icons">open_in_new</i></a>
                     </span>
-
+                    <Tags2 tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} />
                     <div className="entry-meta">
                       <span><a href=""><i className="material-icons author">&#xE866;</i>{d.username}</a></span>
                       <span><a href=""><i className="material-icons date">&#xE192;</i>April 18, 2016</a></span>
@@ -43,7 +43,7 @@ var List = React.createClass({
                     </div>
 
                     <p>{d.description}</p>
-                    <Tags2 tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} />
+
                   </li>
                 );
               }else {
@@ -53,13 +53,14 @@ var List = React.createClass({
                     <span className="entry-header">
                       <a href={d.url}>{d.title}</a>
                     </span>
+                    <Tags2 tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} />
                     <div className="entry-meta">
                       <span><a href=""><i className="material-icons author">&#xE866;</i>{d.username}</a></span>
                       <span><a href=""><i className="material-icons date">&#xE192;</i>April 18, 2016</a></span>
                       <span><a href=""><i className="material-icons comments">&#xE0BF;</i>Comments</a></span>
                     </div>
                     <p>{d.description}</p>
-                    <Tags2 tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} />
+
                   </li>
                 );
               }
@@ -95,7 +96,7 @@ var Tags2 = React.createClass({
             }
           })
         }</span>
-        <a className="readmore" href="" title="Read more">Read more</a>
+      <a className="readmore" href="" title="See more">See more</a>
       </footer>
 
     );
