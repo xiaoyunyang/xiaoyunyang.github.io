@@ -1,14 +1,11 @@
 @import url("materialize.min.css");
 @import url("map.css");
 @import url("pie.css");
+@import url("tags.css");
 @import url("../font/font-awesome/css/font-awesome.min.css");
-@import url("google-api-icons.css");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 html {
     font-family: "Helvetica Neue";
-}
-
-.title>a:hover {
-    text-decoration: underline;
 }
 img {
     width: 100%;
@@ -163,9 +160,6 @@ header, main, footer {
     background-color:#00897b;
 }
 
-.ll-listing a {
-    font-size: 20px;
-}
 
 /* Widget Tags */
 .widget_tag_cloud .widget-title {

@@ -306,9 +306,57 @@ heatmapChart.prototype.changeColor = function(divId,colorTheme, data) {
 
 
 //Initialize
-
 state.mediaType = mediaTypes[0];
 state.colorTheme = colorThemes[0];
+
+d3.csv("collection.csv", function(error, data) {
+  if(error) {
+    console.log(error);
+  } else {
+    //console.log(data);
+    var items = data;
+    //need to create key -> tags and tag -> keys
+
+    var tags = function(data,i) {return (data.map(function(d){return objVal(d,i)}));};
+
+    var keys = function(d, t) {
+      //this function creates an array of keys that contains the tag
+      var arr = [];
+      console.log(d);
+      if(d.tag1==t || d.tag2==t || d.tag3==t || d.tag4==t || d.tag5==t){
+        return [d.key];
+      }
+      return [];
+    }
+    console.log(keys(data[1],"bipartisan").concat(
+      keys(data[1],"NULL"), keys(data[2],"NULL")
+    ));
+
+    //use this to construct tag2items
+    var allTags = function(data) {
+      var uniqueTags = _.unique(
+        tags(data,6).concat(
+          tags(data,7),tags(data,8),tags(data,9),tags(data,10))
+      );
+      return _.reject(uniqueTags, function(d){d=="NULL"});
+    };
+
+    console.log(allTags(data));
+
+    var tags2items = function(data) {
+      var arr = [];
+      for(var i=0; i<allTags(data).length; i++) {
+        //if(keys(data[i],allTags[i]))
+
+        arr.push({key : tags(data,ind)[i]})
+      }
+      return arr;
+    }
+
+  }
+});
+
+
 d3.csv("data.csv", function(error, data) {
   if(error) {
     console.log(error);
