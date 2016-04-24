@@ -3,7 +3,7 @@
 <html>
   <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <link href="../assets/css/main.css" rel="stylesheet">
     <!--<link href="../assets/css/google-api-icons.css" rel="stylesheet">-->
     <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
     <style>
@@ -83,7 +83,7 @@
       .tooltip {
         position: absolute;
         width: auto;
-        height: 40px;
+        height: 60px;
         padding: 10px;
         background-color: rgba(0,0,0,0.9);
         border:1px solid grey;
@@ -118,6 +118,14 @@
     <div id="mediatype-picker"></div>
     <br> --->
     <div id="colors-picker"></div>
+    <br>
+    <h5>Pick tags to display</h5>
+    <footer class="entry-meta">
+      <span id="tags" class="tag-links">
+          <a href="" class="active">Hello</a>
+          <a href="" class="">World</a>
+      </span>
+    </footer>
     <div id="chart">
       <div class="tooltip hidden">
         <p><strong class="title">Title</strong></p>
@@ -135,5 +143,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
     <script type="text/javascript" src="colorbrewer.js"></script>
     <script type="text/javascript" src="matrix.js"></script>
+    <script type="text/javascript" src="matrixData.js"></script>
   </body>
 </html>
