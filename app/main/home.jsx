@@ -31,7 +31,7 @@ var List = React.createClass({
               if(d.key<0) {
                 return(
                   <li key={i} className="collection-item avatar">
-                    <img className="circle" src={"assets/css/images/"+d.favicon+".png"} />
+                    <img className="circle" src={"assets/images/"+d.favicon+".png"} />
                     <span className="entry-header">
                       <a target="_blank" href={d.url}>{d.title} <i className="tiny material-icons">open_in_new</i></a>
                     </span>
@@ -49,7 +49,7 @@ var List = React.createClass({
               }else {
                 return(
                   <li key={i} className="collection-item avatar">
-                    <img className="circle" src={"assets/css/images/"+d.favicon+".png"} />
+                    <img className="circle" src={"assets/images/"+d.favicon+".png"} />
                     <span className="entry-header">
                       <a href={d.url}>{d.title}</a>
                     </span>

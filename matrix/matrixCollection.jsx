@@ -216,7 +216,7 @@ var List = React.createClass({
             this.props.items.map(function(d, i) {
               return(
                 <li key={i} className="collection-item avatar">
-                  <img className="circle" src={"../assets/css/images/"+d.favicon+".png"} />
+                  <img className="circle" src={"../assets/images/"+d.favicon+".png"} />
                   <span className="entry-header">
                     <a target="_blank" href={d.url}>{d.title} <i className="tiny material-icons">open_in_new</i></a>
                   </span>
