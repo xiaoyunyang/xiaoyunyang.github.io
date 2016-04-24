@@ -4,18 +4,11 @@
   <head>
     <link href="../assets/css/main.css" rel="stylesheet">
     <link href="matrix.css" rel="stylesheet">
-    <!--<link href="../assets/css/google-api-icons.css" rel="stylesheet">-->
-    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
-
+    <script src="../build/react-with-addons.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/JSXTransformer.js"></script>
   </head>
   <body>
-    <br><br>
-    <div id="dataset-picker"></div>
-    <br>
-    <!---
-    <div id="mediatype-picker"></div>
-    <br> --->
-    <div id="colors-picker"></div>
     <br>
     <div class="row">
       <h5>Pick tags to display</h5>
@@ -25,7 +18,12 @@
             <a href="" class="">World</a>
         </span>
       </footer>
-      <div class="col s12 m8 l8">
+      <div class="col s6" style="width: 600px;">
+        <br>
+        <br>
+        <h5>Toggle chart colors:</h5>
+        <div id="colors-picker"></div>
+        <br>
         <div id="chart">
           <div class="tooltip hidden">
             <p><strong class="title">Title</strong></p>
@@ -33,15 +31,10 @@
           </div>
         </div>
       </div>
-      <div class="col s12 m8 l4">
+
+      <div class="col s5">
         <h5>Filtered List:</h5>
         <div id="filtered"></div>
-      </div>
-    </div>
-    <div id="chart2">
-      <div class="tooltip hidden">
-        <p><strong class="title">Title</strong></p>
-        <p><span class="value">Value</span></p>
       </div>
     </div>
     <script src="http://d3js.org/d3.v3.js"></script>
@@ -49,6 +42,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
     <script type="text/javascript" src="colorbrewer.js"></script>
     <script type="text/javascript" src="matrix.js"></script>
-    <script type="text/javascript" src="matrixData.js"></script>
+      <script type="text/jsx" src="matrixCollection.jsx"></script>
   </body>
 </html>

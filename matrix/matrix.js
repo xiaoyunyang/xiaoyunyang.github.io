@@ -5,7 +5,8 @@ var objVal = function(d, i) {return d[objKey(d,i)];}
 var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
 var media = function(data) {return _.unique(data.map(function(d){return objVal(d,1)}));};
 var values = function(data) {return data.map(function(d){return objVal(d,2)});};
-
+var state = {};
+state.boxClicked = false;
 //heatmapChart Constructor
 var HeatmapChart = function(divId, data, mediaType, colorTheme) {
   var margin = { top: 80, right: 0, bottom: 100, left: 100 },

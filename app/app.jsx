@@ -24,7 +24,7 @@ function render() {
         {
           user: dataset.user,
           binders: dataset.binders,
-          tags: dataset.tags,
+          tags: dataset.tags
         }
       );
     },

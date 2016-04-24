@@ -12,7 +12,7 @@ state.heatmapChart = null;
 state.heatmapChart2 = null;
 
 // Helper Functions for processing collection.csv//need to create key -> tags and tag -> keys
-function CollectionData(data) {
+function collectionData(data) {
   var tags = function(data,i) {return (data.map(function(d){return objVal(d,i)}));};
   var keys = function(d, t) {
     //this function creates an array of keys that contains the tag
@@ -39,7 +39,7 @@ function CollectionData(data) {
     return _.reject(uniqueTags, function(d){return d=="NULL";});
   };
 
-  function tags2items(data) {
+  function tag2items(data) {
     /**
       returns an array of Objects in which an Object looks like:
         {keys: ["k1", "k2"], media: ["m1", "m2"], tag: "datavis"}
@@ -76,15 +76,13 @@ function CollectionData(data) {
         username: d.username,
         title: d.title,
         description: d.description,
-        favicon: function(d) {
-          return d.favicon;
-        }
+        favicon: d.favicon
       }
     });
     return arr;
   }
 
-  return {items: items(data), tagToItems: tags2items(data), itemToTags: item2tags(data)};
+  return {items: items(data), tagToItems: tag2items(data), itemToTags: item2tags(data)};
 }
 function matrixData(data) {
   var arr = [];
@@ -131,7 +129,7 @@ d3.csv("xyang-collection.csv", function(error, data) {
   if(error) {
     console.log(error);
   } else {
-    var json = new CollectionData(data);
+    var json = new collectionData(data);
   }
 });
 
@@ -179,7 +177,8 @@ datasetPicker.enter()
         renderTags('#tags', state.data, state.activeData);
 
       } else if(d=="xyang-collection.csv") {
-        var json = new CollectionData(data);
+        var json = new collectionData(data);
+
         //create array of Objects {mediaLabel: "Image",  tag: "Design", Count: "0"}
         state.data = [];
         var t2i = _.sortBy(json.tagToItems, 'tag');
@@ -194,7 +193,6 @@ datasetPicker.enter()
         d3.select("#chart").selectAll("svg").remove();
         state.heatmapChart = new HeatmapChart("#chart", state.activeData, state.mediaType, state.colorTheme);
         state.heatmapChart.changeColor("#chart", state.activeData, state.colorTheme);
-
         renderTags('#tags', state.data, state.activeData);
       }
     });
@@ -219,7 +217,5 @@ colorsPicker.enter()
   .attr("class", "colors-button")
   .on("click", function(d) {
     state.colorTheme = d;
-    //d3.select("#chart").selectAll("svg").remove();
-    //heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
     state.heatmapChart.changeColor("#chart", state.activeData, state.colorTheme);
   });
