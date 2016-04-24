@@ -1,4 +1,5 @@
 var MatrixChart = React.createClass({
+
   //Helper Functions
   tags: function(data,i) {
     return (data.map(function(d){return objVal(d,i)}));
@@ -139,6 +140,9 @@ var MatrixChart = React.createClass({
 
     return colorsPicker;
   },
+  handleClick: function() {
+    console.log("HEYO");
+  },
   componentWillMount: function() {
     d3.csv("xyang-collection.csv", function(error, data) {
       if(error) {
@@ -149,12 +153,14 @@ var MatrixChart = React.createClass({
               mediaType: this.state.mediaTypes[0],
               colorTheme: this.state.colorThemes[0],
               json: this.collectionData(data),
-              items: data //TODO this is a hack. this.state.items should be this.state.json.items
+              items: data, //TODO this is a hack. this.state.items should be this.state.json.items
+              initialItems: data //TODO this is a hack. this.state.items should be this.state.json.items
             }
           );
           this.setState(
             {
               tagToItems: _.sortBy(this.state.json.tagToItems, 'tag'),
+              initialTagToItems: _.sortBy(this.state.json.tagToItems, 'tag'),
               itemToTags: this.state.json.itemToTags
             }
           );
@@ -189,7 +195,9 @@ var MatrixChart = React.createClass({
       visData: [],
       visActiveData: [],
       tagToItems: [],
+      initialTagToItems: [],
       itemToTags: [],
+      initialItems: [],
       items: [],
       mediaTypes: ["icon", "image"],
       colorThemes: ["green", "red", "blue", "purple"],
@@ -200,14 +208,51 @@ var MatrixChart = React.createClass({
       divId: this.props.divId
     };
   },
+  filterListByTag: function(event) {
+    console.log("tag input!!!");
+    var updatedItems = this.state.initialItems;
+    var updatedTagToItems = this.state.initialTagToItems;
+
+    //Check input
+    var inputTag = d3.selectAll("#selected-tag-media").attr("value").toLowerCase();
+    console.log(inputTag)
+
+    if(inputTag===undefined || inputTag==="") {
+        updatedItems = this.state.initialItems;
+    } else {
+        var withTag = _.findWhere(updatedTagToItems, {tag: inputTag});
+
+        var withTagKey;
+        if(!!withTag) {withTagKey = withTag.keys;}
+
+        updatedItems = _.filter(updatedItems, function(d) {
+            return _.contains(withTagKey, d.key);
+        });
+    }
+    this.setState({items: updatedItems});
+    this.setState({taggedItems: updatedItems});
+  },
+  filterListByName: function(event) {
+    var updatedItems = this.state.initialItems;
+    updatedItems = updatedItems.filter(function(item){
+      return item.title.toLowerCase().search(
+              event.target.value.toLowerCase()) !== -1;
+    });
+    this.setState({items: updatedItems});
+  },
   render: function() {
     return (
+      <div>
+      <input type="text" placeholder="Filter Items by Name" onChange={this.filterListByName}/>
+      <input id="selected-tag-media" type="text" placeholder="Filter Items by Tag" onChange={this.filterListByTag} disabled/>
       <List items={this.state.items}/>
+      </div>
     );
   }
 });
 
 var List = React.createClass({
+
   render: function() {
     return (
       <div>
