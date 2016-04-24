@@ -124,6 +124,8 @@ function renderTags(divId, data, activeData) {
 //Initialize
 state.mediaType = mediaTypes[0];
 state.colorTheme = colorThemes[0];
+state.data = null;
+state.activeData = null;
 
 d3.csv("xyang-collection.csv", function(error, data) {
   if(error) {
@@ -139,9 +141,9 @@ d3.csv("data.csv", function(error, data) {
   } else {
     state.data = data;
     state.heatmapChart = new HeatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
-    state.heatmapChart.changeColor("#chart",state.colorTheme,state.data);
-    var activeData = state.data;
-    renderTags('#tags', state.data, activeData);
+    state.heatmapChart.changeColor("#chart",state.data,state.colorTheme);
+    state.activeData = state.data;
+    renderTags('#tags', state.data, state.activeData);
   }
 });
 d3.csv("data2.csv", function(error, data) {
@@ -149,7 +151,7 @@ d3.csv("data2.csv", function(error, data) {
     console.log(error);
   } else {
     state.heatmapChart2 = new HeatmapChart("#chart2", data, mediaTypes[1], state.colorTheme);
-    state.heatmapChart2.changeColor("#chart2",state.colorTheme,data);
+    state.heatmapChart2.changeColor("#chart2",data,state.colorTheme);
   }
 });
 
@@ -169,12 +171,12 @@ datasetPicker.enter()
       } else if(d=="data2.csv" || d=="data.csv") {
         state.data = data;
         state.mediaType = (d=="data2.csv") ? "image" : "icon";
+        state.activeData = state.data;
+
         d3.select("#chart").selectAll("svg").remove();
         state.heatmapChart = new HeatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
-        state.heatmapChart.changeColor("#chart",state.colorTheme, state.data);
-
-        var activeData = state.data;
-        renderTags('#tags', state.data, activeData);
+        state.heatmapChart.changeColor("#chart",state.activeData, state.colorTheme);
+        renderTags('#tags', state.data, state.activeData);
 
       } else if(d=="xyang-collection.csv") {
         var json = new CollectionData(data);
@@ -183,17 +185,17 @@ datasetPicker.enter()
         var t2i = _.sortBy(json.tagToItems, 'tag');
         state.data = matrixData(t2i);
 
-        var activeData = _.filter(state.data, function(d, i) {
+        state.activeData = _.filter(state.data, function(d, i) {
           var tagMedia = _.find(t2i, function(a) {return a.tag == d.tag;}).media;
           return _.unique(tagMedia).length > 2;
         });
-
+        //create Data visualization for activeData
         state.mediaType = "icon";
         d3.select("#chart").selectAll("svg").remove();
-        state.heatmapChart = new HeatmapChart("#chart", activeData, state.mediaType, state.colorTheme);
-        state.heatmapChart.changeColor("#chart", state.colorTheme, activeData);
+        state.heatmapChart = new HeatmapChart("#chart", state.activeData, state.mediaType, state.colorTheme);
+        state.heatmapChart.changeColor("#chart", state.activeData, state.colorTheme);
 
-        renderTags('#tags', state.data, activeData);
+        renderTags('#tags', state.data, state.activeData);
       }
     });
   });
@@ -208,7 +210,7 @@ mediaTypePicker.enter()
     state.boxClicked = false;
     d3.select("#chart").selectAll("svg").remove();
     state.heatmapChart = new HeatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
-    state.heatmapChart.changeColor("#chart",state.colorTheme, state.data);
+    state.heatmapChart.changeColor("#chart", state.activeData, state.colorTheme);
   });
 colorsPicker.enter()
   .append("input")
@@ -219,5 +221,5 @@ colorsPicker.enter()
     state.colorTheme = d;
     //d3.select("#chart").selectAll("svg").remove();
     //heatmapChart("#chart", state.data, state.mediaType, state.colorTheme);
-    state.heatmapChart.changeColor("#chart", state.colorTheme, state.data);
+    state.heatmapChart.changeColor("#chart", state.activeData, state.colorTheme);
   });

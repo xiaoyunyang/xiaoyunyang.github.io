@@ -256,7 +256,7 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
   }
 };
 
-HeatmapChart.prototype.changeColor = function(divId,colorTheme, data) {
+HeatmapChart.prototype.changeColor = function(divId,data, colorTheme) {
    var margin = this.getMargin();
   var colorScale = d3.scale.quantile()
            .domain([0, d3.max(data, function (d) { return parseFloat(objVal(d,2)); })])
