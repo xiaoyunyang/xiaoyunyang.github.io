@@ -171,12 +171,12 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
     resetGrid();
     var clickedBox = d3.select(this);
 
-    if(this.classList.contains("clicked-bordered") && state.lastClicked == clickedBox) {
+    if(this.classList.contains("clicked-bordered") && state.lastClicked == this) {
       state.boxClicked = false;
       state.clickedBox = null;
       state.clickedMediaLabel = null;
       state.clickedTagLabel = null;
-      state.lastClicked = clickedBox;
+      state.lastClicked = this;
     } else {
       var clickedMediaLabel = chart.svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
       var clickedTagLabel = chart.svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)});
@@ -186,7 +186,7 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
       state.clickedBox = clickedBox;
       state.clickedMediaLabel = clickedMediaLabel;
       state.clickedTagLabel = clickedTagLabel;
-      state.lastClicked = clickedBox;
+      state.lastClicked = this;
     }
     //resetGrid unhighlight everything box highlights the clicked box and
     //corresponding tagLabels and mediaLabels depending on the state variables above
@@ -282,12 +282,12 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
     resetGrid();
     var clickedMediaLabel = d3.select(this);
 
-    if(this.classList.contains("clicked-medialabel") && state.lastClicked == clickedMediaLabel) {
+    if(this.classList.contains("clicked-medialabel") && state.lastClicked == this) {
       state.boxClicked = false;
       state.clickedBox = null;
       state.clickedMediaLabel = null;
       state.clickedTagLabel = null;
-      state.lastClicked = clickedMediaLabel;
+      state.lastClicked = this;
     } else {
 
       var clickedBox = chart.svg.selectAll(".box").filter(function(m) {return objVal(m,1) == d;})
@@ -308,7 +308,7 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
       state.clickedBox = clickedBox;
       state.clickedMediaLabel = clickedMediaLabel;
       state.clickedTagLabel = clickedTagLabel;
-      state.lastClicked = clickedMediaLabel;
+      state.lastClicked = this;
     }
     //resetGrid unhighlight everything box highlights the clicked box and
     //corresponding tagLabels and mediaLabels depending on the state variables above
@@ -332,12 +332,12 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
     resetGrid();
     var clickedTagLabel = d3.select(this);
 
-    if(this.classList.contains("clicked-taglabel") && state.lastClicked == clickedTagLabel) {
+    if(this.classList.contains("clicked-taglabel") && state.lastClicked == this) {
       state.boxClicked = false;
       state.clickedBox = null;
       state.clickedMediaLabel = null;
       state.clickedTagLabel = null;
-      state.lastClicked = clickedTagLabel;
+      state.lastClicked = this;
     } else {
 
       var clickedBox = chart.svg.selectAll(".box").filter(function(m) {return objVal(m,0) == d;});
@@ -357,7 +357,7 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
       state.clickedBox = clickedBox;
       state.clickedMediaLabel = clickedMediaLabel;
       state.clickedTagLabel = clickedTagLabel;
-      state.lastClicked = clickedMediaLabel;
+      state.lastClicked = this;
     }
     //resetGrid unhighlight everything box highlights the clicked box and
     //corresponding tagLabels and mediaLabels depending on the state variables above
