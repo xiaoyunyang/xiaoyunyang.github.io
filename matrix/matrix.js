@@ -5,8 +5,7 @@ var objVal = function(d, i) {return d[objKey(d,i)];}
 var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
 var media = function(data) {return _.unique(data.map(function(d){return objVal(d,1)}));};
 var values = function(data) {return data.map(function(d){return objVal(d,2)});};
-var state = {};
-state.boxClicked = false;
+
 //heatmapChart Constructor
 var HeatmapChart = function(divId, data, mediaType, colorTheme) {
   const MARGIN = { top: 80, right: 0, bottom: 100, left: 100 },
@@ -22,12 +21,15 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
         MEDIA_IMAGES = {Jake: 'uifaces/0.jpg', Adam: 'uifaces/1.jpg', Rob: 'uifaces/2.jpg', Tom: 'uifaces/3.jpg', Valerie: 'uifaces/4.jpg', Tutorial: 'uifaces/5.jpg'  },
         //COLORS = ["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"], // alternatively colorbrewer.YlGnBu[9]
         COLORS = {green: colorbrewer.Greens[4], red: colorbrewer.Reds[4], blue: colorbrewer.Blues[4], purple: colorbrewer.Purples[4]};
+  var state = {};
+  state.boxClicked = false;
 
   //getters
   this.getMargin = function() {return MARGIN;}
   this.getGridSize = function() {return GRID_SIZE;}
   this.getColors = function() {return COLORS;}
   this.getLegendElemWidth = function() {return LEGEND_ELEM_WIDTH;}
+  this.getboxClicked = function() {return state.boxClicked;}
 
   //private state variables
   var chart = {};
@@ -45,8 +47,8 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
 
   chart.svg.selectAll(".tag-label").remove();
   chart.svg.selectAll(".media-label").remove();
-
   resetGrid();
+  d3.selectAll("#selected-tag-media").attr("value", "");
 
   var tagLabels = chart.svg.selectAll(".tag-label").data(chart.tags);
   tagLabels.enter()
@@ -144,7 +146,23 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
      .on("mouseout", boxMouseout)
      .on("click", boxClick);
 
+  //Event Handler from react-dom will take care changes to selected-tag-media
+  function updateFilteredList(d) {
+    var selected = d3.selectAll("#selected-tag-media").attr("value");
+    var newSelected = "("+d.tag+","+d.mediaLabel+")";
+    d3.selectAll("#selected-tag-media").attr("value", newSelected);
+
+    if(selected==newSelected) {
+      d3.selectAll("#selected-tag-media").attr("value", "");
+    } else {
+      d3.selectAll("#selected-tag-media").attr("value", newSelected);
+    }
+
+  }
   function boxClick(d,i) {
+
+    updateFilteredList(d);
+
     resetGrid();
     var clickedBox = d3.select(this);
 
@@ -168,8 +186,6 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
     }
     resetGrid();
 
-    //Event Handler from react-dom will take care changes to selected-tag-media
-    d3.selectAll("#selected-tag-media").attr("value", "("+d.tag+","+d.mediaLabel+")");
   }
 
   function boxMouseover(d,i) {

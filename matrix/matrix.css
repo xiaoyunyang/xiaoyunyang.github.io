@@ -1,7 +1,11 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
+#matrixchart {
+  width: 600px;
+}
 #colors-picker {
   margin-left: 80px;
+  margin-bottom: 40px;
 }
 #colors-picker a {
   margin-left: 20px;

@@ -209,17 +209,24 @@ var MatrixChart = React.createClass({
     };
   },
   filterListByTag: function(event) {
-    console.log("tag input!!!");
     var updatedItems = this.state.initialItems;
     var updatedTagToItems = this.state.initialTagToItems;
 
     //Check input
-    var inputTag = d3.selectAll("#selected-tag-media").attr("value").toLowerCase();
-    console.log(inputTag)
+    var selected = d3.selectAll("#selected-tag-media").attr("value");
 
-    if(inputTag===undefined || inputTag==="") {
+    if(selected===undefined || selected==="") {
         updatedItems = this.state.initialItems;
     } else {
+
+        var tagMediaTuple = selected.toLowerCase();
+        console.log("inputTag is "+tagMediaTuple);
+        //use regex to parse the tag and mediaLabel
+
+        var inputTag = tagMediaTuple.replace(/\(|\)/g,'').split(",")[0];
+        var inputMedia = tagMediaTuple.replace(/\(|\)/g,'').split(",")[1];
+
+        //Filter By Tag
         var withTag = _.findWhere(updatedTagToItems, {tag: inputTag});
 
         var withTagKey;
@@ -228,11 +235,16 @@ var MatrixChart = React.createClass({
         updatedItems = _.filter(updatedItems, function(d) {
             return _.contains(withTagKey, d.key);
         });
+        //Further Filter By MediaType / favicon
+        updatedItems = _.filter(updatedItems, function(d) {
+            return d.favicon.toLowerCase() == inputMedia;
+        });
     }
     this.setState({items: updatedItems});
     this.setState({taggedItems: updatedItems});
   },
   filterListByName: function(event) {
+    if(this.state.heatmapChart.getboxClicked()) {this.filterListByTag();}
     var updatedItems = this.state.initialItems;
     updatedItems = updatedItems.filter(function(item){
       return item.title.toLowerCase().search(
@@ -242,10 +254,32 @@ var MatrixChart = React.createClass({
   },
   render: function() {
     return (
-      <div>
-      <input type="text" placeholder="Filter Items by Name" onChange={this.filterListByName}/>
-      <input id="selected-tag-media" type="text" placeholder="Filter Items by Tag" onChange={this.filterListByTag} disabled/>
-      <List items={this.state.items}/>
+      <div className="row">
+        <h5>Pick tags to display</h5>
+        <footer className="entry-meta">
+          <span id="tags" className="tag-links">
+              <a href="" className="active">Hello</a>
+              <a href="" className="">World</a>
+          </span>
+        </footer>
+        <div id="matrixchart" className="col s6">
+
+          <h5>Toggle chart colors:</h5>
+          <div id="colors-picker"></div>
+
+          <div id="chart" onClick={this.filterListByTag}>
+            <div className="tooltip hidden">
+              <p><strong className="title">Title</strong></p>
+              <p><span className="value">Value</span></p>
+            </div>
+          </div>
+        </div>
+        <div className="col s5">
+          <h5>Filtered List:</h5>
+          <input type="text" placeholder="Filter Items by Name" onChange={this.filterListByName}/>
+          <input id="selected-tag-media" type="text" placeholder="Filter Items by Tag" onChange={this.filterListByTag} disabled/>
+          <List items={this.state.items}/>
+        </div>
       </div>
     );
   }
@@ -301,4 +335,4 @@ var Tags = React.createClass({
   }
 });
 
-ReactDOM.render(<MatrixChart divId="filtered"/>, document.getElementById('filtered'));
+ReactDOM.render(<MatrixChart divId="matrix-chart-menu"/>, document.getElementById('matrix-chart-menu'));
