@@ -330,7 +330,7 @@ var Tags = React.createClass({
             }
           })
         }</span>
-      <a className="readmore" href="matrix/matrix.html" title="See more">See more</a>
+      <a className="readmore" href="http://xiaoyunyang.github.io/" title="See more">See more</a>
       </footer>
 
     );
