@@ -197,8 +197,11 @@ var MatrixChart = React.createClass({
       tagToItems: [],
       initialTagToItems: [],
       itemToTags: [],
-      initialItems: [],
+
       items: [],
+      initialItems: [],
+      taggedItems: [],
+
       mediaTypes: ["icon", "image"],
       colorThemes: ["green", "red", "blue", "purple"],
       mediaType: "",
@@ -220,9 +223,8 @@ var MatrixChart = React.createClass({
     } else {
 
         var tagMediaTuple = selected.toLowerCase();
-        console.log("inputTag is "+tagMediaTuple);
-        //use regex to parse the tag and mediaLabel
 
+        //use regex to parse the tag and mediaLabel
         var inputTag = tagMediaTuple.replace(/\(|\)/g,'').split(",")[0];
         var inputMedia = tagMediaTuple.replace(/\(|\)/g,'').split(",")[1];
 
@@ -244,8 +246,8 @@ var MatrixChart = React.createClass({
     this.setState({taggedItems: updatedItems});
   },
   filterListByName: function(event) {
-    if(this.state.heatmapChart.getboxClicked()) {this.filterListByTag();}
-    var updatedItems = this.state.initialItems;
+
+    var updatedItems = this.state.taggedItems;
     updatedItems = updatedItems.filter(function(item){
       return item.title.toLowerCase().search(
               event.target.value.toLowerCase()) !== -1;
@@ -276,8 +278,8 @@ var MatrixChart = React.createClass({
         </div>
         <div className="col s5">
           <h5>Filtered List:</h5>
-          <input type="text" placeholder="Filter Items by Name" onChange={this.filterListByName}/>
           <input id="selected-tag-media" type="text" placeholder="Filter Items by Tag" onChange={this.filterListByTag} disabled/>
+          <input type="text" placeholder="Filter Items by Name" onChange={this.filterListByName}/>
           <List items={this.state.items}/>
         </div>
       </div>
