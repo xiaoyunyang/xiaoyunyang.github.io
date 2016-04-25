@@ -22,7 +22,12 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
         //COLORS = ["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"], // alternatively colorbrewer.YlGnBu[9]
         COLORS = {green: colorbrewer.Greens[4], red: colorbrewer.Reds[4], blue: colorbrewer.Blues[4], purple: colorbrewer.Purples[4]};
   var state = {};
+  state.svg = null;
   state.boxClicked = false;
+  state.clickedBox = null;
+  state.clickedMediaLabel = null;
+  state.clickedTagLabel = null;
+  state.lastClicked = null;
 
   //getters
   this.getMargin = function() {return MARGIN;}
@@ -147,9 +152,9 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
      .on("click", boxClick);
 
   //Event Handler from react-dom will take care changes to selected-tag-media
-  function updateFilteredList(d) {
+  function updateFilteredList(tag, mediaLabel) {
     var selected = d3.selectAll("#selected-tag-media").attr("value");
-    var newSelected = "("+d.tag+","+d.mediaLabel+")";
+    var newSelected = "("+tag+","+mediaLabel+")";
     d3.selectAll("#selected-tag-media").attr("value", newSelected);
 
     if(selected==newSelected) {
@@ -161,16 +166,17 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
   }
   function boxClick(d,i) {
 
-    updateFilteredList(d);
+    updateFilteredList(d.tag, d.mediaLabel);
 
     resetGrid();
     var clickedBox = d3.select(this);
 
-    if(this.classList.contains("clicked-bordered")) {
+    if(this.classList.contains("clicked-bordered") && state.lastClicked == clickedBox) {
       state.boxClicked = false;
-      state.clickedBox = clickedBox;
-      state.clickedMediaLabel = clickedMediaLabel;
-      state.clickedTagLabel = clickedTagLabel;
+      state.clickedBox = null;
+      state.clickedMediaLabel = null;
+      state.clickedTagLabel = null;
+      state.lastClicked = clickedBox;
     } else {
       var clickedMediaLabel = chart.svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
       var clickedTagLabel = chart.svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)});
@@ -180,12 +186,11 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
       state.clickedBox = clickedBox;
       state.clickedMediaLabel = clickedMediaLabel;
       state.clickedTagLabel = clickedTagLabel;
-      //resetGrid unhighlight everything box highlights the clicked box and
-      //corresponding tagLabels and mediaLabels depending on the state variables above
-
+      state.lastClicked = clickedBox;
     }
+    //resetGrid unhighlight everything box highlights the clicked box and
+    //corresponding tagLabels and mediaLabels depending on the state variables above
     resetGrid();
-
   }
 
   function boxMouseover(d,i) {
@@ -241,8 +246,9 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
 
   //Interaction with the media label
   chart.svg.selectAll(".media-label")
-     .on("mouseover", mediaLabelMouseover)
-     .on("mouseout", mediaLabelMouseout);;
+       .on("mouseover", mediaLabelMouseover)
+       .on("mouseout", mediaLabelMouseout)
+       .on("click", mediaLabelClick);
 
   //Interaction with the mediaLabel
   function mediaLabelMouseover(d) {
@@ -269,12 +275,93 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
     d3.select(divId).selectAll(".tooltip").classed("hidden", true); //Hide the tooltip
   }
 
+  function mediaLabelClick(d,i) {
+
+    updateFilteredList("", d);
+
+    resetGrid();
+    var clickedMediaLabel = d3.select(this);
+
+    if(this.classList.contains("clicked-medialabel") && state.lastClicked == clickedMediaLabel) {
+      state.boxClicked = false;
+      state.clickedBox = null;
+      state.clickedMediaLabel = null;
+      state.clickedTagLabel = null;
+      state.lastClicked = clickedMediaLabel;
+    } else {
+
+      var clickedBox = chart.svg.selectAll(".box").filter(function(m) {return objVal(m,1) == d;})
+
+      var tags = [];
+      chart.svg.selectAll(".box").each(function(m) {
+        if(objVal(m,1) == d) {
+          tags = tags.concat(objVal(m,0));
+        }
+      });
+
+      var clickedTagLabel = chart.svg.selectAll(".tag-label").filter(
+        function(m) { return _.contains(tags, m); }
+      );
+
+      //mediaLabelHighlight(clickedMediaLabel);
+      state.boxClicked = true;
+      state.clickedBox = clickedBox;
+      state.clickedMediaLabel = clickedMediaLabel;
+      state.clickedTagLabel = clickedTagLabel;
+      state.lastClicked = clickedMediaLabel;
+    }
+    //resetGrid unhighlight everything box highlights the clicked box and
+    //corresponding tagLabels and mediaLabels depending on the state variables above
+    resetGrid();
+  }
+
   //Interaction with the tagLabel
-  chart.svg.selectAll(".tag-label").on("mouseover", tagLabelMouseover);
+  chart.svg.selectAll(".tag-label")
+       .on("mouseover", tagLabelMouseover)
+       .on("click", tagLabelClick);
 
   function tagLabelMouseover(d) {
     resetGrid();
     d3.select(this).classed("selected-taglabel", true);
+  }
+
+  function tagLabelClick(d,i) {
+
+    updateFilteredList(d,"");
+
+    resetGrid();
+    var clickedTagLabel = d3.select(this);
+
+    if(this.classList.contains("clicked-taglabel") && state.lastClicked == clickedTagLabel) {
+      state.boxClicked = false;
+      state.clickedBox = null;
+      state.clickedMediaLabel = null;
+      state.clickedTagLabel = null;
+      state.lastClicked = clickedTagLabel;
+    } else {
+
+      var clickedBox = chart.svg.selectAll(".box").filter(function(m) {return objVal(m,0) == d;});
+
+      var media = [];
+      chart.svg.selectAll(".box").each(function(m) {
+        if(objVal(m,0) == d) {
+          media = media.concat(objVal(m,1));
+        }
+      });
+      var clickedMediaLabel = chart.svg.selectAll(".media-label").filter(
+        function(m) { return _.contains(media, m); }
+      );
+
+      //mediaLabelHighlight(clickedMediaLabel);
+      state.boxClicked = true;
+      state.clickedBox = clickedBox;
+      state.clickedMediaLabel = clickedMediaLabel;
+      state.clickedTagLabel = clickedTagLabel;
+      state.lastClicked = clickedMediaLabel;
+    }
+    //resetGrid unhighlight everything box highlights the clicked box and
+    //corresponding tagLabels and mediaLabels depending on the state variables above
+    resetGrid();
   }
 };
 

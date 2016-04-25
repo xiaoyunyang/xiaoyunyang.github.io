@@ -228,19 +228,25 @@ var MatrixChart = React.createClass({
         var inputTag = tagMediaTuple.replace(/\(|\)/g,'').split(",")[0];
         var inputMedia = tagMediaTuple.replace(/\(|\)/g,'').split(",")[1];
 
-        //Filter By Tag
-        var withTag = _.findWhere(updatedTagToItems, {tag: inputTag});
+        if(inputTag!="") {
 
-        var withTagKey;
-        if(!!withTag) {withTagKey = withTag.keys;}
+          //Filter By Tag
+          var withTag = _.findWhere(updatedTagToItems, {tag: inputTag});
 
-        updatedItems = _.filter(updatedItems, function(d) {
-            return _.contains(withTagKey, d.key);
-        });
+          var withTagKey;
+          if(!!withTag) {withTagKey = withTag.keys;}
+
+          updatedItems = _.filter(updatedItems, function(d) {
+              return _.contains(withTagKey, d.key);
+          });
+        }
+
         //Further Filter By MediaType / favicon
-        updatedItems = _.filter(updatedItems, function(d) {
-            return d.favicon.toLowerCase() == inputMedia;
-        });
+        if(inputMedia != "") {
+          updatedItems = _.filter(updatedItems, function(d) {
+              return d.favicon.toLowerCase() == inputMedia;
+          });
+        }
     }
     this.setState({items: updatedItems});
     this.setState({taggedItems: updatedItems});
