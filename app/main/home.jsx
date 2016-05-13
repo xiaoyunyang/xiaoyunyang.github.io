@@ -96,7 +96,7 @@ var Tags2 = React.createClass({
             }
           })
         }</span>
-      <a className="readmore" href="matrix/matrix.html" title="See more">See more</a>
+      <a className="readmore" href="matrix/matrix-collection.html" title="See more">See more</a>
       </footer>
 
     );
