@@ -144,8 +144,8 @@ var Matrix = React.createClass({
     console.log("HEYO");
   },
   componentWillMount: function() {
-    var data = myDataMat;
-    var myJson = this.collectionData(myData);
+    var data = this.props.myData;
+    var myJson = this.collectionData(this.props.myData);
     this.setState(
       {
         mediaType: this.state.mediaTypes[0],
@@ -340,4 +340,20 @@ var Tags = React.createClass({
     );
   }
 });
-ReactDOM.render(<Matrix divId="matrix"/>, document.getElementById('matrix'));
+
+var HomeList = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <div className="col s12 m8 l8">
+          <h4>Latest Projects and Bookmarks</h4>
+          <List items={this.props.items}/>
+        </div>
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(<Matrix divId="matrix" myData={myDataMat}/>, document.getElementById('matrix'));
+//ReactDOM.render(<Matrix divId="home" myData={myDataMat}/>, document.getElementById('home'));
+ReactDOM.render(<HomeList items={myData}/>, document.getElementById('home'));

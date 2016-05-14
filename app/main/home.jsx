@@ -1,11 +1,10 @@
 var Home = React.createClass({
   componentWillMount: function() {
-
     this.setState({myList: myData});
   },
   getInitialState: function() {
     return {
-      myList: []
+      myList: this.props.myList
     };
   },
   render: function() {
@@ -97,4 +96,4 @@ var Tags2 = React.createClass({
   }
 });
 
-ReactDOM.render(<Home/>, document.getElementById('home'));
+ReactDOM.render(<Home myList={myData}/>, document.getElementById('home'));

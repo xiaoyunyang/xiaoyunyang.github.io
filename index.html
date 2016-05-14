@@ -55,17 +55,17 @@
   </div>
   <div id="footer"><!-- react Footer --></div>
   <script>
-  var myData;
-  var myDataMat;
+    var myData;
+    var myDataMat;
+    d3.csv("assets/data/profile/xyang-collection.csv", function(error, data) {
+      if(error) {
+        console.log(error);
+      } else {
+        myData = data;
+        myDataMat = myData;
+      }
+    });
 
-  d3.csv("assets/data/profile/xyang-collection.csv", function(error, data) {
-    if(error) {
-      console.log(error);
-    } else {
-      myData = data;
-      myDataMat = data;
-    }
-  });
 
   </script>
   <script type="text/javascript" src="js/colorbrewer.js"></script>
