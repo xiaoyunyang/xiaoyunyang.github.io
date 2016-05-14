@@ -2,6 +2,7 @@
 @import url("map.css");
 @import url("pie.css");
 @import url("tags.css");
+@import url("matrix.css");
 @import url("../font/font-awesome/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 html {
@@ -66,6 +67,17 @@ footer.theme-color {
     font-weight: 300;
 }
 
+/* Override collection item avatar */
+
+.collection .collection-item.avatar .square {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
 
 /* offset your content by the width of the side menu. */
 header, main, footer {

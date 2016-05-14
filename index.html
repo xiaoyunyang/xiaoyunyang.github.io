@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script type="text/javascript" src="js/d3.v3.min.js"></script>
   <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
   <script type="text/javascript" src="js/materialize.js"></script>
   <script type="text/javascript" src="js/underscore-min.js"></script>
-  <script type="text/javascript" src="js/d3.v3.min.js"></script>
   <script type="text/javascript" src="js/backbone-min.js"></script>
   <script src="js/marked.min.js"></script>
   <script src="build/react-with-addons.js"></script>
@@ -54,10 +54,24 @@
       </div>
   </div>
   <div id="footer"><!-- react Footer --></div>
+  <script>
+  var myData;
+  var myDataMat;
 
+  d3.csv("assets/data/profile/xyang-collection.csv", function(error, data) {
+    if(error) {
+      console.log(error);
+    } else {
+      myData = data;
+      myDataMat = data;
+    }
+  });
+
+  </script>
+  <script type="text/javascript" src="js/colorbrewer.js"></script>
   <script type="text/javascript" src="app/router.js"></script>
   <script type="text/jsx" src="app/app.jsx"></script>
-  <script type="text/jsx" src="app/main/home.jsx"></script>
+
   <script type="text/jsx" src="app/main/life.jsx"></script>
   <script type="text/jsx" src="app/main/writing.jsx"></script>
   <script type="text/jsx" src="app/main/about.jsx"></script>
@@ -68,8 +82,11 @@
   <script src="app/dataVis/map.js"></script>
   <script type="text/jsx" src="app/dataVis/map.jsx"></script>
   <script type="text/jsx" src="app/dataVis/pie.jsx"></script>
-  <script type="text/jsx" src="app/dataVis/matrix.jsx"></script>
   <script src="app/dataVis/pie.js"></script>
+  <script type="text/jsx" src="app/dataVis/matrix.jsx"></script>
+  <script src="app/dataVis/matrix.js"></script>
+<!--  <script type="text/jsx" src="app/main/home.jsx"></script> -->
+
 
 </body>
 

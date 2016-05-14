@@ -144,7 +144,7 @@ var MatrixChart = React.createClass({
     console.log("HEYO");
   },
   componentWillMount: function() {
-    d3.csv("xyang-collection.csv", function(error, data) {
+    d3.csv("../assets/data/profile/xyang-collection.csv", function(error, data) {
       if(error) {
           console.log(error);
       } else {

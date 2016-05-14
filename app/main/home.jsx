@@ -1,13 +1,7 @@
 var Home = React.createClass({
   componentWillMount: function() {
-    d3.csv("assets/data/profile/xyang-collection.csv", function(error, data) {
-      if(error) {
-          console.log(error);
-      } else {
-          this.setState({myList: data})
-      }
-    }.bind(this)
-    );
+
+    this.setState({myList: myData});
   },
   getInitialState: function() {
     return {

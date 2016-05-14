@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+#matrixchart {
+  width: 620px;
+}
+#colors-picker {
+  margin-left: 80px;
+  margin-bottom: 40px;
+}
+#colors-picker a {
+  margin-left: 20px;
+}
+rect.bordered {
+  stroke: #969696;
+  stroke-width:2px;
+  cursor: pointer;
+}
+rect.selected-bordered {
+  stroke: #E6E6E6;
+  stroke-width:2px;
+}
+rect.clicked-bordered {
+  stroke: #424242;
+  stroke-width:3px;
+}
+
+.media-label {
+  cursor: pointer;
+}
+.mediatype-icon {
+  fill: #969696;
+  /*font-family: 'FontAwesome';*/
+  font-family: 'Material Icons';
+  font-size: 25px;
+}
+text.selected-medialabel {
+  transition: all 0.3s ease;
+  fill: black;
+  /*fill: #238b45;*/
+  font-weight: bold;
+  font-size: 32px;
+}
+text.clicked-medialabel {
+  fill: #424242;
+  /*fill: #238b45;*/
+  font-weight: bold;
+  font-size: 32px;
+}
+image.mediatype-image {
+}
+image.selected-mediatype {
+  transition: all 0.5s ease;
+}
+
+text.axis-mediatype {
+  fill: #969696;
+}
+text.mono {
+  font-size: 9pt;
+  font-family: Consolas, courier;
+  fill: #aaa;
+}
+
+.tag-label {
+  cursor: pointer;
+  fill: #969696;
+  font-size: 14px;
+  font-family: Futura;
+}
+text.selected-taglabel {
+  transition: all 0.3s ease;
+  /*fill: #238b45;*/
+  fill: black;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+text.clicked-taglabel {
+  /*fill: #238b45;*/
+  fill: #424242;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.tooltip {
+  position: absolute;
+  width: auto;
+  height: 60px;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.9);
+  border:1px solid grey;
+  border-radius:5px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  color:white;
+}
+
+.tooltip.hidden {
+  display: none;
+}
+
+.tooltip p {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
