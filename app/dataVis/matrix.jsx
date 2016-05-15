@@ -97,7 +97,7 @@ var Matrix = React.createClass({
     return arr;
   },
   activeMatrixData: function(items, tagToItems) {
-
+    //determines which tags get used for the matrix displayed
     return _.filter(items, function(d) {
       var tagMedia = _.find(tagToItems, function(a) {
         return a.tag == d.tag;
@@ -108,6 +108,7 @@ var Matrix = React.createClass({
     });
   },
   renderTags: function(divId, data, activeData) {
+    //Renders the all tags and make subset active
     d3.select(divId).selectAll('a').remove();
     var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
     var allTags = tags(data);
@@ -140,9 +141,6 @@ var Matrix = React.createClass({
 
     return colorsPicker;
   },
-  handleClick: function() {
-    console.log("HEYO");
-  },
   componentWillMount: function() {
     var data = this.props.myData;
     var myJson = this.collectionData(this.props.myData);
@@ -152,7 +150,9 @@ var Matrix = React.createClass({
         colorTheme: this.state.colorThemes[0],
         items: data, //TODO this is a hack. this.state.items should be this.state.json.items
         initialItems: data, //TODO this is a hack. this.state.items should be this.state.json.items
+        taggedItems: data
       }, function() {
+        //call back function
 
         this.colorsPicker("#colors-picker", this.state.colorThemes)
 
@@ -174,7 +174,8 @@ var Matrix = React.createClass({
               visActiveData:  visActiveDataTemp
             }, function() {
               //the callback function
-              this.renderTags('#tags', this.state.visData, this.state.visActiveData);
+
+              //this.renderTags('#tags', this.state.visData, this.state.visActiveData);
 
               var heatmapChartTemp = this.matrixVis(
                 "#chart",
@@ -264,9 +265,8 @@ var Matrix = React.createClass({
         <p>Click <a href="matrix/matrix.html">HERE</a> for template</p>
         <h5>Pick tags to display</h5>
         <footer className="entry-meta">
-          <span id="tags" className="tag-links">
-              <a href="" className="active">Hello</a>
-              <a href="" className="">World</a>
+          <span className="tag-links">
+            <Tags tags={tags(this.state.visData)} activeTags={tags(this.state.visActiveData)}/>
           </span>
         </footer>
         <div id="matrixchart" className="col s6">
@@ -305,7 +305,12 @@ var List = React.createClass({
                   <span className="entry-header">
                     <a target="_blank" href={d.url}>{d.title} <i className="tiny material-icons">open_in_new</i></a>
                   </span>
-                  <Tags tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} />
+                  <footer className="entry-meta">
+                    <span className="tag-links">
+                      <Tags tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} activeTags={[]} />
+                    </span>
+                    <a className="readmore" href="http://xiaoyunyang.github.io/" title="See more">See more</a>
+                  </footer>
                   <div className="entry-meta">
                     <span><a href=""><i className="material-icons author">&#xE866;</i>{d.username}</a></span>
                     <span><a href=""><i className="material-icons date">&#xE192;</i>April 18, 2016</a></span>
@@ -322,20 +327,22 @@ var List = React.createClass({
   }
 });
 
-
 var Tags = React.createClass({
+  handleClick: function() {
+    console.log("HEYO");
+  },
   render: function() {
+    var activeTags = this.props.activeTags;
     return (
-      <footer className="entry-meta">
-        <span className="tag-links"> {
+         <div onClick={this.handleClick2}>{
           this.props.tags.map(function(t,i) {
-            if(t!="NULL") {
-              return <a key={i} href="" rel="tag">{t}</a>
+            if(t!="NULL" && _.contains(activeTags,t)) {
+              return <a key={i} className="active" rel="tag" onClick={this.handleClick}>{t}</a>
+            }else if(t!="NULL") {
+              return <a key={i} rel="tag" onClick={this.handleClick}>{t}</a>
             }
           })
-        }</span>
-        <a className="readmore" href="http://xiaoyunyang.github.io/" title="See more">See more</a>
-      </footer>
+        }</div>
 
     );
   }
@@ -355,5 +362,4 @@ var HomeList = React.createClass({
 });
 
 ReactDOM.render(<Matrix divId="matrix" myData={myDataMat}/>, document.getElementById('matrix'));
-//ReactDOM.render(<Matrix divId="home" myData={myDataMat}/>, document.getElementById('home'));
 ReactDOM.render(<HomeList items={myData}/>, document.getElementById('home'));
