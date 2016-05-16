@@ -96,15 +96,9 @@ var Matrix = React.createClass({
     }
     return arr;
   },
-  activeMatrixData: function(items, tagToItems) {
-    //determines which tags get used for the matrix displayed
-    return _.filter(items, function(d) {
-      var tagMedia = _.find(tagToItems, function(a) {
-        return a.tag == d.tag;
-      }).media;
-
-      return _.unique(tagMedia).length > 2;
-
+  activeTagsInit: function(tagToItems) {
+    return _.filter(tagToItems, function(d) {
+      return _.unique(d.media).length > 2;
     });
   },
   renderTags: function(divId, data, activeData) {
@@ -163,11 +157,13 @@ var Matrix = React.createClass({
           var initialTagToItemsTemp =  _.sortBy(this.state.json.tagToItems, 'tag');
           var itemToTagsTemp = this.state.json.itemToTags;
           var visDataTemp = this.matrixData(tagToItemsTemp);
-          var visActiveDataTemp = this.activeMatrixData(visDataTemp, tagToItemsTemp);
+          var tagToItemsActiveTemp = this.activeTagsInit(tagToItemsTemp);
+          var visActiveDataTemp = this.matrixData(tagToItemsActiveTemp);
 
           this.setState(
             {
               tagToItems: tagToItemsTemp,
+              tagToItemsActive: tagToItemsActiveTemp,
               initialTagToItems: initialTagToItemsTemp,
               itemToTags: itemToTagsTemp,
               visData: visDataTemp,
@@ -193,6 +189,7 @@ var Matrix = React.createClass({
       visData: [],
       visActiveData: [],
       tagToItems: [],
+      tagToItemsActive: [],
       initialTagToItems: [],
       itemToTags: [],
       json: [],
@@ -258,6 +255,42 @@ var Matrix = React.createClass({
     });
     this.setState({items: updatedItems});
   },
+  tagClick: function(event) {
+    var tag = event.target.getAttribute("value")
+
+    var activeTags = this.state.tagToItemsActive.map(function(d) {return d.tag;});
+    var newTagToItemsActive;
+
+    if(_.contains(activeTags, tag)) {
+      newTagToItemsActive = _.filter(this.state.tagToItemsActive, function(d) {
+        return d.tag != tag;
+      });
+    }
+    else {
+      console.log("HEYYYY")
+      newTagToItemsActive = this.state.tagToItems;
+      activeTags = activeTags.concat(tag);
+      newTagToItemsActive = _.filter(this.state.tagToItems, function(d) {
+        return _.contains(activeTags, d.tag);
+      });
+    }
+    var visActiveDataTemp = this.matrixData(newTagToItemsActive);
+    var heatmapChartTemp = this.matrixVis(
+      "#chart",
+      visActiveDataTemp,
+      this.state.mediaType,
+      this.state.colorTheme
+    );
+    this.setState({
+      tagToItemsActive: newTagToItemsActive,
+      visActiveData: visActiveDataTemp,
+      visActiveData: visActiveDataTemp,
+      heatmapChart: heatmapChartTemp
+    });
+
+
+
+  },
   render: function() {
     return (
       <div className="row">
@@ -266,7 +299,7 @@ var Matrix = React.createClass({
         <h5>Pick tags to display</h5>
         <footer className="entry-meta">
           <span className="tag-links">
-            <Tags tags={tags(this.state.visData)} activeTags={tags(this.state.visActiveData)}/>
+            <Tags tags={tags(this.state.visData)} activeTags={tags(this.state.visActiveData)} tagClick={this.tagClick}/>
           </span>
         </footer>
         <div id="matrixchart" className="col s6">
@@ -307,7 +340,7 @@ var List = React.createClass({
                   </span>
                   <footer className="entry-meta">
                     <span className="tag-links">
-                      <Tags tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} activeTags={[]} />
+                      <Tags tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} activeTags={[]} tagClick={this.tagClick}/>
                     </span>
                     <a className="readmore" href="http://xiaoyunyang.github.io/" title="See more">See more</a>
                   </footer>
@@ -328,22 +361,38 @@ var List = React.createClass({
 });
 
 var Tags = React.createClass({
-  handleClick: function() {
-    console.log("HEYO");
+  tagClick: function(event) {
+    this.props.tagClick(event);
   },
   render: function() {
     var activeTags = this.props.activeTags;
     return (
-         <div onClick={this.handleClick2}>{
+         <div>{
           this.props.tags.map(function(t,i) {
             if(t!="NULL" && _.contains(activeTags,t)) {
-              return <a key={i} className="active" rel="tag" onClick={this.handleClick}>{t}</a>
+              return <a key={i} value={t} className="active" rel="tag" onClick={this.tagClick}>{t}</a>
             }else if(t!="NULL") {
-              return <a key={i} rel="tag" onClick={this.handleClick}>{t}</a>
+              return <a key={i} value={t} rel="tag" onClick={this.tagClick}>{t}</a>
             }
-          })
+          }.bind(this))
         }</div>
+    );
+  }
+});
 
+var Tag = React.createClass({
+  propTypes: {
+    tagClick: React.PropTypes.func,
+  },
+  handleClick: function(event) {
+    this.props.tagClick(event);
+    console.log("Inside tag handleClick");
+
+  },
+  render: function() {
+
+    return (
+      <a value={this.props.tag} className={this.props.class} rel="tag" onClick={this.props.tagClick}>{this.props.tag}</a>
     );
   }
 });
