@@ -287,9 +287,6 @@ var Matrix = React.createClass({
       visActiveData: visActiveDataTemp,
       heatmapChart: heatmapChartTemp
     });
-
-
-
   },
   render: function() {
     return (

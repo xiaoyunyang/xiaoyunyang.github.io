@@ -94,10 +94,10 @@ function pieChart(data, divId, width, height) {
   	svg.append("g")
   	   .attr("class", "inner-slices");
 
-
   var duration = 1000;
 	var data0 = svg.select(".slices").selectAll("path.slice")
 		.data().map(function(d) { return d.data });
+
 	if (data0.length == 0) data0 = data;
 	var was = mergeWithFirstEqualZero(data, data0);
 	var is = mergeWithFirstEqualZero(data0, data);

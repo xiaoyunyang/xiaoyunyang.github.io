@@ -107,6 +107,11 @@ var MatrixChart = React.createClass({
 
     });
   },
+  activeTagsInit: function(tagToItems) {
+    return _.filter(tagToItems, function(d) {
+      return _.unique(d.media).length > 2;
+    });
+  },
   renderTags: function(divId, data, activeData) {
     d3.select(divId).selectAll('a').remove();
     var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
@@ -148,61 +153,70 @@ var MatrixChart = React.createClass({
       if(error) {
           console.log(error);
       } else {
-          this.setState(
-            {
-              mediaType: this.state.mediaTypes[0],
-              colorTheme: this.state.colorThemes[0],
-              json: this.collectionData(data),
-              items: data, //TODO this is a hack. this.state.items should be this.state.json.items
-              initialItems: data //TODO this is a hack. this.state.items should be this.state.json.items
-            }
-          );
-          this.setState(
-            {
-              tagToItems: _.sortBy(this.state.json.tagToItems, 'tag'),
-              initialTagToItems: _.sortBy(this.state.json.tagToItems, 'tag'),
-              itemToTags: this.state.json.itemToTags
-            }
-          );
-          this.setState(
-            {
-              visData: this.matrixData(this.state.tagToItems)
-            }
-          );
-          this.setState(
-            {
-              visActiveData:  this.activeMatrixData(this.state.visData, this.state.tagToItems)
-            }
-          );
-          this.setState(
-            {
-              heatmapChart: this.matrixVis(
-                "#chart",
-                this.state.visActiveData,
-                this.state.mediaType,
-                this.state.colorTheme
-              ),
-              colorsPicker: this.colorsPicker("#colors-picker", this.state.colorThemes)
-            }
-          );
-          this.renderTags('#tags', this.state.visData, this.state.visActiveData);
+        var myJson = this.collectionData(data);
+        this.setState(
+          {
+            mediaType: this.state.mediaTypes[0],
+            colorTheme: this.state.colorThemes[0],
+            items: data, //TODO this is a hack. this.state.items should be this.state.json.items
+            initialItems: data, //TODO this is a hack. this.state.items should be this.state.json.items
+            taggedItems: data
+          }, function() {
+            //call back function
+
+            this.colorsPicker("#colors-picker", this.state.colorThemes)
+
+            this.setState({json: myJson}, function() {
+              //the callback function
+
+              var tagToItemsTemp = _.sortBy(this.state.json.tagToItems, 'tag');
+              var initialTagToItemsTemp =  _.sortBy(this.state.json.tagToItems, 'tag');
+              var itemToTagsTemp = this.state.json.itemToTags;
+              var visDataTemp = this.matrixData(tagToItemsTemp);
+              var tagToItemsActiveTemp = this.activeTagsInit(tagToItemsTemp);
+              var visActiveDataTemp = this.matrixData(tagToItemsActiveTemp);
+
+              this.setState(
+                {
+                  tagToItems: tagToItemsTemp,
+                  tagToItemsActive: tagToItemsActiveTemp,
+                  initialTagToItems: initialTagToItemsTemp,
+                  itemToTags: itemToTagsTemp,
+                  visData: visDataTemp,
+                  visActiveData:  visActiveDataTemp
+                }, function() {
+                  //the callback function
+
+                  //this.renderTags('#tags', this.state.visData, this.state.visActiveData);
+
+                  var heatmapChartTemp = this.matrixVis(
+                    "#chart",
+                    this.state.visActiveData,
+                    this.state.mediaType,
+                    this.state.colorTheme
+                  );
+                  this.setState({heatmapChart: heatmapChartTemp});
+                });
+            });
+          });
       }
-    }.bind(this)
-    );
+    }.bind(this));
   },
   getInitialState: function() {
     return {
       visData: [],
       visActiveData: [],
       tagToItems: [],
+      tagToItemsActive: [],
       initialTagToItems: [],
       itemToTags: [],
+      json: [],
 
       items: [],
       initialItems: [],
       taggedItems: [],
 
-      mediaTypes: ["icon", "image"],
+      mediaTypes: ["icon", "image"], //this is the x-axis of the heatmap. icon is article or code, image is profile image
       colorThemes: ["green", "red", "blue", "purple"],
       mediaType: "",
       colorTheme: "",
@@ -260,14 +274,47 @@ var MatrixChart = React.createClass({
     });
     this.setState({items: updatedItems});
   },
+  tagClick: function(event) {
+    var tag = event.target.getAttribute("value")
+
+    var activeTags = this.state.tagToItemsActive.map(function(d) {return d.tag;});
+    var newTagToItemsActive;
+
+    if(_.contains(activeTags, tag)) {
+      newTagToItemsActive = _.filter(this.state.tagToItemsActive, function(d) {
+        return d.tag != tag;
+      });
+    }
+    else {
+      newTagToItemsActive = this.state.tagToItems;
+      activeTags = activeTags.concat(tag);
+      newTagToItemsActive = _.filter(this.state.tagToItems, function(d) {
+        return _.contains(activeTags, d.tag);
+      });
+    }
+    var visActiveDataTemp = this.matrixData(newTagToItemsActive);
+    var heatmapChartTemp = this.matrixVis(
+      "#chart",
+      visActiveDataTemp,
+      this.state.mediaType,
+      this.state.colorTheme
+    );
+    this.setState({
+      tagToItemsActive: newTagToItemsActive,
+      visActiveData: visActiveDataTemp,
+      visActiveData: visActiveDataTemp,
+      heatmapChart: heatmapChartTemp
+    });
+  },
   render: function() {
     return (
       <div className="row">
+        <h4>Adjacency Matrix DataVis:</h4>
+        <p>Click <a href="matrix/matrix.html">HERE</a> for template</p>
         <h5>Pick tags to display</h5>
         <footer className="entry-meta">
-          <span id="tags" className="tag-links">
-              <a href="" className="active">Hello</a>
-              <a href="" className="">World</a>
+          <span className="tag-links">
+            <Tags tags={tags(this.state.visData)} activeTags={tags(this.state.visActiveData)} tagClick={this.tagClick}/>
           </span>
         </footer>
         <div id="matrixchart" className="col s6">
@@ -303,11 +350,16 @@ var List = React.createClass({
             this.props.items.map(function(d, i) {
               return(
                 <li key={i} className="collection-item avatar">
-                  <img className="circle" src={"../assets/images/"+d.favicon+".png"} />
+                  <img className="square" src={"../assets/images/"+d.favicon+".png"} />
                   <span className="entry-header">
                     <a target="_blank" href={d.url}>{d.title} <i className="tiny material-icons">open_in_new</i></a>
                   </span>
-                  <Tags tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} />
+                  <footer className="entry-meta">
+                    <span className="tag-links">
+                      <Tags tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} activeTags={[]} tagClick={this.tagClick}/>
+                    </span>
+                    <a className="readmore" href="http://xiaoyunyang.github.io/" title="See more">See more</a>
+                  </footer>
                   <div className="entry-meta">
                     <span><a href=""><i className="material-icons author">&#xE866;</i>{d.username}</a></span>
                     <span><a href=""><i className="material-icons date">&#xE192;</i>April 18, 2016</a></span>
@@ -326,21 +378,54 @@ var List = React.createClass({
 
 
 var Tags = React.createClass({
+  tagClick: function(event) {
+    this.props.tagClick(event);
+  },
   render: function() {
+    var activeTags = this.props.activeTags;
     return (
-      <footer className="entry-meta">
-        <span className="tag-links"> {
+         <div>{
           this.props.tags.map(function(t,i) {
-            if(t!="NULL") {
-              return <a key={i} href="" rel="tag">{t}</a>
+            if(t!="NULL" && _.contains(activeTags,t)) {
+              return <a key={i} value={t} className="active" rel="tag" onClick={this.tagClick}>{t}</a>
+            }else if(t!="NULL") {
+              return <a key={i} value={t} rel="tag" onClick={this.tagClick}>{t}</a>
             }
-          })
-        }</span>
-      <a className="readmore" href="http://xiaoyunyang.github.io/" title="See more">See more</a>
-      </footer>
-
+          }.bind(this))
+        }</div>
     );
   }
 });
+
+var Tag = React.createClass({
+  propTypes: {
+    tagClick: React.PropTypes.func,
+  },
+  handleClick: function(event) {
+    this.props.tagClick(event);
+    console.log("Inside tag handleClick");
+
+  },
+  render: function() {
+
+    return (
+      <a value={this.props.tag} className={this.props.class} rel="tag" onClick={this.props.tagClick}>{this.props.tag}</a>
+    );
+  }
+});
+
+var HomeList = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <div className="col s12 m8 l8">
+          <h4>Latest Projects and Bookmarks</h4>
+          <List items={this.props.items}/>
+        </div>
+      </div>
+    );
+  }
+});
+
 
 ReactDOM.render(<MatrixChart divId="matrix-chart-menu"/>, document.getElementById('matrix-chart-menu'));
