@@ -101,19 +101,6 @@ var Matrix = React.createClass({
       return _.unique(d.media).length > 2;
     });
   },
-  renderTags: function(divId, data, activeData) {
-    //Renders the all tags and make subset active
-    d3.select(divId).selectAll('a').remove();
-    var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
-    var allTags = tags(data);
-    var activeTags = tags(activeData);
-    var tags = d3.select('#tags').selectAll('.tag').data(allTags);
-    tags.enter()
-        .append("a").text(function(d){return d;})
-        .attr("class", function(d) {
-          return _.contains(activeTags, d) ? "active" : ""
-        });
-  },
   matrixVis: function(divId, visActiveData, mediaType, colorTheme) {
     d3.select(divId).selectAll("svg").remove();
     var heatmapChart = new HeatmapChart(divId, visActiveData, mediaType, colorTheme);
@@ -144,44 +131,42 @@ var Matrix = React.createClass({
         colorTheme: this.state.colorThemes[0],
         items: data, //TODO this is a hack. this.state.items should be this.state.json.items
         initialItems: data, //TODO this is a hack. this.state.items should be this.state.json.items
-        taggedItems: data
+        taggedItems: data,
+        json: myJson
       }, function() {
         //call back function
 
         this.colorsPicker("#colors-picker", this.state.colorThemes)
 
-        this.setState({json: myJson}, function() {
-          //the callback function
+        var tagToItemsTemp = _.sortBy(this.state.json.tagToItems, 'tag');
+        var initialTagToItemsTemp =  _.sortBy(this.state.json.tagToItems, 'tag');
+        var itemToTagsTemp = this.state.json.itemToTags;
+        var visDataTemp = this.matrixData(tagToItemsTemp);
+        var tagToItemsActiveTemp = this.activeTagsInit(tagToItemsTemp);
+        var visActiveDataTemp = this.matrixData(tagToItemsActiveTemp);
 
-          var tagToItemsTemp = _.sortBy(this.state.json.tagToItems, 'tag');
-          var initialTagToItemsTemp =  _.sortBy(this.state.json.tagToItems, 'tag');
-          var itemToTagsTemp = this.state.json.itemToTags;
-          var visDataTemp = this.matrixData(tagToItemsTemp);
-          var tagToItemsActiveTemp = this.activeTagsInit(tagToItemsTemp);
-          var visActiveDataTemp = this.matrixData(tagToItemsActiveTemp);
+        this.setState(
+          {
+            tagToItems: tagToItemsTemp,
+            tagToItemsActive: tagToItemsActiveTemp,
+            initialTagToItems: initialTagToItemsTemp,
+            itemToTags: itemToTagsTemp,
+            visData: visDataTemp,
+            visActiveData:  visActiveDataTemp
+          }, function() {
+            //the callback function
 
-          this.setState(
-            {
-              tagToItems: tagToItemsTemp,
-              tagToItemsActive: tagToItemsActiveTemp,
-              initialTagToItems: initialTagToItemsTemp,
-              itemToTags: itemToTagsTemp,
-              visData: visDataTemp,
-              visActiveData:  visActiveDataTemp
-            }, function() {
-              //the callback function
+            //this.renderTags('#tags', this.state.visData, this.state.visActiveData);
 
-              //this.renderTags('#tags', this.state.visData, this.state.visActiveData);
+            var heatmapChartTemp = this.matrixVis(
+              "#chart",
+              this.state.visActiveData,
+              this.state.mediaType,
+              this.state.colorTheme
+            );
+            this.setState({heatmapChart: heatmapChartTemp});
+          });
 
-              var heatmapChartTemp = this.matrixVis(
-                "#chart",
-                this.state.visActiveData,
-                this.state.mediaType,
-                this.state.colorTheme
-              );
-              this.setState({heatmapChart: heatmapChartTemp});
-            });
-        });
       });
   },
   getInitialState: function() {
@@ -267,7 +252,6 @@ var Matrix = React.createClass({
       });
     }
     else {
-      console.log("HEYYYY")
       newTagToItemsActive = this.state.tagToItems;
       activeTags = activeTags.concat(tag);
       newTagToItemsActive = _.filter(this.state.tagToItems, function(d) {
@@ -373,23 +357,6 @@ var Tags = React.createClass({
             }
           }.bind(this))
         }</div>
-    );
-  }
-});
-
-var Tag = React.createClass({
-  propTypes: {
-    tagClick: React.PropTypes.func,
-  },
-  handleClick: function(event) {
-    this.props.tagClick(event);
-    console.log("Inside tag handleClick");
-
-  },
-  render: function() {
-
-    return (
-      <a value={this.props.tag} className={this.props.class} rel="tag" onClick={this.props.tagClick}>{this.props.tag}</a>
     );
   }
 });

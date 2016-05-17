@@ -26,7 +26,6 @@ var MatrixChart = React.createClass({
 
     return _.reject(uniqueTags, function(d){return d=="NULL";});
   },
-
   tag2items: function(data) {
     /**
       returns an array of Objects in which an Object looks like:
@@ -160,44 +159,41 @@ var MatrixChart = React.createClass({
             colorTheme: this.state.colorThemes[0],
             items: data, //TODO this is a hack. this.state.items should be this.state.json.items
             initialItems: data, //TODO this is a hack. this.state.items should be this.state.json.items
-            taggedItems: data
+            taggedItems: data,
+            json: myJson
           }, function() {
             //call back function
 
             this.colorsPicker("#colors-picker", this.state.colorThemes)
 
-            this.setState({json: myJson}, function() {
-              //the callback function
+            var tagToItemsTemp = _.sortBy(this.state.json.tagToItems, 'tag');
+            var initialTagToItemsTemp =  _.sortBy(this.state.json.tagToItems, 'tag');
+            var itemToTagsTemp = this.state.json.itemToTags;
+            var visDataTemp = this.matrixData(tagToItemsTemp);
+            var tagToItemsActiveTemp = this.activeTagsInit(tagToItemsTemp);
+            var visActiveDataTemp = this.matrixData(tagToItemsActiveTemp);
 
-              var tagToItemsTemp = _.sortBy(this.state.json.tagToItems, 'tag');
-              var initialTagToItemsTemp =  _.sortBy(this.state.json.tagToItems, 'tag');
-              var itemToTagsTemp = this.state.json.itemToTags;
-              var visDataTemp = this.matrixData(tagToItemsTemp);
-              var tagToItemsActiveTemp = this.activeTagsInit(tagToItemsTemp);
-              var visActiveDataTemp = this.matrixData(tagToItemsActiveTemp);
+            this.setState(
+              {
+                tagToItems: tagToItemsTemp,
+                tagToItemsActive: tagToItemsActiveTemp,
+                initialTagToItems: initialTagToItemsTemp,
+                itemToTags: itemToTagsTemp,
+                visData: visDataTemp,
+                visActiveData:  visActiveDataTemp
+              }, function() {
+                //the callback function
 
-              this.setState(
-                {
-                  tagToItems: tagToItemsTemp,
-                  tagToItemsActive: tagToItemsActiveTemp,
-                  initialTagToItems: initialTagToItemsTemp,
-                  itemToTags: itemToTagsTemp,
-                  visData: visDataTemp,
-                  visActiveData:  visActiveDataTemp
-                }, function() {
-                  //the callback function
+                //this.renderTags('#tags', this.state.visData, this.state.visActiveData);
 
-                  //this.renderTags('#tags', this.state.visData, this.state.visActiveData);
-
-                  var heatmapChartTemp = this.matrixVis(
-                    "#chart",
-                    this.state.visActiveData,
-                    this.state.mediaType,
-                    this.state.colorTheme
-                  );
-                  this.setState({heatmapChart: heatmapChartTemp});
-                });
-            });
+                var heatmapChartTemp = this.matrixVis(
+                  "#chart",
+                  this.state.visActiveData,
+                  this.state.mediaType,
+                  this.state.colorTheme
+                );
+                this.setState({heatmapChart: heatmapChartTemp});
+              });
           });
       }
     }.bind(this));
@@ -284,8 +280,7 @@ var MatrixChart = React.createClass({
       newTagToItemsActive = _.filter(this.state.tagToItemsActive, function(d) {
         return d.tag != tag;
       });
-    }
-    else {
+    } else {
       newTagToItemsActive = this.state.tagToItems;
       activeTags = activeTags.concat(tag);
       newTagToItemsActive = _.filter(this.state.tagToItems, function(d) {

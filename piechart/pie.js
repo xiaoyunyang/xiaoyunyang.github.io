@@ -1,5 +1,15 @@
 /* ------- ANONYMOUS FUNCTIONS -------*/
+//TODO: need to put all these anonymous functions in a helper library
 var key = function(d){ return d.data.label; };
+
+//anonymous function
+var objKey = function(d, i) {return Object.keys(d)[i]};
+var objVal = function(d, i) {return d[objKey(d,i)];}
+
+var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
+var media = function(data) {return _.unique(data.map(function(d){return objVal(d,1)}));};
+var values = function(data) {return data.map(function(d){return objVal(d,2)});};
+
 
 //PieChart Constructor
 var PieChart = function(divId, data) {
@@ -49,6 +59,7 @@ var PieChart = function(divId, data) {
   }
   function bindData (data) {
   	//anonymous functions
+
   	var labels = data.map(function(d){return d[Object.keys(d)[0]]});
   	var values = data.map(function(d){return d[Object.keys(d)[1]]});
   	color = d3.scale.category20().domain(labels);
@@ -141,7 +152,7 @@ var PieChart = function(divId, data) {
      });
 
    chart.svg.select(".inner-slices").insert("text", "g")
-           .text(d.data.label+ ", $"+d.data.value)
+           .text(d.data.label+ ", "+d.data.value)
            .attr("font-family", "sans-serif")
            .attr("font-size", "12px")
            .attr("fill", "white")

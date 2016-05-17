@@ -1,4 +1,5 @@
 //anonymous function
+//TODO: need to put all these anonymous functions in a helper library
 var objKey = function(d, i) {return Object.keys(d)[i]};
 var objVal = function(d, i) {return d[objKey(d,i)];}
 

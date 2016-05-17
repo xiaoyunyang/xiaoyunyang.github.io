@@ -77,7 +77,6 @@ function bindData (data) {
 }
 
 function pieChart(data, divId, width, height) {
-
   var svg = d3.selectAll(divId)
   				.append("svg")
           .attr("id", "pie-svg")
