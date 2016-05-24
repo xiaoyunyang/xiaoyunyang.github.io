@@ -8,9 +8,9 @@ var values = function(data) {return data.map(function(d){return objVal(d,2)});};
 
 //heatmapChart Constructor
 var HeatmapChart = function(divId, data, mediaType, colorTheme) {
-  const MARGIN = { top: 80, right: 0, bottom: 100, left: 100 },
+  const MARGIN = { top: 80, right: -200, bottom: 100, left: 100 },
         PADDING = 2;
-        WIDTH = 700 - MARGIN.left - MARGIN.right,
+        WIDTH = 500 - MARGIN.left - MARGIN.right,
         GRID_SIZE = Math.floor(WIDTH / 15),
         HEIGHT = tags(data).length * GRID_SIZE + MARGIN.top + MARGIN.bottom,
         LEGEND_ELEM_WIDTH = GRID_SIZE * 2,
@@ -203,15 +203,15 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
     chart.svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)}).classed("selected-taglabel", true);
 
     //Update the tooltip position and value
-    var xPosition = $(divId).position().left + GRID_SIZE * chart.media.length + MARGIN.left*1.5;
+    var xPosition = $(divId).position().left + GRID_SIZE * chart.media.length + MARGIN.left*1.2;
     var yPosition = $(divId).position().top + parseFloat(d3.select(this).attr("y")) + TOOLTIP_HEIGHT * 3;
 
-    d3.select(divId).selectAll(".tooltip").selectAll(".title").text("Value:");
+    d3.select(divId).selectAll(".tooltip").selectAll(".title").text("Val:");
     d3.select(divId).selectAll(".tooltip")
       .style("left", xPosition  + "px")
       .style("top", yPosition + "px")
       .selectAll(".value")
-      .text(d.value + " thing(s) in this collection");
+      .text(d.value);
 
     //Show the tooltip
     d3.select(divId).selectAll(".tooltip").classed("hidden", false);

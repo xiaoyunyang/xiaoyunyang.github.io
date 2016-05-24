@@ -284,8 +284,7 @@ var Matrix = React.createClass({
             <Tags tags={tags(this.state.visData)} activeTags={tags(this.state.visActiveData)} tagClick={this.tagClick}/>
           </span>
         </footer>
-        <div id="matrixchart" className="col s6">
-
+        <div id="matrixchart" className="col s12 m5">
           <h5>Toggle chart colors:</h5>
           <div id="colors-picker"></div>
 
@@ -296,7 +295,7 @@ var Matrix = React.createClass({
             </div>
           </div>
         </div>
-        <div className="col s5">
+        <div className="col s12 m5">
           <h5>Filtered List:</h5>
           <input id="selected-tag-media" type="text" placeholder="Filter Items by Tag" onChange={this.filterListByTag} disabled/>
           <input type="text" placeholder="Filter Items by Name" onChange={this.filterListByName}/>
