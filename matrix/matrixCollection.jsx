@@ -96,7 +96,7 @@ var MatrixChart = React.createClass({
     return arr;
   },
   activeMatrixData: function(items, tagToItems) {
-
+    //DEPRECATED function
     return _.filter(items, function(d) {
       var tagMedia = _.find(tagToItems, function(a) {
         return a.tag == d.tag;
@@ -107,8 +107,9 @@ var MatrixChart = React.createClass({
     });
   },
   activeTagsInit: function(tagToItems) {
+    //This function determines what goes into the matrix initially
     return _.filter(tagToItems, function(d) {
-      return _.unique(d.media).length > 2;
+      return _.unique(d.media).length > 2 && d.keys.length>4;
     });
   },
   renderTags: function(divId, data, activeData) {

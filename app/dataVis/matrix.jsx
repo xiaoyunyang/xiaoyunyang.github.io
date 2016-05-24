@@ -97,8 +97,9 @@ var Matrix = React.createClass({
     return arr;
   },
   activeTagsInit: function(tagToItems) {
+    //This function determines what goes into the matrix initially
     return _.filter(tagToItems, function(d) {
-      return _.unique(d.media).length > 2;
+      return _.unique(d.media).length > 2 && d.keys.length>4;
     });
   },
   matrixVis: function(divId, visActiveData, mediaType, colorTheme) {
