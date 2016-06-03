@@ -56,17 +56,12 @@
   </div>
   <div id="footer"><!-- react Footer --></div>
   <script>
-    var myData;
-    var myDataMat;
-    d3.csv("assets/data/profile/xyang-collection.csv", function(error, data) {
-      if(error) {
-        console.log(error);
-      } else {
-        myData = data;
-        myDataMat = myData;
-      }
-    });
 
+    var key = "1X9PrlVeO9GCSmHw8psSD1fN_77vueV_A4EdaQrVzfO0",
+        query = "&tqx=out:csv", // query returns the first sheet as CSV
+        url = "https://spreadsheets.google.com/tq?key=" + key + query;  // CORS-enabled server
+    var source = url;
+    //var source = "assets/data/profile/xyang-collection.csv";
 
   </script>
   <script type="text/javascript" src="js/colorbrewer.js"></script>

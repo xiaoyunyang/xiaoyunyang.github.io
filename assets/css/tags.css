@@ -15,7 +15,7 @@ a {
 .entry-meta a {
 	color: #999;
 	text-decoration: none;
-	font-size: 14px;
+	font-size: 12px;
 
 }
 .entry-meta {
@@ -32,11 +32,12 @@ a {
 .entry-meta .comments {
 	margin-right: 4px;
 	margin-bottom: 15px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .entry-meta span {
-  margin-right: 20px;
+  margin-right: 12px;
+	display: inline-block;
 }
 
 footer.entry-meta {
