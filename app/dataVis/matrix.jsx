@@ -137,10 +137,10 @@ var Matrix = React.createClass({
       }, function() {
         //call back function
 
-        this.colorsPicker("#colors-picker", this.state.colorThemes)
+        this.colorsPicker("#colors-picker", this.state.colorThemes);
 
-        var tagToItemsTemp = _.sortBy(this.state.json.tagToItems, 'tag');
-        var initialTagToItemsTemp =  _.sortBy(this.state.json.tagToItems, 'tag');
+        var tagToItemsTemp = _.sortBy(this.state.json.tagToItems, function(d) {return d.tag.toLowerCase()});
+        var initialTagToItemsTemp =  _.sortBy(this.state.json.tagToItems, function(d) {return d.tag.toLowerCase()});
         var itemToTagsTemp = this.state.json.itemToTags;
         var visDataTemp = this.matrixData(tagToItemsTemp);
         var tagToItemsActiveTemp = this.activeTagsInit(tagToItemsTemp);
@@ -216,17 +216,17 @@ var Matrix = React.createClass({
         updatedItems = this.state.initialItems;
     } else {
 
-        var tagMediaTuple = selected.toLowerCase();
+        var tagMediaTuple = selected;
 
         //use regex to parse the tag and mediaLabel
         var inputTag = tagMediaTuple.replace(/\(|\)/g,'').split(",")[0];
         var inputMedia = tagMediaTuple.replace(/\(|\)/g,'').split(",")[1];
+        inputMedia = inputMedia.toLowerCase();
 
         if(inputTag!="") {
 
           //Filter By Tag
           var withTag = _.findWhere(updatedTagToItems, {tag: inputTag});
-
           var withTagKey;
           if(!!withTag) {withTagKey = withTag.keys;}
 
