@@ -22,7 +22,6 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
         //COLORS = ["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"], // alternatively colorbrewer.YlGnBu[9]
         COLORS = {green: colorbrewer.Greens[4], red: colorbrewer.Reds[4], blue: colorbrewer.Blues[4], purple: colorbrewer.Purples[4]};
   var state = {};
-  state.svg = null;
   state.boxClicked = false;
   state.clickedBox = null;
   state.clickedMediaLabel = null;
@@ -170,7 +169,7 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
 
     resetGrid();
     var clickedBox = d3.select(this);
-
+    
     if(this.classList.contains("clicked-bordered") && state.lastClicked == this) {
       state.boxClicked = false;
       state.clickedBox = null;

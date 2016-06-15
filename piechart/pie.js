@@ -13,15 +13,21 @@ var values = function(data) {return data.map(function(d){return objVal(d,2)});};
 
 //PieChart Constructor
 var PieChart = function(divId, data) {
+  console.log(data)
 
   /* ------- CONSTANTS -------*/
-  const MARGIN = { top: 80, right: 0, bottom: 100, left: 100 },
+  const MARGIN = { top: 80, right: -100, bottom: 100, left: 100 },
         PADDING = 2,
-        WIDTH = 700 - MARGIN.left - MARGIN.right,
+        WIDTH = 600 - MARGIN.left - MARGIN.right,
         HEIGHT = 400,
   	    RADIUS = Math.min(WIDTH, HEIGHT) / 2;
   const duration = 1000;
-  //pieChart(bindData(data), divId, width, height);
+
+  var state = {};
+  state.sliceClicked = false;
+  state.clickedSlice = null;
+  state.lastClicked = null;
+  state.clickedMediaLabel = null
 
   var pie = d3.layout.pie()
   	.sort(null)
@@ -29,17 +35,7 @@ var PieChart = function(divId, data) {
   		return d.value;
   	});
 
-  var arc = d3.svg.arc()
-  	.outerRadius(RADIUS * 0.8)
-  	.innerRadius(RADIUS * 0.4);
 
-  var arcInner = d3.svg.arc()
-  	.outerRadius(RADIUS * 0.3);
-
-
-  var outerArc = d3.svg.arc()
-  	.innerRadius(RADIUS * 0.9)
-  	.outerRadius(RADIUS * 0.9);
 
   var color = d3.scale.category20();
 
@@ -76,12 +72,29 @@ var PieChart = function(divId, data) {
   chart.data = bindData(data);
   chart.svg = createNew(divId);
 
+  //Normal
+  chart.arc = d3.svg.arc()
+    .outerRadius(RADIUS * 0.8)
+    .innerRadius(RADIUS * 0.4);
+
+  //When the slice is clicked
+  chart.arcOver = d3.svg.arc()
+   .outerRadius(RADIUS * 0.85)
+   .innerRadius(RADIUS * 0.3);
+
+  chart.arcInner = d3.svg.arc()
+    .outerRadius(RADIUS * 0.3);
+
+  chart.outerArc = d3.svg.arc()
+    .innerRadius(RADIUS * 0.9)
+    .outerRadius(RADIUS * 0.9);
+
   function createNew(divId) {
     return d3.select(divId).append("svg")
              .attr("width", WIDTH + MARGIN.left + MARGIN.right)
              .attr("height", HEIGHT + MARGIN.top + MARGIN.bottom)
              .append("g")
-             .attr("transform", "translate(" + MARGIN.left + "," + MARGIN.top + ")");
+             .attr("transform", "translate(" + 0 + "," + MARGIN.top + ")");
   }
   chart.svg.append("g")
     .attr("class", "slices");
@@ -123,7 +136,7 @@ var PieChart = function(divId, data) {
            var _this = this;
            return function(t) {
              _this._current = interpolate(t);
-             return arc(_this._current);
+             return chart.arc(_this._current);
            };
          });
 
@@ -132,8 +145,23 @@ var PieChart = function(divId, data) {
        .on("click",sliceClick);// sliceMmouseover is defined below.
 
 
- /* ------- SLICE EVENTS -------*/
+ /* ------- Interactions -------*/
+ function resetChartMenu() {
+   d3.svg.arc()
+   	.outerRadius(RADIUS * 0.8)
+   	.innerRadius(RADIUS * 0.4);
+   chart.svg.selectAll(".slice").classed("selected-bordered", false).classed("clicked-bordered", false);
+   //mediaLabelUnhighlight();
+   if(state.sliceClicked) {
+     state.clickedSlice.classed("clicked-bordered", true);
+     //mediaLabelHighlight(state.clickedMediaLabel);
+   }
+ }
+
  function sliceMouseover(d) {
+   resetChartMenu();
+
+   d3.select(this).classed("selected-border", true);
    d3.select("#selected-label").text(d.data.label);
 
    dataInner = [{label: d.data.label, value: 1}];
@@ -165,18 +193,59 @@ var PieChart = function(divId, data) {
        var _this = this;
        return function(t) {
          _this._current = interpolate(t);
-         return arcInner(_this._current);
+         return chart.arcInner(_this._current);
        };
      });
 
-  sliceInner
+   sliceInner
        .exit().transition().delay(0).duration(0)
        .remove();
 
    }
-  function sliceClick(d) {
-     //d3.select('#pie-chart-desc').text(d.data.label+", "+d.value);
-   }
+ function sliceClick(d) {
+    updateFilteredList(d.data.label, "");
+    resetChartMenu();
+
+    var clickedSlice = d3.select(this);
+
+
+    clickedSlice.attr("d", chart.arcOver)
+
+
+    if(this.classList.contains("clicked-bordered") && state.lastClicked == this) {
+      d3.svg.arc()
+        .outerRadius(RADIUS * 0.85)
+        .innerRadius(RADIUS * 0.4);
+      state.sliceClicked = false;
+      state.clickedSlice = null;
+      state.lastClicked = this;
+    } else {
+      state.sliceClicked = true;
+      state.clickedSlice = clickedSlice;
+      state.lastClicked = this;
+    }
+    resetChartMenu();
+    console.log(this);
+    console.log(d)
+
+
+
+    clickedSlice.classed("selected-bordered", true)
+  }
+  //Event Handler from react-dom will take care changes to selected-tag-media
+  function updateFilteredList(tag, mediaLabel) {
+    var selected = d3.selectAll("#selected-tag-media").attr("value");
+    var newSelected = "("+tag+","+mediaLabel+")";
+    d3.selectAll("#selected-tag-media").attr("value", newSelected);
+
+    if(selected==newSelected) {
+      d3.selectAll("#selected-tag-media").attr("value", "");
+    } else {
+      d3.selectAll("#selected-tag-media").attr("value", newSelected);
+    }
+
+  }
+
 
   /* ------- TEXT LABELS -------*/
   chart.text = chart.svg.select(".labels").selectAll("text").data(pie(was), key);
@@ -205,7 +274,7 @@ var PieChart = function(divId, data) {
          return function(t) {
            var d2 = interpolate(t);
            _this._current = d2;
-           var pos = outerArc.centroid(d2);
+           var pos = chart.outerArc.centroid(d2);
            pos[0] = RADIUS * (midAngle(d2) < Math.PI ? 1 : -1);
            return "translate("+ pos +")";
          };
@@ -248,9 +317,9 @@ var PieChart = function(divId, data) {
          return function(t) {
            var d2 = interpolate(t);
            _this._current = d2;
-           var pos = outerArc.centroid(d2);
+           var pos = chart.outerArc.centroid(d2);
            pos[0] = RADIUS * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
-           return [arc.centroid(d2), outerArc.centroid(d2), pos];
+           return [chart.arc.centroid(d2), chart.outerArc.centroid(d2), pos];
          };
        });
 

@@ -1,6 +1,6 @@
-#pie-chart {
-	width: 60%;
-	height: 100%;
+#piechart {
+	width: 600px;
+	height: 480px;
 }
 
 #pie-svg{
@@ -10,6 +10,15 @@
 path.slice{
 	stroke-width:2px;
 	cursor: pointer;
+}
+
+path.selected-bordered {
+	stroke: #E6E6E6;
+	stroke-width: 1px;
+}
+path.clicked-bordered {
+	stroke: #424242;
+	stroke-width: 0px;
 }
 path.slice:hover {  opacity:0.8; }
 
