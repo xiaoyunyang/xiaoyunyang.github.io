@@ -289,7 +289,6 @@ var Matrix = React.createClass({
     return (
       <div className="row">
         <h4>Adjacency Matrix DataVis:</h4>
-        <p>Click <a href="matrix/matrix.html">HERE</a> for template</p>
         <h5>Pick tags to display</h5>
         <footer className="entry-meta">
           <span className="tag-links">
