@@ -98,9 +98,17 @@ var Matrix = React.createClass({
   },
   activeTagsInit: function(tagToItems) {
     //This function determines what goes into the matrix initially
-    return _.filter(tagToItems, function(d) {
-      return _.unique(d.media).length > 2 && d.keys.length>4;
-    });
+    if(tagToItems.length<10) {
+      return tagToItems;
+    } else {
+      var filtered = function(tagToItems) {
+        return _.filter(tagToItems, function(d) {
+          return _.unique(d.media).length > 2 && d.keys.length>4;
+        });
+      }
+      return _.first(filtered(tagToItems), 10);
+    }
+
   },
   matrixVis: function(divId, visActiveData, mediaType, colorTheme) {
     d3.select(divId).selectAll("svg").remove();

@@ -1,5 +1,4 @@
 var dataset = "hello";
-var user = "xyang";
 
 function loadUserData() {
   var filePath = "assets/data/profile/"+user+".json";
