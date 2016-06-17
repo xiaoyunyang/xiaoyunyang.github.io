@@ -117,7 +117,7 @@ var Matrix = React.createClass({
       .attr("class", function(d){ return "btn-floating waves-effect waves-light "+d; })
       .on("click", function(d) {
         this.setState({colorTheme:  d});
-        this.state.heatmapChart.changeColor("#chart", this.state.visActiveData, this.state.colorTheme);
+        this.state.heatmapChart.changeColor("#chart-matrix", this.state.visActiveData, this.state.colorTheme);
       }.bind(this));
     colorsPicker.append("i").attr("class", "material-icons").text("color_lens");
 
@@ -160,7 +160,7 @@ var Matrix = React.createClass({
             //this.renderTags('#tags', this.state.visData, this.state.visActiveData);
 
             var heatmapChartTemp = this.matrixVis(
-              "#chart",
+              "#chart-matrix",
               this.state.visActiveData,
               this.state.mediaType,
               this.state.colorTheme
@@ -273,7 +273,7 @@ var Matrix = React.createClass({
     }
     var visActiveDataTemp = this.matrixData(newTagToItemsActive);
     var heatmapChartTemp = this.matrixVis(
-      "#chart",
+      "#chart-matrix",
       visActiveDataTemp,
       this.state.mediaType,
       this.state.colorTheme
@@ -300,7 +300,7 @@ var Matrix = React.createClass({
           <h5>Toggle chart colors:</h5>
           <div id="colors-picker"></div>
 
-          <div id="chart" onClick={this.filterListByTag}>
+          <div id="chart-matrix" onClick={this.filterListByTag}>
             <div className="tooltip hidden">
               <p><strong className="title">Title</strong></p>
               <p><span className="value">Value</span></p>
@@ -314,61 +314,6 @@ var Matrix = React.createClass({
           <List items={this.state.items}/>
         </div>
       </div>
-    );
-  }
-});
-var List = React.createClass({
-
-  render: function() {
-    return (
-      <div>
-        <div className="">
-          <ul className="collection with-header"> {
-            this.props.items.map(function(d, i) {
-              return(
-                <li key={i} className="collection-item avatar">
-                  <img className="square" src={"../assets/images/"+d.favicon+".png"} />
-                  <span className="entry-header">
-                    <a target="_blank" href={d.url}>{d.title} <i className="tiny material-icons">open_in_new</i></a>
-                  </span>
-                  <footer className="entry-meta">
-                    <span className="tag-links">
-                      <Tags tags={[d.tag1,d.tag2,d.tag3,d.tag4,d.tag5]} activeTags={[]} tagClick={this.tagClick}/>
-                    </span>
-                    <a className="readmore" href="http://xiaoyunyang.github.io/" title="See more">See more</a>
-                  </footer>
-                  <div className="entry-meta">
-                    <span><a href=""><i className="material-icons author">&#xE866;</i>{d.username}</a></span>
-                    <span><a href=""><i className="material-icons date">&#xE192;</i>April 18, 2016</a></span>
-                    <span><a href=""><i className="material-icons comments">&#xE0BF;</i>Comments</a></span>
-                  </div>
-                  <p>{d.description}</p>
-                </li>
-              );
-            })
-          }</ul>
-        </div>
-      </div>
-    );
-  }
-});
-
-var Tags = React.createClass({
-  tagClick: function(event) {
-    this.props.tagClick(event);
-  },
-  render: function() {
-    var activeTags = this.props.activeTags;
-    return (
-         <div>{
-          this.props.tags.map(function(t,i) {
-            if(t!="NULL" && _.contains(activeTags,t)) {
-              return <a key={i} value={t} className="active" rel="tag" onClick={this.tagClick}>{t}</a>
-            }else if(t!="NULL") {
-              return <a key={i} value={t} rel="tag" onClick={this.tagClick}>{t}</a>
-            }
-          }.bind(this))
-        }</div>
     );
   }
 });

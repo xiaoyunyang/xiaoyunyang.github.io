@@ -205,6 +205,34 @@ var Pie = React.createClass({
     });
     this.setState({items: updatedItems});
   },
+  tagClick: function(event) {
+    var tag = event.target.getAttribute("value")
+
+    var activeTags = this.state.tagToItemsActive.map(function(d) {return d.tag;});
+    var newTagToItemsActive;
+
+    if(_.contains(activeTags, tag)) {
+      newTagToItemsActive = _.filter(this.state.tagToItemsActive, function(d) {
+        return d.tag != tag;
+      });
+    }
+    else {
+      newTagToItemsActive = this.state.tagToItems;
+      activeTags = activeTags.concat(tag);
+      newTagToItemsActive = _.filter(this.state.tagToItems, function(d) {
+        return _.contains(activeTags, d.tag);
+      });
+    }
+    var visActiveDataTemp = this.pieData(newTagToItemsActive);
+    var pieChartTemp = this.pieVis("#chart", this.state.visActiveData);
+
+    this.setState({
+      tagToItemsActive: newTagToItemsActive,
+      visActiveData: visActiveDataTemp,
+      visActiveData: visActiveDataTemp,
+      pieChart: pieChartTemp
+    });
+  },
   render: function() {
     return (
       <div className="row">
@@ -287,4 +315,4 @@ var Tags = React.createClass({
     );
   }
 });
-ReactDOM.render(<Pie divId="matrix" url={source} pollInterval={100000}/>, document.getElementById('pie'));
+ReactDOM.render(<Pie divId="pie" url={source} pollInterval={100000}/>, document.getElementById('pie'));

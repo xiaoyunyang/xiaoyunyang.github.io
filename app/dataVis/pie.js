@@ -1,280 +1,329 @@
-function mountPieChart(data) {
-  pieChart(bindData(data), divId, width, height);
-}
-
-/* ------- CONSTANTS -------*/
-var divId = "#pie-chart";
-var width = 600;
-var height = 400,
-	radius = Math.min(width, height) / 2;
-
-var pie = d3.layout.pie()
-	.sort(null)
-	.value(function(d) {
-		return d.value;
-	});
-
-var arc = d3.svg.arc()
-	.outerRadius(radius * 0.8)
-	.innerRadius(radius * 0.4);
-
-var arcInner = d3.svg.arc()
-	.outerRadius(radius * 0.3);
-
-
-var outerArc = d3.svg.arc()
-	.innerRadius(radius * 0.9)
-	.outerRadius(radius * 0.9);
-
-var color = d3.scale.category20();
-
 /* ------- ANONYMOUS FUNCTIONS -------*/
+//TODO: need to put all these anonymous functions in a helper library
 var key = function(d){ return d.data.label; };
 
-/* ------- FUNCTIONS WITH SIDE EFFECTS -------*/
+//anonymous function
+var objKey = function(d, i) {return Object.keys(d)[i]};
+var objVal = function(d, i) {return d[objKey(d,i)];}
 
-d3.select(".randomize")
-	.on("click", function(){
-		pieChart(randomData(), divId, width, height);
-	});
+var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
+var media = function(data) {return _.unique(data.map(function(d){return objVal(d,1)}));};
+var values = function(data) {return data.map(function(d){return objVal(d,2)});};
 
-/* ------- RT FUNCTIONS -------*/
 
-function mergeWithFirstEqualZero(first, second){
-	var secondSet = d3.set(); second.forEach(function(d) { secondSet.add(d.label); });
+//PieChart Constructor
+var PieChart = function(divId, data) {
 
-	var onlyFirst = first
-		.filter(function(d){ return !secondSet.has(d.label) })
-		.map(function(d) { return {label: d.label, value: 0}; });
-	return d3.merge([ second, onlyFirst ])
-		.sort(function(a,b) {
-			return d3.ascending(a.label, b.label);
-		});
-}
+  /* ------- CONSTANTS -------*/
+  const MARGIN = { top: 80, right: -100, bottom: 100, left: 100 },
+        PADDING = 2,
+        WIDTH = 600 - MARGIN.left - MARGIN.right,
+        HEIGHT = 400,
+  	    RADIUS = Math.min(WIDTH, HEIGHT) / 2;
+  const duration = 1000;
 
-function randomData (){
-	var labels = color.domain();
-	return labels.map(function(label){
-		return { label: label, value: Math.random() }
-	}).filter(function() {
-		return Math.random() > .5;
-	}).sort(function(a,b) {
-		return d3.ascending(a.label, b.label);
-	});
-}
+  var state = {};
+  state.sliceClicked = false;
+  state.clickedSlice = null;
+  state.lastClicked = null;
+  state.clickedMediaLabel = null;
+  state.dataInner = null;
 
-function bindData (data) {
-	//anonymous functions
-	var labels = data.map(function(d){return d[Object.keys(d)[0]]});
-	var values = data.map(function(d){return d[Object.keys(d)[1]]});
-	color = d3.scale.category20().domain(labels);
+  var pie = d3.layout.pie()
+  	.sort(null)
+  	.value(function(d) {
+  		return d.value;
+  	});
 
-	return labels.map(function(d,i){
-		return { label: d, value: values[i] }
-	}).sort(function(a,b) {
-		return d3.ascending(a.label, b.label);
-	});
-}
 
-function pieChart(data, divId, width, height) {
-  var svg = d3.selectAll(divId)
-  				.append("svg")
-          .attr("id", "pie-svg")
-  				.append("g")
 
-  	svg.append("g")
-  		.attr("class", "slices");
-  	svg.append("g")
-  		.attr("class", "labels");
-  	svg.append("g")
-  		.attr("class", "lines");
-  	svg.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+  var color = d3.scale.category20();
 
-  	svg.append("g")
-  	   .attr("class", "inner-slices");
 
-  var duration = 1000;
-	var data0 = svg.select(".slices").selectAll("path.slice")
-		.data().map(function(d) { return d.data });
+  /* ------- FUNCTIONS WITH SIDE EFFECTS -------*/
 
-	if (data0.length == 0) data0 = data;
-	var was = mergeWithFirstEqualZero(data, data0);
-	var is = mergeWithFirstEqualZero(data0, data);
+  function mergeWithFirstEqualZero(first, second){
+  	var secondSet = d3.set(); second.forEach(function(d) { secondSet.add(d.label); });
 
-	/* ------- SLICE ARCS -------*/
+  	var onlyFirst = first
+  		.filter(function(d){ return !secondSet.has(d.label) })
+  		.map(function(d) { return {label: d.label, value: 0}; });
+  	return d3.merge([ second, onlyFirst ])
+  		.sort(function(a,b) {
+  			return d3.ascending(a.label, b.label);
+  		});
+  }
+  function bindData (data) {
+  	//anonymous functions
 
-	var slice = svg.select(".slices").selectAll("path.slice")
-		.data(pie(was), key);
+  	var labels = data.map(function(d){return d[Object.keys(d)[0]]});
+  	var values = data.map(function(d){return d[Object.keys(d)[1]]});
+  	color = d3.scale.category20().domain(labels);
 
-	slice.enter()
-		.insert("path")
-		.attr("class", "slice")
-		.style("fill", function(d) { return color(d.data.label); })
-		.each(function(d) {
-			this._current = d;
-		});
-
-	slice = svg.select(".slices").selectAll("path.slice")
-		.data(pie(is), key);
-
-	slice
-		.transition().duration(duration)
-		.attrTween("d", function(d) {
-			var interpolate = d3.interpolate(this._current, d);
-			var _this = this;
-			return function(t) {
-				_this._current = interpolate(t);
-				return arc(_this._current);
-			};
-		});
-
-	slice = svg.select(".slices").selectAll("path.slice")
-		.data(pie(data), key);
-
-	slice
-		.exit().transition().delay(duration).duration(0)
-		.remove();
-
-	slice
-		.on("mouseover",sliceMouseover)// sliceMmouseover is defined below.
-    .on("click",sliceClick);// sliceMmouseover is defined below.
-
-	/* ------- SLICE EVENTS -------*/
-	function sliceMouseover(d) {
-		d3.select("#selected-label").text(d.data.label);
-
-		dataInner = [{label: d.data.label, value: 1}];
-		svg.select(".inner-slices").selectAll("path.slice-inner").remove();
-    svg.select(".inner-slices").selectAll("text", "g").remove();
-
-		var sliceInner = svg.select(".inner-slices").selectAll("path.slice-inner")
-			.data(pie(dataInner), key);
-
-		sliceInner.enter()
-			.insert("path")
-			.attr("class", "slice-inner")
-			.style("fill", function(d) { return color(d.data.label); })
-			.each(function(d) {
-				this._current = d;
-			});
-
-		svg.select(".inner-slices").insert("text", "g")
-            .text(d.data.label+ ", $"+d.data.value)
-            .attr("font-family", "sans-serif")
-          	.attr("font-size", "12px")
-            .attr("fill", "white")
-            .attr("text-anchor", "middle");
-
-		sliceInner
-			.transition().duration(0)
-			.attrTween("d", function(d) {
-				var interpolate = d3.interpolate(this._current, d);
-				var _this = this;
-				return function(t) {
-					_this._current = interpolate(t);
-					return arcInner(_this._current);
-				};
-			});
-
-		sliceInner
-			.exit().transition().delay(0).duration(0)
-			.remove();
-
-	}
-  function sliceClick(d) {
-    //console.log(d.data.label+", "+d.value);
-    d3.select('#pie-chart-desc').text(d.data.label+", "+d.value);
+  	return labels.map(function(d,i){
+  		return { label: d, value: values[i] }
+  	}).sort(function(a,b) {
+  		return d3.ascending(a.label, b.label);
+  	});
   }
 
-	/* ------- TEXT LABELS -------*/
+  //private state variables
+  var chart = {};
+  chart.data = bindData(data);
+  chart.svg = createNew(divId);
 
-	var text = svg.select(".labels").selectAll("text")
-		.data(pie(was), key);
 
-	text.enter()
-		.append("text")
-		.attr("dy", ".35em")
-		.style("opacity", 0)
-		.text(function(d) {
-			return d.data.label;
-		})
-		.each(function(d) {
-			this._current = d;
-		});
+  //Normal
+  chart.arc = d3.svg.arc()
+    .outerRadius(RADIUS * 0.8)
+    .innerRadius(RADIUS * 0.4);
 
-	function midAngle(d){
-		return d.startAngle + (d.endAngle - d.startAngle)/2;
-	}
+  //When the slice is clicked
+  chart.arcOver = d3.svg.arc()
+   .outerRadius(RADIUS * 0.85)
+   .innerRadius(RADIUS * 0.3);
 
-	text = svg.select(".labels").selectAll("text")
-		.data(pie(is), key);
+  chart.arcInner = d3.svg.arc()
+    .outerRadius(RADIUS * 0.3);
 
-	text.transition().duration(duration)
-		.style("opacity", function(d) {
-			return d.data.value == 0 ? 0 : 1;
-		})
-		.attrTween("transform", function(d) {
-			var interpolate = d3.interpolate(this._current, d);
-			var _this = this;
-			return function(t) {
-				var d2 = interpolate(t);
-				_this._current = d2;
-				var pos = outerArc.centroid(d2);
-				pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
-				return "translate("+ pos +")";
-			};
-		})
-		.styleTween("text-anchor", function(d){
-			var interpolate = d3.interpolate(this._current, d);
-			return function(t) {
-				var d2 = interpolate(t);
-				return midAngle(d2) < Math.PI ? "start":"end";
-			};
-		});
+  chart.outerArc = d3.svg.arc()
+    .innerRadius(RADIUS * 0.9)
+    .outerRadius(RADIUS * 0.9);
 
-	text = svg.select(".labels").selectAll("text")
-		.data(pie(data), key);
+  function createNew(divId) {
+    return d3.select(divId).append("svg")
+             .attr("width", WIDTH + MARGIN.left + MARGIN.right)
+             .attr("height", HEIGHT + MARGIN.top + MARGIN.bottom)
+             .append("g")
+             .attr("transform", "translate(" + 0 + "," + MARGIN.top + ")");
+  }
+  chart.svg.append("g")
+    .attr("class", "slices");
+  chart.svg.append("g")
+    .attr("class", "labels");
+  chart.svg.append("g")
+    .attr("class", "lines");
+  chart.svg.attr("transform", "translate(" + WIDTH / 2 + "," + HEIGHT / 2 + ")");
 
-	text
-		.exit().transition().delay(duration)
-		.remove();
+  chart.svg.append("g")
+     .attr("class", "inner-slices");
 
-	/* ------- SLICE TO TEXT POLYLINES -------*/
+  /* ------- SLICE ARCS -------*/
 
-	var polyline = svg.select(".lines").selectAll("polyline")
-		.data(pie(was), key);
+  var data0 = chart.svg.select(".slices").selectAll("path.slice")
+  		.data().map(function(d) { return d.data });
 
-	polyline.enter()
-		.append("polyline")
-		.style("opacity", 0)
-		.each(function(d) {
-			this._current = d;
-		});
+  if (data0.length == 0) data0 = chart.data;
+  var was = mergeWithFirstEqualZero(chart.data, data0);
+  var is = mergeWithFirstEqualZero(data0, chart.data);
 
-	polyline = svg.select(".lines").selectAll("polyline")
-		.data(pie(is), key);
+  chart.slice = chart.svg.select(".slices").selectAll("path.slice")
+     		.data(pie(was), key);
 
-	polyline.transition().duration(duration)
-		.style("opacity", function(d) {
-			return d.data.value == 0 ? 0 : .5;
-		})
-		.attrTween("points", function(d){
-			this._current = this._current;
-			var interpolate = d3.interpolate(this._current, d);
-			var _this = this;
-			return function(t) {
-				var d2 = interpolate(t);
-				_this._current = d2;
-				var pos = outerArc.centroid(d2);
-				pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
-				return [arc.centroid(d2), outerArc.centroid(d2), pos];
-			};
-		});
+ 	chart.slice.enter()
+ 		.insert("path")
+ 		.attr("class", "slice")
+ 		.style("fill", function(d) { return color(d.data.label); })
+ 		.each(function(d) {
+ 			this._current = d;
+ 		});
 
-	polyline = svg.select(".lines").selectAll("polyline")
-		.data(pie(data), key);
+ 	chart.slice = chart.svg.select(".slices").selectAll("path.slice")
+ 		.data(pie(is), key);
 
-	polyline
-		.exit().transition().delay(duration)
-		.remove();
-};
+
+
+  chart.slice.transition().duration(duration)
+       .attrTween("d", function(d) {
+           var interpolate = d3.interpolate(this._current, d);
+           var _this = this;
+           return function(t) {
+             _this._current = interpolate(t);
+             return chart.arc(_this._current);
+           };
+         });
+
+  chart.slice
+       .on("mouseover",sliceMouseover)// sliceMmouseover is defined below.
+       .on("click",sliceClick);// sliceMmouseover is defined below.
+
+ /********************
+  **  Interactions  **
+ /********************/
+ function resetChartMenu() {
+   chart.slice.attr("d", chart.arc)
+   chart.svg.selectAll(".slice").classed("selected-bordered", false).classed("clicked-bordered", false);
+
+   if(state.sliceClicked) {
+     state.clickedSlice.classed("clicked-bordered", true);
+     //mediaLabelHighlight(state.clickedMediaLabel);
+     state.clickedSlice.attr("d", chart.arcOver)
+   }
+   chart.svg.select(".inner-slices").selectAll("path.slice-inner").remove();
+   chart.svg.select(".inner-slices").selectAll("text", "g").remove();
+   changeSliceInner(state.dataInner);
+ }
+
+ function sliceMouseover(d) {
+   if(state.sliceClicked) return;
+
+   d3.select(this).classed("selected-border", true);
+   d3.select("#selected-label").text(d.data.label);
+
+   state.dataInner = {label: d.data.label, value: d.data.value};
+
+   resetChartMenu();
+ }
+ function changeSliceInner(dataInner, d) {
+   if(dataInner==null) return;
+
+   var sliceInner = chart.svg.select(".inner-slices")
+                         .selectAll("path.slice-inner")
+                         .data(pie([dataInner]), key);
+   sliceInner.enter()
+     .insert("path")
+     .attr("class", "slice-inner")
+     .style("fill", function(d) { return color(d.data.label); })
+     .each(function(d) {
+       this._current = d;
+     });
+   chart.svg.select(".inner-slices").insert("text", "g")
+           .text(dataInner.label+ ", "+dataInner.value)
+           .attr("font-family", "sans-serif")
+           .attr("font-size", "12px")
+           .attr("fill", "white")
+           .attr("text-anchor", "middle");
+
+   sliceInner
+      .transition().duration(0)
+      .attrTween("d", function(d) {
+           var interpolate = d3.interpolate(this._current, d);
+           var _this = this;
+           return function(t) {
+             _this._current = interpolate(t);
+             return chart.arcInner(_this._current);
+           };
+       });
+   sliceInner
+       .exit().transition().delay(0).duration(0)
+       .remove();
+ }
+
+ function sliceClick(d) {
+    updateFilteredList(d.data.label, "");
+
+    var clickedSlice = d3.select(this);
+
+    if(this.classList.contains("clicked-bordered") && state.lastClicked == this) {
+      state.sliceClicked = false;
+      state.clickedSlice = null;
+      state.lastClicked = this;
+      state.dataInner = null;
+    } else {
+      state.sliceClicked = true;
+      state.clickedSlice = clickedSlice;
+      state.lastClicked = this;
+      state.dataInner = {label: d.data.label, value: d.data.value};
+    }
+    resetChartMenu();
+
+    clickedSlice.classed("selected-bordered", true)
+  }
+  //Event Handler from react-dom will take care changes to selected-tag-media
+  function updateFilteredList(tag, mediaLabel) {
+    var selected = d3.selectAll("#selected-tag-media").attr("value");
+    var newSelected = "("+tag+","+mediaLabel+")";
+    d3.selectAll("#selected-tag-media").attr("value", newSelected);
+
+    if(selected==newSelected) {
+      d3.selectAll("#selected-tag-media").attr("value", "");
+    } else {
+      d3.selectAll("#selected-tag-media").attr("value", newSelected);
+    }
+
+  }
+
+
+  /* ------- TEXT LABELS -------*/
+  chart.text = chart.svg.select(".labels").selectAll("text").data(pie(was), key);
+  chart.text.enter()
+       .append("text")
+       .attr("dy", ".35em")
+       .style("opacity", 0)
+       .text(function(d) {
+         return d.data.label;
+       })
+       .each(function(d) {
+         this._current = d;
+       });
+  function midAngle(d){
+    return d.startAngle + (d.endAngle - d.startAngle)/2;
+  }
+
+  chart.text = chart.svg.select(".labels").selectAll("text").data(pie(is), key);
+  chart.text.transition().duration(duration)
+       .style("opacity", function(d) {
+         return d.data.value == 0 ? 0 : 1;
+       })
+       .attrTween("transform", function(d) {
+         var interpolate = d3.interpolate(this._current, d);
+         var _this = this;
+         return function(t) {
+           var d2 = interpolate(t);
+           _this._current = d2;
+           var pos = chart.outerArc.centroid(d2);
+           pos[0] = RADIUS * (midAngle(d2) < Math.PI ? 1 : -1);
+           return "translate("+ pos +")";
+         };
+       })
+       .styleTween("text-anchor", function(d){
+         var interpolate = d3.interpolate(this._current, d);
+         return function(t) {
+           var d2 = interpolate(t);
+           return midAngle(d2) < Math.PI ? "start":"end";
+         };
+       });
+
+  chart.text = chart.svg.select(".labels").selectAll("text").data(pie(chart.data), key);
+
+  chart.text
+       .exit().transition().delay(duration)
+       .remove();
+
+  /* ------- SLICE TO TEXT POLYLINES -------*/
+  chart.polyline = chart.svg.select(".lines").selectAll("polyline").data(pie(was), key);
+
+  chart.polyline.enter()
+       .append("polyline")
+       .style("opacity", 0)
+       .each(function(d) {
+         this._current = d;
+       });
+
+  chart.polyline = chart.svg.select(".lines").selectAll("polyline")
+       .data(pie(is), key);
+
+  chart.polyline.transition().duration(duration)
+       .style("opacity", function(d) {
+         return d.data.value == 0 ? 0 : .5;
+       })
+       .attrTween("points", function(d){
+         this._current = this._current;
+         var interpolate = d3.interpolate(this._current, d);
+         var _this = this;
+         return function(t) {
+           var d2 = interpolate(t);
+           _this._current = d2;
+           var pos = chart.outerArc.centroid(d2);
+           pos[0] = RADIUS * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+           return [chart.arc.centroid(d2), chart.outerArc.centroid(d2), pos];
+         };
+       });
+
+  chart.polyline = chart.svg.select(".lines").selectAll("polyline")
+       .data(pie(chart.data), key);
+
+  chart.polyline
+       .exit().transition().delay(duration)
+       .remove();
+}

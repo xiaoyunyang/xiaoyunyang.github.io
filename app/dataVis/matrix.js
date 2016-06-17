@@ -15,7 +15,7 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
         HEIGHT = tags(data).length * GRID_SIZE + MARGIN.top + MARGIN.bottom,
         LEGEND_ELEM_WIDTH = GRID_SIZE * 2,
         TOOLTIP_HEIGHT = 20,
-        MEDIA_ICONS = {Image: '\ue3f4', Video: '\ue04a', Discussion: '\ue8af', Article: '\ue02f', Code: '\ue86f', Tutorial: '\ue8fd', Interactive: '\ue913', Website: '\ue894'  }, //Materials
+        MEDIA_ICONS = {Link: '\ue157', Assignment: '\ue85d', Reading: '\ue86d', Image: '\ue3f4', Video: '\ue038', Discussion: '\ue8af', Article: '\ue873', Articles: '\ue02f', Code: '\ue86f', Tutorial: '\ue8fd', Interactive: '\ue913', Website: '\ue894'}, //Materials
         //MEDIA_ICONS = {Image: '\uf03e', Video: '\uf16a', Answer: '\uf059', Article: '\ue02f', Code: '\uf121', Tutorial: '\ue8fd'  } //FontAwesome
         //MEDIA_IMAGES = {Image: 'oatmeal/0.png', Video: 'oatmeal/1.png', Answer: 'oatmeal/2.png', Article: 'oatmeal/3.png', Code: 'oatmeal/4.png', Tutorial: 'oatmeal/5.png'  }
         MEDIA_IMAGES = {Jake: 'uifaces/0.jpg', Adam: 'uifaces/1.jpg', Rob: 'uifaces/2.jpg', Tom: 'uifaces/3.jpg', Valerie: 'uifaces/4.jpg', Tutorial: 'uifaces/5.jpg'  },
@@ -169,7 +169,7 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
 
     resetGrid();
     var clickedBox = d3.select(this);
-    
+
     if(this.classList.contains("clicked-bordered") && state.lastClicked == this) {
       state.boxClicked = false;
       state.clickedBox = null;

@@ -13,7 +13,6 @@ var values = function(data) {return data.map(function(d){return objVal(d,2)});};
 
 //PieChart Constructor
 var PieChart = function(divId, data) {
-  console.log(data)
 
   /* ------- CONSTANTS -------*/
   const MARGIN = { top: 80, right: -100, bottom: 100, left: 100 },
@@ -27,7 +26,8 @@ var PieChart = function(divId, data) {
   state.sliceClicked = false;
   state.clickedSlice = null;
   state.lastClicked = null;
-  state.clickedMediaLabel = null
+  state.clickedMediaLabel = null;
+  state.dataInner = null;
 
   var pie = d3.layout.pie()
   	.sort(null)
@@ -71,6 +71,7 @@ var PieChart = function(divId, data) {
   var chart = {};
   chart.data = bindData(data);
   chart.svg = createNew(divId);
+
 
   //Normal
   chart.arc = d3.svg.arc()
@@ -130,6 +131,8 @@ var PieChart = function(divId, data) {
  	chart.slice = chart.svg.select(".slices").selectAll("path.slice")
  		.data(pie(is), key);
 
+
+
   chart.slice.transition().duration(duration)
        .attrTween("d", function(d) {
            var interpolate = d3.interpolate(this._current, d);
@@ -144,33 +147,39 @@ var PieChart = function(divId, data) {
        .on("mouseover",sliceMouseover)// sliceMmouseover is defined below.
        .on("click",sliceClick);// sliceMmouseover is defined below.
 
-
- /* ------- Interactions -------*/
+ /********************
+  **  Interactions  **
+ /********************/
  function resetChartMenu() {
-   d3.svg.arc()
-   	.outerRadius(RADIUS * 0.8)
-   	.innerRadius(RADIUS * 0.4);
+   chart.slice.attr("d", chart.arc)
    chart.svg.selectAll(".slice").classed("selected-bordered", false).classed("clicked-bordered", false);
-   //mediaLabelUnhighlight();
+
    if(state.sliceClicked) {
      state.clickedSlice.classed("clicked-bordered", true);
      //mediaLabelHighlight(state.clickedMediaLabel);
+     state.clickedSlice.attr("d", chart.arcOver)
    }
+   chart.svg.select(".inner-slices").selectAll("path.slice-inner").remove();
+   chart.svg.select(".inner-slices").selectAll("text", "g").remove();
+   changeSliceInner(state.dataInner);
  }
 
  function sliceMouseover(d) {
-   resetChartMenu();
+   if(state.sliceClicked) return;
 
    d3.select(this).classed("selected-border", true);
    d3.select("#selected-label").text(d.data.label);
 
-   dataInner = [{label: d.data.label, value: 1}];
-   chart.svg.select(".inner-slices").selectAll("path.slice-inner").remove();
-   chart.svg.select(".inner-slices").selectAll("text", "g").remove();
+   state.dataInner = {label: d.data.label, value: d.data.value};
 
-   var sliceInner = chart.svg.select(".inner-slices").selectAll("path.slice-inner")
-     .data(pie(dataInner), key);
+   resetChartMenu();
+ }
+ function changeSliceInner(dataInner, d) {
+   if(dataInner==null) return;
 
+   var sliceInner = chart.svg.select(".inner-slices")
+                         .selectAll("path.slice-inner")
+                         .data(pie([dataInner]), key);
    sliceInner.enter()
      .insert("path")
      .attr("class", "slice-inner")
@@ -178,57 +187,45 @@ var PieChart = function(divId, data) {
      .each(function(d) {
        this._current = d;
      });
-
    chart.svg.select(".inner-slices").insert("text", "g")
-           .text(d.data.label+ ", "+d.data.value)
+           .text(dataInner.label+ ", "+dataInner.value)
            .attr("font-family", "sans-serif")
            .attr("font-size", "12px")
            .attr("fill", "white")
            .attr("text-anchor", "middle");
 
    sliceInner
-     .transition().duration(0)
-     .attrTween("d", function(d) {
-       var interpolate = d3.interpolate(this._current, d);
-       var _this = this;
-       return function(t) {
-         _this._current = interpolate(t);
-         return chart.arcInner(_this._current);
-       };
-     });
-
+      .transition().duration(0)
+      .attrTween("d", function(d) {
+           var interpolate = d3.interpolate(this._current, d);
+           var _this = this;
+           return function(t) {
+             _this._current = interpolate(t);
+             return chart.arcInner(_this._current);
+           };
+       });
    sliceInner
        .exit().transition().delay(0).duration(0)
        .remove();
+ }
 
-   }
  function sliceClick(d) {
     updateFilteredList(d.data.label, "");
-    resetChartMenu();
 
     var clickedSlice = d3.select(this);
 
-
-    clickedSlice.attr("d", chart.arcOver)
-
-
     if(this.classList.contains("clicked-bordered") && state.lastClicked == this) {
-      d3.svg.arc()
-        .outerRadius(RADIUS * 0.85)
-        .innerRadius(RADIUS * 0.4);
       state.sliceClicked = false;
       state.clickedSlice = null;
       state.lastClicked = this;
+      state.dataInner = null;
     } else {
       state.sliceClicked = true;
       state.clickedSlice = clickedSlice;
       state.lastClicked = this;
+      state.dataInner = {label: d.data.label, value: d.data.value};
     }
     resetChartMenu();
-    console.log(this);
-    console.log(d)
-
-
 
     clickedSlice.classed("selected-bordered", true)
   }
