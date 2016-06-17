@@ -115,7 +115,7 @@ var TopNav = React.createClass({
           <a href="#" data-activates="mobile-menu" className="button-collapse right"><i className="mdi-navigation-menu"></i></a>
           <a href="#!" className="brand-logo">Xiaoyun Yang</a>
           <ul className="pills right hide-on-med-and-down">
-            <li className="home-pill"><a href="#home">Home</a></li>
+            <li className="bookmarks-pill"><a href="#bookmarks">Bookmarks</a></li>
             <li className="life-pill"><a href="#life">Life</a></li>
             <li className="writing-pill"><a href="#writing">Writing</a></li>
             <li className="about-pill"><a href="#about">About</a></li>

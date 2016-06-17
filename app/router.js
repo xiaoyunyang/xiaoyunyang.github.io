@@ -4,15 +4,16 @@ $(function(){
 
 		//map url routes to contained methods
 		routes: {
-			"": "home",
-			"home": "home",
+			"": "bookmarks",
+			"bookmarks": "bookmarks",
 			"life": "life",
 			"writing": "writing",
 			"about": "about",
 			"contact": "contact",
 			"map": "map",
 			"pie": "pie",
-			"matrix": "matrix"
+			"matrix": "matrix",
+			"timeline": "timeline"
 		},
 
 		deselectPills: function(){
@@ -39,9 +40,9 @@ $(function(){
 			$(page).show();
 		},
 
-		home: function() {
-			this.showPage('div#home-page');
-			this.selectPill('li.home-pill');
+		bookmarks: function() {
+			this.showPage('div#bookmarks-page');
+			this.selectPill('li.bookmarks-pill');
 		},
 		life: function() {
 			this.showPage('div#life-page');
@@ -72,6 +73,10 @@ $(function(){
 		matrix: function() {
 			this.showPage('div#matrix-page');
 			this.selectPill('li.matrix-pill');
+		},
+		timeline: function() {
+			this.showPage('div#timeline-page');
+			this.selectPill('li.timeline-pill');
 		}
 	});
 
@@ -82,11 +87,15 @@ $(function(){
 
 		//observe navigation click events and map to contained methods
 		events: {
-			'click ul.pills li.home-pill a': 'displayHome',
-			'click ul.pills li.home-pill a': 'displayLife',
-			'click ul.pills li.home-pill a': 'displayWriting',
+			'click ul.pills li.bookmarks-pill a': 'displayBookmarks',
+			'click ul.pills li.life-pill a': 'displayLife',
+			'click ul.pills li.writing-pill a': 'displayWriting',
 			'click ul.pills li.about-pill a': 'displayAbout',
-			'click ul.pills li.contact-pill a': 'displayContact'
+			'click ul.pills li.contact-pill a': 'displayContact',
+			'click ul.pills li.map-pill a': 'displayMap',
+			'click ul.pills li.pie-pill a': 'displayPie',
+			'click ul.pills li.matrix-pill a': 'displayMatrix',
+			'click ul.pills li.timeline-pill a': 'displayTimeline'
 		},
 
 		//called on instantiation
@@ -98,36 +107,33 @@ $(function(){
 			Backbone.history.start();
 		},
 
-		displayHome: function(){
-			//update url and pass true to execute route method
-			this.router.navigate("home", true);
+		displayBookmarks: function(){
+			this.router.navigate("bookmarks", true);
 		},
-
 		displayLife: function(){
-			//update url and pass true to execute route method
 			this.router.navigate("life", true);
 		},
-
 		displayWriting: function(){
-			//update url and pass true to execute route method
 			this.router.navigate("writing", true);
 		},
-
 		displayAbout: function(){
-			//update url and pass true to execute route method
 			this.router.navigate("about", true);
 		},
-
-
 		displayContact: function(){
-			//update url and pass true to execute route method
 			this.router.navigate("contact", true);
 		},
-		displayCost: function(){
-			//update url and pass true to execute route method
+		displayMap: function(){
 			this.router.navigate("map", true);
+		},
+		displayPie: function(){
+			this.router.navigate("pie", true);
+		},
+		displayMatrix: function(){
+			this.router.navigate("matrix", true);
+		},
+		displayTimeline: function(){
+			this.router.navigate("timeline", true);
 		}
-
 	});
 
 	//load application

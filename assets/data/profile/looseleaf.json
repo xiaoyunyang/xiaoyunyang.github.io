@@ -1,5 +1,5 @@
 {
-	"user": {"username":"xyang","name":"Xiaoyun Yang"},
+	"user": {"username":"looseleaf","name":"LooseLeaf"},
 	"binders": [
 		{"name":"US Map","alias":"map","description":"Map"},
 		{"name":"Pie Chart","alias":"pie","description":"Timeline"},
@@ -7,9 +7,10 @@
 		{"name":"Timeline","alias":"timeline","description":"timeline"}
 	],
 	"tags":[
-		{"tag":"Programming","count":1},
-		{"tag":"Philosophy","count":2},
-		{"tag":"Startups","count":1},
+		{"tag":"Traction","count":1},
+		{"tag":"Funding","count":2},
+		{"tag":"Business","count":1},
+		{"tag":"Tech","count":1},
 		{"tag":"DataVis","count":1}
 	]
 }

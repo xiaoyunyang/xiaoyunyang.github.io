@@ -103,12 +103,11 @@ var Matrix = React.createClass({
     } else {
       var filtered = function(tagToItems) {
         return _.filter(tagToItems, function(d) {
-          return _.unique(d.media).length > 2 && d.keys.length>4;
+          return _.unique(d.media).length >= 2 || d.keys.length>4;
         });
       }
       return _.first(filtered(tagToItems), 10);
     }
-
   },
   matrixVis: function(divId, visActiveData, mediaType, colorTheme) {
     d3.select(divId).selectAll("svg").remove();
@@ -324,36 +323,4 @@ var Matrix = React.createClass({
     );
   }
 });
-
-var HomeList = React.createClass({
-  componentWillMount: function() {
-    this.loadBookmarksFromServer();
-  },
-  loadBookmarksFromServer: function() {
-    d3.csv(this.props.url, function(error, data) {
-      if(error) {
-        console.log(error);
-      } else {
-        this.setState({items: data});
-      }
-    }.bind(this));
-  },
-  getInitialState: function() {
-    return {
-      items: []
-    };
-  },
-  render: function() {
-    return (
-      <div>
-        <div className="col s12 m8 l8">
-          <h4>Latest Projects and Bookmarks</h4>
-          <List items={this.state.items}/>
-        </div>
-      </div>
-    );
-  }
-});
-
 ReactDOM.render(<Matrix divId="matrix" url={source} pollInterval={100000}/>, document.getElementById('matrix'));
-ReactDOM.render(<HomeList url={source} pollInterval={100000}/>, document.getElementById('home'));
