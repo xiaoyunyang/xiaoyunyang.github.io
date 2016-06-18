@@ -78,6 +78,9 @@ footer.theme-color {
     display: inline-block;
     vertical-align: middle;
 }
+.collection .collection-item.avatar p {
+    margin-right: 40px;
+}
 
 /* offset your content by the width of the side menu. */
 header, main, footer {
