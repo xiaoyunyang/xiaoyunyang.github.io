@@ -45,6 +45,10 @@ footer.theme-color {
     height: 100%;
     width: 80%;
 }
+.section-list {
+  height: 500px;
+  overflow: auto;
+}
 
 .section-content {
     padding-top: 30px;

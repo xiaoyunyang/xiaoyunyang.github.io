@@ -8,7 +8,7 @@ var values = function(data) {return data.map(function(d){return objVal(d,2)});};
 
 //heatmapChart Constructor
 var HeatmapChart = function(divId, data, mediaType, colorTheme) {
-  const MARGIN = { top: 80, right: -200, bottom: 100, left: 100 },
+  const MARGIN = { top: 80, right: -200, bottom: 10, left: 100 },
         PADDING = 2;
         WIDTH = 500 - MARGIN.left - MARGIN.right,
         GRID_SIZE = Math.floor(WIDTH / 15),

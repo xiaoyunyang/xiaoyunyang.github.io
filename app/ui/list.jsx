@@ -3,7 +3,7 @@ var List = React.createClass({
   render: function() {
     return (
       <div>
-        <div className="">
+        <div className="section-list">
           <ul className="collection with-header"> {
             this.props.items.map(function(d, i) {
               return(
