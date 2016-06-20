@@ -209,6 +209,7 @@ var Pie = React.createClass({
     var tag = event.target.getAttribute("value")
 
     var activeTags = this.state.tagToItemsActive.map(function(d) {return d.tag;});
+
     var newTagToItemsActive;
 
     if(_.contains(activeTags, tag)) {
@@ -224,7 +225,7 @@ var Pie = React.createClass({
       });
     }
     var visActiveDataTemp = this.pieData(newTagToItemsActive);
-    var pieChartTemp = this.pieVis("#chart-pie", this.state.visActiveData);
+    var pieChartTemp = this.pieVis("#chart-pie", visActiveDataTemp);
 
     this.setState({
       tagToItemsActive: newTagToItemsActive,

@@ -35,8 +35,6 @@ var PieChart = function(divId, data) {
   		return d.value;
   	});
 
-
-
   var color = d3.scale.category20();
 
 
@@ -67,11 +65,10 @@ var PieChart = function(divId, data) {
   	});
   }
 
-  //private state variables
+  /* ------- private state variables -------*/
   var chart = {};
   chart.data = bindData(data);
   chart.svg = createNew(divId);
-
 
   //Normal
   chart.arc = d3.svg.arc()
@@ -131,8 +128,6 @@ var PieChart = function(divId, data) {
  	chart.slice = chart.svg.select(".slices").selectAll("path.slice")
  		.data(pie(is), key);
 
-
-
   chart.slice.transition().duration(duration)
        .attrTween("d", function(d) {
            var interpolate = d3.interpolate(this._current, d);
@@ -146,6 +141,90 @@ var PieChart = function(divId, data) {
   chart.slice
        .on("mouseover",sliceMouseover)// sliceMmouseover is defined below.
        .on("click",sliceClick);// sliceMmouseover is defined below.
+
+   /* ------- TEXT LABELS -------*/
+   chart.text = chart.svg.select(".labels").selectAll("text").data(pie(was), key);
+   chart.text.enter()
+        .append("text")
+        .attr("dy", ".35em")
+        .style("opacity", 0)
+        .text(function(d) {
+          return d.data.label;
+        })
+        .each(function(d) {
+          this._current = d;
+        });
+   function midAngle(d){
+     return d.startAngle + (d.endAngle - d.startAngle)/2;
+   }
+
+   chart.text = chart.svg.select(".labels").selectAll("text").data(pie(is), key);
+   chart.text.transition().duration(duration)
+        .style("opacity", function(d) {
+          return d.data.value == 0 ? 0 : 1;
+        })
+        .attrTween("transform", function(d) {
+          var interpolate = d3.interpolate(this._current, d);
+          var _this = this;
+          return function(t) {
+            var d2 = interpolate(t);
+            _this._current = d2;
+            var pos = chart.outerArc.centroid(d2);
+            pos[0] = RADIUS * (midAngle(d2) < Math.PI ? 1 : -1);
+            return "translate("+ pos +")";
+          };
+        })
+        .styleTween("text-anchor", function(d){
+          var interpolate = d3.interpolate(this._current, d);
+          return function(t) {
+            var d2 = interpolate(t);
+            return midAngle(d2) < Math.PI ? "start":"end";
+          };
+        });
+
+   chart.text = chart.svg.select(".labels").selectAll("text").data(pie(chart.data), key);
+
+   chart.text
+        .exit().transition().delay(duration)
+        .remove();
+
+   /* ------- SLICE TO TEXT POLYLINES -------*/
+   chart.polyline = chart.svg.select(".lines").selectAll("polyline").data(pie(was), key);
+
+   chart.polyline.enter()
+        .append("polyline")
+        .style("opacity", 0)
+        .each(function(d) {
+          this._current = d;
+        });
+
+   chart.polyline = chart.svg.select(".lines").selectAll("polyline")
+        .data(pie(is), key);
+
+   chart.polyline.transition().duration(duration)
+        .style("opacity", function(d) {
+          return d.data.value == 0 ? 0 : .5;
+        })
+        .attrTween("points", function(d){
+          this._current = this._current;
+          var interpolate = d3.interpolate(this._current, d);
+          var _this = this;
+          return function(t) {
+            var d2 = interpolate(t);
+            _this._current = d2;
+            var pos = chart.outerArc.centroid(d2);
+            pos[0] = RADIUS * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+            return [chart.arc.centroid(d2), chart.outerArc.centroid(d2), pos];
+          };
+        });
+
+   chart.polyline = chart.svg.select(".lines").selectAll("polyline")
+        .data(pie(chart.data), key);
+
+   chart.polyline
+        .exit().transition().delay(duration)
+        .remove();
+
 
  /********************
   **  Interactions  **
@@ -243,87 +322,4 @@ var PieChart = function(divId, data) {
 
   }
 
-
-  /* ------- TEXT LABELS -------*/
-  chart.text = chart.svg.select(".labels").selectAll("text").data(pie(was), key);
-  chart.text.enter()
-       .append("text")
-       .attr("dy", ".35em")
-       .style("opacity", 0)
-       .text(function(d) {
-         return d.data.label;
-       })
-       .each(function(d) {
-         this._current = d;
-       });
-  function midAngle(d){
-    return d.startAngle + (d.endAngle - d.startAngle)/2;
-  }
-
-  chart.text = chart.svg.select(".labels").selectAll("text").data(pie(is), key);
-  chart.text.transition().duration(duration)
-       .style("opacity", function(d) {
-         return d.data.value == 0 ? 0 : 1;
-       })
-       .attrTween("transform", function(d) {
-         var interpolate = d3.interpolate(this._current, d);
-         var _this = this;
-         return function(t) {
-           var d2 = interpolate(t);
-           _this._current = d2;
-           var pos = chart.outerArc.centroid(d2);
-           pos[0] = RADIUS * (midAngle(d2) < Math.PI ? 1 : -1);
-           return "translate("+ pos +")";
-         };
-       })
-       .styleTween("text-anchor", function(d){
-         var interpolate = d3.interpolate(this._current, d);
-         return function(t) {
-           var d2 = interpolate(t);
-           return midAngle(d2) < Math.PI ? "start":"end";
-         };
-       });
-
-  chart.text = chart.svg.select(".labels").selectAll("text").data(pie(chart.data), key);
-
-  chart.text
-       .exit().transition().delay(duration)
-       .remove();
-
-  /* ------- SLICE TO TEXT POLYLINES -------*/
-  chart.polyline = chart.svg.select(".lines").selectAll("polyline").data(pie(was), key);
-
-  chart.polyline.enter()
-       .append("polyline")
-       .style("opacity", 0)
-       .each(function(d) {
-         this._current = d;
-       });
-
-  chart.polyline = chart.svg.select(".lines").selectAll("polyline")
-       .data(pie(is), key);
-
-  chart.polyline.transition().duration(duration)
-       .style("opacity", function(d) {
-         return d.data.value == 0 ? 0 : .5;
-       })
-       .attrTween("points", function(d){
-         this._current = this._current;
-         var interpolate = d3.interpolate(this._current, d);
-         var _this = this;
-         return function(t) {
-           var d2 = interpolate(t);
-           _this._current = d2;
-           var pos = chart.outerArc.centroid(d2);
-           pos[0] = RADIUS * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
-           return [chart.arc.centroid(d2), chart.outerArc.centroid(d2), pos];
-         };
-       });
-
-  chart.polyline = chart.svg.select(".lines").selectAll("polyline")
-       .data(pie(chart.data), key);
-
-  chart.polyline
-       .exit().transition().delay(duration)
-       .remove();
 }
