@@ -98,15 +98,19 @@ var Matrix = React.createClass({
   },
   activeTagsInit: function(tagToItems) {
     //This function determines what goes into the matrix initially
+    //priority will be given to the largest number of associated items, and most diverse tag
+    //diverse means the tag has a lot of different media types
+
     if(tagToItems.length<10) {
       return tagToItems;
     } else {
-      var filtered = function(tagToItems) {
-        return _.filter(tagToItems, function(d) {
+      let tagToItemsSorted = _.sortBy(tagToItems, d => d.keys.length).reverse();
+      let filtered = function(tagToItemsSorted) {
+        return _.filter(tagToItemsSorted, function(d) {
           return _.unique(d.media).length >= 2 || d.keys.length>4;
         });
       }
-      return _.first(filtered(tagToItems), 10);
+      return _.first(filtered(tagToItemsSorted), 10);
     }
   },
   matrixVis: function(divId, visActiveData, mediaType, colorTheme) {

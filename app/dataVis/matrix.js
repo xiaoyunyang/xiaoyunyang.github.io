@@ -331,7 +331,7 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
       state.lastClicked = this;
     } else {
 
-      var clickedBox = chart.svg.selectAll(".box").filter(function(m) {return objVal(m,0) == d;});
+      var clickedBox = chart.svg.selectAll(".box").filter(function(m) {return dvh.objVal(m,0) == d;});
 
       var media = [];
       chart.svg.selectAll(".box").each(function(m) {
