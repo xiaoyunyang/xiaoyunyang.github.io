@@ -1,7 +1,7 @@
 var dataset = "hello";
 
 function loadUserData() {
-  var filePath = "assets/data/profile/"+user+".json";
+  var filePath = "assets/data/profile/"+dashboard.user+".json";
   d3.json(filePath, function(error, json) {
     if(error) return console.warn("failed to load tagfilter:  "+error);
     dataset = json;

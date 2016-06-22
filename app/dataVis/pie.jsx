@@ -1,8 +1,5 @@
 var Pie = React.createClass({
   //Helper Functions
-  tags: function(data,i) {
-    return (data.map(function(d){return objVal(d,i)}));
-  },
   keys: function(d, t) {
     //this function creates an array of keys that contains the tag
     if(d.tag1==t || d.tag2==t || d.tag3==t || d.tag4==t || d.tag5==t){
@@ -18,9 +15,10 @@ var Pie = React.createClass({
     return [];
   },
   allTags: function(data) {
+    var tags = (data, i) => data.map(d => dvh.objVal(d,i));
     var uniqueTags = _.unique(
-      this.tags(data,6).concat(
-        this.tags(data,7),this.tags(data,8),this.tags(data,9),this.tags(data,10))
+      tags(data,6).concat(
+        tags(data,7), tags(data,8), tags(data,9), tags(data,10))
     );
 
     return _.reject(uniqueTags, function(d){return d=="NULL";});
@@ -52,7 +50,7 @@ var Pie = React.createClass({
     return arr;
   },
   items: function(data) {
-    var arr = data.map(function(d,i) {
+    var arr = data.map((d,i) => {
       var icon = d.favicon;
       return {
         key: d.key,
@@ -75,8 +73,8 @@ var Pie = React.createClass({
 
   activeTagsInit: function(tagToItems) {
     var sortedPieData = _.sortBy(this.pieData(tagToItems), 'value');
-    var biggestTenTags = _.last(sortedPieData, 10).map(function(d) {return d.tag});
-    return _.filter(tagToItems, function(d) {return _.contains(biggestTenTags, d.tag);});
+    var biggestTenTags = _.last(sortedPieData, 10).map(d => d.tag);
+    return _.filter(tagToItems, d => _.contains(biggestTenTags, d.tag));
   },
 
   pieVis: function(divId, visActiveData) {
@@ -86,7 +84,7 @@ var Pie = React.createClass({
   },
   pieData: function(tagToItems) {
     var pieData = tagToItems.map(function(d) {
-      return {tag: d.tag, value: ""+d.keys.length}
+      return {tag: d.tag, value: `${d.keys.length}`}
     });
     return pieData;
   },
@@ -241,7 +239,7 @@ var Pie = React.createClass({
         <h5>Pick tags to display</h5>
         <footer className="entry-meta">
           <span className="tag-links">
-            <Tags tags={tags(this.state.visData)} activeTags={tags(this.state.visActiveData)} tagClick={this.tagClick}/>
+            <Tags tags={dvh.tags(this.state.visData)} activeTags={dvh.tags(this.state.visActiveData)} tagClick={this.tagClick}/>
           </span>
         </footer>
         <div id="piechart" className="col s12 m5">
@@ -262,4 +260,4 @@ var Pie = React.createClass({
     );
   }
 });
-ReactDOM.render(<Pie divId="pie" url={source} pollInterval={100000}/>, document.getElementById('pie'));
+ReactDOM.render(<Pie divId="pie" url={dashboard.url} pollInterval={100000}/>, document.getElementById('pie'));

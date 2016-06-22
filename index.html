@@ -60,15 +60,16 @@
   </div>
   <div id="footer"><!-- react Footer --></div>
   <script>
-    var user = "looseleaf";
-    var key = "1X9PrlVeO9GCSmHw8psSD1fN_77vueV_A4EdaQrVzfO0",
-        query = "&tqx=out:csv", // query returns the first sheet as CSV
-        url = "https://spreadsheets.google.com/tq?key=" + key + query;  // CORS-enabled server
-    var source = url;
+    var dashboard = {}
+    dashboard.user = "looseleaf"
+    dashboard.key = "1X9PrlVeO9GCSmHw8psSD1fN_77vueV_A4EdaQrVzfO0";
+    dashboard.query = "&tqx=out:csv", // query returns the first sheet as CSV
+    dashboard.url = "https://spreadsheets.google.com/tq?key=" + dashboard.key + dashboard.query;  // CORS-enabled server
 
   </script>
+  <script type="text/javascript" src="app/dataVis/dataVisHelpers.js"></script>
   <script type="text/javascript" src="js/colorbrewer.js"></script>
-  <script src="js/d3.v3.min.js"></script>
+  <script type="text/javascript" src="js/d3.v3.min.js"></script>
   <script type="text/jsx" src="app/app.jsx"></script>
   <script type="text/jsx" src="app/main/life.jsx"></script>
   <script type="text/jsx" src="app/main/writing.jsx"></script>

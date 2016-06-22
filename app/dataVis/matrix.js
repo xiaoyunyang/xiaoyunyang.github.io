@@ -1,18 +1,10 @@
-//anonymous function
-var objKey = function(d, i) {return Object.keys(d)[i]};
-var objVal = function(d, i) {return d[objKey(d,i)];}
-
-var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
-var media = function(data) {return _.unique(data.map(function(d){return objVal(d,1)}));};
-var values = function(data) {return data.map(function(d){return objVal(d,2)});};
-
 //heatmapChart Constructor
 var HeatmapChart = function(divId, data, mediaType, colorTheme) {
   const MARGIN = { top: 80, right: -200, bottom: 10, left: 100 },
         PADDING = 2;
         WIDTH = 500 - MARGIN.left - MARGIN.right,
         GRID_SIZE = Math.floor(WIDTH / 15),
-        HEIGHT = tags(data).length * GRID_SIZE + MARGIN.top + MARGIN.bottom,
+        HEIGHT = dvh.tags(data).length * GRID_SIZE + MARGIN.top + MARGIN.bottom,
         LEGEND_ELEM_WIDTH = GRID_SIZE * 2,
         TOOLTIP_HEIGHT = 20,
         MEDIA_ICONS = {Link: '\ue157', Assignment: '\ue85d', Reading: '\ue86d', Image: '\ue3f4', Video: '\ue038', Discussion: '\ue8af', Article: '\ue873', Articles: '\ue02f', Code: '\ue86f', Tutorial: '\ue8fd', Interactive: '\ue913', Website: '\ue894'}, //Materials
@@ -29,17 +21,18 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
   state.lastClicked = null;
 
   //getters
-  this.getMargin = function() {return MARGIN;}
-  this.getGridSize = function() {return GRID_SIZE;}
-  this.getColors = function() {return COLORS;}
-  this.getLegendElemWidth = function() {return LEGEND_ELEM_WIDTH;}
-  this.getboxClicked = function() {return state.boxClicked;}
+  this.getMargin = () => MARGIN;
+  this.getGridSize = () => GRID_SIZE;
+  this.getColors = () => COLORS;
+  this.getLegendElemWidth = () => LEGEND_ELEM_WIDTH;
+  this.getboxClicked = () => state.boxClicked;
 
   //private state variables
   var chart = {};
-  chart.tags = tags(data);
-  chart.media = media(data);
+  chart.tags = dvh.tags(data);
+  chart.media = dvh.media(data);
   chart.svg = createNew(divId);
+
 
   function createNew(divId) {
     return d3.select(divId).append("svg")
@@ -57,11 +50,11 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
   var tagLabels = chart.svg.selectAll(".tag-label").data(chart.tags);
   tagLabels.enter()
     .append("text")
-    .text(function (d) { return d; })
+    .text(d => d)
     .attr("x", 0)
-    .attr("y", function (d, i) { return i * GRID_SIZE; })
+    .attr("y", (d, i) => i * GRID_SIZE)
     .style("text-anchor", "end")
-    .attr("transform", "translate(-6," + GRID_SIZE / 1.5 + ")")
+    .attr("transform", `translate(-6, ${GRID_SIZE / 1.5})`)
     .attr("class", "tag-label");
   tagLabels.exit().remove();
 
@@ -73,34 +66,34 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
     if(type=="icon") {
       mediaLabels.enter()
         .append("text")
-        .attr("x", function(d, i) { return i * GRID_SIZE; })
+        .attr("x", (d, i) => i * GRID_SIZE)
         .attr("y", 0)
         .attr("class", "media-label mediatype-icon")
         .attr("transform", "translate(" + GRID_SIZE / 6 + ", -2)")
-        .attr("value", function(d) {return d;})
+        .attr("value", d => d)
         //.attr("font-family","FontAwesome")
-        .text(function(d) { return MEDIA_ICONS[d]; });
+        .text(d => MEDIA_ICONS[d]);
     } else if(type == "image") {
       mediaLabels.enter()
         .append("svg:image")
-        .attr("x", function(d, i) { return i * GRID_SIZE; })
+        .attr("x", (d, i) => i * GRID_SIZE)
         .attr("y", 0)
         .attr("width", 25)
         .attr("height", 25)
-        .attr("xlink:href", function(d) {return MEDIA_IMAGES[d];})
+        .attr("xlink:href", d => MEDIA_IMAGES[d])
         .attr("class", "media-label mediatype-image")
         .attr("transform", "translate(4 , -30)")
         //.attr("transform", "translate(" + GRID_SIZE / 6 + ", -22)")
-        .attr("value", function(d) {return d;});
+        .attr("value", d => d);
     } else if(type == "text") {
       mediaLabels.enter()
         .append("text")
-        .attr("x", function(d, i) { return i * GRID_SIZE; })
+        .attr("x", (d, i) => i * GRID_SIZE)
         .attr("y", 0)
         .attr("class", "media-label axis-mediatype")
-        .attr("transform", "translate(" + GRID_SIZE / 2 + ", -2)")
-        .attr("value", function(d) {return d;})
-        .text(function(d) { return d; })
+        .attr("transform", `translate(${GRID_SIZE / 2}, -2)`)
+        .attr("value", d => d)
+        .text(d => d)
         .style("text-anchor", "middle")
         .attr("class", "media-label mono");
         //.attr("class", function(d, i) { return ((i >= data.length/2) ? "media-label mono axis axis-mediatype" : "media-label mono axis"); })
@@ -110,11 +103,11 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
 
 
   var boxes = chart.svg.selectAll(".box")
-                 .data(data, function(d) {return objVal(d,0)+':'+objVal(d,1);});
+                 .data(data, d => `${dvh.objVal(d,0)}:${dvh.objVal(d,1)}`);
 
   boxes.enter().append("rect")
-      .attr("x", function(d) { return (_.indexOf(chart.media, objVal(d,1))) * GRID_SIZE + PADDING; })
-      .attr("y", function(d) { return (_.indexOf(chart.tags, objVal(d,0))) * GRID_SIZE + PADDING; })
+      .attr("x", d => _.indexOf(chart.media, dvh.objVal(d,1)) * GRID_SIZE + PADDING )
+      .attr("y", d => _.indexOf(chart.tags, dvh.objVal(d,0)) * GRID_SIZE + PADDING )
       .attr("rx", 4)
       .attr("ry", 4)
       .attr("class", "box bordered")
@@ -122,7 +115,7 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
       .attr("height", GRID_SIZE - PADDING * 2)
       .style("fill", "white");
 
-  boxes.select("title").text(function(d) { return objVal(d,2);});
+  boxes.select("title").text(d => dvh.objVal(d,2));
   boxes.exit().remove();
 
   /********************
@@ -177,8 +170,8 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
       state.clickedTagLabel = null;
       state.lastClicked = this;
     } else {
-      var clickedMediaLabel = chart.svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
-      var clickedTagLabel = chart.svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)});
+      var clickedMediaLabel = chart.svg.selectAll(".media-label").filter(m => m == dvh.objVal(d,1));
+      var clickedTagLabel = chart.svg.selectAll(".tag-label").filter(m => m == dvh.objVal(d,0));
 
       //mediaLabelHighlight(clickedMediaLabel);
       state.boxClicked = true;
@@ -197,9 +190,9 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
 
     //highlight selected box and corresponding labels
     d3.select(this).classed("selected-bordered", true);
-    var selectedMediaLabel = chart.svg.selectAll(".media-label").filter(function(m) { return m == objVal(d,1)});
+    var selectedMediaLabel = chart.svg.selectAll(".media-label").filter(m => m == dvh.objVal(d,1));
     mediaLabelHighlight(selectedMediaLabel);
-    chart.svg.selectAll(".tag-label").filter(function(m) {return m == objVal(d,0)}).classed("selected-taglabel", true);
+    chart.svg.selectAll(".tag-label").filter(m => m == dvh.objVal(d,0)).classed("selected-taglabel", true);
 
     //Update the tooltip position and value
     var xPosition = $(divId).position().left + GRID_SIZE * chart.media.length + MARGIN.left*1.2;
@@ -220,7 +213,7 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
     selected.classed("selected-medialabel", true)
             .attr("width", 38)
             .attr("height", 38)
-            .attr("transform", function(d) {
+            .attr("transform", d => {
               if(selected.classed("mediatype-image")) {
                 return "translate(0 , -40)"
               } else if(selected.classed("mediatype-icon")) {
@@ -289,12 +282,12 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
       state.lastClicked = this;
     } else {
 
-      var clickedBox = chart.svg.selectAll(".box").filter(function(m) {return objVal(m,1) == d;})
+      var clickedBox = chart.svg.selectAll(".box").filter(function(m) {return dvh.objVal(m,1) == d;})
 
       var tags = [];
       chart.svg.selectAll(".box").each(function(m) {
-        if(objVal(m,1) == d) {
-          tags = tags.concat(objVal(m,0));
+        if(dvh.objVal(m,1) == d) {
+          tags = tags.concat(dvh.objVal(m,0));
         }
       });
 
@@ -343,8 +336,8 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
 
       var media = [];
       chart.svg.selectAll(".box").each(function(m) {
-        if(objVal(m,0) == d) {
-          media = media.concat(objVal(m,1));
+        if(dvh.objVal(m,0) == d) {
+          media = media.concat(dvh.objVal(m,1));
         }
       });
       var clickedMediaLabel = chart.svg.selectAll(".media-label").filter(
@@ -371,35 +364,35 @@ HeatmapChart.prototype.changeColor = function(divId,data, colorTheme) {
   var legendElemWidth = this.getLegendElemWidth();
 
   var colorScale = d3.scale.quantile()
-           .domain([0, d3.max(data, function (d) { return parseFloat(objVal(d,2)); })])
+           .domain([0, d3.max(data, d => parseFloat(dvh.objVal(d,2)))])
            .range(COLORS[colorTheme]);
    var svg = d3.select(divId).selectAll("svg");
    svg.selectAll(".box").transition().duration(1000)
-      .style("fill", function(d) { return colorScale(objVal(d,2));});
+      .style("fill", d => colorScale(dvh.objVal(d,2)));
 
 
    svg.selectAll(".legend").remove();
 
    var legend = svg.selectAll(".legend")
-        .data([0].concat(colorScale.quantiles()), function(d) { return d; });
+        .data([0].concat(colorScale.quantiles()), d => d);
 
-   var legendY = tags(data).length * gridSize + margin.top * 1.5;
+   var legendY = dvh.tags(data).length * gridSize + margin.top * 1.5;
 
    legend.enter().append("g")
          .attr("transform", "translate(" + margin.left + "," + 0 + ")")
          .attr("class", "legend");
 
    legend.append("rect")
-         .attr("x", function(d, i) { return legendElemWidth * i; })
+         .attr("x", (d, i) => legendElemWidth * i)
          .attr("y", legendY)
          .attr("width", legendElemWidth)
          .attr("height", gridSize / 2)
-         .style("fill", function(d, i) { return colors[colorTheme][i]; });
+         .style("fill", (d, i) => colors[colorTheme][i]);
 
    legend.append("text")
          .attr("class", "mono")
-         .text(function(d) { return "≥ " + Math.round(d); })
-         .attr("x", function(d, i) { return legendElemWidth * i; })
+         .text(d => `≥   ${Math.round(d)}`)
+         .attr("x", (d, i) => legendElemWidth * i)
          .attr("y", legendY + gridSize);
 
    legend.exit().remove();

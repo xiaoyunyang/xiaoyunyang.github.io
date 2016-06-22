@@ -56,4 +56,4 @@ var BookmarksList = React.createClass({
     );
   }
 });
-ReactDOM.render(<BookmarksList url={source} pollInterval={100000}/>, document.getElementById('bookmarks'));
+ReactDOM.render(<BookmarksList url={dashboard.url} pollInterval={100000}/>, document.getElementById('bookmarks'));

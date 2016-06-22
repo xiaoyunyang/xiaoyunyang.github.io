@@ -2,7 +2,7 @@ var Matrix = React.createClass({
 
   //Helper Functions
   tags: function(data,i) {
-    return (data.map(function(d){return objVal(d,i)}));
+    return (data.map(function(d){return dvh.objVal(d,i)}));
   },
   keys: function(d, t) {
     //this function creates an array of keys that contains the tag
@@ -299,7 +299,7 @@ var Matrix = React.createClass({
         <h5>Pick tags to display</h5>
         <footer className="entry-meta">
           <span className="tag-links">
-            <Tags tags={tags(this.state.visData)} activeTags={tags(this.state.visActiveData)} tagClick={this.tagClick}/>
+            <Tags tags={dvh.tags(this.state.visData)} activeTags={dvh.tags(this.state.visActiveData)} tagClick={this.tagClick}/>
           </span>
         </footer>
         <div id="matrixchart" className="col s12 m5">
@@ -323,4 +323,4 @@ var Matrix = React.createClass({
     );
   }
 });
-ReactDOM.render(<Matrix divId="matrix" url={source} pollInterval={100000}/>, document.getElementById('matrix'));
+ReactDOM.render(<Matrix divId="matrix" url={dashboard.url} pollInterval={100000}/>, document.getElementById('matrix'));
