@@ -94,23 +94,23 @@ var Matrix = React.createClass({
         })
       );
     }
+
     return arr;
   },
   activeTagsInit: function(tagToItems) {
     //This function determines what goes into the matrix initially
     //priority will be given to the largest number of associated items, and most diverse tag
     //diverse means the tag has a lot of different media types
-
+    var tagToItemsSorted = _.sortBy(tagToItems, d => d.keys.length).reverse();
     if(tagToItems.length<10) {
       return tagToItems;
     } else {
-      let tagToItemsSorted = _.sortBy(tagToItems, d => d.keys.length).reverse();
-      let filtered = function(tagToItemsSorted) {
-        return _.filter(tagToItemsSorted, function(d) {
+      let filtered = function(tagToItems) {
+        return _.filter(tagToItems, function(d) {
           return _.unique(d.media).length >= 2 || d.keys.length>4;
         });
       }
-      return _.first(filtered(tagToItemsSorted), 10);
+      return _.sortBy(_.first(filtered(tagToItemsSorted), 10), d => d.tag.toLowerCase());
     }
   },
   matrixVis: function(divId, visActiveData, mediaType, colorTheme) {
@@ -150,7 +150,7 @@ var Matrix = React.createClass({
 
         this.colorsPicker("#colors-picker", this.state.colorThemes);
 
-        var tagToItemsTemp = _.sortBy(this.state.json.tagToItems, function(d) {return d.tag.toLowerCase()});
+        var tagToItemsTemp = _.sortBy(this.state.json.tagToItems, d => d.tag.toLowerCase());
         var initialTagToItemsTemp =  _.sortBy(this.state.json.tagToItems, function(d) {return d.tag.toLowerCase()});
         var itemToTagsTemp = this.state.json.itemToTags;
         var visDataTemp = this.matrixData(tagToItemsTemp);
