@@ -178,17 +178,7 @@ var Matrix = React.createClass({
       });
   },
   componentWillMount: function() {
-    //this.loadBookmarksFromServer();
     this.updateProps(this.props.data);
-  },
-  loadBookmarksFromServer: function() {
-    d3.csv(this.props.url, function(error, data) {
-      if(error) {
-        console.log(error);
-      } else {
-        this.updateProps(data);
-      }
-    }.bind(this));
   },
   getInitialState: function() {
     return {

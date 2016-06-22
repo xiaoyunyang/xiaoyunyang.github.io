@@ -1,16 +1,6 @@
 var BookmarksList = React.createClass({
   componentWillMount: function() {
-    //this.loadBookmarksFromServer();
     this.setState({items: this.props.data});
-  },
-  loadBookmarksFromServer: function() {
-    d3.csv(this.props.url, function(error, data) {
-      if(error) {
-        console.log(error);
-      } else {
-        this.setState({items: data});
-      }
-    }.bind(this));
   },
   getInitialState: function() {
     return {

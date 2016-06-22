@@ -70,7 +70,6 @@ var Pie = React.createClass({
       itemToTags: this.item2tags(data)
     };
   },
-
   activeTagsInit: function(tagToItems) {
     var sortedPieData = _.sortBy(this.pieData(tagToItems), 'value');
     var biggestTenTags = _.last(sortedPieData, 10).map(d => d.tag);
@@ -125,17 +124,7 @@ var Pie = React.createClass({
       });
   },
   componentWillMount: function() {
-    //this.loadBookmarksFromServer();
     this.updateProps(this.props.data);
-  },
-  loadBookmarksFromServer: function() {
-    d3.csv(this.props.url, function(error, data) {
-      if(error) {
-        console.log(error);
-      } else {
-        this.updateProps(data);
-      }
-    }.bind(this));
   },
   getInitialState: function() {
     return {
