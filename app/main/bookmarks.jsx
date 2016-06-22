@@ -1,6 +1,7 @@
 var BookmarksList = React.createClass({
   componentWillMount: function() {
-    this.loadBookmarksFromServer();
+    //this.loadBookmarksFromServer();
+    this.setState({items: this.props.data});
   },
   loadBookmarksFromServer: function() {
     d3.csv(this.props.url, function(error, data) {
@@ -56,4 +57,3 @@ var BookmarksList = React.createClass({
     );
   }
 });
-ReactDOM.render(<BookmarksList url={dashboard.url} pollInterval={100000}/>, document.getElementById('bookmarks'));

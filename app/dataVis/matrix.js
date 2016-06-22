@@ -33,7 +33,6 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
   chart.media = dvh.media(data);
   chart.svg = createNew(divId);
 
-
   function createNew(divId) {
     return d3.select(divId).append("svg")
              .attr("width", WIDTH + MARGIN.left + MARGIN.right)

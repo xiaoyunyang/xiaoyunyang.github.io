@@ -125,7 +125,8 @@ var Pie = React.createClass({
       });
   },
   componentWillMount: function() {
-    this.loadBookmarksFromServer();
+    //this.loadBookmarksFromServer();
+    this.updateProps(this.props.data);
   },
   loadBookmarksFromServer: function() {
     d3.csv(this.props.url, function(error, data) {
@@ -260,4 +261,3 @@ var Pie = React.createClass({
     );
   }
 });
-ReactDOM.render(<Pie divId="pie" url={dashboard.url} pollInterval={100000}/>, document.getElementById('pie'));

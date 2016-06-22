@@ -178,7 +178,8 @@ var Matrix = React.createClass({
       });
   },
   componentWillMount: function() {
-    this.loadBookmarksFromServer();
+    //this.loadBookmarksFromServer();
+    this.updateProps(this.props.data);
   },
   loadBookmarksFromServer: function() {
     d3.csv(this.props.url, function(error, data) {
@@ -323,4 +324,3 @@ var Matrix = React.createClass({
     );
   }
 });
-ReactDOM.render(<Matrix divId="matrix" url={dashboard.url} pollInterval={100000}/>, document.getElementById('matrix'));

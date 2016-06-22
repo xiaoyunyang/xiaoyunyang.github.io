@@ -1,55 +1,3 @@
-var dataset = "hello";
-
-function loadUserData() {
-  var filePath = "assets/data/profile/"+dashboard.user+".json";
-  d3.json(filePath, function(error, json) {
-    if(error) return console.warn("failed to load tagfilter:  "+error);
-    dataset = json;
-    render();
-  });
-
-}
-function render() {
-  var SideNav = React.createClass({
-    getInitialState: function() {
-      return {
-        user: dataset.user,
-        binders: [],
-        tags: []
-      }
-    },
-    componentWillMount: function(){ //constructor
-      this.setState(
-        {
-          user: dataset.user,
-          binders: dataset.binders,
-          tags: dataset.tags
-        }
-      );
-    },
-    componentDidMount: function() {
-      $('.collapsible').collapsible();
-    },
-    render: function () {
-      return (
-        <div className="perm side-nav fixed">
-          <ul className="collection with-header">
-              <li className="collection-header" id="user-info">{this.state.user.name}</li>
-          </ul>
-          <ul className="collapsible" data-collapsible="expandable">
-            <SideBinders binders={this.state.binders}/>
-            <SideTags tags={this.state.tags}/>
-          </ul>
-        </div>
-
-      );
-    }
-  });
-
-  ReactDOM.render(<TopNav/>, document.getElementById('react-top-nav'));
-  ReactDOM.render(<SideNav/>, document.getElementById('react-side-nav'));
-}
-
 $(document).ready(function () {
   $('.carousel').carousel();
   $('select').material_select();
@@ -61,9 +9,81 @@ $(document).ready(function () {
     accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
   loadUserData();
-
 });
 
+function loadUserData() {
+  dashboard.bookmarks = {};
+  dashboard.bookmarks.data = [];
+  var filePath = "assets/data/profile/"+dashboard.user+".json";
+  d3.json(filePath, function(error, json) {
+    if(error) return console.warn("failed to load tagfilter:  "+error);
+    dashboard.dataset = json;
+    dashboard.bookmarks = json.bookmarks;
+    // CORS-enabled server.
+    dashboard.url = "https://spreadsheets.google.com/tq?key=" + dashboard.bookmarks.key + dashboard.bookmarks.query;
+    loadBookmarksFromServer(dashboard.url);
+    renderProfile();
+  });
+}
+
+function loadBookmarksFromServer(url) {
+  d3.csv(url, function(error, data) {
+    if(error) {
+      dashboard.bookmarks.data = error;
+    } else {
+      dashboard.bookmarks.data = data;
+      renderDataVis();
+    }
+  })
+}
+
+function renderProfile() {
+  ReactDOM.render(<TopNav/>, document.getElementById('react-top-nav'));
+  ReactDOM.render(<SideNav/>, document.getElementById('react-side-nav'));
+}
+
+function renderDataVis() {
+  ReactDOM.render(<BookmarksList data={dashboard.bookmarks.data} pollInterval={100000}/>, document.getElementById('bookmarks'));
+  ReactDOM.render(<Pie divId="pie" data={dashboard.bookmarks.data} pollInterval={100000}/>, document.getElementById('pie'));
+  ReactDOM.render(<Matrix divId="matrix" data={dashboard.bookmarks.data} pollInterval={100000}/>, document.getElementById('matrix'));
+}
+
+
+var SideNav = React.createClass({
+  getInitialState: function() {
+    return {
+      user: dashboard.dataset.user,
+      binders: [],
+      tags: []
+    }
+  },
+  componentWillMount: function(){ //constructor
+    this.setState(
+      {
+        user: dashboard.dataset.user,
+        binders: dashboard.dataset.binders,
+        tags: dashboard.dataset.tags
+      }
+    );
+  },
+  componentDidMount: function() {
+    $('.collapsible').collapsible();
+  },
+  render: function () {
+    return (
+      <div className="perm side-nav fixed">
+        <ul className="collection with-header">
+            <li className="collection-header" id="user-info">{this.state.user.name}</li>
+        </ul>
+        <ul className="collapsible" data-collapsible="expandable">
+          <SideBinders binders={this.state.binders}/>
+          <SideTags tags={this.state.tags}/>
+        </ul>
+      </div>
+
+    );
+  }
+});
 var SideBinders = React.createClass({
   render: function () {
     return (
