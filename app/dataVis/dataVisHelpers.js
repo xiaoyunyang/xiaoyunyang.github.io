@@ -1,10 +1,24 @@
 //anonymous function
 const dvh = {}
-dvh.objKey = (d, i) => Object.keys(d)[i];
-dvh.objVal = (d, i) => d[dvh.objKey(d,i)];
+dvh.objKey = function(d, i) {return Object.keys(d)[i];};
+dvh.objVal = function(d, i) {return d[dvh.objKey(d,i)];};
 
-dvh.tags = data => _.unique(data.map(d => dvh.objVal(d,0)));
-dvh.media = data => _.unique(data.map(d => dvh.objVal(d,1)));
-dvh.values = data => data.map(d => dvh.objVal(d,2));
+dvh.tags = function(data) {
+  return _.unique(data.map(function(d) {
+    return dvh.objVal(d,0);
+  }));
+};
+dvh.media = function(data) {
+  return _.unique(data.map(function(d) {
+    return dvh.objVal(d,1);
+  }));
+};
+dvh.values = function(data) {
+  return data.map(function(d) {
+    return dvh.objVal(d,2);
+  });
+};
 
-dvh.key = d => d.data.label;
+dvh.key = function(d) {return d.data.label;};
+
+dvh.id = function(d) {return d;}

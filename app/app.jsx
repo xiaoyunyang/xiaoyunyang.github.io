@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   $('.carousel').carousel();
   $('select').material_select();
@@ -14,6 +15,7 @@ $(document).ready(function () {
 function loadUserData() {
   dashboard.bookmarks = {};
   dashboard.bookmarks.data = [];
+  dashboard.url = "google.com";
   var filePath = "assets/data/profile/"+dashboard.user+".json";
   d3.json(filePath, function(error, json) {
     if(error) return console.warn("failed to load tagfilter:  "+error);
@@ -21,6 +23,7 @@ function loadUserData() {
     dashboard.bookmarks = json.bookmarks;
     // CORS-enabled server.
     dashboard.url = "https://spreadsheets.google.com/tq?key=" + dashboard.bookmarks.key + dashboard.bookmarks.query;
+
     loadBookmarksFromServer(dashboard.url);
     renderProfile();
   });
@@ -29,6 +32,7 @@ function loadUserData() {
 function loadBookmarksFromServer(url) {
   d3.csv(url, function(error, data) {
     if(error) {
+      console.log("ERROR IN D3 CSV LOADING")
       dashboard.bookmarks.data = error;
     } else {
       dashboard.bookmarks.data = data;
@@ -40,6 +44,8 @@ function loadBookmarksFromServer(url) {
 function renderProfile() {
   ReactDOM.render(<TopNav/>, document.getElementById('react-top-nav'));
   ReactDOM.render(<SideNav/>, document.getElementById('react-side-nav'));
+  ReactDOM.render(<Life/>, document.getElementById('life'));
+  ReactDOM.render(<Writing/>, document.getElementById('writing'));
 }
 
 function renderDataVis() {
@@ -142,11 +148,11 @@ var TopNav = React.createClass({
             <li className="contact-pill"><a href="#contact">Contact</a></li>
           </ul>
           <ul className="pills side-nav" id="mobile-menu">
-            <li className="home-pill"><a href="#home">Home</a></li>
-            <li className="life-pill"><a href="#life">Life</a></li>
-            <li className="writing-pill"><a href="#writing">Writing</a></li>
-            <li className="about-pill"><a href="#about">About</a></li>
-            <li className="contact-pill"><a href="#contact">Contact</a></li>
+            <li className="bookmarks-pill"><a href="#bookmarks">Bookmarks</a></li>
+            <li className="matrix-pill"><a href="#matrix">Matrix</a></li>
+            <li className="pie-pill"><a href="#pie">PieChart</a></li>
+            <li className="map-pill"><a href="#map">About</a></li>
+            <li className="about-pill"><a href="#about">Contact</a></li>
           </ul>
         </div>
       </nav>

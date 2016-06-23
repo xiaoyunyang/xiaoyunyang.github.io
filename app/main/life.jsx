@@ -24,4 +24,3 @@ var Life = React.createClass({
     );
   }
 });
-ReactDOM.render(<Life/>, document.getElementById('life'));

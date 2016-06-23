@@ -15,7 +15,7 @@ var Pie = React.createClass({
     return [];
   },
   allTags: function(data) {
-    var tags = (data, i) => data.map(d => dvh.objVal(d,i));
+    var tags = function(data, i){ return data.map(function(d){ return dvh.objVal(d,i);})};
     var uniqueTags = _.unique(
       tags(data,6).concat(
         tags(data,7), tags(data,8), tags(data,9), tags(data,10))
@@ -50,7 +50,7 @@ var Pie = React.createClass({
     return arr;
   },
   items: function(data) {
-    var arr = data.map((d,i) => {
+    var arr = data.map(function(d,i) {
       var icon = d.favicon;
       return {
         key: d.key,
@@ -72,8 +72,8 @@ var Pie = React.createClass({
   },
   activeTagsInit: function(tagToItems) {
     var sortedPieData = _.sortBy(this.pieData(tagToItems), 'value');
-    var biggestTenTags = _.last(sortedPieData, 10).map(d => d.tag);
-    return _.filter(tagToItems, d => _.contains(biggestTenTags, d.tag));
+    var biggestTenTags = _.last(sortedPieData, 10).map(function(d){return d.tag;});
+    return _.filter(tagToItems, function(d) {return _.contains(biggestTenTags, d.tag);});
   },
 
   pieVis: function(divId, visActiveData) {

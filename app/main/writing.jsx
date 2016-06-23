@@ -73,4 +73,3 @@ var Writing = React.createClass({
     );
   }
 });
-ReactDOM.render(<Writing/>, document.getElementById('writing'));

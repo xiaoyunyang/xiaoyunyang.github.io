@@ -18,7 +18,7 @@ var PieChart = function(divId, data) {
 
   var pie = d3.layout.pie()
   	.sort(null)
-  	.value(d => d.value);
+  	.value(function(d) {return d.value;});
 
   var color = d3.scale.category20();
 
@@ -26,24 +26,24 @@ var PieChart = function(divId, data) {
   /* ------- FUNCTIONS WITH SIDE EFFECTS -------*/
 
   function mergeWithFirstEqualZero(first, second){
-  	var secondSet = d3.set(); second.forEach(d => secondSet.add(d.label));
+  	var secondSet = d3.set(); second.forEach(function(d) { secondSet.add(d.label)});
 
   	var onlyFirst = first
   		.filter(function(d){ return !secondSet.has(d.label) })
   		.map(function(d) { return {label: d.label, value: 0}; });
   	return d3.merge([ second, onlyFirst ])
-  		.sort((a,b) => d3.ascending(a.label, b.label));
+  		.sort(function(a,b){ return d3.ascending(a.label, b.label);});
   }
   function bindData (data) {
   	//anonymous functions
 
-  	var labels = data.map(d => d[Object.keys(d)[0]]);
-  	var values = data.map(d => d[Object.keys(d)[1]]);
+  	var labels = data.map(function(d) {return d[Object.keys(d)[0]];});
+  	var values = data.map(function(d) {return d[Object.keys(d)[1]];});
   	color = d3.scale.category20().domain(labels);
 
   	return labels.map(function(d,i){
   		return { label: d, value: values[i] }
-  	}).sort((a,b) => d3.ascending(a.label, b.label));
+  	}).sort(function(a,b){ return d3.ascending(a.label, b.label);});
   }
 
   /* ------- private state variables -------*/
@@ -84,7 +84,7 @@ var PieChart = function(divId, data) {
   /* ------- SLICE ARCS -------*/
 
   var data0 = chart.svg.select(".slices").selectAll("path.slice")
-  		.data().map(d =>  d.data);
+  		.data().map(function(d) {return d.data;});
 
   if (data0.length == 0) data0 = chart.data;
   var was = mergeWithFirstEqualZero(chart.data, data0);
@@ -96,8 +96,8 @@ var PieChart = function(divId, data) {
  	chart.slice.enter()
  		.insert("path")
  		.attr("class", "slice")
- 		.style("fill", d => color(d.data.label))
- 		.each(d => {
+ 		.style("fill", function(d) {return color(d.data.label);})
+ 		.each(function(d) {
  			this._current = d;
  		});
 
@@ -105,7 +105,7 @@ var PieChart = function(divId, data) {
  		.data(pie(is), dvh.key);
 
   chart.slice.transition().duration(duration)
-       .attrTween("d", d => {
+       .attrTween("d", function(d) {
            var interpolate = d3.interpolate(this._current, d);
            var _this = this;
            return function(t) {
@@ -124,8 +124,8 @@ var PieChart = function(divId, data) {
         .append("text")
         .attr("dy", ".35em")
         .style("opacity", 0)
-        .text(d => d.data.label)
-        .each(d => {
+        .text(function(d) {return d.data.label;})
+        .each(function(d){
           this._current = d;
         });
    function midAngle(d){
@@ -134,8 +134,8 @@ var PieChart = function(divId, data) {
 
    chart.text = chart.svg.select(".labels").selectAll("text").data(pie(is), dvh.key);
    chart.text.transition().duration(duration)
-        .style("opacity", d => d.data.value == 0 ? 0 : 1)
-        .attrTween("transform", d => {
+        .style("opacity", function(d) {return d.data.value == 0 ? 0 : 1;})
+        .attrTween("transform", function(d) {
           var interpolate = d3.interpolate(this._current, d);
           var _this = this;
           return function(t) {
@@ -146,7 +146,7 @@ var PieChart = function(divId, data) {
             return `translate(${pos})`;
           };
         })
-        .styleTween("text-anchor", d => {
+        .styleTween("text-anchor", function(d) {
           var interpolate = d3.interpolate(this._current, d);
           return function(t) {
             var d2 = interpolate(t);
@@ -166,7 +166,7 @@ var PieChart = function(divId, data) {
    chart.polyline.enter()
         .append("polyline")
         .style("opacity", 0)
-        .each(d => {
+        .each(function(d) {
           this._current = d;
         });
 
@@ -174,8 +174,8 @@ var PieChart = function(divId, data) {
         .data(pie(is), dvh.key);
 
    chart.polyline.transition().duration(duration)
-        .style("opacity", d => d.data.value == 0 ? 0 : .5)
-        .attrTween("points", d => {
+        .style("opacity", function(d) {return d.data.value == 0 ? 0 : .5;})
+        .attrTween("points", function(d) {
           this._current = this._current;
           var interpolate = d3.interpolate(this._current, d);
           var _this = this;
@@ -232,8 +232,8 @@ var PieChart = function(divId, data) {
    sliceInner.enter()
      .insert("path")
      .attr("class", "slice-inner")
-     .style("fill", d => color(d.data.label))
-     .each(d => {
+     .style("fill", function(d) {return color(d.data.label);})
+     .each(function(d) {
        this._current = d;
      });
    chart.svg.select(".inner-slices").insert("text", "g")
@@ -245,7 +245,7 @@ var PieChart = function(divId, data) {
 
    sliceInner
       .transition().duration(0)
-      .attrTween("d", d => {
+      .attrTween("d", function(d) {
            var interpolate = d3.interpolate(this._current, d);
            var _this = this;
            return function(t) {
@@ -281,7 +281,7 @@ var PieChart = function(divId, data) {
   //Event Handler from react-dom will take care changes to selected-tag-media
   function updateFilteredList(tag, mediaLabel) {
     var selected = d3.selectAll("#selected-tag-media").attr("value");
-    var newSelected = `(${tag},${mediaLabel})`;
+    var newSelected = "("+tag+","+mediaLabel+")";
     d3.selectAll("#selected-tag-media").attr("value", newSelected);
 
     if(selected==newSelected) {
