@@ -11,7 +11,6 @@ var PieChart = function(divId, data) {
 
   var size = {};
   size.pie = document.getElementById("chart-pie").clientWidth
-  console.log(size.pie)
 
   var state = {};
   state.sliceClicked = false;
@@ -54,7 +53,7 @@ var PieChart = function(divId, data) {
   var chart = {};
   chart.data = bindData(data);
   chart.svg = createNew(divId);
-  
+
   //Normal
   chart.arc = d3.svg.arc()
     .outerRadius(RADIUS * 0.8)
