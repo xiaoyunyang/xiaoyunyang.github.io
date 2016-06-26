@@ -13,7 +13,7 @@ state.heatmapChart2 = null;
 
 // Helper Functions for processing collection.csv//need to create key -> tags and tag -> keys
 function collectionData(data) {
-  var tags = function(data,i) {return (data.map(function(d){return objVal(d,i)}));};
+  var tags = function(data,i) {return (data.map(function(d){return dvh.objVal(d,i)}));};
   var keys = function(d, t) {
     //this function creates an array of keys that contains the tag
     if(d.tag1==t || d.tag2==t || d.tag3==t || d.tag4==t || d.tag5==t){
@@ -108,7 +108,7 @@ function matrixData(data) {
 
 function renderTags(divId, data, activeData) {
   d3.select(divId).selectAll('a').remove();
-  var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
+  var tags = function(data) {return _.unique(data.map(function(d){return dvh.objVal(d,0)}));};
   var allTags = tags(data);
   var activeTags = tags(activeData);
   var tags = d3.select('#tags').selectAll('.tag').data(allTags);

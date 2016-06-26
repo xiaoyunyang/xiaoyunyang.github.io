@@ -2,7 +2,7 @@ var MatrixChart = React.createClass({
 
   //Helper Functions
   tags: function(data,i) {
-    return (data.map(function(d){return objVal(d,i)}));
+    return (data.map(function(d){return dvh.objVal(d,i)}));
   },
   keys: function(d, t) {
     //this function creates an array of keys that contains the tag
@@ -114,7 +114,7 @@ var MatrixChart = React.createClass({
   },
   renderTags: function(divId, data, activeData) {
     d3.select(divId).selectAll('a').remove();
-    var tags = function(data) {return _.unique(data.map(function(d){return objVal(d,0)}));};
+    var tags = function(data) {return _.unique(data.map(function(d){return dvh.objVal(d,0)}));};
     var allTags = tags(data);
     var activeTags = tags(activeData);
     var tags = d3.select('#tags').selectAll('.tag').data(allTags);
@@ -310,7 +310,7 @@ var MatrixChart = React.createClass({
         <h5>Pick tags to display</h5>
         <footer className="entry-meta">
           <span className="tag-links">
-            <Tags tags={tags(this.state.visData)} activeTags={tags(this.state.visActiveData)} tagClick={this.tagClick}/>
+            <Tags tags={dvh.tags(this.state.visData)} activeTags={dvh.tags(this.state.visActiveData)} tagClick={this.tagClick}/>
           </span>
         </footer>
         <div id="matrixchart" className="col s6">
