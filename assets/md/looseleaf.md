@@ -34,3 +34,5 @@ Users get data visualizations and recommendations to filter and explore their bo
 ***
 #### About the Founder
 Xiaoyun studied Electrical and Computer Engineering (ECE) at Carnegie Mellon University, with a focus in distributed systems, machine learning, and signal processing. After getting her M.S. in ECE, Xiaoyun has been working at Naval Reactors at Washington, DC, providing design and operational oversight for the Navy's submarines and aircraft careers. In her free time, Xiaoyun likes to blog on Medium and read. She's passionate about software and data visualization. She's obsessed about curating and building collections of useful things.
+
+#### Get excited about LooseLeaf!

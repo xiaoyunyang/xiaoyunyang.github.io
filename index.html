@@ -25,6 +25,14 @@
 </head>
 
 <body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=622109661230044";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
   <div id="react-top-nav"><!-- react TopNav --></div>
   <div id="react-side-nav"><!-- react SideNav --></div>
@@ -41,6 +49,7 @@
       </div>
       <div id="about-page" class="pages">
         <div id="about"></div>
+        <div class="fb-comments" data-href="http://xiaoyunyang.github.io/index.html#about" data-width="800" data-numposts="5"></div>
       </div>
       <div id="contact-page" class="pages">
         <div id="contact"></div>
@@ -58,6 +67,7 @@
         <div id="timeline"></div>
       </div>
   </div>
+
   <div id="footer"><!-- react Footer --></div>
   <script>
     var dashboard = {};
