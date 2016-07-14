@@ -143,7 +143,6 @@ var TopNav = React.createClass({
           <a href="#!" className="brand-logo">Xiaoyun Yang</a>
           <ul className="pills right hide-on-med-and-down">
             <li className="bookmarks-pill"><a href="#bookmarks">Bookmarks</a></li>
-
             <li className="about-pill"><a href="#about">About</a></li>
           </ul>
           <ul className="pills side-nav" id="mobile-menu">

@@ -49,6 +49,10 @@ img[alt="medium center"] {
   margin: 0 auto;
 }
 /** Markdown END **/
+
+.h4-aligned-btn {
+  margin-top: 18px;
+}
 .page-wrap {
   min-height: 76%;
   /* equal to footer height */
@@ -127,7 +131,6 @@ header, main, footer {
         padding-left: 0;
     }
 }
-
 
 .perm.side-nav .collapsible-header {
     font-size: 20px;

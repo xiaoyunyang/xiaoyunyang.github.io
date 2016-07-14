@@ -11,8 +11,13 @@ var BookmarksList = React.createClass({
     return (
       <div>
         <div className="col s12 m8 l8">
-          <h4>Latest Projects and Bookmarks</h4>
-          <List items={this.state.items}/>
+          <div className="row">
+            <div className="col s8"><h4>Latest Projects and Bookmarks</h4></div>
+            <div className="col s4">
+              <a className="waves-effect waves-light btn h4-aligned-btn" href="#matrix">Visualize me!</a>
+            </div>
+          </div>
+        <List items={this.state.items}/>
         </div>
         <div className="col s12 m8 l4">
           <h5>Bookmark Collections</h5>

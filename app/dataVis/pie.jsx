@@ -225,7 +225,12 @@ var Pie = React.createClass({
   render: function() {
     return (
       <div className="row">
-        <h4>PieChart DataVis:</h4>
+        <div className="row">
+          <div className="col s8"><h4>PieChart DataVis</h4></div>
+          <div className="col s4">
+            <a className="waves-effect waves-light btn h4-aligned-btn" href="#matrix">Show Me Matrix!</a>
+          </div>
+        </div>
         <h5>Pick tags to display</h5>
         <footer className="entry-meta">
           <span className="tag-links">
