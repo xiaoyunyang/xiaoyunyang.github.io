@@ -23,13 +23,14 @@ Users get data visualizations and recommendations to filter and explore their bo
 
 
 ##### Buzzwords
-<div class="chip">Tribal knowledge</div>
-<div class="chip">Social bookmarking</div>
-<div class="chip">Expert tagging</div>
+<div class="chip">Tribal Knowledge</div>
+<div class="chip">Social Bookmarking</div>
+<div class="chip">Expert Tagging</div>
+<div class="chip">Online Learning</div>
 
 ##### Endnote
 *LooseLeaf lets you learn, share, and discover together online.*
 
 ***
 #### About the Founder
-Xiaoyun studied Electrical and Computer Engineering (ECE) at Carnegie Mellon University, with a focus in distributed systems, machine learning, and signal processing. After getting her M.S. in ECE, Xiaoyun has been working at Naval Reactors at Washington, DC, providing design and operational oversight for the Navy's submarines and aircraft careers. In her free time, Xiaoyun likes to blog on Medium and read. She's passionate about software and data visualization. She's obsessed about curating and building collections of useful things. 
+Xiaoyun studied Electrical and Computer Engineering (ECE) at Carnegie Mellon University, with a focus in distributed systems, machine learning, and signal processing. After getting her M.S. in ECE, Xiaoyun has been working at Naval Reactors at Washington, DC, providing design and operational oversight for the Navy's submarines and aircraft careers. In her free time, Xiaoyun likes to blog on Medium and read. She's passionate about software and data visualization. She's obsessed about curating and building collections of useful things.
