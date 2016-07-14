@@ -5,8 +5,9 @@
 @import url("matrix.css");
 @import url("../font/font-awesome/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("http://fonts.googleapis.com/css?family=Tangerine");
 html {
-    font-family: "Helvetica Neue";
+    font-family: "Futura, Helvetica Neue";
 }
 img {
     width: 100%;
@@ -14,7 +15,10 @@ img {
 html, body {
   height: 100%;
 }
-
+p {
+  font-size: 18px;
+}
+/** Markdown BEGIN **/
 code {
     padding: 2px 4px;
     font-size: 90%;
@@ -23,7 +27,28 @@ code {
     background-color: #f9f2f4;
     border-radius: 4px;
 }
-
+img[alt="mini"] {
+  max-width:  20px;
+  display: block;
+}
+img[alt="small"] {
+  max-width:  100px;
+  display: block;
+}
+img[alt="medium"] {
+  max-width:  400px;
+  display: block;
+}
+img[alt="large"] {
+  max-width:  800px;
+  display: block;
+}
+img[alt="medium center"] {
+  max-width:  400px;
+  display: block;
+  margin: 0 auto;
+}
+/** Markdown END **/
 .page-wrap {
   min-height: 76%;
   /* equal to footer height */

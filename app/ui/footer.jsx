@@ -22,6 +22,9 @@ var Footer = React.createClass({
                 <a className = "tooltipped" data-position="top" data-delay="50" data-tooltip="My open source projects" href="https://github.com/xiaoyunyang">
                   <i className = "fa fa-github fa-lg"></i>
                 </a>
+                <a className = "tooltipped" data-position="top" data-delay="50" data-tooltip="My company's Twitter Page" href="https://twitter.com/looseleafus">
+                  <i className="fa fa-twitter fa-lg"></i>
+                </a>
                 <a className = "tooltipped" data-position="top" data-delay="50" data-tooltip="Email me" href="mailto:xyang232@gmail.com">
                   <i className = "fa fa-envelope fa-lg"></i>
                 </a>

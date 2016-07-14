@@ -1,37 +1,3 @@
-var MdText = React.createClass({
-  loadMdData: function() {
-    $.ajax({
-      url: this.props.url,
-      success: function(data) {
-        this.setState({
-          mdData: data
-        })
-        html_content = marked( data );
-        document.getElementById('text').innerHTML = html_content;
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    })
-  },
-  getInitialState: function() {
-    return {
-      mdData: ''
-    };
-  },
-  componentWillMount: function() {
-    this.loadMdData();
-    //console.log(mdData);
-  },
-  render: function() {
-    return (
-      <div id="text">
-        {this.mdData}
-      </div>
-    );
-  }
-});
-
 var Writing = React.createClass({
   componentDidMount: function() {
     $('.materialboxed').materialbox();
@@ -40,7 +6,7 @@ var Writing = React.createClass({
     return (
       <div>
         <div className="col s12 m8 l8">
-          <MdText url="assets/md/BED.md" />
+          <MdText url="assets/md/BED.md" textId="text-writing" />
           <div className="col s12 m8 l4">
 
             <ul className="collapsible popout" data-collapsible="accordion">

@@ -143,17 +143,14 @@ var TopNav = React.createClass({
           <a href="#!" className="brand-logo">Xiaoyun Yang</a>
           <ul className="pills right hide-on-med-and-down">
             <li className="bookmarks-pill"><a href="#bookmarks">Bookmarks</a></li>
-            <li className="life-pill"><a href="#life">Life</a></li>
-            <li className="writing-pill"><a href="#writing">Writing</a></li>
+
             <li className="about-pill"><a href="#about">About</a></li>
-            <li className="contact-pill"><a href="#contact">Contact</a></li>
           </ul>
           <ul className="pills side-nav" id="mobile-menu">
             <li className="bookmarks-pill"><a href="#bookmarks">Bookmarks</a></li>
             <li className="matrix-pill"><a href="#matrix">Matrix</a></li>
             <li className="pie-pill"><a href="#pie">PieChart</a></li>
             <li className="map-pill"><a href="#map">About</a></li>
-            <li className="about-pill"><a href="#about">Contact</a></li>
           </ul>
         </div>
       </nav>
