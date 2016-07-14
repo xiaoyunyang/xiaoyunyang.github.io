@@ -291,9 +291,9 @@ var Matrix = React.createClass({
     return (
       <div className="row">
         <div className="row">
-          <div className="col s8"><h4>A Heatmap DataVis</h4></div>
+          <div className="col s8"><h4>A Heatmap Menu</h4></div>
           <div className="col s4">
-            <a className="waves-effect waves-light btn h4-aligned-btn" href="#pie">Show Me Pie!</a>
+            <a className="waves-effect waves-light btn h4-aligned-btn" href="#pie">I want Donut!</a>
           </div>
         </div>
         <h5>Pick tags to display</h5>
