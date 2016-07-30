@@ -7,7 +7,7 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("http://fonts.googleapis.com/css?family=Tangerine");
 html {
-    font-family: "Futura, Helvetica Neue";
+    font-family: "Monaco, Futura, Helvetica Neue";
 }
 img {
     width: 100%;
@@ -17,6 +17,10 @@ html, body {
 }
 p {
   font-size: 18px;
+}
+
+.side-nav {
+  width: 200px;
 }
 /** Markdown BEGIN **/
 code {

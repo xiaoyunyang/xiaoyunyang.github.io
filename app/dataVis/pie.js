@@ -2,7 +2,7 @@
 var PieChart = function(divId, data) {
 
   /* ------- CONSTANTS -------*/
-  const MARGIN = { top: 80, right: -100, bottom: 100, left: 360 },
+  const MARGIN = { top: 80, right: -100, bottom: 100, left: 300 },
         PADDING = 2,
         WIDTH = 600 - MARGIN.left - MARGIN.right,
         HEIGHT = 400,

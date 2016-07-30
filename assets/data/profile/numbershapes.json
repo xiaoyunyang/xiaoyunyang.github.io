@@ -1,5 +1,5 @@
 {
-	"user": {"username":"afenner","name":"Andrew Fenner"},
+	"user": {"username":"numbershapes","name":"NumberShapes"},
 	"binders": [
 		{"name":"Pie Chart","alias":"pie","description":"Timeline"},
 		{"name":"Matrix","alias":"matrix","description":"AdjacencyMatrix"}
