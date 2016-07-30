@@ -80,7 +80,9 @@ var SideNav = React.createClass({
     return (
       <div className="perm side-nav fixed">
         <ul className="collection with-header">
-            <li className="collection-header" id="user-info">{this.state.user.name}</li>
+            <li className="collection-header">
+              <a href="#" id="user-info">{this.state.user.name}</a>
+            </li>
         </ul>
         <ul className="collapsible" data-collapsible="expandable">
           <SideBinders binders={this.state.binders}/>
