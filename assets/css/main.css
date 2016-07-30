@@ -126,7 +126,10 @@ header, main, footer {
 .main-content {
     padding-left: 240px;
 }
-
+.footer-copyright {
+  margin-left: -45px;
+  padding-left: 50px
+}
 @media only screen and (max-width : 992px) {
     header, main, footer {
         padding-left: 0;
