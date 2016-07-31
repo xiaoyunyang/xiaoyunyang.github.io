@@ -1,6 +1,6 @@
 ### About LooseLeaf
 #### The Gist
-Online learning can be challenging if you don't know where to look for information. LooseLeaf makes online learning easy by giving online learners a platform to curate web pages of useful learning content. Collaborative filtering and expert tagging of bookmarks.
+Online learning can be challenging if you don't know where to look for information. LooseLeaf makes online learning easy by giving online learners a platform to curate web pages of useful learning content.
 
 Meet LooseLeaf: a smart curating technology that makes knowledge management easier within a community or organization.
 
@@ -28,6 +28,8 @@ Users get data visualizations and recommendations to filter and explore their bo
 <div class="chip">Expert Tagging</div>
 <div class="chip">Online Learning</div>
 <div class="chip">Information Foraging</div>
+<div class="chip">Collaborative Filtering</div>
+<div class="chip">Expert Tagging</div>
 
 ##### Endnote
 *LooseLeaf lets you learn, share, and discover together online.*

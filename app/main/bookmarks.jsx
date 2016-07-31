@@ -26,7 +26,7 @@ var BookmarksList = React.createClass({
               <img className="square" src="../assets/data/profile/photo/looseleaf.png" />
               <span className="title"><a href="index.html">LooseLeaf</a></span>
               <p>A new delivery vehicle for educational content online</p>
-              <a target="_blank" href="https://docs.google.com/spreadsheets/d/1X9PrlVeO9GCSmHw8psSD1fN_77vueV_A4EdaQrVzfO0/edit?usp=sharing" className="secondary-content"><i className="material-icons">&#xE254;</i></a>
+              <a target="_blank" href="https://docs.google.com/spreadsheets/d/1qSz2Pn7WWVqSuUfxy1u8nWT9duv4WJ_24p1Xr2D_cTY/edit#gid=0" className="secondary-content"><i className="material-icons">&#xE254;</i></a>
             </li>
             <li className="collection-item avatar">
               <img className="square" src="../assets/data/profile/photo/xyang.png" />
