@@ -29,7 +29,6 @@ Users get data visualizations and recommendations to filter and explore their bo
 <div class="chip">Online Learning</div>
 <div class="chip">Information Foraging</div>
 <div class="chip">Collaborative Filtering</div>
-<div class="chip">Expert Tagging</div>
 
 ##### Endnote
 *LooseLeaf lets you learn, share, and discover together online.*
