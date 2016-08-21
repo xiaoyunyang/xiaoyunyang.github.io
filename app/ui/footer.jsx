@@ -4,7 +4,7 @@ var Footer = React.createClass({
   },
   render: function() {
     return (
-        <footer className="page-footer theme-color">
+        <footer className="page-footer dashboard-footer section-green">
           <div className="container">
             <div className="row">
             </div>
@@ -22,7 +22,7 @@ var Footer = React.createClass({
                 <a className = "tooltipped" data-position="top" data-delay="50" data-tooltip="My open source projects" href="https://github.com/xiaoyunyang">
                   <i className = "fa fa-github fa-lg"></i>
                 </a>
-                <a className = "tooltipped" data-position="top" data-delay="50" data-tooltip="My company's Twitter Page" href="https://twitter.com/looseleafus">
+                <a className = "tooltipped" data-position="top" data-delay="50" data-tooltip="My company's Twitter Page" href="https://twitter.com/mylooseleaf">
                   <i className="fa fa-twitter fa-lg"></i>
                 </a>
                 <a className = "tooltipped" data-position="top" data-delay="50" data-tooltip="Email me" href="mailto:xyang232@gmail.com">

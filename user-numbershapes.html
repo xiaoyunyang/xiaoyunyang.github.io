@@ -12,16 +12,21 @@
   <script src="build/react-dom.js"></script>
   <script src="build/JSXTransformer.js"></script>
   <link rel='stylesheet' type='text/css' href="assets/css/main.css">
-    <link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon" />
-  <meta name="title" content="Xiaoyun Yang Homepage" />
-  <meta name="description" content="Welcome to my website! Here I showcase my side projects, writing, random tidbits about life, and my curated content about Tech, entrepreneurship, random Tidbits, writing, and data visualization" /><!--formatted-->
-  <link rel="image_src" href="https://scontent-lga3-1.xx.fbcdn.net/t31.0-8/12513800_1116554888376171_3888805851363153009_o.png" / >
-  <meta property="og:url" content="http://xiaoyunyang.github.io/" />
+  <link rel="shortcut icon" href="assets/logo/favicon.ico" type="image/x-icon" />
+  <!-- FACEBOOK TAGS -->
+  <meta property="og:url" content="http://looseleafapp.com/" />
+  <meta property="og:image" content="http://looseleafapp.com/assets/logo/big.png">
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Xiaoyun Yang Homepage" />
-  <meta property="og:description" content="Welcome to my website! Here I showcase my side projects, writing, random tidbits about life, and my curated content about Tech, entrepreneurship, random Tidbits, writing, and data visualization" />
-  <meta property="og:image" content="https://scontent-lga3-1.xx.fbcdn.net/t31.0-8/12513800_1116554888376171_3888805851363153009_o.png" />
-  <title>Xiaoyun Yang | Dashboard</title>
+  <meta property="og:title" content="LooseLeaf - The world's notebook for socially curated bookmarks.">
+  <meta property="og:description" content="Smart social bookmarking system to discover, navigate, and filter online learning resources. Free to use.">
+  <!-- SEO Tags -->
+  <meta name="description" content="A place to showcase your expertise and easily access the best socially curated online resources for learning and building your skills online.">
+  <meta name="title" content="LooseLeaf  - The world’s notebook for socially curated online resources." />
+  <meta name="keywords" content="online learning, social bookmarking, data visualization, social bookmarking, crowdsourcing, information foraging, collaborative filtering, tribal knowledge, expert tagging,share, community, portfolio, design, template, tutorial, guide, reference material, walkthrough, wiki, tips, advice, examples, inspiration, ideas">
+  <!-- device scaling-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>LooseLeaf - The world&rsquo;s notebook for socially curated online resources. </title>
 </head>
 
 <body>
@@ -35,9 +40,6 @@
       </div>
       <div id="life-page" class="pages">
         <div id="life"></div>
-      </div>
-      <div id="writing-page" class="pages">
-        <div id="writing"></div>
       </div>
       <div id="about-page" class="pages">
         <div id="about"></div>
@@ -58,7 +60,7 @@
         <div id="timeline"></div>
       </div>
   </div>
-  <div id="footer"><!-- react Footer --></div>
+
   <script>
     var dashboard = {};
     dashboard.user = "numbershapes";
@@ -66,13 +68,13 @@
   <script type="text/javascript" src="app/dataVis/dataVisHelpers.js"></script>
   <script type="text/javascript" src="js/colorbrewer.js"></script>
   <script type="text/javascript" src="js/d3.v3.min.js"></script>
-  <script type="text/jsx" src="app/ui/footer.jsx"></script>
+  <script type="text/jsx" src="app/ui/topnav.jsx"></script>
+
   <script type="text/jsx" src="app/ui/list.jsx"></script>
   <script type="text/jsx" src="app/ui/tags.jsx"></script>
   <script type="text/jsx" src="app/ui/mdtext.jsx"></script>
 
   <script type="text/jsx" src="app/main/life.jsx"></script>
-  <script type="text/jsx" src="app/main/writing.jsx"></script>
   <script type="text/jsx" src="app/main/about.jsx"></script>
   <script type="text/jsx" src="app/main/contact.jsx"></script>
   <script type="text/jsx" src="app/main/bookmarks.jsx"></script>

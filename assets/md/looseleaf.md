@@ -17,6 +17,13 @@ Bookmarks are hard to organize and share. A lot of useful content for online lea
 ##### Problem solution
 Putting the bookmarks collection into a representation (e.g., Heatmap and piechart), you can prescribe ways in which bookmarks are being explored. Moreover, by observing how people interact with the collection system, you can discover new patterns in which people explore data to inform a better DataVis menu system.
 
+
+#### Creators
+Showcase your expertise by sharing your creations with the world's communities of coders, teachers, and creatives.
+
+#### Online Learning
+A place to connect with the information that helps you succeed and collaborate with the people who b
+
 ![looseleaf datavis ](https://scontent-ord1-1.xx.fbcdn.net/t31.0-8/13584821_1725324291075188_6953786564116628510_o.jpg)
 
 Users get data visualizations and recommendations to filter and explore their bookmarks and bookmarks from the community.

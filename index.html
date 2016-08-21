@@ -4,99 +4,243 @@
   <script type="text/javascript" src="js/d3.v3.min.js"></script>
   <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
   <script type="text/javascript" src="js/materialize.js"></script>
-  <script type="text/javascript" src="js/underscore-min.js"></script>
-  <script type="text/javascript" src="js/backbone-min.js"></script>
-  <script type="text/javascript" src="js/Bacon.js"></script>
   <script src="js/marked.min.js"></script>
   <script src="build/react-with-addons.js"></script>
   <script src="build/react-dom.js"></script>
   <script src="build/JSXTransformer.js"></script>
   <link rel='stylesheet' type='text/css' href="assets/css/main.css">
-  <link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon" />
-  <meta name="title" content="LooseLeaf Homepage" />
-  <meta name="description" content="Welcome to my website! Here I showcase my side projects, writing, random tidbits about life, and my curated content about Tech, entrepreneurship, random Tidbits, writing, and data visualization" /><!--formatted-->
-  <link rel="image_src" href="https://scontent-lga3-1.xx.fbcdn.net/hphotos-xfp1/t31.0-8/12633497_10207282830843605_3810911012612604428_o.jpg" / >
-  <meta property="og:url" content="http://xiaoyunyang.github.io/" />
+  <meta name="google-site-verification" content="i8EckPWuFcKomwBvSgoXISJYLOcTNwcR8FodGMkwdM8">
+  <link rel="shortcut icon" href="assets/logo/favicon.ico" type="image/x-icon" />
+  <!-- FACEBOOK TAGS -->
+  <meta property="og:url" content="http://looseleafapp.com/" />
+  <meta property="og:image" content="http://looseleafapp.com/assets/logo/logo.png">
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="LooseLeaf Homepage" />
-  <meta property="og:description" content="Welcome to my website! Here I showcase my side projects, writing, random tidbits about life, and my curated content about Tech, entrepreneurship, random Tidbits, writing, and data visualization" />
-  <meta property="og:image" content="https://scontent-lga3-1.xx.fbcdn.net/hphotos-xfp1/t31.0-8/12633497_10207282830843605_3810911012612604428_o.jpg" />
-  <title>LooseLeaf | Dashboard</title>
+  <meta property="og:title" content="LooseLeaf - The world's notebook for socially curated bookmarks.">
+  <meta property="og:description" content="Smart social bookmarking system to discover, navigate, and filter online learning resources. Free to use.">
+  <!-- SEO Tags -->
+  <meta name="description" content="A place to showcase your expertise and easily access the best socially curated online resources for learning and building your skills online.">
+  <meta name="title" content="LooseLeaf  - The world’s notebook for socially curated online resources." />
+  <meta name="keywords" content="online learning, social bookmarking, data visualization, social bookmarking, crowdsourcing, information foraging, collaborative filtering, tribal knowledge, expert tagging,share, community, portfolio, design, template, tutorial, guide, reference material, walkthrough, wiki, tips, advice, examples, inspiration, ideas">
+  <!-- device scaling-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>LooseLeaf - The world&rsquo;s notebook for socially curated online resources. </title>
 </head>
 
 <body>
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=622109661230044";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
-
-  <div id="react-top-nav"><!-- react TopNav --></div>
-  <div id="react-side-nav"><!-- react SideNav --></div>
-
-  <div class="main-content row page-wrap">
-      <div id="bookmarks-page" class="pages">
-        <div id="bookmarks"></div>
+  <div class="navbar-fixed">
+    <!-- TopNav -->
+    <nav class=" grey lighten-4">
+      <div class=" nav-wrapper-white nav-text-links">
+        <div class="brand-logo">
+          <a class="navbar-brand" href="/">
+            <img src="assets/logo/logo.png" alt="LooseLeaf"/>
+          </a>
+        </div>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/">Build A Notebook</a></li>
+          <li><a href="/">Explore Notebooks <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+          <li><a href="/">Log in</a></li>
+          <a id="signup-btn" class="waves-effect waves-light btn" href="/">Sign up</a>
+        </ul>
+        <a href="#" data-activates="mobile-menu" class="button-collapse right"><i class="mdi-navigation-menu"></i></a>
+        <ul class="side-nav" id="mobile-menu">
+          <li><a href="dashboard.html">Browse Notebooks</a></li>
+          <li><a href="/">Login</a></li>
+          <li><a href="dashboard.html#about">About</a></li>
+        </ul>
       </div>
-      <div id="life-page" class="pages">
-        <div id="life"></div>
-      </div>
-      <div id="writing-page" class="pages">
-        <div id="writing"></div>
-      </div>
-      <div id="about-page" class="pages">
-        <div id="about"></div>
-        <div class="fb-comments" data-href="http://xiaoyunyang.github.io/index.html#about" data-width="800" data-numposts="5"></div>
-      </div>
-      <div id="contact-page" class="pages">
-        <div id="contact"></div>
-      </div>
-      <div id="map-page" class="pages">
-        <div id="map"></div>
-      </div>
-      <div id="pie-page" class="pages">
-        <div id="pie"></div>
-      </div>
-      <div id="matrix-page" class="pages">
-        <div id="matrix"></div>
-      </div>
-      <div id="timeline-page" class="pages">
-        <div id="timeline"></div>
-      </div>
+    </nav>
   </div>
 
-  <div id="footer"><!-- react Footer --></div>
+  <div class="row hero section-white center">
+    <div class="col s12 m12 l6"><img src="assets/landing/landing-plane.png"></div>
+    <div class="col s12 m12 l6">
+      <h3 class="text-green center">A better delivery vehicle for online resources</h3>
+      <h5 class="light text-brown center">
+        Curate online resources and collaborate with the world&rsquo;s communities of coders, teachers, and creators.
+      </h5>
+      <a class="waves-effect waves-light btn" href="dashboard.html">Try it out for free <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <!-- Section 1 -->
+  <div class="section section-green">
+    <div class="row container center">
+      <h4 class="text-white">Mission</h4>
+      <h5 class="text-white">
+        LooseLeaf&rsquo;s mission is to give people the power to easily curate, navigate, and filter the world's information to make it easier to learn online with others.
+      </h5>
+    </div>
+  </div>
+  <!-- Section 2 -->
+  <div class="section white">
+    <div class="row hero center" style="margin-top:-4.5%;">
+      <div class="row container">
+        <h4 class="text-brown">Your Online Notebook</h4>
+        <h5 class="light text-brown center">
+          Get all your bookmarks in one place. <br>Easily discover and collect other people's bookmarks.
+        </h5>
+      </div>
+      <div class="row">
+        <div class="col s12 m12 l4">
+          <img class="materialboxed" width="650" src="assets/landing/mobile-laptop1.png">
+          <h4 class="light text-green">Find</h4>
+          <h6 class="light text-brown">Intuitive navigation using interactive visualizations of your bookmarks.</h6>
+          <br>
+        </div>
+        <div class="col s12 m12 l4">
+          <img class="materialboxed" width="650" src="assets/landing/mobile-laptop2.png">
+          <h4 class="light text-green">Organize</h4>
+          <h6 class="light text-brown">Personalize your learning environment.</h6>
+          <br>
+        </div>
+        <div class="col s12 m12 l4">
+          <img class="materialboxed" width="650" src="assets/landing/mobile-laptop3.png">
+          <h4 class="light text-green">Discover</h4>
+          <h6 class="light text-brown">Check out what other people are curating.</h6>
+          <br>
+        </div>
+      </div>
+      <img class="medium-img" src="assets/landing/landing-bookmark.png">
+      <div class="row container center">
+        <h4 class="text-green">Social Bookmarks</h4>
+        <h6 class="light text-brown">
+          Bundle various types of bookmarks on tips, walkthroughs, guides, wikis, template, recipes, tutorials, advice, ideas, examples, and inspiration
+          to create useful collections
+        </h6>
+      </div>
+    </div>
+  </div>
+  <!-- Section 3 -->
+  <div class="section section-brown">
+    <div class="row container text-white">
+      <h3 class="center">How it works</h3>
+      <div class="col s12 m4 l4">
+        <div class="col s4 m4 l4">
+          <img src="assets/landing/share.png"/>
+        </div>
+        <h6>Share what you learned with other people</h6>
+      </div>
+      <div class="col s12 m4 l4">
+        <div class="col s4 m4 l4">
+          <img src="assets/landing/expertise.png"/>
+        </div>
+        <h6>Showcase your knowledge and expertise</h6>
+      </div>
+      <div class="col s12 m4 l4">
+        <div class="col s4 m4 l4">
+          <img src="assets/landing/cultivate.png"/>
+        </div>
+        <h6>Cultivate your skills with others</h6>
+      </div>
+    </div>
+  </div>
+  <!-- Section 4 -->
+  <div class="section section-white">
+    <div class="row container center">
+      <h4 class="text-brown center">Use it for free</h4>
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <a class="waves-effect waves-light btn btn-large" href="dashboard.html">Get started</a>
+        </div>
+      </div>
+      <h4 class="text-brown center">OR</h4>
+      <h5 class="text-brown center">Check out theses notebooks</h5>
+      <div class="row">
+        <div class="col s12 m4 l2">
+          <a class="" href="dashboard.html">Entrepreneurs</a>
+        </div>
+        <div class="col s12 m4 l2">
+          <a class="" href="dashboard.html">Teachers</a>
+        </div>
+        <div class="col s12 m4 l2">
+          <a class="" href="dashboard.html">Designers</a>
+        </div>
+        <div class="col s12 m4 l2">
+          <a class="" href="dashboard.html">Developers</a>
+        </div>
+        <div class="col s12 m4 l2">
+          <a class="" href="dashboard.html">Freelacers</a>
+        </div>
+        <div class="col s12 m4 l2">
+          <a class="" href="dashboard.html">Creators</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="page-footer section-green">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 m12 s12">
+          <div class="col l6 m4 s6">
+            <a href="/">
+              <img src="assets/logo/beta.png">
+            </a>
+          </div>
+          <div class="col l12 s12">
+            <p class="light footer-text-links">Start using LooseLeaf to maximize your online learning today. It's completely free and we
+            will work with you one-on-one to get you started and answer any questions.</p>
+          </div>
+        </div>
+        <div class="col l6 m12 s12">
+          <div class="col s4 offset-s1">
+            <h5 class="white-text"><strong>Notebooks</strong></h5>
+            <h6>
+              <ul class="light footer-text-links">
+                <li><a href="#!">Entrepreneurs</a></li>
+                <li><a href="#!">Teachers</a></li>
+                <li><a href="#!">Designers</a></li>
+                <li><a href="#!">Developers</a></li>
+                <li><a href="#!">Freelancers</a></li>
+                <li><a href="#!">Your own</a></li>
+              </ul>
+            </h6>
+          </div>
+          <div class="col s4 offset-s1">
+            <h5 class="white-text"><strong>Company</strong></h5>
+            <h6>
+              <ul class="light footer-text-links">
+                <li><a href="#!">About Us</a></li>
+              </ul>
+            </h6>
+            <div class="social-icons">
+              <a target="_blank" href="https://www.facebook.com/looseleafUS/?fref=ts">
+                <i class="fa fa-facebook fa-lg"></i>
+              </a>
+              <a target="_blank" href="https://twitter.com/mylooseleaf">
+                <i class="fa fa-twitter fa-lg"></i>
+              </a>
+              <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Email us" href="mailto:info@looseleaf.us">
+                <i class="fa fa-envelope fa-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <p>
+          &copy; 2016 LooseLeaf. Made with <i class="fa fa-heart fa-lg"></i> in DC.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+  <script type="text/javascript" src="js/materialize.js"></script>
   <script>
-    var dashboard = {};
-    dashboard.user = "looseleaf"
+   $( document ).ready(function(){
+     $('.button-collapse').sideNav({
+       edge: 'right',
+       closeOnClick: true
+     });
+    $('.slider').slider({full_width: true});
+
+   })
+
   </script>
-  <script type="text/javascript" src="app/dataVis/dataVisHelpers.js"></script>
-  <script type="text/javascript" src="js/colorbrewer.js"></script>
-  <script type="text/javascript" src="js/d3.v3.min.js"></script>
-  <script type="text/jsx" src="app/ui/footer.jsx"></script>
-  <script type="text/jsx" src="app/ui/list.jsx"></script>
-  <script type="text/jsx" src="app/ui/tags.jsx"></script>
-  <script type="text/jsx" src="app/ui/mdtext.jsx"></script>
-
-  <script type="text/jsx" src="app/main/life.jsx"></script>
-  <script type="text/jsx" src="app/main/writing.jsx"></script>
-  <script type="text/jsx" src="app/main/about.jsx"></script>
-  <script type="text/jsx" src="app/main/contact.jsx"></script>
-  <script type="text/jsx" src="app/main/bookmarks.jsx"></script>
-
-  <script src="app/dataVis/uStates.js"></script> <!-- creates uStates. -->
-  <script src="app/dataVis/map.js"></script>
-  <script type="text/jsx" src="app/dataVis/map.jsx"></script>
-  <script type="text/jsx" src="app/dataVis/pie.jsx"></script>
-  <script src="app/dataVis/pie.js"></script>
-  <script type="text/jsx" src="app/dataVis/matrix.jsx"></script>
-  <script src="app/dataVis/matrix.js"></script>
-  <script type="text/javascript" src="app/router.js"></script>
-  <script type="text/jsx" src="app/app.jsx"></script>
-
 
 </body>
 

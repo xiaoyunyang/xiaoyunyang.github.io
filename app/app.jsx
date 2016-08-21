@@ -43,10 +43,9 @@ function loadBookmarksFromServer(url) {
 }
 
 function renderProfile() {
-  ReactDOM.render(<TopNav/>, document.getElementById('react-top-nav'));
+  ReactDOM.render(<TopNav profileName={dashboard.dataset.user.name}/>, document.getElementById('react-top-nav'));
   ReactDOM.render(<SideNav/>, document.getElementById('react-side-nav'));
   ReactDOM.render(<Life/>, document.getElementById('life'));
-  ReactDOM.render(<Writing/>, document.getElementById('writing'));
 }
 
 function renderDataVis() {
@@ -127,34 +126,6 @@ var SideTags = React.createClass({
           }</ul>
         </div>
       </li>
-    );
-  }
-});
-var TopNav = React.createClass({
-  componentDidMount: function() {
-    $('.button-collapse').sideNav({
-      edge: 'right',
-      closeOnClick: true
-    });
-  },
-  render: function() {
-    return (
-      <nav className=" grey lighten-4">
-        <div className="nav-wrapper">
-          <a href="#" data-activates="mobile-menu" className="button-collapse right"><i className="mdi-navigation-menu"></i></a>
-          <a href="#!" className="brand-logo">Xiaoyun Yang</a>
-          <ul className="pills right hide-on-med-and-down">
-            <li className="bookmarks-pill"><a href="#bookmarks">Bookmarks</a></li>
-            <li className="about-pill"><a href="#about">About</a></li>
-          </ul>
-          <ul className="pills side-nav" id="mobile-menu">
-            <li className="bookmarks-pill"><a href="#bookmarks">Bookmarks</a></li>
-            <li className="matrix-pill"><a href="#matrix">Matrix</a></li>
-            <li className="pie-pill"><a href="#pie">PieChart</a></li>
-            <li className="map-pill"><a href="#map">About</a></li>
-          </ul>
-        </div>
-      </nav>
     );
   }
 });

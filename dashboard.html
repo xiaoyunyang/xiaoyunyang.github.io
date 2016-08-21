@@ -13,9 +13,10 @@
   <script src="build/JSXTransformer.js"></script>
   <link rel='stylesheet' type='text/css' href="assets/css/main.css">
   <link rel="shortcut icon" href="assets/logo/favicon.ico" type="image/x-icon" />
+  <meta name="google-site-verification" content="i8EckPWuFcKomwBvSgoXISJYLOcTNwcR8FodGMkwdM8">
   <!-- FACEBOOK TAGS -->
   <meta property="og:url" content="http://looseleafapp.com/" />
-  <meta property="og:image" content="http://looseleafapp.com/assets/logo/logo.png">
+  <meta property="og:image" content="http://looseleafapp.com/assets/logo/big.png">
   <meta property="og:type" content="website" />
   <meta property="og:title" content="LooseLeaf - The world's notebook for socially curated bookmarks.">
   <meta property="og:description" content="Smart social bookmarking system to discover, navigate, and filter online learning resources. Free to use.">
@@ -30,6 +31,14 @@
 </head>
 
 <body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=622109661230044";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
   <div id="react-top-nav"><!-- react TopNav --></div>
   <div id="react-side-nav"><!-- react SideNav --></div>
@@ -43,6 +52,7 @@
       </div>
       <div id="about-page" class="pages">
         <div id="about"></div>
+        <div class="fb-comments" data-href="http://xiaoyunyang.github.io/index.html#about" data-width="800" data-numposts="5"></div>
       </div>
       <div id="contact-page" class="pages">
         <div id="contact"></div>
@@ -61,15 +71,15 @@
       </div>
   </div>
 
+
   <script>
     var dashboard = {};
-    dashboard.user = "afenner";
+    dashboard.user = "looseleaf"
   </script>
   <script type="text/javascript" src="app/dataVis/dataVisHelpers.js"></script>
   <script type="text/javascript" src="js/colorbrewer.js"></script>
   <script type="text/javascript" src="js/d3.v3.min.js"></script>
   <script type="text/jsx" src="app/ui/topnav.jsx"></script>
-
   <script type="text/jsx" src="app/ui/list.jsx"></script>
   <script type="text/jsx" src="app/ui/tags.jsx"></script>
   <script type="text/jsx" src="app/ui/mdtext.jsx"></script>

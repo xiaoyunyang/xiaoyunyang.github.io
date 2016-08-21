@@ -7,7 +7,6 @@ $(function(){
 			"": "bookmarks",
 			"bookmarks": "bookmarks",
 			"life": "life",
-			"writing": "writing",
 			"about": "about",
 			"contact": "contact",
 			"map": "map",
@@ -48,11 +47,6 @@ $(function(){
 			this.showPage('div#life-page');
 			this.selectPill('li.life-pill');
 		},
-		writing: function() {
-			this.showPage('div#writing-page');
-			this.selectPill('li.writing-pill');
-		},
-
 		about: function() {
 			this.showPage('div#about-page');
 			this.selectPill('li.about-pill');
@@ -89,7 +83,6 @@ $(function(){
 		events: {
 			'click ul.pills li.bookmarks-pill a': 'displayBookmarks',
 			'click ul.pills li.life-pill a': 'displayLife',
-			'click ul.pills li.writing-pill a': 'displayWriting',
 			'click ul.pills li.about-pill a': 'displayAbout',
 			'click ul.pills li.contact-pill a': 'displayContact',
 			'click ul.pills li.map-pill a': 'displayMap',
@@ -112,9 +105,6 @@ $(function(){
 		},
 		displayLife: function(){
 			this.router.navigate("life", true);
-		},
-		displayWriting: function(){
-			this.router.navigate("writing", true);
 		},
 		displayAbout: function(){
 			this.router.navigate("about", true);
