@@ -18,7 +18,22 @@ p {
 }
 a {
 	color: #26a69a;
+  cursor: pointer;
 }
+.text-link a {
+  color: #26a69a;
+}
+.text-link a:hover {
+  color: #4db6ac;
+}
+.text-link-list a {
+  color: #383435;
+}
+.text-link-list a:hover {
+  color: #26a69a;
+  text-decoration: underline;
+}
+
 .medium-img {
   width: 80%;
 }
@@ -114,6 +129,9 @@ h6 {
 .nav-text-links a {
   color: #616161;
   font-weight: bolder;
+}
+.nav-text-links li:hover {
+  background: transparent;
 }
 .nav-text-links a:hover {
   color: #383435;

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script type="text/javascript" src="js/d3.v3.min.js"></script>
   <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
   <script type="text/javascript" src="js/materialize.js"></script>
   <script src="js/marked.min.js"></script>
@@ -15,7 +14,7 @@
   <meta property="og:url" content="http://looseleafapp.com/" />
   <meta property="og:image" content="http://looseleafapp.com/assets/logo/logo.png">
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="LooseLeaf - The world's notebook for socially curated bookmarks.">
+  <meta property="og:title" content="LooseLeaf - A platform for online learning communities.">
   <meta property="og:description" content="Smart social bookmarking system to discover, navigate, and filter online learning resources. Free to use.">
   <!-- SEO Tags -->
   <meta name="description" content="A place to showcase your expertise and easily access the best socially curated online resources for learning and building your skills online.">
@@ -24,54 +23,50 @@
   <!-- device scaling-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <title>LooseLeaf - The world&rsquo;s notebook for socially curated online resources. </title>
+  <title>LooseLeaf - The world&rsquo;s notebook for socially curated online learning resources. </title>
 </head>
 
 <body>
-  <div class="navbar-fixed">
-    <!-- TopNav -->
-    <nav class=" grey lighten-4">
-      <div class=" nav-wrapper-white nav-text-links">
-        <div class="brand-logo">
-          <a class="navbar-brand" href="/">
-            <img src="assets/logo/logo.png" alt="LooseLeaf"/>
-          </a>
-        </div>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="/">Build A Notebook</a></li>
-          <li><a href="/">Explore Notebooks <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
-          <li><a href="/">Log in</a></li>
-          <a id="signup-btn" class="waves-effect waves-light btn" href="/">Sign up</a>
-        </ul>
-        <a href="#" data-activates="mobile-menu" class="button-collapse right"><i class="mdi-navigation-menu"></i></a>
-        <ul class="side-nav" id="mobile-menu">
-          <li><a href="dashboard.html">Browse Notebooks</a></li>
-          <li><a href="/">Login</a></li>
-          <li><a href="dashboard.html#about">About</a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
+  <div id="navbar"><!-- TopNav --></div>
 
   <div class="row hero section-white center">
     <div class="col s12 m12 l6"><img src="assets/landing/landing-plane.png"></div>
     <div class="col s12 m12 l6">
-      <h3 class="text-green center">A better delivery vehicle for online resources</h3>
+      <h3 class="text-green center">A community where knowledge seekers thrive</h3>
       <h5 class="light text-brown center">
-        Curate online resources and collaborate with the world&rsquo;s communities of coders, teachers, and creators.
+        Curate online resources with the world&rsquo;s communities of learners and educators.
       </h5>
       <a class="waves-effect waves-light btn" href="dashboard.html">Try it out for free <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
     </div>
   </div>
-  <!-- Section 1 -->
+  <!-- Section 3 -->
   <div class="section section-green">
-    <div class="row container center">
-      <h4 class="text-white">Mission</h4>
-      <h5 class="text-white">
-        LooseLeaf&rsquo;s mission is to give people the power to easily curate, navigate, and filter the world's information to make it easier to learn online with others.
-      </h5>
+    <div class="row text-white">
+      <h3 class="center">How it works</h3>
+      <div class="col s12 m4 l4">
+        <div class="col s4 m4 l4">
+          <img src="assets/landing/share.png"/>
+        </div>
+        <h5>Share</h5>
+        <p>Curate bookmarks to online learning content with other knowledge seekers.</p>
+      </div>
+      <div class="col s12 m4 l4">
+        <div class="col s4 m4 l4">
+          <img src="assets/landing/expertise.png"/>
+        </div>
+        <h5>Learn</h5>
+        <p>Collect bookmarks for your online Notebook. Learn on your own time and get feedback on your learning. </p>
+      </div>
+      <div class="col s12 m4 l4">
+        <div class="col s4 m4 l4">
+          <img src="assets/landing/cultivate.png"/>
+        </div>
+        <h5>Grow</h5>
+        <p>Share what you learned with other knowledge seekers. Become a mentor and influencer.</p>
+      </div>
     </div>
   </div>
+
   <!-- Section 2 -->
   <div class="section white">
     <div class="row hero center" style="margin-top:-4.5%;">
@@ -113,26 +108,13 @@
   </div>
   <!-- Section 3 -->
   <div class="section section-brown">
-    <div class="row container text-white">
-      <h3 class="center">How it works</h3>
-      <div class="col s12 m4 l4">
-        <div class="col s4 m4 l4">
-          <img src="assets/landing/share.png"/>
-        </div>
-        <h6>Share what you learned with other people</h6>
-      </div>
-      <div class="col s12 m4 l4">
-        <div class="col s4 m4 l4">
-          <img src="assets/landing/expertise.png"/>
-        </div>
-        <h6>Showcase your knowledge and expertise</h6>
-      </div>
-      <div class="col s12 m4 l4">
-        <div class="col s4 m4 l4">
-          <img src="assets/landing/cultivate.png"/>
-        </div>
-        <h6>Cultivate your skills with others</h6>
-      </div>
+    <div class="row container center text-link">
+      <h5 class="text-white">
+        Join a community of lifelong learners and people looking to enrich and upgrade their lives through knowledge.
+      </h5>
+      <a href="about.html">Learn more <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+
+
     </div>
   </div>
   <!-- Section 4 -->
@@ -146,7 +128,7 @@
       </div>
       <h4 class="text-brown center">OR</h4>
       <h5 class="text-brown center">Check out theses notebooks</h5>
-      <div class="row">
+      <div class="row text-link-list">
         <div class="col s12 m4 l2">
           <a class="" href="dashboard.html">Entrepreneurs</a>
         </div>
@@ -168,79 +150,10 @@
       </div>
     </div>
   </div>
-  <!-- Footer -->
-  <footer class="page-footer section-green">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 m12 s12">
-          <div class="col l6 m4 s6">
-            <a href="/">
-              <img src="assets/logo/beta.png">
-            </a>
-          </div>
-          <div class="col l12 s12">
-            <p class="light footer-text-links">Start using LooseLeaf to maximize your online learning today. It's completely free and we
-            will work with you one-on-one to get you started and answer any questions.</p>
-          </div>
-        </div>
-        <div class="col l6 m12 s12">
-          <div class="col s4 offset-s1">
-            <h5 class="white-text"><strong>Notebooks</strong></h5>
-            <h6>
-              <ul class="light footer-text-links">
-                <li><a href="#!">Entrepreneurs</a></li>
-                <li><a href="#!">Teachers</a></li>
-                <li><a href="#!">Designers</a></li>
-                <li><a href="#!">Developers</a></li>
-                <li><a href="#!">Freelancers</a></li>
-                <li><a href="#!">Your own</a></li>
-              </ul>
-            </h6>
-          </div>
-          <div class="col s4 offset-s1">
-            <h5 class="white-text"><strong>Company</strong></h5>
-            <h6>
-              <ul class="light footer-text-links">
-                <li><a href="#!">About Us</a></li>
-              </ul>
-            </h6>
-            <div class="social-icons">
-              <a target="_blank" href="https://www.facebook.com/looseleafUS/?fref=ts">
-                <i class="fa fa-facebook fa-lg"></i>
-              </a>
-              <a target="_blank" href="https://twitter.com/mylooseleaf">
-                <i class="fa fa-twitter fa-lg"></i>
-              </a>
-              <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Email us" href="mailto:info@looseleaf.us">
-                <i class="fa fa-envelope fa-lg"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-        <p>
-          &copy; 2016 LooseLeaf. Made with <i class="fa fa-heart fa-lg"></i> in DC.
-        </p>
-      </div>
-    </div>
-  </footer>
-
+  <div id="landing-footer"></div>
   <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
   <script type="text/javascript" src="js/materialize.js"></script>
-  <script>
-   $( document ).ready(function(){
-     $('.button-collapse').sideNav({
-       edge: 'right',
-       closeOnClick: true
-     });
-    $('.slider').slider({full_width: true});
-
-   })
-
-  </script>
+  <script type="text/jsx" src="app/landing.jsx"></script>
 
 </body>
 
