@@ -1,6 +1,7 @@
 var Nav = React.createClass({
   componentDidMount: function(){
     $(".button-collapse").sideNav();
+    closeOnClick: true;
   },
   render: function() {
     return (
@@ -9,20 +10,21 @@ var Nav = React.createClass({
           <div className=" nav-wrapper-white nav-text-links">
             <div className="brand-logo">
               <a className="navbar-brand" href="/">
-                <img src="assets/logo/logo.png" alt="LooseLeaf"/>
+                <img src="/assets/images/logo/logo.png" alt="LooseLeaf"/>
               </a>
             </div>
             <ul className="right hide-on-med-and-down">
               <li><a href="/">Build A Notebook</a></li>
-              <li><a href="/">Explore Notebooks <i className="fa fa-angle-down" aria-hidden="true"></i></a></li>
+              <li><a href="/dashboard.html">Explore Notebooks <i className="fa fa-angle-down" aria-hidden="true"></i></a></li>
+              <li><a href="/about.html">Mission</a></li>
               <li><a className="text-green" href="/">Log in</a></li>
               <li><a id="signup-btn" className="waves-effect waves-light btn" href="/">Sign up</a></li>
             </ul>
             <a href="#" data-activates="mobile-menu" className="button-collapse left"><i className="mdi-navigation-menu"></i></a>
             <ul className="side-nav" id="mobile-menu">
-              <li><a href="dashboard.html">Browse Notebooks</a></li>
+              <li><a href="http://looseleafapp.com/dashboard.html">Browse Notebooks</a></li>
               <li><a href="/">Login</a></li>
-              <li><a href="dashboard.html#about">About</a></li>
+              <li><a href="http://looseleafapp.com/about.html">Mission</a></li>
             </ul>
           </div>
         </nav>
@@ -46,7 +48,7 @@ var Footer = React.createClass({
             <div className="col l6 m12 s12">
               <div className="col l6 m4 s6">
                 <a href="/">
-                  <img src="assets/logo/beta.png"/>
+                  <img src="/assets/images/logo/beta.png"/>
                 </a>
               </div>
               <div className="col l12 s12">

@@ -4,9 +4,9 @@ Online learning can be challenging if you don't know where to look for informati
 
 Meet LooseLeaf: a smart curating technology that makes knowledge management easier within a community or organization.
 
-![medium center](https://scontent-ord1-1.xx.fbcdn.net/t31.0-8/13329376_1713575702250047_5670734746986427374_o.png)
+![LooseLeaf is an information technology platform meant to improve online learning. When you are able to find good things online to learn, you are more effective at learning.](https://scontent-ord1-1.xx.fbcdn.net/t31.0-8/13329376_1713575702250047_5670734746986427374_o.png)
 
-LooseLeaf is an information technology platform meant to improve online learning. When you are able to find good things online to learn, you can learn online better.
+LooseLeaf is an information technology platform meant to improve online learning. When you are able to find good things online to learn, you are more effective at learning.
 
 #### The Birth of the idea
 I use LooseLeaf to organize my own bookmarks. I used to get really frustrated about not being able to find my bookmarks or the amount of time required to get them organized. The existing bookmarking apps don't provide good solutions and I often couldn't find things. Then I started using evernote for bookmarking because I could easily filter notes based on my own keywords. In evernote, I can give each URL a relevant title and a short blurb about why I bookmarked it underneath. I could also save collections of bookmarks in the right notebook and notes to improve my chances of finding things. That's how I came up with the idea for LooseLeaf. It's basically that, but things will be automated.
@@ -24,7 +24,7 @@ Showcase your expertise by sharing your creations with the world's communities o
 #### Online Learning
 A place to connect with the information that helps you succeed and collaborate with the people who b
 
-![looseleaf datavis ](https://scontent-ord1-1.xx.fbcdn.net/t31.0-8/13584821_1725324291075188_6953786564116628510_o.jpg)
+![Users get data visualizations and recommendations to filter and explore their bookmarks and bookmarks from the community.](https://scontent-ord1-1.xx.fbcdn.net/t31.0-8/13584821_1725324291075188_6953786564116628510_o.jpg)
 
 Users get data visualizations and recommendations to filter and explore their bookmarks and bookmarks from the community.
 
