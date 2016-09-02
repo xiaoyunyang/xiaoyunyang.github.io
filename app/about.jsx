@@ -8,7 +8,7 @@ var About = React.createClass({
     return (
       <div>
         <div className="col s12 m8 l12">
-          <MdText url="/assets/md/mission.md" textId="text-about" />
+          <MdText url="/assets/md/about.md" textId="text-about" />
         </div>
       </div>
     );

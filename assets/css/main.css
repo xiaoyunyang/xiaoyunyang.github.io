@@ -91,6 +91,7 @@ h6 {
     font-weight: 400;
     line-height: 1.40em;
 }
+
 .btn {
   border-radius: 4px;
   text-transform: none;
@@ -105,8 +106,49 @@ h6 {
   text-align: center;
   text-transform: none;
   line-height: 1.50em;
-
 }
+
+.social-logins .btn {
+  height: 100%;
+  color: white;
+  display: inline-block;
+  letter-spacing: 1px;
+  padding: 0.75em 2em;
+  text-align: center;
+  text-transform: none;
+  line-height: 1.50em;
+}
+
+.social-logins a {
+    width: 100%;
+    margin: 0 auto 10px;
+}
+
+.btn-facebook a {
+  background-color: #3b5998;
+}
+.btn-facebook a:hover {
+  background-color: #3b5998;
+  opacity: 0.85;
+}
+.btn-twitter a {
+  background-color: #00aced;
+}
+.btn-twitter a:hover {
+  background-color: #00aced;
+  opacity: 0.85;
+}
+.btn-facebook i {
+  margin-left: -5px;
+  margin-right: 20px;
+}
+.btn-twitter i {
+  margin-left: -18px;
+  margin-right: 13px;
+}
+
+
+
 
 .navbar-brand {
     padding: 0.70em;
