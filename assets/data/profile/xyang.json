@@ -1,5 +1,5 @@
 {
-	"user": {"username":"xyang","name":"Xiaoyun Yang"},
+	"user": {"username":"xyang","name":"Xiaoyun Yang", "picUrl": "http://xiaoyunyang.github.io/assets/data/profile/photo/xyang.png"},
 	"binders": [
 		{"name":"US Map","alias":"map","description":"Map"},
 		{"name":"Pie Chart","alias":"pie","description":"Timeline"},

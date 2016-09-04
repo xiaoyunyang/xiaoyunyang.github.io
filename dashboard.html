@@ -16,7 +16,7 @@
 
   <!-- FACEBOOK TAGS -->
   <meta property="og:url" content="http://looseleafapp.com/" />
-  <meta property="og:image" content="http://looseleafapp.com/assets/logo/big.png">
+  <meta property="og:image" content="http://looseleafapp.com/assets/images/logo/logo.png">
   <meta property="og:type" content="website" />
   <meta property="og:title" content="LooseLeaf - The world's notebook for socially curated bookmarks.">
   <meta property="og:description" content="Smart social bookmarking system to discover, navigate, and filter online learning resources. Free to use.">
@@ -31,15 +31,6 @@
 </head>
 
 <body>
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=622109661230044";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
-
   <div id="react-top-nav"><!-- react TopNav --></div>
   <div id="react-side-nav"><!-- react SideNav --></div>
 
@@ -74,7 +65,8 @@
 
   <script>
     var dashboard = {};
-    dashboard.user = "looseleaf"
+    dashboard.user = {};
+    dashboard.user.username = "looseleaf"
   </script>
   <script type="text/javascript" src="app/dataVis/dataVisHelpers.js"></script>
   <script type="text/javascript" src="/assets/js/colorbrewer.js"></script>
@@ -82,7 +74,7 @@
   <script type="text/jsx" src="app/ui/topnav.jsx"></script>
   <script type="text/jsx" src="app/ui/list.jsx"></script>
   <script type="text/jsx" src="app/ui/tags.jsx"></script>
-  <script type="text/jsx" src="app/ui/mdtext.jsx"></script>
+  <script type="text/jsx" src="app/util/mdtext.jsx"></script>
 
   <script type="text/jsx" src="app/main/life.jsx"></script>
   <script type="text/jsx" src="app/main/about.jsx"></script>

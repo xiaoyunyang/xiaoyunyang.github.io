@@ -108,15 +108,23 @@ h6 {
   line-height: 1.50em;
 }
 
+.modal {
+  max-height: 100%;
+  top: 15px !important;
+}
+
+/**** Signup / Login BEGIN ****/
+
 .social-logins .btn {
   height: 100%;
   color: white;
   display: inline-block;
-  letter-spacing: 1px;
+  letter-spacing: 0.6px;
   padding: 0.75em 2em;
   text-align: center;
   text-transform: none;
   line-height: 1.50em;
+  font-size: 14px;
 }
 
 .social-logins a {
@@ -138,17 +146,46 @@ h6 {
   background-color: #00aced;
   opacity: 0.85;
 }
+.btn-google a {
+  background-color: #dd4b39;
+}
+.btn-google a:hover {
+  background-color: #dd4b39;
+  opacity: 0.85;
+}
 .btn-facebook i {
   margin-left: -5px;
-  margin-right: 20px;
+  margin-right: 16px;
+}
+.btn-google i {
+  margin-left: -20px;
+  margin-right: 9px;
 }
 .btn-twitter i {
-  margin-left: -18px;
-  margin-right: 13px;
+  margin-left: -20px;
+  margin-right: 9px;
 }
 
+.or-divider {
+  border-top: 1px solid #e0e0e0;
+  color: #9e9e9e;
+  text-align: center;
+  margin: 2rem 0rem;
+}
+.or-divider > span {
+    position: relative;
+    top: -10px;
+    background: #fafafa;
+    padding: 0px 10px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+/**** Signup / Login END ****/
 
 
+/**** Navbar BEGIN ****/
 
 .navbar-brand {
     padding: 0.70em;
@@ -160,12 +197,14 @@ h6 {
 .navbar-brand img {
     vertical-align:top;
 }
-.nav-text-links {
-  padding-right: 20px;
-}
+
+
 #signup-btn {
   background-color: #26a69a;
   color: white;
+}
+.nav-text-links {
+  padding-right: 20px;
 }
 .nav-text-links a {
   color: #616161;
@@ -177,6 +216,10 @@ h6 {
 .nav-text-links a:hover {
   color: #383435;
 }
+.nav-text-links i {
+  margin-top: 18px;
+}
+
 .footer-text-links {
   font-size: 16px;
   color: #eeeeee !important;
@@ -190,6 +233,39 @@ h6 {
 .side-nav {
   width: 200px;
 }
+
+.navbar-img {
+  max-width: 64px;
+  max-height: 64px;
+  padding-top: 12px;
+}
+
+img.mod-round, picture.mod-round {
+  border-radius: 50%;
+}
+#user-dropdown {
+  top: 64px !important;
+  font-weight: 200;
+  width: 150px !important;
+}
+#user-dropdown a {
+  font-size: 16px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+}
+.arrow-up {
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid white;
+  margin-left: 22px;
+  margin-top: -10px;
+}
+
+/**** Navbar END ****/
 
 /** Markdown BEGIN **/
 code {

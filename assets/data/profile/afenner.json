@@ -1,5 +1,5 @@
 {
-	"user": {"username":"afenner","name":"Andrew Fenner"},
+	"user": {"username":"afenner","name":"Andrew Fenner", "picUrl": "http://xiaoyunyang.github.io/assets/data/profile/photo/afenner.png"},
 	"binders": [
 		{"name":"Pie Chart","alias":"pie","description":"Timeline"},
 		{"name":"Matrix","alias":"matrix","description":"AdjacencyMatrix"}

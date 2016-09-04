@@ -13,51 +13,56 @@ $(document).ready(function () {
 });
 
 function loadUserData() {
+  var filePath = "assets/data/profile/"+dashboard.user.username+".json";
   dashboard.bookmarks = {};
   dashboard.bookmarks.data = [];
-  dashboard.url = "google.com";
-  var filePath = "assets/data/profile/"+dashboard.user+".json";
+  dashboard.bookmarks.url = "google.com";
+
   d3.json(filePath, function(error, json) {
     if(error) return console.warn("failed to load tagfilter:  "+error);
-    dashboard.dataset = json;
-    dashboard.bookmarks = json.bookmarks;
-    // CORS-enabled server.
-    dashboard.url = "https://spreadsheets.google.com/tq?key=" + dashboard.bookmarks.key + dashboard.bookmarks.query;
+    dashboard.user.name = json.user.name;
+    dashboard.user.picUrl = json.user.picUrl;
+    dashboard.bookmarks = {};
+    dashboard.binders = json.binders;
+    dashboard.tags = json.tags;
 
-    loadBookmarksFromServer(dashboard.url);
-    renderProfile();
+    // CORS-enabled server.
+    dashboard.bookmarks.url = "https://spreadsheets.google.com/tq?key=" + json.bookmarks.key + json.bookmarks.query;
+
+    loadBookmarksFromServer(dashboard.bookmarks.url, dashboard);
+    renderProfile(dashboard.user, dashboard.binders, dashboard.tags);
   });
 }
 
-function loadBookmarksFromServer(url) {
+function loadBookmarksFromServer(url, dashboard) {
   d3.csv(url, function(error, data) {
     if(error) {
       console.log("ERROR IN D3 CSV LOADING")
       dashboard.bookmarks.data = error;
     } else {
       dashboard.bookmarks.data = data;
-      renderDataVis();
+      renderDataVis(dashboard.bookmarks);
     }
   })
 }
 
-function renderProfile() {
-  ReactDOM.render(<TopNav profileName={dashboard.dataset.user.name}/>, document.getElementById('react-top-nav'));
-  ReactDOM.render(<SideNav/>, document.getElementById('react-side-nav'));
+function renderProfile(user, binders, tags) {
+  ReactDOM.render(<TopNav profileName={user.name} picUrl={user.picUrl}/>, document.getElementById('react-top-nav'));
+  ReactDOM.render(<SideNav profileName={user.name} binders={binders} tags={tags}/>, document.getElementById('react-side-nav'));
   ReactDOM.render(<Life/>, document.getElementById('life'));
 }
 
-function renderDataVis() {
-  ReactDOM.render(<BookmarksList data={dashboard.bookmarks.data} pollInterval={100000}/>, document.getElementById('bookmarks'));
-  ReactDOM.render(<Pie divId="pie" data={dashboard.bookmarks.data} pollInterval={100000}/>, document.getElementById('pie'));
-  ReactDOM.render(<Matrix divId="matrix" data={dashboard.bookmarks.data} pollInterval={100000}/>, document.getElementById('matrix'));
+function renderDataVis(bookmarks) {
+  ReactDOM.render(<BookmarksList data={bookmarks.data} pollInterval={100000}/>, document.getElementById('bookmarks'));
+  ReactDOM.render(<Pie divId="pie" data={bookmarks.data} pollInterval={100000}/>, document.getElementById('pie'));
+  ReactDOM.render(<Matrix divId="matrix" data={bookmarks.data} pollInterval={100000}/>, document.getElementById('matrix'));
 }
 
 
 var SideNav = React.createClass({
   getInitialState: function() {
     return {
-      user: dashboard.dataset.user,
+      username: "",
       binders: [],
       tags: []
     }
@@ -65,9 +70,9 @@ var SideNav = React.createClass({
   componentWillMount: function(){ //constructor
     this.setState(
       {
-        user: dashboard.dataset.user,
-        binders: dashboard.dataset.binders,
-        tags: dashboard.dataset.tags
+        username: this.props.profileName,
+        binders: this.props.binders,
+        tags: this.props.tags
       }
     );
   },
@@ -79,7 +84,7 @@ var SideNav = React.createClass({
       <div className="perm side-nav fixed">
         <ul className="collection with-header">
             <li className="collection-header">
-              <a href="#" id="user-info">{this.state.user.name}</a>
+              <a href="#" id="user-info">{this.state.username}</a>
             </li>
         </ul>
         <ul className="collapsible" data-collapsible="expandable">

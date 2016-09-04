@@ -1,5 +1,5 @@
 {
-	"user": {"username":"numbershapes","name":"NumberShapes"},
+	"user": {"username":"numbershapes","name":"NumberShapes", "picUrl": "http://xiaoyunyang.github.io/assets/data/profile/photo/numbershapes.png"},
 	"binders": [
 		{"name":"Pie Chart","alias":"pie","description":"Timeline"},
 		{"name":"Matrix","alias":"matrix","description":"AdjacencyMatrix"}

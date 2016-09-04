@@ -1,5 +1,5 @@
 {
-	"user": {"username":"looseleaf","name":"LooseLeaf"},
+	"user": {"username":"looseleaf","name":"LooseLeaf", "picUrl": "http://xiaoyunyang.github.io/assets/data/profile/photo/looseleaf.png"},
 	"binders": [
 		{"name":"Pie Chart","alias":"pie","description":"Timeline"},
 		{"name":"Matrix","alias":"matrix","description":"AdjacencyMatrix"},
