@@ -216,8 +216,13 @@ h6 {
 .nav-text-links a:hover {
   color: #383435;
 }
+
 .nav-text-links i {
   margin-top: 18px;
+}
+.mdi-navigation-menu {
+  margin-top: 0px !important;
+  padding-left: 10px;
 }
 
 .footer-text-links {

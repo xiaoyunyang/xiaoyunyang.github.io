@@ -11,10 +11,8 @@ var TopNav = React.createClass({
       <div className="navbar-fixed">
         <nav className=" grey lighten-4">
           <div className="nav-wrapper-white nav-text-links">
-            <a href="#!" className="brand-logo">{this.props.profileName}</a>
             <ul className="pills right hide-on-med-and-dow">
               <li className="about-pill"><a href="#about">Home</a></li>
-
               <li className="bookmarks-pill"><a href="#bookmarks">Notebooks</a></li>
               <li><a href="#about"><i className="material-icons">school</i></a></li>
               <li><a href="#about"><i className="material-icons">notifications_none</i></a></li>
@@ -31,14 +29,6 @@ var TopNav = React.createClass({
                   <li><a href="#!">Log out</a></li>
                 </ul>
               </li>
-            </ul>
-
-            <a href="#" data-activates="mobile-menu" className="button-collapse left"><i className="mdi-navigation-menu"></i></a>
-            <ul className="pills side-nav left-aligned" id="mobile-menu">
-              <li className=""><a href="dashboard.html">LooseLeaf</a></li>
-              <li className=""><a href="user-xyang.html">Xiaoyun</a></li>
-              <li className=""><a href="user-afenner.html">Andrew</a></li>
-              <li className=""><a href="user-numbershapes.html">NumberShapes</a></li>
             </ul>
           </div>
         </nav>
