@@ -31,37 +31,7 @@
 </head>
 
 <body>
-  <div id="react-top-nav"><!-- react TopNav --></div>
-  <div id="react-side-nav"><!-- react SideNav --></div>
-
-  <div class="main-content row page-wrap">
-      <div id="bookmarks-page" class="pages">
-        <div id="bookmarks"></div>
-      </div>
-      <div id="life-page" class="pages">
-        <div id="life"></div>
-      </div>
-      <div id="about-page" class="pages">
-        <div id="about"></div>
-        <div class="fb-comments" data-href="http://xiaoyunyang.github.io/index.html#about" data-width="800" data-numposts="5"></div>
-      </div>
-      <div id="contact-page" class="pages">
-        <div id="contact"></div>
-      </div>
-      <div id="map-page" class="pages">
-        <div id="map"></div>
-      </div>
-      <div id="pie-page" class="pages">
-        <div id="pie"></div>
-      </div>
-      <div id="matrix-page" class="pages">
-        <div id="matrix"></div>
-      </div>
-      <div id="timeline-page" class="pages">
-        <div id="timeline"></div>
-      </div>
-  </div>
-
+  <div id="dashboard"><!-- react App --></div>
 
   <script>
     var dashboard = {};
@@ -71,26 +41,22 @@
   <script type="text/javascript" src="app/dataVis/dataVisHelpers.js"></script>
   <script type="text/javascript" src="/assets/js/colorbrewer.js"></script>
   <script type="text/javascript" src="/assets/js/d3.v3.min.js"></script>
+
   <script type="text/jsx" src="app/ui/topnav.jsx"></script>
+  <script type="text/jsx" src="app/ui/sidenav.jsx"></script>
   <script type="text/jsx" src="app/ui/list.jsx"></script>
   <script type="text/jsx" src="app/ui/tags.jsx"></script>
   <script type="text/jsx" src="app/util/mdtext.jsx"></script>
 
-  <script type="text/jsx" src="app/main/life.jsx"></script>
-  <script type="text/jsx" src="app/main/about.jsx"></script>
-  <script type="text/jsx" src="app/main/contact.jsx"></script>
   <script type="text/jsx" src="app/main/bookmarks.jsx"></script>
-
-  <script src="app/dataVis/uStates.js"></script> <!-- creates uStates. -->
-  <script src="app/dataVis/map.js"></script>
-  <script type="text/jsx" src="app/dataVis/map.jsx"></script>
+  <script type="text/jsx" src="app/main/about.jsx"></script>
   <script type="text/jsx" src="app/dataVis/pie.jsx"></script>
   <script src="app/dataVis/pie.js"></script>
   <script type="text/jsx" src="app/dataVis/matrix.jsx"></script>
   <script src="app/dataVis/matrix.js"></script>
   <script type="text/javascript" src="app/router.js"></script>
-  <script type="text/jsx" src="app/app.jsx"></script>
 
+  <script type="text/jsx" src="app/app.jsx"></script>
 
 </body>
 

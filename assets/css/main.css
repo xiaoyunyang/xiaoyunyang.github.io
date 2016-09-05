@@ -240,16 +240,16 @@ h6 {
 }
 
 .navbar-img {
-  max-width: 64px;
-  max-height: 64px;
-  padding-top: 12px;
+  max-width: 72px;
+  max-height: 72px;
+  padding-top: 10px;
 }
 
 img.mod-round, picture.mod-round {
   border-radius: 50%;
 }
 #user-dropdown {
-  top: 64px !important;
+  top: 55px !important;
   font-weight: 200;
   width: 150px !important;
 }
@@ -262,12 +262,22 @@ img.mod-round, picture.mod-round {
 .arrow-up {
   width: 0;
   height: 0;
-  position: absolute;
+  position: relative;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-bottom: 12px solid white;
-  margin-left: 22px;
-  margin-top: -10px;
+  border-bottom: 12px solid #00897b;
+  margin-left: 12px;
+  margin-top: -25px;
+}
+.arrow-down {
+  width: 0;
+  height: 0;
+  position: relative;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #929ead;
+  margin-left: 38px;
+  margin-top: -34px;
 }
 
 /**** Navbar END ****/

@@ -1,10 +1,10 @@
-$(function(){
+function router(){
 
 	var ApplicationRouter = Backbone.Router.extend({
 
 		//map url routes to contained methods
 		routes: {
-			"": "bookmarks",
+			"": "matrix",
 			"bookmarks": "bookmarks",
 			"life": "life",
 			"about": "about",
@@ -129,4 +129,4 @@ $(function(){
 	//load application
 	new ApplicationView();
 
-});
+}

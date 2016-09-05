@@ -8,10 +8,9 @@ var About = React.createClass({
     return (
       <div>
         <div className="col s12 m8 l12">
-          <MdText url="assets/md/looseleaf.md" textId="text-about" />
+          <MdText url={this.props.mdUrl} textId="text-about" />
         </div>
       </div>
     );
   }
 });
-ReactDOM.render(<About/>, document.getElementById('about'));
