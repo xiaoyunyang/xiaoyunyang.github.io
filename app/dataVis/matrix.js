@@ -44,7 +44,7 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
   chart.svg.selectAll(".tag-label").remove();
   chart.svg.selectAll(".media-label").remove();
   resetGrid();
-  d3.selectAll("#selected-tag-media").attr("value", "");
+  d3.selectAll("#selected-tag-media-matrix").attr("value", "");
 
   var tagLabels = chart.svg.selectAll(".tag-label").data(chart.tags);
   tagLabels.enter()
@@ -144,14 +144,19 @@ var HeatmapChart = function(divId, data, mediaType, colorTheme) {
 
   //Event Handler from react-dom will take care changes to selected-tag-media
   function updateFilteredList(tag, mediaLabel) {
-    var selected = d3.selectAll("#selected-tag-media").attr("value");
+    var selected = d3.selectAll("#selected-tag-media-matrix").attr("value");
     var newSelected = "("+tag+","+mediaLabel+")";
-    d3.selectAll("#selected-tag-media").attr("value", newSelected);
+    d3.selectAll("#selected-tag-media-matrix").attr("value", newSelected);
+
+    var newSelectedDesc = (mediaLabel == "" ?  "Things" : mediaLabel+"s") + (tag == "" ? "" :  " about "+tag);
+    d3.selectAll("#selected-tag-media-desc-matrix").text(newSelectedDesc);
 
     if(selected==newSelected) {
-      d3.selectAll("#selected-tag-media").attr("value", "");
+      d3.selectAll("#selected-tag-media-matrix").attr("value", "");
+      d3.selectAll("#selected-tag-media-desc-matrix").text("Everything");
     } else {
-      d3.selectAll("#selected-tag-media").attr("value", newSelected);
+      d3.selectAll("#selected-tag-media-matrix").attr("value", newSelected);
+      d3.selectAll("#selected-tag-media-desc-matrix").text(newSelectedDesc);
     }
 
   }

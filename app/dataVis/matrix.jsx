@@ -212,7 +212,7 @@ var Matrix = React.createClass({
     var updatedTagToItems = this.state.initialTagToItems;
 
     //Check input
-    var selected = d3.selectAll("#selected-tag-media").attr("value");
+    var selected = d3.selectAll("#selected-tag-media-matrix").attr("value");
 
     if(selected===undefined || selected==="") {
         updatedItems = this.state.initialItems;
@@ -314,8 +314,8 @@ var Matrix = React.createClass({
           </div>
         </div>
         <div className="col s12 m5">
-          <h5>Filtered List:</h5>
-          <input id="selected-tag-media" type="text" placeholder="Filter Items by Tag" onChange={this.filterListByTag} disabled/>
+          <h5 id="selected-tag-media-desc-matrix">Everything:</h5>
+          <div id="selected-tag-media-matrix" onChange={this.filterListByTag}></div>
           <input type="text" placeholder="Filter Items by Name" onChange={this.filterListByName}/>
           <List items={this.state.items}/>
         </div>

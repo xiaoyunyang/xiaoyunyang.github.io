@@ -283,14 +283,19 @@ var PieChart = function(divId, data) {
   }
   //Event Handler from react-dom will take care changes to selected-tag-media
   function updateFilteredList(tag, mediaLabel) {
-    var selected = d3.selectAll("#selected-tag-media").attr("value");
+    var selected = d3.selectAll("#selected-tag-media-pie").attr("value");
     var newSelected = "("+tag+","+mediaLabel+")";
-    d3.selectAll("#selected-tag-media").attr("value", newSelected);
+    var newSelectedDesc = (mediaLabel == "" ?  "Things" : mediaLabel+"s") + (tag == "" ? "" :  " about "+tag);
+
+    d3.selectAll("#selected-tag-media-pie").attr("value", newSelected);
+    d3.selectAll("#selected-tag-media-desc-pie").text(newSelectedDesc);
 
     if(selected==newSelected) {
-      d3.selectAll("#selected-tag-media").attr("value", "");
+      d3.selectAll("#selected-tag-media-pie").attr("value", "");
+      d3.selectAll("#selected-tag-media-desc-pie").text("Everything");
     } else {
-      d3.selectAll("#selected-tag-media").attr("value", newSelected);
+      d3.selectAll("#selected-tag-media-pie").attr("value", newSelected);
+      d3.selectAll("#selected-tag-media-desc-pie").text(newSelectedDesc);
     }
 
   }
