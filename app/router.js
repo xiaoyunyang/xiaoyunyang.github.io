@@ -4,8 +4,8 @@ function router(){
 
 		//map url routes to contained methods
 		routes: {
-			"": "matrix",
-			"bookmarks": "bookmarks",
+			"": "notebooks",
+			"notebooks": "notebooks",
 			"life": "life",
 			"about": "about",
 			"contact": "contact",
@@ -39,9 +39,9 @@ function router(){
 			$(page).show();
 		},
 
-		bookmarks: function() {
-			this.showPage('div#bookmarks-page');
-			this.selectPill('li.bookmarks-pill');
+		notebooks: function() {
+			this.showPage('div#notebooks-page');
+			this.selectPill('li.notebooks-pill');
 		},
 		life: function() {
 			this.showPage('div#life-page');
@@ -81,7 +81,7 @@ function router(){
 
 		//observe navigation click events and map to contained methods
 		events: {
-			'click ul.pills li.bookmarks-pill a': 'displayBookmarks',
+			'click ul.pills li.notebooks-pill a': 'displayNotebooks',
 			'click ul.pills li.life-pill a': 'displayLife',
 			'click ul.pills li.about-pill a': 'displayAbout',
 			'click ul.pills li.contact-pill a': 'displayContact',
@@ -100,8 +100,8 @@ function router(){
 			Backbone.history.start();
 		},
 
-		displayBookmarks: function(){
-			this.router.navigate("bookmarks", true);
+		displayNotebooks: function(){
+			this.router.navigate("notebooks", true);
 		},
 		displayLife: function(){
 			this.router.navigate("life", true);

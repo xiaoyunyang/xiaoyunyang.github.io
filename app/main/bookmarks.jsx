@@ -12,7 +12,7 @@ var BookmarksList = React.createClass({
       <div>
         <div className="col s12 m8 l8">
           <div className="row">
-            <div className="col s8"><h4>Latest Projects and Bookmarks</h4></div>
+            <div className="col s8"><h5>{this.props.username+"'s Notebook"}</h5></div>
             <div className="col s4">
               <a className="waves-effect waves-light btn h4-aligned-btn" href="#matrix">Visualize me!</a>
             </div>
@@ -20,7 +20,7 @@ var BookmarksList = React.createClass({
         <List items={this.state.items}/>
         </div>
         <div className="col s12 m8 l4">
-          <h5>Bookmark Collections</h5>
+          <h5>Notebooks</h5>
           <ul className="collection">
             <li className="collection-item avatar">
               <img className="square" src="../assets/data/profile/photo/looseleaf.png" />

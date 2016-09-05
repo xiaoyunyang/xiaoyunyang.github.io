@@ -8,8 +8,8 @@ var TopNav = React.createClass({
         <nav className=" grey lighten-4">
           <div className="nav-wrapper-white nav-text-links">
             <ul className="right pills">
-              <li className="about-pill"><a href="#about">Home</a></li>
-              <li className="bookmarks-pill"><a href="#bookmarks">Notebooks</a></li>
+              <li className="about-pill"><a href="#about">About</a></li>
+              <li className="notebooks-pill"><a href="#notebooks">Notebooks</a></li>
               <li><a href=""><i className="material-icons">school</i></a></li>
               <li><a href=""><i className="material-icons">notifications_none</i></a></li>
               <li>
@@ -19,7 +19,7 @@ var TopNav = React.createClass({
                 </a>
 
                 <ul id="user-dropdown" className="dropdown-content">
-                  <li><a href="#!">New Bookmark</a></li>
+                  <li><a href="#!">New Note</a></li>
                   <li><a href="#!">New Notebook</a></li>
                   <li className="divider"></li>
                   <li><a href="#!">Profile</a></li>

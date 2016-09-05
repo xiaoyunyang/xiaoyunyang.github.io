@@ -32,7 +32,7 @@ var Dashboard = React.createClass({
     }.bind(this))
   },
   renderDataVis: function() {
-    ReactDOM.render(<BookmarksList data={this.state.bookmarksData}/>, document.getElementById('bookmarks'));
+    ReactDOM.render(<BookmarksList username={this.state.username} data={this.state.bookmarksData}/>, document.getElementById('notebooks'));
     ReactDOM.render(<Pie divId="pie" data={this.state.bookmarksData}/>, document.getElementById('pie'));
     ReactDOM.render(<Matrix divId="matrix" data={this.state.bookmarksData}/>, document.getElementById('matrix'));
   },
@@ -56,8 +56,8 @@ var Dashboard = React.createClass({
         <SideNav profileName={this.state.username} binders={this.state.binders} tags={this.state.tags}/>
 
         <div className="main-content row page-wrap">
-          <div id="bookmarks-page" className="pages">
-            <div id="bookmarks"></div>
+          <div id="notebooks-page" className="pages">
+            <div id="notebooks"></div>
           </div>
           <div id="matrix-page" className="pages">
             <div id="matrix"></div>
