@@ -214,9 +214,11 @@ h6 {
   background: transparent;
 }
 .nav-text-links .active:hover {
-  background-color: rgba(0,0,0,0.1) !important;
+  background-color: rgba(0,0,0,0.1);
 }
-
+.dropdown-content {
+    background-color: #fff !important;
+}
 .nav-text-links a:hover {
   color: #383435;
 }
