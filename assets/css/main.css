@@ -198,7 +198,6 @@ h6 {
     vertical-align:top;
 }
 
-
 #signup-btn {
   background-color: #26a69a;
   color: white;
@@ -210,9 +209,14 @@ h6 {
   color: #616161;
   font-weight: bolder;
 }
+
 .nav-text-links li:hover {
   background: transparent;
 }
+.nav-text-links .active:hover {
+  background-color: rgba(0,0,0,0.1) !important;
+}
+
 .nav-text-links a:hover {
   color: #383435;
 }
