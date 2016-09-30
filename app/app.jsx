@@ -43,6 +43,9 @@ var Dashboard = React.createClass({
           <div id="about-page" className="pages">
             <About mdUrl="assets/md/about.md" />
           </div>
+          <div id="resume-page" className="pages">
+            <Resume />
+          </div>
         </div>
       </div>
     );
