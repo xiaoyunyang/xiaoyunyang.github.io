@@ -28,11 +28,10 @@ var Nav = React.createClass({
                 </a>
               </div>
               <ul className="right hide-on-med-and-down">
-                <li><a href="/">Build A Notebook</a></li>
+                <li><a href="http://eepurl.com/cgdpfP">Build A Notebook</a></li>
                 <li><a href="/dashboard.html">Explore Notebooks <i className="fa fa-angle-down" aria-hidden="true"></i></a></li>
                 <li><a href="/about.html">Mission</a></li>
-                <li><a className="text-green modal-trigger" href="#login-modal">Log in</a></li>
-                <li><a id="signup-btn" href="#signup-modal" className="waves-effect waves-light btn modal-trigger">Sign up</a></li>
+                <li><a id="signup-btn" href="http://eepurl.com/cgdpfP" className="waves-effect waves-light btn modal-trigger">Sign up</a></li>
               </ul>
               <a href="#" data-activates="mobile-menu" className="button-collapse left"><i className="mdi-navigation-menu"></i></a>
               <ul className="side-nav" id="mobile-menu">

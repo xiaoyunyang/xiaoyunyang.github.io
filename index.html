@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script type="text/javascript" src="/assets/js/d3.v3.min.js"></script>
+  <script type="text/javascript" src="/assets/js/jquery-2.1.3.js"></script>
+  <script type="text/javascript" src="/assets/js/materialize.js"></script>
+  <script type="text/javascript" src="/assets/js/underscore-min.js"></script>
+  <script type="text/javascript" src="/assets/js/backbone-min.js"></script>
+  <script type="text/javascript" src="/assets/js/Bacon.js"></script>
+  <script type="text/javascript" src="/assets/js/marked.min.js"></script>
   <script src="https://npmcdn.com/react@15.3.1/dist/react-with-addons.min.js"></script>
   <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.min.js"></script>
   <script src="build/JSXTransformer.js"></script>
-  <link rel='stylesheet' type='text/css' href="assets/css/main.css">
-  <meta name="google-site-verification" content="i8EckPWuFcKomwBvSgoXISJYLOcTNwcR8FodGMkwdM8">
+  <link rel='stylesheet' type='text/css' href="/assets/css/main.css">
   <link rel="shortcut icon" href="/assets/images/logo/favicon.ico" type="image/x-icon" />
+
   <!-- FACEBOOK TAGS -->
   <meta property="og:url" content="http://looseleafapp.com/" />
   <meta property="og:image" content="http://looseleafapp.com/assets/images/logo/logo.png">
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="LooseLeaf - A platform for online learning communities.">
+  <meta property="og:title" content="LooseLeaf - The world's notebook for socially curated bookmarks.">
   <meta property="og:description" content="Smart social bookmarking system to discover, navigate, and filter online learning resources. Free to use.">
   <!-- SEO Tags -->
   <meta name="description" content="A place to showcase your expertise and easily access the best socially curated online resources for learning and building your skills online.">
@@ -20,138 +27,28 @@
   <!-- device scaling-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <title>LooseLeaf - The world&rsquo;s notebook for socially curated online learning resources. </title>
+  <title>LooseLeaf - The world&rsquo;s notebook for socially curated online resources. </title>
 </head>
 
 <body>
-  <div id="navbar"><!-- TopNav --></div>
+  <div id="dashboard"><!-- react App --></div>
 
-  <div class="row hero section-white center">
-    <div class="col s12 m12 l6"><img src="/assets/images/landing/landing-plane.png"></div>
-    <div class="col s12 m12 l6">
-      <h3 class="text-green center">A community where knowledge seekers thrive</h3>
-      <h5 class="light text-brown center">
-        Curate online resources with the world&rsquo;s communities of learners and educators.
-      </h5>
-      <a class="waves-effect waves-light btn" href="dashboard.html">Try it out for free <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-    </div>
-  </div>
-  <!-- Section 3 -->
-  <div class="section section-green">
-    <div class="row text-white">
-      <h3 class="center">How it works</h3>
-      <div class="col s12 m4 l4">
-        <div class="col s4 m4 l4">
-          <img src="/assets/images/landing/share.png"/>
-        </div>
-        <h5>Share</h5>
-        <p>Curate bookmarks to online learning content with other knowledge seekers.</p>
-      </div>
-      <div class="col s12 m4 l4">
-        <div class="col s4 m4 l4">
-          <img src="/assets/images/landing/expertise.png"/>
-        </div>
-        <h5>Learn</h5>
-        <p>Collect bookmarks for your online Notebook. Learn on your own time and get feedback on your learning. </p>
-      </div>
-      <div class="col s12 m4 l4">
-        <div class="col s4 m4 l4">
-          <img src="/assets/images/landing/cultivate.png"/>
-        </div>
-        <h5>Grow</h5>
-        <p>Share what you learned with other knowledge seekers. Become a mentor and influencer.</p>
-      </div>
-    </div>
-  </div>
+  <script>
+    var dashboard = {};
+    dashboard.user = {};
+    dashboard.user.username = "xyang";
+  </script>
+  <script type="text/javascript" src="app/dataVis/dataVisHelpers.js"></script>
+  <script type="text/javascript" src="/assets/js/colorbrewer.js"></script>
+  <script type="text/javascript" src="/assets/js/d3.v3.min.js"></script>
+  <script type="text/jsx" src="app/ui/topnav.jsx"></script>
+  <script type="text/jsx" src="app/ui/sidenav.jsx"></script>
+  <script type="text/jsx" src="app/util/mdtext.jsx"></script>
+  <script type="text/jsx" src="app/main/about.jsx"></script>
+  <script type="text/jsx" src="app/main/work.jsx"></script>
+  <script type="text/javascript" src="app/router.js"></script>
+  <script type="text/jsx" src="app/app.jsx"></script>
 
-  <!-- Section 2 -->
-  <div class="section white">
-    <div class="row hero center" style="margin-top:-4.5%;">
-      <div class="row container">
-        <h4 class="text-brown">Your Online Notebook</h4>
-        <h5 class="light text-brown center">
-          Get all your bookmarks in one place. <br>Easily discover and collect other people's bookmarks.
-        </h5>
-      </div>
-      <div class="row">
-        <div class="col s12 m12 l4">
-          <img class="materialboxed" width="650" src="/assets/images/landing/mobile-laptop1.png">
-          <h4 class="light text-green">Find</h4>
-          <h6 class="light text-brown">Intuitive navigation using interactive visualizations of your bookmarks.</h6>
-          <br>
-        </div>
-        <div class="col s12 m12 l4">
-          <img class="materialboxed" width="650" src="/assets/images/landing/mobile-laptop2.png">
-          <h4 class="light text-green">Organize</h4>
-          <h6 class="light text-brown">Personalize your learning environment.</h6>
-          <br>
-        </div>
-        <div class="col s12 m12 l4">
-          <img class="materialboxed" width="650" src="/assets/images/landing/mobile-laptop3.png">
-          <h4 class="light text-green">Discover</h4>
-          <h6 class="light text-brown">Check out what other people are curating.</h6>
-          <br>
-        </div>
-      </div>
-      <img class="medium-img" src="/assets/images/landing/landing-bookmark.png">
-      <div class="row container center">
-        <h4 class="text-green">Social Bookmarks</h4>
-        <h6 class="light text-brown">
-          Bundle various types of bookmarks on tips, walkthroughs, guides, wikis, template, recipes, tutorials, advice, ideas, examples, and inspiration
-          to create useful collections
-        </h6>
-      </div>
-    </div>
-  </div>
-  <!-- Section 3 -->
-  <div class="section section-brown">
-    <div class="row container center text-link">
-      <h5 class="text-white">
-        Join a community of lifelong learners and people looking to enrich and upgrade their lives through knowledge.
-      </h5>
-      <a href="about.html">Learn more <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-
-
-    </div>
-  </div>
-  <!-- Section 4 -->
-  <div class="section section-white">
-    <div class="row container center">
-      <h4 class="text-brown center">Use it for free</h4>
-      <div class="row">
-        <div class="col s12 m12 l12">
-          <a class="waves-effect waves-light btn btn-large modal-trigger" href="#singup-modal">Get started</a>
-        </div>
-      </div>
-      <h4 class="text-brown center">OR</h4>
-      <h5 class="text-brown center">Check out theses notebooks</h5>
-      <div class="row text-link-list">
-        <div class="col s12 m4 l2">
-          <a class="" href="dashboard.html">Entrepreneurs</a>
-        </div>
-        <div class="col s12 m4 l2">
-          <a class="" href="dashboard.html">Teachers</a>
-        </div>
-        <div class="col s12 m4 l2">
-          <a class="" href="dashboard.html">Designers</a>
-        </div>
-        <div class="col s12 m4 l2">
-          <a class="" href="dashboard.html">Developers</a>
-        </div>
-        <div class="col s12 m4 l2">
-          <a class="" href="dashboard.html">Freelancers</a>
-        </div>
-        <div class="col s12 m4 l2">
-          <a class="" href="dashboard.html">Creators</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="landing-footer"></div>
-  <script type="text/javascript" src="/assets/js/jquery-2.1.3.js"></script>
-  <script type="text/javascript" src="/assets/js/materialize.js"></script>
-  <script type="text/javascript" src="/assets/js/marked.min.js"></script>
-  <script type="text/jsx" src="app/landing.jsx"></script>
 
 </body>
 

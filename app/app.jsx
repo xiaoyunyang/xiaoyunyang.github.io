@@ -13,28 +13,10 @@ var Dashboard = React.createClass({
         bookmarksUrl: "https://spreadsheets.google.com/tq?key=" + json.bookmarks.key + json.bookmarks.query
       });
       router(); /* from //app/router.js */
-      this.loadBookmarksFromServer();
     }.bind(this));
   },
-  loadBookmarksFromServer: function() {
-    d3.csv(this.state.bookmarksUrl, function(error, data) {
-      if(error) {
-        console.log("ERROR IN D3 CSV LOADING")
-        this.setState({
-          bookmarksData: error
-        });
-      } else {
-        this.setState({
-          bookmarksData: data
-        });
-        this.renderDataVis();
-      }
-    }.bind(this))
-  },
   renderDataVis: function() {
-    ReactDOM.render(<BookmarksList username={this.state.username} data={this.state.bookmarksData}/>, document.getElementById('notebooks'));
-    ReactDOM.render(<Pie divId="pie" data={this.state.bookmarksData}/>, document.getElementById('pie'));
-    ReactDOM.render(<Matrix divId="matrix" data={this.state.bookmarksData}/>, document.getElementById('matrix'));
+    ReactDOM.render(<Work/>, document.getElementById('work'));
   },
   componentDidMount: function() {
     this.loadUserData();
@@ -53,20 +35,13 @@ var Dashboard = React.createClass({
     return (
       <div>
         <TopNav profileName={this.state.username} picUrl={this.state.userPicUrl}/>
-        <SideNav profileName={this.state.username} binders={this.state.binders} tags={this.state.tags}/>
-
+        <SideNav profileName={this.state.username} binders={this.state.binders} picUrl={this.state.userPicUrl}/>
         <div className="main-content row page-wrap">
-          <div id="notebooks-page" className="pages">
-            <div id="notebooks"></div>
-          </div>
-          <div id="matrix-page" className="pages">
-            <div id="matrix"></div>
-          </div>
-          <div id="pie-page" className="pages">
-            <div id="pie"></div>
+          <div id="work-page" className="pages">
+            <Work mdUrl="assets/md/work.md" />
           </div>
           <div id="about-page" className="pages">
-            <About mdUrl="assets/md/looseleaf.md" />
+            <About mdUrl="assets/md/about.md" />
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 {
-	"user": {"username":"xyang","name":"Xiaoyun Yang", "picUrl": "http://xiaoyunyang.github.io/assets/data/profile/photo/xyang.png"},
+	"user": {"username":"xyang","name":"Xiaoyun Yang", "picUrl": "/assets/data/profile/photo/xyang.png"},
 	"binders": [
-		{"name":"Pie Chart","alias":"pie","description":"Timeline"},
-		{"name":"Matrix","alias":"matrix","description":"AdjacencyMatrix"},
-		{"name":"Timeline","alias":"timeline","description":"timeline"}
+		{"name":"Work","alias":"work","description":"Work"},
+		{"name":"About","alias":"about","description":"About"},
+		{"name":"Resume","alias":"resume","description":"timeline"}
 	],
 	"tags":[
 		{"tag":"Programming","count":1},
