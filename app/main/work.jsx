@@ -12,7 +12,7 @@ var Work = React.createClass({
   render: function() {
     return (
       <div>
-        <div className="col s12 m8 l12">
+        <div className="col s12 m12 l12">
           <MdText url={this.props.mdUrl} textId="text-work" />
         </div>
       </div>

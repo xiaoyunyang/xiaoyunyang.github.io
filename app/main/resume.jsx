@@ -13,7 +13,7 @@ var Resume = React.createClass({
     console.log("resume!")
     return (
       <div>
-        <div className="col s12 m8 l12">
+        <div className="col s12 m12 l12">
           <iframe src="/assets/data/profile/resume.pdf"></iframe>
         </div>
       </div>

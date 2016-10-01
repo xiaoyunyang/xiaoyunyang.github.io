@@ -7,7 +7,7 @@ var About = React.createClass({
   render: function() {
     return (
       <div>
-        <div className="col s12 m8 l12">
+        <div className="col s12 m12 l12">
           <MdText url={this.props.mdUrl} textId="text-about" />
           <div className="row">
             <h5>Xiaoyun&rsquo;s Book Recommendations:</h5>
@@ -40,7 +40,7 @@ var About = React.createClass({
             <BookCard
               bookCover="https://images-na.ssl-images-amazon.com/images/I/41puRJbtwkL._SX331_BO1,204,203,200_.jpg"
               bookName="Startup"
-              bookDesc="What does it take to be a founder and succeed in Entrepreneurship - You have to think and be non-traditional. This book looks at economics, globalization, and founder characteristics and qualitites of good entrepreneurs."
+              bookDesc="What does it take to be a founder and succeed in Entrepreneurship. This book looks at economics, globalization, and founder characteristics and qualitites of good entrepreneurs."
               bookLink="https://goo.gl/m38o9I"
               />
             <BookCard
