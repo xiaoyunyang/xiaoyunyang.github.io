@@ -10,7 +10,6 @@ var Resume = React.createClass({
     });
   },
   render: function() {
-    console.log("resume!")
     return (
       <div>
         <div className="col s12 m12 l12">

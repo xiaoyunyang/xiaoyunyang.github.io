@@ -51,7 +51,9 @@ a {
   padding-right: 8%;
   margin-bottom: 0px;
 }
-
+.rounded {
+    border-radius: 6px !important;
+}
 html{
   font-size:100%;
 }
@@ -223,12 +225,7 @@ h6 {
 .nav-text-links li:hover {
   background: transparent;
 }
-.nav-text-links .active:hover {
-  background-color: rgba(0,0,0,0.1);
-}
-.dropdown-content {
-    background-color: #fff !important;
-}
+
 .nav-text-links a:hover {
   color: #383435;
 }
