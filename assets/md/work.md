@@ -7,7 +7,7 @@
 </div>
 <a href="http://looseleafapp.com" target="_blank">LooseLeaf</a> is a social bookmarking based learning management platform that delivers relevant learning content to learners and also make the careers of professional online content creators more sustainable. The learning content is in the form of bookmarks crowdsourced and curated by subject matter experts and LooseLeaf's recommendation algorithms.
 
-![Users get data visualizations and recommendations to filter and explore their bookmarks and bookmarks from the community.](https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/13584821_1725324291075188_6953786564116628510_o.jpg?oh=facf4112d554b2316fbc8a79189f61f0&oe=592ECCF9)
+![Users get data visualizations and recommendations to filter and explore their bookmarks and bookmarks from the community.](http://xiaoyunyang.github.io/assets/images/looseleaf/twitterbanner.png)
 
 I began creating LooseLeaf in July 2015. On top of the software engineering and product development for LooseLeaf, I'm also responsible for graphic design, marketing, and PR. Recently I exhibited LooseLeaf at LA <a target="_blank" href="https://techdayhq.com/">TechDay</a>, which is the second TechDay since DC TechDay in 2015 during which I presented the product for public feedback.
 
