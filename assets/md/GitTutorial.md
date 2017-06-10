@@ -58,7 +58,7 @@ In the Terminal, do the following:
 	$`git pull origin master`
 	
 
-<br>	
+<br/>
 ## Git Tutorial For userC
 Go to https://github.com/`userB`/`ProjectName` and click the "Fork" button.
 
