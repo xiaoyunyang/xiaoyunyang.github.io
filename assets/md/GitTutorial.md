@@ -11,7 +11,7 @@
 * userC wants to fork the `ProjectName` repo from userB.
 
 ## Git Tutorial For userA
-Go to https://github.com/`userA`/ and click the "New" button. Name the new repo `ProjectName`.
+Go to https://<span></span>github.com/`userA`/ and click the "New" button. Name the new repo `ProjectName`.
 
 On your computer, in Finder, make a new folder called `ProjectName`. Copy all the files you want to the `ProjectName` folder.
 
@@ -40,7 +40,6 @@ In the Terminal, do the following:
 	$ git add --all
 	$ git commit -m ‘Initial Commit!'
 	$ git push origin master
-
 	```
 
 7. Now open a file within `ProjectName` in [Atom](https://atom.io/) or another text editor. Make some changes to the code. To sync your local repo with your remote repo, do this:
@@ -50,7 +49,6 @@ In the Terminal, do the following:
 	$ git add --all
 	$ git commit -m ‘I made some changes!'
 	$ git push origin master
-
 	```
 
 6. After you accept a pull request from userB, your remote repo is updated. Now you want to sync your local repo with your remote repo:
@@ -58,9 +56,10 @@ In the Terminal, do the following:
 	$`git pull origin master`
 	
 
-<br>	
+<br>
+
 ## Git Tutorial For userC
-Go to https://github.com/`userB`/`ProjectName` and click the "Fork" button.
+Go to https://<span></span>github.com/``userB``/``ProjectName`` and click the "Fork" button.
 
 In the Terminal, do the following:
 
@@ -108,7 +107,6 @@ In the Terminal, do the following:
 	$ git add --all
 	$ git commit -m ‘I made some changes!'
 	$ git push origin master
-
 	```
 	
 11. To sync your local repo with userB's repo, do the following:
