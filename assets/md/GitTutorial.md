@@ -110,4 +110,5 @@ In the Terminal, do the following:
 	```
 	
 11. To sync your local repo with userB's repo, do the following:
+
 	$`git pull upstream master` 
