@@ -221,11 +221,9 @@ h6 {
   color: #616161;
   font-weight: bolder;
 }
-
-.nav-text-links li:hover {
+.nav-text-links li:not(.active):hover {
   background: transparent;
 }
-
 .nav-text-links a:hover {
   color: #383435;
 }
@@ -248,7 +246,13 @@ h6 {
 .side-nav {
   width: 300px;
 }
-
+.side-nav li:not(.active):hover {
+  background: transparent;
+}
+.side-nav a:hover {
+  color: #616161;
+  font-weight: bolder;
+}
 .navbar-img {
   max-width: 72px;
   max-height: 72px;

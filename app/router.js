@@ -8,7 +8,7 @@ function router(){
 			"work": "work",
 			"about": "about",
 			"resume": "resume",
-			"contact": "contact"
+			"writing": "writing"
 		},
 
 		deselectPills: function(){
@@ -46,9 +46,9 @@ function router(){
 			this.showPage('div#resume-page');
 			this.selectPill('li.resume-pill');
 		},
-		contact: function() {
-			this.showPage('div#contact-page');
-			this.selectPill('li.contact-pill');
+		writing: function() {
+			this.showPage('div#writing-page');
+			this.selectPill('li.writing-pill');
 		}
 	});
 
@@ -62,7 +62,7 @@ function router(){
 			'click ul.pills li.work-pill a': 'displayWork',
 			'click ul.pills li.about-pill a': 'displayAbout',
 			'click ul.pills li.resume-pill a': 'displayResume',
-			'click ul.pills li.contact-pill a': 'displayContact'
+			'click ul.pills li.writing-pill a': 'displayWriting'
 		},
 
 		//called on instantiation
@@ -82,8 +82,8 @@ function router(){
 		displayResume: function(){
 			this.router.navigate("resume", true);
 		},
-		displayContact: function(){
-			this.router.navigate("contact", true);
+		displayWriting: function(){
+			this.router.navigate("writing", true);
 		}
 	});
 

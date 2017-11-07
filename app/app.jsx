@@ -46,6 +46,9 @@ var Dashboard = React.createClass({
           <div id="resume-page" className="pages">
             <Resume />
           </div>
+          <div id="writing-page" className="pages">
+            <Writing />
+          </div>
         </div>
       </div>
     );

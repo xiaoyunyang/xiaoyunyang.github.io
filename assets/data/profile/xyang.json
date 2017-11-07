@@ -3,7 +3,8 @@
 	"binders": [
 		{"name":"Work","alias":"work","description":"Work"},
 		{"name":"About","alias":"about","description":"About"},
-		{"name":"Resume","alias":"resume","description":"resume"}
+		{"name":"Resume","alias":"resume","description":"resume"},
+		{"name":"Writing","alias":"writing","description":"writing"}
 	],
 	"tags":[
 		{"tag":"Programming","count":1},

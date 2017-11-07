@@ -7,7 +7,9 @@ var About = React.createClass({
   render: function() {
     return (
       <div>
+        <div className="col s12 m10 l10">
         <h4>About Xiaoyun</h4>
+        </div>
         <div className="col s12 m10 l10 offset-l1 offset-m1">
           <MdText url={this.props.mdUrl} textId="text-about" />
         </div>
