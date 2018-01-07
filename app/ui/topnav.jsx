@@ -11,6 +11,7 @@ var TopNav = React.createClass({
               <li className="work-pill"><a href="#work">Work</a></li>
               <li className="about-pill"><a href="#about">About</a></li>
               <li className="resume-pill"><a href="#resume">Resume</a></li>
+              <li className="writing-pill"><a href="#writing">Writing</a></li>
               <li>
                 <a href="#" className="navbar-img dropdown-button" data-activates="user-dropdown">
                   <img className="mod-round" src={this.props.picUrl}/>

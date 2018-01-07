@@ -44,9 +44,9 @@ Attention to detail, willing to put in more hours than the 9 to 5 to get the job
 
 __What side projects am I currently working on?__
 
-* Japan App: (see repo: [github-for-work](https://github.com/xiaoyunyang/JapanApp) - I made this mobile app to help me plan my trip to Japan with friends. This project also got my feet wet in cross-platform mobile app development in ReactNative.
+* Japan App: (see repo: [japan-app](https://github.com/xiaoyunyang/JapanApp) - I made this mobile app to help me plan my trip to Japan with friends. This project also got my feet wet in cross-platform mobile app development in ReactNative.
 
-* App for work: (see repo: [github-for-work](https://github.com/xiaoyunyang/github-for-work)) - it compiles markdown files from coworkers. Provide method to quickly access how-to documents.
+* App for work: (see repo: [github-for-work](https://github.com/xiaoyunyang/github-for-work) - it compiles markdown files from coworkers. Provide method to quickly access how-to documents.
 
 __Where do I see yourself in 5 years / 10 years?__
 
