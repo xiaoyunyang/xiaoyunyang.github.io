@@ -47,7 +47,7 @@ var Dashboard = React.createClass({
             <Resume />
           </div>
           <div id="writing-page" className="pages">
-            <Writing />
+            <Writing mdUrl="assets/md/writing.md" />
           </div>
         </div>
       </div>
