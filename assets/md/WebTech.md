@@ -61,16 +61,29 @@ For example, when you first click on the link to visit [KhanAcademy](https://www
 
 Sometimes, we want multiple React components to render different views of the same JSON and modify that JSON. We need to have a way to properly manage global variables. [Understanding Redux](http://www.youhavetolearncomputers.com/blog/2015/9/15/a-conceptual-overview-of-redux-or-how-i-fell-in-love-with-a-javascript-state-container) explains the motivation of Redux well. Redux manages the global variables using states.
 
-* `reducer` takes the current state as input and returns the next state.
+> `actions` are dispached to trigger `reducers` to change the `store`.
+
+* `store` is where the state of the application lives.
+* `reducer` takes the current state as input and returns the next state. This is the only way to change the state of the application.
+* `action` passes setter functions to React components to make changes to global states managed by redux. 
+
+
 * `container` is basically a React component that is hooked up to redux. It fetches data and renders its corresponding sub-component. The boilerplate for any `container` component includes the following:
 
 	```javascript
+	//AppContainer.js
 	
 	import React from 'react'
+	import { applyMiddleware, compose, createStore } from 'redux'
+	import thunk from 'redux-thunk'
+	import promise from 'redux-promise'
+	import createLogger from 'redux-logger'
 	import { Provider } from 'react-redux'
+	import AppContainer from './app/containers/AppContainer'
+	
 	
 	const configureStore = (initialState) => {
-		const logger = createLogger();
+	   const logger = createLogger();
   		const store = createStore(
     	rootReducer,
     	initialState,
@@ -82,24 +95,58 @@ Sometimes, we want multiple React components to render different views of the sa
 	
 	const App = () => (
 		<Provider store={store}>
-			<BrowserRouter>
-				<div>
-					<Header />
-					<Main />
-				</div>
-			</BrowserRouter>
+			<AppContainer />
 		</Provider>
 	
 	)
-	
-
-	
-	export default App
-	
+	export default AppContainer
 	```
 	
+The `Provider` provides the `store` to the React app, which allows us to `connect` our React components to the redux `store`. The components can't  directly interact with the store; everything has to be done through redux:
 
-* `action` passse setter functions to React components to make changes to global states managed by redux.
+* We can retrieve data by obtaining its current state
+* we can change its state by dispatching an action
+
+```
+//AppContainer.js
+App
+//The AppContainer passes all the possible actions to the View components
+
+
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { ActionCreators } from '../actions'
+import Router from '../components/Router'
+
+//Dispatching functions (boilerplate)
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(ActionCreators, dispatch);
+}
+export default connect((state) => {
+  //the state in the argument is the global state of the application
+  return {
+    todoCount: state.todoCount,
+    username: state.username,
+  }
+}, mapDispatchToProps)(Router);
+
+```
+
+```
+// Router.js
+
+const Router = () => {
+
+	// ...
+}
+
+```
+
+
+* Image from [React-redux-connect explained](https://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/)
+
+![](https://www.sohamkamani.com/assets/images/posts/react-redux-explanation/final-connect-flow.svg)
 
 
 **Middleware for Redux**
@@ -136,6 +183,17 @@ The above example demonstrates the another usefulness of REST API as it allows y
 
 
 ## Back End
+### Authentication
+
+
+
+**Open Authentication (OAuth)**
+1. OAuth - Why Open Authentication? Per [scotch.io](https://scotch.io/tutorials/the-easiest-way-to-add-authentication-to-any-app), there are a few key reasons for this, including:
+> 
+* A shifting identity landscape where we are now logging in with social providers like Google, Facebook, Twitter, and others
+* A desire for tighter security through features like multi-factor authentication, password-less login, and single sign-on
+* A new approach for application architecture that makes it more difficult to implement authentication
+
 
  
 ## Good Resources
@@ -144,5 +202,9 @@ The above example demonstrates the another usefulness of REST API as it allows y
 * [Web Technology Fundamentals](http://chimera.labs.oreilly.com/books/1230000000345/ch03.html)
 
 **Web App Design Guides**
+
+**Frontend**
+
+[React-Reduc Connect Explained](https://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/)
 
 * [Material Design](http://www.google.com/design/spec/material-design/introduction.html) - Best practice for UX and UI

@@ -309,6 +309,9 @@ img.mod-round, picture.mod-round {
 #text-about a:hover {
   text-decoration: underline;
 }
+#text-writing a:hover {
+  text-decoration: underline;
+}
 .image-caption {
   text-align: center;
   font-weight: 300;

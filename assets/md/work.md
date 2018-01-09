@@ -95,7 +95,7 @@ When I was planning my trip to Japan with some friends, I thought why not to use
 
 ReactNative is a game changer.
 
-It makes the barrier of entry low to make a cross-platform mobile app. The hallmark of Mobile Travel App I made (see [JapanApp](https://github.com/xiaoyunyang/JapanApp) repo) is that it took full advantage of the ReactNative open source ecosystem. There is a component for everything you need.
+It makes the barrier of entry low to make a cross-platform mobile app. The hallmark of Mobile Travel App I made (see <a href="https://github.com/xiaoyunyang/react-native-travel-app" target="_blank">react-native-travel-app</a> repo) is that it took full advantage of the ReactNative open source ecosystem. There is a component for everything you need.
 
 ![Travel Japan is an app for you to plan your next trip to Japan with your friends](/assets/images/travelapp/travel-japan.png)
 
