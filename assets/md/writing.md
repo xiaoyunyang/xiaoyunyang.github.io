@@ -1,6 +1,7 @@
 ### Tech
 * <i class="fa fa-github"></i> [Git Tutorial From Three Perspectives](https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/GitTutorial.md)
 * <i class="fa fa-github"></i> [Technology Behind Modern Web Applications](https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/WebTech.md)
+* <i class="fa fa-github"></i> [Getting Started with Authentication in Node with passport.js and MongoDB](https://github.com/xiaoyunyang/coursera-scala-specialization/blob/master/README.md)
 * <i class="fa fa-github"></i> [How Functional Programming Promotes Developer Productivity](https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/FP.md) (Also [published on Medium](https://medium.com/@xiaoyunyang/why-functional-programming-from-a-developer-productivity-perspective-69c4b8100776))
 * <i class="fa fa-github"></i> [Scala and Functional Programming](https://github.com/xiaoyunyang/coursera-scala-specialization/blob/master/README.md)
 * [Memory consideration for Functional Programming](https://medium.com/@xiaoyunyang/the-question-you-should-ask-yourself-when-you-write-programs-the-functional-way-is-how-can-i-solve-af9d93be4ae2)

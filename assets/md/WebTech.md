@@ -182,20 +182,48 @@ The above example is supported by the [Github API](https://developer.github.com/
 The above example demonstrates the another usefulness of REST API as it allows you to build frontend applications that can talk to not just its own server, but other servers that provides public access to their data via a REST API.
 
 
+**HTTP Status**
+
+As stated above, REST is based on HTTP. We need to have a way to respond to a request with a message when the response is success or has an error. These are the typical status codes and their definition:
+
+* `200`= OK - The request has succeeded.
+* `301`= Moved Permanently - The requested resource has been assigned a new permanent URI and any future references to this resource should use one of the returned URIs.
+* `400`= Bad Request - The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications.
+* `401`= Unauthorized - The request requires user authentication.
+* `404`= Not Found
+* `503`= Service Unavilable
+* See more [from the DigitalOcean Tutorial](https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-http-error-codes)
+
 ## Back End
 ### Authentication
 
+**Authentication vs. Authorization**
+Per [This Stackoverflow Response](https://stackoverflow.com/questions/36490904/whats-the-difference-between-passport-and-oauth):
+Passport is authentication middleware. OAuth is authorization middleware.
+Passport will allow you to authenticate the user before allowing access to your API. It does not (directly, it's possible) allow to check if a user is allowed to perform an action after authentication.
 
+>Authentication is the process of ascertaining that somebody really is who he claims to be.
+
+> Authorization refers to rules that determine who is allowed to do what. E.g. Bob may be authorized to create and delete databases, while Bobbette is only authorized to read.
 
 **Open Authentication (OAuth)**
+
+OAuth was developed by Twitter and Ma.gnolia. It is a standard for the delegation of (restricted) rights.
+
 1. OAuth - Why Open Authentication? Per [scotch.io](https://scotch.io/tutorials/the-easiest-way-to-add-authentication-to-any-app), there are a few key reasons for this, including:
 > 
 * A shifting identity landscape where we are now logging in with social providers like Google, Facebook, Twitter, and others
 * A desire for tighter security through features like multi-factor authentication, password-less login, and single sign-on
 * A new approach for application architecture that makes it more difficult to implement authentication
 
+Authentication is your username + password. Authorization is what you're allowed to do.
 
- 
+## Database
+There are two types of database: 
+
+**[This Video](https://www.youtube.com/watch?v=eM7hzKwvTq8)** compares SQL with NoSql.
+
+
 ## Good Resources
 **Web Technology 101:**
 

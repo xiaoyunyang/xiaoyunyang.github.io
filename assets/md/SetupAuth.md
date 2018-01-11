@@ -47,10 +47,16 @@ The `User` model will include logic for authentication, including:
 		$ touch models/dbconfig/knexfile.js
 		$ touch models/dbconfig/.env
 		```
+**What is salt and what it's good for?**
+[Salt](https://www.wikiwand.com/en/Salt_(cryptography))
+> salt is random data that is used as an additional input to a one-way function that "hashes" data, a password or passphrase. Salts are closely related to the concept of nonce. The primary function of salts is to defend against dictionary attacks or against its hashed equivalent, a pre-computed rainbow table attack
+[Rainbow Table Attack](https://www.wikiwand.com/en/Rainbow_table)
+> A rainbow table is a precomputed table for reversing cryptographic hash functions, usually for cracking password hashes. Tables are usually used in recovering a plaintext password (or credit card numbers, etc) up to a certain length consisting of a limited set of characters. It is a practical example of a space–time tradeoff, using less computer processing time and more storage than a brute-force attack which calculates a hash on every attempt, but more processing time and less storage than a simple lookup table with one entry per hash. Use of a key derivation function that employs a salt makes this attack infeasible.
+
 
 ## Set up the Authentication Process
 
-[]()
+
 **Passport Setup**
 
 1. Create a config file for passport
@@ -96,18 +102,110 @@ The `User` model will include logic for authentication, including:
 	
 	```
 
+**Set up passport with auth0**
+
+[https://github.com/auth0/passport-auth0](https://github.com/auth0/passport-auth0)
 
 ## Integration With React Router
 
 Check out [this tutorial](https://tylermcginnis.com/react-router-protected-routes-authentication/)
 
-[This Stackoverflow post](https://stackoverflow.com/questions/43164554/how-to-implement-authenticated-routes-in-react-router-4) suggests creating a PrivateRoutes component:
+[This Stackoverflow post](https://stackoverflow.com/questions/43164554/how-to-implement-authenticated-routes-in-react-router-4) suggests creating a `PrivateRoutes` component:
 
 
 Same Tutorial is found here: [React Training](https://reacttraining.com/react-router/web/example/auth-workflow) 
 
+[`react-router-config`](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config)
 
-## Background
+* According to the [documentation](https://reacttraining.com/react-router/web/example/route-config), you can do something like this:
+
+	```javascript
+	const routes = [
+	  { path: '/sandwiches',
+	    component: Sandwiches
+	  },
+	  { path: '/tacos',
+	    component: Tacos,
+	    routes: [
+	      { path: '/tacos/bus',
+	        component: Bus
+	      },
+	      { path: '/tacos/cart',
+	        component: Cart
+	      }
+	    ]
+	  }
+	]
+	
+	// wrap <Route> and use this everywhere instead, then when
+	// sub routes are added to any route it'll work 
+	const RouteWithSubRoutes = (route) => (
+	  	<Route path={route.path} render={props => (
+	  		// pass the sub-routes down to keep nesting
+	    <route.component {...props} routes={route.routes}/>
+	  	)}/>
+	)
+	
+	```
+`react-router-config` issues:
+* [Issue 5138](https://github.com/ReactTraining/react-router/issues/5138)
+* [Issue 4962](https://github.com/ReactTraining/react-router/issues/4962)
+
+[Tutorial](https://www.mokuji.me/article/react-auth0) for implementing react-node app with authentication using auth0.
+
+
+## Set up your Database
+
+
+### PostgresQL
+
+##### Install Postgres
+Using Homebrew:  `brew install postgres`
+##### Start Postgres
+* Automatic:
+	* `pg_ctl -D /usr/local/var/postgres start && brew services start postgresql` - This makes Postgres start every time your computer starts up. Execute the following command
+	* `brew services start postgresql` - To have launchd start postgresql now and restart at login
+* Manual
+	* Start Postgres: `pg_ctl -D /usr/local/var/postgres start`
+	* Stop Postgres: `pg_ctl -D /usr/local/var/postgres stop`
+
+##### Database Management
+* `createdb looseleaf` - creates a database called looseleaf
+* `dropdb looseleaf` - delete the database called looseleaf
+* `psql looseleaf` - access the database called looseleaf. After you type this, you'll see this: `looseleaf=#`, which is the header for the postgres database interface. Type the command after the `#`. For example:
+	* `looseleaf=# \du` - see what users are installed
+	* `looseleaf=# \h` - help
+	* `looseleaf=# \q` - quit
+If you want to use a PostgresQL GUI, install and launch [Postico](https://eggerapps.at/postico/). Look up the User name using `looseleaf=# \du`.
+
+
+## WebApp Environmental
+Accessing environment variables in Node.js is supported right out of the box. When your Node.js process boots up it will automatically provide access to all existing environment variables by creating an `env` object as property of the `process` global object. If you want to take a peek at the object run the the Node.js REPL with `node` in your command-line and type:
+
+```javascript
+console.log(process.env);
+``` 
+You should see that the value of `PORT` is `undefined` on your computer. Cloud hosts like Heroku or Azure, however, use the `PORT` variable to tell you on which port your server should listen for the routing to work properly. Therefore, the next time you set up a web server, you should determine the port to listen on by checking `PORT` first and giving it a default value otherwise:
+
+```javascript
+const app = require('http').createServer((req, res) => res.send('Ahoy!'));
+
+// take the value of the PORT if it’s available or default 
+// to 3000 as a fallback port to listen on.
+const PORT = process.env.PORT || 3000;
+ 
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+```
+
+If you want to separately define your environmental variable, then install `dotenv` and use the following lines in your `server.js`
+
+>`Dotenv` is a simple way to allow you to create secret keys that your application needs to function and keep them from going public.
+ 
+See more on the use of `dotenv` from [this article](https://medium.com/@thejasonfile/using-dotenv-package-to-create-environment-variables-33da4ac4ea8f).
+
+## More Things to Checkout
 [Sample App](https://github.com/aybmab/express-redux-sample)
 	
 **A User System**
@@ -129,9 +227,6 @@ Sessions are basically cookies that also gives you the ability to define the bac
 **Client Side Routing**	
 > 	
 
-## Set up your Database
-
-
 
 ## Resources
 * Scotch.io Tutorial
@@ -141,5 +236,5 @@ Sessions are basically cookies that also gives you the ability to define the bac
 * [postgres with passport](http://uitblog.com/postgres-with-passport/)
 * [node passport and postgres Medium](https://reallifeprogramming.com/node-authentication-with-passport-postgres-ef93e2d520e7)
 * [codeMentor](https://www.codementor.io/devops/tutorial/getting-started-postgresql-server-mac-osx) - Getting Started Tutorial for postgresql
-
+* [Tutorials Point MongoDB Tutorial](https://www.tutorialspoint.com/mongodb/mongodb_overview.htm)
 
