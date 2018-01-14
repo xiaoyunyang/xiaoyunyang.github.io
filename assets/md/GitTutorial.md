@@ -156,19 +156,40 @@ Some useful things you can do when things go haywire or just to get the most use
 	```
  
 
-4. f you accidentally initiated a directory as a git repo, this undos the `git init`:
+4. If you accidentally initiated a directory as a git repo, this undos the `git init`:
 
 	```
 	$ rm -rf .git #i
 	```
+
+5. 	If you don't want to have to enter your password everytime when you push to a remote, then in the project local repo, do the following:
 	
+	* Permanently 
+		
+		```
+		$ git config credential.helper store
+		```
+		[git-credential-store](https://git-scm.com/docs/git-credential-store) stores your password unencrypted in the file system:
+		> Using this helper will store your passwords unencrypted on disk, protected only by filesystem permissions. If this is not an acceptable security tradeoff, try git-credential-cache, or find a helper that integrates with secure storage provided by your operating system.
+		
+		
+	* Temporarily
+		
+		```
+		$ git config credential.helper cache
+		```
+		[git-credential-cache](https://git-scm.com/docs/git-credential-cache) stores the password for 15 minutes. Use the git-credential-cache which by default stores the password for 15 minutes. To set a different timeout, use --timeout (here 5 minutes)
+		
+		```
+		$ git config credential.helper 'cache --timeout=300'
+		```
 
 ## Notes on .gitignore
 The `.gitignore` file should be included in your local repo folder, which tells git to not add files and folders that you don't want to share publically on Github to your remote repo. What kind of files are these?
 
 * `DS_Store` and other metadata files that macOS create
 * `.env` files which includes configuration for your application that may include secret keys that you don't want people to know about.
-* Transient files from your working directory that aren't useful to other collaborators, such as compilation products, temporary files IDEs create, etc. Prime example is the `node_modules` which people downloading your project can get from running `npm install` if they have the right `package.json`. 
+* Transient files from your working directory that aren't useful to other collaborators, such as compilation products, temporary files IDEs create, etc. Prime example is the `node_modules` which tend to be large and people downloading your project can get from running `npm install` if they have the right dependencies listed in `package.json`.
 
 In general, you should include the following in your `.gitignore`
 

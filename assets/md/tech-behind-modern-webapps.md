@@ -38,7 +38,7 @@ Javascript frameworks provide a way for the client (i.e., the browser) to manipu
 React gives the developer full control of the DOM and covers the rendering of initial state and updating the state to reflect changes based on user or server input.
 
 * [Good Introduction to React from Auth0](https://auth0.com/blog/reactjs-authentication-tutorial/)
-	> React lets you create custom and reusable HTML elements. React provides some methods that are triggered at various points from creating a component up until the component is destroyed. This is called the Component's Lifecycle. You can declare methods to hook into the component's lifecycle to control the behavior of components in your app. Some examples of these lifecycle hooks are `componentDidMount()`, `componentWillMount()`, `componentWillUnmount()`, `shouldComponentUpdate()`, `componentWillUpdate()` and more. 
+	> React lets you create custom and reusable HTML elements. React provides some methods that are triggered at various points from creating a component up until the component is destroyed. This is called the Component's Lifecycle. You can declare methods to hook into the component's lifecycle to control the behavior of components in your app. Some examples of these lifecycle hooks are `componentDidMount()`, `componentWillMount()`, `componentWillUnmount()`, `shouldComponentUpdate()`, `componentWillUpdate()` and more. Read more about the lifecycle API [here](http://www.react.express/lifecycle_api)
 	
 	What is a `prop`?
 
@@ -195,6 +195,14 @@ As stated above, REST is based on HTTP. We need to have a way to respond to a re
 * See more [from the DigitalOcean Tutorial](https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-http-error-codes)
 
 ## Back End
+
+### Runtime Environment
+**Node.js**, or simply Node is a JavaScript runtime environment to execute JavaScript code server-side. This is the same concept as the Java Virtual Machine (JVM), which is a runtime environment for Java and languages in the Java family (e.g., Scala, Clojure, Groovy, Kotlin). Node was released in 2009 and is based on Google Chrome's powerful JavaScript engine, V8.
+
+**Express.js**, or simply Express, is a framework that runs on top of the Node's web server to simplify the development of a Node app. Node provides a bevy of low-level features you’d need to build an application. But like browser-based JavaScript, its low-level offerings can be verbose and difficult to use. Express is philosophically similar to jQuery, which cuts down boilerplate code by simplifying the APIs of the browser and adding helpful new features.
+ 
+### Server 
+
 ### Authentication
 
 **Authentication vs. Authorization**
@@ -223,16 +231,40 @@ There are two types of database:
 
 **[This Video](https://www.youtube.com/watch?v=eM7hzKwvTq8)** compares SQL with NoSql.
 
+## Tools
+**NPM**
+
+[react express](http://www.react.express/npm)
+>`npm` uses a file named `package.json` to record which packages your app depends on. This package.json file should live in the top level directory of your React project.
+
+>To add a package.json to a project, run `npm init`
+
+>When you type `npm install` npm automatically downloads all dependencies into a folder called `node_modules`. This folder will live alongside your package.json.
+
+**Webpack**
+
+[react express](http://www.react.express/webpack)
+>Webpack bundles your client-side code (JavaScript, css, etc) into a single JavaScript file. Webpack is highly configurable with plugins, allowing you to bundle nearly any kind of asset imaginable.
+
+
+**Git / Github**
+[See My Tutorial](https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/GitTutorial.md)
 
 ## Good Resources
 **Web Technology 101:**
 
 * [Web Technology Fundamentals](http://chimera.labs.oreilly.com/books/1230000000345/ch03.html)
+ 
 
 **Web App Design Guides**
 
 **Frontend**
 
-[React-Reduc Connect Explained](https://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/)
+* [React.Express Tutorial](http://www.react.express) - Learn about React, Redux, ES6, Babel, Webpack
+* [React-Reduc Connect Explained](https://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/)
 
 * [Material Design](http://www.google.com/design/spec/material-design/introduction.html) - Best practice for UX and UI
+
+**Backend**
+
+* [Manning Express In Action](https://hackerstribe.com/wp-content/uploads/2016/04/Node.js-Express-in-Action.pdf)

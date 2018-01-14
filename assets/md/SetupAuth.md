@@ -1,5 +1,5 @@
 ## Goal
-We want to build a `react` and `node` app with user authentication via `passport`, `postgresql` for database, and `knex` to connect the app to the database. 
+We want to build a `react` and `node` app with user authentication via `passport`, `mongo` for database, and `mongoose` to connect the app to the database. 
 
 ## Dependencies
 We need these dependencies:
@@ -11,7 +11,11 @@ We need these dependencies:
 	* [`passport-facebook`]() 
 	* [`passport-google-oauth`]() 
 	* [`passport-github2`](https://www.npmjs.com/package/passport-github2)
-* [`express-session`]() 
+* [`express-session`]()
+* [`mongoose`](http://mongoosejs.com/docs/connections.html)
+* [`mongo`](https://www.tutorialspoint.com/mongodb/mongodb_data_modeling.htm)
+* [`passport-local-mongoose`](https://github.com/saintedlama/passport-local-mongoose)
+* [`dotenv`](https://github.com/motdotla/dotenv)
 
 **Utilities**
 	
@@ -24,6 +28,9 @@ We need these dependencies:
 
 **Database**
 * [`knex`](http://knexjs.org/) - SQL query builder for Postgres. Our app uses `knex` to interact with the database.
+
+**Environment**
+* [`dotenv`](https://github.com/motdotla/dotenv)
 
 
 ## Set up the `User` model
@@ -178,6 +185,36 @@ Using Homebrew:  `brew install postgres`
 	* `looseleaf=# \q` - quit
 If you want to use a PostgresQL GUI, install and launch [Postico](https://eggerapps.at/postico/). Look up the User name using `looseleaf=# \du`.
 
+## Connect App To Database
+we can use [`mongoose`](http://mongoosejs.com/) to provide database access for our App.
+
+* [Mozilla Tutorial for Express-Nodejs-mongoose setup](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose)
+* [mongoose getting started](http://mongoosejs.com/docs/index.html)
+ 
+
+## Debugging
+* [`node-inspector`](https://github.com/node-inspector/node-inspector)
+	* node-inspector is great, but due to a [current bug](https://github.com/node-inspector/node-inspector/issues/905), it won’t work on any version of Node higher than 6.3.1.
+	* [This article](https://team.goodeggs.com/visual-debugging-with-es6-and-node-js-44631b3b040f) discusses options for debugging in Node, in particular `node-inspector` and JetBrains Webstorm.
+* [`node-devtools`](https://www.npmjs.com/package/node-devtools) - not working
+* [Official doc for create-react-app](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#debugging-in-the-editor)
+
+## Babel
+
+* [What is Babel?](https://kleopetrov.me/2016/03/18/everything-about-babel/)
+* [How to set up Babel](http://www.react.express/babel)
+
+
+	```
+	$ npm install --save-dev babel-loader babel-core babel-preset-react babel-preset-env babel-preset-stage-1 babel-plugin-transform-runtime
+	$ npm install --save babel-runtime
+	```
+* `babel-preset-es2015` is deprecated. Use `babel-preset-env` instead. [Read about it here](http://babeljs.io/env)
+
+`babel-preset-env` node [not working](https://github.com/facebookincubator/create-react-app/issues/1125) in create-react-app
+
+
+
 
 ## WebApp Environmental
 Accessing environment variables in Node.js is supported right out of the box. When your Node.js process boots up it will automatically provide access to all existing environment variables by creating an `env` object as property of the `process` global object. If you want to take a peek at the object run the the Node.js REPL with `node` in your command-line and type:
@@ -199,11 +236,19 @@ app.listen(PORT, () => {
 });
 ```
 
-If you want to separately define your environmental variable, then install `dotenv` and use the following lines in your `server.js`
+According to node's documentation on the [`process-env`](https://nodejs.org/docs/latest/api/process.html#process_process_env)
+>It is possible to modify this object, but such modifications will not be reflected outside the Node.js process.
 
+If you want to separately define your environmental variable, then install `dotenv` and use the following lines in your `server.js`.
+
+What it is:
+>`Dotenv` is a zero-dependency module that loads environment variables from a `.env` file into `process-env`.
+
+Why you shoud use it:
 >`Dotenv` is a simple way to allow you to create secret keys that your application needs to function and keep them from going public.
  
-See more on the use of `dotenv` from [this article](https://medium.com/@thejasonfile/using-dotenv-package-to-create-environment-variables-33da4ac4ea8f).
+See more on why you should use of [`Dotenv`](https://github.com/motdotla/dotenv) from [this article](https://medium.com/@thejasonfile/using-dotenv-package-to-create-environment-variables-33da4ac4ea8f).
+
 
 ## More Things to Checkout
 [Sample App](https://github.com/aybmab/express-redux-sample)
@@ -237,4 +282,5 @@ Sessions are basically cookies that also gives you the ability to define the bac
 * [node passport and postgres Medium](https://reallifeprogramming.com/node-authentication-with-passport-postgres-ef93e2d520e7)
 * [codeMentor](https://www.codementor.io/devops/tutorial/getting-started-postgresql-server-mac-osx) - Getting Started Tutorial for postgresql
 * [Tutorials Point MongoDB Tutorial](https://www.tutorialspoint.com/mongodb/mongodb_overview.htm)
+* [Postgres vs Mongo - Youtube video](https://www.youtube.com/watch?v=eM7hzKwvTq8)
 
