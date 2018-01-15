@@ -3,9 +3,9 @@
 * <i class="fa fa-github"></i> [Technology Behind Modern Web Applications](https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/tech-behind-modern-webapps.md)
 * <i class="fa fa-github"></i> [Getting Started with Authentication in Node with passport.js and MongoDB](https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/SetupAuth.md)
 * <i class="fa fa-github"></i> [My Notes on React](https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/react-notes.md)
-* <i class="fa fa-github"></i>[My Notes on D3 React Integration](https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/d3-react-integration.md)
-* <i class="fa fa-github"></i>[My Notes on ES6 and Babel](https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/es6-and-babel.md)
-* <i class="fa fa-github"></i>[My Notes on Scala and Functional Programming](https://github.com/xiaoyunyang/coursera-scala-specialization)
+* <i class="fa fa-github"></i> [My Notes on D3 React Integration](https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/d3-react-integration.md)
+* <i class="fa fa-github"></i> [My Notes on ES6 and Babel](https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/es6-and-babel.md)
+* <i class="fa fa-github"></i> [My Notes on Scala and Functional Programming](https://github.com/xiaoyunyang/coursera-scala-specialization)
 * <i class="fa fa-github"></i> [How Functional Programming Promotes Developer Productivity](https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/FP.md) (Also [published on Medium](https://medium.com/@xiaoyunyang/why-functional-programming-from-a-developer-productivity-perspective-69c4b8100776))
 * <i class="fa fa-github"></i> [Scala and Functional Programming](https://github.com/xiaoyunyang/coursera-scala-specialization/blob/master/README.md)
 * [Memory consideration for Functional Programming](https://medium.com/@xiaoyunyang/the-question-you-should-ask-yourself-when-you-write-programs-the-functional-way-is-how-can-i-solve-af9d93be4ae2)
@@ -32,7 +32,3 @@
 * [My Thoughts on Social Media Platforms](https://medium.com/@xiaoyunyang/i-think-many-people-who-use-these-free-services-are-well-aware-that-their-data-is-being-sold-and-it-307acaeb944f)
 * [My Thoughts on the baggage in life](https://medium.com/@xiaoyunyang/the-baggage-that-comes-later-in-life-marriage-and-children-is-a-personal-choice-that-many-people-5c73cd45d1d9)
 * [Political Humor Cartoon](https://medium.com/@xiaoyunyang/what-a-trump-presidency-looks-like-392d45f42edb)
-
-
-
-

@@ -1,5 +1,5 @@
 ## Goal
-We want to build a `react` and `node` app with user authentication via `passport`, `mongo` for database, and `mongoose` to connect the app to the database. 
+We want to build a `react` and `node` app with user authentication via `passport`, `mongo` for database, and `mongoose` to connect the app to the database.
 
 ## Middleware
 
@@ -7,8 +7,8 @@ We want to build a `react` and `node` app with user authentication via `passport
 
 * [`passport`](http://www.passportjs.org/), which help us authenticating with different methods includes these add-ons to help us authenticate with different methods:
 	* [`passport-local`]()
-	* [`passport-facebook`]() 
-	* [`passport-google-oauth`]() 
+	* [`passport-facebook`]()
+	* [`passport-google-oauth`]()
 	* [`passport-github2`](https://www.npmjs.com/package/passport-github2)
 * [`passport-local-mongoose`](https://github.com/saintedlama/passport-local-mongoose)
 * [`dotenv`](https://github.com/motdotla/dotenv)
@@ -32,8 +32,8 @@ We want to build a `react` and `node` app with user authentication via `passport
 * [`crypto`](https://nodejs.org/api/crypto.html) - nodes's built in module for hashing.
 
 **Utilities**
-	
-* [`connect-flash`]() - allows for passing session flashdata messages. 
+
+* [`connect-flash`]() - allows for passing session flashdata messages.
 * [`morgan`](https://www.npmjs.com/package/morgan-2) - log every request to the console
 * [`dotenv`](https://github.com/motdotla/dotenv)
 
@@ -80,38 +80,40 @@ The `User` model will include logic for authentication, including:
 	* [Set up oAuth](https://scotch.io/tutorials/easy-node-authentication-facebook)
 
 	The `config/passport` file will end up looking like this after you set passport up to use both local and facebook strategies:
-	
+
+
 	```javascript
 	// config/passport.js
-	
+
 	const LocalStrategy = require('passport-local').Strategy;
 	const FacebookStrategy = require('passport-facebook').Strategy;
 	const User = require('../models/user');
-	
-	// You are exporting a function that takes passport as 
+
+	// You are exporting a function that takes passport as
 	// an argument and returning
 	module.export = (passport) => {
-	
+
 	  /** passport session setup **/
 	  // required for persistent login session
 	  passport.serializeUser((user, done) => { /* TODO */ }
 	  passport.deserializeUser((id, done) => { /* TODO */ }
-	  
+
 	  /** Local Signup **/
 	  passport.use('local-signup', new LocalStrategy( /* TODO */ ))
-	  
+
 	  /** Facebook Signup **/
 	  passport.use('facebook-signup', new FacebookStrategy( /* TODO */ ))	 
 	}
 	```
+
 3. We pass this `config/passport.js` file into `server.js` to configure `passport`. `server.js` contains the following code:
-	
+
 	```javascript
 	// server.js
-	
+
 	const passport = require('passport')
 	require('./config/passport')(passport);
-	
+
 	```
 
 **Set up passport with auth0**
@@ -125,7 +127,7 @@ Check out [this tutorial](https://tylermcginnis.com/react-router-protected-route
 [This Stackoverflow post](https://stackoverflow.com/questions/43164554/how-to-implement-authenticated-routes-in-react-router-4) suggests creating a `PrivateRoutes` component:
 
 
-Same Tutorial is found here: [React Training](https://reacttraining.com/react-router/web/example/auth-workflow) 
+Same Tutorial is found here: [React Training](https://reacttraining.com/react-router/web/example/auth-workflow)
 
 [`react-router-config`](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config)
 
@@ -148,17 +150,18 @@ Same Tutorial is found here: [React Training](https://reacttraining.com/react-ro
 	    ]
 	  }
 	]
-	
+
 	// wrap <Route> and use this everywhere instead, then when
-	// sub routes are added to any route it'll work 
+	// sub routes are added to any route it'll work
 	const RouteWithSubRoutes = (route) => (
 	  	<Route path={route.path} render={props => (
 	  		// pass the sub-routes down to keep nesting
 	    <route.component {...props} routes={route.routes}/>
 	  	)}/>
 	)
-	
+
 	```
+
 `react-router-config` issues:
 * [Issue 5138](https://github.com/ReactTraining/react-router/issues/5138)
 * [Issue 4962](https://github.com/ReactTraining/react-router/issues/4962)
@@ -195,7 +198,7 @@ we can use [`mongoose`](http://mongoosejs.com/) to provide database access for o
 
 * [Mozilla Tutorial for Express-Nodejs-mongoose setup](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose)
 * [mongoose getting started](http://mongoosejs.com/docs/index.html)
- 
+
 
 ## Debugging
 * [`node-inspector`](https://github.com/node-inspector/node-inspector)
@@ -226,16 +229,16 @@ Accessing environment variables in Node.js is supported right out of the box. Wh
 
 ```javascript
 console.log(process.env);
-``` 
+```
 You should see that the value of `PORT` is `undefined` on your computer. Cloud hosts like Heroku or Azure, however, use the `PORT` variable to tell you on which port your server should listen for the routing to work properly. Therefore, the next time you set up a web server, you should determine the port to listen on by checking `PORT` first and giving it a default value otherwise:
 
 ```javascript
 const app = require('http').createServer((req, res) => res.send('Ahoy!'));
 
-// take the value of the PORT if it’s available or default 
+// take the value of the PORT if it’s available or default
 // to 3000 as a fallback port to listen on.
 const PORT = process.env.PORT || 3000;
- 
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
@@ -251,13 +254,13 @@ What it is:
 
 Why you shoud use it:
 >`Dotenv` is a simple way to allow you to create secret keys that your application needs to function and keep them from going public.
- 
+
 See more on why you should use of [`Dotenv`](https://github.com/motdotla/dotenv) from [this article](https://medium.com/@thejasonfile/using-dotenv-package-to-create-environment-variables-33da4ac4ea8f).
 
 
 ## More Things to Checkout
 [Sample App](https://github.com/aybmab/express-redux-sample)
-	
+
 **A User System**
 Use `passport` to implement a user system. Essentially, a session token is generated when a client connects, it is then associated with an account if the user successfully signs on and saved to a store (currently the dev session store, but soon to be redis - though it could also be saved in the DB). The token is then used to authorize subsequent requests.
 
@@ -265,23 +268,23 @@ Use `passport` to implement a user system. Essentially, a session token is gener
 Everytime something happens, a new state object is created to reflect the change, and the views update accordingly.
 
 **Optimistic Updates:**
-	
-> After having a redux application connected to a backend, I wanted to implement optimistic updates (a.k.a. reflect user updates immediately, even though the change wasn't necessarily saved). This was implemented by generating a unique id on the client side and then using that to reconcile after hearing back from the server. By using the client-side-generated id, react nicely handles updating the view and notifying the user on the status of each change. 
+
+> After having a redux application connected to a backend, I wanted to implement optimistic updates (a.k.a. reflect user updates immediately, even though the change wasn't necessarily saved). This was implemented by generating a unique id on the client side and then using that to reconcile after hearing back from the server. By using the client-side-generated id, react nicely handles updating the view and notifying the user on the status of each change.
 
 **Live Update/Push Notification**
 > After users were able to make changes, I didn't want them to have to refresh their page to see changes made by other users. I used [SocketIO](https://socket.io/) to alert each client of any update. Please let me know what you think about this! I've never used backbone, but it seems to have a nice model and event system that could be worth exploring.
 
 **Sessions**
 Sessions are basically cookies that also gives you the ability to define the backend storage used by the server part of your application
-	
-**Client Side Routing**	
+
+**Client Side Routing**
 > 	
 
 
 ## Resources
 * Scotch.io Tutorial
-	* [set up passport-local](https://scotch.io/tutorials/easy-node-authentication-setup-and-local) 
-	* [set up passport-facebook](https://scotch.io/tutorials/easy-node-authentication-facebook) 
+	* [set up passport-local](https://scotch.io/tutorials/easy-node-authentication-setup-and-local)
+	* [set up passport-facebook](https://scotch.io/tutorials/easy-node-authentication-facebook)
 * [node passport and postgres setup](http://mherman.org/blog/2016/09/25/node-passport-and-postgres/) - Good tutorial on integrating `passport` with `postgres` and  `knex`
 * [postgres with passport](http://uitblog.com/postgres-with-passport/)
 * [node passport and postgres Medium](https://reallifeprogramming.com/node-authentication-with-passport-postgres-ef93e2d520e7)
@@ -289,4 +292,3 @@ Sessions are basically cookies that also gives you the ability to define the bac
 * [Tutorials Point MongoDB Tutorial](https://www.tutorialspoint.com/mongodb/mongodb_overview.htm)
 * [Postgres vs Mongo - Youtube video](https://www.youtube.com/watch?v=eM7hzKwvTq8)
 * [best practice for handling sessions in redux](https://github.com/reactjs/redux/issues/297)
-

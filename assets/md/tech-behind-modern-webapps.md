@@ -107,11 +107,9 @@ The `Provider` provides the `store` to the React app, which allows us to `connec
 * We can retrieve data by obtaining its current state
 * we can change its state by dispatching an action
 
-```
+```javascript
 //AppContainer.js
-App
 //The AppContainer passes all the possible actions to the View components
-
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -169,7 +167,6 @@ While we (people) can view the JSON via clicking on the link and opening it up i
 
 ```
 GET https://api.github.com/users/xiaoyunyang/repos
-
 ```
 
 The above example is supported by the [Github API](https://developer.github.com/v3/repos/#list-your-repositories). Many websites that collect a lot of data from their users provide an API that allows web developers to access that data. Some good APIs include:
@@ -183,7 +180,7 @@ The above example demonstrates the another usefulness of REST API as it allows y
 
 **What is HTTP?**
 
-[HTTP](https://www.wikiwand.com/en/Hypertext_Transfer_Protocol) stands for Hypertext Transport Protocol. It was invented for the Web to retrieve HTML, images, documents etc. The basic concept of HTTP is (1) make a Connection, (2)request a document, (3) retrieve the Document, and (4) close the connection. Let's see HTTP in action. In your terminal, type:
+[HTTP](https://www.wikiwand.com/en/Hypertext_Transfer_Protocol) stands for Hypertext Transport Protocol. It was invented for the Web to retrieve HTML, images, documents etc. The basic concept of HTTP is (1) establish a connection, (2) request a document, (3) retrieve the document, and (4) close the connection. Let's see HTTP in action. In your terminal, type:
 
 ```
 $ telnet www.rigaut.com 80
@@ -208,19 +205,47 @@ get the following response:
 </html>
 Connection closed by foreign host.
 ```
-That's essentially what your browser does when you visit [http://www.rigaut.com/benoit/CERN/about](http://www.rigaut.com/benoit/CERN/about/). Your browser gets back a bunch of HTML and it will render a DOM based on the HTML and display it to you. A browser is a software application that makes HTTP requests, processes the HTTP response (e.g., HTML), and display that to you.
+That's essentially what your browser does when you visit [http://www.rigaut.com/benoit/CERN/about](http://www.rigaut.com/benoit/CERN/about/). Your browser gets back a bunch of HTML and it will render a DOM based on the HTML and displays the webpage to you. A browser is a software application that makes HTTP requests, processes the HTTP response (e.g., HTML), and display that to you.
 
-**HTTP Status**
+**HTTP Requests**
 
-As stated above, REST is based on HTTP. We need to have a way to respond to a request with a message when the response is success or has an error. These are the typical [HTTP status codes](https://www.wikiwand.com/en/List_of_HTTP_status_codes) and their definition:
+As stated above, REST is based on HTTP. We need to have a way to respond to a request with a message when the response is success or has an error. 
 
-* `200`= OK - The request has succeeded.
-* `301`= Moved Permanently - The requested resource has been assigned a new permanent URI and any future references to this resource should use one of the returned URIs.
-* `400`= Bad Request - The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications.
-* `401`= Unauthorized - The request requires user authentication.
+These are all the [HTTP requests](http://www.restapitutorial.com/lessons/httpmethods.html), their corresponding operation, and response in HTTP status codes:
+
+| HTTP Verb  | CRUD Operation        | Response (status Codes) |
+| :--------: |:---------------------:|:------------------------|
+| `POST`     | Create 			       | 201, 404, 409           |
+| `GET`      | Read   			       | 200, 404                |
+| `PUT`      | Update/Replace/Create | 200, 201, 204, 404, 405 |
+| `PATCH`    | Update/Modify         | 200, 204, 404, 405      | 
+| `DELETE`   | Delete   		       | 200, 404, 405           |
+
+
+
+These are the typical [HTTP status codes](https://www.wikiwand.com/en/List_of_HTTP_status_codes) and their definition:
+
+* `200`= OK 
+	* The `GET` request has succeeded and content was retrieved.
+* `201` = Created
+	* This status is provided as response to a successful `POST` (or if using`PUT` for create) request along with a location header with a link to the newly-created resource.
+* `204` = No content 
+	* A response to a `PUT` or `PATCH` request upon successful update if not returning any content in the body.
+* `301`= Moved Permanently
+	* The requested resource has been assigned a new permanent URI and any future references to this resource should use one of the returned URIs.
+* `400`= Bad Request
+	* The request could not be understood by the server due to malformed syntax. The client should not repeat the request without modifications.
+* `401`= Unauthorized
+	* The request requires user authentication.
 * `404`= Not Found
+	* For example, a `DELETE` request on something with an ID not found or invalid.
+* `405` = Method Not Allowed
+	* For example, a `GET` request on a form that requires data to be presented via `POST`, or a `PUT` request on a read-only resource.
+* `409` = Conflict
+	* A response to a failed `POST` request (e.g., cannot create user because user already exists).
 * `503`= Service Unavilable
-* See more [from the DigitalOcean Tutorial](https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-http-error-codes)
+
+See more [from the DigitalOcean Tutorial](https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-http-error-codes)
 
 ## Back End
 Modern web apps are built on sophisticated frontend frameworks like React that handles all the UI logic, even routing (`react-router`). While [any backend](https://www.wikiwand.com/en/Comparison_of_web_frameworks) will do the job and developers choose backend frameworks based on their language of choice (e.g., ruby's Ruby on Rails, python's Django, scala's Play, Haskell's Yesod etc.), a poor performing backend can really hurt your webapp's performance and scalability. We need to keep [three main things to consider](https://www.quora.com/Would-you-choose-Node-js-Express-js-or-Play-framework-Java-for-a-new-web-app-project-Why) when choosing a backend framework:

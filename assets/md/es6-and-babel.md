@@ -5,16 +5,90 @@
 * [React Express Tutorial](http://www.react.express/modern_javascript)
 	
 	>ECMAScript is the language specification used to implement the JavaScript language. Nearly every JavaScript environment today can run at least ECMAScript 5 (ES5), the version of JavaScript introduced in 2009. However, there are many new features in the latest versions of JavaScript that we'd like to use. Thanks to Babel, we can use them today! Babel transforms newer features into ES5 for cross-platform compatibility.
-* [How to set up Babel](http://www.react.express/babel)
-
+* How to [set up Babel for react app](http://www.react.express/babel) or [set up Babel for node/express app](https://github.com/babel/example-node-server). For node app, assume you have this file structure:
 
 	```
-	$ npm install --save-dev babel-loader babel-core babel-preset-react babel-preset-env babel-preset-stage-1 babel-plugin-transform-runtime
-	$ npm install --save babel-runtime
+	my-app
+	├───package.json
+	├───.babelrc
+	├───server
+	│   ├───app.js <===ES6
+	│   └───build
+	|		 └───app.js <===ES5
+	...
 	```
-* `babel-preset-es2015` is deprecated. Use `babel-preset-env` instead. [Read about it here](http://babeljs.io/env)
 
-`babel-preset-env` node [not working](https://github.com/facebookincubator/create-react-app/issues/1125) in create-react-app
+	Add the following to `.babelrc`
+	
+	```
+	{
+	  "presets": [
+	    "env",
+	    "stage-2"
+	  ],
+	  "plugins": [
+	    "transform-runtime"
+	  ]
+	}
+	
+	```
+	Add the following to `package.json`:
+	
+	```
+	"scripts": {
+		"build": "babel server -d ./server/build",
+    	"start": "node server/build/app.js",
+	}
+	"dependencies": {
+		"express": "^4.16.2",
+		"webpack": "^3.10.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.2",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"babel-preset-env": "^1.6.1",
+		"babel-preset-react": "^6.24.1",
+		"babel-preset-stage-1": "^6.24.1",
+		"babel-preset-stage-2": "^6.24.1",
+		"eslint": "^3.19.0",
+		"webpack-dev-middleware": "^2.0.4",
+		"webpack-hot-middleware": "^2.21.0"
+	}
+	
+	```
+	In your terminal:
+	
+	```
+	$ npm install
+	$ npm run build
+	$ npm run start 
+	```
+	
+	In `package.json`, the following `build` script is saying compile the entire server directory and output it to the server/build directory. `-d` means directory.
+	
+	```
+	"build": "babel server -d ./server/build"
+	
+	```
+	If we didn't have the `.babelrc` then we have to make this the build script:
+	```
+	"build": babel server -d ./server/build --presets env,stage-2",
+	```	
+	If we didn't have the scripts in `package.json`, then every time we make a change to `server.js`, we would have to transpile the code from ES6 to ES5 and manually run the babel transpiling command to populate the build folder then run the ES5 version of the folder. 
+	
+	```
+	$ babel server -d ./server/build --presets env,stage-2"
+	$ node server/build/app.js
+	```
+
+### Notes
+
+* `babel-preset-es2015` is deprecated. Use `babel-preset-env` instead. [Read about it here](http://babeljs.io/env). `babel-preset-env` node [not working](https://github.com/facebookincubator/create-react-app/issues/1125) in create-react-app
+* [set up](https://babeljs.io/docs/plugins/transform-runtime/) `babel-runtime`, which "externalise references to helpers and builtins, automatically polyfilling your code without polluting globals
+
+
 
 ## Useful Stuff in ES6
 
