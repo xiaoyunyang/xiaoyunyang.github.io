@@ -1,35 +1,40 @@
 ## Goal
 We want to build a `react` and `node` app with user authentication via `passport`, `mongo` for database, and `mongoose` to connect the app to the database. 
 
-## Dependencies
-We need these dependencies:
+## Middleware
 
 **Authentication**
 
-* [`passport`](), which help us authenticating with different methods includes these add-ons to help us authenticate with different methods:
+* [`passport`](http://www.passportjs.org/), which help us authenticating with different methods includes these add-ons to help us authenticate with different methods:
 	* [`passport-local`]()
 	* [`passport-facebook`]() 
 	* [`passport-google-oauth`]() 
 	* [`passport-github2`](https://www.npmjs.com/package/passport-github2)
-* [`express-session`]()
-* [`mongoose`](http://mongoosejs.com/docs/connections.html)
-* [`mongo`](https://www.tutorialspoint.com/mongodb/mongodb_data_modeling.htm)
 * [`passport-local-mongoose`](https://github.com/saintedlama/passport-local-mongoose)
 * [`dotenv`](https://github.com/motdotla/dotenv)
+* [`nodemailer`](https://github.com/nodemailer/nodemailer)
+* [`body-parser`]() -  get information from html forms
+
+**Session**
+
+* [`express-session`](https://github.com/expressjs/session)
+* [`cookie-parser`]() - read cookies (needed for auth)
+
+**Database**
+
+* [`mongoose`](http://mongoosejs.com/docs/connections.html)
+* [`mongo`](https://www.tutorialspoint.com/mongodb/mongodb_data_modeling.htm)
+* [`knex`](http://knexjs.org/) - SQL query builder for Postgres. Our app uses `knex` to interact with the database.
+
+**Security**
+
+* [`bcrypt-nodejs`](https://www.npmjs.com/package/bcrypt-nodejs) - used to hash strings and compare the hash with the hash stored in the database
+* [`crypto`](https://nodejs.org/api/crypto.html) - nodes's built in module for hashing.
 
 **Utilities**
 	
 * [`connect-flash`]() - allows for passing session flashdata messages. 
-* [`cookie-parser`]() - read cookies (needed for auth)
-* [`body-parser`]() -  get information from html forms
-* [`morgan`]() - log every request to the console
-* 	[`bcrypt-nodejs`](https://www.npmjs.com/package/bcrypt-nodejs) - used to hash strings and compare the hash with the hash stored in the database
-* [`crypto`](https://nodejs.org/api/crypto.html) - nodes's built in module for hashing.
-
-**Database**
-* [`knex`](http://knexjs.org/) - SQL query builder for Postgres. Our app uses `knex` to interact with the database.
-
-**Environment**
+* [`morgan`](https://www.npmjs.com/package/morgan-2) - log every request to the console
 * [`dotenv`](https://github.com/motdotla/dotenv)
 
 
@@ -55,8 +60,8 @@ The `User` model will include logic for authentication, including:
 		$ touch models/dbconfig/.env
 		```
 **What is salt and what it's good for?**
-[Salt](https://www.wikiwand.com/en/Salt_(cryptography))
-> salt is random data that is used as an additional input to a one-way function that "hashes" data, a password or passphrase. Salts are closely related to the concept of nonce. The primary function of salts is to defend against dictionary attacks or against its hashed equivalent, a pre-computed rainbow table attack
+
+> [Salt](https://www.wikiwand.com/en/Salt_(cryptography)) is random data that is used as an additional input to a one-way function that "hashes" data, a password or passphrase. Salts are closely related to the concept of nonce. The primary function of salts is to defend against dictionary attacks or against its hashed equivalent, a pre-computed rainbow table attack
 [Rainbow Table Attack](https://www.wikiwand.com/en/Rainbow_table)
 > A rainbow table is a precomputed table for reversing cryptographic hash functions, usually for cracking password hashes. Tables are usually used in recovering a plaintext password (or credit card numbers, etc) up to a certain length consisting of a limited set of characters. It is a practical example of a space–time tradeoff, using less computer processing time and more storage than a brute-force attack which calculates a hash on every attempt, but more processing time and less storage than a simple lookup table with one entry per hash. Use of a key derivation function that employs a salt makes this attack infeasible.
 
@@ -283,4 +288,5 @@ Sessions are basically cookies that also gives you the ability to define the bac
 * [codeMentor](https://www.codementor.io/devops/tutorial/getting-started-postgresql-server-mac-osx) - Getting Started Tutorial for postgresql
 * [Tutorials Point MongoDB Tutorial](https://www.tutorialspoint.com/mongodb/mongodb_overview.htm)
 * [Postgres vs Mongo - Youtube video](https://www.youtube.com/watch?v=eM7hzKwvTq8)
+* [best practice for handling sessions in redux](https://github.com/reactjs/redux/issues/297)
 

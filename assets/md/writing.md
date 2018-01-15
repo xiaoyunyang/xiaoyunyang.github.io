@@ -22,6 +22,7 @@
 ](https://medium.com/@xiaoyunyang/10-best-things-i-did-before-i-turned-25-5511d23b726d)
 
 ### Thoughts
+* [My thoughts on online learning](https://medium.com/@xiaoyunyang/this-is-the-last-missing-piece-of-the-puzzle-to-online-learning-721c1c8fd898) - motivation for LooseLeaf, the startup I'm building.
 * [My Thoughts on the "Highly Educated, But Poor As Hell" Phenomenon](https://medium.com/@xiaoyunyang/i-appreciate-the-perspective-you-share-on-this-topic-something-ive-been-contemplating-a-lot-5136930d2c7f)
 * [My thoughts on Women in Tech](https://medium.com/@xiaoyunyang/thats-a-very-interesting-point-a70a18eb3930)
 * [My Thoughts on Why Algorithms Replacing Human Worker](https://medium.com/@xiaoyunyang/while-algorithms-are-replacing-human-workers-in-fields-that-require-mostly-algorithmic-and-e12ccab4fb70)
@@ -31,6 +32,7 @@
 * [My Thoughts on Social Media Platforms](https://medium.com/@xiaoyunyang/i-think-many-people-who-use-these-free-services-are-well-aware-that-their-data-is-being-sold-and-it-307acaeb944f)
 * [My Thoughts on the baggage in life](https://medium.com/@xiaoyunyang/the-baggage-that-comes-later-in-life-marriage-and-children-is-a-personal-choice-that-many-people-5c73cd45d1d9)
 * [Political Humor Cartoon](https://medium.com/@xiaoyunyang/what-a-trump-presidency-looks-like-392d45f42edb)
+
 
 
 

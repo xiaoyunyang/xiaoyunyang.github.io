@@ -27,7 +27,7 @@ When you visit a website built in the 1990s, your browser (e.g., Chrome, Firefox
 
 Static webpages are undesirable from a user perspective as well as from a web developer perspective. Users cannot interact much with a static website other than viewing the content. The owner of the website has to modify the html file to change the content of page.
 
-Javascript frameworks provide a way for the client (i.e., the browser) to manipulate the DOM. The client may interact with DOM in different ways (e.g., collapsing and filtering a list). Javascript frameworks also handle the interface between the DOM and server. There are many javascript frameworks out there but none is more powerful than [React](https://reactjs.org/docs/thinking-in-react.html).
+Javascript frameworks provide a way for the client (i.e., the browser) to manipulate the DOM. The client may interact with DOM in different ways (e.g., collapsing and filtering a list). Javascript frameworks also handle the interface between the DOM and server. There are [many javascript frameworks](https://hackernoon.com/5-best-javascript-frameworks-in-2017-7a63b3870282) out there but none is more powerful than [React](https://reactjs.org/docs/thinking-in-react.html).
 
 
 ### React
@@ -181,10 +181,38 @@ The above example is supported by the [Github API](https://developer.github.com/
 
 The above example demonstrates the another usefulness of REST API as it allows you to build frontend applications that can talk to not just its own server, but other servers that provides public access to their data via a REST API.
 
+**What is HTTP?**
+
+[HTTP](https://www.wikiwand.com/en/Hypertext_Transfer_Protocol) stands for Hypertext Transport Protocol. It was invented for the Web to retrieve HTML, images, documents etc. The basic concept of HTTP is (1) make a Connection, (2)request a document, (3) retrieve the Document, and (4) close the connection. Let's see HTTP in action. In your terminal, type:
+
+```
+$ telnet www.rigaut.com 80
+```
+Port 80 is the non-encrypted HTTP port. If you see the following, the connection went through:
+
+```
+Trying 80.248.208.218...
+Connected to www.rigaut.com.
+Escape character is '^]'.
+```
+
+Then type:
+```
+GET /benoit/CERN/about/
+```
+get the following response:
+
+```
+<html>
+...
+</html>
+Connection closed by foreign host.
+```
+That's essentially what your browser does when you visit [http://www.rigaut.com/benoit/CERN/about](http://www.rigaut.com/benoit/CERN/about/). Your browser gets back a bunch of HTML and it will render a DOM based on the HTML and display it to you. A browser is a software application that makes HTTP requests, processes the HTTP response (e.g., HTML), and display that to you.
 
 **HTTP Status**
 
-As stated above, REST is based on HTTP. We need to have a way to respond to a request with a message when the response is success or has an error. These are the typical status codes and their definition:
+As stated above, REST is based on HTTP. We need to have a way to respond to a request with a message when the response is success or has an error. These are the typical [HTTP status codes](https://www.wikiwand.com/en/List_of_HTTP_status_codes) and their definition:
 
 * `200`= OK - The request has succeeded.
 * `301`= Moved Permanently - The requested resource has been assigned a new permanent URI and any future references to this resource should use one of the returned URIs.
@@ -195,13 +223,67 @@ As stated above, REST is based on HTTP. We need to have a way to respond to a re
 * See more [from the DigitalOcean Tutorial](https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-http-error-codes)
 
 ## Back End
+Modern web apps are built on sophisticated frontend frameworks like React that handles all the UI logic, even routing (`react-router`). While [any backend](https://www.wikiwand.com/en/Comparison_of_web_frameworks) will do the job and developers choose backend frameworks based on their language of choice (e.g., ruby's Ruby on Rails, python's Django, scala's Play, Haskell's Yesod etc.), a poor performing backend can really hurt your webapp's performance and scalability. We need to keep [three main things to consider](https://www.quora.com/Would-you-choose-Node-js-Express-js-or-Play-framework-Java-for-a-new-web-app-project-Why) when choosing a backend framework:
+
+* **Performance:** For backend, that means being stateless, asynchronous, and supporting non-blocking I/O. We throw out Ruby on Rails for its performance issues.
+* **Flexibility:** Ability to make extendable modules and add-ons to help you make anything you need for a server, such as authentication.  
+* **Community:**  IMO the most important for a startup founding or freelancer doing a lot with little/no support from a big team. A popularity of a framework contributes directly to developer productivity and framework extensibility. This is especially important for a minimal and unopinionated framework that is flexible, such as Express. We want the ability to add third-party modules to extend the capability of Express and get help from the community for a specific problem we have. There's a healthy Node.js ecosystem so you have a myriad of open source third party modules, tutorials, and an extensive knowledge repository online to help you.
+
+There are [many backend frameworks](https://gearheart.io/blog/7-best-frameworks-for-web-development-in-2017/) out there but we will be using Express, which runs in the Node.js runtime environment.
 
 ### Runtime Environment
-**Node.js**, or simply Node is a JavaScript runtime environment to execute JavaScript code server-side. This is the same concept as the Java Virtual Machine (JVM), which is a runtime environment for Java and languages in the Java family (e.g., Scala, Clojure, Groovy, Kotlin). Node was released in 2009 and is based on Google Chrome's powerful JavaScript engine, V8.
+**Node.js**, or simply Node is a JavaScript runtime environment to execute JavaScript code server-side. This is the same concept as the Java Virtual Machine (JVM), which is a runtime environment for Java and languages in the Java family (e.g., Scala, Clojure, Groovy, Kotlin). Node was released in 2009 and is based on [Google Chrome's powerful JavaScript engine, V8](https://www.wikiwand.com/en/Chrome_V8).
 
+A benefit of Node compared to other frameworks (like Ruby) is Node's ability to handle requests **asynchronously**. A browser might request something from your server. The server begins responding to this request and another request comes in. Let’s say the first request requires the server to talk to an external database and the second request does not. The server can ask the external database about the first request, and while that external database is working on responding to the first request, the server can work on responding to the second request. Your server isn’t doing two things at once, but when someone else is working on something, you’re not held up waiting.
+
+### Framework
 **Express.js**, or simply Express, is a framework that runs on top of the Node's web server to simplify the development of a Node app. Node provides a bevy of low-level features you’d need to build an application. But like browser-based JavaScript, its low-level offerings can be verbose and difficult to use. Express is philosophically similar to jQuery, which cuts down boilerplate code by simplifying the APIs of the browser and adding helpful new features.
  
-### Server 
+Express augments Node by abstracting away the low level request handling, partitioning request handling to smaller, more modular parts that can be implemented by third party libraries (e.g., `morgan` for logging all requests and `passport` for authenticating users). Without express, you have to manage one monolithic request handler function with verbose Node.js APIs. With express, you can write multiple small request handler functions that are made more pleasant by Express and its easier APIs. 
+
+Most of your Express code involves writing request handler functions, and Express adds a number of conveniences when writing these.
+
+Express does not provide a lot of out-of-box features as compared to bigger (and more opinionated) frameworks such as Play; however Express is not too opinionated how you build your application so you get a lot of flexibility to make architectural decisions for your app. Although you get less out-of-the-box features with Express, there's a rich set of third-party modules (called middleware) to implement the various functions in your Express app. 
+
+Hunting for the right modules and making design decisions can be a time consuming process. Downselecting from an overwhelming number of choices seems to be the theme of the JavaScript world. To make it easier, here are the best modules to implement the important functions of a server built in Express:
+
+* Logging Requests - use [`morgan`](https://www.npmjs.com/package/morgan-2)
+* Authentication - use [`passport`](http://www.passportjs.org/), [`nodemailer`](https://github.com/nodemailer/nodemailer)
+* Talk to the database - use [`mongoose`](http://mongoosejs.com/) for mongoDB or [`knex`](http://knexjs.org/) for SQL databases such as postgresQL.
+* Password treatment - use [`bcrypt-nodejs`](https://www.npmjs.com/package/bcrypt-nodejs), [`crypto`](https://nodejs.org/api/crypto.html)
+* Session management - use [`express-session`](https://github.com/expressjs/session) or `cookie-parser`
+* Environmental (make your app more configurable) - use [`dotenv`](https://github.com/motdotla/dotenv)
+
+
+### Building a RESTful Backend Server to Interface With React
+The traditional view of a server built with Node is [this](https://hackerstribe.com/wp-content/uploads/2016/04/Node.js-Express-in-Action.pdf): 
+>you write a single JavaScript function for your entire application. This function listens to a web browser’s requests, or the requests from a mobile application consuming your API, or any other client talking to your server. When a request comes in, this function will look at the request and determine how to respond. 
+
+Express simplifie the server functionality by taking care of all the boilerplate code you need to listen to requests and responding to requests. But as frontend frameworks like React is becoming more and more sophisticated, we want to delegate all of the user interface responsbility to the client code to display views and perform routing. Implementing view logic (including when to display a certain view) would lead to under-utilization of the frontend capability and pose an obstacle to the separation of concerns between the frontend and the backend. REST API to the rescue! What we want is to implement separate the Express backend separately from the and React Frontend and integrate them via a REST API. Let's compare the interaction between the server and client with the old way without React and the new way with React and a REST API:
+
+**Routing:**
+A common task when building web applications with Node is parsing the URL. When a browser sends a request to your server, it will ask for a specific URL, such as the homepage or the about page. These URLs come in as strings, but you’ll often want to parse them to get more information about them.
+
+* Old way: Server does all the routing. For example, if you visit the homepage (e.g., `localhost:3000/`) in a web browser, the server responds by sending you HTML. If you send a message to an API endpoint, this function could determine what you want and respond with JSON.
+* New way: Client does most of the URI-driven routing (assuming you have routing libraries like `react-router` installed). The server routes if the request is triggered by an external event (such as logging in via open authentication) in which case server side logic needs to initiate a redirect.
+
+**Display Dynamic Content from the DB**
+
+* Old way: User requests content (via URL pattern or button press) via a HTTP [`GET`](http://www.restapitutorial.com/lessons/httpmethods.html). Server responds to the request and grabs content from the database, renders the HTML, and sends HTML to the browser.
+* New way: User requests content. Server responds to the request by grabbing content from the databse same as before but sends the content as JSON to an API e.g., `/api/someStuff`. A React component that renders itself based on the `someStuff` JSON will update itself by updating its state variables and render the DOM to reflect changes to the JSON. This follows from the single source of truth imperative integral to React.
+
+**Update Content from the DB**
+
+* Old way: A new user fills out a signup form for your site and presses the submit button. Server gets the request to [`POST`](http://www.restapitutorial.com/lessons/httpmethods.html) new content, which entails updating the `Users` database to add new user, then redirects the user to a part of the website that only authenticated users can access, e.g., `/dashboard/` or unlocks the features of website that only users can access (see [https://www.facebook.com/](https://www.facebook.com/) before and after you login).
+* New way: Everything is the same as the old way except for big one difference: instead of having the server switch on what featurea to unlock, the client code decides what to unlock based on the authentication status provided by the server. This is essentially a session JSON that is shared globally with the React component and is updated by the server and the client (if the user presses the log out button). We want to use `redux` to keep track of the session object because that provides one source of truth for all our React components as well as the server.
+
+**Session** 
+Because HTTP is stateless, in order to associate a request to any other request, you need a way to store user data between HTTP requests. Cookies let the browser store your session for a certain  period of time so you can be kept logged in before the cookie expires even if you closes the website. The server needs to check whether the browser has any cookies, which the server can use to "log in the user on his/her behalf". Cookies expire when a specified time elapses or if the user logs out of your site.
+
+**Callback hell**, which refers to deeply nested spaghetti code that jumps all over the place, is a common problem with asynchronous code that impedes developer productivity. How do we fix the callback hell problem? Use future/promises.
+
+The most common external resources you’ll deal with in Express are* Anything involving the filesystem—Like reading and writing files from your hard drive
+* Anything involving a network—Like receiving requests, sending responses, or sending your own requests over the internet
 
 ### Authentication
 
@@ -232,7 +314,8 @@ There are two types of database:
 **[This Video](https://www.youtube.com/watch?v=eM7hzKwvTq8)** compares SQL with NoSql.
 
 ## Tools
-**NPM**
+**Node Package Manager (NPM)**
+Every Node project sits in a folder, and at the root of every Node project there’s a file called `package.json`, which is a pretty simple JSON file that defines project metadata like the name of the project, its version, and its authors. It also defines the project’s dependencies.
 
 [react express](http://www.react.express/npm)
 >`npm` uses a file named `package.json` to record which packages your app depends on. This package.json file should live in the top level directory of your React project.
@@ -240,6 +323,7 @@ There are two types of database:
 >To add a package.json to a project, run `npm init`
 
 >When you type `npm install` npm automatically downloads all dependencies into a folder called `node_modules`. This folder will live alongside your package.json.
+
 
 **Webpack**
 
