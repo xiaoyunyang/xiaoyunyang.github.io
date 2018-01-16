@@ -374,3 +374,7 @@ Every Node project sits in a folder, and at the root of every Node project there
 * [Manning Express In Action](https://hackerstribe.com/wp-content/uploads/2016/04/Node.js-Express-in-Action.pdf)
 * [Express In Action Code](https://github.com/EvanHahn/Express.js-in-Action-code)
 * [How to Integrate React Router v4 with Server Router](https://crypt.codemancers.com/posts/2017-06-03-reactjs-server-side-rendering-with-router-v4-and-redux/)
+
+**REST API**
+
+* [REST API tutorial](http://www.restapitutorial.com/)

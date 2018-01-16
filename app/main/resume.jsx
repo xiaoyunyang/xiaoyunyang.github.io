@@ -18,7 +18,7 @@ var Resume = React.createClass({
           </p>
         </div>
         <div className="col s12 m12 l12">
-          <iframe src="/assets/data/profile/resume.pdf" width="100%"></iframe>
+          <iframe src="/assets/data/profile/resume.pdf#view=FitH" width="100%"></iframe>
         </div>
       </div>
     );
