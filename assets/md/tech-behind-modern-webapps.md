@@ -17,11 +17,7 @@ In the early days of the Internet, everyone writes their websites in HTML. The D
 ```
 
 gives you 
-> <p>A List:</p>
-<ul>
-	<li>One</li>
-	<li>Two</li>
-</ul>
+> <p>A List:</p><ul><li>One</li><li>Two</li></ul>
 
 When you visit a website built in the 1990s, your browser (e.g., Chrome, Firefox, Safari) makes a request to the server of the website to download all files it needs to display the webpage. For instance, the HTML file tells your browser how to create a DOM. The Cascading Style Sheets (CSS) file tells your browser how to apply styles, such as text color and font, to the DOM. Go ahead and open [https://www.w3.org/TR/WD-DOM/introduction.html](https://www.w3.org/TR/WD-DOM/introduction.html) with Chrome and press `Cmd + Shift + C` to inspect the DOM.  Press `Cmd + s` to save the webpage to your computer and click the `.html` file stored on your computer to see that the same webpage is displayed.
 
@@ -33,7 +29,7 @@ Javascript frameworks provide a way for the client (i.e., the browser) to manipu
 ### React
 >React is a declarative, efficient, and flexible JavaScript library for building user interfaces.
 
-**[React](https://reactjs.org/tutorial/tutorial.html)** is a Javascript library, built and maintained by Facebook. It was developed by [Jordan Walke](https://twitter.com/jordwalke), a software engineer at Facebook. It was open-sourced and announced to the developer community in March 2015. Since then, it has undergone tremendous growth and adoption in the developer community. React is currently on version 16 (See the [Migration log](https://reactjs.org/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes) to appreciate the pace of growth in popularity and capability of React).
+**[React](https://reactjs.org/tutorial/tutorial.html)** is a Javascript library, built and maintained by Facebook. It was developed by [Jordan Walke](https://twitter.com/jordwalke), a software engineer at Facebook. It was open-sourced and announced to the developer community in May 2013. Since then, it has undergone tremendous growth and adoption in the developer community. React is currently on version 16 (See the [Migration log](https://reactjs.org/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes) to appreciate the pace of growth in popularity and capability of React).
 
 React gives the developer full control of the DOM and covers the rendering of initial state and updating the state to reflect changes based on user or server input.
 
@@ -247,7 +243,7 @@ These are the typical [HTTP status codes](https://www.wikiwand.com/en/List_of_HT
 
 See more [from the DigitalOcean Tutorial](https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-http-error-codes)
 
-## Back End
+## Backend
 Modern web apps are built on sophisticated frontend frameworks like React that handles all the UI logic, even routing (`react-router`). While [any backend](https://www.wikiwand.com/en/Comparison_of_web_frameworks) will do the job and developers choose backend frameworks based on their language of choice (e.g., ruby's Ruby on Rails, python's Django, scala's Play, Haskell's Yesod etc.), a poor performing backend can really hurt your webapp's performance and scalability. We need to keep [three main things to consider](https://www.quora.com/Would-you-choose-Node-js-Express-js-or-Play-framework-Java-for-a-new-web-app-project-Why) when choosing a backend framework:
 
 * **Performance:** For backend, that means being stateless, asynchronous, and supporting non-blocking I/O. We throw out Ruby on Rails for its performance issues.
@@ -287,7 +283,7 @@ The traditional view of a server built with Node is [this](https://hackerstribe.
 Express simplifie the server functionality by taking care of all the boilerplate code you need to listen to requests and responding to requests. But as frontend frameworks like React is becoming more and more sophisticated, we want to delegate all of the user interface responsbility to the client code to display views and perform routing. Implementing view logic (including when to display a certain view) would lead to under-utilization of the frontend capability and pose an obstacle to the separation of concerns between the frontend and the backend. REST API to the rescue! What we want is to implement separate the Express backend separately from the and React Frontend and integrate them via a REST API. Let's compare the interaction between the server and client with the old way without React and the new way with React and a REST API:
 
 **Routing:**
-A common task when building web applications with Node is parsing the URL. When a browser sends a request to your server, it will ask for a specific URL, such as the homepage or the about page. These URLs come in as strings, but you’ll often want to parse them to get more information about them.
+Routing refers to the mapping certain HTTP requests to certain functionality. For example, when visiting the homepage, certain code should be run. For example When a browser sends a `GET` request for `/` to your server, the router needs to respond with sending HTML for the home page.
 
 * Old way: Server does all the routing. For example, if you visit the homepage (e.g., `localhost:3000/`) in a web browser, the server responds by sending you HTML. If you send a message to an API endpoint, this function could determine what you want and respond with JSON.
 * New way: Client does most of the URI-driven routing (assuming you have routing libraries like `react-router` installed). The server routes if the request is triggered by an external event (such as logging in via open authentication) in which case server side logic needs to initiate a redirect.
@@ -295,12 +291,12 @@ A common task when building web applications with Node is parsing the URL. When 
 **Display Dynamic Content from the DB**
 
 * Old way: User requests content (via URL pattern or button press) via a HTTP [`GET`](http://www.restapitutorial.com/lessons/httpmethods.html). Server responds to the request and grabs content from the database, renders the HTML, and sends HTML to the browser.
-* New way: User requests content. Server responds to the request by grabbing content from the databse same as before but sends the content as JSON to an API e.g., `/api/someStuff`. A React component that renders itself based on the `someStuff` JSON will update itself by updating its state variables and render the DOM to reflect changes to the JSON. This follows from the single source of truth imperative integral to React.
+* New way: User requests content. Server responds to the request by grabbing content from the databse same as before but sends the content as JSON to an API e.g., `/api/someStuff`. A React component that renders itself based on the `someStuff` JSON (use `isomorphic-fetch` to get that data) will update itself by updating its state variables and render the DOM to reflect changes to the JSON. This follows from the single source of truth imperative integral to React.
 
 **Update Content from the DB**
 
-* Old way: A new user fills out a signup form for your site and presses the submit button. Server gets the request to [`POST`](http://www.restapitutorial.com/lessons/httpmethods.html) new content, which entails updating the `Users` database to add new user, then redirects the user to a part of the website that only authenticated users can access, e.g., `/dashboard/` or unlocks the features of website that only users can access (see [https://www.facebook.com/](https://www.facebook.com/) before and after you login).
-* New way: Everything is the same as the old way except for big one difference: instead of having the server switch on what featurea to unlock, the client code decides what to unlock based on the authentication status provided by the server. This is essentially a session JSON that is shared globally with the React component and is updated by the server and the client (if the user presses the log out button). We want to use `redux` to keep track of the session object because that provides one source of truth for all our React components as well as the server.
+* Old way: A new user fills out a signup form for your site and presses the submit button. Server gets the request to [`POST`](http://www.restapitutorial.com/lessons/httpmethods.html) new content, which entails updating the `Users` database to add new user, then redirects the user to a part of the website that only authenticated users can access, e.g., `/dashboard/` or unlocks the features of website that only users can access (see [https://www.facebook.com/](https://www.facebook.com/) before and after you login). Or another way is to use a templating engine such as `ejs` to dynamically create HTML and have the server plug dynamic content directly into the corresponding `ejs` file to be rendered.
+* New way: Everything is the same as the old way except for big one difference: instead of having the server switch on what feature to unlock, the client code decides what to unlock based on the authentication status provided by the server. This is essentially a session JSON that is shared globally with the React component and is updated by the server and the client (if the user presses the log out button). We want to use `redux` to keep track of the session object because that provides one source of truth for all our React components as well as the server.
 
 **Session** 
 Because HTTP is stateless, in order to associate a request to any other request, you need a way to store user data between HTTP requests. Cookies let the browser store your session for a certain  period of time so you can be kept logged in before the cookie expires even if you closes the website. The server needs to check whether the browser has any cookies, which the server can use to "log in the user on his/her behalf". Cookies expire when a specified time elapses or if the user logs out of your site.
@@ -363,17 +359,18 @@ Every Node project sits in a folder, and at the root of every Node project there
 **Web Technology 101:**
 
 * [Web Technology Fundamentals](http://chimera.labs.oreilly.com/books/1230000000345/ch03.html)
- 
+* [Frontend Backend DevOps Roadmap](https://github.com/kamranahmedse/developer-roadmap)
 
 **Web App Design Guides**
 
 **Frontend**
 
 * [React.Express Tutorial](http://www.react.express) - Learn about React, Redux, ES6, Babel, Webpack
-* [React-Reduc Connect Explained](https://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/)
-
+* [React-Redux Connect Explained](https://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/)
 * [Material Design](http://www.google.com/design/spec/material-design/introduction.html) - Best practice for UX and UI
 
 **Backend**
 
 * [Manning Express In Action](https://hackerstribe.com/wp-content/uploads/2016/04/Node.js-Express-in-Action.pdf)
+* [Express In Action Code](https://github.com/EvanHahn/Express.js-in-Action-code)
+* [How to Integrate React Router v4 with Server Router](https://crypt.codemancers.com/posts/2017-06-03-reactjs-server-side-rendering-with-router-v4-and-redux/)

@@ -36,8 +36,9 @@
 	
 	```
 	"scripts": {
-		"build": "babel server -d ./server/build",
-    	"start": "node server/build/app.js",
+		"build": "babel server/app.js -o server/build/app.js",
+    	"start": "nodemon server/app.js --watch server --exec babel-node",	
+    	"server": "nodemon server/server.js --watch server/app.js --exec babel-node"
 	}
 	"dependencies": {
 		"express": "^4.16.2",
@@ -53,6 +54,7 @@
 		"babel-preset-stage-1": "^6.24.1",
 		"babel-preset-stage-2": "^6.24.1",
 		"eslint": "^3.19.0",
+		"nodemon": "^1.14.11",
 		"webpack-dev-middleware": "^2.0.4",
 		"webpack-hot-middleware": "^2.21.0"
 	}
@@ -62,6 +64,7 @@
 	
 	```
 	$ npm install
+	$ mkdir server/build
 	$ npm run build
 	$ npm run start 
 	```
@@ -74,25 +77,23 @@
 	```
 	If we didn't have the `.babelrc` then we have to make this the build script:
 	```
-	"build": babel server -d ./server/build --presets env,stage-2",
+	"build": babel server/app.js -o server/build/app.js --presets env,stage-2",
 	```	
 	If we didn't have the scripts in `package.json`, then every time we make a change to `server.js`, we would have to transpile the code from ES6 to ES5 and manually run the babel transpiling command to populate the build folder then run the ES5 version of the folder. 
 	
 	```
-	$ babel server -d ./server/build --presets env,stage-2"
-	$ node server/build/app.js
+	$ babel babel server/app.js -o server/build/app.js --presets env,stage-2"
+	$ nodemon server/app.js --watch server --exec babel-node
 	```
 
-### Notes
+### Resources
 
 * `babel-preset-es2015` is deprecated. Use `babel-preset-env` instead. [Read about it here](http://babeljs.io/env). `babel-preset-env` node [not working](https://github.com/facebookincubator/create-react-app/issues/1125) in create-react-app
-* [set up](https://babeljs.io/docs/plugins/transform-runtime/) `babel-runtime`, which "externalise references to helpers and builtins, automatically polyfilling your code without polluting globals
-
+* [set up](https://babeljs.io/docs/plugins/transform-runtime/) `babel-runtime`, which "externalise references to helpers and builtins, automatically polyfilling your code without polluting globals.
+* [Christophe Coenraets's Tutorial](http://ccoenraets.github.io/es6-tutorial/setup-babel/)
 
 
 ## Useful Stuff in ES6
-
-
 
 >ES2015, or ECMAScript 2015, is the first significant update to the language since ES5 was initially released in 2009. You'll often see ES2015 called by its original name, ES6, since it's the 6th version of ECMAScript.
 
