@@ -301,11 +301,8 @@ Routing refers to the mapping certain HTTP requests to certain functionality. Fo
 **Session** 
 Because HTTP is stateless, in order to associate a request to any other request, you need a way to store user data between HTTP requests. Cookies let the browser store your session for a certain  period of time so you can be kept logged in before the cookie expires even if you closes the website. The server needs to check whether the browser has any cookies, which the server can use to "log in the user on his/her behalf". Cookies expire when a specified time elapses or if the user logs out of your site.
 
-**Callback hell**, which refers to deeply nested spaghetti code that jumps all over the place, is a common problem with asynchronous code that impedes developer productivity. How do we fix the callback hell problem? Use future/promises.
-
 The most common external resources you’ll deal with in Express are* Anything involving the filesystem—Like reading and writing files from your hard drive
 * Anything involving a network—Like receiving requests, sending responses, or sending your own requests over the internet
-
 ### Authentication
 
 **Authentication vs. Authorization**

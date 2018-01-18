@@ -95,7 +95,7 @@
 
 ## Useful Stuff in ES6
 
->ES2015, or ECMAScript 2015, is the first significant update to the language since ES5 was initially released in 2009. You'll often see ES2015 called by its original name, ES6, since it's the 6th version of ECMAScript.
+ES2015, or ECMAScript 2015, is the first significant update to the language since ES5 was initially released in 2009. You'll often see ES2015 called by its original name, ES6, since it's the 6th version of ECMAScript. [Check out all the cool new stuff in ES6](http://es6-features.org/#Constants)! Let's take a look at the most value-added improvements:
 
 [var let and const](http://www.react.express/block_scoped_declarations)
 >the [babel] compiled output replaces const and let with var. You'll also notice that Babel transforms const a = 3 into var _a = 3. This is so that your code can run on older platforms that don't support the new block-scoped variable declarations.
@@ -181,6 +181,44 @@ printName()
 [Object Spread](http://www.react.express/object_spread)
 >We can copy an object simply with `{...originalObj}`. Note that this is a shallow copy. We can also extend an object with `{...originalObj, key1: 'newValue'}`.
 
+
+## Gotchas
+### Scoping
+
+* [Everything You Need to Know about Scopes](https://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/) - which discusses closure.
+
+**What is Closure?**
+Closure is basically a design pattern where your function returns another function that takes an inputso you can call your closure like this: `myFun(arg1)(arg2)`, which is equivalent to
+
+```
+const myFun2 = myFun(arg1)myFun2(arg2)```It’s called currying and partial application - a key concept of functional programming, a key concept. Closure is a powerful design pattern because you can continuing chaining things like `myFun(arg1)(arg2)(arg3)…`. `myFun` does some calculation with using `arg1`, returns another function that takes the result of `myFun`'s calculation on `arg1` and `arg2` as input, then processes things further by calling a third function, which in turn calls a fourth function and so on. You can think of it like an assembly line in a factory.
+
+### Callback Hell
+**Callback hell**, which refers to deeply nested spaghetti code that jumps all over the place, is a common problem with asynchronous code that impedes developer productivity. How do we fix the callback hell problem?  Here are some workarounds:
+
+**Modularize your code** 
+
+Instead of writing all your code in a deeply nested anonymous function in your async code, try taking that stuff out into a separate function.
+
+**Use `async-await`**
+
+Node [provides out-of-the-box support](https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9) for `async-await`. 
+
+Google provides a good [primer on async](https://developers.google.com/web/fundamentals/primers/async-functions). 
+
+	Async functions work like this:
+	
+	```javascript
+	async function myFirstAsyncFunction() {
+	  try {
+	    const fulfilledValue = await promise;
+	  }
+	  catch (rejectedValue) {
+	    // …
+	  }
+	}
+	
+	```
 [Async and Await](http://www.react.express/async_await)
 >We can use the `async` keyword before a function name to wrap the return value of this function in a `Promise`. We can use the `await` keyword (in an `async` function) to wait for a promise to be resolved or rejected before continuing code execution in this block.
 
@@ -201,14 +239,147 @@ const printData = async () => {
 
 printData()
 ```
+	
+Here's how you integrate the async-await into your React component (make sure you install `isomorphic-fetch` first:
 
-## Gotchas
-### Scoping
+```javascript
+callApi = async () => {
+   const response = await fetch('/api/hello');
+   const body = await response.json();
 
-* [Everything You Need to Know about Scopes](https://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/) - which discusses closure.
-
-**What is Closure?**
-Closure is basically a design pattern where your function returns another function that takes an inputso you can call your closure like this: `myFun(arg1)(arg2)`, which is equivalent to
-
+   if (response.status !== 200) throw Error(body.message);
+   return body;
+  };
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({ response: res.express }))
+      .catch(err => console.log(err));
+  }
+  
 ```
-const myFun2 = myFun(arg1)myFun2(arg2)```It’s called currying and partial application - a key concept of functional programming, a key concept. Closure is a powerful design pattern because you can continuing chaining things like `myFun(arg1)(arg2)(arg3)…`. `myFun` does some calculation with using `arg1`, returns another function that takes the result of `myFun`'s calculation on `arg1` and `arg2` as input, then processes things further by calling a third function, which in turn calls a fourth function and so on. You can think of it like an assembly line in a factory.
+
+
+**Promise**
+
+Use `Promise`, which is natively supported by ES6. Check out [the google tutorial](https://developers.google.com/web/fundamentals/primers/promises) on `Promise`.
+
+### Loosely Typed Javascript
+JavaScript is a loosely typed language, meaning you don’t have to specify what type of information will be stored in a variable in advance. Many other languages, like Java (which is completely different from JavaScript), require you to declare a variable’s type, such as int, float, boolean, or String.
+
+JavaScript, however, automatically types a variable based on what kind of information you assign to it (e.g., that `''` or `""` indicate string values).
+
+**typeof**
+
+whenever a variable’s type is in doubt, you can employ the `typeof` operator:
+
+```javascript
+typeof 1 //> "number"
+typeof "1" //> "string"
+typeof [1,2,3] //> "object"
+typeof {"name": "john", "country": "usa"} //> "object"
+typeof [{"name": "john", "country": "usa"}, {"name": "mary", "country": "uk"}] //> "object"
+const f = () => 2
+typeof f //> "function"
+typeof (1 === 1) //> "boolean"
+```
+
+**`==` vs `===`**
+The 3 equal signs mean "equality without type coercion". Using the triple equals, the values must be equal in type as well.
+
+```javascript
+1 == "1" //> true
+1 === "1" //> false
+```
+
+```javascript
+null == undefined //> true
+null === undefined //> false
+```
+
+
+```javascript
+'0' == false //> true
+'0' === false //> false
+```
+
+```javascript
+0 == false   //> true
+0 === false  //> false, because they are of a different type
+```
+
+
+
+### Scoping in JavaScript
+Many languages use block-level scope, in which variables exist only within the current “block” of code, usually indicated by curly braces (`{ }`).
+
+In JavaScript, however, variables `var` are scoped at the function level, meaning they are accessible anywhere within the function (not block) in which they reside.
+
+**Variable Hoisting**
+
+JavaScript code is usually, but not always, executed in linear, top-to-bottom order. For example, in this code, the variable `i` is actually declared before the for-loop even begins. This phenomenon is called variable hoisting. Variable declarations are hoisted up to the top of the function context in which they reside.
+
+```javascript
+for (var i = 0; < a.length;  i++) {
+    console.log(a[i]);
+}
+```
+ES6 introduced `let`, which lets you create [block-scoped variables without hoisting](http://es6-features.org/#BlockScopedVariables):
+
+```javascript
+for (let i = 0; < a.length;  i++) {
+    console.log(a[i]);
+}
+``` 
+
+### Global Variables
+`window` is the topmost object in the browser’s hierarchy of JavaScript elements, and all of these objects and values you see beneath window exist at the global level. What this means is that every time you declare a new variable, you are adding a new value to `window`. This is really bad because we don't want to pollute the global namespace.
+
+There are two easy workarounds:
+
+* Declare variables only within other functions. This is not usually feasible, but the function-level scope will prevent local variables from conflicting with others.
+* Declare a single global object, and attach all of your would-be global variables to that object. For example:
+
+	```javascript
+	var Vis = {};  //Declare empty global object
+	Vis.zebras = "still pretty amazing"
+	Vis.monkeys = "too funny LOL"
+	Vis.fish = "you know, not bad"
+	```
+	
+## Awesome JSON
+
+**How to checking if two JSONs differ in certain keys**
+
+```javascript
+let foo = {"name": "andrew", "country": "usa"}
+let keys = Object.keys(foo) //> [“name”, “country”]
+```
+
+**Unique Keys**
+
+```javascript
+let foo = {"name": "andrew", "name": "usa”} //> {name: “use”}
+({"name": "andrew", "name": "usa"}).name //> name
+```
+
+**JSON.stringify**
+
+```javascript
+var foo = {"name": "andrew", "country": "usa"}; 
+var bar = {"name": "xiaoyun", "city": "dc" }; 
+var baz = {"name": "andrew", "country": "usa"}
+JSON.stringify(foo) == JSON.stringify(baz) //> true
+JSON.stringify(foo) === JSON.stringify(baz) //> true
+JSON.stringify(foo) == JSON.stringify(bar); //> false
+```
+
+```javascript
+let a = JSON.stringify(foo) //> "{"name":"andrew","country":"usa”}"
+a.indexOf(“{”) //> 0
+a.indexOf(“n”) //> 2
+a.indexOf("poop”) //> -1
+a.indexOf("usaa”) //> -1
+a.indexOf("u”) //> 20
+a.indexOf("sa”) //> 29
+a.indexOf("s”) //> 29
+```
