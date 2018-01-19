@@ -1,98 +1,3 @@
-# ES6 and how Babel helps
-## Babel
-
-* [What is Babel?](https://kleopetrov.me/2016/03/18/everything-about-babel/)
-* [React Express Tutorial](http://www.react.express/modern_javascript)
-	
-	>ECMAScript is the language specification used to implement the JavaScript language. Nearly every JavaScript environment today can run at least ECMAScript 5 (ES5), the version of JavaScript introduced in 2009. However, there are many new features in the latest versions of JavaScript that we'd like to use. Thanks to Babel, we can use them today! Babel transforms newer features into ES5 for cross-platform compatibility.
-* How to [set up Babel for react app](http://www.react.express/babel) or [set up Babel for node/express app](https://github.com/babel/example-node-server). For node app, assume you have this file structure:
-
-	```
-	my-app
-	├───package.json
-	├───.babelrc
-	├───server
-	│   ├───app.js <===ES6
-	│   └───build
-	|		 └───app.js <===ES5
-	...
-	```
-
-	Add the following to `.babelrc`
-	
-	```
-	{
-	  "presets": [
-	    "env",
-	    "stage-2"
-	  ],
-	  "plugins": [
-	    "transform-runtime"
-	  ]
-	}
-	
-	```
-	Add the following to `package.json`:
-	
-	```
-	"scripts": {
-		"build": "babel server/app.js -o server/build/app.js",
-    	"start": "nodemon server/app.js --watch server --exec babel-node",	
-    	"server": "nodemon server/server.js --watch server/app.js --exec babel-node"
-	}
-	"dependencies": {
-		"express": "^4.16.2",
-		"webpack": "^3.10.0"
-	},
-	"devDependencies": {
-		"babel-cli": "^6.26.0",
-		"babel-core": "^6.26.0",
-		"babel-loader": "^7.1.2",
-		"babel-plugin-transform-runtime": "^6.23.0",
-		"babel-preset-env": "^1.6.1",
-		"babel-preset-react": "^6.24.1",
-		"babel-preset-stage-1": "^6.24.1",
-		"babel-preset-stage-2": "^6.24.1",
-		"eslint": "^3.19.0",
-		"nodemon": "^1.14.11",
-		"webpack-dev-middleware": "^2.0.4",
-		"webpack-hot-middleware": "^2.21.0"
-	}
-	
-	```
-	In your terminal:
-	
-	```
-	$ npm install
-	$ mkdir server/build
-	$ npm run build
-	$ npm run start 
-	```
-	
-	In `package.json`, the following `build` script is saying compile the entire server directory and output it to the server/build directory. `-d` means directory.
-	
-	```
-	"build": "babel server -d ./server/build"
-	
-	```
-	If we didn't have the `.babelrc` then we have to make this the build script:
-	```
-	"build": babel server/app.js -o server/build/app.js --presets env,stage-2",
-	```	
-	If we didn't have the scripts in `package.json`, then every time we make a change to `server.js`, we would have to transpile the code from ES6 to ES5 and manually run the babel transpiling command to populate the build folder then run the ES5 version of the folder. 
-	
-	```
-	$ babel babel server/app.js -o server/build/app.js --presets env,stage-2"
-	$ nodemon server/app.js --watch server --exec babel-node
-	```
-
-### Resources
-
-* `babel-preset-es2015` is deprecated. Use `babel-preset-env` instead. [Read about it here](http://babeljs.io/env). `babel-preset-env` node [not working](https://github.com/facebookincubator/create-react-app/issues/1125) in create-react-app
-* [set up](https://babeljs.io/docs/plugins/transform-runtime/) `babel-runtime`, which "externalise references to helpers and builtins, automatically polyfilling your code without polluting globals.
-* [Christophe Coenraets's Tutorial](http://ccoenraets.github.io/es6-tutorial/setup-babel/)
-
-
 ## Useful Stuff in ES6
 
 ES2015, or ECMAScript 2015, is the first significant update to the language since ES5 was initially released in 2009. You'll often see ES2015 called by its original name, ES6, since it's the 6th version of ECMAScript. [Check out all the cool new stuff in ES6](http://es6-features.org/#Constants)! Let's take a look at the most value-added improvements:
@@ -188,10 +93,59 @@ printName()
 * [Everything You Need to Know about Scopes](https://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/) - which discusses closure.
 
 **What is Closure?**
+[What is closure?](https://medium.freecodecamp.org/lets-learn-javascript-closures-66feb44f6a44) 
+> Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure ‘remembers’ the environment in which it was created.
+
 Closure is basically a design pattern where your function returns another function that takes an inputso you can call your closure like this: `myFun(arg1)(arg2)`, which is equivalent to
 
 ```
 const myFun2 = myFun(arg1)myFun2(arg2)```It’s called currying and partial application - a key concept of functional programming, a key concept. Closure is a powerful design pattern because you can continuing chaining things like `myFun(arg1)(arg2)(arg3)…`. `myFun` does some calculation with using `arg1`, returns another function that takes the result of `myFun`'s calculation on `arg1` and `arg2` as input, then processes things further by calling a third function, which in turn calls a fourth function and so on. You can think of it like an assembly line in a factory.
+
+
+```javascript
+// A practical example of closure
+
+const getInfoFromURL = path => {
+  const URL = require("url").URL;
+  const myUrl = new URL(path)
+  const pathname = myUrl.pathname
+
+  const getUsernameFromURL = pathname => {
+    const regex = new RegExp('/@');
+    const username = pathname.split(regex).slice(1)[0]
+    if(!username) {
+      return "Error in parsing: URL needs to be in format://hostname:port/@username"
+    }
+    return username
+  }
+  const getPathnameFromURL = pathname => {
+    const regex = new RegExp('/');
+    const name = pathname.split(regex).slice(1)[0]
+    if(!name) {
+      return "Error in parsing: URL needs to be in format://hostname:port/pathname"
+    }
+    return name
+  }
+
+  return (param) => {
+    if (param == "username") return getUsernameFromURL(pathname)
+    else if (param == "pathname") return getPathnameFromURL(pathname)
+    else return "error"
+  }
+}
+
+module.exports = getInfoFromURL
+
+```
+How you call the above code?
+
+```javascript
+// You should get "xiaoyunyang" 
+getInfoFromURL("https://medium.com/@xiaoyunyang")("username")
+// You should get "@xiaoyunyang
+getInfoFromURL(path)("pathname")
+```
+
 
 ### Callback Hell
 **Callback hell**, which refers to deeply nested spaghetti code that jumps all over the place, is a common problem with asynchronous code that impedes developer productivity. How do we fix the callback hell problem?  Here are some workarounds:
@@ -263,6 +217,8 @@ callApi = async () => {
 
 Use `Promise`, which is natively supported by ES6. Check out [the google tutorial](https://developers.google.com/web/fundamentals/primers/promises) on `Promise`.
 
+>Async functions - making promises friendly
+
 ### Loosely Typed Javascript
 JavaScript is a loosely typed language, meaning you don’t have to specify what type of information will be stored in a variable in advance. Many other languages, like Java (which is completely different from JavaScript), require you to declare a variable’s type, such as int, float, boolean, or String.
 
@@ -278,9 +234,13 @@ typeof "1" //> "string"
 typeof [1,2,3] //> "object"
 typeof {"name": "john", "country": "usa"} //> "object"
 typeof [{"name": "john", "country": "usa"}, {"name": "mary", "country": "uk"}] //> "object"
+typeof (1 === 1) //> "boolean"
+
+typeof undefined //> "undefined"
+typeof null //> "object"
+
 const f = () => 2
 typeof f //> "function"
-typeof (1 === 1) //> "boolean"
 ```
 
 **`==` vs `===`**
@@ -296,7 +256,6 @@ null == undefined //> true
 null === undefined //> false
 ```
 
-
 ```javascript
 '0' == false //> true
 '0' === false //> false
@@ -305,6 +264,65 @@ null === undefined //> false
 ```javascript
 0 == false   //> true
 0 === false  //> false, because they are of a different type
+```
+
+**Null versus Undefined**
+
+```javascript
+typeof undefined //> "undefined"
+typeof null //> "object"
+
+undefined == null //> true
+undefined === null //> false
+
+isNaN(1 + undefined) // true
+isNaN(1 + null)  // false
+a + null //> 1
+
+!null //> true
+!undefined //> true
+```
+
+```javascript
+let users = [
+   {"name": "andrew", "country": "usa"},
+   {"name": "mary"}
+]
+
+// execute this code and it'll print out:
+//> andrew is from usa
+//> mary has no country
+users.forEach( u => {
+	if(u.country  == null) {
+		console.log(u.name + " has no country")
+	}
+	else {
+		console.log(u.name + " is from "+ u.country)
+	}
+
+})
+
+// execute this code and it'll print out:
+//> andrew is from usa
+//> mary is from undefined
+users.forEach( u => {
+	if(u.country  === null) {
+		console.log(u.name + " has no country")
+	}
+	else {
+		console.log(u.name + " is from "+ u.country)
+	}
+})
+
+```
+
+Why did the second `forEach` loop fail to print correctly? Because `u.country` returns `undefined` when no country is defined for the second user.
+
+
+My advice is to always use `===` since that is a more thorough check and help you avoid nasty bugs. `==` is a convenient way to checking error conditions if you're not sure if the failed operation returns `undefined` or `null` but don't do that. If you are not sure about `undefined` or `null`, then check for both: 
+
+```javascript
+if(u.country === undefined || u.country === null)
 ```
 
 
@@ -346,9 +364,136 @@ There are two easy workarounds:
 	Vis.fish = "you know, not bad"
 	```
 	
-## Awesome JSON
 
-**How to checking if two JSONs differ in certain keys**
+### Get last elem of an array**
+
+Don't use `pop` unless you want to mutate the array:
+
+```javascript
+var arr = [1,2,3]
+arr.pop() //>3
+arr //>[1, 2] ... Very Bad. Your original array got changed
+
+const arr2 = [1,2,3]
+arr2.pop()
+arr2 //> Even const can't help you
+
+const arr3 = arr
+arr3.pop() //>2
+arr //> [1] ... arr got changed even though arr3 did the pop
+
+```
+Do this instead:
+
+```javascript
+var arr = [1,2,3]
+arr.slice(-1)[0] //> 3
+arr //> [1, 2, 3]
+```
+
+## Array and String Functions
+
+**Combine things in array**
+
+```javascript
+[0, 1, 2, 3].reduce((sum, value) => { sum + value;}, 0); 
+//> total is 6
+```
+
+```javascript
+["hello","World"].reduce( (a, res) => a + res ) //> "helloWorld"
+
+["hello","World"].reduce( (a, res) => { return a + res }, "My message: " )
+//> "My message: helloWorld"
+
+```
+
+```javascript
+['a','b','c'].join("") //> "abc"
+['a','b','c'].map(d => "1"+d).join(",") //> "1a,1b,1c"
+
+```
+
+If you don’t pass in an initial value, reduce will assume the first item in your array is your initial value.
+
+**Combine sub-arrays**
+
+```javascript
+// Flat
+
+const flat = (data) => data.reduce((total, amount) => {
+  return total.concat(amount);
+}, []);
+
+var data = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+flat(data) // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+
+```
+
+**Flatmap**
+
+Write a function that converts "hello" to "h.e.l.l.o." There're two parts to this: `flat` and `map`.
+
+
+```javascript
+const arr = "hello".split("") //> ["h", "e", "l", "l", "o"]
+ 
+const matrix = arr.map(s => [s, "."]) 
+// [Array(2), Array(2), Array(2), Array(2), Array(2)]
+// 0: (2) ["h", "."]
+// 1: (2) ["e", "."]
+// 2: (2) ["l", "."]
+// 3: (2) ["l", "."]
+// 4: (2) ["o", "."]
+
+
+const flat = (data) => data.reduce((res, d) => {
+  return res.concat(d);
+}, []);
+
+
+flat(matrix) //> ["h", ".", "e", ".", "l", ".", "l", ".", "o", "."]
+
+flat(matrix).join("") //> "h.e.l.l.o."
+
+```
+
+**Sorting**
+
+```javascript
+['a','c','b'].sort((a,b) => a > b) //> ["a", "b", "c"]
+
+[1,3,2].sort((a,b) => a - b) //> [1, 2, 3]
+
+[1,3,2].sort((a,b) => b - a) //> [3, 2, 1]
+
+[1,3,2].sort((a,b) => b > a) //> [3, 2, 1]
+```
+
+## Awesome JSON Stuff
+
+**What is JSON**
+
+JSON encodes data as key value pairs. It’s faster and easier to parse with JavaScript than XML.
+
+
+**Useful JSON operations**
+
+```javascript
+let users = [
+	{"name": "andrew", "country": "usa"},
+	{"name": "mary"}
+]
+users[0] //> {name: "andrew", country: "usa"}
+users[0].country //> "usa"
+users[1].country //> undefined
+users.filter(u => u.country !== null).map(u => u.username) //> ["xy"]
+
+```
+
+**Key operations**
+
+Get all keys from JSON
 
 ```javascript
 let foo = {"name": "andrew", "country": "usa"}
@@ -357,9 +502,22 @@ let keys = Object.keys(foo) //> [“name”, “country”]
 
 **Unique Keys**
 
+Get the value associated with the key
+
 ```javascript
-let foo = {"name": "andrew", "name": "usa”} //> {name: “use”}
-({"name": "andrew", "name": "usa"}).name //> name
+let user = {"name": "andrew", "name": "usa”} //> {name: “use”}
+user.name //> "andrew"
+
+```
+
+Check if a key exists in a JSON
+
+```javascript
+let user = {"name": "andrew", "country": "usa"}
+user.hasOwnProperty("name") //>true
+user.hasOwnProperty("andrew") //> false
+user.hasOwnProperty("country") //> true
+user.hasOwnProperty("city") //> false
 ```
 
 **JSON.stringify**
@@ -372,14 +530,148 @@ JSON.stringify(foo) == JSON.stringify(baz) //> true
 JSON.stringify(foo) === JSON.stringify(baz) //> true
 JSON.stringify(foo) == JSON.stringify(bar); //> false
 ```
+Then you can use `indexOf` is an operation on a `string`.
 
 ```javascript
 let a = JSON.stringify(foo) //> "{"name":"andrew","country":"usa”}"
 a.indexOf(“{”) //> 0
 a.indexOf(“n”) //> 2
-a.indexOf("poop”) //> -1
+a.indexOf("france”) //> -1
 a.indexOf("usaa”) //> -1
+a.indexOf("usa”) //> 28
 a.indexOf("u”) //> 20
 a.indexOf("sa”) //> 29
 a.indexOf("s”) //> 29
+a.indexOf("}”) //> 32
 ```
+
+**Swap Key and Val of JSON Objects**
+
+```javascript
+const objKey = (d, i) => Object.keys(d)[i]
+const objVal = (d, i) => d[objKey(d,i)]
+
+// create JSON from an array of keys
+
+const swap = (data) => Object.keys(data).reduce( (obj,key) => {
+   obj[ data[key] ] = key;
+   return obj;
+},{});
+
+
+var data = {A : 1, B : 2, C : 3, D : 4}
+var newData = swap(data)
+
+console.log(newData); //> {1: "A", 2: "B", 3: "C", 4: "D"}
+
+```
+
+### Practice
+
+**Given**
+
+```javascript
+const data = [
+  {a: 'happy', b: 'robin', c: ['blue','green']}, 
+  {a: 'tired', b: 'panther', c: ['green','black','orange','blue']}, 
+  {a: 'sad', b: 'goldfish', c: ['green','red']}
+];
+
+```
+
+**Write a function to return all the unique colors from `data` as an array.** Hint: use the `flat` function from the above example.
+
+
+# ES6 and how Babel helps
+## Babel
+
+* [What is Babel?](https://kleopetrov.me/2016/03/18/everything-about-babel/)
+* [React Express Tutorial](http://www.react.express/modern_javascript)
+	
+	>ECMAScript is the language specification used to implement the JavaScript language. Nearly every JavaScript environment today can run at least ECMAScript 5 (ES5), the version of JavaScript introduced in 2009. However, there are many new features in the latest versions of JavaScript that we'd like to use. Thanks to Babel, we can use them today! Babel transforms newer features into ES5 for cross-platform compatibility.
+* How to [set up Babel for react app](http://www.react.express/babel) or [set up Babel for node/express app](https://github.com/babel/example-node-server). For node app, assume you have this file structure:
+
+	```
+	my-app
+	├───package.json
+	├───.babelrc
+	├───server
+	│   ├───app.js <===ES6
+	│   └───build
+	|		 └───app.js <===ES5
+	...
+	```
+
+	Add the following to `.babelrc`
+	
+	```
+	{
+	  "presets": [
+	    "env",
+	    "stage-2"
+	  ],
+	  "plugins": [
+	    "transform-runtime"
+	  ]
+	}
+	
+	```
+	Add the following to `package.json`:
+	
+	```
+	"scripts": {
+		"build": "babel server/app.js -o server/build/app.js",
+    	"start": "nodemon server/app.js --watch server --exec babel-node",	
+    	"server": "nodemon server/server.js --watch server/app.js --exec babel-node"
+	}
+	"dependencies": {
+		"express": "^4.16.2",
+		"webpack": "^3.10.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.2",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"babel-preset-env": "^1.6.1",
+		"babel-preset-react": "^6.24.1",
+		"babel-preset-stage-1": "^6.24.1",
+		"babel-preset-stage-2": "^6.24.1",
+		"eslint": "^3.19.0",
+		"nodemon": "^1.14.11",
+		"webpack-dev-middleware": "^2.0.4",
+		"webpack-hot-middleware": "^2.21.0"
+	}
+	
+	```
+	In your terminal:
+	
+	```
+	$ npm install
+	$ mkdir server/build
+	$ npm run build
+	$ npm run start 
+	```
+	
+	In `package.json`, the following `build` script is saying compile the entire server directory and output it to the server/build directory. `-d` means directory.
+	
+	```
+	"build": "babel server -d ./server/build"
+	
+	```
+	If we didn't have the `.babelrc` then we have to make this the build script:
+	```
+	"build": babel server/app.js -o server/build/app.js --presets env,stage-2",
+	```	
+	If we didn't have the scripts in `package.json`, then every time we make a change to `server.js`, we would have to transpile the code from ES6 to ES5 and manually run the babel transpiling command to populate the build folder then run the ES5 version of the folder. 
+	
+	```
+	$ babel babel server/app.js -o server/build/app.js --presets env,stage-2"
+	$ nodemon server/app.js --watch server --exec babel-node
+	```
+
+### Resources
+
+* `babel-preset-es2015` is deprecated. Use `babel-preset-env` instead. [Read about it here](http://babeljs.io/env). `babel-preset-env` node [not working](https://github.com/facebookincubator/create-react-app/issues/1125) in create-react-app
+* [set up](https://babeljs.io/docs/plugins/transform-runtime/) `babel-runtime`, which "externalise references to helpers and builtins, automatically polyfilling your code without polluting globals.
+* [Christophe Coenraets's Tutorial](http://ccoenraets.github.io/es6-tutorial/setup-babel/)

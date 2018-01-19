@@ -62,9 +62,10 @@ The `User` model will include logic for authentication, including:
 **What is salt and what it's good for?**
 
 > [Salt](https://www.wikiwand.com/en/Salt_(cryptography)) is random data that is used as an additional input to a one-way function that "hashes" data, a password or passphrase. Salts are closely related to the concept of nonce. The primary function of salts is to defend against dictionary attacks or against its hashed equivalent, a pre-computed rainbow table attack
-[Rainbow Table Attack](https://www.wikiwand.com/en/Rainbow_table)
-> A rainbow table is a precomputed table for reversing cryptographic hash functions, usually for cracking password hashes. Tables are usually used in recovering a plaintext password (or credit card numbers, etc) up to a certain length consisting of a limited set of characters. It is a practical example of a space–time tradeoff, using less computer processing time and more storage than a brute-force attack which calculates a hash on every attempt, but more processing time and less storage than a simple lookup table with one entry per hash. Use of a key derivation function that employs a salt makes this attack infeasible.
 
+> [Rainbow tables](https://www.wikiwand.com/en/Rainbow_table) are one tool that has been developed to derive a password by looking only at a hashed value.
+> 
+> It is a practical example of a space–time tradeoff, using less computer processing time and more storage than a brute-force attack which calculates a hash on every attempt, but more processing time and less storage than a simple lookup table with one entry per hash. Use of a key derivation function that employs a salt makes this attack infeasible.
 
 ## Set up the Authentication Process
 
