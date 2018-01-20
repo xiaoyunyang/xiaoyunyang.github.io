@@ -212,7 +212,7 @@ These are all the [HTTP requests](http://www.restapitutorial.com/lessons/httpmet
 | HTTP Verb  | CRUD Operation        | Response (status Codes) |
 | :--------: |:---------------------:|:------------------------|
 | `POST`     | Create 			       | 201, 404, 409           |
-| `GET`      | Read   			       | 200, 404                |
+| `GET`      | Read   			       | 200, 304, 404           |
 | `PUT`      | Update/Replace/Create | 200, 201, 204, 404, 405 |
 | `PATCH`    | Update/Modify         | 200, 204, 404, 405      | 
 | `DELETE`   | Delete   		       | 200, 404, 405           |
@@ -229,6 +229,7 @@ These are the typical [HTTP status codes](https://www.wikiwand.com/en/List_of_HT
 	* A response to a `PUT` or `PATCH` request upon successful update if not returning any content in the body.
 * `301`= Moved Permanently
 	* The requested resource has been assigned a new permanent URI and any future references to this resource should use one of the returned URIs.
+* `304` = A successful response to `GET`. Resource is still fetched for the browser, but as opposed to `200` where a new thing is fetched, a `304` status means the resource for current fetch request matches that of a previous fetch request so there is no need to retransmit the resource since the client still has a previously-downloaded copy.
 * `400`= Bad Request
 	* The request could not be understood by the server due to malformed syntax. The client should not repeat the request without modifications.
 * `401`= Unauthorized

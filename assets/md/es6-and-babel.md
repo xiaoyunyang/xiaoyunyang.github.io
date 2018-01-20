@@ -365,7 +365,7 @@ There are two easy workarounds:
 	```
 	
 
-### Get last elem of an array**
+### Get last elem of an array
 
 Don't use `pop` unless you want to mutate the array:
 
@@ -505,7 +505,7 @@ let keys = Object.keys(foo) //> [“name”, “country”]
 Get the value associated with the key
 
 ```javascript
-let user = {"name": "andrew", "name": "usa”} //> {name: “use”}
+let user = {"name": "andrew", "name": "usa”}
 user.name //> "andrew"
 
 ```
@@ -534,15 +534,15 @@ Then you can use `indexOf` is an operation on a `string`.
 
 ```javascript
 let a = JSON.stringify(foo) //> "{"name":"andrew","country":"usa”}"
-a.indexOf(“{”) //> 0
-a.indexOf(“n”) //> 2
-a.indexOf("france”) //> -1
-a.indexOf("usaa”) //> -1
-a.indexOf("usa”) //> 28
-a.indexOf("u”) //> 20
-a.indexOf("sa”) //> 29
-a.indexOf("s”) //> 29
-a.indexOf("}”) //> 32
+a.indexOf(“{”) // 0
+a.indexOf(“n”) // 2
+a.indexOf("france”) // -1
+a.indexOf("usaa”) // -1
+a.indexOf("usa”) // 28
+a.indexOf("u”) // 20
+a.indexOf("sa”) // 29
+a.indexOf("s”) // 29
+a.indexOf("}”) // 32
 ```
 
 **Swap Key and Val of JSON Objects**

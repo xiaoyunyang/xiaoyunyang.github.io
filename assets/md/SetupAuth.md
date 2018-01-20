@@ -13,12 +13,13 @@ We want to build a `react` and `node` app with user authentication via `passport
 * [`passport-local-mongoose`](https://github.com/saintedlama/passport-local-mongoose)
 * [`dotenv`](https://github.com/motdotla/dotenv)
 * [`nodemailer`](https://github.com/nodemailer/nodemailer)
-* [`body-parser`](https://github.com/expressjs/body-parser) -  get information from html forms
+* [`body-parser`](https://github.com/expressjs/body-parser) -  parsing `POST` request bodies to get information from html forms. For example, when a user submits a form.
 
 **Session**
 
 * [`express-session`](https://github.com/expressjs/session)
-* [`cookie-parser`]() - read cookies (needed for auth)
+* [`cookie-parser`]() - read cookies from users (needed for auth). This needs to be paired with another Express-supported middleware like `express-session`. Once you've done this, you can keep track of users, providing them with user accounts and other features.
+* [`cookie-session`](https://github.com/expressjs/cookie-session) - stores the session data on the client within a cookie, while a module like `express-session` stores only a session identifier on the client within a cookie and stores the session data on the server, typically in a database.
 
 **Database**
 
@@ -30,13 +31,16 @@ We want to build a `react` and `node` app with user authentication via `passport
 
 * [`bcrypt-nodejs`](https://www.npmjs.com/package/bcrypt-nodejs) - used to hash strings and compare the hash with the hash stored in the database
 * [`crypto`](https://nodejs.org/api/crypto.html) - nodes's built in module for hashing.
+* [`helmet`](https://github.com/helmetjs/helmet) - Helps to secure your applications. It doesn’t magically make you more secure, but a small amount of work can protect you from a lot of hacks.
+
 
 **Utilities**
 	
 * [`connect-flash`]() - allows for passing session flashdata messages.
 * [`morgan`](https://www.npmjs.com/package/morgan-2) - log every request to the console
 * [`dotenv`](https://github.com/motdotla/dotenv)
-
+* [`compression`](https://github.com/expressjs/compression) - Compression for compressing responses to save on bytes
+* [`connect-assets`](https://github.com/adunkman/connect-assets) —Compiles and minifies your CSS and JavaScript assets. It will also work with CSS preprocessors like SASS, SCSS, LESS, and Stylus, should you choose to use them.
 
 ## Set up the `User` model
 You want to sign up users and log users in to use your website. We need to create a `User` object. From your project directory:
