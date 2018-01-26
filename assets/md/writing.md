@@ -1,7 +1,8 @@
 ### Tech
-* <i class="fa fa-github"></i> [Git Tutorial From Three Perspectives](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/git-tutorial.md)
+* <i class="fa fa-github"></i> [The Only Cheatsheet You Ever Need To Use Git](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/git-tutorial.md)
+* <i class="fa fa-github"></i> [Understanding JavaScript's Closure With Examples](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/scoping-and-closure-in-javascript.md) - Also [published on Medium](https://medium.com/@xiaoyunyang/some-examples-to-help-understand-javascripts-closure-372e42fff94d) under DailyJS)
 * <i class="fa fa-github"></i> [Technology Behind Modern Web Applications](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/tech-behind-modern-webapps.md)
-* <i class="fa fa-github"></i> [Getting Started with Authentication in Node with passport.js and MongoDB](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/auth-setup.md)
+* <i class="fa fa-github"></i> [Getting Started with Authentication in Node](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/auth-setup.md)
 * <i class="fa fa-github"></i> [My Notes on React](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/react-notes.md)
 * <i class="fa fa-github"></i> [My Notes on D3 React Integration](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/d3-react-integration.md)
 * <i class="fa fa-github"></i> [My Notes on ES6 and Babel](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/es6-and-babel.md)
