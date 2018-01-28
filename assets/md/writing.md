@@ -6,6 +6,8 @@
 * <i class="fa fa-github"></i> [My Notes on React](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/react-notes.md)
 * <i class="fa fa-github"></i> [My Notes on D3 React Integration](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/d3-react-integration.md)
 * <i class="fa fa-github"></i> [My Notes on ES6 and Babel](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/es6-and-babel.md)
+* <i class="fa fa-github"></i> [My Notes on Closure and Scope](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/scoping-and-closure-in-javascript.md)
+* [Three Tips for navigating JavaScript's Weird Type System](https://medium.com/@xiaoyunyang/3-tips-for-javascripts-type-system-2519ba57f954)
 * <i class="fa fa-github"></i> [How Functional Programming Promotes Developer Productivity](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/functional-programming.md) (Also [published on Medium](https://medium.com/@xiaoyunyang/why-functional-programming-from-a-developer-productivity-perspective-69c4b8100776))
 * <i class="fa fa-github"></i> [Scala and Functional Programming](https://github.com/xiaoyunyang/coursera-scala-specialization/)
 * [Memory consideration for Functional Programming](https://medium.com/@xiaoyunyang/the-question-you-should-ask-yourself-when-you-write-programs-the-functional-way-is-how-can-i-solve-af9d93be4ae2)
