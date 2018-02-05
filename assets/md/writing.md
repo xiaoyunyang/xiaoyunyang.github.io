@@ -1,14 +1,14 @@
 ### Tech
 * <i class="fa fa-github"></i> [The Only Cheatsheet You Ever Need To Use Git](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/guides/git-tutorial.md)
 * <i class="fa fa-github"></i> [Understanding JavaScript's Closure With Examples](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/fundamental/scoping-and-closure-in-javascript.md) - Also [published on Medium](https://medium.com/@xiaoyunyang/some-examples-to-help-understand-javascripts-closure-372e42fff94d) under DailyJS)
-* [Why You Should Learn Go](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/fundamental/why-work-with-go.md)
+* <i class="fa fa-github"></i> [Why You Should Learn Go](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/fundamental/why-work-with-go.md)
 * <i class="fa fa-github"></i> [Technology Behind Modern Web Applications](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/fundamental/tech-behind-modern-webapps.md)
 * <i class="fa fa-github"></i> [Getting Started with Authentication in Node](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/guides/auth-setup.md)
 * <i class="fa fa-github"></i> [My Notes on React](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/guides/react-notes.md)
 * <i class="fa fa-github"></i> [My Notes on D3 React Integration](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/guides/d3-react-integration.md)
 * <i class="fa fa-github"></i> [My Notes on ES6 and Babel](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/guides/es6-and-babel.md)
 * <i class="fa fa-github"></i> [How to do object oriented programming correctly](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/fundamental/object-oriented-programming.md)
-* <i class="fa fa-medium"></i> [Three Tips for navigating JavaScript's Weird Type System](https://medium.com/@xiaoyunyang/3-tips-for-javascripts-type-system-2519ba57f954) - published on medium
+* [Three Tips for navigating JavaScript's Weird Type System](https://medium.com/@xiaoyunyang/3-tips-for-javascripts-type-system-2519ba57f954) - published on medium
 * [How to Refactor Unwieldy Untestable Code](https://medium.com/@xiaoyunyang/how-to-refactor-unwieldy-untestable-code-4a73d75cb80a) - published on medium
 * <i class="fa fa-github"></i> [How Functional Programming Promotes Developer Productivity](https://github.com/xiaoyunyang/web-dev-cheatsheets/blob/master/functional-programming.md) (Also [published on Medium](https://medium.com/@xiaoyunyang/why-functional-programming-from-a-developer-productivity-perspective-69c4b8100776))
 * <i class="fa fa-github"></i> [Scala and Functional Programming](https://github.com/xiaoyunyang/coursera-scala-specialization/)
