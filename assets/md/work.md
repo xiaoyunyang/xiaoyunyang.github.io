@@ -112,5 +112,5 @@ Often times in the javascript ecosystem, you are dealing with a lot of little li
 <div class="col s12 m10 l10 offset-l1 offset-m1">
 There's no doubt I wouldn't have been where I am without free and high quality content online. Sample projects, code examples, articles, and open source projects are vital to enabling me to be a lifelong learner of the art of programming.  
 
-I enjoy contributing to the online knowledge repository because it helps be a more proficient programmer. I always feel I get a better understanding when I <a href="https://github.com/xiaoyunyang/xiaoyunyang.github.io/tree/master/tools/100days.html">create my own sample projects</a> or <a href="http://xiaoyunyang.github.io/#writing">contribute an article on Medium</a>. 
+I enjoy contributing to the online knowledge repository because it helps be a more proficient programmer. I always feel I get a better understanding when I <a href="http://xiaoyunyang.github.io/tools/100days.html">create my own sample projects</a> or <a href="http://xiaoyunyang.github.io/#writing">contribute an article on Medium</a>. 
 </div>
