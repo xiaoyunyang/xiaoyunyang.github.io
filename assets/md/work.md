@@ -97,7 +97,20 @@ ReactNative is a game changer.
 
 It makes the barrier of entry low to make a cross-platform mobile app. The hallmark of Mobile Travel App I made (see <a href="https://github.com/xiaoyunyang/react-native-travel-app" target="_blank">react-native-travel-app</a> repo) is that it took full advantage of the ReactNative open source ecosystem. There is a component for everything you need.
 
-![Travel Japan is an app for you to plan your next trip to Japan with your friends](/assets/images/travelapp/travel-japan.png)
+![React Native Travel App a mobile app for you to plan your next trip with your friends](/assets/images/travelapp/travel-japan.png)
 
 Often times in the javascript ecosystem, you are dealing with a lot of little libraries and you are bringing them together to form a framework that makes sense for your application. So it’s helpful to know what all these little libraries do. Many of them are very simple. But at the end of the day, it’s your job as the developer working in this ecosystem to mix and match them and put them in a composable fashion that makes sense for the application that you are trying to build.
+</div>
+
+<div class="col s12 m12 l12">
+<br><br><br><br>
+<div class="row or-divider">
+	<span>![Open Source Projects](/assets/images/learning/open-source.png)
+	</span>
+</div>
+</div>
+<div class="col s12 m10 l10 offset-l1 offset-m1">
+There's no doubt I wouldn't have been where I am without free and high quality content online. Sample projects, code examples, articles, and open source projects are vital to enabling me to be a lifelong learner of the art of programming.  
+
+I enjoy contributing to the online knowledge repository because it helps be a more proficient programmer. I always feel I get a better understanding when I <a href="https://github.com/xiaoyunyang/xiaoyunyang.github.io/tree/master/tools/100days.html">create my own sample projects</a> or <a href="http://xiaoyunyang.github.io/#writing">contribute an article on Medium</a>. 
 </div>

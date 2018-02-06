@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://npmcdn.com/react@15.3.1/dist/react-with-addons.min.js"></script>
+  <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.min.js"></script>
+  <script src="../build/JSXTransformer.js"></script>
+  <link rel='stylesheet' type='text/css' href="/assets/css/main.css">
+  <link rel="shortcut icon" href="/assets/images/logo/favicon.ico" type="image/x-icon" />
+  <!-- FACEBOOK TAGS -->
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <!-- SEO Tags -->
+  <meta name="description" content=".">
+  <meta name="title" content="" />
+  <meta name="keywords" content="">
+  <!-- device scaling-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>#100DaysOfCode - What day am I on?</title>
+</head>
+
+<body>
+
+  <div class="navbar-fixed">
+    <nav class=" grey lighten-4">
+      <div class="nav-wrapper-white nav-text-links">
+        <a href="http://xiaoyunyang.github.io" class="brand-logo"> ←	Back to main site</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="row white container">
+    <div class="col s12 m12 l10 offset-l1">
+      <h4>#100DaysOfCode Progress Tracker</h4>
+      <p>Shows you how many days you have done, how many days you have left, and when you are expected
+        to complete your <a target="_blank"
+        href="https://medium.freecodecamp.org/join-the-100daysofcode-556ddb4579e4">
+        #100DaysOfCode</a> challenge.
+      <div id="root"><!-- rendered by react --></div>
+    </div>
+  </div>
+  <footer class="page-footer blue-grey lighten-5">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <p class="blue-grey-text text-lighten-1">Made with
+            <a target="_blank" href="https://reactjs.org/"><i class="fab fa-react"></i> React.js</a> and
+            <a target="_blank" href="http://materializecss.com/">MaterializeCSS</a>
+            with <i class="fas fa-heart"></i> by <a href="http://http://xiaoyunyang.github.io/">Xiaoyun Yang</a>.
+          </p>
+          <p class="blue-grey-text text-lighten-1">See source code
+            <a href="https://github.com/xiaoyunyang/xiaoyunyang.github.io/tree/master/tools/100days.html">here</a>
+        </div>
+      </div>
+      <div class="footer-copyright blue-grey lighten-5"></div>
+    </div>
+  </footer>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script type="text/javascript" src="/assets/js/jquery-2.1.3.js"></script>
+  <script type="text/javascript" src="/assets/js/materialize.js"></script>
+  <script>
+    Date.prototype.monthNames = [
+      "January", "February", "March",
+      "April", "May", "June",
+      "July", "August", "September",
+      "October", "November", "December"
+    ];
+
+    Date.prototype.getMonthName = function() {
+      return this.monthNames[this.getMonth()];
+    };
+    Date.prototype.getShortMonthName = function () {
+      return this.getMonthName().substr(0, 3);
+    };
+  </script>
+  <script type="text/jsx">
+
+    var App = React.createClass({
+      getInitialState() {
+        let todayRaw = new Date()
+        let today = this.convertDate2String(todayRaw)
+        return {
+          startDate: "",
+          today: today,
+          daysPassed: "",
+          todayRaw: todayRaw,
+          hundrethDay: ""
+        }
+      },
+      componentDidMount: function() {
+        // datepicker is based on http://amsul.ca/pickadate.js/api/
+        $('.datepicker').pickadate({
+          selectMonths: true,
+          selectYears: 15,
+          today: 'Today',
+          clear: 'Clear',
+          close: 'Ok',
+          closeOnSelect: false,
+          onSet: function(context) {
+            this.handleStartDateChange(context.select)
+          }.bind(this)
+        });
+      },
+      handleStartDateChange: function(startDate_ms) {
+        let startDate = new Date(startDate_ms)
+        let hundrethDay = new Date(startDate.setDate(startDate.getDate() + 100))
+        let oneDay_ms = 1000*60*60*24 //get 1 day in milliseconds
+        let diff_ms = this.state.todayRaw.getTime() - startDate_ms
+        let daysPassed = Math.round(diff_ms/oneDay_ms)
+
+        this.setState({
+          startDate: startDate,
+          hundrethDay: this.convertDate2String(hundrethDay),
+          daysPassed: daysPassed
+        })
+      },
+      convertDate2String: function(date) {
+        return date.getDate() + " "
+              + date.getMonthName() + ", "
+              + date.getFullYear()
+      },
+      render: function() {
+        return (
+          <div className="row">
+            <div className="col s12 m12 l12">
+              <div className="card-panel">
+                <span className="black-text">
+                  <h5>{"🗓️ I started on"}</h5>
+                  <input type="text"
+                         placeholder="Click to select date"
+                         className="datepicker"/>
+                </span>
+              </div>
+              <div className="card-panel">
+                <span className="black-text">
+                  <h5>{"🗓️ Today is"}</h5>
+                  <p>{this.state.today}</p>
+                </span>
+              </div>
+              <div className="card-panel">
+                <span className="black-text">
+                  <h5>{"🗓️ I'm on day"}</h5>
+                  <p>{this.state.daysPassed}</p>
+                </span>
+              </div>
+              <div className="card-panel">
+                <span className="black-text">
+                  <h5>{"🗓️ My 100th day will be"}</h5>
+                  <p>{this.state.hundrethDay}</p>
+                </span>
+              </div>
+            </div>
+          </div>
+        );
+      }
+    });
+    ReactDOM.render(<App/>, document.getElementById('root'));
+  </script>
+
+</body>
+
+</html>
