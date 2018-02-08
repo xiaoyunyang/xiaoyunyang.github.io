@@ -81,7 +81,7 @@
     var App = React.createClass({
       getInitialState() {
         let todayRaw = new Date()
-        let today = this.convertDate2String(todayRaw)
+        let today = this.convertDate2String(todayRaw);
         return {
           startDate: "",
           today: today,
@@ -90,8 +90,15 @@
           hundrethDay: ""
         }
       },
+      componentWillMount: function() {
+        this.setupDatePicker();
+      },
       componentDidMount: function() {
+        this.setupDatePicker()
+      },
+      setupDatePicker: function() {
         // datepicker is based on http://amsul.ca/pickadate.js/api/
+        // Fix issue with onClose: https://github.com/amsul/pickadate.js/issues/160
         $('.datepicker').pickadate({
           selectMonths: true,
           selectYears: 15,
@@ -99,28 +106,37 @@
           clear: 'Clear',
           close: 'Ok',
           closeOnSelect: false,
+          onClose: function() {
+            $(":focus").blur();
+          },
           onSet: function(context) {
             this.handleStartDateChange(context.select)
           }.bind(this)
         });
       },
       handleStartDateChange: function(startDate_ms) {
-        let startDate = new Date(startDate_ms)
-        let hundrethDay = new Date(startDate.setDate(startDate.getDate() + 100))
-        let oneDay_ms = 1000*60*60*24 //get 1 day in milliseconds
-        let diff_ms = this.state.todayRaw.getTime() - startDate_ms
-        let daysPassed = Math.round(diff_ms/oneDay_ms)
+        let startDate = new Date(startDate_ms);
+        let hundrethDay = new Date(startDate.setDate(startDate.getDate() + 100));
+        let oneDay_ms = 1000*60*60*24; //get 1 day in milliseconds
+        let diff_ms = this.state.todayRaw.getTime() - startDate_ms;
+        let daysPassed = Math.round(diff_ms/oneDay_ms);
 
         this.setState({
           startDate: startDate,
           hundrethDay: this.convertDate2String(hundrethDay),
           daysPassed: daysPassed
-        })
+        });
       },
       convertDate2String: function(date) {
         return date.getDate() + " "
               + date.getMonthName() + ", "
-              + date.getFullYear()
+              + date.getFullYear();
+      },
+      openCal: function(event) {
+        console.log("HEY");
+      },
+      handleChange: function(event) {
+        console.log("I'm in handleChange");
       },
       render: function() {
         return (
@@ -128,27 +144,28 @@
             <div className="col s12 m12 l12">
               <div className="card-panel">
                 <span className="black-text">
-                  <h5>{"🗓️ I started on"}</h5>
+                  <h5><i className="fas fa-calendar-alt"></i>{" I started on"}</h5>
                   <input type="text"
                          placeholder="Click to select date"
+                         onChange={this.handleChange}
                          className="datepicker"/>
                 </span>
               </div>
               <div className="card-panel">
                 <span className="black-text">
-                  <h5>{"🗓️ Today is"}</h5>
+                  <h5><i className="fas fa-calendar-alt"></i>{" Today is"}</h5>
                   <p>{this.state.today}</p>
                 </span>
               </div>
               <div className="card-panel">
                 <span className="black-text">
-                  <h5>{"🗓️ I'm on day"}</h5>
+                  <h5><i className="fas fa-calendar-alt"></i>{" I'm on day"}</h5>
                   <p>{this.state.daysPassed}</p>
                 </span>
               </div>
               <div className="card-panel">
                 <span className="black-text">
-                  <h5>{"🗓️ My 100th day will be"}</h5>
+                  <h5><i className="fas fa-calendar-alt"></i>{" My 100th day will be"}</h5>
                   <p>{this.state.hundrethDay}</p>
                 </span>
               </div>
