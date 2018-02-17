@@ -71,7 +71,7 @@ While the iOS development has been turned over to my co-founder, Andrew, I still
 
 One of the main design goals of the Scala programming language is to enable developers to tackle the complexity of programming multicore and distributed systems. Scala runs on the JVM and is a more popular language than Haskell with a lot of community and open source software such as Play, Spark, Akka, Kafka, and big users such as Twitter, LinkedIn, and Coursera.
 
-The biggest reason I chose Scala on a go-forward basis for my programming specialty is that Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time. 
+The biggest reason I chose Scala on a go-forward basis for my programming specialty is that Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.
 
 Additionally, Scala has a strong type checking system and is statically typed (meaning bugs get caught at compile time vice runtime. With Scala, I don't have to deal with much bugs at all because compiler and type checking helps out tremendously and functional programming reduces complexity of code, thus reducing bugs. For mobile applications, Scala, a statically typed language, enjoys advantages over other JVM languages, such as JRuby or Groovy, because statically typed languages run faster, consume less memory, and generally are better optimized.
 
@@ -112,5 +112,5 @@ Often times in the javascript ecosystem, you are dealing with a lot of little li
 <div class="col s12 m10 l10 offset-l1 offset-m1">
 There's no doubt I wouldn't have been where I am without free and high quality content online. Sample projects, code examples, articles, and open source projects are vital to enabling me to be a lifelong learner of the art of programming.  
 
-I enjoy contributing to the online knowledge repository because it helps be a more proficient programmer. I always feel I get a better understanding when I <a href="http://xiaoyunyang.github.io/tools/100days.html">create my own sample projects</a> or <a href="http://xiaoyunyang.github.io/#writing">contribute an article on Medium</a>. 
+I enjoy contributing to the online knowledge repository because it helps be a more proficient programmer. I always feel I get a better understanding when I <a href="http://xiaoyunyang.github.io/serverless-webapp/apps/100days.html">create my own sample projects</a> or <a href="http://xiaoyunyang.github.io/#writing">contribute an article on Medium</a>. 
 </div>

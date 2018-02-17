@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://npmcdn.com/react@15.3.1/dist/react-with-addons.min.js"></script>
-  <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.min.js"></script>
+  <script src="../build/react-with-addons.min.js"></script>
+  <script src="../build/react-dom.min.js"></script>
   <script src="../build/JSXTransformer.js"></script>
-  <link rel='stylesheet' type='text/css' href="/assets/css/main.css">
-  <link rel="shortcut icon" href="/assets/images/logo/favicon.ico" type="image/x-icon" />
-  <!-- FACEBOOK TAGS -->
-  <meta property="og:url" content="" />
-  <meta property="og:image" content="">
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="">
-  <meta property="og:description" content="">
-  <!-- SEO Tags -->
-  <meta name="description" content=".">
-  <meta name="title" content="" />
-  <meta name="keywords" content="">
+  <link rel='stylesheet' type='text/css' href="../assets/css/main.css">
+  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
   <!-- device scaling-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
@@ -23,15 +14,7 @@
 </head>
 
 <body>
-
-  <div class="navbar-fixed">
-    <nav class=" grey lighten-4">
-      <div class="nav-wrapper-white nav-text-links">
-        <a href="http://xiaoyunyang.github.io" class="brand-logo"> ←	Back to main site</a>
-      </div>
-    </nav>
-  </div>
-
+  <div id="nav"><!-- rendered by react --></div>
   <div class="row white container">
     <div class="col s12 m12 l10 offset-l1">
       <h4>#100DaysOfCode Progress Tracker</h4>
@@ -45,7 +28,7 @@
   <footer class="page-footer blue-grey lighten-5">
     <div class="container">
       <div class="row">
-        <div class="col l6 s12">
+        <div class="col l8 s12">
           <p class="blue-grey-text text-lighten-1">Made with
             <a target="_blank" href="https://reactjs.org/"><i class="fab fa-react"></i> React.js</a> and
             <a target="_blank" href="http://materializecss.com/">MaterializeCSS</a>
@@ -53,14 +36,16 @@
           </p>
           <p class="blue-grey-text text-lighten-1">See source code
             <a href="https://github.com/xiaoyunyang/xiaoyunyang.github.io/tree/master/tools/100days.html">here</a>
+          </p>
         </div>
       </div>
       <div class="footer-copyright blue-grey lighten-5"></div>
     </div>
   </footer>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-  <script type="text/javascript" src="/assets/js/jquery-2.1.3.js"></script>
-  <script type="text/javascript" src="/assets/js/materialize.js"></script>
+  <script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="../assets/js/materialize.js"></script>
+  <script type="text/jsx" src="topnav.jsx"></script>
   <script>
     Date.prototype.monthNames = [
       "January", "February", "March",
@@ -68,7 +53,6 @@
       "July", "August", "September",
       "October", "November", "December"
     ];
-
     Date.prototype.getMonthName = function() {
       return this.monthNames[this.getMonth()];
     };
@@ -80,8 +64,8 @@
 
     var App = React.createClass({
       getInitialState() {
-        let todayRaw = new Date()
-        let today = this.convertDate2String(todayRaw);
+        var todayRaw = new Date()
+        var today = this.convertDate2String(todayRaw);
         return {
           startDate: "",
           today: today,
@@ -115,11 +99,11 @@
         });
       },
       handleStartDateChange: function(startDate_ms) {
-        let startDate = new Date(startDate_ms);
-        let hundrethDay = new Date(startDate.setDate(startDate.getDate() + 100));
-        let oneDay_ms = 1000*60*60*24; //get 1 day in milliseconds
-        let diff_ms = this.state.todayRaw.getTime() - startDate_ms;
-        let daysPassed = Math.round(diff_ms/oneDay_ms);
+        var startDate = new Date(startDate_ms);
+        var hundrethDay = new Date(startDate.setDate(startDate.getDate() + 100));
+        var oneDay_ms = 1000*60*60*24; //get 1 day in milliseconds
+        var diff_ms = this.state.todayRaw.getTime() - startDate_ms;
+        var daysPassed = Math.round(diff_ms/oneDay_ms);
 
         this.setState({
           startDate: startDate,
@@ -131,12 +115,6 @@
         return date.getDate() + " "
               + date.getMonthName() + ", "
               + date.getFullYear();
-      },
-      openCal: function(event) {
-        console.log("HEY");
-      },
-      handleChange: function(event) {
-        console.log("I'm in handleChange");
       },
       render: function() {
         return (

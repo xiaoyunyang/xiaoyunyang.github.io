@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../build/react-with-addons.min.js"></script>
+  <script src="../build/react-dom.min.js"></script>
+  <script src="../build/JSXTransformer.js"></script>
+  <link rel='stylesheet' type='text/css' href="../assets/css/main.css">
+  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+  <!-- device scaling-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Query Builder</title>
+</head>
+<body>
+  <div id="nav"><!-- rendered by react --></div>
+  <div class="row white container">
+    <div class="col s12 m12 l10 offset-l1">
+      <h4>Query Builder</h4>
+      <p>Enter parameters in form, get query string.</p>
+      <div id="root"><!-- rendered by react --></div>
+    </div>
+  </div>
+  <footer class="page-footer blue-grey lighten-5">
+    <div class="container">
+      <div class="row">
+        <div class="col l8 s12">
+          <p class="blue-grey-text text-lighten-1">Made with
+            <a target="_blank" href="https://reactjs.org/"><i class="fab fa-react"></i> React.js</a> and
+            <a target="_blank" href="http://materializecss.com/">MaterializeCSS</a>
+            with <i class="fas fa-heart"></i> by <a href="http://xiaoyunyang.github.io/">Xiaoyun Yang</a>.
+          </p>
+          <p class="blue-grey-text text-lighten-1">See source code
+            <a href="https://github.com/xiaoyunyang/xiaoyunyang.github.io/tree/master/tools/100days.html">here</a>
+          </p>
+        </div>
+        <div class="footer-copyright blue-grey lighten-5"></div>
+      </div>
+    </div>
+  </footer>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="../assets/js/materialize.js"></script>
+  <script type="text/jsx" src="topnav.jsx"></script>
+  <script type="text/jsx">
+    var App = React.createClass({
+      getInitialState: function() {
+        return {
+          tags: this.props.hulls,
+          selectedTags: [this.props.hulls[0]],
+          intervalChoices: this.props.intervals,
+          selectedInterval: this.props.intervals[0],
+          projects: this.props.projects,
+          selectedProject: this.props.projects[0]
+        };
+      },
+      componentDidMount: function() {
+        this.initializeChips();
+        this.initializeDropdown();
+        this.initializeSelect();
+        Materialize.updateTextFields();
+      },
+      initializeDropdown: function() {
+        $('.dropdown-button').dropdown({
+          inDuration: 300,
+          outDuration: 225,
+          constrainWidth: true, // changes width of dropdown to that of the activator
+          hover: false, // Activate on hover
+          gutter: 0, // Spacing from edge
+          belowOrigin: true, // Displays dropdown below the button
+          alignment: 'left', // Displays dropdown with edge aligned to the left of button
+          stopPropagation: false // Stops event propagation
+        });
+      },
+      initializeSelect: function() {
+        $('#select-project').material_select(
+          this.handleProjectClick.bind(this)
+        );
+        $('#select-interval').material_select(
+          this.handleIntervalClick.bind(this)
+        );
+      },
+      initializeChips: function() {
+        var tags = this.state.selectedTags.map(function(d) {
+          return {tag: d};
+        });
+        var options = this.state.tags.map(function(d) {
+          var tmp = {};
+          tmp[d] = null;
+          return tmp;
+        }).reduce(function(acc, x) {
+          for (var key in x) acc[key] = x[key];
+          return acc;
+        }, {});
+
+        $('.chips').material_chip({
+          data: tags,
+          placeholder: 'Enter a tag',
+          secondaryPlaceholder: '+Tag',
+          autocompleteOptions: {
+            data: options,
+            limit: Infinity,
+            minLength: 1
+          }
+        });
+        $('.chips').on('chip.add', function(e, chip){
+          this.handleAddTag(chip.tag);
+        }.bind(this));
+        $('.chips').on('chip.delete', function(e, chip){
+          this.handleDeleteTag(chip.tag);
+        }.bind(this));
+      },
+      handleAddTag: function(tag) {
+        var selectedNew = this.state.selectedTags.concat(tag);
+        this.setState({
+          selectedTags: selectedNew
+        });
+      },
+      handleDeleteTag: function(tag) {
+        var selectedNew = this.state.selectedTags.filter(function(d){
+          return d !== tag;
+        });
+        this.setState({
+          selectedTags: selectedNew
+        });
+      },
+      handleProjectClick: function() {
+        var d = $('#select-project').val();
+        var newProject = d;
+        this.setState({
+          selectedProject: newProject
+        });
+      },
+      handleIntervalClick: function() {
+        var d = $('#select-interval').val();
+        var newInterval = d;
+        this.setState({
+          selectedInterval: newInterval
+        });
+      },
+      handleIntervalClickBtn: function(d, e) {
+        var newInterval = d;
+        this.setState({
+          selectedInterval: newInterval
+        });
+      },
+      getLink: function(selectedTags, selectedInterval, selectedProject) {
+        var strHulls = 'strHulls=' + function() {
+          if(selectedProject==='None') {
+            return selectedTags.reduce(function(a,b) {
+              return (a==='') ? b: a+','+b}, '');
+          }
+          return '';
+        }();
+        var strInterval = 'strInterval=' + selectedInterval;
+        var strProject = 'strProject=' + selectedProject;
+        return strHulls+' & '+strInterval+' & '+strProject;
+      },
+      renderProjectInput: function(projects) {
+        return (
+          <div className='input-field col l6 m6 s12'>
+            <select id='select-project'>
+              <option value='None' disabled selected>Choose project</option>
+              {
+                projects.map(function(d,i) {
+                  return (<option value={d}>{d}</option>);
+                })
+              }
+            </select>
+            <label>Choose Project</label>
+          </div>
+        );
+      },
+      renderIntervalInput: function(intervalChoices) {
+        return (
+          <div className="input-field col l6 m6 s12">
+            <select id='select-interval'>
+              {
+                intervalChoices.map(function(d, i) {
+                  return (
+                    <option value={d}>
+                      {d + (d==='1' ? ' Year' : ' Years')}
+                    </option>)
+                })
+              }
+            </select>
+            <label>Choose Interval</label>
+          </div>
+        );
+      },
+      renderIntervalInputBtn: function() {
+        return (
+          <div className="col l12 m12 s12">
+            <h5>Choose Time Interval</h5>
+            <a className='dropdown-button btn' href='#' data-activates='dropdown1'>
+              {'Interval: '+this.state.selectedInterval + (this.state.selectedInterval==='1' ? ' Year' : ' Years')}
+            </a>
+            <ul id='dropdown1' className='dropdown-content'>
+            {
+              this.state.intervalChoices.map(function(d, i) {
+                return (<li><a href="#!" onClick={this.handleIntervalClickBtn.bind(this, d)}>
+                {d + (d==='1' ? ' Year' : ' Years')}
+                </a></li>)
+              }.bind(this))
+            }
+            </ul>
+          </div>
+        );
+      },
+      renderLink: function(link) {
+        return (
+          <div className="row">
+            <div className="input-field col l11 m11 s11">
+                <input value={link} id="link" type="text" className="validate" />
+                <label className="active" for="link">Link</label>
+            </div>
+            <div className="col l1 m1 s1">
+              <a className="btn-floating btn-large waves-effect waves-light">
+                <i className="material-icons">arrow_forward</i>
+              </a>
+            </div>
+          </div>
+        );
+      },
+      render: function() {
+        return(
+          <div className="row">
+            <div className="col l12 m12 s12">
+              <h5>Choose Hulls</h5>
+              <div className="chips"></div>
+            </div>
+            {this.renderProjectInput(this.state.projects)}
+            {this.renderIntervalInput(this.state.intervalChoices)}
+            {this.renderIntervalInputBtn()}
+            <div className="col l12 m12 s12">
+              <p>Note: If you choose a project, the app will ignore your selected hulls</p>
+            </div>
+            <div className="col l12 m12 s12">
+              {
+                this.renderLink(this.getLink(this.state.selectedTags, this.state.selectedInterval, this.state.selectedProject))
+              }
+            </div>
+          </div>
+        );
+      }
+    });
+    ReactDOM.render(<App hulls={['CVN 78', 'SSBN 730', 'SSN 774']}
+                         projects={['None', 'A1B', 'A4W', 'S6G', 'S6W', 'S8G', 'S9G']}
+                         intervals={['1', '2', '5', '10']}/>, document.getElementById('root'));
+  </script>
+
+</body>
+
+</html>

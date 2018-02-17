@@ -38,6 +38,10 @@ var TopNav = React.createClass({
                       <i className="fa fa-envelope"></i> Email
                     </a>
                   </li>
+                  <li className="divider"></li>
+                  <li><a href="/serverless-webapp/apps/100days.html">{"100days"}</a></li>
+                  <li><a href="/serverless-webapp/apps/url-builder.html">{"url-builder"}</a></li>
+                  <li><a href="/serverless-webapp/apps/query-builder.html">{"query-builder"}</a></li>
                 </ul>
               </li>
             </ul>
