@@ -10,14 +10,14 @@
   <!-- device scaling-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <title>Query Builder</title>
+  <title>Avail Viewer</title>
 </head>
 <body>
   <div id="nav"><!-- rendered by react --></div>
   <div class="row white container">
     <div class="col s12 m12 l10 offset-l1">
-      <h4>Query Builder</h4>
-      <p>Enter parameters in form, get query string.</p>
+      <h4>Availability Viewer</h4>
+      <p>Put ship class names, get availability.</p>
       <div id="root"><!-- rendered by react --></div>
     </div>
   </div>
@@ -42,20 +42,6 @@
   <script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
   <script type="text/javascript" src="../assets/js/materialize.js"></script>
   <script type="text/jsx" src="topnav.jsx"></script>
-  <script>
-    Date.prototype.monthNames = [
-      "January", "February", "March",
-      "April", "May", "June",
-      "July", "August", "September",
-      "October", "November", "December"
-    ];
-    Date.prototype.getMonthName = function() {
-      return this.monthNames[this.getMonth()];
-    };
-    Date.prototype.getShortMonthName = function () {
-      return this.getMonthName().substr(0, 3);
-    };
-  </script>
   <script type="text/jsx">
     var App = React.createClass({
       getInitialState: function() {
@@ -65,8 +51,7 @@
           intervalChoices: this.props.intervals,
           selectedInterval: this.props.intervals[0],
           projects: this.props.projects,
-          selectedProject: this.props.projects[0],
-          dueDate: ""
+          selectedProject: this.props.projects[0]
         };
       },
       componentDidMount: function() {
@@ -74,7 +59,6 @@
         this.initializeDropdown();
         this.initializeSelect();
         Materialize.updateTextFields();
-        this.initializeDatePicker()
       },
       initializeDropdown: function() {
         $('.dropdown-button').dropdown({
@@ -126,24 +110,6 @@
           this.handleDeleteTag(chip.tag);
         }.bind(this));
       },
-      initializeDatePicker: function() {
-        // datepicker is based on http://amsul.ca/pickadate.js/api/
-        // Fix issue with onClose: https://github.com/amsul/pickadate.js/issues/160
-        $('.datepicker').pickadate({
-          selectMonths: true,
-          selectYears: 15,
-          today: 'Today',
-          clear: 'Clear',
-          close: 'Ok',
-          closeOnSelect: false,
-          onClose: function() {
-            $(":focus").blur();
-          },
-          onSet: function(context) {
-            this.handleDueDateChange(context.select)
-          }.bind(this)
-        });
-      },
       handleAddTag: function(tag) {
         var selectedNew = this.state.selectedTags.concat(tag);
         this.setState({
@@ -178,30 +144,17 @@
           selectedInterval: newInterval
         });
       },
-      handleDueDateChange: function(dueDate_ms) {
-        var dueDate = new Date(dueDate_ms);
-
-        this.setState({
-          dueDate: dueDate
-        });
-      },
-      convertDate2String: function(date) {
-        return date.getDate() + " "
-              + date.getMonthName() + ", "
-              + date.getFullYear();
-      },
-      getLink: function(selectedTags, selectedInterval, selectedProject, dueDate) {
-        var strTopics = 'strTopics=' + function() {
+      getLink: function(selectedTags, selectedInterval, selectedProject) {
+        var strHulls = 'strHulls=' + function() {
           if(selectedProject==='None') {
             return selectedTags.reduce(function(a,b) {
               return (a==='') ? b: a+','+b}, '');
           }
           return '';
         }();
-        var dueDate = 'dueDate=' + dueDate
         var strInterval = 'strInterval=' + selectedInterval;
         var strProject = 'strProject=' + selectedProject;
-        return strTopics+' & ' + dueDate +' & '+strInterval+' & '+strProject;
+        return strHulls+' & '+strInterval+' & '+strProject;
       },
       renderProjectInput: function(projects) {
         return (
@@ -269,26 +222,13 @@
           </div>
         );
       },
-      renderCalendar: function() {
-        return (
-          <div className="input-field col l11 m11 s11">
-            <h5>{'Due Date'}</h5>
-            <input type="text"
-               placeholder="Click to select date"
-               onChange={this.handleDueDateChange}
-               className="datepicker"/>
-           </div>
-         );
-      },
       render: function() {
         return(
           <div className="row">
             <div className="col l12 m12 s12">
-              <h5>Topic and Skill Areas</h5>
+              <h5>Choose Hulls</h5>
               <div className="chips"></div>
             </div>
-
-            {this.renderCalendar()}
             {this.renderProjectInput(this.state.projects)}
             {this.renderIntervalInput(this.state.intervalChoices)}
             {this.renderIntervalInputBtn()}
@@ -297,19 +237,15 @@
             </div>
             <div className="col l12 m12 s12">
               {
-                this.renderLink(this.getLink(
-                  this.state.selectedTags,
-                  this.state.selectedInterval,
-                  this.state.selectedProject,
-                  this.state.dueDate))
+                this.renderLink(this.getLink(this.state.selectedTags, this.state.selectedInterval, this.state.selectedProject))
               }
             </div>
           </div>
         );
       }
     });
-    ReactDOM.render(<App hulls={['C', 'C++', 'Go', 'Java', 'JavaScript', 'Python', 'Scala']}
-                         projects={['Code', 'Video', 'Document', 'Explanation', 'Tutorial', 'Suggestion']}
+    ReactDOM.render(<App hulls={['CVN 78', 'SSBN 730', 'SSN 774']}
+                         projects={['None', 'A1B', 'A4W', 'S6G', 'S6W', 'S8G', 'S9G']}
                          intervals={['1', '2', '5', '10']}/>, document.getElementById('root'));
   </script>
 
