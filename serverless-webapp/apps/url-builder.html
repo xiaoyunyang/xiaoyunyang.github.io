@@ -25,34 +25,19 @@
       <div id="root"><!-- rendered by react --></div>
     </div>
   </div>
-  <footer class="page-footer blue-grey lighten-5">
-    <div class="container">
-      <div class="row">
-        <div class="col l8 s12">
-          <p class="blue-grey-text text-lighten-1">Made with
-            <a target="_blank" href="https://reactjs.org/"><i class="fab fa-react"></i> React.js</a> and
-            <a target="_blank" href="http://materializecss.com/">MaterializeCSS</a>
-            with <i class="fas fa-heart"></i> by <a href="http://xiaoyunyang.github.io/">Xiaoyun Yang</a>.
-          </p>
-          <p class="blue-grey-text text-lighten-1">See source code
-            <a href="https://github.com/xiaoyunyang/xiaoyunyang.github.io/tree/master/tools/100days.html">here</a>
-          </p>
-        </div>
-      </div>
-      <div class="footer-copyright blue-grey lighten-5"></div>
-    </div>
-  </footer>
+  <div id="footer"><!-- rendered by react --></div>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
   <script type="text/javascript" src="../assets/js/materialize.js"></script>
   <script type="text/jsx" src="topnav.jsx"></script>
+  <script type="text/jsx" src="footer.jsx"></script>
   <script type="text/jsx">
     var LinkGen = React.createClass({
       getInitialState: function() {
         return {id: this.props.default}
       },
       handleChange: function(event) {
-        this.setState({id: event.target.value.toLowerCase()})
+        this.setState({id: event.target.value})
       },
       render: function() {
         return(
@@ -61,7 +46,7 @@
               <h5>{this.props.page}</h5>
               <input type="text" value={this.state.id} placeholder={"e.g., "+this.props.default} onChange={this.handleChange}/>
               <i className="fas fa-external-link-alt"></i>
-              <a href={this.props.base+this.state.id} target="_blank">{"   "+this.props.base+this.state.id}</a>
+              <a href={this.props.base+this.state.id} target="_blank">{"   "+this.props.base+this.state.id.toLowerCase()}</a>
             </span>
           </div>
         );

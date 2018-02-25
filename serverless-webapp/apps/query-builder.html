@@ -21,27 +21,13 @@
       <div id="root"><!-- rendered by react --></div>
     </div>
   </div>
-  <footer class="page-footer blue-grey lighten-5">
-    <div class="container">
-      <div class="row">
-        <div class="col l8 s12">
-          <p class="blue-grey-text text-lighten-1">Made with
-            <a target="_blank" href="https://reactjs.org/"><i class="fab fa-react"></i> React.js</a> and
-            <a target="_blank" href="http://materializecss.com/">MaterializeCSS</a>
-            with <i class="fas fa-heart"></i> by <a href="http://xiaoyunyang.github.io/">Xiaoyun Yang</a>.
-          </p>
-          <p class="blue-grey-text text-lighten-1">See source code
-            <a href="https://github.com/xiaoyunyang/xiaoyunyang.github.io/tree/master/tools/100days.html">here</a>
-          </p>
-        </div>
-        <div class="footer-copyright blue-grey lighten-5"></div>
-      </div>
-    </div>
-  </footer>
+  <div id="footer"><!-- rendered by react --></div>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
   <script type="text/javascript" src="../assets/js/materialize.js"></script>
   <script type="text/jsx" src="topnav.jsx"></script>
+  <script type="text/jsx" src="footer.jsx"></script>
+  <script type="text/jsx" src="formComponents.jsx"></script>
   <script>
     Date.prototype.monthNames = [
       "January", "February", "March",
@@ -70,11 +56,9 @@
         };
       },
       componentDidMount: function() {
-        this.initializeChips();
         this.initializeDropdown();
-        this.initializeSelect();
+        this.initializeDatePicker();
         Materialize.updateTextFields();
-        this.initializeDatePicker()
       },
       initializeDropdown: function() {
         $('.dropdown-button').dropdown({
@@ -87,44 +71,6 @@
           alignment: 'left', // Displays dropdown with edge aligned to the left of button
           stopPropagation: false // Stops event propagation
         });
-      },
-      initializeSelect: function() {
-        $('#select-project').material_select(
-          this.handleProjectClick.bind(this)
-        );
-        $('#select-interval').material_select(
-          this.handleIntervalClick.bind(this)
-        );
-      },
-      initializeChips: function() {
-        var tags = this.state.selectedTags.map(function(d) {
-          return {tag: d};
-        });
-        var options = this.state.tags.map(function(d) {
-          var tmp = {};
-          tmp[d] = null;
-          return tmp;
-        }).reduce(function(acc, x) {
-          for (var key in x) acc[key] = x[key];
-          return acc;
-        }, {});
-
-        $('.chips').material_chip({
-          data: tags,
-          placeholder: 'Enter a tag',
-          secondaryPlaceholder: '+Tag',
-          autocompleteOptions: {
-            data: options,
-            limit: Infinity,
-            minLength: 1
-          }
-        });
-        $('.chips').on('chip.add', function(e, chip){
-          this.handleAddTag(chip.tag);
-        }.bind(this));
-        $('.chips').on('chip.delete', function(e, chip){
-          this.handleDeleteTag(chip.tag);
-        }.bind(this));
       },
       initializeDatePicker: function() {
         // datepicker is based on http://amsul.ca/pickadate.js/api/
@@ -142,34 +88,6 @@
           onSet: function(context) {
             this.handleDueDateChange(context.select)
           }.bind(this)
-        });
-      },
-      handleAddTag: function(tag) {
-        var selectedNew = this.state.selectedTags.concat(tag);
-        this.setState({
-          selectedTags: selectedNew
-        });
-      },
-      handleDeleteTag: function(tag) {
-        var selectedNew = this.state.selectedTags.filter(function(d){
-          return d !== tag;
-        });
-        this.setState({
-          selectedTags: selectedNew
-        });
-      },
-      handleProjectClick: function() {
-        var d = $('#select-project').val();
-        var newProject = d;
-        this.setState({
-          selectedProject: newProject
-        });
-      },
-      handleIntervalClick: function() {
-        var d = $('#select-interval').val();
-        var newInterval = d;
-        this.setState({
-          selectedInterval: newInterval
         });
       },
       handleIntervalClickBtn: function(d, e) {
@@ -202,38 +120,6 @@
         var strInterval = 'strInterval=' + selectedInterval;
         var strProject = 'strProject=' + selectedProject;
         return strTopics+' & ' + dueDate +' & '+strInterval+' & '+strProject;
-      },
-      renderProjectInput: function(projects) {
-        return (
-          <div className='input-field col l6 m6 s12'>
-            <select id='select-project'>
-              <option value='None' disabled selected>Choose project</option>
-              {
-                projects.map(function(d,i) {
-                  return (<option value={d}>{d}</option>);
-                })
-              }
-            </select>
-            <label>Choose Project</label>
-          </div>
-        );
-      },
-      renderIntervalInput: function(intervalChoices) {
-        return (
-          <div className="input-field col l6 m6 s12">
-            <select id='select-interval'>
-              {
-                intervalChoices.map(function(d, i) {
-                  return (
-                    <option value={d}>
-                      {d + (d==='1' ? ' Year' : ' Years')}
-                    </option>)
-                })
-              }
-            </select>
-            <label>Choose Interval</label>
-          </div>
-        );
       },
       renderIntervalInputBtn: function() {
         return (
@@ -283,17 +169,31 @@
       render: function() {
         return(
           <div className="row">
-            <div className="col l12 m12 s12">
-              <h5>Topic and Skill Areas</h5>
-              <div className="chips"></div>
-            </div>
-
+            <InputTags
+                id='select-areas'
+                label='Add Areas'
+                hint='+Topic'
+                tags={this.state.tags}
+                selectedTags={this.state.selectedTags}
+                setState={ds => this.setState({selectedTags: ds})}
+            />
             {this.renderCalendar()}
-            {this.renderProjectInput(this.state.projects)}
-            {this.renderIntervalInput(this.state.intervalChoices)}
+            <InputDropdown
+                id='select-project'
+                label='Choose Project'
+                choices={this.state.projects}
+                setState={d => this.setState({selectedProject: d})}
+            />
+            <InputDropdown
+                id='select-interval'
+                label='Choose Interval'
+                choices={this.state.intervalChoices}
+                units={'year'}
+                setState={d => this.setState({selectedInterval: d})}
+            />
             {this.renderIntervalInputBtn()}
             <div className="col l12 m12 s12">
-              <p>Note: If you choose a project, the app will ignore your selected hulls</p>
+              <p>Note: If you choose a project, the app will ignore your selected tags</p>
             </div>
             <div className="col l12 m12 s12">
               {
