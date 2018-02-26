@@ -85,3 +85,31 @@ var InputTags = React.createClass({
     );
   }
 });
+var InputIconOptions = React.createClass({
+  handleIconClick: function(choice) {
+    this.props.setState(choice);
+  },
+  renderSelectableIcon: function(choice, isSelected) {
+    return (
+      <div onClick={() => this.handleIconClick(choice)}
+           className={"col l2 m2 s3 selectable-icon " + (isSelected ? "text-green" : "text-grey")}>
+        <i className={`fab fa-${choice} fa-3x`}></i>
+      </div>
+    );
+  },
+  render: function() {
+    return (
+      <div className="col l12 m12 s12">
+        <label>{this.props.label}</label>
+        <div className="container selectable-icons">
+          {
+            this.props.choices.map(d => {
+              let isSelected = this.props.selectedChoice === d;
+              return this.renderSelectableIcon(d, isSelected);
+            })
+          }
+        </div>
+      </div>
+    );
+  },
+});

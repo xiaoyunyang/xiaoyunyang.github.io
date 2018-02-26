@@ -46,12 +46,13 @@
     var App = React.createClass({
       getInitialState: function() {
         return {
-          tags: this.props.hulls,
-          selectedTags: [this.props.hulls[0]],
+          tags: this.props.skills,
+          selectedTags: [this.props.skills[0]],
           intervalChoices: this.props.intervals,
           selectedInterval: this.props.intervals[0],
           projects: this.props.projects,
-          selectedProject: this.props.projects[0],
+          selectedProject: 'None',
+          selectedMedium: this.props.media[0],
           dueDate: ""
         };
       },
@@ -108,8 +109,8 @@
               + date.getMonthName() + ", "
               + date.getFullYear();
       },
-      getLink: function(selectedTags, selectedInterval, selectedProject, dueDate) {
-        var strTopics = 'strTopics=' + function() {
+      getLink: function(selectedTags, selectedInterval, selectedProject, dueDate, medium) {
+        var strTopics = 'topics=' + function() {
           if(selectedProject==='None') {
             return selectedTags.reduce(function(a,b) {
               return (a==='') ? b: a+','+b}, '');
@@ -117,9 +118,10 @@
           return '';
         }();
         var dueDate = 'dueDate=' + dueDate
-        var strInterval = 'strInterval=' + selectedInterval;
-        var strProject = 'strProject=' + selectedProject;
-        return strTopics+' & ' + dueDate +' & '+strInterval+' & '+strProject;
+        var strInterval = 'interval=' + selectedInterval;
+        var strProject = 'project=' + selectedProject;
+        var strMedium = 'medium=' + medium;
+        return `${strTopics} & ${dueDate} & ${strInterval} & ${strProject} & ${strMedium}`;
       },
       renderIntervalInputBtn: function() {
         return (
@@ -191,6 +193,12 @@
                 units={'year'}
                 setState={d => this.setState({selectedInterval: d})}
             />
+            <InputIconOptions
+                choices={this.props.media}
+                label='Delivery Mechanism'
+                selectedChoice={this.state.selectedMedium}
+                setState={d => this.setState({selectedMedium: d})}
+            />
             {this.renderIntervalInputBtn()}
             <div className="col l12 m12 s12">
               <p>Note: If you choose a project, the app will ignore your selected tags</p>
@@ -201,15 +209,17 @@
                   this.state.selectedTags,
                   this.state.selectedInterval,
                   this.state.selectedProject,
-                  this.state.dueDate))
+                  this.state.dueDate,
+                  this.state.selectedMedium))
               }
             </div>
           </div>
         );
       }
     });
-    ReactDOM.render(<App hulls={['C', 'C++', 'Go', 'Java', 'JavaScript', 'Python', 'Scala']}
-                         projects={['Code', 'Video', 'Document', 'Explanation', 'Tutorial', 'Suggestion']}
+    ReactDOM.render(<App skills={['C', 'C++', 'Business', 'Design', 'Go', 'Java', 'JavaScript', 'Python', 'Scala']}
+                         projects={['Code Snippet', 'Data Visualization', 'Explainer Video', 'Grant Writing', 'Logo Design', 'Book Cover Design', 'Business Plan', 'Cartoon', 'Comics', 'Video Editing', 'Infographics']}
+                         media={['github', 'medium', 'google-drive', 'youtube', 'tumblr']}
                          intervals={['1', '2', '5', '10']}/>, document.getElementById('root'));
   </script>
 

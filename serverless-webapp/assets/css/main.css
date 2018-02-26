@@ -317,6 +317,23 @@ img.mod-round, picture.mod-round {
 
 /**** Navbar END ****/
 
+/*** Form Elements BEGIN ***/
+
+.selectable-icons svg:hover {
+  cursor: pointer;
+}
+.selectable-icon :hover {
+  filter: brightness(120%);
+}
+
+/*
+.selectable-icons i:not(.active) a:hover {
+  background-color:  rgba(0, 0, 0, 0) !important;
+}
+*/
+/*** Form Elements END ***/
+
+
 /** Markdown BEGIN **/
 #text-work img {
   margin-left: auto;
@@ -404,9 +421,13 @@ footer.section-brown {
 .text-brown{
   color: #383435;
 }
+.text-grey{
+  color: #757575;
+}
 .text-white {
   color: #e6e7e8;
 }
+
 /** Theme Color END **/
 
 .section-heading {
