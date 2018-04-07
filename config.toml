@@ -52,12 +52,30 @@ canonifyurls = true
   name = "Home"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-home\"></i>"
   url = "/"
+# [[menu.main]]
+#   weight = 2
+#   identifier = "categories"
+#   name = "Categories"
+#   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
+#   url = "/categories"
 [[menu.main]]
   weight = 2
-  identifier = "categories"
-  name = "Categories"
+  identifier = "projects"
+  name = "Projects"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
-  url = "/categories"
+  url = "/projects"
+[[menu.main]]
+  weight = 2
+  identifier = "projects"
+  name = "Projects"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
+  url = "/projects"
+[[menu.main]]
+  weight = 2
+  identifier = "posts"
+  name = "Posts"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
+  url = "/posts"
 [[menu.main]]
   weight = 3
   identifier = "tags"
@@ -65,18 +83,11 @@ canonifyurls = true
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-tags\"></i>"
   url = "/tags"
 [[menu.main]]
-  weight = 4
-  identifier = "archives"
-  name = "Archives"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-archive\"></i>"
-  url = "/archives"
-[[menu.main]]
   weight = 5
   identifier = "about"
   name = "About"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-question\"></i>"
-  url = "/#about"
-
+  url = "/about"
 [[menu.links]]
   weight = 1
   identifier = "github"
@@ -88,7 +99,13 @@ canonifyurls = true
   identifier = "linkedin"
   name = "Linkedin"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-linkedin\"></i>"
-  url = "https://github.com/xiaoyunyang"
+  url = "https://linkedin.com/in/xiaoyun-yang"
+# [[menu.links]]
+#     weight = 1
+#     identifier = "codepen"
+#     name = "Codepen"
+#     pre = "<i class=\"sidebar-button-icon fa fa-lg fa-codepen\"></i>"
+#     url = "https://codepen.io/xiaoyunyang/"
 [[menu.links]]
   weight = 2
   identifier = "medium"
@@ -131,7 +148,7 @@ canonifyurls = true
   # Define the behavior of the sidebar
   # 1: Display extra large sidebar on extra large screen, large sidebar on large screen,
   #    medium sidebar on medium screen and header bar on small screen and
-  # extra large sidebar is swiped on extra large screen and large sidebar on all lower screen (default)
+  #    extra large sidebar is swiped on extra large screen and large sidebar on all lower screen (default)
   # 2: Display large sidebar on large screen, medium sidebar on medium screen and
   #    header bar on small screen and large sidebar is swiped
   # 3: Display medium sidebar on large and medium screen and header bar on small screen and
@@ -146,7 +163,7 @@ canonifyurls = true
   # There is many free CDN like Cloudinary or you can also use indirectly
   # by using services like Google Photos.
   # Current image is on AWS S3 and delivered by AWS CloudFront.
-  # Otherwise put your image in folder `static/_images/` (development)  or in `source/assets/images/` if you can't or don't want to build the theme,
+  # Otherwise put your image in folder `static/images/` (development)  or in `source/assets/images/` if you can't or don't want to build the theme,
   # and use relative url : `your-image.png`
   coverImage = "cover-blue.jpg"
 
@@ -165,7 +182,7 @@ canonifyurls = true
   autoThumbnailImage = true
 
   # Your favicon path, default is "/favicon.png"
-  # favicon = "/favicon.png"
+  favicon = "/favicon.ico"
 
   # Header configuration
   # The link at the right of the header is customizable
@@ -177,8 +194,9 @@ canonifyurls = true
 
   # Custom CSS. Put here your custom CSS files. They are loaded after the theme CSS;
   # they have to be referred from static root. Example
-  # [[params.customCSS]]
-  #   href = "css/mystyle.css"
+
+  [[params.customCSS]]
+     href = "css/custom.css"
 
   # Custom JS. Put here your custom JS files. They are loaded after the theme JS;
   # they have to be referred from static root. Example
