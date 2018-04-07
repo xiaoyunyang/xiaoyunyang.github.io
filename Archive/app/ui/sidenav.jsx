@@ -25,7 +25,7 @@ var SideBinders = React.createClass({
             </a>
           </div>
           <div className="col l2 m2">
-            <a target="_blank" href="https://www.linkedin.com/in/xiaoyun-yang-380a9874">
+            <a target="_blank" href="https://www.linkedin.com/in/xiaoyun-yang">
               <i className="fa fa-linkedin fa-lg"></i>
             </a>
           </div>

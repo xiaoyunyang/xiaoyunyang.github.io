@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../build/react-with-addons.min.js"></script>
+  <script src="../build/react-dom.min.js"></script>
+  <script src="../build/JSXTransformer.js"></script>
+  <link rel='stylesheet' type='text/css' href="../assets/css/main.css">
+  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+  <!-- device scaling-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Query Builder</title>
+</head>
+<body>
+  <div id="nav"><!-- rendered by react --></div>
+  <div class="row white container">
+    <div class="col s12 m12 l10 offset-l1">
+      <h4>Query Builder</h4>
+      <p>Enter parameters in form, get query string.</p>
+      <div id="root"><!-- rendered by react --></div>
+    </div>
+  </div>
+  <div id="footer"><!-- rendered by react --></div>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="../assets/js/materialize.js"></script>
+  <script type="text/jsx" src="topnav.jsx"></script>
+  <script type="text/jsx" src="footer.jsx"></script>
+  <script type="text/jsx" src="formComponents.jsx"></script>
+  <script>
+    Date.prototype.monthNames = [
+      "January", "February", "March",
+      "April", "May", "June",
+      "July", "August", "September",
+      "October", "November", "December"
+    ];
+    Date.prototype.getMonthName = function() {
+      return this.monthNames[this.getMonth()];
+    };
+    Date.prototype.getShortMonthName = function () {
+      return this.getMonthName().substr(0, 3);
+    };
+  </script>
+  <script type="text/jsx">
+    var App = React.createClass({
+      getInitialState: function() {
+        return {
+          tags: this.props.skills,
+          selectedTags: [this.props.skills[0]],
+          intervalChoices: this.props.intervals,
+          selectedInterval: this.props.intervals[0],
+          projects: this.props.projects,
+          selectedProject: 'None',
+          selectedMedium: this.props.media[0],
+          dueDate: ""
+        };
+      },
+      componentDidMount: function() {
+        this.initializeDropdown();
+        this.initializeDatePicker();
+        Materialize.updateTextFields();
+      },
+      initializeDropdown: function() {
+        $('.dropdown-button').dropdown({
+          inDuration: 300,
+          outDuration: 225,
+          constrainWidth: true, // changes width of dropdown to that of the activator
+          hover: false, // Activate on hover
+          gutter: 0, // Spacing from edge
+          belowOrigin: true, // Displays dropdown below the button
+          alignment: 'left', // Displays dropdown with edge aligned to the left of button
+          stopPropagation: false // Stops event propagation
+        });
+      },
+      initializeDatePicker: function() {
+        // datepicker is based on http://amsul.ca/pickadate.js/api/
+        // Fix issue with onClose: https://github.com/amsul/pickadate.js/issues/160
+        $('.datepicker').pickadate({
+          selectMonths: true,
+          selectYears: 15,
+          today: 'Today',
+          clear: 'Clear',
+          close: 'Ok',
+          closeOnSelect: false,
+          onClose: function() {
+            $(":focus").blur();
+          },
+          onSet: function(context) {
+            this.handleDueDateChange(context.select)
+          }.bind(this)
+        });
+      },
+      handleIntervalClickBtn: function(d, e) {
+        var newInterval = d;
+        this.setState({
+          selectedInterval: newInterval
+        });
+      },
+      handleDueDateChange: function(dueDate_ms) {
+        var dueDate = new Date(dueDate_ms);
+
+        this.setState({
+          dueDate: dueDate
+        });
+      },
+      convertDate2String: function(date) {
+        return date.getDate() + " "
+              + date.getMonthName() + ", "
+              + date.getFullYear();
+      },
+      getLink: function(selectedTags, selectedInterval, selectedProject, dueDate, medium) {
+        var strTopics = 'topics=' + function() {
+          if(selectedProject==='None') {
+            return selectedTags.reduce(function(a,b) {
+              return (a==='') ? b: a+','+b}, '');
+          }
+          return '';
+        }();
+        var dueDate = 'dueDate=' + dueDate
+        var strInterval = 'interval=' + selectedInterval;
+        var strProject = 'project=' + selectedProject;
+        var strMedium = 'medium=' + medium;
+        return `${strTopics} & ${dueDate} & ${strInterval} & ${strProject} & ${strMedium}`;
+      },
+      renderIntervalInputBtn: function() {
+        return (
+          <div className="col l12 m12 s12">
+            <h5>Choose Time Interval</h5>
+            <a className='dropdown-button btn' href='#' data-activates='dropdown1'>
+              {'Interval: '+this.state.selectedInterval + (this.state.selectedInterval==='1' ? ' Year' : ' Years')}
+            </a>
+            <ul id='dropdown1' className='dropdown-content'>
+            {
+              this.state.intervalChoices.map(function(d, i) {
+                return (<li><a href="#!" onClick={this.handleIntervalClickBtn.bind(this, d)}>
+                {d + (d==='1' ? ' Year' : ' Years')}
+                </a></li>)
+              }.bind(this))
+            }
+            </ul>
+          </div>
+        );
+      },
+      renderLink: function(link) {
+        return (
+          <div className="row">
+            <div className="input-field col l11 m11 s11">
+                <input value={link} id="link" type="text" className="validate" />
+                <label className="active" for="link">Link</label>
+            </div>
+            <div className="col l1 m1 s1">
+              <a className="btn-floating btn-large waves-effect waves-light">
+                <i className="material-icons">arrow_forward</i>
+              </a>
+            </div>
+          </div>
+        );
+      },
+      renderCalendar: function() {
+        return (
+          <div className="input-field col l11 m11 s11">
+            <h5>{'Due Date'}</h5>
+            <input type="text"
+               placeholder="Click to select date"
+               onChange={this.handleDueDateChange}
+               className="datepicker"/>
+           </div>
+         );
+      },
+      render: function() {
+        return(
+          <div className="row">
+            <InputTags
+                id='select-areas'
+                label='Add Areas'
+                hint='+Topic'
+                tags={this.state.tags}
+                selectedTags={this.state.selectedTags}
+                setState={ds => this.setState({selectedTags: ds})}
+            />
+            {this.renderCalendar()}
+            <InputDropdown
+                id='select-project'
+                label='Choose Project'
+                choices={this.state.projects}
+                setState={d => this.setState({selectedProject: d})}
+            />
+            <InputDropdown
+                id='select-interval'
+                label='Choose Interval'
+                choices={this.state.intervalChoices}
+                units={'year'}
+                setState={d => this.setState({selectedInterval: d})}
+            />
+            <InputIconOptions
+                choices={this.props.media}
+                label='Delivery Mechanism'
+                selectedChoice={this.state.selectedMedium}
+                setState={d => this.setState({selectedMedium: d})}
+            />
+            {this.renderIntervalInputBtn()}
+            <div className="col l12 m12 s12">
+              <p>Note: If you choose a project, the app will ignore your selected tags</p>
+            </div>
+            <div className="col l12 m12 s12">
+              {
+                this.renderLink(this.getLink(
+                  this.state.selectedTags,
+                  this.state.selectedInterval,
+                  this.state.selectedProject,
+                  this.state.dueDate,
+                  this.state.selectedMedium))
+              }
+            </div>
+          </div>
+        );
+      }
+    });
+    ReactDOM.render(<App skills={['C', 'C++', 'Business', 'Design', 'Go', 'Java', 'JavaScript', 'Python', 'Scala']}
+                         projects={['Code Snippet', 'Data Visualization', 'Explainer Video', 'Grant Writing', 'Logo Design', 'Illustration', 'Book Cover Design', 'Business Plan', 'Cartooning', 'Video Editing', 'Infographics']}
+                         media={['github', 'medium', 'google-drive', 'youtube', 'tumblr']}
+                         intervals={['1', '2', '5', '10']}/>, document.getElementById('root'));
+  </script>
+
+</body>
+
+</html>

@@ -220,18 +220,18 @@ h6 {
 /**** Navbar BEGIN ****/
 
 .navbar-brand {
-    padding: 0.70em;
-    width: 200px;
-    height: 64px;
-    display:inline-block;
-    vertical-align:top;
+  padding: 0.70em;
+  width: 200px;
+  height: 64px;
+  display:inline-block;
+  vertical-align:top;
 }
 .navbar-brand img {
-    vertical-align:top;
+  vertical-align:top;
 }
-#signup-btn {
-  background-color: #26a69a;
-  color: white;
+.signup-btn {
+  background-color: #26a69a !important;
+  color: white !important;
 }
 .nav-text-links {
   padding-right: 20px;
@@ -240,13 +240,36 @@ h6 {
   color: #616161;
   font-weight: bolder;
 }
-.nav-text-links li:not(.active) a:hover {
-  background-color:  rgba(0, 0, 0, 0) !important;
+.nav-text-links button {
+  color: #616161;
+  font-weight: bolder;
+  background-color: transparent;
+  border: none;
 }
-.nav-text-links a:hover {
-  color: #383435;
+.nav-text-links i {
+  margin-top: 3px;
 }
 
+.nav-text-links ul:not(.side-nav) li a:hover {
+  color: #383435;
+  background-color: transparent;
+}
+#dropdown-block a {
+  background-color: transparent;
+  color: #616161;
+}
+#dropdown-block a:hover {
+  background-color: transparent;
+  color: #383435;
+  font-weight: bolder;
+}
+.nav-text-links ul li.active {
+  background-color: transparent;
+  border-bottom: 3px solid #383435;
+}
+.nav-text-links ul li.active a:hover {
+  border-bottom: none;
+}
 .mdi-navigation-menu {
   margin-top: 0px !important;
   padding-left: 10px;
@@ -262,17 +285,9 @@ h6 {
 .footer-text-links  a:hover {
   color: #1de9b6 !important;
 }
-.side-nav {
-  width: 300px;
-}
-.side-nav li:not(.active):hover {
-  background: transparent;
-}
-.side-nav a {
-  color: #fafafa;
-}
 .side-nav a:hover {
-  filter: brightness(85%);
+  color: #383435;
+  font-weight: bolder;
 }
 .navbar-img {
   max-width: 72px;
@@ -288,11 +303,8 @@ img.mod-round, picture.mod-round {
   font-weight: 200;
   width: 150px !important;
 }
-#user-dropdown a {
-  font-size: 16px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 20px;
+.dropdown-content a:hover {
+  color: #26a69a;
 }
 .arrow-up {
   width: 0;
@@ -314,8 +326,41 @@ img.mod-round, picture.mod-round {
   margin-left: 38px;
   margin-top: -34px;
 }
+#nav-tabs .tab a {
+  background-color: transparent;
+  color: #26a69a;
+  font-weight: bolder;
+}
+#nav-tabs .indicator {
+  background-color: #26a69a;
+}
 
 /**** Navbar END ****/
+
+/**** profile Page Stuff BEGIN ****/
+#profile-tabs {
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+#profile-tabs .tab a {
+  background-color: transparent;
+  color: #26a69a;
+}
+#profile-tabs .indicator {
+  background-color: #26a69a;
+}
+.hero-profile {
+  padding: 30px;
+}
+.hero-profile img {
+  width: 200px;
+  height: 200px;
+}
+.hero-profile .hero-info {
+  padding-top: 5px;
+}
+
+/**** profile Page Stuff END ****/
+
 
 /*** Form Elements BEGIN ***/
 

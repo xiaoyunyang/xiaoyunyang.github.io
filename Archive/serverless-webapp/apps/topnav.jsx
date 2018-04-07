@@ -12,7 +12,6 @@ var TopNav = React.createClass({
                   <a href="#" data-activates="slide-out" className="bars"><i className="fa fa-bars"></i></a>
                 </li>
               </ul>
-
             </div>
           </nav>
         </div>
@@ -28,7 +27,7 @@ var TopNav = React.createClass({
                    <a href="https://github.com/xiaoyunyang"><i className="fab fa-github fa-lg"></i></a>
                  </div>
                  <div className="col l2 m2 s2">
-                   <a href="https://www.linkedin.com/in/xiaoyun-yang-380a9874/"><i className="fab fa-linkedin fa-lg"></i></a>
+                   <a href="https://www.linkedin.com/in/xiaoyun-yang"><i className="fab fa-linkedin fa-lg"></i></a>
                  </div>
                  <div className="col l2 m2 s2">
                    <a href="https://medium.com/@xiaoyunyang"><i className="fab fa-medium fa-lg"></i></a>

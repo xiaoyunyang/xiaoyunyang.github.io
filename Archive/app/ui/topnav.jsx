@@ -24,7 +24,7 @@ var TopNav = React.createClass({
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://www.linkedin.com/in/xiaoyun-yang-380a9874">
+                    <a target="_blank" href="https://www.linkedin.com/in/xiaoyun-yang">
                       <i className="fa fa-linkedin"></i> Linkedin
                     </a>
                   </li>
