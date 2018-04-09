@@ -6,10 +6,21 @@
     <description>Recent content in Blog on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 07 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Let&#39;s Get Productive With JavaScript</title>
+      <link>http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</link>
+      <pubDate>Mon, 09 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</guid>
+      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages to date. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&amp;rsquo;s console (hit &lt;code&gt;Cmd&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt; if you are using Chrome and Mac) and start typing.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Why I Pay to Work At a Co-working Space</title>
