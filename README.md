@@ -11,7 +11,7 @@
 * [Developer Documentation](https://github.com/kakawait/hugo-tranquilpeak-theme/blob/31c71da9f5b37972ea649d7ae1b54c82e0d353e4/docs/developer.md#requirements)
 * [User Documentation](https://github.com/kakawait/hugo-tranquilpeak-theme/blob/develop/docs/user.md#add-custom-js-or-css-using-configuration)
 * Showcase: [https://philippgaertner.github.io/](https://philippgaertner.github.io/) and [repo](https://github.com/philippgaertner/philippgaertner.github.io)
-* Showcase: [http://robinforest.net](http://robinforest.net)
+* Showcase: [http://robinforest.net](http://robinforest.net) and [repo](https://github.com/robinfhu/personal-site)
 
 
 ### Docs Shortcut

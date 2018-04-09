@@ -21,6 +21,7 @@ Here are some more facts about me in list form:
 * I'm a founder of a startup called LooseLeaf, which is a web app that disrupts the higher education industry.
 * I helped a friend create the first mobile apps for NumberShapes that teaches little kids essential math skills and number sense.
 * I've worked at Naval Reactors as a full time job since college. My job included providing technical oversight of contractor work through reviewing functional requirements and design specification for safety critical embedded systems software.
+* See [My Resume](https://drive.google.com/file/d/0B_uByl2mOTJIVTM3ZWRYRVpIcWs/view) for my skills and experience
 
 ## Education
 * I studied Electrical and Computer Engineering Carnegie Mellon University.
