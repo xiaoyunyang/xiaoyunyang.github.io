@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Category on Xiaoyun Yang</title>
+    <link>http://xiaoyunyang.github.io/categories/category/</link>
+    <description>Recent content in Category on Xiaoyun Yang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://xiaoyunyang.github.io/categories/category/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Projects</title>
+      <link>http://xiaoyunyang.github.io/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://xiaoyunyang.github.io/projects/</guid>
+      <description>Here are some facts about me:
+Work Stuff Stuff Stuff
+Education Stuff Stuff Stuff</description>
+    </item>
+    
+    <item>
+      <title>Xiaoyun Yang</title>
+      <link>http://xiaoyunyang.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://xiaoyunyang.github.io/about/</guid>
+      <description>Hello! I&amp;rsquo;m a software engineer. I make web and mobile applications in my spare time because I like to build things and create products to help make the world a better place for the average person. I live in Washington DC and in the past, I lived in NYC; Pittsburgh; Shanghai, China; and Bonn, Germany. I have a full time job and a side hustle. I&amp;rsquo;m a government employee by day, tech entrepreneur by night.</description>
+    </item>
+    
+  </channel>
+</rss>
