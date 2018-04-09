@@ -20,8 +20,9 @@
 
 ### Tips
 * [Robin's Tips](http://robinforest.net/post/hugo-questions/)
-* 
 
 ### TODO
 
 * [X] Find [character Face Icon](https://www.freepik.com/index.php?goto=74&idfoto=777192&term=user%20avatar) for my favicon
+* [X] Deployment: [host from github](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
+* [] Add Disqus to end of each post
