@@ -22,9 +22,11 @@ disqusShortname = "hugo-tranquilpeak-theme"
 paginate = 7
 canonifyurls = true
 
+# This lets you open external links in another tab
+[blackfriday]
+  hrefTargetBlank = true
 [permalinks]
-  post = "/:year/:month/:slug/"
-
+  post = "/:sections/:title/"
 [taxonomies]
   tag = "tags"
   category = "categories"
@@ -33,7 +35,7 @@ canonifyurls = true
 [author]
   name = "Xiaoyun Yang"
   bio = "Software Engineer. Entrepreneur."
-  job = "Founder"
+  job = "Software Engineer"
   location = "Washington DC"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
   # gravatarEmail = "xiaoyun@looseleafapp.com"
@@ -52,6 +54,19 @@ canonifyurls = true
   name = "Home"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-home\"></i>"
   url = "/"
+[[menu.main]]
+    weight = 2
+    identifier = "projects"
+    name = "Projects"
+    pre = "<i class=\"sidebar-button-icon fa fa-lg fa-code\"></i>"
+    url = "/categories/projects"
+[[menu.main]]
+    weight = 3
+    identifier = "blog"
+    name = "Blog"
+    pre = "<i class=\"sidebar-button-icon fa fa-lg fa-pencil\"></i>"
+    url = "/categories/blog"
+
 # [[menu.main]]
 #   weight = 2
 #   identifier = "categories"
@@ -59,34 +74,22 @@ canonifyurls = true
 #   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
 #   url = "/categories"
 [[menu.main]]
-  weight = 2
-  identifier = "projects"
-  name = "Projects"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
-  url = "/projects"
-[[menu.main]]
-  weight = 2
-  identifier = "projects"
-  name = "Projects"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
-  url = "/projects"
-[[menu.main]]
-  weight = 2
-  identifier = "posts"
-  name = "Posts"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
-  url = "/posts"
-[[menu.main]]
-  weight = 3
+  weight = 4
   identifier = "tags"
   name = "Tags"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-tags\"></i>"
   url = "/tags"
+# [[menu.main]]
+#   weight = 4
+#   identifier = "archives"
+#   name = "Archives"
+#   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-archive\"></i>"
+#   url = "/archives"
 [[menu.main]]
   weight = 5
   identifier = "about"
   name = "About"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-question\"></i>"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-user\"></i>"
   url = "/about"
 [[menu.links]]
   weight = 1
@@ -95,7 +98,14 @@ canonifyurls = true
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-github\"></i>"
   url = "https://github.com/xiaoyunyang"
 [[menu.links]]
-  weight = 1
+  weight = 2
+  identifier = "medium"
+  name = "Medium"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-medium\"></i>"
+  url = "https://medium.com/@xiaoyunyang"
+
+[[menu.links]]
+  weight = 3
   identifier = "linkedin"
   name = "Linkedin"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-linkedin\"></i>"
@@ -106,15 +116,9 @@ canonifyurls = true
 #     name = "Codepen"
 #     pre = "<i class=\"sidebar-button-icon fa fa-lg fa-codepen\"></i>"
 #     url = "https://codepen.io/xiaoyunyang/"
-[[menu.links]]
-  weight = 2
-  identifier = "medium"
-  name = "Medium"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-medium\"></i>"
-  url = "https://medium.com/@xiaoyunyang"
 
-[[menu.misc]]
-  weight = 2
+[[menu.links]]
+  weight = 4
   identifier = "email"
   name = "Email Me"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-envelope\"></i>"

@@ -4,6 +4,7 @@
     height: 180px;
     border-radius: 1880px;
     margin-bottom: 5px;
+    margin-top: 35px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   }
@@ -21,7 +22,13 @@
   }
 }
 
+#bottom-bar .post-action-nav {
+  margin-left: 80px;
+}
 
+#btn-open-sidebar {
+  margin-left: 15px;
+}
 .sidebar-profile-name {
   letter-spacing: .05em;
 /*  font-size: 5em; /* 40px/16=2.5em */ */
