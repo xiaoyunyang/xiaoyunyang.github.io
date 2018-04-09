@@ -6,6 +6,8 @@
     <description>Recent content in Projects on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
+    <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
     <lastBuildDate>Sat, 07 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/categories/projects/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +17,7 @@
       <title>Using Hugo To Build A Personal Brand Website</title>
       <link>http://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/</link>
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
-      
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s not always clear why we need need a personal website. But here&amp;rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like &lt;a href=&#34;https://gohugo.io/&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt;.&lt;/p&gt;
 
@@ -26,7 +28,7 @@
       <title>Building an Isomorphic Webapp</title>
       <link>http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</link>
       <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
-      
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;
 

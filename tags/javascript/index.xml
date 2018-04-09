@@ -6,6 +6,8 @@
     <description>Recent content in Javascript on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
+    <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
     <lastBuildDate>Mon, 09 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +17,7 @@
       <title>Let&#39;s Get Productive With JavaScript</title>
       <link>http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</link>
       <pubDate>Mon, 09 Apr 2018 00:00:00 +0000</pubDate>
-      
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</guid>
       <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages to date. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&amp;rsquo;s console (hit &lt;code&gt;Cmd&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt; if you are using Chrome and Mac) and start typing.&lt;/p&gt;
 
@@ -26,7 +28,7 @@
       <title>Building an Isomorphic Webapp</title>
       <link>http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</link>
       <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
-      
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;
 
