@@ -7,12 +7,16 @@ tags:
   - JavaScript
   - WebApp
 thumbnailImagePosition: left
-thumbnailImage: http://blogs.worldbank.org/education/files/education/Education/thefuture_0.jpg
+thumbnailImage: /post/images/theFuture.png
 ---
 
 I've always lived by the "Separation of Concern" principle when it comes to software design.  Recently, I've came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.
 
 <!--more-->
+
+## Overview
+At a high level, isomorphic web app is a design pattern that renders the same web page from both the server side and the client side. In the isomorphic web app starter project built using React.js, Node.js, we take advantage of the fact that both the server and client are built in JavaScript. This enables us to use the same code for rendering the web pages for both the server and client rendering. The complicated part is to build a server wrapper and a client wrapper for the shared code.
+
 
 ## Motivation
 For web development, the Single Page Application (SPA) that talks to a server API was once the gold standard as it provides the most clear division of responsibilities between the server app and client app. The server serves the data (usually JSON) to the client app to render the web page in the browser. What could go wrong with this approach? Performance.
@@ -64,11 +68,11 @@ $ npm start
 
 Here's a preview for what it looks like:
 
-![](https://cdn-images-1.medium.com/max/2000/1*cQ2o8XaiQqbyZvcApbDg9w.png)
+![](/post/images/iso1.png)
 
-![](https://cdn-images-1.medium.com/max/2000/1*ber268-teOhRYoJGN1hwYQ.png)
+![](/post/images/iso2.png)
 
-![](https://cdn-images-1.medium.com/max/2000/1*kQvyPtUCONOxDUVPOhy6xw.png)
+![](/post/images/iso3.png)
 
 
 ### Bottomline

@@ -6,7 +6,7 @@ categories:
 tags:
   - JavaScript
 thumbnailImagePosition: top
-thumbnailImage: https://jj09.net/wp-content/uploads/2015/11/developer.png
+thumbnailImage: /post/images/jsDev.png
 ---
 
 JavaScript is one of the most popular and versatile languages to date. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser's console (hit `Cmd`+`Shift`+`C` if you are using Chrome and Mac) and start typing.

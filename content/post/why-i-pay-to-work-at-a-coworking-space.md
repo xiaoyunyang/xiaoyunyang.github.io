@@ -7,8 +7,8 @@ tags:
   - Life
   - Productivity
 thumbnailImagePosition: left
-thumbnailImage: https://s3-media1.fl.yelpcdn.com/bphoto/DAfyW9sKflDrgV4lUI61PQ/ls.jpg
-coverImage: https://images.unsplash.com/photo-1516342243255-ac2202f9f149?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=75dacc47b95222986df91d7786c40b25&auto=format&fit=crop&w=1650&q=80
+thumbnailImage: /post/images/working.png
+coverImage: /post/images/working.png
 comments: true
 showTags: true
 showPagination: true
@@ -43,6 +43,6 @@ I got a membership to a local co-working space called [Cove](https://cove.is/). 
 
 **Amenities**:  Every Cove comes with coffee. Unlimited coffee. There are also sparkling water, soda, and snacks. There are social spaces to work and talk and there are quiet spaces to work if you need to concentrate. The workspaces are very nice with plants everywhere and nice furniture. You can work at a big table, an small table, a booth, a couch, at the kitchen counter. This is exactly what I want - variety.
 
-![](https://s3-media1.fl.yelpcdn.com/bphoto/L4kLnUSLO6XKKErSFBPXNQ/o.jpg)
+![](/post/images/cove1.png)
 
-![](https://s3-media2.fl.yelpcdn.com/bphoto/vl1j57W8VT3ulxkJ1BQ_ug/o.jpg)
+![](/post/images/cove2.png)

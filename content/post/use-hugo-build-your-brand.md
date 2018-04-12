@@ -8,8 +8,8 @@ tags:
   - Career
   - Productivity
 thumbnailImagePosition: left
-thumbnailImage: http://danrivernonprofits.org/wp-content/uploads/2018/03/personal-brand-stand-out-1024x593.jpg
-coverImage: http://danrivernonprofits.org/wp-content/uploads/2018/03/personal-brand-stand-out-1024x593.jpg
+thumbnailImage: /post/images/unique.png
+coverImage: /post/images/unique.png
 ---
 
 It's not always clear why we need need a personal website. But here's the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like [Hugo](https://gohugo.io/).
