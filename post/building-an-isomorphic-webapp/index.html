@@ -264,6 +264,10 @@
 
 <p></p>
 
+<h2 id="overview">Overview</h2>
+
+<p>At a high level, isomorphic web app is a design pattern that renders the same web page from both the server side and the client side. In the isomorphic web app starter project built using React.js, Node.js, we take advantage of the fact that both the server and client are built in JavaScript. This enables us to use the same code for rendering the web pages for both the server and client rendering. The complicated part is to build a server wrapper and a client wrapper for the shared code.</p>
+
 <h2 id="motivation">Motivation</h2>
 
 <p>For web development, the Single Page Application (SPA) that talks to a server API was once the gold standard as it provides the most clear division of responsibilities between the server app and client app. The server serves the data (usually JSON) to the client app to render the web page in the browser. What could go wrong with this approach? Performance.</p>
@@ -339,6 +343,8 @@ $ npm start
 
   <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/webapp/">WebApp</a>
 
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/open-source/">Open Source</a>
+
                   </div>
                 
               
@@ -358,7 +364,7 @@ $ npm start
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/why-the-mooc-business-model-is-flawed/" data-tooltip="Why The MOOC Business Model Is Flawed">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -461,7 +467,7 @@ s.setAttribute('data-timestamp', +new Date());
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/why-the-mooc-business-model-is-flawed/" data-tooltip="Why The MOOC Business Model Is Flawed">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -667,6 +673,44 @@ s.setAttribute('data-timestamp', +new Date());
             <hr>
           </div>
         
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/why-the-mooc-business-model-is-flawed/">
+                <h3 class="media-heading">Why The MOOC Business Model Is Flawed</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>The average completion rate of Online Open Course (MOOC) certification programs is abysmally low.  A <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2889436" target="_blank">report published in 2016</a> by researchers at Harvard and MIT based on 4 years of data indicated an average certification completion rate of just 5.5%. This does not discredit MOOCs to be a good source of quality education content for those looking for good information to improve their understanding for a particular subject; however, the depressing statistics underlines a deeper issue with the ineffectiveness of using a college curriculum to steer people&rsquo;s learning.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/">
+                <h3 class="media-heading">How Functional Programming Promotes Developer Productivity</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Functional Programming is more than just a buzzword these days. It&rsquo;s super useful and makes you rethink everything you&rsquo;ve learned about software.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
       </div>
     </div>
     <div class="modal-footer">
@@ -674,7 +718,7 @@ s.setAttribute('data-timestamp', +new Date());
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         4 posts found
+         6 posts found
       </p>
     </div>
   </div>

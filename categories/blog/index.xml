@@ -35,5 +35,27 @@
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Why The MOOC Business Model Is Flawed</title>
+      <link>http://xiaoyunyang.github.io/post/why-the-mooc-business-model-is-flawed/</link>
+      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/why-the-mooc-business-model-is-flawed/</guid>
+      <description>&lt;p&gt;The average completion rate of Online Open Course (MOOC) certification programs is abysmally low.  A &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2889436&#34; target=&#34;_blank&#34;&gt;report published in 2016&lt;/a&gt; by researchers at Harvard and MIT based on 4 years of data indicated an average certification completion rate of just 5.5%. This does not discredit MOOCs to be a good source of quality education content for those looking for good information to improve their understanding for a particular subject; however, the depressing statistics underlines a deeper issue with the ineffectiveness of using a college curriculum to steer people&amp;rsquo;s learning.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>How Functional Programming Promotes Developer Productivity</title>
+      <link>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</link>
+      <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</guid>
+      <description>&lt;p&gt;Functional Programming is more than just a buzzword these days. It&amp;rsquo;s super useful and makes you rethink everything you&amp;rsquo;ve learned about software.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

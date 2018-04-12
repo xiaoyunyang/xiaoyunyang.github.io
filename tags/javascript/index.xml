@@ -35,5 +35,16 @@
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>How Functional Programming Promotes Developer Productivity</title>
+      <link>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</link>
+      <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</guid>
+      <description>&lt;p&gt;Functional Programming is more than just a buzzword these days. It&amp;rsquo;s super useful and makes you rethink everything you&amp;rsquo;ve learned about software.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

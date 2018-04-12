@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Open Source on Xiaoyun Yang</title>
+    <link>http://xiaoyunyang.github.io/tags/open-source/</link>
+    <description>Recent content in Open Source on Xiaoyun Yang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
+    <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
+    <lastBuildDate>Thu, 08 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://xiaoyunyang.github.io/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Building an Isomorphic Webapp</title>
+      <link>http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</link>
+      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
