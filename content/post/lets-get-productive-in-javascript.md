@@ -13,6 +13,10 @@ JavaScript is one of the most popular and versatile languages to date. You can b
 
 <!--more-->
 
+{{< alert info >}} This is a Live Document. I will be updating it periodically. {{< /alert >}}
+
+
+
 <!-- toc -->
 
 # Array

@@ -6,6 +6,7 @@ categories:
 tags:
   - JavaScript
   - WebApp
+  - Open Source
 thumbnailImagePosition: left
 thumbnailImage: /post/images/theFuture.png
 ---
