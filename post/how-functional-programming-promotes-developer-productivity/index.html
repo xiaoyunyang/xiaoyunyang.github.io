@@ -264,11 +264,29 @@
 
 <p></p>
 
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#key-and-cool-ideas-from-fp">Key (and cool) Ideas From FP</a>
+<ul>
+<li><a href="#functional-programming-design-patterns">Functional Programming Design Patterns</a></li>
+<li><a href="#types">Types</a></li>
+<li><a href="#referential-transparency-rt">Referential Transparency (RT)</a></li>
+<li><a href="#laziness">Laziness</a></li>
+<li><a href="#monad">Monad</a></li>
+<li><a href="#monoid">Monoid</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+
+<h2 id="motivation">Motivation</h2>
+
 <div class="alert info ">
   <p>This article was originally <a href="https://medium.com/@xiaoyunyang/why-functional-programming-from-a-developer-productivity-perspective-69c4b8100776" target="_blank">published on Medium</a> before I had my own blog.</p>
 </div>
-
-<h2 id="motivation">Motivation</h2>
 
 <p><strong>Why Learn Functional Programming (FP)?</strong></p>
 
@@ -288,7 +306,7 @@ System.out.println(&quot;The average of &quot; + Arrays.toString(arr) + &quot; i
 //&gt; The average of [1.0, 2.0, 3.0] is 2.0
 </code></pre>
 
-<p>The functional programming solution is much shorter and higher level:</p>
+<p>The functional programming solution is much shorter and more high level:</p>
 
 <pre><code class="language-scala">//In Scala
 def list = List(1.0, 2.0 ,3.0)
@@ -651,7 +669,7 @@ strLen([res3, res2, res1]) //&gt; 1
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/how-formal-education-could-close-doors-to-opportunities/" data-tooltip="How Formal Education Could Close Doors To Opportunities">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/how-formal-education-closes-doors-to-opportunities/" data-tooltip="How Formal Education Closes Doors To Opportunities">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -704,7 +722,7 @@ strLen([res3, res2, res1]) //&gt; 1
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -754,7 +772,7 @@ s.setAttribute('data-timestamp', +new Date());
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/how-formal-education-could-close-doors-to-opportunities/" data-tooltip="How Formal Education Could Close Doors To Opportunities">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/how-formal-education-closes-doors-to-opportunities/" data-tooltip="How Formal Education Closes Doors To Opportunities">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -807,7 +825,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -895,6 +913,44 @@ s.setAttribute('data-timestamp', +new Date());
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/employee-loyalty-something-to-be-desired/">
+                <h3 class="media-heading">Employee Loyalty: Something To Be Desired?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>An article entitled <a href="https://www.linkedin.com/pulse/why-managers-should-care-employee-loyalty-brigette-hyacinth/" target="_blank">Why Managers Should Care about Employee Loyalty</a> was posted on LinkedIn and here&rsquo;s why I disagree with the notion that employee loyalty is beneficial for either the employee or the employer.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/">
+                <h3 class="media-heading">Everything You Need To Know About Git</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This is a cheatsheet of all the git commands that I&rsquo;ve ever used in my career as a programmer and contributor of open source projects. I&rsquo;m not a git power user (I use about three commands on a daily basis). From time to time, I still use this cheatsheet to for a quick lookup of a special command.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/">
                 <h3 class="media-heading">Let&#39;s Get Productive With JavaScript</h3>
               </a>
@@ -971,8 +1027,8 @@ s.setAttribute('data-timestamp', +new Date());
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/how-formal-education-could-close-doors-to-opportunities/">
-                <h3 class="media-heading">How Formal Education Could Close Doors To Opportunities</h3>
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/how-formal-education-closes-doors-to-opportunities/">
+                <h3 class="media-heading">How Formal Education Closes Doors To Opportunities</h3>
               </a>
               <span class="media-meta">
                 <span class="media-date text-small">
@@ -1013,7 +1069,7 @@ s.setAttribute('data-timestamp', +new Date());
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         6 posts found
+         8 posts found
       </p>
     </div>
   </div>

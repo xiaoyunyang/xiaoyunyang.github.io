@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://xiaoyunyang.github.io/post/employee-loyalty-something-to-be-desired/</loc>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/</loc>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</loc>
     <lastmod>2018-04-09T00:00:00+00:00</lastmod>
   </url>
@@ -23,7 +33,7 @@
   </url>
   
   <url>
-    <loc>http://xiaoyunyang.github.io/post/how-formal-education-could-close-doors-to-opportunities/</loc>
+    <loc>http://xiaoyunyang.github.io/post/how-formal-education-closes-doors-to-opportunities/</loc>
     <lastmod>2018-01-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -39,19 +49,19 @@
   
   <url>
     <loc>http://xiaoyunyang.github.io/categories/blog/</loc>
-    <lastmod>2018-04-09T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xiaoyunyang.github.io/tags/career/</loc>
-    <lastmod>2018-04-07T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xiaoyunyang.github.io/categories/</loc>
-    <lastmod>2018-04-09T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -68,7 +78,7 @@
   
   <url>
     <loc>http://xiaoyunyang.github.io/tags/life/</loc>
-    <lastmod>2018-04-07T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -80,13 +90,13 @@
   
   <url>
     <loc>http://xiaoyunyang.github.io/post/</loc>
-    <lastmod>2018-04-09T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xiaoyunyang.github.io/tags/productivity/</loc>
-    <lastmod>2018-04-07T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -113,7 +123,13 @@
   
   <url>
     <loc>http://xiaoyunyang.github.io/tags/</loc>
-    <lastmod>2018-04-07T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://xiaoyunyang.github.io/tags/tutorial/</loc>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -125,7 +141,7 @@
   
   <url>
     <loc>http://xiaoyunyang.github.io/</loc>
-    <lastmod>2018-04-09T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
