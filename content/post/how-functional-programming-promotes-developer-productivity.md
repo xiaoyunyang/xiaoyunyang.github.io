@@ -13,9 +13,11 @@ Functional Programming is more than just a buzzword these days. It's super usefu
 
 <!--more-->
 
-{{< alert info >}} This article was originally [published on Medium](https://medium.com/@xiaoyunyang/why-functional-programming-from-a-developer-productivity-perspective-69c4b8100776) before I had my own blog. {{< /alert >}}
+<!--toc-->
 
 ## Motivation
+
+{{< alert info >}} This article was originally [published on Medium](https://medium.com/@xiaoyunyang/why-functional-programming-from-a-developer-productivity-perspective-69c4b8100776) before I had my own blog. {{< /alert >}}
 
 __Why Learn Functional Programming (FP)?__
 
@@ -36,7 +38,7 @@ System.out.println("The average of " + Arrays.toString(arr) + " is "+ave);
 //> The average of [1.0, 2.0, 3.0] is 2.0
 ```
 
-The functional programming solution is much shorter and higher level:
+The functional programming solution is much shorter and more high level:
 
 ```scala
 //In Scala

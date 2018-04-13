@@ -5,6 +5,7 @@ categories:
   - blog
 tags:
   - JavaScript
+  - Tutorial
 thumbnailImagePosition: top
 thumbnailImage: /post/images/jsDev.png
 ---
