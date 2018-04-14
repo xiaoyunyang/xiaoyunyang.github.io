@@ -8,10 +8,32 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Sat, 07 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/categories/projects/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Creating LooseLeaf: A Platform To Support The Future Of Work</title>
+      <link>http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</guid>
+      <description>&lt;p&gt;LooseLeaf is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Maintaining a Repository Of Learning For Scala</title>
+      <link>http://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</guid>
+      <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34; target=&#34;_blank&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Using Hugo To Build A Personal Brand Website</title>
