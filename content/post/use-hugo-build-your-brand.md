@@ -23,6 +23,10 @@ I need a website to:
 2. Blog about programming and my other interests, and
 3. Share information about me that would be of interest to a recruiter, including my resume, email, and links to my Github, Medium, and LinkedIn pages.
 
+Being able to easily generate and publish blog posts is another extremely beneficial, but not required featured.
+
+I've always find myself in a situation where I have thoughts and ideas but no single place to record and consolidate them all. There are times when I would give thoughtful comments for an article I read on Medium or Linkedin or go on some long rant on Facebook and thinking to myself: "man, I'm not going to be able to easily find this again when I want to share it with another person".
+
 ## Why Use A Static Site Generator
 My old personal website was built with vanilla HTML, React, and [marked](https://github.com/markedjs/marked) to dynamically load markdown files. It was high maintenance and not scalable. Although I kinda set the website up to separate content from code, I still had to go into the code when I want to add more pages to the website. The website was set up to display three pages: Work, About, and Writing, which included links to articles I [published on Medium](https://medium.com/@xiaoyunyang/latest).
 

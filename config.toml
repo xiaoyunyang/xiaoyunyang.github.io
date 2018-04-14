@@ -107,7 +107,7 @@ canonifyurls = true
 
 [[menu.links]]
   weight = 3
-  identifier = "linkedin"
+  identifier = "linkedIn"
   name = "Linkedin"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-linkedin\"></i>"
   url = "https://linkedin.com/in/xiaoyun-yang"

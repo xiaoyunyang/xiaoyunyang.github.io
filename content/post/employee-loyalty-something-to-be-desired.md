@@ -10,7 +10,7 @@ thumbnailImagePosition: left
 thumbnailImage: /post/images/careerSad.png
 
 ---
-An article entitled [Why Managers Should Care about Employee Loyalty](https://www.linkedin.com/pulse/why-managers-should-care-employee-loyalty-brigette-hyacinth/) was posted on LinkedIn and here's why I disagree with the notion that employee loyalty is beneficial for either the employee or the employer.
+An article entitled [Why Managers Should Care about Employee Loyalty](https://www.linkedin.com/pulse/why-managers-should-care-employee-loyalty-brigette-hyacinth/) was posted on LinkedIn and here's why I think employee loyalty is beneficial for neither the employee nor the employer.
 
 <!--more-->
 

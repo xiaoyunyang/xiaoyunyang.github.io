@@ -1,6 +1,6 @@
 ---
 title: "Let's Get Productive With JavaScript"
-date: 2018-04-09
+date: 2018-02-08
 categories:
   - blog
 tags:

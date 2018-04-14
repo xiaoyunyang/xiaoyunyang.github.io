@@ -21,7 +21,7 @@ With free access to top notch college education to all with a computer and inter
 
 The MOOCs phenomenon demonstrates the underlying issue with the higher education system taken to the extreme.
 
-## The Value Of Formal Education
+## The Value of Formal Education
 
 Both Universities and MOOCs deliver the same learning content. The learning material and course work are created and sanctioned by professors at universities. Whether you get the learning content from a MOOC platform online or a lecture hall, the quality of the educational product is the same.
 
