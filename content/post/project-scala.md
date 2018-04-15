@@ -1,6 +1,6 @@
 ---
 title: "Maintaining a Repository Of Learning For Scala"
-date: 2018-04-12
+date: 2017-03-12
 categories:
   - projects
 tags:
@@ -18,8 +18,6 @@ I maintain a knowledge repo on Github called [coursera-scala-specialization](htt
 One of the main design goals of the Scala programming language is to enable developers to tackle the complexity of programming multicore and distributed systems. Scala runs on the JVM and is a more popular language than Haskell with a lot of community and open source software such as Play, Spark, Akka, Kafka, and big users such as Twitter, LinkedIn, and Coursera.
 
 Additionally, Scala has a strong type checking system and is statically typed (meaning bugs get caught at compile time vice runtime. With Scala, I don't have to deal with much bugs at all because compiler and type checking helps out tremendously and functional programming reduces complexity of code, thus reducing bugs. For mobile applications, Scala, a statically typed language, enjoys advantages over other JVM languages, such as JRuby or Groovy, because statically typed languages run faster, consume less memory, and generally are better optimized.
-
-<br><br>
 
 ![scala is a statically typed language](/post/images/scalaTypeSystem.png)
 <p class="image-caption">[Stack Exchange Graphic](http://programmers.stackexchange.com/questions/22769/what-programming-language-generates-fewest-hard-to-find-bugs) answer for what programming language generates the fewest hard-to-find bugs</p>
