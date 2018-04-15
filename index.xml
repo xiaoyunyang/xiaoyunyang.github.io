@@ -8,21 +8,10 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Fri, 13 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>7 Profound Experiences Growing Up In China</title>
-      <link>http://xiaoyunyang.github.io/post/7-profound-experiences-growing-up-in-china/</link>
-      <pubDate>Fri, 13 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/7-profound-experiences-growing-up-in-china/</guid>
-      <description>&lt;p&gt;I grew up in China from 1991 to 2001. During these 10 years, China had undergone a lot of economic growth which effected in drastic changes in the everyday lives of the Chinese people. I was a child growing up in a country and a city full of contradiction, change, and uncertainty. This has shaped my behavior and unique perspectives, values, and world view. Here are some of the most profound experiences from my childhood that made me who I am.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Creating LooseLeaf: A Platform To Support The Future Of Work</title>
@@ -58,17 +47,6 @@
     </item>
     
     <item>
-      <title>Maintaining a Repository Of Learning For Scala</title>
-      <link>http://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</link>
-      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</guid>
-      <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34; target=&#34;_blank&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Using Hugo To Build A Personal Brand Website</title>
       <link>http://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/</link>
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
@@ -88,6 +66,15 @@
       <description>&lt;p&gt;If you asked me to give you three facts about myself, I would tell you (1) I&amp;rsquo;m a evening and weekend entrepreneur, (2) when I start working on something I enjoy, I can&amp;rsquo;t put it down, and (3) I love coffee. This a formula for disaster because I have a full time job that I have to show up to by 9AM and I&amp;rsquo;m a normal human person who needs at least 6 hours of sleep.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Building A React Native Travel App</title>
+      <link>http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</link>
+      <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</guid>
+      <description>&lt;p&gt;When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -130,6 +117,17 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</guid>
       <description>&lt;p&gt;Functional Programming is more than just a buzzword these days. It&amp;rsquo;s super useful and makes you rethink everything you&amp;rsquo;ve learned about software.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Maintaining a Repository Of Learning For Scala</title>
+      <link>http://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</link>
+      <pubDate>Sun, 12 Mar 2017 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</guid>
+      <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34; target=&#34;_blank&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
