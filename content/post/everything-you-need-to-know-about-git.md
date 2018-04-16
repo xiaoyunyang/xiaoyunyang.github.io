@@ -165,48 +165,48 @@ Some useful things you can do when things go haywire or just to get the most use
 ## Revert to previous version of code
 Revert your local repo to the previously committed version when everything still worked:
 
-	```
-	$ git log
+```
+$ git log
 
-	# git will display the following:
-	# commit: <commitID>
-	# ...
+# git will display the following:
+# commit: <commitID>
+# ...
 
-	# type q to exit the log
-	:
+# type q to exit the log
+:
 
-	# force your local to the commitID
-	$ git reset --hard <commitID>
+# force your local to the commitID
+$ git reset --hard <commitID>
 
-	# force your remote to the commitID
-	$ git push --force origin master
+# force your remote to the commitID
+$ git push --force origin master
 
-	```
+```
 
 ## Switching between branches
 
-	```
-	# checkout the alias of the remote e.g., origin
-	$ git remote -v
+```
+# checkout the alias of the remote e.g., origin
+$ git remote -v
 
-	# switch to a new branch called boilerplate
-	$ git checkout -b boilerplate
+# switch to a new branch called boilerplate
+$ git checkout -b boilerplate
 
-	# look at all your branches
-	$ git branch
-	# you should see git display the following branches for origin:
-	# b1 = master and b2 = boilerplate
+# look at all your branches
+$ git branch
+# you should see git display the following branches for origin:
+# b1 = master and b2 = boilerplate
 
-	# push local repo to boilerplate branch
-	$ git push origin boilerplate  
+# push local repo to boilerplate branch
+$ git push origin boilerplate  
+```
 
-	```
 ## Git won't let me commit
 Your local repo should never go out of sync with your remote repo. Git prevents you from pushing changes from your local repo to your remote repo if there are changes in your remote repo that you don't have locally. If you don't want to sync with your local repo with the remote and you just want to overwrite the remote repo with whatever you have locally, this is a useful command:
 
-	```
-	$ git push origin master --force
-	```
+```
+$ git push origin master --force
+```
 
 
 4. If you accidentally initiated a directory as a git repo, this undos the `git init`:

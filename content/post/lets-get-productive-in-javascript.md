@@ -16,8 +16,6 @@ JavaScript is one of the most popular and versatile languages to date. You can b
 
 {{< alert info >}} This is a Live Document. I will be updating it periodically. {{< /alert >}}
 
-
-
 <!-- toc -->
 
 # Array
@@ -51,9 +49,30 @@ vals.map(v => ({val: v, : valIncrementer(v, false), disabled: valIncrementer(v, 
 ```
 
 ## Get stuff From an array
-```javascript
+
+Given an array:
+```JavaScript
 const arr = [1, 2, 3, 4];
+```
+We want to get elements from this array. How?
+
+```javascript
+arr[0] //> 1
+arr[3] //> 4
+```
+
+Using destructuring (ES6):
+
+```javascript
 const [first, second] = arr;
+first //> 1
+second //> 2
+```
+
+```JavaScript
+let [first, ...rest] = arr;
+first //> 1
+rest //> [2, 3, 4]
 ```
 
 ## Get last elem of an array
@@ -62,7 +81,7 @@ Don't use `pop` unless you want to mutate the array:
 
 ```javascript
 var arr = [1,2,3]
-arr.pop() //>3
+arr.pop() //> 3
 arr //>[1, 2] ... Very Bad. Your original array got changed
 
 const arr2 = [1,2,3]
@@ -80,6 +99,12 @@ Do this instead:
 let arr = [1,2,3]
 arr.slice(-1)[0] //> 3
 arr //> [1, 2, 3]
+```
+
+Or you can try the ES6 syntax for deconstructuring:
+
+```JavaScript
+let [last] = arr.slice(-1)
 ```
 
 More on `Array.slice`:
