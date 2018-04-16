@@ -348,8 +348,27 @@ vals.map(v =&gt; ({val: v, : valIncrementer(v, false), disabled: valIncrementer(
 
 <h2 id="get-stuff-from-an-array">Get stuff From an array</h2>
 
-<pre><code class="language-javascript">const arr = [1, 2, 3, 4];
-const [first, second] = arr;
+<p>Given an array:</p>
+
+<pre><code class="language-JavaScript">const arr = [1, 2, 3, 4];
+</code></pre>
+
+<p>We want to get elements from this array. How?</p>
+
+<pre><code class="language-javascript">arr[0] //&gt; 1
+arr[3] //&gt; 4
+</code></pre>
+
+<p>Using destructuring (ES6):</p>
+
+<pre><code class="language-javascript">const [first, second] = arr;
+first //&gt; 1
+second //&gt; 2
+</code></pre>
+
+<pre><code class="language-JavaScript">let [first, ...rest] = arr;
+first //&gt; 1
+rest //&gt; [2, 3, 4]
 </code></pre>
 
 <h2 id="get-last-elem-of-an-array">Get last elem of an array</h2>
@@ -357,7 +376,7 @@ const [first, second] = arr;
 <p>Don&rsquo;t use <code>pop</code> unless you want to mutate the array:</p>
 
 <pre><code class="language-javascript">var arr = [1,2,3]
-arr.pop() //&gt;3
+arr.pop() //&gt; 3
 arr //&gt;[1, 2] ... Very Bad. Your original array got changed
 
 const arr2 = [1,2,3]
@@ -374,6 +393,11 @@ arr //&gt; [1] ... arr got changed even though arr3 did the pop
 <pre><code class="language-javascript">let arr = [1,2,3]
 arr.slice(-1)[0] //&gt; 3
 arr //&gt; [1, 2, 3]
+</code></pre>
+
+<p>Or you can try the ES6 syntax for deconstructuring:</p>
+
+<pre><code class="language-JavaScript">let [last] = arr.slice(-1)
 </code></pre>
 
 <p>More on <code>Array.slice</code>:</p>

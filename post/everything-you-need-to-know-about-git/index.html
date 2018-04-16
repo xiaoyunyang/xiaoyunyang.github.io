@@ -434,8 +434,7 @@ $ git push origin master
 
 <p>Revert your local repo to the previously committed version when everything still worked:</p>
 
-<pre><code>```
-$ git log
+<pre><code>$ git log
 
 # git will display the following:
 # commit: &lt;commitID&gt;
@@ -450,13 +449,11 @@ $ git reset --hard &lt;commitID&gt;
 # force your remote to the commitID
 $ git push --force origin master
 
-```
 </code></pre>
 
 <h2 id="switching-between-branches">Switching between branches</h2>
 
-<pre><code>```
-# checkout the alias of the remote e.g., origin
+<pre><code># checkout the alias of the remote e.g., origin
 $ git remote -v
 
 # switch to a new branch called boilerplate
@@ -469,17 +466,13 @@ $ git branch
 
 # push local repo to boilerplate branch
 $ git push origin boilerplate  
-
-```
 </code></pre>
 
 <h2 id="git-won-t-let-me-commit">Git won&rsquo;t let me commit</h2>
 
 <p>Your local repo should never go out of sync with your remote repo. Git prevents you from pushing changes from your local repo to your remote repo if there are changes in your remote repo that you don&rsquo;t have locally. If you don&rsquo;t want to sync with your local repo with the remote and you just want to overwrite the remote repo with whatever you have locally, this is a useful command:</p>
 
-<pre><code>```
-$ git push origin master --force
-```
+<pre><code>$ git push origin master --force
 </code></pre>
 
 <ol>
