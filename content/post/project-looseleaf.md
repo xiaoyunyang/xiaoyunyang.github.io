@@ -10,7 +10,7 @@ thumbnailImagePosition: left
 thumbnailImage: /post/images/looseleaf/logo.png
 ---
 
-LooseLeaf is a passion project and a startup I've been building while serving a 5 year commitment in the military. I've been creating prototypes and iterating on the concept of LooseLeaf since 2015.
+[LooseLeaf](http://looseleafapp.com) is a passion project and a startup I've been building while serving a 5 year commitment in the military. I've been creating prototypes and iterating on the concept of LooseLeaf since 2015.
 
 <!--more-->
 
