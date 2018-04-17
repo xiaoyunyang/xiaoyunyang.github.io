@@ -28,10 +28,10 @@
     
 
     
-    <meta name="description" content="JavaScript is one of the most popular and versatile languages to date. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit Cmd&#43;Shift&#43;C if you are using Chrome and Mac) and start typing.
+    <meta name="description" content="JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit Cmd&#43;Shift&#43;C if you are using Chrome and Mac) and start typing.
 
 ">
-    <meta property="og:description" content="JavaScript is one of the most popular and versatile languages to date. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit Cmd&#43;Shift&#43;C if you are using Chrome and Mac) and start typing.
+    <meta property="og:description" content="JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit Cmd&#43;Shift&#43;C if you are using Chrome and Mac) and start typing.
 
 ">
     <meta property="og:type" content="blog">
@@ -40,7 +40,7 @@
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="JavaScript is one of the most popular and versatile languages to date. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit Cmd&#43;Shift&#43;C if you are using Chrome and Mac) and start typing.
+    <meta name="twitter:description" content="JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit Cmd&#43;Shift&#43;C if you are using Chrome and Mac) and start typing.
 
 ">
     
@@ -260,7 +260,7 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>JavaScript is one of the most popular and versatile languages to date. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit <code>Cmd</code>+<code>Shift</code>+<code>C</code> if you are using Chrome and Mac) and start typing.</p>
+              <p>JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit <code>Cmd</code>+<code>Shift</code>+<code>C</code> if you are using Chrome and Mac) and start typing.</p>
 
 <p></p>
 
@@ -289,9 +289,8 @@
 <li><a href="#string">String</a>
 <ul>
 <li><a href="#getting-substrings">Getting Substrings</a></li>
-<li><a href="#algo-match-parentheses-in-a-string">Algo:  Match parentheses in a string.</a></li>
-<li><a href="#algo-capitalize-letters-in-a-sentence">Algo:  Capitalize Letters In A Sentence</a></li>
 </ul></li>
+<li><a href="#regexp">RegExp</a></li>
 <li><a href="#functions">Functions</a>
 <ul>
 <li><a href="#the-basics">The Basics</a></li>
@@ -301,6 +300,7 @@
 <li><a href="#creating-json">Creating JSON</a></li>
 <li><a href="#converting-json-from-one-form-to-another">Converting JSON from one form to another</a></li>
 <li><a href="#retrieving-things-from-json">Retrieving Things from JSON</a></li>
+<li><a href="#retrieving-by-value-from-array-of-objects">Retrieving By Value from Array Of objects</a></li>
 <li><a href="#update-json">Update JSON</a></li>
 <li><a href="#operations-on-json">Operations on JSON</a></li>
 <li><a href="#get-all-keys-from-json">Get all keys from JSON</a></li>
@@ -519,98 +519,93 @@ const msg = `Completed ${numProj} projects in the past ${numMonths} months. Won 
 
 <p>Option 2 using <code>slice</code> works because a string is really just an array of characters.</p>
 
-<h2 id="algo-match-parentheses-in-a-string">Algo:  Match parentheses in a string.</h2>
+<h1 id="regexp">RegExp</h1>
 
-<pre><code class="language-javascript">function isBalanced(str, openCnt) {
-	if (typeof str !== 'string') return false;
-  if (openCnt &lt;  0) return false;
-	if (str.length === 0) return openCnt === 0;
+<pre><code class="language-javascript">const matchLetters = new RegExp(/[a-zA-Z]/,'g')
+const matchVowels = new RegExp(/[aeiouAEIOU]/, 'g')
+const matchExact = new RegExp(/^abc$/, 'g')
+const matchHTMLChar = new RegExp(/&amp;(lt|gt|quot);/, 'g')
 
-	const fst = str[0];
-	const rst = str.slice(1);
-	return isBalanced(rst, newOpenCnt(fst, openCnt));
-}
-const newOpenCnt = (c, openCnt) =&gt; {
-	if(c === '(') return openCnt + 1;
-	if(c === ')') return openCnt - 1;
-	return openCnt;
-}
+let str = 'abcde'
+str.match(matchLetters) //&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
+str.match(matchVowels) //&gt; [&quot;a&quot;, &quot;e&quot;]
+str.match(matchExact) //&gt; [&quot;abcde&quot;]
+&quot;abc&quot;.match(matchExact) //&gt; null
+&quot;abcdef&quot;.match(matchExact) //&gt; null
 
-// Test -----------------------------------------------------
-let testCases = [
-  {test: '(', shouldBe: false},
-  {test: '())', shouldBe: false},
-  {test: null, shouldBe: false},
-  {test: undefined, shouldBe: false},
-  {test: 22, shouldBe: false},
-  {test: ')(', shouldBe: false},
-  {test: '', shouldBe: true},
-  {test: '()', shouldBe: true},
-  {test: '()()', shouldBe: true},
-  {test: '(())', shouldBe: true},
-  {test: 'hi', shouldBe: true},
-  {test: '(hi)', shouldBe: true},
-  {test: '(((())(())',shouldBe: false}
-];
-let fun = (str) =&gt; isBalanced(str, 0);
-const test = (testCases, fun) =&gt; {
-  testCases.map(t =&gt; {
-    const shouldBe = t.shouldBe;
-    const is = fun(t.test);
-    const res = (shouldBe === is) ? 'passed' : 'failed';
-    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
-    console.log(`${res} ${moreInfo}`);
-  })
+let str = 'abcde &amp;lt; &amp;quot; hello &amp;quot; hm';
+function decode(match) {
+    if(match === '&amp;lt;') return '&lt;';
+    else if(match === '&amp;quot;') return '\&quot;'
 }
-test(testCases, fun)
+str.replace(matchHTMLChar, decode) //&gt; &quot;abcde &lt; ' hello ' hm&quot;
 </code></pre>
 
-<h2 id="algo-capitalize-letters-in-a-sentence">Algo:  Capitalize Letters In A Sentence</h2>
+<p>The below regex will match the strings that starts and ends with alpha character.</p>
 
-<p>Using reduce vice a map and join gives you a slight performance boost.</p>
-
-<p>When your phrase is really long, you should care about performance also. Doing a map then join is going to be slower than doing a reduce based on this benchmark.</p>
-
-<pre><code class="language-javascript">const capitalize = (word) =&gt; {
-  const rest = word.slice(1);
-  const firstLtr = word.charAt(0);
-  return firstLtr.toUpperCase() + rest.toLowerCase();
-}
-const titleCase = (phrase) =&gt; {
-  if(!phrase) return phrase;
-  [first, ...rest] = phrase.split(' ');
-  return rest.reduce((res,a) =&gt;  res +' ' + capitalize(a),
-                                            capitalize(first))
-}
+<pre><code class="language-javascript">/^[a-z].*[a-z]$/igm
 </code></pre>
 
-<p>Simple Test:
-I wrote a helper assert function and some test cases. This is by no means an exhaustive test.</p>
+<p>Explanation (see <a href="http://www.mpi.nl/corpus/html/trova/ch01s04.html" target="_blank">this tutorial</a> or <a href="https://eloquentjavascript.net/09_regexp.html" target="_blank">this tutorial</a>):</p>
 
-<pre><code class="language-javascript">const assert = (fun, input, expected) =&gt; {
- return fun(input) === expected ?
-  'passed' :
-  `failed on input=${input}. expected ${expected}, but got ${fun(input)}`;
-}
+<pre><code>/abc/	        A sequence of characters
+/[abc]/	      Any character from a set of characters
+/[a-z]/       alphabatic  character (lowercase only).
+/[^abc]/	    Any character not in a set of characters
+/[0-9]/   	  Any character in a range of characters
+/x+/	        One or more occurrences of the pattern x
+/x+?/	        One or more occurrences, nongreedy
+/x*/	        Zero or more occurrences
+/x?/	        Zero or one occurrence
+/x{2,4}/	    Two to four occurrences
+/(abc)/	      A group
+/a|b|c/	      Any one of several patterns
+/\d/	        Any digit character
+/\w/	        An alphanumeric character (“word character”)
+/\s/	        Any whitespace character
+/.*/          Any character 0 or more times
+/./	          Any character except newlines
+/\b/	        A word boundary
+/^/	          Start of input
+/$/	          End of input
+
+/a/i          case-insensitive match
+/a/g          global
+/a/m          multiline
 </code></pre>
 
-<p>Test cases:</p>
+<ul>
+<li><code>g</code> flag:
 
-<pre><code class="language-javascript">let testCases = [
- {input: &quot;I’m a little tea pot&quot;, expected: &quot;I’m A Little Tea Pot&quot;},
- {input: &quot;sHoRt AnD sToUt&quot;, expected: &quot;Short And Stout&quot;},
- {input: &quot;sHoRt AnD sToUt&quot;, expected: &quot;Short And Stout&quot;},
- {input: &quot;HERE IS MY HANDLE HERE IS MY SPOUT&quot;, expected: &quot;Here Is My Handle Here Is My Spout&quot;},
- {input: &quot;&quot;, expected: &quot;&quot;},
- {input: undefined, expected: undefined},
- ]
-</code></pre>
+<ul>
+<li>if we ran <code>match</code> on regex without the <code>g</code> flag, we get the first match</li>
+<li>if we ran <code>match</code> on regex with the <code>g</code> flag, we get all matches</li>
+</ul></li>
+<li><code>^</code> and <code>$</code> - See <a href="https://javascript.info/regexp-anchors" target="_blank">this tutorial</a></li>
+<li><code>[abc]</code> means &ldquo;a or b or c&rdquo;, e.g. query &ldquo;[br]ang&rdquo; will match both &ldquo;adbarnirrang&rdquo; and &ldquo;bang&rdquo;</li>
+<li><code>[^abc]</code> means &ldquo;begins with any character but a,b,c&rdquo;, e.g. query [^aeou]ang will match &ldquo;rang&rdquo; but not &ldquo;baang&rdquo;</li>
+<li><code>[a-zA-Z]</code> means &ldquo;a character from a/A through z/Z&rdquo;, e.g. <code>b[a-zA-Z]</code> will match &ldquo;bang&rdquo;, &ldquo;bLang&rdquo; or &ldquo;baang&rdquo; but not &ldquo;b8ng&rdquo;</li>
+<li><code>.</code> (the dot) means &ldquo;any character&rdquo;, e.g. &ldquo;b.ng&rdquo; will match &ldquo;bang&rdquo;, &ldquo;b8ng&rdquo;, but not &ldquo;baang&rdquo;</li>
+<li><code>X*</code> means &ldquo;X zero or more times&rdquo;, e.g. &ldquo;ba*ng&rdquo; will match &ldquo;bng&rdquo;, &ldquo;bang&rdquo;, &ldquo;baang&rdquo;, &ldquo;baaang&rdquo; etc.</li>
+<li><code>X+</code> means &ldquo;X one or more time&rdquo;, e.g. &ldquo;ba+ng&rdquo; will match &ldquo;bang&rdquo;, &ldquo;baang&rdquo; but not &ldquo;bng&rdquo;</li>
+<li><code>^</code> means &ldquo;the beginning of the annotation&rdquo;, e.g. &ldquo;^ng&rdquo; will match &ldquo;ngabi&rdquo; but not &ldquo;bukung&rdquo;</li>
+<li><code>$</code> means &ldquo;the end of the annotation&rdquo;, e.g. &ldquo;ung$&rdquo; will match &ldquo;bukung&rdquo; but not &ldquo;ngabi&rdquo;</li>
+<li><code>\b</code> matches only word boundaries. For example:
 
-<p>Doing this test, you should get all tests passed:</p>
+<ul>
+<li><code>/\bMoz/</code> matches any word beginning with &ldquo;Moz&rdquo;, like &ldquo;Mozilla&rdquo; or &ldquo;Mozillathon&rdquo;</li>
+<li><code>/Moz\b/</code> matches any word ending with &ldquo;Moz&rdquo;, like &ldquo;myMoz&rdquo; or &ldquo;bigMoz&rdquo;</li>
+<li><code>/\bMoz\b/</code> matches only the word &ldquo;Moz&rdquo; &ndash; not &ldquo;Mozilla&rdquo; or &ldquo;myMoz&rdquo;</li>
+</ul></li>
+</ul>
 
-<pre><code class="language-javascript">let testResult = testCases.map(d =&gt; assert(titleCase, d.input, d.expected))
-testResult.filter(d =&gt; d!=='passed').length === 0 ? 'passed all tests' : 'failed at least one test'
-//&gt; 'passed all tests'
+<p>Cases where the <code>g</code> flag should be used is when you want to replace all occurrences of something in a string</p>
+
+<pre><code class="language-javascript">// replace all 'a' in the string with '1'
+'abbaaab'.replace(/a/g, '1') //&gt; &quot;1bb111b&quot;
+
+'hello world hello'.replace(/hello/, 'hi') //&gt; &quot;hi world hello&quot;
+'hello world hello'.replace(/hello/g, 'hi') //&gt; &quot;hi world hi&quot;
 </code></pre>
 
 <h1 id="functions">Functions</h1>
@@ -742,6 +737,21 @@ flight.equipment.model //&gt; throw &quot;TypeError&quot;
 flight.equipment &amp;&amp; flight.equipment.model //&gt; undefined
 </code></pre>
 
+<h2 id="retrieving-by-value-from-array-of-objects">Retrieving By Value from Array Of objects</h2>
+
+<p>Use <code>filter</code></p>
+
+<pre><code class="language-javascript">const dict = [
+  {char: '&lt;', code: '&amp;lt'},
+  {char: '&gt;', code: '&amp;gt'},
+  {char: '&gt;=', code: '&amp;ge'},
+  {char: '&lt;=', code: '&amp;ge'},  
+]
+dict.filter(obj =&gt; {return obj.char === '&gt;'}) //&gt; [{ char: '&gt;', code: '&amp;gt' }]
+dict.filter(obj =&gt; {return obj.char === 'foo'}) //&gt; []
+
+</code></pre>
+
 <h2 id="update-json">Update JSON</h2>
 
 <p>If the object does not already have that property name, the object is augmented:</p>
@@ -851,7 +861,7 @@ let foobar = {...foo, ...bar} //&gt; {a: &quot;a&quot;, b: &quot;b&quot;, c: &qu
                     
   <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
 
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/tutorial/">Tutorial</a>
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/guide/">Guide</a>
 
                   </div>
                 
@@ -1108,6 +1118,25 @@ s.setAttribute('data-timestamp', +new Date());
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/problem-solving-using-javascript/">
+                <h3 class="media-heading">Problem Solving Using JavaScript</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">
                 <h3 class="media-heading">Creating LooseLeaf: A Platform To Support The Future Of Work</h3>
               </a>
@@ -1247,7 +1276,7 @@ s.setAttribute('data-timestamp', +new Date());
                   Feb 2, 2018
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>JavaScript is one of the most popular and versatile languages to date. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit <code>Cmd</code>+<code>Shift</code>+<code>C</code> if you are using Chrome and Mac) and start typing.</p>
+              <div class="media-content hide-xs font-merryweather"><p>JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit <code>Cmd</code>+<code>Shift</code>+<code>C</code> if you are using Chrome and Mac) and start typing.</p>
 
 <p></p></div>
             </div>
@@ -1274,25 +1303,6 @@ s.setAttribute('data-timestamp', +new Date());
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/">
-                <h3 class="media-heading">How Functional Programming Promotes Developer Productivity</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Functional Programming is more than just a buzzword these days. It&rsquo;s super useful and makes you rethink everything you&rsquo;ve learned about software.</p>
-
-<p></p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -1300,7 +1310,7 @@ s.setAttribute('data-timestamp', +new Date());
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         12 posts found
+         13 posts found
       </p>
     </div>
   </div>

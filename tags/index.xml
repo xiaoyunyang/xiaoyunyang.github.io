@@ -23,9 +23,18 @@
     </item>
     
     <item>
+      <title>Guide</title>
+      <link>http://xiaoyunyang.github.io/tags/guide/</link>
+      <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/tags/guide/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Javascript</title>
       <link>http://xiaoyunyang.github.io/tags/javascript/</link>
-      <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/tags/javascript/</guid>
       <description></description>
@@ -82,15 +91,6 @@
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/tags/startup/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tutorial</title>
-      <link>http://xiaoyunyang.github.io/tags/tutorial/</link>
-      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/tags/tutorial/</guid>
       <description></description>
     </item>
     
