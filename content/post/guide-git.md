@@ -5,7 +5,7 @@ categories:
   - blog
 tags:
   - Productivity
-  - Tutorial
+  - Guide
 thumbnailImagePosition: top
 thumbnailImage: /post/images/git.png
 ---
@@ -234,8 +234,6 @@ The `.gitignore` file should be included in your local repo folder, which tells 
 In general, you should include the following in your `.gitignore`
 
 ```
-#.gitignore
-
 lib-cov
 *.seed
 *.log

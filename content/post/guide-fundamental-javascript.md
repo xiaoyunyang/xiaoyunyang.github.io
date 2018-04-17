@@ -5,12 +5,12 @@ categories:
   - blog
 tags:
   - JavaScript
-  - Tutorial
+  - Guide
 thumbnailImagePosition: top
 thumbnailImage: /post/images/jsDev.png
 ---
 
-JavaScript is one of the most popular and versatile languages to date. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser's console (hit `Cmd`+`Shift`+`C` if you are using Chrome and Mac) and start typing.
+JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser's console (hit `Cmd`+`Shift`+`C` if you are using Chrome and Mac) and start typing.
 
 <!--more-->
 
@@ -238,104 +238,91 @@ Say we have "hello world" as our string but we only want "world". What do we do?
 
 Option 2 using `slice` works because a string is really just an array of characters.
 
-## Algo:  Match parentheses in a string.
+# RegExp
 
 ```javascript
-function isBalanced(str, openCnt) {
-	if (typeof str !== 'string') return false;
-  if (openCnt <  0) return false;
-	if (str.length === 0) return openCnt === 0;
+const matchLetters = new RegExp(/[a-zA-Z]/,'g')
+const matchVowels = new RegExp(/[aeiouAEIOU]/, 'g')
+const matchExact = new RegExp(/^abc$/, 'g')
+const matchHTMLChar = new RegExp(/&(lt|gt|quot);/, 'g')
 
-	const fst = str[0];
-	const rst = str.slice(1);
-	return isBalanced(rst, newOpenCnt(fst, openCnt));
-}
-const newOpenCnt = (c, openCnt) => {
-	if(c === '(') return openCnt + 1;
-	if(c === ')') return openCnt - 1;
-	return openCnt;
-}
+let str = 'abcde'
+str.match(matchLetters) //> ["a", "b", "c", "d", "e"]
+str.match(matchVowels) //> ["a", "e"]
+str.match(matchExact) //> ["abcde"]
+"abc".match(matchExact) //> null
+"abcdef".match(matchExact) //> null
 
-// Test -----------------------------------------------------
-let testCases = [
-  {test: '(', shouldBe: false},
-  {test: '())', shouldBe: false},
-  {test: null, shouldBe: false},
-  {test: undefined, shouldBe: false},
-  {test: 22, shouldBe: false},
-  {test: ')(', shouldBe: false},
-  {test: '', shouldBe: true},
-  {test: '()', shouldBe: true},
-  {test: '()()', shouldBe: true},
-  {test: '(())', shouldBe: true},
-  {test: 'hi', shouldBe: true},
-  {test: '(hi)', shouldBe: true},
-  {test: '(((())(())',shouldBe: false}
-];
-let fun = (str) => isBalanced(str, 0);
-const test = (testCases, fun) => {
-  testCases.map(t => {
-    const shouldBe = t.shouldBe;
-    const is = fun(t.test);
-    const res = (shouldBe === is) ? 'passed' : 'failed';
-    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
-    console.log(`${res} ${moreInfo}`);
-  })
+let str = 'abcde &lt; &quot; hello &quot; hm';
+function decode(match) {
+    if(match === '&lt;') return '<';
+    else if(match === '&quot;') return '\"'
 }
-test(testCases, fun)
+str.replace(matchHTMLChar, decode) //> "abcde < ' hello ' hm"
 ```
 
-## Algo:  Capitalize Letters In A Sentence
-
-Using reduce vice a map and join gives you a slight performance boost.
-
-When your phrase is really long, you should care about performance also. Doing a map then join is going to be slower than doing a reduce based on this benchmark.
+The below regex will match the strings that starts and ends with alpha character.
 
 ```javascript
-const capitalize = (word) => {
-  const rest = word.slice(1);
-  const firstLtr = word.charAt(0);
-  return firstLtr.toUpperCase() + rest.toLowerCase();
-}
-const titleCase = (phrase) => {
-  if(!phrase) return phrase;
-  [first, ...rest] = phrase.split(' ');
-  return rest.reduce((res,a) =>  res +' ' + capitalize(a),
-                                            capitalize(first))
-}
+/^[a-z].*[a-z]$/igm
 ```
 
-Simple Test:
-I wrote a helper assert function and some test cases. This is by no means an exhaustive test.
+Explanation (see [this tutorial](http://www.mpi.nl/corpus/html/trova/ch01s04.html) or [this tutorial](https://eloquentjavascript.net/09_regexp.html)):
+
+```
+/abc/	        A sequence of characters
+/[abc]/	      Any character from a set of characters
+/[a-z]/       alphabatic  character (lowercase only).
+/[^abc]/	    Any character not in a set of characters
+/[0-9]/   	  Any character in a range of characters
+/x+/	        One or more occurrences of the pattern x
+/x+?/	        One or more occurrences, nongreedy
+/x*/	        Zero or more occurrences
+/x?/	        Zero or one occurrence
+/x{2,4}/	    Two to four occurrences
+/(abc)/	      A group
+/a|b|c/	      Any one of several patterns
+/\d/	        Any digit character
+/\w/	        An alphanumeric character (“word character”)
+/\s/	        Any whitespace character
+/.*/          Any character 0 or more times
+/./	          Any character except newlines
+/\b/	        A word boundary
+/^/	          Start of input
+/$/	          End of input
+
+/a/i          case-insensitive match
+/a/g          global
+/a/m          multiline
+```
+
+* `g` flag:
+  * if we ran `match` on regex without the `g` flag, we get the first match
+  * if we ran `match` on regex with the `g` flag, we get all matches
+* `^` and `$` - See [this tutorial](https://javascript.info/regexp-anchors)
+* `[abc]` means "a or b or c", e.g. query "[br]ang" will match both "adbarnirrang" and "bang"
+* `[^abc]` means "begins with any character but a,b,c", e.g. query [^aeou]ang will match "rang" but not "baang"
+* `[a-zA-Z]` means "a character from a/A through z/Z", e.g. `b[a-zA-Z]` will match "bang", "bLang" or "baang" but not "b8ng"
+* `.` (the dot) means "any character", e.g. "b.ng" will match "bang", "b8ng", but not "baang"
+* `X*` means "X zero or more times", e.g. "ba*ng" will match "bng", "bang", "baang", "baaang" etc.
+* `X+` means "X one or more time", e.g. "ba+ng" will match "bang", "baang" but not "bng"
+* `^` means "the beginning of the annotation", e.g. "^ng" will match "ngabi" but not "bukung"
+* `$` means "the end of the annotation", e.g. "ung$" will match "bukung" but not "ngabi"
+* `\b` matches only word boundaries. For example:
+  * `/\bMoz/` matches any word beginning with "Moz", like "Mozilla" or "Mozillathon"
+  * `/Moz\b/` matches any word ending with "Moz", like "myMoz" or "bigMoz"
+  * `/\bMoz\b/` matches only the word "Moz" -- not "Mozilla" or "myMoz"
+
+Cases where the `g` flag should be used is when you want to replace all occurrences of something in a string
 
 ```javascript
-const assert = (fun, input, expected) => {
- return fun(input) === expected ?
-  'passed' :
-  `failed on input=${input}. expected ${expected}, but got ${fun(input)}`;
-}
+// replace all 'a' in the string with '1'
+'abbaaab'.replace(/a/g, '1') //> "1bb111b"
+
+'hello world hello'.replace(/hello/, 'hi') //> "hi world hello"
+'hello world hello'.replace(/hello/g, 'hi') //> "hi world hi"
 ```
 
-Test cases:
-
-```javascript
-let testCases = [
- {input: "I’m a little tea pot", expected: "I’m A Little Tea Pot"},
- {input: "sHoRt AnD sToUt", expected: "Short And Stout"},
- {input: "sHoRt AnD sToUt", expected: "Short And Stout"},
- {input: "HERE IS MY HANDLE HERE IS MY SPOUT", expected: "Here Is My Handle Here Is My Spout"},
- {input: "", expected: ""},
- {input: undefined, expected: undefined},
- ]
-```
-
-Doing this test, you should get all tests passed:
-
-```javascript
-let testResult = testCases.map(d => assert(titleCase, d.input, d.expected))
-testResult.filter(d => d!=='passed').length === 0 ? 'passed all tests' : 'failed at least one test'
-//> 'passed all tests'
-```
 
 # Functions
 
@@ -472,6 +459,20 @@ The `&&` operator can be used to guard against retrieving values from `undefined
 flight.equipment //> undefined
 flight.equipment.model //> throw "TypeError"
 flight.equipment && flight.equipment.model //> undefined
+```
+## Retrieving By Value from Array Of objects
+
+Use `filter`
+```javascript
+const dict = [
+  {char: '<', code: '&lt'},
+  {char: '>', code: '&gt'},
+  {char: '>=', code: '&ge'},
+  {char: '<=', code: '&ge'},  
+]
+dict.filter(obj => {return obj.char === '>'}) //> [{ char: '>', code: '&gt' }]
+dict.filter(obj => {return obj.char === 'foo'}) //> []
+
 ```
 
 ## Update JSON
