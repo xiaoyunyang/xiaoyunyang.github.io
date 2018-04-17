@@ -155,23 +155,12 @@
     </item>
     
     <item>
-      <title>Projects</title>
-      <link>http://xiaoyunyang.github.io/projects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/projects/</guid>
-      <description>Here are some facts about me:
-Work Stuff Stuff Stuff
-Education Stuff Stuff Stuff</description>
-    </item>
-    
-    <item>
       <title>Xiaoyun Yang</title>
       <link>http://xiaoyunyang.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/about/</guid>
-      <description>Hello! I&amp;rsquo;m a software engineer and tech entrepreneur. I&amp;rsquo;m excited about developing elegant solutions for obvious problems where there are no obvious solutions. I believe in automating wherever possible, and leveraging existing technology to quickly bootstrap solutions. My mantra is trial and error, which I apply to both building a startup as well as living a fulfilling life.
+      <description>Hello! I&amp;rsquo;m a software engineer and tech entrepreneur. I&amp;rsquo;m excited by opportunities that let me develop elegant solutions for obvious problems where there are no obvious solutions. I believe in automating wherever possible, and leveraging existing technology to quickly bootstrap solutions. My mantra is trial and error, which I apply to both building a startup as well as living a fulfilling life.
 I live in Washington DC and in the past, I lived in NYC; Pittsburgh; Shanghai, China; and Bonn, Germany.</description>
     </item>
     
