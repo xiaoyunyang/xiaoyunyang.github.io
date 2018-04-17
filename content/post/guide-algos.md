@@ -10,7 +10,7 @@ thumbnailImagePosition: top
 thumbnailImage: /post/images/algorithms-xkcd.png
 ---
 
-JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let's take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let's look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
+JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let's take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let's look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
 
 <!--more-->
 
@@ -24,7 +24,7 @@ JavaScript is one of the most popular and versatile languages today, but when Br
 
 Using reduce vice a map and join gives you a slight performance boost.
 
-When your phrase is really long, you should care about performance also. Doing a map then join is going to be slower than doing a reduce based on this benchmark.
+When your phrase is really long, you should care about performance also. Doing a `map` then `join` is going to be slower than doing a `reduce` based on [this benchmark](https://jsperf.com/test-map-join-vs-reduce).
 
 ```javascript
 const capitalize = (word) => {
@@ -68,8 +68,8 @@ Doing this test, you should get all tests passed:
 
 ```javascript
 let testResult = testCases.map(d => assert(titleCase, d.input, d.expected))
-testResult.filter(d => d!=='passed').length === 0 ? 'passed all tests' : 'failed at least one test'
-//> 'passed all tests'
+testResult.filter(d => d!=='passed').length === 0 ? 'passed all tests' :
+                                                    'failed at least one test'
 ```
 
 ## Match parentheses in a string.
@@ -77,21 +77,25 @@ Try it out in [repl.it](https://repl.it/@xiaoyunyang/MatchParentheses)
 
 ```javascript
 function isBalanced(str, openCnt) {
-	if (typeof str !== 'string') return false;
+  if (typeof str !== 'string') return false;
   if (openCnt <  0) return false;
-	if (str.length === 0) return openCnt === 0;
+  if (str.length === 0) return openCnt === 0;
 
-	const fst = str[0];
-	const rst = str.slice(1);
-	return isBalanced(rst, newOpenCnt(fst, openCnt));
+  const fst = str[0];
+  const rst = str.slice(1);
+  return isBalanced(rst, newOpenCnt(fst, openCnt));
 }
 const newOpenCnt = (c, openCnt) => {
-	if(c === '(') return openCnt + 1;
-	if(c === ')') return openCnt - 1;
-	return openCnt;
+  if(c === '(') return openCnt + 1;
+  if(c === ')') return openCnt - 1;
+  return openCnt;
 }
 
-// Test -----------------------------------------------------
+```
+
+It is necessary to extensively unit test your code.
+
+```javascript
 let testCases = [
   {test: '(', shouldBe: false},
   {test: '())', shouldBe: false},
@@ -120,10 +124,103 @@ const test = (testCases, fun) => {
 test(testCases, fun)
 ```
 
+## URL String transform
+We want to transform the article title into a string of all lower case words joined by '-'.
+
+**Option #1 - use Array.map, then Array.join**
+
+```javascript
+phrase.split(' ').map(w => w.toLowerCase()).join('-');
+```
+
+The disadvantage of this approach is it's [slow](https://stackoverflow.com/questions/22614237/javascript-runtime-complexity-of-array-functions). map is O(N). join is O(N) we can do better.
+
+**Option #2 - use Array.reduce**
+```javascript
+phrase.split(' ').reduce((res, a) => res + '-' + a.toLowerCase(), '').slice(1)
+//> "three-ways-to-title-case-a-sentence-in-javascript"
+
+// Why .slice(1) at the end?
+
+phrase.split(' ')
+	.map(w => w.toLowerCase())
+	.reduce((res,a) => {
+		console.log('res = ', res);
+		console.log('a = ', a);
+		return res+'-'+a
+	}, '')
+
+```
+
+```
+//res =  
+// a =  three
+// res =  -three
+// a =  ways
+// res =  -three-ways
+// a =  to
+// res =  -three-ways-to
+// a =  title
+// res =  -three-ways-to-title
+// a =  case
+// res =  -three-ways-to-title-case
+// a =  a
+// res =  -three-ways-to-title-case-a
+// a =  sentence
+// res =  -three-ways-to-title-case-a-sentence
+// a =  in
+// res =  -three-ways-to-title-case-a-sentence-in
+// a =  javascript
+// "-three-ways-to-title-case-a-sentence-in-javascript"
+```
+
+**Option #3 - ES6**
+```javascript
+let arr = phrase.split(' ')
+
+// ES6
+let [first] = arr //> "Three" ...es6 solution using destructuring
+[first, ...rest] = arr
+first //> "Three"
+rest //> ["Ways", "to", "Title", "Case", "a", "Sentence", "in", "JavaScript"]
+let urlStr = rest.reduce((res, a) => res + '-' + a.toLowerCase(), first.toLowerCase())
+//> "three-ways-to-title-case-a-sentence-in-javascript"
+```
+
+```javascript
+// ES5
+let first = arr[0]
+let rest = arr.slice(1)
+let urlStr = rest.reduce((res, a) => res + '-' + a.toLowerCase(), first.toLowerCase())
+```
+
+**Aside: Tips on array operations**
+
+*Caveat:* use arr[0], don't use arr.pop() because Array.pop() has the side effect of modifying your original array.
+```
+arr = [1, 2, 3]
+arr[0] //> 1
+arr //> [1, 2, 3]
+
+arr = [1, 2, 3]
+arr.pop(0) //> 1 ... but is O(1)
+arr //> [2, 3]
+
+// Tip:  use Array.slice(1), don't use Array.splice(1). Array.slice and Array.splice are both O(N)
+arr = [1, 2, 3]
+arr.slice(1) //> [2, 3]
+arr //> [1, 2, 3]
+
+arr = [1, 2, 3]
+arr.splice(1) //> [2, 3] ... O(N)
+arr //> [1]
+```
+Tip: if you care about performance of getting rest with O(1), use Array.pop()
+
 ## HTML String Transform
 Try it out in [repl.it](https://repl.it/@xiaoyunyang/StrReplace)
 
-Symbols used in HTML document consist of special character sets, including `&amp;` for & and [some others](https://www.w3.org/MarkUp/HTMLPlus/htmlplus_13.html).
+Symbols used in HTML document consist of special character sets, including `&lt;` for & and [some others](https://www.w3.org/MarkUp/HTMLPlus/htmlplus_13.html).
 
 ```javascript
 // &lt; => '<''

@@ -51,8 +51,6 @@ LooseLeaf exhibited at LA TechDay in September 2016.
 {{< image classes="fancybox fig-100" src="/post/images/looseleaf/techday.png" thumbnail="/post/images/looseleaf/techday.png">}}{{< image classes="fancybox fig-50" src="/post/images/looseleaf/chrome-plugin.png" thumbnail="/post/images/looseleaf/chrome-plugin.png">}}{{< image classes="fancybox fig-50" src="/post/images/looseleaf/landing-world.png" thumbnail="/post/images/looseleaf/landing-world.png">}}{{< image classes="fancybox fig-50" src="/post/images/looseleaf/fullstack.png" thumbnail="/post/images/looseleaf/fullstack.png">}}
 
 
-
-
 *December 2016 - February 2017*
 
 * Ported the single page application to my day job work computer to try it out as a knowledge management tool and get coworkers to use it. The best we have for our knowledge management system on the classified network are share-point sites and folders on shared drives. Through personally using the tool at work and discussing with coworkers, I realized people are not interested in using a new tool for "tribal knowledge" management because (1) you either already have a system for organizing content or (2) you are not really that interested in knowledge management for "tribal knowledge" beyond what was formally required for documentation purposes. {{< hl-text blue >}}[Lesson Learned]{{< /hl-text >}}
