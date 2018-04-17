@@ -11,6 +11,9 @@
   #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-picture:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
+  .resume-header {
+    display: flex;
+  }
 }
 @media only screen and (max-width: 1279px) and (min-width: 1024px) {
   #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-picture, #sidebar[data-behavior="2"] .sidebar-profile .sidebar-profile-picture {
@@ -20,8 +23,45 @@
   #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-picture:hover {
     box-shadow: 0 10px 26px rgba(0,0,0,0.25), 0 8px 8px rgba(0,0,0,0.22);
   }
+
 }
 
+@media only screen and (min-width: 768px) {
+  .resume-header {
+    display: flex;
+  }
+  .job-title {
+    float: left;
+    width: 55%;
+    padding-left: 15px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .resume-header {
+    display: block;
+  }
+  .job-title {
+    float: left;
+    width: 100vw;
+    padding-left: 15px;
+  }
+  .job-dates {
+    width: 100vw;
+    padding-left: 15px;
+  }
+}
+
+.resume-header {
+  width: 100%;
+  margin-bottom: -20px;
+}
+
+.job-title {
+  font-style: italic;
+}
+.job-dates {
+  font-style: italic;
+}
 #bottom-bar .post-action-nav {
   margin-left: 80px;
 }

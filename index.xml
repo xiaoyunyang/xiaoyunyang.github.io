@@ -19,7 +19,7 @@
       <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/post/problem-solving-using-javascript/</guid>
-      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&amp;rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&amp;rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.&lt;/p&gt;
+      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&amp;rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&amp;rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
@@ -171,7 +171,8 @@ Education Stuff Stuff Stuff</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/about/</guid>
-      <description>Hello! I&amp;rsquo;m a software engineer. I make web and mobile applications in my spare time because I like to build things and create products to help make the world a better place for the average person. I live in Washington DC and in the past, I lived in NYC; Pittsburgh; Shanghai, China; and Bonn, Germany. I have a full time job and a side hustle. I&amp;rsquo;m a government employee by day, tech entrepreneur by night.</description>
+      <description>Hello! I&amp;rsquo;m a software engineer and tech entrepreneur. I&amp;rsquo;m excited about developing elegant solutions for obvious problems where there are no obvious solutions. I believe in automating wherever possible, and leveraging existing technology to quickly bootstrap solutions. My mantra is trial and error, which I apply to both building a startup as well as living a fulfilling life.
+I live in Washington DC and in the past, I lived in NYC; Pittsburgh; Shanghai, China; and Bonn, Germany.</description>
     </item>
     
   </channel>

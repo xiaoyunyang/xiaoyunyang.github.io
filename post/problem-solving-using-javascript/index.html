@@ -28,10 +28,10 @@
     
 
     
-    <meta name="description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
+    <meta name="description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
 
 ">
-    <meta property="og:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
+    <meta property="og:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
 
 ">
     <meta property="og:type" content="blog">
@@ -40,7 +40,7 @@
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
+    <meta name="twitter:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
 
 ">
     
@@ -260,7 +260,7 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.</p>
+              <p>JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.</p>
 
 <p></p>
 
@@ -274,6 +274,7 @@
 <ul>
 <li><a href="#capitalize-letters-in-a-sentence">Capitalize Letters In A Sentence</a></li>
 <li><a href="#match-parentheses-in-a-string">Match parentheses in a string.</a></li>
+<li><a href="#url-string-transform">URL String transform</a></li>
 <li><a href="#html-string-transform">HTML String Transform</a></li>
 </ul></li>
 <li><a href="#array-algorithms">Array Algorithms</a></li>
@@ -288,7 +289,7 @@
 
 <p>Using reduce vice a map and join gives you a slight performance boost.</p>
 
-<p>When your phrase is really long, you should care about performance also. Doing a map then join is going to be slower than doing a reduce based on this benchmark.</p>
+<p>When your phrase is really long, you should care about performance also. Doing a <code>map</code> then <code>join</code> is going to be slower than doing a <code>reduce</code> based on <a href="https://jsperf.com/test-map-join-vs-reduce" target="_blank">this benchmark</a>.</p>
 
 <pre><code class="language-javascript">const capitalize = (word) =&gt; {
   const rest = word.slice(1);
@@ -328,8 +329,8 @@ I wrote a helper assert function and some test cases. This is by no means an exh
 <p>Doing this test, you should get all tests passed:</p>
 
 <pre><code class="language-javascript">let testResult = testCases.map(d =&gt; assert(titleCase, d.input, d.expected))
-testResult.filter(d =&gt; d!=='passed').length === 0 ? 'passed all tests' : 'failed at least one test'
-//&gt; 'passed all tests'
+testResult.filter(d =&gt; d!=='passed').length === 0 ? 'passed all tests' :
+                                                    'failed at least one test'
 </code></pre>
 
 <h2 id="match-parentheses-in-a-string">Match parentheses in a string.</h2>
@@ -337,22 +338,25 @@ testResult.filter(d =&gt; d!=='passed').length === 0 ? 'passed all tests' : 'fai
 <p>Try it out in <a href="https://repl.it/@xiaoyunyang/MatchParentheses" target="_blank">repl.it</a></p>
 
 <pre><code class="language-javascript">function isBalanced(str, openCnt) {
-	if (typeof str !== 'string') return false;
+  if (typeof str !== 'string') return false;
   if (openCnt &lt;  0) return false;
-	if (str.length === 0) return openCnt === 0;
+  if (str.length === 0) return openCnt === 0;
 
-	const fst = str[0];
-	const rst = str.slice(1);
-	return isBalanced(rst, newOpenCnt(fst, openCnt));
+  const fst = str[0];
+  const rst = str.slice(1);
+  return isBalanced(rst, newOpenCnt(fst, openCnt));
 }
 const newOpenCnt = (c, openCnt) =&gt; {
-	if(c === '(') return openCnt + 1;
-	if(c === ')') return openCnt - 1;
-	return openCnt;
+  if(c === '(') return openCnt + 1;
+  if(c === ')') return openCnt - 1;
+  return openCnt;
 }
 
-// Test -----------------------------------------------------
-let testCases = [
+</code></pre>
+
+<p>It is necessary to extensively unit test your code.</p>
+
+<pre><code class="language-javascript">let testCases = [
   {test: '(', shouldBe: false},
   {test: '())', shouldBe: false},
   {test: null, shouldBe: false},
@@ -380,11 +384,103 @@ const test = (testCases, fun) =&gt; {
 test(testCases, fun)
 </code></pre>
 
+<h2 id="url-string-transform">URL String transform</h2>
+
+<p>We want to transform the article title into a string of all lower case words joined by &lsquo;-&rsquo;.</p>
+
+<p><strong>Option #1 - use Array.map, then Array.join</strong></p>
+
+<pre><code class="language-javascript">phrase.split(' ').map(w =&gt; w.toLowerCase()).join('-');
+</code></pre>
+
+<p>The disadvantage of this approach is it&rsquo;s <a href="https://stackoverflow.com/questions/22614237/javascript-runtime-complexity-of-array-functions" target="_blank">slow</a>. map is O(N). join is O(N) we can do better.</p>
+
+<p><strong>Option #2 - use Array.reduce</strong></p>
+
+<pre><code class="language-javascript">phrase.split(' ').reduce((res, a) =&gt; res + '-' + a.toLowerCase(), '').slice(1)
+//&gt; &quot;three-ways-to-title-case-a-sentence-in-javascript&quot;
+
+// Why .slice(1) at the end?
+
+phrase.split(' ')
+	.map(w =&gt; w.toLowerCase())
+	.reduce((res,a) =&gt; {
+		console.log('res = ', res);
+		console.log('a = ', a);
+		return res+'-'+a
+	}, '')
+
+</code></pre>
+
+<pre><code>//res =  
+// a =  three
+// res =  -three
+// a =  ways
+// res =  -three-ways
+// a =  to
+// res =  -three-ways-to
+// a =  title
+// res =  -three-ways-to-title
+// a =  case
+// res =  -three-ways-to-title-case
+// a =  a
+// res =  -three-ways-to-title-case-a
+// a =  sentence
+// res =  -three-ways-to-title-case-a-sentence
+// a =  in
+// res =  -three-ways-to-title-case-a-sentence-in
+// a =  javascript
+// &quot;-three-ways-to-title-case-a-sentence-in-javascript&quot;
+</code></pre>
+
+<p><strong>Option #3 - ES6</strong></p>
+
+<pre><code class="language-javascript">let arr = phrase.split(' ')
+
+// ES6
+let [first] = arr //&gt; &quot;Three&quot; ...es6 solution using destructuring
+[first, ...rest] = arr
+first //&gt; &quot;Three&quot;
+rest //&gt; [&quot;Ways&quot;, &quot;to&quot;, &quot;Title&quot;, &quot;Case&quot;, &quot;a&quot;, &quot;Sentence&quot;, &quot;in&quot;, &quot;JavaScript&quot;]
+let urlStr = rest.reduce((res, a) =&gt; res + '-' + a.toLowerCase(), first.toLowerCase())
+//&gt; &quot;three-ways-to-title-case-a-sentence-in-javascript&quot;
+</code></pre>
+
+<pre><code class="language-javascript">// ES5
+let first = arr[0]
+let rest = arr.slice(1)
+let urlStr = rest.reduce((res, a) =&gt; res + '-' + a.toLowerCase(), first.toLowerCase())
+</code></pre>
+
+<p><strong>Aside: Tips on array operations</strong></p>
+
+<p><em>Caveat:</em> use arr[0], don&rsquo;t use arr.pop() because Array.pop() has the side effect of modifying your original array.</p>
+
+<pre><code>arr = [1, 2, 3]
+arr[0] //&gt; 1
+arr //&gt; [1, 2, 3]
+
+arr = [1, 2, 3]
+arr.pop(0) //&gt; 1 ... but is O(1)
+arr //&gt; [2, 3]
+
+// Tip:  use Array.slice(1), don't use Array.splice(1). Array.slice and Array.splice are both O(N)
+arr = [1, 2, 3]
+arr.slice(1) //&gt; [2, 3]
+arr //&gt; [1, 2, 3]
+
+arr = [1, 2, 3]
+arr.splice(1) //&gt; [2, 3] ... O(N)
+arr //&gt; [1]
+</code></pre>
+
+<p>Tip: if you care about performance of getting rest with O(1), use Array.pop()</p>
+
 <h2 id="html-string-transform">HTML String Transform</h2>
 
 <p>Try it out in <a href="https://repl.it/@xiaoyunyang/StrReplace" target="_blank">repl.it</a></p>
 
-<p>Symbols used in HTML document consist of special character sets, including <code>&amp;amp;</code> for &amp; and <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_13.html" target="_blank">some others</a>.</p>
+<p>Symbols used in HTML document consist of special character sets, including <code>&amp;lt;</code> for &amp; and <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_13.html" target="_blank">some others</a>.</p>
 
 <pre><code class="language-javascript">// &amp;lt; =&gt; '&lt;''
 // &amp;gt; =&gt; '&gt;'
@@ -751,7 +847,7 @@ s.setAttribute('data-timestamp', +new Date());
                   Apr 4, 2018
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.</p>
+              <div class="media-content hide-xs font-merryweather"><p>JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.</p>
 
 <p></p></div>
             </div>
