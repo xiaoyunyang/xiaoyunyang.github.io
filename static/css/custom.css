@@ -47,11 +47,11 @@
     display: block !important;
   }
   .job-title {
-    width: 50vw !important;
+    width: 50% !important;
     padding-left: 15px;
   }
   .job-dates {
-    width: 50vw !important;
+    width: 50% !important;
     padding-left: 15px;
   }
 }
