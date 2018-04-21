@@ -25,13 +25,13 @@ The MOOCs phenomenon demonstrates the underlying issue with the higher education
 
 Both Universities and MOOCs deliver the same learning content. The learning material and course work are created and sanctioned by professors at universities. Whether you get the learning content from a MOOC platform online or a lecture hall, the quality of the educational product is the same.
 
-But being able to consume content and regurgitate it is not really a valued skill or should be a goal of learning. Project-oriented courses that drive students to take an active role in learning the material so they can apply it to solve a real world problem is more valuable to the students.
+But being able to consume content and regurgitate it is not really a valued skill or should be a goal of learning. Project-oriented courses provide more value because they are designed to have the students to take the steering wheel and be an active participant in their learning. Through completing projects like they would at a real job, they hone essential skills like time management, ability to leverage resources, application of fundamental knowledge and working through the bugs in solving real world problems.
 
 There are courses like this offered as MOOCs but brick-and-mortar colleges outshines MOOCs in offering students feedback, individual support / coaching, and a community of other students to learn with. That's essentially what people are paying for because you can get the same information online or at a public library.
 
 However, brick-and-mortar colleges in America are becoming increasingly unaffordable. Significantly more people (Americans) sign up for MOOCs than to be a student at a four year education. The barrier to entry is low and there are no financial burden or social ramifications if you dropped out of an online class. Financial burden aside, I think people are dropping out of MOOCs for the same reason they drop out of a brick-and-mortar college - *they don't see a return on investment for this education*
 
-There's an opportunity cost for being a student. When you are studying, you are not working so you lose potentially 4 years of earning and time that you could be spending learning useful skills through on the job training.
+There's an opportunity cost for being a student. When you are studying, you are not working so you lose potentially 4 years of earning and time that you could be spending learning useful skills through on-the-job training.
 
 However, people are dropping out of MOOCs more often than college because college dropout carries more of a stigma than MOOC-dropouts and access to student loans are easy.
 
