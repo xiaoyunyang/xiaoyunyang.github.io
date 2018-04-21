@@ -1,14 +1,11 @@
 ---
-title: "From Military To Tech Entrepreneur:  How I made the Transition"
-date: 2018-04-21
+title: "From Military To Tech Entrepreneur:  How I made the Leap"
+date: 2018-04-22
 categories:
   - blog
 tags:
   - Life
   - Career
-thumbnailImagePosition: left
-thumbnailImage: /post/images/careerSad.png
-
 ---
 I commissioned to serve in the US Navy when I received my university degrees. The service commitment is 5 years. I signed the contract when I was a sophomore in college. I didn't know that I wanted to be a tech entrepreneur or wanted to work in the high tech industry when I was in college. It was not until a year after I commissioned that I realized that I prefer a job in innovation and allows me to be creative and indulge in hands-on problem solving. I've spent the last 5 years exploring my interests and working on closing skills gaps that would preclude me from a smooth transition to a job I would enjoy doing. I did this while still serving in the military.  Here's my journey.
 
@@ -78,9 +75,22 @@ If you are staying at your job for 5 years and planning to move after your commi
 
 > Maximize your luck surface area.
 
+Practice
 
 [To find work you love, don't follow your passion](https://www.youtube.com/watch?v=MKlx1DLa9EA)
 
 # Conclusion
 
 Increase Your Net Worth and earning potential.
+Take responsibility for your transition. Be proactive. Losing your identity - your purpose - is hard.
+
+Teamwork, communication, leadership. It requires effort to translate military skills to adapt to the private sector. You are not average.
+
+# Resources
+
+* Researching Your Market Value to negotiate compensation [LearnHowToBecome.org](https://www.learnhowtobecome.org/computer-programmer/)
+* TripleByte [Software Engineer Salary](https://triplebyte.com/software-engineer-salary) by experience.
+* BureauOfLaborStatistics gives you [salary by state](https://www.bls.gov/oes/current/map_changer.htm)
+* CNN money [cost of living calculator](http://money.cnn.com/calculator/pf/cost-of-living/)
+* American Corporate Partners offers [free mentorship](https://www.acp-usa.org/mentoring-program/program-overview). [Apply as a veteran](https://www.acp-usa.org/mentoring-program/veteran-application).
+* GlassDoor, Salary.com, salaryexperts.com

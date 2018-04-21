@@ -22,7 +22,7 @@ Here are some details about me:
 ## Work Experience
 * I'm a founder of a startup called LooseLeaf, which is a web app that disrupts the higher education industry. [Read more](http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/) about what I've done so far.
 * I helped a friend create the first mobile apps for NumberShapes that teaches little kids essential math skills and number sense. [Read more](http://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/) about what I did at NumberShapes.
-* I've worked at Naval Reactors as a full time job since college. My job included providing technical oversight of contractor work through reviewing functional requirements and design specification for safety critical embedded systems software.
+* I've worked at Naval Reactors as a product manager since graduating college in 2013. While working at Naval Reactors, I was also an active duty Navy officer.
 * I've completed various programming side projects for fun, sharpening my skills, and to improve the lives of myself, my friends, and co-workers. These side projects include building a [React Native mobile app](http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/) to help me and my friends plan an upcoming trip to Japan.
 * I enjoy technical writing, especially [blogging about programming topics](http://xiaoyunyang.github.io/categories/blog/) that I'm still learning. I enjoy the process of putting complicated things in simple terms, drawing analogies and illustrating the concept with clarifying examples. Best of all, I think trying to explain what you think you know could lead you to discover knowledge gaps, which motivates more learning.
 
@@ -35,16 +35,17 @@ Here are some details about me:
 </div>
 
 * Product Development
-  * Developing an [isomorphic/universal web app](http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/) incorporating both server and client side rendering capability using fullstack JavaScript
-  * Developed a single page applications in React and D3.js for prototypes to present at Tech conferences.
+  * Developing an [isomorphic/universal web app](http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/) incorporating both server and client side rendering capability using full-stack JavaScript (Node, Express, and React).
   * Using git/Github for version control and documentation.
-  * Leveraging Heroku and Github free hosting for development websites
-  * Deployment of Production Website via Amazon Web Service S3 and EC2
-  * Developed a RESTful API in Play Framework (Scala).
-  * Developing REST and GraphQL APIs in Node.js.
-* Entrepreneurship
-  * Created three iterations of a web application and presented the prototypes at startup conferences (TechDays in DC and Los Angeles) for user research and feedback to make revisions to the product design and business model.
-  * Created marketing material for startup events and website using vector graphics and Adobe Illustrator.
+  * Leveraging Heroku and Github free hosting for development web apps.
+  * Leveraging frontend build tools (e.g., Webpack HMR, React Hot Loader) to maximize speed and effectiveness of development.
+  * Designing the isomorphic web app and development environment to enable front-end and backend for the isomorphic web app to be developed and tested independently.  
+  * Deployment of Production Website via AWS S3 and EC2
+  * Developing REST and GraphQL APIs.
+  * Using git/Github for version control and documentation.
+* Marketing and Design
+  * Prototyped SPAs to present at two startup conferences TechDays in DC and Los Angeles) for user research and feedback to revise product design.
+  * Created marketing material such as banners and flyers for startup events using vector graphics and Adobe Illustrator.
 
 **NumberShapes**
 <div class="resume-header">
@@ -66,18 +67,21 @@ Here are some details about me:
   <div class="job-dates">Jan 2014 - Dec 2018</div>
 </div>
 
-* Spearheaded the development of next generation nuclear reactor plant mechanical components, hardware/software building blocks for embedded systems
-* Developed functional requirements, communicated engineering concepts to non-technical communities, and facilitated collaboration between engineering teams
-* Engaged customers throughout the iterative development process for new products to close expectation gaps and identify areas of improvements.
+* Led the design, development, testing, and deployment of software building blocks to support diverse systems integrations.
+* Developed software functional requirements to user specification and effectively communicated software design to non-technical stakeholders and users.
+* Spearheaded transition of legacy version control and build tools to modern enterprise and open source solutions.
+* Oversaw major effort to refactor legacy code to enable automated unit testing.
+* Side Project: Created a server-less web app for knowledge management on the Intranet using React and D3.
+* Facilitated collaboration between engineering teams and engaged customers throughout the iterative development process for new products to close expectation gaps and identify areas of improvements.
 * Worked with developers and customers to identify low- or non-value added work for termination or automation.
 * *Side Project:* Created, popularized, and maintained a knowledge repository for the company's Intranet and an user friendly interface for the knowledge repository.
-
 
 ## Education
 * I studied Electrical and Computer Engineering Carnegie Mellon University.
 * I got a B.S. and a M.S in 4.5 years through an integrated bachelors and masters program.
 
 ## Miscellaneous
+* Here are words that describe me:  Love learning, pragmatic, inquisitive, adaptable, good communicator, diligent, attention to detail
 * I commissioned in 2013 through the Navy Reserved Officer Training Corp (ROTC)
 * I have a 5 year commitment to work for the government supporting the US Navy because the Navy paid 3.5 years of college tuition.
 

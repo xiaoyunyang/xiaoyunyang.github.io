@@ -68,5 +68,7 @@ LooseLeaf exhibited at LA TechDay in September 2016.
 
 *January 2017 -*
 
+> My startup is called LooseLeaf. It lets people build skills by helping Nonprofits. People can gain relevant work experience as a developer, designer, and writer while volunteering to assist a nonprofit.
+
 * Revised idea for LooseLeaf to be what it is now.
 * Started isomorphic application development using full stack JavaScript (React and Node.js) and the latest tech stack in the JavaScript ecosystem.

@@ -68,11 +68,11 @@ Functional ➡ no assignments ➡ no states ➡ no blocking or concurrency issue
 
 In the words of [SICP](https://mitpress.mit.edu/sites/default/files/6515.pdf), a Program is a pattern of rules to direct processes that manipulate data. The functional programming paradigm helps us:
 
-	> use higher order functions to capture patterns in usage.
+> use higher order functions to capture patterns in usage.
 
-	> control complexity by building abstractions that hide details when appropriate.
+> control complexity by building abstractions that hide details when appropriate.
 
-	> Programs must be written for people to read and only incidentally for machines to execute.
+> Programs must be written for people to read and only incidentally for machines to execute.
 
 
 ## Key (and cool) Ideas From FP
