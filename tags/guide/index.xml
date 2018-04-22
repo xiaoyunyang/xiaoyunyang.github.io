@@ -8,10 +8,32 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Fri, 20 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/tags/guide/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Applying Algorithmic Thinking To Solve A Problem In JavaScript</title>
+      <link>http://xiaoyunyang.github.io/post/applying-algorithmic-thinking-to-solve-a-problem-in-javascript/</link>
+      <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/applying-algorithmic-thinking-to-solve-a-problem-in-javascript/</guid>
+      <description>&lt;p&gt;This is a deep dive of a coding challenge that my friend was asked to solve during an interview. I like this problem a lot because the solution requires both algorithmic thinking and familiarity with some fundamental frameworks and techniques in computer science.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Use A Stress Journal To Turn Stress into An Action Plan</title>
+      <link>http://xiaoyunyang.github.io/post/use-a-stress-journal-to-turn-stress-into-an-action-plan/</link>
+      <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/use-a-stress-journal-to-turn-stress-into-an-action-plan/</guid>
+      <description>&lt;p&gt;Kyle, a friend of mine, introduced me to his method for turning stress into an action plan.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>An Interview Study Guide For Overachievers</title>
@@ -19,7 +41,7 @@
       <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/</guid>
-      <description>&lt;p&gt;Nothing strikes more anxiety and self-doubt than the dreaded Job Interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&amp;rsquo;t have all the qualifications.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&amp;rsquo;t have all the qualifications.&lt;/p&gt;</description>
     </item>
     
     <item>
