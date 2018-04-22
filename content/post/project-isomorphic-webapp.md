@@ -69,12 +69,12 @@ $ npm start
 
 Here's a preview for what it looks like:
 
-![](/post/images/iso1.png)
-
-![](/post/images/iso2.png)
-
-![](/post/images/iso3.png)
-
+{{< image classes="fancybox fig-33" src="/post/images/projects/iso1.png"
+thumbnail="/post/images/projects/iso1.png" title="Home Page">}}
+{{< image classes="fancybox fig-33" src="/post/images/projects/iso2.png"
+thumbnail="/post/images/projects/iso2.png" title="About Page">}}
+{{< image classes="fancybox fig-33 clear" src="/post/images/projects/iso3.png"
+thumbnail="/post/images/projects/iso3.png" title="Not Found Page">}}
 
 ### Bottomline
 

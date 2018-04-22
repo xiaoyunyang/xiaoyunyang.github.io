@@ -8,11 +8,19 @@ tags:
   - Career
   - WebApp
   - Guide
+keywords:
+  - career transition
+  - learn programming
+  - coding bootcamps
+  - interview prep
+  - personal brand
+  - learn to code
 thumbnailImagePosition: left
 thumbnailImage: /post/images/long-term-planning.png
+coverImage: /post/images/long-term-planning.png
 ---
 
-Nothing strikes more anxiety and self-doubt than the dreaded Job Interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don't have all the qualifications.
+Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don't have all the qualifications.
 
 <!--more-->
 <!--toc-->
@@ -23,8 +31,14 @@ So you want to be a software engineer? What kind of software do you want to engi
 
 If you don't know what these mean and what kind of special skills you need to be qualified for these roles, then you have an expectation gap.
 
-Expectation gap means
+Expectation is a strong belief that something will happen. Not doing research to substantiate your belief with facts creates an expectation gap. Expectation gap is the difference between reality and fantasy. It leads people to pursue unrealistic goals instead of working on high-value-added goals.
 
+I want to be a professional software engineer so that means understanding:
+1. What it's like to live as a software engineer.
+2. What knowledge and skills are expected of a software engineers.
+3. What are the different career paths and specializations for software engineers.
+
+The following resources helped me close my expectation gap and establish good goals to work towards:
 
 * Kamran Ahmed's [Developer Roadmap](https://github.com/kamranahmedse/developer-roadmap) - infographics on what type of jobs you can do in frontend, backend, devOps and what tools are being used.
 * Story of how someone [landed jobs with Microsoft, Amazon, and Twitter without an Ivy League degree](https://medium.freecodecamp.org/how-i-landed-offers-from-microsoft-amazon-and-twitter-without-an-ivy-league-degree-d62cfe286eb8)

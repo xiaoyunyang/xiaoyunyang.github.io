@@ -1,6 +1,6 @@
 ---
 title: "From Military To Tech Entrepreneur:  How I made the Leap"
-date: 2018-04-22
+date: 2018-04-30
 categories:
   - blog
 tags:

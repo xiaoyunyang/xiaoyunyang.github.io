@@ -48,7 +48,10 @@ Here's the timeline for what I've accomplished for LooseLeaf. It has been a long
 
 LooseLeaf exhibited at LA TechDay in September 2016.
 {{< youtube fKWuc5rwtlU >}}
-{{< image classes="fancybox fig-100" src="/post/images/looseleaf/techday.png" thumbnail="/post/images/looseleaf/techday.png">}}{{< image classes="fancybox fig-50" src="/post/images/looseleaf/chrome-plugin.png" thumbnail="/post/images/looseleaf/chrome-plugin.png">}}{{< image classes="fancybox fig-50" src="/post/images/looseleaf/landing-world.png" thumbnail="/post/images/looseleaf/landing-world.png">}}{{< image classes="fancybox fig-50" src="/post/images/looseleaf/fullstack.png" thumbnail="/post/images/looseleaf/fullstack.png">}}
+{{< image classes="fancybox fig-100 nocaption" src="/post/images/looseleaf/techday.png" thumbnail="/post/images/looseleaf/techday.png" title="LooseLeaf at TechDay LA in 2016">}}
+{{< image classes="fancybox fig-50 nocaption" src="/post/images/looseleaf/chrome-plugin.png" thumbnail="/post/images/looseleaf/chrome-plugin.png" thumbnail-height="450px" title="LooseLeaf's Chrome Plugin For Saving Webpages to Collection">}}
+{{< image classes="fancybox fig-50 nocaption" src="/post/images/looseleaf/landing-world.png" thumbnail="/post/images/looseleaf/landing-world.png" thumbnail-height="250px" title="Original vision of LooseLeaf to be a notebook of useful learning content on the web">}}
+{{< image classes="fancybox fig-50 nocaption clear" src="/post/images/looseleaf/fullstack.png" thumbnail="/post/images/looseleaf/fullstack.png" title="Technology Full Stack for LooseLeaf in early vision">}}
 
 
 *December 2016 - February 2017*

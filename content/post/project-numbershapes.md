@@ -24,6 +24,4 @@ NumberShapes is a [collection of iOS apps](https://itunes.apple.com/us/developer
 
 ![NumberShapes App Collection](/post/images/projects/numbershapes/app-collection.png)
 
-
-
 While the iOS development has been turned over to my co-founder, Andrew, I still support the development of NumberShape's website, including the [current official website](http://number-shapes.com) and a [prototype website](http://number-shapes.herokuapp.com/#/)"> with more features, which is being hosted on heroku. The prototype is created using angular.js, Foundation with SASS, node.js, and express.js.

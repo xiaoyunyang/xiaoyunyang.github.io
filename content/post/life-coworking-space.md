@@ -21,7 +21,7 @@ If you asked me to give you three facts about myself, I would tell you (1) I'm a
 
 <!--more-->
 
-I used to work from home or at coffee houses. They are not the best workspaces for various reasons.
+I used to work from home or at coffeeshops. They are not the best workspaces for various reasons.
 
 # Option 1: Work At Home
 For me, the main disadvantages of working at home are the loneliness and the lack of work life balance, which I think really affected my productivity.
@@ -30,12 +30,16 @@ For me, the main disadvantages of working at home are the loneliness and the lac
 
 **No Work Life Balance**: Home is a place where you associate with relaxation. The demarcation between work time and sleep time gets blurred. I had made a habit of staying up until 3 in the morning coding on week nights when I have work the next morning because it is much easier to keep going when you are making progress on your project than to stop and go to sleep when you are in a blissful [state of flow](https://hackernoon.com/flow-state-hacking-your-productivity-95b28668e280).
 
-## Option 2: Work At Coffee Houses
-Coffee houses address the problem of a loneliness and providing a separate workspace than home where you sleep and relax. However, expect to pay a lot of money for coffee and food when you work at a coffee house.
+# Option 2: Work At Coffeeshops
+Coffeeshops address the problem of a loneliness and providing a separate workspace than home where you sleep and relax. However, expect to pay a lot of money for coffee and food when you work at a coffeeshop.
 
-**Expensive**: I live in northwest part of Washington DC, which has a vibrant Coffee house scene. People go to coffee houses such as [Tryst](https://www.yelp.com/biz/tryst-washington), [The Coup](https://www.yelp.com/biz/the-coup-calgary), and [Potter's House](https://www.yelp.com/biz/potters-house-washington), which open until late in the evening, offer people with computers coffee, food, and a comfortable place to work. I went to coffee houses a lot a one point - almost every day. The bills ran up to $800 a month at one point. While I still visit these coffee houses sometimes, I can't afford to do it everyday.
+**Expensive**: I live in northwest part of Washington DC, which has a vibrant Coffee house scene. People go to coffeeshops such as [Tryst](https://www.yelp.com/biz/tryst-washington), [The Coup](https://www.yelp.com/biz/the-coup-calgary), and [Potter's House](https://www.yelp.com/biz/potters-house-washington), which open until late in the evening, offer people with computers coffee, food, and a comfortable place to work. I went to coffeeshops a lot a one point - almost every day. The bills ran up to $800 a month at one point. While I still visit these coffeeshops sometimes, I can't afford to do it everyday.
 
-## Option 3: Work At Co-Working Spaces
+{{< image classes="fancybox fig-50" src="/post/images/tryst.png"
+thumbnail="/post/images/life/tryst.png" title="Tryst in Adams Morgan">}}
+{{< image classes="fancybox fig-50 clear" src="/post/images/life/the-coup.png" thumbnail="/post/images/life/the-coup.png" title="The Coup in Columbia Heights">}}
+
+# Option 3: Work At Co-Working Spaces
 
 I got a membership to a local co-working space called [Cove](https://cove.is/). There are many co-working spaces in Washington DC but Cove distinguishes itself from others like WeWork by being affordable and flexible.
 
@@ -43,6 +47,7 @@ I got a membership to a local co-working space called [Cove](https://cove.is/). 
 
 **Amenities**:  Every Cove comes with coffee. Unlimited coffee. There are also sparkling water, soda, and snacks. There are social spaces to work and talk and there are quiet spaces to work if you need to concentrate. The workspaces are very nice with plants everywhere and nice furniture. You can work at a big table, an small table, a booth, a couch, at the kitchen counter. This is exactly what I want - variety.
 
-![](/post/images/cove1.png)
-
-![](/post/images/cove2.png)
+{{< image classes="fancybox fig-50" src="/post/images/life/cove1.png"
+thumbnail="/post/images/life/cove1.png" title="Cove on 14th Street">}}
+{{< image classes="fancybox fig-50" src="/post/images/life/cove2.png"
+thumbnail="/post/images/life/cove2.png" title="Cove at Dupont Circle">}}

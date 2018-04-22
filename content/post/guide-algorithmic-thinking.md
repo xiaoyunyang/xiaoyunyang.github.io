@@ -1,6 +1,6 @@
 ---
 title: "Applying Algorithmic Thinking To Solve A Problem In JavaScript"
-date: 2018-04-22
+date: 2018-04-30
 categories:
   - blog
 tags:
