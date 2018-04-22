@@ -1,5 +1,5 @@
 ---
-title: "Xiaoyun Yang"
+title: "About Me"
 categories:
 - category
 - subcategory
@@ -7,7 +7,8 @@ keywords:
 - tech
 comments:       false
 showMeta:       false
-showActions:    false
+showPagination: false
+showSocial:     false
 #thumbnailImage: //example.com/image.jpg
 ---
 
@@ -15,7 +16,7 @@ showActions:    false
 
 I'm a software engineer and tech entrepreneur. I'm excited by opportunities that let me develop elegant solutions for obvious problems where there are no obvious solutions. I believe in automating wherever possible, and leveraging existing technology to quickly bootstrap solutions. My mantra is trial and error, which I apply to both building a startup as well as living a fulfilling life.
 
-I live in Washington DC and in the past, I lived in NYC; Pittsburgh; Shanghai, China; and Bonn, Germany. I have a full time job and a side hustle. I'm a government employee by day, tech entrepreneur by night. I'd like to make my side hustle my main hustle. In my spare time I like to read programming books and write articles about programming on Medium.
+I live in Washington DC. I have a full time job and a side hustle. I'm a government employee by day, tech entrepreneur by night. I'd like to make my side hustle my main hustle. In my spare time I like to read programming books and write articles about programming on Medium.
 
 Here are some details about me:
 
@@ -80,9 +81,13 @@ Here are some details about me:
 * I studied Electrical and Computer Engineering Carnegie Mellon University.
 * I got a B.S. and a M.S in 4.5 years through an integrated bachelors and masters program.
 
-## Miscellaneous
-* Here are words that describe me:  Love learning, pragmatic, inquisitive, adaptable, good communicator, diligent, attention to detail
-* I commissioned in 2013 through the Navy Reserved Officer Training Corp (ROTC)
-* I have a 5 year commitment to work for the government supporting the US Navy because the Navy paid 3.5 years of college tuition.
+## Trivia
+* I have the honor of serving 5 years of active duty in the military at Naval Reactors. I commissioned in 2013 through the Navy Reserved Officer Training Corp (ROTC).
+* Here are some words that describe me:  Love learning, independent, pragmatic, inquisitive, adaptable, good communicator, diligent, attention to detail.
+* I have a little dog called Ollie. He's a Shichon Teddy Bear.
+* I'm an immigrant. I moved to the US from China in 2002. I became a citizen in 2003.
+* I've always lived in cities. The cities in which I've lived include Shanghai, New York, Pittsburgh, and Washington DC.
+* When I was a junior in college, I spent a summer studying German at the Goethe Institut in Bonn, Germany. During my stay, I traveled all over Germany and Western Europe.
+* I love to travel and enjoy [couchsurfing](https://www.couchsurfing.com/people/xiaoyun.yang.7). The best cities that I visited are Berlin, Brussels, Copenhagen, Vienna, Edinburgh, Oslo, and Tokyo.
 
 **PS**:  If you are wondering how I built this website, I'm using [Hugo](https://gohugo.io/) for the static site generator engine and the beautiful [tranquilpeak](https://github.com/kakawait/hugo-tranquilpeak-theme) theme. I'm [hosting it from github](https://gohugo.io/hosting-and-deployment/hosting-on-github/). I wrote a [blog post](/post/using-hugo-to-build-a-personal-brand-website/) about this.
