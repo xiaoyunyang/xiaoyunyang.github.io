@@ -73,6 +73,10 @@
   </url>
   
   <url>
+    <loc>http://xiaoyunyang.github.io/about/</loc>
+  </url>
+  
+  <url>
     <loc>http://xiaoyunyang.github.io/archives/</loc>
     <priority>0</priority>
   </url>
@@ -181,10 +185,6 @@
     <loc>http://xiaoyunyang.github.io/</loc>
     <lastmod>2018-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://xiaoyunyang.github.io/about/</loc>
   </url>
   
 </urlset>
