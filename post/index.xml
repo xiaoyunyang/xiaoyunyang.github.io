@@ -8,10 +8,21 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Fri, 20 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Principles To Code By: How To Solve Problems With Code</title>
+      <link>http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</link>
+      <pubDate>Mon, 23 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</guid>
+      <description>&lt;p&gt;What I love most about programming is not the shiny new tools and the increasingly expressive and powerful languages which significantly simplify development and creation of software products; What I love most about programming is the problem solving. I don&amp;rsquo;t believe anyone is born with problem solving skills. It&amp;rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&amp;rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of my favorite principles that have guided my problem solving process.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>An Interview Study Guide For Overachievers</title>
