@@ -20,8 +20,86 @@ JavaScript is one of the most popular and versatile languages today, but when Br
 
 # String Algorithms
 
+## Reverse Strings
+
+```javascript
+// takes a string and returns the reverse of that string
+function reverse(s) {
+  return s.split('').reduce((res, d) =>
+    d + res, ''
+  );
+}
+```
+
+## Palindrome
+Given string `s`, returns `true` if `s` is a palindrome, false otherwise.
+Example:
+
+* `isPalindrome('aba')` returns `true`.
+* `isPalindrome('abb')` returns `false`.
+* `isPalindrome('abba')` returns `true`.
+
+Try out the solution in [repl.it](https://repl.it/@xiaoyunyang/palindrome)
+
+### Naive Algorithm
+The simple way to determine if the string is a palindrome is by comparing the original string with the reverse of the string and see if they are equal.
+
+```javascript
+function isPalindrome(s) {
+  if (typeof s !== 'string') return false;
+  return s === reverse(s);
+}
+```
+However, this may not be the most efficient since the computational complexity is always O(N) regardless of whether the string is a palindrome or not. We want an efficient algorithm such that we can return immediately if the head and tail of the string don't match.
+
+### More Efficient Algorithm
+A more efficient algorithm is this:
+
+```javascript
+function isPalindrome2(s) {
+  if (typeof s !== 'string') return false;
+  let first = s.slice(0,1)
+  let last = s.slice(-1)
+
+  // not a palindrome
+  if(first !== last) return false
+  if(first === '') return true
+
+  return isPalindrome2(s.slice(1, -1))
+}
+```
+
+### Unit Test
+
+```javascript
+let testCases = [
+  {test: 'hello', shouldBe: false},
+  {test: 42, shouldBe: false},
+  {test: null, shouldBe: false},
+  {test: undefined, shouldBe: false},
+  {test: 'aba', shouldBe: true},
+  {test: 'abba', shouldBe: true},
+  {test: 'a bba', shouldBe: false},
+  {test: 'a bb a', shouldBe: true},
+  {test: 'ab ba', shouldBe: true},
+  {test: '', shouldBe: true},
+];
+let fun = (str) => isPalindrome2(str);
+const test = (testCases, fun) => {
+  testCases.map(t => {
+    const shouldBe = t.shouldBe;
+    const is = fun(t.test);
+    const res = (shouldBe === is) ? 'passed' : 'failed';
+    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
+    console.log(`${res} ${moreInfo}`);
+  })
+}
+test(testCases, fun)
+```
+
 ## Capitalize Letters In A Sentence
 
+### The Algorithm
 Using reduce vice a map and join gives you a slight performance boost.
 
 When your phrase is really long, you should care about performance also. Doing a `map` then `join` is going to be slower than doing a `reduce` based on [this benchmark](https://jsperf.com/test-map-join-vs-reduce).
@@ -40,7 +118,7 @@ const titleCase = (phrase) => {
 }
 ```
 
-Simple Test:
+### Unit Test:
 I wrote a helper assert function and some test cases. This is by no means an exhaustive test.
 
 ```javascript
@@ -72,8 +150,10 @@ testResult.filter(d => d!=='passed').length === 0 ? 'passed all tests' :
                                                     'failed at least one test'
 ```
 
-## Match parentheses in a string.
-Try it out in [repl.it](https://repl.it/@xiaoyunyang/MatchParentheses)
+## Match parentheses in a string
+Try out the solution in [repl.it](https://repl.it/@xiaoyunyang/MatchParentheses)
+
+### The Algorithm
 
 ```javascript
 function isBalanced(str, openCnt) {
@@ -92,6 +172,8 @@ const newOpenCnt = (c, openCnt) => {
 }
 
 ```
+
+### Unit Test
 
 It is necessary to extensively unit test your code.
 
@@ -125,100 +207,78 @@ test(testCases, fun)
 ```
 
 ## URL String transform
-We want to transform the article title into a string of all lower case words joined by '-'.
+Try out the solution in [repl.it](https://repl.it/@xiaoyunyang/urlStringTransform)
 
-**Option #1 - use Array.map, then Array.join**
+Given an article title for a blog, create a url string of all lower case words joined by '-'.
+
+### Option 1 - use Array.map, then Array.join
 
 ```javascript
-phrase.split(' ').map(w => w.toLowerCase()).join('-');
+function createURL(title) {
+  if(typeof title !== 'string') return ''
+  return title.split(' ')
+              .map(word => word.toLowerCase())
+              .join('-');
+}
 ```
 
 The disadvantage of this approach is it's [slow](https://stackoverflow.com/questions/22614237/javascript-runtime-complexity-of-array-functions). map is O(N). join is O(N) we can do better.
 
-**Option #2 - use Array.reduce**
-```javascript
-phrase.split(' ').reduce((res, a) => res + '-' + a.toLowerCase(), '').slice(1)
-//> "three-ways-to-title-case-a-sentence-in-javascript"
-
-// Why .slice(1) at the end?
-
-phrase.split(' ')
-	.map(w => w.toLowerCase())
-	.reduce((res,a) => {
-		console.log('res = ', res);
-		console.log('a = ', a);
-		return res+'-'+a
-	}, '')
-
-```
-
-```
-//res =  
-// a =  three
-// res =  -three
-// a =  ways
-// res =  -three-ways
-// a =  to
-// res =  -three-ways-to
-// a =  title
-// res =  -three-ways-to-title
-// a =  case
-// res =  -three-ways-to-title-case
-// a =  a
-// res =  -three-ways-to-title-case-a
-// a =  sentence
-// res =  -three-ways-to-title-case-a-sentence
-// a =  in
-// res =  -three-ways-to-title-case-a-sentence-in
-// a =  javascript
-// "-three-ways-to-title-case-a-sentence-in-javascript"
-```
-
-**Option #3 - ES6**
-```javascript
-let arr = phrase.split(' ')
-
-// ES6
-let [first] = arr //> "Three" ...es6 solution using destructuring
-[first, ...rest] = arr
-first //> "Three"
-rest //> ["Ways", "to", "Title", "Case", "a", "Sentence", "in", "JavaScript"]
-let urlStr = rest.reduce((res, a) => res + '-' + a.toLowerCase(), first.toLowerCase())
-//> "three-ways-to-title-case-a-sentence-in-javascript"
-```
+### Option 2 - use Array.reduce
 
 ```javascript
-// ES5
-let first = arr[0]
-let rest = arr.slice(1)
-let urlStr = rest.reduce((res, a) => res + '-' + a.toLowerCase(), first.toLowerCase())
+function createURL2(title) {
+  if(typeof title !== 'string') return ''
+
+  return title.split(' ')
+              .reduce((res, word) =>  
+                res + '-' + word.toLowerCase(),
+                '')
+              .slice(1)
+}
+```
+Question for the reader: why `.slice(1)` at the end?
+
+
+### Option 3 - ES6
+
+```javascript
+function createURL3(title) {
+  if(typeof title !== 'string') return ''
+
+  let [first, ...rest] = title.split(' ')
+
+  return rest.reduce((res, word) =>
+              res + '-' + word.toLowerCase(),
+              first.toLowerCase())
+}
 ```
 
-**Aside: Tips on array operations**
+### Unit Test
 
-*Caveat:* use arr[0], don't use arr.pop() because Array.pop() has the side effect of modifying your original array.
+```javascript
+let testCases = [
+  {test: '', shouldBe: ''},
+  {test: 'hello', shouldBe: 'hello'},
+  {test: 'hello world', shouldBe: 'hello-world'},
+  {test: undefined, shouldBe: ''}
+];
+let fun = (str) => createURL3(str);
+
+const test = (testCases, fun) => {
+  testCases.map(t => {
+    const shouldBe = t.shouldBe;
+    const is = fun(t.test);
+    const res = (shouldBe === is) ? 'passed' : 'failed';
+    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
+    console.log(`${res} ${moreInfo}`);
+  })
+}
+test(testCases, fun)
 ```
-arr = [1, 2, 3]
-arr[0] //> 1
-arr //> [1, 2, 3]
-
-arr = [1, 2, 3]
-arr.pop(0) //> 1 ... but is O(1)
-arr //> [2, 3]
-
-// Tip:  use Array.slice(1), don't use Array.splice(1). Array.slice and Array.splice are both O(N)
-arr = [1, 2, 3]
-arr.slice(1) //> [2, 3]
-arr //> [1, 2, 3]
-
-arr = [1, 2, 3]
-arr.splice(1) //> [2, 3] ... O(N)
-arr //> [1]
-```
-Tip: if you care about performance of getting rest with O(1), use Array.pop()
 
 ## HTML String Transform
-Try it out in [repl.it](https://repl.it/@xiaoyunyang/StrReplace)
+Try out the solution in [repl.it](https://repl.it/@xiaoyunyang/strReplace)
 
 Symbols used in HTML document consist of special character sets, including `&lt;` for & and [some others](https://www.w3.org/MarkUp/HTMLPlus/htmlplus_13.html).
 
@@ -302,12 +362,40 @@ s === decoded //> true
 ```
 
 Can we make the solution more general? Yes, in the following ways:
-1. notice the `decode` and `encode` functions have basically the same functional structure. That is, it runs a loop to update the result based on value from the array of objects. We can generalize it further.
+1. notice the `decode` and `encode` functions have basically the same functional structure. That is, they both run a loop to update the result based on value from the array of objects. We can generalize it further and abstract away that boilerplate.
 2. The pattern we are matching in the `matchHTMLChar` RegExp is hardcoded. We should make that dependent on  `dict`.
 
 I'll leave these two problems to you as an exercise.
 
+{{< alert info >}} Note: Abstraction is vital in helping us to cope with the complexity of large systems. One of the tenets of functional programming, a **problem solving framework**, is the principle of abstraction. Some parts of your code are boilerplate. Some parts of your code are unique. The goal of abstraction is to capture that boilerplate stuff in a higher order function. {{< /alert >}}
+
 # Array Algorithms
+
+## Flatmap
+
+Write a function that converts "hello" to "h.e.l.l.o." There are two parts to this: `flat` and `map`.
+
+```javascript
+const arr = "hello".split("") //> ["h", "e", "l", "l", "o"]
+
+const matrix = arr.map(s => [s, "."])
+// [Array(2), Array(2), Array(2), Array(2), Array(2)]
+// 0: (2) ["h", "."]
+// 1: (2) ["e", "."]
+// 2: (2) ["l", "."]
+// 3: (2) ["l", "."]
+// 4: (2) ["o", "."]
+
+const flat = (data) => data.reduce((res, d) => {
+  return res.concat(d);
+}, []);
+
+
+flat(matrix) //> ["h", ".", "e", ".", "l", ".", "l", ".", "o", "."]
+
+flat(matrix).join("") //> "h.e.l.l.o."
+
+```
 
 # Object Oriented programming
 

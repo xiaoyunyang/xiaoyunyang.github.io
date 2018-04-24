@@ -23,7 +23,9 @@ JavaScript is one of the most popular and versatile languages today. You can bui
 * See [Mutating vs Non-mutating array operation](https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/)
 * Check out [lodash](https://lodash.com/docs/4.17.4#range) and underscore for useful array operators.
 
-## Add things to an array
+## Constructing
+
+### Add things to an array
 
 * `array.push()` adds an item to the end of the array
 * `array.unshift()` adds an item to the beginning of the array.
@@ -36,21 +38,41 @@ let mutatingAdd = ['a', 'b', 'c', 'd', 'e'];
 mutatingAdd.push('f'); // ['a', 'b', 'c', 'd', 'e', 'f']
 mutatingAdd.unshift('z'); // ['z', 'b', 'c', 'd', 'e' 'f']
 ```
+### Create an array Statically
 
-## Create an array dynamically
 ```javascript
-var vals = Array.from({length: 13}, (v,i) => i)
+let arr = []
+arr[0] = 1 //> [1]
+arr[2] = 2 //> [1, empty, 2]
+
+arr[1] //> undefined
+```
+
+Why JavaScript lets you create an array this way is ... different. In Java, arrays have a fixed sized. The space for the array needs to be allocated upfront before you can modify elements. The compiler will yell at you if you are trying to modify the nth element of an array of size n. I suppose in JavaScript, arrays are more like array lists.
+
+### Create an array dynamically
+```javascript
+let vals = Array.from({length: 13}, (v, i) => i)
 //> (13) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 vals = vals.map(v => v-1)
 //> (13) [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-
-vals.map(v => ({val: v, : valIncrementer(v, false), disabled: valIncrementer(v, true) }))
 ```
 
-## Get stuff From an array
+### Array Concatenation
+
+```javascript
+let arr1 = [1,2,3]
+let arr2 = [4,5]
+arr.concat(arr2) //> [1,2,3,4,5]
+```
+
+## Destructing
+
+### Get One Element By Index
 
 Given an array:
+
 ```JavaScript
 const arr = [1, 2, 3, 4];
 ```
@@ -61,39 +83,55 @@ arr[0] //> 1
 arr[3] //> 4
 ```
 
-Using destructuring (ES6):
+### Get Multiple Elements with slice
+
+Slice lets us remove one or multiple chunks of contiguous elements from the array.
 
 ```javascript
-const [first, second] = arr;
-first //> 1
-second //> 2
+let arr = [1,2,3]
+arr.slice(1) //> [2, 3]
+arr.slice(2) //> [3]
+arr.slice(3) //> []
 ```
 
-```JavaScript
-let [first, ...rest] = arr;
-first //> 1
-rest //> [2, 3, 4]
-```
-
-## Get last elem of an array
-
-Don't use `pop` unless you want to mutate the array:
+Note, the following two expressions are equivalent and both gives us the last element of the array:
 
 ```javascript
-var arr = [1,2,3]
+arr.slice(-1) //> [3]
+arr.slice(arr.length-1) //> [3]
+```
+
+What happens when we do the following?
+
+```javascript
+arr.slice(arr.length+1) //> []
+```
+
+As you expect, if we slice off more things from the array than the array contains, we get an empty array.
+
+### Get Last Element From Array
+
+#### With side effects using Array.pop
+
+```javascript
+let arr = [1,2,3]
 arr.pop() //> 3
-arr //>[1, 2] ... Very Bad. Your original array got changed
+arr //> [1, 2] ... Very Bad. Your original array got changed
 
-const arr2 = [1,2,3]
+let arr2 = [1,2,3]
 arr2.pop()
 arr2 //> Even const can't help you
 
-const arr3 = arr
+let arr3 = arr
 arr3.pop() //>2
 arr //> [1] ... arr got changed even though arr3 did the pop
 ```
 
-Do this instead:
+{{< alert warning >}} Use `arr[arr.length-1]` or `arr.slice(-1)` to get the last element of the array if you don't want to modify the original array.  Using `arr.pop()` has the side effect of modifying your original array. {{< /alert >}}
+
+But if the goal is to modify your original array, which we will look at later, then Array.pop() is more efficient than Array.slice since it doesn't need to copy over the array.
+
+#### With no side effects using Array.slice
 
 ```javascript
 let arr = [1,2,3]
@@ -117,18 +155,108 @@ arr.slice(1) //> [2, 3]
 arr.slice(2) //> [3]
 ```
 
-## Combine things in array
+### Destructuring (ES6)
 
 ```javascript
-[0, 1, 2, 3].reduce((sum, value) => { sum + value;}, 0);
+let arr = [1, 2, 3, 4]
+let [first, second] = arr
+first //> 1
+second //> 2
+```
+
+Using the spread operator `...rest`:
+
+```JavaScript
+let [first, ...rest] = arr
+first //> 1
+rest //> [2, 3, 4]
+
+[first, second, ...rest] = arr
+first //> 1
+second //> 2
+rest //> [3, 4]
+```
+
+Destructuring is a shortcut for performing `slice` on the array multiple times:
+
+```javascript
+let first = arr.slice(0,1) //> [1]
+let rest = arr.slice(1) //> [2,3,4]
+```
+
+## Processing
+
+### Remove any Elements From Array
+
+There are two ways to do it: with side effect or without side effect. The side effect is modifying the original array. Let's take a look at both these options.
+
+#### Without Side Effect Using Array.slice
+
+Per the [docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) `slice` takes two arguments:
+
+```
+arr.slice([begin[, end]])
+```
+
+* `begin` is inclusive and `end` is exclusive.
+
+For example:
+
+```javascript
+let arr  = [1,2,3,4]
+
+// get elements beginning with the element at arr.length - 1
+// in other words, get the last element
+arr.slice(-1) //> [4]
+
+// get elements beginning with the last two elements
+arr.slice(-2) //> [3, 4]
+
+// get the sub-array from index 0 to index arr.length - 1 (exclusive)
+arr.slice(0, -1) //> [1, 2, 3]
+
+// get third element, that is, element at index 2 through 3 (exclusive)
+arr.slice(2,3)
+```
+
+#### With Side Effects using Array.splice
+
+{{< alert warning >}} Use `arr[0]` or `arr.slice(1)` to get the first element of the array if you don't want to modify the original array.  Using `arr.splice(1)` has the side effect of modifying your original array. {{< /alert >}}
+
+
+```javascript
+arr = [1, 2, 3]
+arr[0] //> 1
+arr //> [1, 2, 3]
+
+arr = [1, 2, 3]
+arr.pop(0) //> 1 ... but is O(1)
+arr //> [2, 3]
+
+// Tip:  use Array.slice(1), don't use Array.splice(1). Array.slice and Array.splice are both O(N)
+arr = [1, 2, 3]
+arr.slice(1) //> [2, 3]
+arr //> [1, 2, 3]
+
+arr = [1, 2, 3]
+arr.splice(1) //> [2, 3] ... O(N)
+arr //> [1]
+```
+
+### Combine Elements of Array
+
+```javascript
+let arr = [1, 2, 3]
+let [first, ... rest] = arr;
+rest.reduce((sum, elem) => { sum + elem;}, first);
 //> total is 6
 ```
 
 ```javascript
-["hello","World"].reduce( (a, res) => a + res ) //> "helloWorld"
+['hello', 'World'].reduce( (res, elem) => res + elem ) //> "helloWorld"
 
-["hello","World"].reduce( (a, res) => { return a + res }, "My message: " )
-//> "My message: helloWorld"
+['a', 'b', 'c'].reduce( (res, elem) => { return elem + res }, " is the reverse.")
+//> "cba is the reverse."
 ```
 
 ```javascript
@@ -138,7 +266,7 @@ arr.slice(2) //> [3]
 
 If you don’t pass in an initial value, reduce will assume the first item in your array is your initial value.
 
-## Combine sub-arrays
+### Combine sub-arrays
 
 ```javascript
 // Flat
@@ -151,34 +279,7 @@ var data = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 flat(data) // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 ```
 
-## Flatmap
-
-Write a function that converts "hello" to "h.e.l.l.o." There're two parts to this: `flat` and `map`.
-
-
-```javascript
-const arr = "hello".split("") //> ["h", "e", "l", "l", "o"]
-
-const matrix = arr.map(s => [s, "."])
-// [Array(2), Array(2), Array(2), Array(2), Array(2)]
-// 0: (2) ["h", "."]
-// 1: (2) ["e", "."]
-// 2: (2) ["l", "."]
-// 3: (2) ["l", "."]
-// 4: (2) ["o", "."]
-
-const flat = (data) => data.reduce((res, d) => {
-  return res.concat(d);
-}, []);
-
-
-flat(matrix) //> ["h", ".", "e", ".", "l", ".", "l", ".", "o", "."]
-
-flat(matrix).join("") //> "h.e.l.l.o."
-
-```
-
-## Sorting
+### Sorting
 
 ```javascript
 ['a','c','b'].sort((a,b) => a > b) //> ["a", "b", "c"]
@@ -190,7 +291,7 @@ flat(matrix).join("") //> "h.e.l.l.o."
 [1,3,2].sort((a,b) => b > a) //> [3, 2, 1]
 ```
 
-# Operations
+# Functions
 
 ## Alternative to doing a loop
 
@@ -219,6 +320,30 @@ const msg = `Completed ${numProj} projects in the past ${numMonths} months. Won 
 ```
 
 # String
+
+## Get Characters from String
+
+Use `chartAt()` on a string to get the character at a specific index.
+
+```javascript
+let str = 'hello'
+str.charAt(0) //> 'h'
+str.charAt(str.length-1) //> 'o'
+str.charAt(str.length) //> ''
+```
+
+What happens if you do the following?
+
+```javascript
+str.charAt(str.length) //> ''
+```
+
+It returns an empty string! You don't get any help like the index out of bounds error that people who work with a statically typed language with a compiler like Java would be familiar with. This could be a really nasty bug. A similar thing happens with arrays when you access an index out of bound array element:  `arr[arr.length]` gives you `undefined`.
+
+{{< alert warning >}}
+JavaScript, being a scripting language with a dynamic typed system, lacks a compiler that provides error checking support like throwing index out of bounds error. This is why we need to use a [linter](https://github.com/airbnb/javascript) on vanilla JavaScript or write code in TypeScript that provides a compiler and static type-checking.
+{{< /alert >}}
+
 
 ## Getting Substrings
 

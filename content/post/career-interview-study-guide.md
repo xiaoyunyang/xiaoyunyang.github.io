@@ -72,6 +72,7 @@ I studied Electrical and Computer Engineering in college with an emphasis on sof
 * Studying from the [Functional Programming in Scala](https://www.amazon.com/Functional-Programming-Scala-Paul-Chiusano/dp/1617290653), which I highly recommend because of its depth, clarity, and exercise problems on using Scala to guide readers to develop an understanding and appreciation for functional programming as a framework for problem solving.
 * Reading articles published on Medium and watching [talks on YouTube](https://www.youtube.com/watch?v=E8I19uA-wGY) about functional programming.
 * Writing [articles about functional programming](/post/how-functional-programming-promotes-developer-productivity/). Personally, I find writing about a topic you are learning extremely helpful in helping you retain and master the new information.
+* Read [Structure and Interpretation of Computer Programs](http://web.mit.edu/alexmv/6.037/sicp.pdf)
 
 Don't think because you are not interviewing for a Haskell job, you don't need to learn functional programming. Functional programming is a powerful problem solving framework. A friend of mine was asked at a JavaScript interview what a pure function is.  As software is becoming increasingly complex, functional programming concepts and techniques have been [integrated into the mainstream industry practices](https://medium.com/javascript-scene/can-you-avoid-functional-programming-as-a-policy-7bd0570bcfb2).
 
@@ -158,6 +159,7 @@ These are some resources for acquiring the perspective and learning the thought 
 * [Algorithms to Live By](https://www.amazon.com/Algorithms-Live-Computer-Science-Decisions/dp/1627790365) The Computer Science of Human Decisions by Brian Christian and Tom Griffiths - Peter Norvig, the director of Research at Google, highly praised this book at [Talks at Google](https://www.youtube.com/watch?v=OwKj-wgXteo) for its value in teaching you about how to apply computational, mathematical, and statistical thinking in problem solving.
 * [Coders At Work](https://www.amazon.com/Coders-Work-Reflections-Craft-Programming/dp/1430219483) by Peter Seibel
 * [97 Things Every Programmer Should Know](https://www.amazon.com/Things-Every-Programmer-Should-Know/dp/0596809484/ref=sr_1_1?s=books&ie=UTF8&qid=1524273996&sr=1-1&keywords=97+things+every+programmer+should+know) - Collective Wisdom from the Experts.
+* [Experts Explain: What is DevOps](https://stackshare.io/posts/experts-explain-what-is-devops) - Even if you don't want to be a DevOps person, you should learn DevOps. Some companies like Facebook does not have a DevOps department. Every engineer own his/her own piece of work from development until deployment.
 
 I like to read these articles and books on my phone while riding the subway, exercising on the elliptical, or waiting in line for coffee.
 

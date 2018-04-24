@@ -66,7 +66,7 @@ Functional programming was invented, but not popular because it took more memory
 * 2010s - Memory is cheap. Can’t make transistors any smaller (marginal gains in hardware capability). Fast processing and big data processing requires more than one core.  There has been an increasing emphasis on asynchronous, distributed, multi-core and use cloud computing. Multicore competing for the same memory bus, OS no longer manages threads for you on multicore - if you need to perform the same tasks faster and faster, you can increase to unlimited number of cores. Stateful programming is more of a liability now with these new requirement.
 Functional ➡ no assignments ➡ no states ➡ no blocking or concurrency issues.
 
-In the words of [SICP](https://mitpress.mit.edu/sites/default/files/6515.pdf), a Program is a pattern of rules to direct processes that manipulate data. The functional programming paradigm helps us:
+In the words of [Structure and Interpretation of Computer Programs](http://web.mit.edu/alexmv/6.037/sicp.pdf), a Program is a pattern of rules to direct processes that manipulate data. The functional programming paradigm helps us:
 
 > use higher order functions to capture patterns in usage.
 
