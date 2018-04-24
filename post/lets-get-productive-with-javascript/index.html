@@ -275,6 +275,7 @@
 <li><a href="#constructing">Constructing</a>
 <ul>
 <li><a href="#add-things-to-an-array">Add things to an array</a></li>
+<li><a href="#create-an-array-statically">Create an array Statically</a></li>
 <li><a href="#create-an-array-dynamically">Create an array dynamically</a></li>
 <li><a href="#array-concatenation">Array Concatenation</a></li>
 </ul></li>
@@ -358,9 +359,20 @@ mutatingAdd.push('f'); // ['a', 'b', 'c', 'd', 'e', 'f']
 mutatingAdd.unshift('z'); // ['z', 'b', 'c', 'd', 'e' 'f']
 </code></pre>
 
+<h3 id="create-an-array-statically">Create an array Statically</h3>
+
+<pre><code class="language-javascript">let arr = []
+arr[0] = 1 //&gt; [1]
+arr[2] = 2 //&gt; [1, empty, 2]
+
+arr[1] //&gt; undefined
+</code></pre>
+
+<p>Why JavaScript lets you create an array this way is &hellip; different. In Java, arrays have a fixed sized. The space for the array needs to be allocated upfront before you can modify elements. The compiler will yell at you if you are trying to modify the nth element of an array of size n. I suppose in JavaScript, arrays are more like array lists.</p>
+
 <h3 id="create-an-array-dynamically">Create an array dynamically</h3>
 
-<pre><code class="language-javascript">var vals = Array.from({length: 13}, (v, i) =&gt; i)
+<pre><code class="language-javascript">let vals = Array.from({length: 13}, (v, i) =&gt; i)
 //&gt; (13) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 vals = vals.map(v =&gt; v-1)

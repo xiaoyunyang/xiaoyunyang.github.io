@@ -264,7 +264,7 @@
 
 <p></p>
 
-<h1 id="1-keep-it-simple">1. Keep It Simple</h1>
+<h1 id="1-keep-it-simple-kiss">1. Keep It Simple (KISS)</h1>
 
 <p>If there&rsquo;s anything you should takeaway from this article, it&rsquo;s the &ldquo;keep it simple&rdquo; principle. This principle is often known as <a href="https://effectivesoftwaredesign.com/2013/08/05/simplicity-in-software-design-kiss-yagni-and-occams-razor/" target="_blank">KISS</a>, which stands for &ldquo;Keep it simple, stupid&rdquo;.</p>
 
@@ -272,33 +272,35 @@
 
 <p>The rest of the principles guide our problem solving strategy to achieve simplicity in our solution. Generally speaking, we develop simple solutions to complicated problems by breaking the complex problem down to simpler sub-problems that we can easily solve.</p>
 
-<p>I&rsquo;m a fan of learning from examples so let&rsquo;s look at an example of what not keeping it simple looks like. Suppose you were asked to write a function with the following signature to check for balanced parentheses in a string. For example, <code>'('</code> returns false, <code>')('</code> returns false, <code>'()'</code> returns true, and <code>'foo'</code> returns true.</p>
+<p>I&rsquo;m a fan of learning from examples so let&rsquo;s look at an example of what not keeping it simple looks like.</p>
 
-<pre><code class="language-javascript">function hasBalancedParen(s) {
+<p>Suppose you were asked to write a function with the following signature to check for balanced parentheses in a string. For example, <code>'('</code> returns false, <code>')('</code> returns false, <code>'()'</code> returns true, and <code>'foo'</code> returns true.</p>
+
+<pre><code class="language-javascript">function hasBalancedParen(str) {
   return false;
 }
 </code></pre>
 
-<p>Ok. So how do we approach this problem?</p>
+<p>So how do we approach this problem?</p>
 
-<p>Step 1 is to applying the KISS principle, let&rsquo;s develop the outline for an algorithm that can be explained in simple English:</p>
+<p>Step 1 is to applying the KISS principle, let&rsquo;s develop an outline for an algorithm that can be articulated in simple English:</p>
 
 <blockquote>
 <p>Given a string, s, which consists of characters</p>
 
 <ol>
 <li>Start from the leftmost character and look at each character in the string</li>
-<li>Keep track of <code>(</code></li>
-<li>Keep track of <code>)</code> to &ldquo;cancel out&rdquo; a previous observation of <code>(</code></li>
+<li>Keep track of occurrences of <code>(</code>.</li>
+<li>Keep track of occurrences of <code>)</code> to &ldquo;cancel out&rdquo; a previous observation of <code>(</code>.</li>
 <li>Ignore characters that are not <code>(</code> or <code>)</code></li>
 <li>If there&rsquo;s a <code>)</code> for which there&rsquo;s no <code>(</code>, return false.</li>
-<li>Once we finish looking at the last character, if there&rsquo;s no leftover <code>(</code>, return true.</li>
+<li>Once we finish looking at the last character, if there&rsquo;s no leftover <code>(</code> or <code>)</code>, return true.</li>
 </ol>
 </blockquote>
 
 <p>The computational complexity is O(N) where N is the length of the string. In the worst case, we have to look at all of the characters in the string to be able to say that the string has balanced parentheses.</p>
 
-<h1 id="2-separation-of-concerns">2. Separation of Concerns</h1>
+<h1 id="2-separation-of-concerns-soc">2. Separation of Concerns (SoC)</h1>
 
 <p>So we have developed our algorithm in simple English, which is essentially pseudocode! There are three logical components of our algorithm:</p>
 
@@ -321,14 +323,14 @@
 
 <tbody>
 <tr>
-<td>If there&rsquo;s a <code>)</code> for which there&rsquo;s no <code>(</code>, return false.</td>
-<td>Keep track of <code>(</code></td>
+<td>If there&rsquo;s a <code>)</code> for which there&rsquo;s no <code>(</code>, return false</td>
+<td>Keep track of occurrences of <code>(</code></td>
 <td>Start from the leftmost character and look at each character in the string</td>
 </tr>
 
 <tr>
-<td>Once we finish looking at the last character, if there&rsquo;s no leftover <code>(</code>, return true.</td>
-<td>Keep track of <code>)</code> to &ldquo;cancel out&rdquo; a previous observation of <code>(</code></td>
+<td>Once we finish looking at the last character, if there&rsquo;s no leftover <code>(</code> or <code>)</code>, return true</td>
+<td>Keep track of occurrences of <code>)</code> to &ldquo;cancel out&rdquo; a previous observation of <code>(</code></td>
 <td></td>
 </tr>
 
@@ -342,22 +344,177 @@
 
 <p>What we just did was we partitioned the algorithm into three logical domains each dealing with a particular concern. Each domain specific concern can be tackled independently by a software component. The three software components is designed to accomplish a specific mission and need not be concerned with what other components are doing. This demonstrates the principle of &ldquo;Separation of Concerns&rdquo; principle.</p>
 
-<p>Separation of Concerns is the key to developing a complicated application or software system with many moving parts. Web applications separate concerns between presentation (how the webpage looks), business logic (content of the webpage), and content delivery (accessing the resource via a JSON API, querying the database, etc).</p>
+<p>Separation of Concerns of SoC is the key to developing a complicated application or software system with many moving parts. Web applications separate concerns between presentation (how the webpage looks), business logic (content of the webpage), and content delivery (accessing the resource via a JSON API, querying the database, etc).</p>
 
-<p>Separation of Concerns can be mastered via abstraction.
-Abstraction is vital in helping us to cope with the complexity of large systems.
-1. Use design patterns
-2. Use higher order functions</p>
+<h2 id="poorly-executed-separation-of-concerns">Poorly executed separation of concerns</h2>
 
-<h1 id="3-divide-and-conquer">3. Divide and Conquer</h1>
+<p>I&rsquo;ve seen poorly designed software in which the software is divided into separate domains but concerns are not separated. Consider the following example:</p>
 
-<h2 id="recursion">Recursion</h2>
+<blockquote>
+<p>Write a function foo that takes doubles then increments every number in an array of numbers</p>
+</blockquote>
 
-<h1 id="4-don-t-repeat-yourself">4. Don&rsquo;t Repeat Yourself</h1>
+<pre><code class="language-javascript">// Poorly executed separation of concerns
 
-<p>Don&rsquo;t &ldquo;Roll Your Own&rdquo; unless you have to.</p>
+// Helper Functions
+function double(arrIn) {
+  let arrOut = []
+  for (let i = 0; i &lt; arrIn.length; i++) {
+    arrOut[i] = arrIn[i] * 2
+  }
+  return arrOut
+}
+function increment(arrIn) {
+  let arrOut = []
+  for (let i = 0; i &lt; arrIn.length; i++) {
+    arrOut[i] = arrIn[i] + 1
+  }
+  return arrOut
+}
 
-<p>It is necessary to extensively unit test your code.</p>
+// foo
+function foo(arrIn) {
+  return increment(double(arrIn))
+}
+</code></pre>
+
+<p>Why is this a poor execution of Separation of Concerns?</p>
+
+<p>Well, <code>double</code> and <code>increment</code> are both concerned with looping through an array to modify each elements. Notice how the <code>double</code> and <code>increment</code> functions look almost identical with the exception of how they modify the array element? This is called boilerplate.</p>
+
+<p>Whenever you have boilerplate in your code, you know you can do better in separating concerns. This plays into the next principle:</p>
+
+<h1 id="3-don-t-repeat-yourself-dry">3. Don&rsquo;t Repeat Yourself (DRY)</h1>
+
+<p>The Don&rsquo;t Repeat Yourself (DRY) principle and Separation of Concern go hand-in-hand. The DRY principle is aimed at reducing repetition and boilerplate in the software patterns by forming abstractions. I can write a whole separate article on abstractions but here are the key points for how to apply abstraction to write code that doesn&rsquo;t repeat itself:
+* Create functions for common software patterns. We call them higher order functions.
+* Replace the boilerplate in your code with higher order functions</p>
+
+<p>Some examples of higher order functions include:</p>
+
+<ul>
+<li><code>map</code> - modifying each element in the array based on a give rule</li>
+<li><code>filter</code> - get a subset of the array that passes a given criterion</li>
+<li><code>reduce</code> - combining everything in the array based on a given rule</li>
+</ul>
+
+<p>Let&rsquo;s apply the DRY principle and rewrite <code>foo</code> to abstract away the boilerplate using the <code>map</code> higher order function:</p>
+
+<pre><code class="language-javascript">// Well executed separation of concerns and DRY code
+
+const double = elem =&gt; elem * 2
+const increment = elem =&gt; elem + 1  
+
+function foo(arrIn) {
+  return arrIn.map(elem =&gt; increment(double(elem)))
+}
+</code></pre>
+
+<p>I&rsquo;m taking a shortcut by using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank">ES6 arrow functions</a>, which lets you create elegant one-liners. JavaScript provides higher order functions like <code>map</code> function for Array. <code>Array.map</code> takes one argument: a function. In this example, this function is <code>elem =&gt; increment(double(elem))</code>, which takes an argument <code>elem</code> and returns <code>elem * 2 + 1</code>.  Since this function doesn&rsquo;t have a name, it&rsquo;s called an anonymous function.</p>
+
+<p><strong>Ok that was a long detour. Can we get back to the hasBalancedParen problem?</strong></p>
+
+<p>Yes! We are close to arriving at the final solution but there&rsquo;s one more principle we need:</p>
+
+<h1 id="4-divide-and-conquer">4. Divide and Conquer</h1>
+
+<p>When you hear &ldquo;Divide and Conquer&rdquo; in the context of algorithm design, think recursion. The term recursion has roots in mathematics. that uses a rule repeatedly to update itself ad infinitum. For example, fractals, the fibonacci sequence, and pascal&rsquo;s triangle are all recursive mathematical constructs.</p>
+
+<p>For Divide and Conquer, we are interested in the repeated use of a rule but instead of constructing a sequence, we want to deconstruct the problem space and eventually return a final solution. In pseudo code, a recursive function for divide and conquer algorithm has the basic structure:</p>
+
+<pre><code>function recursiveFun(input, result) {
+  if we hit a base case, updated result as necessary and return the final result
+
+  otherwise, simplify the input. update the result
+  return recursiveFun(simplerInput, updatedResult)
+}
+</code></pre>
+
+<p>The emphasis is simplifying input until the problem becomes trivial to solve and we can return a result immediately in the beginning of the function. This is called the base case. What if we forget to add a base case to the recursive function? The function will keep calling itself forever until you run out of memory and get a stack overflow error.</p>
+
+<p>Note, we don&rsquo;t have to use a recursive function to implement a Divide and Conquer algorithm. We can use a loop and a mutable data structure. I&rsquo;m not a fan of mutable data structures although it is more efficient sometimes.</p>
+
+<p>Let&rsquo;s look at a simple example for a Divide and Conquer algorithm implemented with a recursive function and a mutable data structure:</p>
+
+<blockquote>
+<p>Write a function sum that takes an array of numbers and returns the sum of all the numbers</p>
+</blockquote>
+
+<pre><code class="language-javascript">// Option 1: Recursive function
+function sum(arr) {
+
+  function reduce(arr, sum) {
+
+    // Base Case
+    if (arr.length === 0) return sum
+
+    return reduce(arr.slice(1), sum + arr[0])
+  }
+
+  return reduce(arr, 0) // &lt;-- Initial Values
+}
+</code></pre>
+
+<pre><code class="language-javascript">// Option 2: Mutable Data Structure
+function sum(arr) {
+
+  // Initial Values
+  let result = 0 // &lt;-- this is a mutable data structure
+  let elems = arr // &lt;-- this is also a mutable data structure
+
+  while(elems.length &gt; 0) { // &lt;-- Base Case
+    result += elems.pop()
+  }
+
+  return result
+}
+</code></pre>
+
+<p>In both Options 1 and 2, every time we repeat the procedure of adding the next element to the current sum, we are creating a simpler array and a updating the sum that&rsquo;s closer to the final solution. The stopping point is when we run out of things in the array to add to the current sum, in which case we just return the current sum and that&rsquo;s the final solution.</p>
+
+<p>Fans of functional programming and one-liners will implement sum as follows using the higher order function <code>reduce</code>, which JavaScript gives you out-of-the-box for the Array prototype:</p>
+
+<pre><code class="language-javascript">const sum = (arr) =&gt; arr.reduce((res, elem) =&gt; res + elem, 0)
+</code></pre>
+
+<p>With Divide and Conquer, we have the last important problem solving principle to solve the hasBalancedParen problem:</p>
+
+<pre><code class="language-javascript">// Parentheses Tally
+const newOpenCnt = (c, openCnt) =&gt; {
+	if(c === '(') return openCnt + 1
+	if(c === ')') return openCnt - 1
+	return openCnt
+}
+
+function isBalanced(str, openCnt) {
+  // Continue or Stop?
+	if (typeof str !== 'string') return false
+  if (openCnt &lt;  0) return false
+	if (str.length === 0) return openCnt === 0
+
+  // What to Look At Next?
+	const fst = str[0];
+	const rst = str.slice(1);
+	return isBalanced(rst, newOpenCnt(fst, openCnt)) // &lt;--  Divide and Conquer
+}
+
+function hasBalancedParen(str) {
+  return isBalanced(str, 0)
+}
+</code></pre>
+
+<h1 id="5-always-test-your-code">5. Always Test Your Code</h1>
+
+<p>The final problem solving principle is to always test your code to make sure there&rsquo;s no mistake in the implementation and your code behaves correctly for all edge cases. Below I created a unit test that incorporated most of the previous design principles:</p>
+
+<p><strong>KISS</strong> - Create a unit test function called <code>test</code> that performs unit testing on a function <code>fun</code> using a set of test cases. We want to be able to run a test for any function like so:</p>
+
+<pre><code class="language-javascript">test(fun, testCases)
+</code></pre>
+
+<p>For each test case, <code>test</code> should print to console &ldquo;passed&rdquo; if successful or &ldquo;failed&rdquo; with more details if unsuccessful.</p>
+
+<p><strong>SoC</strong> -  Keep the data (the input and expected value) in a data structure called <code>testCases</code> separate from the business logic of unit testing:</p>
 
 <pre><code class="language-javascript">let testCases = [
   {test: '(', shouldBe: false},
@@ -373,9 +530,12 @@ Abstraction is vital in helping us to cope with the complexity of large systems.
   {test: 'hi', shouldBe: true},
   {test: '(hi)', shouldBe: true},
   {test: '(((())(())',shouldBe: false}
-];
-let fun = (str) =&gt; isBalanced(str, 0);
-const test = (testCases, fun) =&gt; {
+]
+</code></pre>
+
+<p><strong>DRY</strong> - Abstract away the part of code that loops through all the testCases by using a higher order function <code>map</code>:</p>
+
+<pre><code class="language-javascript">const test = (fun testCases) =&gt; {
   testCases.map(t =&gt; {
     const shouldBe = t.shouldBe;
     const is = fun(t.test);
@@ -384,17 +544,17 @@ const test = (testCases, fun) =&gt; {
     console.log(`${res} ${moreInfo}`);
   })
 }
-test(testCases, fun)
+</code></pre>
+
+<p><strong>Run the test:</strong></p>
+
+<pre><code class="language-javascript">let fun = (str) =&gt; hasBalancedParen(str)
+test(fun, testCases)
 </code></pre>
 
 <h1 id="conclusion">Conclusion</h1>
 
-<p>Problem solving is the application of knowledge and tools to accomplish desired results. The process of problem solving is often iterative and requires experimentation and revision, and allow us to exercise our creativity.</p>
-
-<p>Programming is an that it&rsquo;s a tool for solving challenging problem
-not the shiny new tools and the increasingly expressive and powerful languages which significantly simplify development and creation of software products; What I love most about programming is</p>
-
-<p><a href="https://medium.freecodecamp.org/how-to-think-like-a-programmer-lessons-in-problem-solving-d1d8bf1de7d2" target="_blank">How to think like a programmer</a></p>
+<p>Problem solving is the application of knowledge and tools to achieve a desired outcome so the better your knowledge and tools are, the better your problem solving will be. Without a framework for problem solving, the process of problem solving could be inefficient and iterative, requires rounds of experimentation and refactoring. Use the these five principles to power your problem solving process to write more efficient and beautiful code!</p>
               
             </div>
           </div>
