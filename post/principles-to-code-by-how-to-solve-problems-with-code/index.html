@@ -310,7 +310,7 @@
 <li><strong>What to Look At Next?</strong> Logic for determining what to look at next.</li>
 </ol>
 
-<p>Let&rsquo;s move around the 6 steps of the pseudocode to these three logical components:</p>
+<p>Let&rsquo;s place the 6 steps of the pseudocode above into these three buckets, which represent logical components for our program:</p>
 
 <table>
 <thead>
@@ -342,11 +342,11 @@
 </tbody>
 </table>
 
-<p>What we just did was we partitioned the algorithm into three logical domains each dealing with a particular concern. Each domain specific concern can be tackled independently by a software component. The three software components is designed to accomplish a specific mission and need not be concerned with what other components are doing. This demonstrates the principle of &ldquo;Separation of Concerns&rdquo; principle.</p>
+<p>What we just did was we partitioned the algorithm into three logical domains each dealing with a particular concern. Each domain specific concern can be tackled independently by a software component. The three software components is designed to accomplish a specific mission and need not be concerned with what other components are doing. This demonstrates the principle of Separation of Concerns principle or SoC.</p>
 
-<p>Separation of Concerns of SoC is the key to developing a complicated application or software system with many moving parts. Web applications separate concerns between presentation (how the webpage looks), business logic (content of the webpage), and content delivery (accessing the resource via a JSON API, querying the database, etc).</p>
+<p>SoC is the key to developing a complicated application or software system with many moving parts. For example, web applications separate concerns between presentation (how the webpage looks), business logic (content of the webpage), and content delivery (accessing the resource via a JSON API, querying the database, etc).</p>
 
-<h2 id="poorly-executed-separation-of-concerns">Poorly executed separation of concerns</h2>
+<h2 id="poorly-executed-soc">Poorly executed SoC</h2>
 
 <p>I&rsquo;ve seen poorly designed software in which the software is divided into separate domains but concerns are not separated. Consider the following example:</p>
 
@@ -378,15 +378,15 @@ function foo(arrIn) {
 }
 </code></pre>
 
-<p>Why is this a poor execution of Separation of Concerns?</p>
+<p>Why is this a poor execution of SoC?</p>
 
-<p>Well, <code>double</code> and <code>increment</code> are both concerned with looping through an array to modify each elements. Notice how the <code>double</code> and <code>increment</code> functions look almost identical with the exception of how they modify the array element? This is called boilerplate.</p>
+<p>Well, <code>double</code> and <code>increment</code> are both concerned with looping through an array to modify each elements. Notice how the <code>double</code> and <code>increment</code> functions look almost identical with the exception of how they modify the array element. This is called boilerplate.</p>
 
 <p>Whenever you have boilerplate in your code, you know you can do better in separating concerns. This plays into the next principle:</p>
 
 <h1 id="3-don-t-repeat-yourself-dry">3. Don&rsquo;t Repeat Yourself (DRY)</h1>
 
-<p>The Don&rsquo;t Repeat Yourself (DRY) principle and Separation of Concern go hand-in-hand. The DRY principle is aimed at reducing repetition and boilerplate in the software patterns by forming abstractions. I can write a whole separate article on abstractions but here are the key points for how to apply abstraction to write code that doesn&rsquo;t repeat itself:
+<p>The Don&rsquo;t Repeat Yourself (DRY) principle and SoC go hand-in-hand. The DRY principle is aimed at reducing repetition and boilerplate in the software patterns by forming abstractions. I can write a whole separate article on abstractions but here are the key points for how to apply abstraction to write code that doesn&rsquo;t repeat itself:
 * Create functions for common software patterns. We call them higher order functions.
 * Replace the boilerplate in your code with higher order functions</p>
 
@@ -422,15 +422,15 @@ function foo(arrIn) {
 
 <p>For Divide and Conquer, we are interested in the repeated use of a rule but instead of constructing a sequence, we want to deconstruct the problem space and eventually return a final solution. In pseudo code, a recursive function for divide and conquer algorithm has the basic structure:</p>
 
-<pre><code>function recursiveFun(input, result) {
-  if we hit a base case, updated result as necessary and return the final result
+<pre><code>function recursiveFun(input, output) {
+  if we hit a base case, updated output as necessary and return the final output
 
-  otherwise, simplify the input. update the result
-  return recursiveFun(simplerInput, updatedResult)
+  otherwise, simplify the input. update the output
+  return recursiveFun(simplerInput, updatedOutput)
 }
 </code></pre>
 
-<p>The emphasis is simplifying input until the problem becomes trivial to solve and we can return a result immediately in the beginning of the function. This is called the base case. What if we forget to add a base case to the recursive function? The function will keep calling itself forever until you run out of memory and get a stack overflow error.</p>
+<p>The emphasis is simplifying input until the problem becomes trivial to solve and we can return an output immediately in the beginning of the function. This is called the base case. What if we forget to add a base case to the recursive function? The function will keep calling itself forever until you run out of memory and get a stack overflow error.</p>
 
 <p>Note, we don&rsquo;t have to use a recursive function to implement a Divide and Conquer algorithm. We can use a loop and a mutable data structure. I&rsquo;m not a fan of mutable data structures although it is more efficient sometimes.</p>
 
