@@ -283,7 +283,7 @@
 
 <p>So how do we approach this problem?</p>
 
-<p>Step 1 is to applying the KISS principle, let&rsquo;s develop an outline for an algorithm that can be articulated in simple English:</p>
+<p>Step 1 is to apply the KISS principle, develop an outline for an algorithm that can be articulated in simple English:</p>
 
 <blockquote>
 <p>Given a string, s, which consists of characters</p>
@@ -291,7 +291,7 @@
 <ol>
 <li>Start from the leftmost character and look at each character in the string</li>
 <li>Keep track of occurrences of <code>(</code>.</li>
-<li>Keep track of occurrences of <code>)</code> to &ldquo;cancel out&rdquo; a previous observation of <code>(</code>.</li>
+<li>Keep track of occurrences of <code>)</code> to &ldquo;cancel out&rdquo; a previous occurrence of <code>(</code>.</li>
 <li>Ignore characters that are not <code>(</code> or <code>)</code></li>
 <li>If there&rsquo;s a <code>)</code> for which there&rsquo;s no <code>(</code>, return false.</li>
 <li>Once we finish looking at the last character, if there&rsquo;s no leftover <code>(</code> or <code>)</code>, return true.</li>
@@ -302,7 +302,7 @@
 
 <h1 id="2-separation-of-concerns-soc">2. Separation of Concerns (SoC)</h1>
 
-<p>So we have developed our algorithm in simple English, which is essentially pseudocode! There are three logical components of our algorithm:</p>
+<p>So we have developed our algorithm in simple English, which is essentially pseudocode! There are three logical domains for our algorithm:</p>
 
 <ol>
 <li><strong>Continue or Stop?</strong>: Logic for whether to continue looking at the characters or stop and return true or false.</li>
@@ -310,7 +310,7 @@
 <li><strong>What to Look At Next?</strong> Logic for determining what to look at next.</li>
 </ol>
 
-<p>Let&rsquo;s place the 6 steps of the pseudocode above into these three buckets, which represent logical components for our program:</p>
+<p>Let&rsquo;s map the 6 steps of the pseudocode above to one of these three logical domains:</p>
 
 <table>
 <thead>
@@ -330,7 +330,7 @@
 
 <tr>
 <td>Once we finish looking at the last character, if there&rsquo;s no leftover <code>(</code> or <code>)</code>, return true</td>
-<td>Keep track of occurrences of <code>)</code> to &ldquo;cancel out&rdquo; a previous observation of <code>(</code></td>
+<td>Keep track of occurrences of <code>)</code> to &ldquo;cancel out&rdquo; a previous occurrence of <code>(</code></td>
 <td></td>
 </tr>
 
@@ -351,7 +351,7 @@
 <p>I&rsquo;ve seen poorly designed software in which the software is divided into separate domains but concerns are not separated. Consider the following example:</p>
 
 <blockquote>
-<p>Write a function foo that takes doubles then increments every number in an array of numbers</p>
+<p>Write a function foo that doubles then increments every number in an array of numbers</p>
 </blockquote>
 
 <pre><code class="language-javascript">// Poorly executed separation of concerns
@@ -386,9 +386,12 @@ function foo(arrIn) {
 
 <h1 id="3-don-t-repeat-yourself-dry">3. Don&rsquo;t Repeat Yourself (DRY)</h1>
 
-<p>The Don&rsquo;t Repeat Yourself (DRY) principle and SoC go hand-in-hand. The DRY principle is aimed at reducing repetition and boilerplate in the software patterns by forming abstractions. I can write a whole separate article on abstractions but here are the key points for how to apply abstraction to write code that doesn&rsquo;t repeat itself:
-* Create functions for common software patterns. We call them higher order functions.
-* Replace the boilerplate in your code with higher order functions</p>
+<p>The Don&rsquo;t Repeat Yourself (DRY) principle and SoC go hand-in-hand. The DRY principle is aimed at reducing repetition and boilerplate in the software patterns by forming abstractions. I can write a whole separate article on abstractions but here are the key points for how to apply abstraction to write code that doesn&rsquo;t repeat itself:</p>
+
+<ul>
+<li>Create functions for common software patterns. We call them <em>higher order functions</em>.</li>
+<li>Replace the boilerplate in your code with higher order functions</li>
+</ul>
 
 <p>Some examples of higher order functions include:</p>
 
@@ -410,7 +413,7 @@ function foo(arrIn) {
 }
 </code></pre>
 
-<p>I&rsquo;m taking a shortcut by using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank">ES6 arrow functions</a>, which lets you create elegant one-liners. JavaScript provides higher order functions like <code>map</code> function for Array. <code>Array.map</code> takes one argument: a function. In this example, this function is <code>elem =&gt; increment(double(elem))</code>, which takes an argument <code>elem</code> and returns <code>elem * 2 + 1</code>.  Since this function doesn&rsquo;t have a name, it&rsquo;s called an anonymous function.</p>
+<p>I&rsquo;m taking a shortcut by using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank">ES6 arrow functions</a>, which lets you create elegant one-liners. JavaScript provides higher order functions like <code>map</code> function for Array. <code>Array.map</code> takes one argument: a function. In this example, this function is <code>elem =&gt; increment(double(elem))</code>, which takes an argument <code>elem</code> and returns <code>elem * 2 + 1</code>.  Since this function doesn&rsquo;t have a name, it&rsquo;s called an <em>anonymous function</em>.</p>
 
 <p><strong>Ok that was a long detour. Can we get back to the hasBalancedParen problem?</strong></p>
 
@@ -418,9 +421,9 @@ function foo(arrIn) {
 
 <h1 id="4-divide-and-conquer">4. Divide and Conquer</h1>
 
-<p>When you hear &ldquo;Divide and Conquer&rdquo; in the context of algorithm design, think recursion. The term recursion has roots in mathematics. that uses a rule repeatedly to update itself ad infinitum. For example, fractals, the fibonacci sequence, and pascal&rsquo;s triangle are all recursive mathematical constructs.</p>
+<p>When you hear &ldquo;Divide and Conquer&rdquo; in the context of algorithm design, think recursion. The term recursion has roots in mathematics and commonly entails applying a rule repeatedly to update itself ad infinitum to create an infinite sequence for which the next things in the sequence depends on the previous things in the sequence. For example, fractals, the fibonacci sequence, and pascal&rsquo;s triangle are all recursive mathematical constructs.</p>
 
-<p>For Divide and Conquer, we are interested in the repeated use of a rule but instead of constructing a sequence, we want to deconstruct the problem space and eventually return a final solution. In pseudo code, a recursive function for divide and conquer algorithm has the basic structure:</p>
+<p>For Divide and Conquer, we are interested in the repeated application of a rule but instead of constructing a sequence, we want to deconstruct the problem space and eventually return a final solution. In pseudo code, a recursive function for divide and conquer algorithm has the basic structure:</p>
 
 <pre><code>function recursiveFun(input, output) {
   if we hit a base case, updated output as necessary and return the final output
@@ -444,10 +447,10 @@ function foo(arrIn) {
 function sum(arr) {
 
   function reduce(arr, sum) {
-
     // Base Case
     if (arr.length === 0) return sum
 
+    // Recursive step
     return reduce(arr.slice(1), sum + arr[0])
   }
 
@@ -463,14 +466,14 @@ function sum(arr) {
   let elems = arr // &lt;-- this is also a mutable data structure
 
   while(elems.length &gt; 0) { // &lt;-- Base Case
-    result += elems.pop()
+    result += elems.pop() // &lt;-- Recursive step
   }
 
   return result
 }
 </code></pre>
 
-<p>In both Options 1 and 2, every time we repeat the procedure of adding the next element to the current sum, we are creating a simpler array and a updating the sum that&rsquo;s closer to the final solution. The stopping point is when we run out of things in the array to add to the current sum, in which case we just return the current sum and that&rsquo;s the final solution.</p>
+<p>In both Options 1 and 2, every time we repeat the procedure of adding the next element to the current sum, we are creating a simpler array and a creating an updating the sum that makes it closer to the final solution. The stopping point is when we run out of things in the array to add to the current sum, in which case we just return the current sum which is the final solution.</p>
 
 <p>Fans of functional programming and one-liners will implement sum as follows using the higher order function <code>reduce</code>, which JavaScript gives you out-of-the-box for the Array prototype:</p>
 
@@ -481,21 +484,21 @@ function sum(arr) {
 
 <pre><code class="language-javascript">// Parentheses Tally
 const newOpenCnt = (c, openCnt) =&gt; {
-	if(c === '(') return openCnt + 1
-	if(c === ')') return openCnt - 1
-	return openCnt
+  if(c === '(') return openCnt + 1
+  if(c === ')') return openCnt - 1
+  return openCnt
 }
 
 function isBalanced(str, openCnt) {
   // Continue or Stop?
-	if (typeof str !== 'string') return false
+  if (typeof str !== 'string') return false
   if (openCnt &lt;  0) return false
-	if (str.length === 0) return openCnt === 0
+  if (str.length === 0) return openCnt === 0
 
   // What to Look At Next?
-	const fst = str[0];
-	const rst = str.slice(1);
-	return isBalanced(rst, newOpenCnt(fst, openCnt)) // &lt;--  Divide and Conquer
+  const fst = str[0]
+  const rst = str.slice(1)
+  return isBalanced(rst, newOpenCnt(fst, openCnt))
 }
 
 function hasBalancedParen(str) {
