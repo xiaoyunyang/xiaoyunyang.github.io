@@ -48,6 +48,7 @@ The following resources helped me close my expectation gap and establish good go
 * A series of [vlogs on YouTube](https://www.youtube.com/watch?v=ZgdS0EUmn70) by an ex-Facebooker on how the interview process at Facebook or most high tech companies works and how to prepare for each interview.
 * [Soft Skills: The Software Developer's Life Manual](https://www.manning.com/books/soft-skills) by John Z. Sonmez - a unique guide offering techniques and practices for a more satisfying life as a professional software developer, with tips such as how to hack the interview, make your resumes less boring, marketing yourself by writing a blog, and finding gaps in your knowledge and closing those gaps.
 * [Skill Up: A Software Developer's Guide to Life and Career](https://www.amazon.com/Skill-Up-Software-Developers-Career/dp/1787287033/ref=sr_1_1?s=books&ie=UTF8&qid=1524269233&sr=1-1&keywords=Skill+up) by Jordan Hudgens
+* [How to write a great software engineer resume](https://medium.freecodecamp.org/how-to-write-a-great-resume-for-software-engineers-75d514dd8322) - tips from a twitter software engineer and senior technical recruiter.
 
 # Close The Skills Gap
 There's no shortcut. When you don't meet the basic requirements for the job, you won't get the job. In a market economy, money is exchanged for value created. If you lacked the basic requirements to meet the bare minimum expectations for the job, employers would not be willing to exchange money for your service.
