@@ -272,7 +272,7 @@
 
 <p>The rest of the principles guide our problem solving strategy to achieve simplicity in our solution. Generally speaking, we develop simple solutions to complicated problems by breaking the complex problem down to simpler sub-problems that we can easily solve.</p>
 
-<p>I&rsquo;m a fan of learning from examples so let&rsquo;s look at an example of what not keeping it simple looks like.</p>
+<p>I&rsquo;m a fan of learning from examples so let&rsquo;s look at an example of what keeping it simple looks like.</p>
 
 <p>Suppose you were asked to write a function with the following signature to check for balanced parentheses in a string. For example, <code>'('</code> returns false, <code>')('</code> returns false, <code>'()'</code> returns true, and <code>'foo'</code> returns true.</p>
 
@@ -286,13 +286,13 @@
 <p>Step 1 is to apply the KISS principle, develop an outline for an algorithm that can be articulated in simple English:</p>
 
 <blockquote>
-<p>Given a string, s, which consists of characters</p>
+<p>Given a string, <code>s</code>, which consists of characters</p>
 
 <ol>
 <li>Start from the leftmost character and look at each character in the string</li>
 <li>Keep track of occurrences of <code>(</code>.</li>
 <li>Keep track of occurrences of <code>)</code> to &ldquo;cancel out&rdquo; a previous occurrence of <code>(</code>.</li>
-<li>Ignore characters that are not <code>(</code> or <code>)</code></li>
+<li>Ignore characters that are not <code>(</code> or <code>)</code>.</li>
 <li>If there&rsquo;s a <code>)</code> for which there&rsquo;s no <code>(</code>, return false.</li>
 <li>Once we finish looking at the last character, if there&rsquo;s no leftover <code>(</code> or <code>)</code>, return true.</li>
 </ol>
@@ -330,7 +330,7 @@
 
 <tr>
 <td>Once we finish looking at the last character, if there&rsquo;s no leftover <code>(</code> or <code>)</code>, return true</td>
-<td>Keep track of occurrences of <code>)</code> to &ldquo;cancel out&rdquo; a previous occurrence of <code>(</code></td>
+<td>Keep track of occurrences of <code>)</code> to &ldquo;cancel out&rdquo; a previous occurrence of <code>(</code>.</td>
 <td></td>
 </tr>
 
@@ -342,7 +342,7 @@
 </tbody>
 </table>
 
-<p>What we just did was we partitioned the algorithm into three logical domains each dealing with a particular concern. Each domain specific concern can be tackled independently by a software component. The three software components is designed to accomplish a specific mission and need not be concerned with what other components are doing. This demonstrates the principle of Separation of Concerns principle or SoC.</p>
+<p>What we just did was we partitioned the algorithm into three logical domains each dealing with a particular concern. Each domain specific concern can be tackled independently by a software component. The three software components is designed to accomplish a specific mission and need not be concerned with what other components are doing. This demonstrates the principle of Separation of Concerns or SoC.</p>
 
 <p>SoC is the key to developing a complicated application or software system with many moving parts. For example, web applications separate concerns between presentation (how the webpage looks), business logic (content of the webpage), and content delivery (accessing the resource via a JSON API, querying the database, etc).</p>
 
@@ -351,7 +351,7 @@
 <p>I&rsquo;ve seen poorly designed software in which the software is divided into separate domains but concerns are not separated. Consider the following example:</p>
 
 <blockquote>
-<p>Write a function foo that doubles then increments every number in an array of numbers</p>
+<p>Write a function foo that doubles then increments every number in an array of numbers.</p>
 </blockquote>
 
 <pre><code class="language-javascript">// Poorly executed separation of concerns
@@ -386,18 +386,18 @@ function foo(arrIn) {
 
 <h1 id="3-don-t-repeat-yourself-dry">3. Don&rsquo;t Repeat Yourself (DRY)</h1>
 
-<p>The Don&rsquo;t Repeat Yourself (DRY) principle and SoC go hand-in-hand. The DRY principle is aimed at reducing repetition and boilerplate in the software patterns by forming abstractions. I can write a whole separate article on abstractions but here are the key points for how to apply abstraction to write code that doesn&rsquo;t repeat itself:</p>
+<p>The Don&rsquo;t Repeat Yourself (DRY) principle and SoC go hand-in-hand. The DRY principle is aimed at reducing repetition and boilerplate in the software by forming abstractions. I can write a whole separate article on abstractions but here are the key points for how to apply abstraction to write code that doesn&rsquo;t repeat itself:</p>
 
 <ul>
 <li>Create functions for common software patterns. We call them <em>higher order functions</em>.</li>
-<li>Replace the boilerplate in your code with higher order functions</li>
+<li>Replace the boilerplate in your code with higher order functions.</li>
 </ul>
 
 <p>Some examples of higher order functions include:</p>
 
 <ul>
 <li><code>map</code> - modifying each element in the array based on a give rule</li>
-<li><code>filter</code> - get a subset of the array that passes a given criterion</li>
+<li><code>filter</code> - getting a subset of the array that passes a given criterion</li>
 <li><code>reduce</code> - combining everything in the array based on a given rule</li>
 </ul>
 
@@ -421,14 +421,14 @@ function foo(arrIn) {
 
 <h1 id="4-divide-and-conquer">4. Divide and Conquer</h1>
 
-<p>When you hear &ldquo;Divide and Conquer&rdquo; in the context of algorithm design, think recursion. The term recursion has roots in mathematics and commonly entails applying a rule repeatedly to update itself ad infinitum to create an infinite sequence for which the next things in the sequence depends on the previous things in the sequence. For example, fractals, the fibonacci sequence, and pascal&rsquo;s triangle are all recursive mathematical constructs.</p>
+<p>When you hear &ldquo;Divide and Conquer&rdquo; in the context of algorithm design, think recursion. The term recursion has roots in mathematics and commonly entails applying a rule repeatedly to update itself to create an infinite sequence for which the next things in the sequence depends on the previous things in the sequence. For example, fractals, the fibonacci series, and Pascal&rsquo;s triangle are all recursive mathematical constructs.</p>
 
-<p>For Divide and Conquer, we are interested in the repeated application of a rule but instead of constructing a sequence, we want to deconstruct the problem space and eventually return a final solution. In pseudo code, a recursive function for divide and conquer algorithm has the basic structure:</p>
+<p>For the <a href="https://www.wikiwand.com/en/Divide_and_conquer_algorithm" target="_blank">Divide and Conquer algorithm</a>, we are interested in the repeated application of a rule but instead of constructing a sequence, we want to deconstruct the problem space and eventually return a final solution. In pseudo code, a recursive function for divide and conquer algorithm has the basic structure:</p>
 
 <pre><code>function recursiveFun(input, output) {
   if we hit a base case, updated output as necessary and return the final output
 
-  otherwise, simplify the input. update the output
+  otherwise, simplify the input. update the output then
   return recursiveFun(simplerInput, updatedOutput)
 }
 </code></pre>
@@ -462,8 +462,8 @@ function sum(arr) {
 function sum(arr) {
 
   // Initial Values
-  let result = 0 // &lt;-- this is a mutable data structure
-  let elems = arr // &lt;-- this is also a mutable data structure
+  let result = 0 // &lt;-- mutable data structure
+  let elems = arr // &lt;-- mutable data structure
 
   while(elems.length &gt; 0) { // &lt;-- Base Case
     result += elems.pop() // &lt;-- Recursive step
@@ -510,7 +510,9 @@ function hasBalancedParen(str) {
 
 <p>The final problem solving principle is to always test your code to make sure there&rsquo;s no mistake in the implementation and your code behaves correctly for all edge cases. Below I created a unit test that incorporated most of the previous design principles:</p>
 
-<p><strong>KISS</strong> - Create a unit test function called <code>test</code> that performs unit testing on a function <code>fun</code> using a set of test cases. We want to be able to run a test for any function like so:</p>
+<h3 id="kiss">KISS</h3>
+
+<p>Create a unit test function called <code>test</code> that performs unit testing on a function <code>fun</code> using a set of test cases. We want to be able to run a test for any function like so:</p>
 
 <pre><code class="language-javascript">test(fun, testCases)
 </code></pre>
@@ -536,7 +538,9 @@ function hasBalancedParen(str) {
 ]
 </code></pre>
 
-<p><strong>DRY</strong> - Abstract away the part of code that loops through all the testCases by using a higher order function <code>map</code>:</p>
+<h3 id="dry">DRY</h3>
+
+<p>Abstract away the part of code that loops through all the testCases by using a higher order function <code>map</code>:</p>
 
 <pre><code class="language-javascript">const test = (fun testCases) =&gt; {
   testCases.map(t =&gt; {
