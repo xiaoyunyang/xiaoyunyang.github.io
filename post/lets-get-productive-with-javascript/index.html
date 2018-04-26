@@ -276,6 +276,7 @@
 <ul>
 <li><a href="#add-things-to-an-array">Add things to an array</a></li>
 <li><a href="#create-an-array-statically">Create an array Statically</a></li>
+<li><a href="#concatenating">Concatenating</a></li>
 <li><a href="#create-an-array-dynamically">Create an array dynamically</a></li>
 <li><a href="#array-concatenation">Array Concatenation</a></li>
 </ul></li>
@@ -288,7 +289,12 @@
 <li><a href="#with-side-effects-using-array-pop">With side effects using Array.pop</a></li>
 <li><a href="#with-no-side-effects-using-array-slice">With no side effects using Array.slice</a></li>
 </ul></li>
-<li><a href="#destructuring-es6">Destructuring (ES6)</a></li>
+</ul></li>
+<li><a href="#destructuring-es6">Destructuring (ES6)</a>
+<ul>
+<li><a href="#rest-spread">Rest Spread</a></li>
+<li><a href="#swapping">Swapping</a></li>
+<li><a href="#async-await">Async/Await</a></li>
 </ul></li>
 <li><a href="#processing">Processing</a>
 <ul>
@@ -304,8 +310,15 @@
 </ul></li>
 <li><a href="#functions">Functions</a>
 <ul>
+<li><a href="#the-basics">The Basics</a></li>
+<li><a href="#how-to-pass-arguments">How to Pass Arguments</a></li>
 <li><a href="#alternative-to-doing-a-loop">Alternative to doing a loop</a></li>
+<li><a href="#math-functions">Math Functions</a>
+<ul>
+<li><a href="#max">Max</a></li>
 <li><a href="#random">Random</a></li>
+</ul></li>
+<li><a href="#console-log">Console.log</a></li>
 </ul></li>
 <li><a href="#string">String</a>
 <ul>
@@ -313,10 +326,6 @@
 <li><a href="#getting-substrings">Getting Substrings</a></li>
 </ul></li>
 <li><a href="#regexp">RegExp</a></li>
-<li><a href="#functions-1">Functions</a>
-<ul>
-<li><a href="#the-basics">The Basics</a></li>
-</ul></li>
 <li><a href="#json">JSON</a>
 <ul>
 <li><a href="#creating-json">Creating JSON</a></li>
@@ -366,6 +375,20 @@ arr[0] = 1 //&gt; [1]
 arr[2] = 2 //&gt; [1, empty, 2]
 
 arr[1] //&gt; undefined
+</code></pre>
+
+<h3 id="concatenating">Concatenating</h3>
+
+<pre><code class="language-javascript">const one = ['a', 'b', 'c']
+const two = ['d', 'e', 'f']
+const three = ['g', 'h', 'i']
+// Old way #1
+const result = one.concat(two, three)
+// Old way #2
+const result = [].concat(one, two, three)
+
+// New with ES6 spread operator
+const result = [...one, ...two, ...three]
 </code></pre>
 
 <p>Why JavaScript lets you create an array this way is &hellip; different. In Java, arrays have a fixed sized. The space for the array needs to be allocated upfront before you can modify elements. The compiler will yell at you if you are trying to modify the nth element of an array of size n. I suppose in JavaScript, arrays are more like array lists.</p>
@@ -468,7 +491,9 @@ arr.slice(1) //&gt; [2, 3]
 arr.slice(2) //&gt; [3]
 </code></pre>
 
-<h3 id="destructuring-es6">Destructuring (ES6)</h3>
+<h2 id="destructuring-es6">Destructuring (ES6)</h2>
+
+<h3 id="rest-spread">Rest Spread</h3>
 
 <pre><code class="language-javascript">let arr = [1, 2, 3, 4]
 let [first, second] = arr
@@ -492,6 +517,25 @@ rest //&gt; [3, 4]
 
 <pre><code class="language-javascript">let first = arr.slice(0,1) //&gt; [1]
 let rest = arr.slice(1) //&gt; [2,3,4]
+</code></pre>
+
+<h3 id="swapping">Swapping</h3>
+
+<pre><code class="language-javaacript">let a = 'world', b = 'hello'
+[a, b] = [b, a]
+console.log(a) // -&gt; hello
+console.log(b) // -&gt; world
+// Yes, it's magic
+</code></pre>
+
+<p>This ES6 hack was <a href="https://medium.com/dailyjs/7-hacks-for-es6-developers-4e24ff425d0b" target="_blank">courtesy of Tal Bereznitskey</a>.</p>
+
+<h3 id="async-await">Async/Await</h3>
+
+<pre><code class="language-javascript">const [user, account] = await Promise.all([
+  fetch('/user'),
+  fetch('/account')
+])
 </code></pre>
 
 <h2 id="processing">Processing</h2>
@@ -598,13 +642,84 @@ flat(data) // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 
 <h1 id="functions">Functions</h1>
 
+<h2 id="the-basics">The Basics</h2>
+
+<p>Functions in JavaScript are objects. Objects are collections of name/value pairs having a hidden link to a prototype object.</p>
+
+<p>The function’s name is optional. The function can use its name to call itself recursively. The name can also be used by debuggers and development tools to identify the function. If a function is not given a name, as shown in the example below, it is said to be anonymous.</p>
+
+<p>Following are identical ways of declaring a function that create a variable called <code>add</code> and store a function in it that adds two numbers:</p>
+
+<pre><code class="language-javascript">var add = function (a, b) {
+  return a + b;
+};
+</code></pre>
+
+<pre><code class="language-javascript">function add(a, b) {
+  return a + b;
+};
+</code></pre>
+
+<pre><code class="language-javascript">const =  (a, b) =&gt;  a + b;
+</code></pre>
+
+<p>We call the function <code>add</code> the following way:</p>
+
+<pre><code class="language-JavaScript">add(1,2) //3
+</code></pre>
+
+<p>We can also declare and call the function in one action:</p>
+
+<pre><code class="language-javascript">((a, b) =&gt; a + b)(1,2) // 3
+</code></pre>
+
+<p>In the example above, you don&rsquo;t need to give the function <code>(a,b) =&gt; a+b</code> a name. Because it doesn&rsquo;t have a name, we call it an anonymous function.</p>
+
+<h2 id="how-to-pass-arguments">How to Pass Arguments</h2>
+
+<p><strong>Option 1</strong></p>
+
+<p>Not great. This function is not resilient to change.
+You have to change the function signature if you add/remove arguments</p>
+
+<pre><code class="language-javascript">const getStuffNotBad = (id, force, verbose) =&gt; {
+  // ...do stuff
+}
+
+// Somewhere else in the codebase... WTF is true, true?
+getStuffNotBad(150, true, true)
+</code></pre>
+
+<p><strong>Option 2</strong></p>
+
+<pre><code class="language-javascript">// Better
+const getStuffAwesome = ({ id, name, force, verbose }) =&gt; {
+  ...do stuff
+}
+// Somewhere else in the codebase... I ❤ JS!!!
+getStuffAwesome({ id: 150, force: true, verbose: true })
+</code></pre>
+
 <h2 id="alternative-to-doing-a-loop">Alternative to doing a loop</h2>
 
 <pre><code class="language-javascript">let arr = Array.from(Array(10).keys()) //&gt; (10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 arr.map(d =&gt; /* your function */)
 </code></pre>
 
-<h2 id="random">Random</h2>
+<h2 id="math-functions">Math Functions</h2>
+
+<h3 id="max">Max</h3>
+
+<pre><code class="language-javascript">Math.max(1,2) //&gt; 2
+</code></pre>
+
+<p>Hack with ES6 Array Destructuring:</p>
+
+<pre><code class="language-javascript">let arr = [1, 2, 3]
+Math.max(...arr)
+</code></pre>
+
+<h3 id="random">Random</h3>
 
 <pre><code class="language-javascript">// returns a random number between 0 amd 1
 const rand = Math.random();
@@ -620,6 +735,30 @@ const numMonths = Math.ceil(rand2 * 14);
 const numBest = Math.floor(rand3 * numProj);
 
 const msg = `Completed ${numProj} projects in the past ${numMonths} months. Won best project ${numBest} times`;
+</code></pre>
+
+<h2 id="console-log">Console.log</h2>
+
+<p>Hack 1</p>
+
+<pre><code class="language-javascript">console.log('my number is this:', 42)
+</code></pre>
+
+<p>Hack 2</p>
+
+<pre><code class="language-javascript">console.log(`my number is this: ${42}`)
+</code></pre>
+
+<p>Hack 3</p>
+
+<pre><code class="language-javascript">const a = 5, b = 6, c = 7
+console.log({ a, b, c })
+// outputs this nice object:
+// {
+//    a: 5,
+//    b: 6,
+//    c: 7
+// }
 </code></pre>
 
 <h1 id="string">String</h1>
@@ -749,41 +888,6 @@ str.replace(matchHTMLChar, decode) //&gt; &quot;abcde &lt; ' hello ' hm&quot;
 'hello world hello'.replace(/hello/, 'hi') //&gt; &quot;hi world hello&quot;
 'hello world hello'.replace(/hello/g, 'hi') //&gt; &quot;hi world hi&quot;
 </code></pre>
-
-<h1 id="functions-1">Functions</h1>
-
-<h2 id="the-basics">The Basics</h2>
-
-<p>Functions in JavaScript are objects. Objects are collections of name/value pairs having a hidden link to a prototype object.</p>
-
-<p>The function’s name is optional. The function can use its name to call itself recursively. The name can also be used by debuggers and development tools to identify the function. If a function is not given a name, as shown in the example below, it is said to be anonymous.</p>
-
-<p>Following are identical ways of declaring a function that create a variable called <code>add</code> and store a function in it that adds two numbers:</p>
-
-<pre><code class="language-javascript">var add = function (a, b) {
-  return a + b;
-};
-</code></pre>
-
-<pre><code class="language-javascript">function add(a, b) {
-  return a + b;
-};
-</code></pre>
-
-<pre><code class="language-javascript">const =  (a, b) =&gt;  a + b;
-</code></pre>
-
-<p>We call the function <code>add</code> the following way:</p>
-
-<pre><code class="language-JavaScript">add(1,2) //3
-</code></pre>
-
-<p>We can also declare and call the function in one action:</p>
-
-<pre><code class="language-javascript">((a, b) =&gt; a + b)(1,2) // 3
-</code></pre>
-
-<p>In the example above, you don&rsquo;t need to give the function <code>(a,b) =&gt; a+b</code> a name. Because it doesn&rsquo;t have a name, we call it an anonymous function.</p>
 
 <h1 id="json">JSON</h1>
 

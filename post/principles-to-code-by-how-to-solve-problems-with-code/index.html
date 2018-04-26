@@ -22,7 +22,7 @@
     <meta name="generator" content="Hugo 0.38.1 with theme Tranquilpeak 0.4.3-BETA">
     <title>Principles To Code By: How To Solve Problems With Code</title>
     <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="software design principles, computer science, javascript, interview prep, algorithms, separation of concerns, learn to code, balanced parentheses, recursion">
 
     <link rel="icon" href="http://xiaoyunyang.github.io/favicon-96x96.png">
     
@@ -257,7 +257,11 @@
               <p>What I love most about programming is the problem solving. I don&rsquo;t believe anyone is born with problem solving skills. It&rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.</p>
 
 <p>
-<img src="http://xiaoyunyang.github.io/post/images/brain-lightbulb-wide.png" alt="" /></p>
+<div class="alert info ">
+  <p>This article was also <a href="https://medium.com/dailyjs/principles-to-code-by-3c516ad61fcc" target="_blank">published under DailyJS on Medium</a> under DailyJS.</p>
+</div></p>
+
+<p><img src="http://xiaoyunyang.github.io/post/images/brain-lightbulb-wide.png" alt="" /></p>
 
 <h1 id="1-keep-it-simple-kiss">1. Keep It Simple (KISS)</h1>
 
@@ -468,7 +472,7 @@ function sum(arr) {
 }
 </code></pre>
 
-<p>In both Options 1 and 2, every time we repeat the procedure of adding the next element to the current sum, we are creating a simpler array and a creating an updating the sum that makes it closer to the final solution. The stopping point is when we run out of things in the array to add to the current sum, in which case we just return the current sum which is the final solution.</p>
+<p>In both Options 1 and 2, every time we repeat the procedure of adding the next element to the current sum, we are creating a simpler array and an updated sum that’s a little closer to the final solution. The stopping point is when we run out of things in the array to add to the current sum, in which case we just return the current sum which is the final solution.</p>
 
 <p>Fans of functional programming and one-liners will implement sum as follows using the higher order function <code>reduce</code>, which JavaScript gives you out-of-the-box for the Array prototype:</p>
 
