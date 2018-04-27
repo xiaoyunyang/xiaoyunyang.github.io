@@ -6,6 +6,16 @@ categories:
 tags:
   - JavaScript
   - Guide
+keywords:
+  - software design principles
+  - computer science
+  - javascript
+  - interview prep
+  - algorithms
+  - separation of concerns
+  - learn to code
+  - balanced parentheses
+  - recursion
 thumbnailImagePosition: left
 thumbnailImage: /post/images/brain-lightbulb.png
 ---
@@ -13,6 +23,8 @@ thumbnailImage: /post/images/brain-lightbulb.png
 What I love most about programming is the problem solving. I don't believe anyone is born with problem solving skills. It's a muscle that is built and sustained by repeated exercise. Like any exercise, there's a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.
 
 <!--more-->
+{{< alert info >}} This article was also [published under DailyJS on Medium](https://medium.com/dailyjs/principles-to-code-by-3c516ad61fcc) under DailyJS. {{< /alert >}}
+
 ![](/post/images/brain-lightbulb-wide.png)
 
 # 1. Keep It Simple (KISS)
@@ -63,7 +75,7 @@ Let's map the 6 steps of the pseudocode above to one of these three logical doma
 | Once we finish looking at the last character, if there's no leftover `(` or `)`, return true | Keep track of occurrences of `)` to "cancel out" a previous occurrence of `(`. |                                                                            |
 |                                                                                        | Ignore characters that are not `(` or `)`                                       |                                                                            |
 
-What we just did was we partitioned the algorithm into three logical domains each dealing with a particular concern. Each domain specific concern can be tackled independently by a software component. The three software components is designed to accomplish a specific mission and need not be concerned with what other components are doing. This demonstrates the principle of Separation of Concerns or SoC.
+What we just did was we partitioned the algorithm into three logical domains each dealing with a particular concern. Each domain specific concern can be tackled independently by a software component. The three software components are each designed to accomplish a specific mission and need not be concerned with what other components are doing. This demonstrates the principle of Separation of Concerns or SoC.
 
 SoC is the key to developing a complicated application or software system with many moving parts. For example, web applications separate concerns between presentation (how the webpage looks), business logic (content of the webpage), and content delivery (accessing the resource via a JSON API, querying the database, etc).
 
@@ -151,36 +163,37 @@ function recursiveFun(input, output) {
 }
 ```
 
-The emphasis is simplifying input until the problem becomes trivial to solve and we can return an output immediately in the beginning of the function. This is called the base case. What if we forget to add a base case to the recursive function? The function will keep calling itself forever until you run out of memory and get a stack overflow error.
+The emphasis is simplifying input until the problem becomes trivial to solve and we can return an output immediately in the beginning of the function. This is called the *base case*. What if we forget to add a base case to the recursive function? The function will keep calling itself forever until you run out of memory and get a stack overflow error.
 
-Note, we don't have to use a recursive function to implement a Divide and Conquer algorithm. We can use a loop and a mutable data structure. I'm not a fan of mutable data structures although it is more efficient sometimes.
+Note, we don't have to use a recursive function to implement a Divide and Conquer algorithm. We can use a loop and a mutable data structure. I'm not a fan of mutable data structures option although it is more efficient sometimes.
 
 Let's look at a simple example for a Divide and Conquer algorithm implemented with a recursive function and a mutable data structure:
 
 > Write a function sum that takes an array of numbers and returns the sum of all the numbers
 
+## Option 1: Recursive Function
 ```javascript
-// Option 1: Recursive function
 function sum(arr) {
 
-  function reduce(arr, sum) {
+  function add(arr, sum) {
     // Base Case
     if (arr.length === 0) return sum
 
-    // Recursive step
-    return reduce(arr.slice(1), sum + arr[0])
+    // Recursive Step
+    return add(arr.slice(1), sum + arr[0])
   }
 
-  return reduce(arr, 0) // <-- Initial Values
+  return add(arr, 0) // <-- Initial Values
 }
 ```
 
+## Option 2: Mutable Data Structure
+
 ```javascript
-// Option 2: Mutable Data Structure
 function sum(arr) {
 
   // Initial Values
-  let result = 0 // <-- mutable data structure
+  let result = 0
   let elems = arr // <-- mutable data structure
 
   while(elems.length > 0) { // <-- Base Case
@@ -191,7 +204,7 @@ function sum(arr) {
 }
 ```
 
-In both Options 1 and 2, every time we repeat the procedure of adding the next element to the current sum, we are creating a simpler array and a creating an updating the sum that makes it closer to the final solution. The stopping point is when we run out of things in the array to add to the current sum, in which case we just return the current sum which is the final solution.
+In both Options 1 and 2, every time we repeat the procedure of adding the next element to the current sum, we are creating a simpler array and an updated sum that’s a little closer to the final solution. The stopping point is when we run out of things in the array to add to the current sum, in which case we just return the current sum which is the final solution.
 
 Fans of functional programming and one-liners will implement sum as follows using the higher order function `reduce`, which JavaScript gives you out-of-the-box for the Array prototype:
 
@@ -282,4 +295,4 @@ test(fun, testCases)
 ```
 
 # Conclusion
-Problem solving is the application of knowledge and tools to achieve a desired outcome so the better your knowledge and tools are, the better your problem solving will be. Without a framework for problem solving, the process of problem solving could be inefficient and iterative, requires rounds of experimentation and refactoring. Use the these five principles to power your problem solving process to write more efficient and beautiful code!
+Problem solving is the application of knowledge and tools to achieve a desired outcome so the better your knowledge and tools are, the better your problem solving will be. Without a framework for problem solving, the process of problem solving could be inefficient and iterative, requiring rounds of experimentation and refactoring. Use the these five principles to power your problem solving process to write more efficient and beautiful code!

@@ -38,6 +38,7 @@ let mutatingAdd = ['a', 'b', 'c', 'd', 'e'];
 mutatingAdd.push('f'); // ['a', 'b', 'c', 'd', 'e', 'f']
 mutatingAdd.unshift('z'); // ['z', 'b', 'c', 'd', 'e' 'f']
 ```
+
 ### Create an array Statically
 
 ```javascript
@@ -46,6 +47,21 @@ arr[0] = 1 //> [1]
 arr[2] = 2 //> [1, empty, 2]
 
 arr[1] //> undefined
+```
+
+### Concatenating
+
+```javascript
+const one = ['a', 'b', 'c']
+const two = ['d', 'e', 'f']
+const three = ['g', 'h', 'i']
+// Old way #1
+const result = one.concat(two, three)
+// Old way #2
+const result = [].concat(one, two, three)
+
+// New with ES6 spread operator
+const result = [...one, ...two, ...three]
 ```
 
 Why JavaScript lets you create an array this way is ... different. In Java, arrays have a fixed sized. The space for the array needs to be allocated upfront before you can modify elements. The compiler will yell at you if you are trying to modify the nth element of an array of size n. I suppose in JavaScript, arrays are more like array lists.
@@ -155,7 +171,9 @@ arr.slice(1) //> [2, 3]
 arr.slice(2) //> [3]
 ```
 
-### Destructuring (ES6)
+## Destructuring (ES6)
+
+### Rest Spread
 
 ```javascript
 let arr = [1, 2, 3, 4]
@@ -182,6 +200,27 @@ Destructuring is a shortcut for performing `slice` on the array multiple times:
 ```javascript
 let first = arr.slice(0,1) //> [1]
 let rest = arr.slice(1) //> [2,3,4]
+```
+
+### Swapping
+
+```javaacript
+let a = 'world', b = 'hello'
+[a, b] = [b, a]
+console.log(a) // -> hello
+console.log(b) // -> world
+// Yes, it's magic
+```
+
+This ES6 hack was [courtesy of Tal Bereznitskey](https://medium.com/dailyjs/7-hacks-for-es6-developers-4e24ff425d0b).
+
+### Async/Await
+
+```javascript
+const [user, account] = await Promise.all([
+  fetch('/user'),
+  fetch('/account')
+])
 ```
 
 ## Processing
@@ -293,6 +332,68 @@ flat(data) // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 
 # Functions
 
+## The Basics
+Functions in JavaScript are objects. Objects are collections of name/value pairs having a hidden link to a prototype object.
+
+The function’s name is optional. The function can use its name to call itself recursively. The name can also be used by debuggers and development tools to identify the function. If a function is not given a name, as shown in the example below, it is said to be anonymous.
+
+Following are identical ways of declaring a function that create a variable called `add` and store a function in it that adds two numbers:
+
+```javascript
+var add = function (a, b) {
+  return a + b;
+};
+```
+
+```javascript
+function add(a, b) {
+  return a + b;
+};
+```
+
+```javascript
+const =  (a, b) =>  a + b;
+```
+
+We call the function `add` the following way:
+
+```JavaScript
+add(1,2) //3
+```
+We can also declare and call the function in one action:
+
+```javascript
+((a, b) => a + b)(1,2) // 3
+```
+In the example above, you don't need to give the function `(a,b) => a+b` a name. Because it doesn't have a name, we call it an anonymous function.
+
+## How to Pass Arguments
+
+**Option 1**
+
+Not great. This function is not resilient to change.
+You have to change the function signature if you add/remove arguments
+
+```javascript
+const getStuffNotBad = (id, force, verbose) => {
+  // ...do stuff
+}
+
+// Somewhere else in the codebase... WTF is true, true?
+getStuffNotBad(150, true, true)
+```
+
+**Option 2**
+
+```javascript
+// Better
+const getStuffAwesome = ({ id, name, force, verbose }) => {
+  ...do stuff
+}
+// Somewhere else in the codebase... I ❤ JS!!!
+getStuffAwesome({ id: 150, force: true, verbose: true })
+```
+
 ## Alternative to doing a loop
 
 ```javascript
@@ -300,7 +401,21 @@ let arr = Array.from(Array(10).keys()) //> (10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 arr.map(d => /* your function */)
 ```
 
-## Random
+## Math Functions
+
+### Max
+```javascript
+Math.max(1,2) //> 2
+```
+
+Hack with ES6 Array Destructuring:
+
+```javascript
+let arr = [1, 2, 3]
+Math.max(...arr)
+```
+
+### Random
 
 ```javascript
 // returns a random number between 0 amd 1
@@ -318,6 +433,41 @@ const numBest = Math.floor(rand3 * numProj);
 
 const msg = `Completed ${numProj} projects in the past ${numMonths} months. Won best project ${numBest} times`;
 ```
+
+## Console.log
+
+Hack 1
+
+```javascript
+console.log('my number is this:', 42)
+```
+
+Hack 2
+
+```javascript
+console.log(`my number is this: ${42}`)
+```
+
+Hack 3
+```javascript
+const a = 5, b = 6, c = 7
+console.log({ a, b, c })
+// outputs this nice object:
+// {
+//    a: 5,
+//    b: 6,
+//    c: 7
+// }
+```
+
+# JavaScript Class (ES6)
+
+[JavaScript classes are not classy](https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee)
+
+Objects created using the `new` keyword are mutable.
+
+> objects created using the new keyword inherit the prototype of the class that was used to create them. So, changes to a class’ prototype affect **all** objects created from that class — even if a change is made after the object was created.
+
 
 # String
 
@@ -447,44 +597,6 @@ Cases where the `g` flag should be used is when you want to replace all occurren
 'hello world hello'.replace(/hello/, 'hi') //> "hi world hello"
 'hello world hello'.replace(/hello/g, 'hi') //> "hi world hi"
 ```
-
-
-# Functions
-
-## The Basics
-Functions in JavaScript are objects. Objects are collections of name/value pairs having a hidden link to a prototype object.
-
-The function’s name is optional. The function can use its name to call itself recursively. The name can also be used by debuggers and development tools to identify the function. If a function is not given a name, as shown in the example below, it is said to be anonymous.
-
-Following are identical ways of declaring a function that create a variable called `add` and store a function in it that adds two numbers:
-
-```javascript
-var add = function (a, b) {
-  return a + b;
-};
-```
-
-```javascript
-function add(a, b) {
-  return a + b;
-};
-```
-
-```javascript
-const =  (a, b) =>  a + b;
-```
-
-We call the function `add` the following way:
-
-```JavaScript
-add(1,2) //3
-```
-We can also declare and call the function in one action:
-
-```javascript
-((a, b) => a + b)(1,2) // 3
-```
-In the example above, you don't need to give the function `(a,b) => a+b` a name. Because it doesn't have a name, we call it an anonymous function.
 
 # JSON
 

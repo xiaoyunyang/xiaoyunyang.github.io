@@ -34,7 +34,7 @@ My old website was bootstrapped. I wanted something set up quickly and didn't ha
 
 One day I watched [a talk on YouTube](https://www.youtube.com/watch?v=KX4G49ZrvY0) by a content management system (CMS) evangelist. He discussed the benefits of using a CMS to generate a website composed of content from markdown and text files. This promotes separation of content from code and better security and speed at which content is delivered. Some CMS are either git-backed or talk to an API.
 
-This is when I decided to abandon my old website. I built my old website as a static site generator. Writing all the code myself and maintaining the codebase seems like a low-value added activity, especially when I can simply leverage existing static site generators. I rather spend my time creating content for my website and work on my various other projects.
+This is when I decided to abandon my old website. I built my old website as a static site generator. Writing all the code myself and maintaining the codebase seems like a low-value added activity, especially when I can simply leverage existing static site generators. I rather spend my time creating content for my website and work on my [various other projects](http://xiaoyunyang.github.io/categories/projects/).
 
 ## Why I Chose Hugo
 I'm going with the git-backed option for a personal brand website because I want to use github to host my website for free and having an API to serve static files just seems like an overkill for a simple personal / blog website.

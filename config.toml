@@ -111,6 +111,12 @@ canonifyurls = true
   name = "Linkedin"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-linkedin\"></i>"
   url = "https://linkedin.com/in/xiaoyun-yang"
+[[menu.links]]
+  weight = 4
+  identifier = "Angellist"
+  name = "AngelList"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-angellist\"></i>"
+  url = "https://angel.co/xiaoyunyang"
 # [[menu.links]]
 #     weight = 1
 #     identifier = "codepen"
@@ -119,7 +125,7 @@ canonifyurls = true
 #     url = "https://codepen.io/xiaoyunyang/"
 
 [[menu.links]]
-  weight = 4
+  weight = 5
   identifier = "email"
   name = "Email Me"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-envelope\"></i>"

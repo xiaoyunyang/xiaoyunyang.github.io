@@ -13,11 +13,11 @@ Functional Programming is more than just a buzzword these days. It's super usefu
 
 <!--more-->
 
+{{< alert info >}} This article was originally [published on Medium](https://medium.com/@xiaoyunyang/why-functional-programming-from-a-developer-productivity-perspective-69c4b8100776) before I had my own blog. {{< /alert >}}
+
 <!--toc-->
 
 ## Motivation
-
-{{< alert info >}} This article was originally [published on Medium](https://medium.com/@xiaoyunyang/why-functional-programming-from-a-developer-productivity-perspective-69c4b8100776) before I had my own blog. {{< /alert >}}
 
 __Why Learn Functional Programming (FP)?__
 
