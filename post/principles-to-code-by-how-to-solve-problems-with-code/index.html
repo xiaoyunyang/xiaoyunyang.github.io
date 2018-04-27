@@ -198,6 +198,16 @@
 
   <li class="sidebar-button">
      
+      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
+      
+      <span class="sidebar-button-desc">AngelList</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
      <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
      
       <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
@@ -341,7 +351,7 @@
 </tbody>
 </table>
 
-<p>What we just did was we partitioned the algorithm into three logical domains each dealing with a particular concern. Each domain specific concern can be tackled independently by a software component. The three software components is designed to accomplish a specific mission and need not be concerned with what other components are doing. This demonstrates the principle of Separation of Concerns or SoC.</p>
+<p>What we just did was we partitioned the algorithm into three logical domains each dealing with a particular concern. Each domain specific concern can be tackled independently by a software component. The three software components are each designed to accomplish a specific mission and need not be concerned with what other components are doing. This demonstrates the principle of Separation of Concerns or SoC.</p>
 
 <p>SoC is the key to developing a complicated application or software system with many moving parts. For example, web applications separate concerns between presentation (how the webpage looks), business logic (content of the webpage), and content delivery (accessing the resource via a JSON API, querying the database, etc).</p>
 
@@ -432,9 +442,9 @@ function foo(arrIn) {
 }
 </code></pre>
 
-<p>The emphasis is simplifying input until the problem becomes trivial to solve and we can return an output immediately in the beginning of the function. This is called the base case. What if we forget to add a base case to the recursive function? The function will keep calling itself forever until you run out of memory and get a stack overflow error.</p>
+<p>The emphasis is simplifying input until the problem becomes trivial to solve and we can return an output immediately in the beginning of the function. This is called the <em>base case</em>. What if we forget to add a base case to the recursive function? The function will keep calling itself forever until you run out of memory and get a stack overflow error.</p>
 
-<p>Note, we don&rsquo;t have to use a recursive function to implement a Divide and Conquer algorithm. We can use a loop and a mutable data structure. I&rsquo;m not a fan of mutable data structures although it is more efficient sometimes.</p>
+<p>Note, we don&rsquo;t have to use a recursive function to implement a Divide and Conquer algorithm. We can use a loop and a mutable data structure. I&rsquo;m not a fan of mutable data structures option although it is more efficient sometimes.</p>
 
 <p>Let&rsquo;s look at a simple example for a Divide and Conquer algorithm implemented with a recursive function and a mutable data structure:</p>
 
@@ -442,26 +452,28 @@ function foo(arrIn) {
 <p>Write a function sum that takes an array of numbers and returns the sum of all the numbers</p>
 </blockquote>
 
-<pre><code class="language-javascript">// Option 1: Recursive function
-function sum(arr) {
+<h2 id="option-1-recursive-function">Option 1: Recursive Function</h2>
 
-  function reduce(arr, sum) {
+<pre><code class="language-javascript">function sum(arr) {
+
+  function add(arr, sum) {
     // Base Case
     if (arr.length === 0) return sum
 
-    // Recursive step
-    return reduce(arr.slice(1), sum + arr[0])
+    // Recursive Step
+    return add(arr.slice(1), sum + arr[0])
   }
 
-  return reduce(arr, 0) // &lt;-- Initial Values
+  return add(arr, 0) // &lt;-- Initial Values
 }
 </code></pre>
 
-<pre><code class="language-javascript">// Option 2: Mutable Data Structure
-function sum(arr) {
+<h2 id="option-2-mutable-data-structure">Option 2: Mutable Data Structure</h2>
+
+<pre><code class="language-javascript">function sum(arr) {
 
   // Initial Values
-  let result = 0 // &lt;-- mutable data structure
+  let result = 0
   let elems = arr // &lt;-- mutable data structure
 
   while(elems.length &gt; 0) { // &lt;-- Base Case
@@ -560,7 +572,7 @@ test(fun, testCases)
 
 <h1 id="conclusion">Conclusion</h1>
 
-<p>Problem solving is the application of knowledge and tools to achieve a desired outcome so the better your knowledge and tools are, the better your problem solving will be. Without a framework for problem solving, the process of problem solving could be inefficient and iterative, requires rounds of experimentation and refactoring. Use the these five principles to power your problem solving process to write more efficient and beautiful code!</p>
+<p>Problem solving is the application of knowledge and tools to achieve a desired outcome so the better your knowledge and tools are, the better your problem solving will be. Without a framework for problem solving, the process of problem solving could be inefficient and iterative, requiring rounds of experimentation and refactoring. Use the these five principles to power your problem solving process to write more efficient and beautiful code!</p>
               
             </div>
           </div>
