@@ -6,6 +6,7 @@ categories:
 tags:
   - JavaScript
   - Guide
+  - Software Design
 keywords:
   - software design principles
   - computer science

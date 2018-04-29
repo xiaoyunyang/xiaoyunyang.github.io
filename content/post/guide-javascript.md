@@ -394,6 +394,7 @@ const getStuffAwesome = ({ id, name, force, verbose }) => {
 getStuffAwesome({ id: 150, force: true, verbose: true })
 ```
 
+
 ## Alternative to doing a loop
 
 ```javascript
@@ -460,14 +461,151 @@ console.log({ a, b, c })
 // }
 ```
 
-# JavaScript Class (ES6)
+## Function Composition
 
-[JavaScript classes are not classy](https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee)
+{{< blockquote "Eric Elliot" "https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0" "Master the JavaScript Interview: What is Function Composition" >}} Function composition is the process of combining two or more functions to produce a new function. Composing functions together is like snapping together a series of pipes for our data to flow through. {{< /blockquote >}}
 
-Objects created using the `new` keyword are mutable.
+```javascript
+const curry = fn => (...args) => fn.bind(null, ...args);
+const map = curry((fn, arr) => arr.map(fn));
+const join = curry((str, arr) => arr.join(str));
+const toLowerCase = str => str.toLowerCase();
+const split = curry((splitOn, str) => str.split(splitOn));
+```
 
-> objects created using the new keyword inherit the prototype of the class that was used to create them. So, changes to a class’ prototype affect **all** objects created from that class — even if a change is made after the object was created.
+## The JavaScript Closure
 
+{{< blockquote "Eric Elliot" "https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36" "Master the JavaScript Interview: What is closure?" >}} Closures are frequently used in JavaScript for object data privacy, in event handlers and callback functions, and in partial applications, currying, and other functional programming patterns. {{< /blockquote >}}
+
+{{< alert info >}} See the article I published on Medium:  [Making Sense Of JavaScript’s Closure With Some Examples](https://medium.com/dailyjs/some-examples-to-help-understand-javascripts-closure-372e42fff94d) {{< /alert >}}
+
+We have to be able to explain the basic mechanics of closure. Understanding the basic mechanics comes with building actual JavaScript applications.
+
+### What is a Closure
+
+* A closure is a way to access and manipulate external variables from within the function.
+* A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). The bundling occurs *at function creation time*.
+* In other words, a closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created.
+* The inner function maintains closured reference to everything it uses from its *parent's lexical scope*. This means the inner function will have access to the variables in the outer function scope, even after the outer function has returned.
+
+To use a closure, simply define a function inside another function and expose it. To expose an function, return it or pass it to another function.
+
+### Two Common uses for closures
+
+**Data Privacy**
+
+Among other things, closures are commonly used to give objects data privacy. Data privacy is an essential property that helps us program to an interface, not an implementation. In JavaScript, closures are the primary mechanism used to enable data privacy. When you use closures for data privacy, the enclosed variables are only in scope within the containing (outer) function.
+
+```javascript
+// Data Privacy Example
+function Rectangle(color) {
+  let state = {
+    width: 10,
+    height: 20,
+    color: color,
+    key: 'secret'
+  }
+  function updateColor(color) {
+    state = {...state}
+    state.color = color
+  }
+  function updateWidth(width) {
+    state = {...state}
+    state.width = width
+  }
+  return {
+    draw: () => {
+      return {
+        width: state.width,
+        height: state.height,
+        color: state.color
+      }
+    },
+    drawWrong: {
+      width: state.width,
+      height: state.height,
+      color: state.color
+    },
+    updateColor: (c) => updateColor(c),
+    updateWidth: (w) => updateWidth(w)
+  }
+}
+```
+
+The `state` object in `Rectangle` is private to `Rectangle`, which returns accessors and modifiers to the `state` variable inside `Rectangle`. In the example, we use `draw` to get width, height, and color properties for the rectangle and we use `updateColor` and `updateWidth` to modify width and height.
+
+`updateColor` and `updateWidth` are inner functions of `Rectangle` and thus maintain a closured reference to `state` at creation time.
+
+`Rectangle` is created as follows:
+
+```javascript
+let shape = new Rectangle('red')
+console.log('draw: ', shape.draw())
+console.log('drawWrong: ', shape.drawWrong)
+
+console.log('updating color ..................')
+shape.updateColor('blue')
+console.log(shape.draw())
+console.log('draw: ', shape.draw())
+console.log('drawWrong: ', shape.drawWrong)
+
+console.log('updating width ..................')
+shape.updateWidth(40)
+console.log('draw: ', shape.draw())
+console.log('drawWrong: ', shape.drawWrong)
+```
+
+Console:
+
+```
+draw:  { width: 10, height: 20, color: 'red' }
+drawWrong:  { width: 10, height: 20, color: 'red' }
+updating color ..................
+{ width: 10, height: 20, color: 'blue' }
+draw:  { width: 10, height: 20, color: 'blue' }
+drawWrong:  { width: 10, height: 20, color: 'red' }
+updating width ..................
+draw:  { width: 40, height: 20, color: 'blue' }
+drawWrong:  { width: 10, height: 20, color: 'red' }
+```
+
+`drawWrong` is wrong. Why?
+
+{{< alert info >}} Try this example out in  [repl.it](https://repl.it/@xiaoyunyang/ClosureExample) {{< /alert >}}
+
+**Partial Application**
+
+Option 1: ES5
+```javascript
+function multThenAdd(num) {
+  function multiplyBy(num2) {
+    function add(num3) {
+      return num * num2 + num3
+    }
+    return add
+  }
+  return multiplyBy
+}
+```
+Option 2: ES6
+
+```javascript
+const multThenAdd2 = num => num2 => num3 =>  num * num2 + num3
+```
+
+Creating a partially applied function called `timesTwoPlusFour`:
+
+```javascript
+const timesTwoPlusFour = (num) => multThenAdd(num)(2)(4)
+
+timesTwoPlusFour(1) //> 6
+timesTwoPlusFour(10) //> 24
+```
+
+What’s happening in the code above is that you created a closure to keep the value `num` passed to the function `multThenAdd` even after the inner function is returned. The inner function  `multiply` that is being returned is created within an outer function, making it a closure. More specifically:
+
+* `multiply` is an inner function of `multThenAdd` that returns a function called `add`.  
+* `add` is an inner function of `multiply` that maintains a closured reference to `num2` and returns a number.
 
 # String
 
@@ -513,7 +651,7 @@ Say we have "hello world" as our string but we only want "world". What do we do?
 
 Option 2 using `slice` works because a string is really just an array of characters.
 
-# RegExp
+## RegExp
 
 ```javascript
 const matchLetters = new RegExp(/[a-zA-Z]/,'g')
@@ -813,3 +951,15 @@ let foo = {a: 'a', b: 'b'}
 let bar = {c: 'c', d: 'd'}
 let foobar = {...foo, ...bar} //> {a: "a", b: "b", c: "c", d: "d"}
 ```
+
+
+# Resources
+* Master The JavaScript Interview Series:
+  * [What is a Closure?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
+  * [What is the Difference Between Class & Prototypal Inheritance?](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)
+  * [What is a Pure Function?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-pure-function-d1c076bec976#.4256pjcfq)
+  * [What is Function Composition?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0#.i84zm53fb)
+  * [What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0#.jddz30xy3)
+  * [What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261#.aa7ubggsy)
+  * [Soft Skills](https://medium.com/javascript-scene/master-the-javascript-interview-soft-skills-a8a5fb02c466)
+* Eric Elliot on [why you should stay away from OO](https://medium.com/javascript-scene/inside-the-dev-team-death-spiral-6a7ea255467b)  

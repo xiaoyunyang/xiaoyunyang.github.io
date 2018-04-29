@@ -5,6 +5,7 @@ categories:
   - blog
 tags:
   - JavaScript
+  - Software Design
   - Scala
 thumbnailImagePosition: left
 thumbnailImage: /post/images/mindblowing.png
