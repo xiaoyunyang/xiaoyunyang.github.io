@@ -329,14 +329,19 @@
 <li><a href="#random">Random</a></li>
 </ul></li>
 <li><a href="#console-log">Console.log</a></li>
+<li><a href="#function-composition">Function Composition</a></li>
+<li><a href="#the-javascript-closure">The JavaScript Closure</a>
+<ul>
+<li><a href="#what-is-a-closure">What is a Closure</a></li>
+<li><a href="#two-common-uses-for-closures">Two Common uses for closures</a></li>
 </ul></li>
-<li><a href="#javascript-class-es6">JavaScript Class (ES6)</a></li>
+</ul></li>
 <li><a href="#string">String</a>
 <ul>
 <li><a href="#get-characters-from-string">Get Characters from String</a></li>
 <li><a href="#getting-substrings">Getting Substrings</a></li>
-</ul></li>
 <li><a href="#regexp">RegExp</a></li>
+</ul></li>
 <li><a href="#json">JSON</a>
 <ul>
 <li><a href="#creating-json">Creating JSON</a></li>
@@ -352,6 +357,7 @@
 <li><a href="#destructuring">Destructuring</a></li>
 <li><a href="#merging-two-json-objects">Merging two JSON objects</a></li>
 </ul></li>
+<li><a href="#resources">Resources</a></li>
 </ul>
 </nav>
 
@@ -772,15 +778,170 @@ console.log({ a, b, c })
 // }
 </code></pre>
 
-<h1 id="javascript-class-es6">JavaScript Class (ES6)</h1>
-
-<p><a href="https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee" target="_blank">JavaScript classes are not classy</a></p>
-
-<p>Objects created using the <code>new</code> keyword are mutable.</p>
+<h2 id="function-composition">Function Composition</h2>
 
 <blockquote>
-<p>objects created using the new keyword inherit the prototype of the class that was used to create them. So, changes to a class’ prototype affect <strong>all</strong> objects created from that class — even if a change is made after the object was created.</p>
+  <p> Function composition is the process of combining two or more functions to produce a new function. Composing functions together is like snapping together a series of pipes for our data to flow through. </p>
+  <footer>
+    <strong>Eric Elliot</strong>
+    
+      <cite><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0" target="_blank" rel="external">Master the JavaScript Interview: What is Function Composition</a></cite>
+    
+  </footer>
 </blockquote>
+
+<pre><code class="language-javascript">const curry = fn =&gt; (...args) =&gt; fn.bind(null, ...args);
+const map = curry((fn, arr) =&gt; arr.map(fn));
+const join = curry((str, arr) =&gt; arr.join(str));
+const toLowerCase = str =&gt; str.toLowerCase();
+const split = curry((splitOn, str) =&gt; str.split(splitOn));
+</code></pre>
+
+<h2 id="the-javascript-closure">The JavaScript Closure</h2>
+
+<blockquote>
+  <p> Closures are frequently used in JavaScript for object data privacy, in event handlers and callback functions, and in partial applications, currying, and other functional programming patterns. </p>
+  <footer>
+    <strong>Eric Elliot</strong>
+    
+      <cite><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36" target="_blank" rel="external">Master the JavaScript Interview: What is closure?</a></cite>
+    
+  </footer>
+</blockquote>
+
+<div class="alert info ">
+  <p>See the article I published on Medium:  <a href="https://medium.com/dailyjs/some-examples-to-help-understand-javascripts-closure-372e42fff94d" target="_blank">Making Sense Of JavaScript’s Closure With Some Examples</a></p>
+</div>
+
+<p>We have to be able to explain the basic mechanics of closure. Understanding the basic mechanics comes with building actual JavaScript applications.</p>
+
+<h3 id="what-is-a-closure">What is a Closure</h3>
+
+<ul>
+<li>A closure is a way to access and manipulate external variables from within the function.</li>
+<li>A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). The bundling occurs <em>at function creation time</em>.</li>
+<li>In other words, a closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created.</li>
+<li>The inner function maintains closured reference to everything it uses from its <em>parent&rsquo;s lexical scope</em>. This means the inner function will have access to the variables in the outer function scope, even after the outer function has returned.</li>
+</ul>
+
+<p>To use a closure, simply define a function inside another function and expose it. To expose an function, return it or pass it to another function.</p>
+
+<h3 id="two-common-uses-for-closures">Two Common uses for closures</h3>
+
+<p><strong>Data Privacy</strong></p>
+
+<p>Among other things, closures are commonly used to give objects data privacy. Data privacy is an essential property that helps us program to an interface, not an implementation. In JavaScript, closures are the primary mechanism used to enable data privacy. When you use closures for data privacy, the enclosed variables are only in scope within the containing (outer) function.</p>
+
+<pre><code class="language-javascript">// Data Privacy Example
+function Rectangle(color) {
+  let state = {
+    width: 10,
+    height: 20,
+    color: color,
+    key: 'secret'
+  }
+  function updateColor(color) {
+    state = {...state}
+    state.color = color
+  }
+  function updateWidth(width) {
+    state = {...state}
+    state.width = width
+  }
+  return {
+    draw: () =&gt; {
+      return {
+        width: state.width,
+        height: state.height,
+        color: state.color
+      }
+    },
+    drawWrong: {
+      width: state.width,
+      height: state.height,
+      color: state.color
+    },
+    updateColor: (c) =&gt; updateColor(c),
+    updateWidth: (w) =&gt; updateWidth(w)
+  }
+}
+</code></pre>
+
+<p>The <code>state</code> object in <code>Rectangle</code> is private to <code>Rectangle</code>, which returns accessors and modifiers to the <code>state</code> variable inside <code>Rectangle</code>. In the example, we use <code>draw</code> to get width, height, and color properties for the rectangle and we use <code>updateColor</code> and <code>updateWidth</code> to modify width and height.</p>
+
+<p><code>updateColor</code> and <code>updateWidth</code> are inner functions of <code>Rectangle</code> and thus maintain a closured reference to <code>state</code> at creation time.</p>
+
+<p><code>Rectangle</code> is created as follows:</p>
+
+<pre><code class="language-javascript">let shape = new Rectangle('red')
+console.log('draw: ', shape.draw())
+console.log('drawWrong: ', shape.drawWrong)
+
+console.log('updating color ..................')
+shape.updateColor('blue')
+console.log(shape.draw())
+console.log('draw: ', shape.draw())
+console.log('drawWrong: ', shape.drawWrong)
+
+console.log('updating width ..................')
+shape.updateWidth(40)
+console.log('draw: ', shape.draw())
+console.log('drawWrong: ', shape.drawWrong)
+</code></pre>
+
+<p>Console:</p>
+
+<pre><code>draw:  { width: 10, height: 20, color: 'red' }
+drawWrong:  { width: 10, height: 20, color: 'red' }
+updating color ..................
+{ width: 10, height: 20, color: 'blue' }
+draw:  { width: 10, height: 20, color: 'blue' }
+drawWrong:  { width: 10, height: 20, color: 'red' }
+updating width ..................
+draw:  { width: 40, height: 20, color: 'blue' }
+drawWrong:  { width: 10, height: 20, color: 'red' }
+</code></pre>
+
+<p><code>drawWrong</code> is wrong. Why?</p>
+
+<div class="alert info ">
+  <p>Try this example out in  <a href="https://repl.it/@xiaoyunyang/ClosureExample" target="_blank">repl.it</a></p>
+</div>
+
+<p><strong>Partial Application</strong></p>
+
+<p>Option 1: ES5</p>
+
+<pre><code class="language-javascript">function multThenAdd(num) {
+  function multiplyBy(num2) {
+    function add(num3) {
+      return num * num2 + num3
+    }
+    return add
+  }
+  return multiplyBy
+}
+</code></pre>
+
+<p>Option 2: ES6</p>
+
+<pre><code class="language-javascript">const multThenAdd2 = num =&gt; num2 =&gt; num3 =&gt;  num * num2 + num3
+</code></pre>
+
+<p>Creating a partially applied function called <code>timesTwoPlusFour</code>:</p>
+
+<pre><code class="language-javascript">const timesTwoPlusFour = (num) =&gt; multThenAdd(num)(2)(4)
+
+timesTwoPlusFour(1) //&gt; 6
+timesTwoPlusFour(10) //&gt; 24
+</code></pre>
+
+<p>What’s happening in the code above is that you created a closure to keep the value <code>num</code> passed to the function <code>multThenAdd</code> even after the inner function is returned. The inner function  <code>multiply</code> that is being returned is created within an outer function, making it a closure. More specifically:</p>
+
+<ul>
+<li><code>multiply</code> is an inner function of <code>multThenAdd</code> that returns a function called <code>add</code>.<br /></li>
+<li><code>add</code> is an inner function of <code>multiply</code> that maintains a closured reference to <code>num2</code> and returns a number.</li>
+</ul>
 
 <h1 id="string">String</h1>
 
@@ -821,7 +982,7 @@ str.charAt(str.length) //&gt; ''
 
 <p>Option 2 using <code>slice</code> works because a string is really just an array of characters.</p>
 
-<h1 id="regexp">RegExp</h1>
+<h2 id="regexp">RegExp</h2>
 
 <pre><code class="language-javascript">const matchLetters = new RegExp(/[a-zA-Z]/,'g')
 const matchVowels = new RegExp(/[aeiouAEIOU]/, 'g')
@@ -1115,6 +1276,23 @@ lastName //&gt; &quot;Winehouse&quot;
 let bar = {c: 'c', d: 'd'}
 let foobar = {...foo, ...bar} //&gt; {a: &quot;a&quot;, b: &quot;b&quot;, c: &quot;c&quot;, d: &quot;d&quot;}
 </code></pre>
+
+<h1 id="resources">Resources</h1>
+
+<ul>
+<li>Master The JavaScript Interview Series:
+
+<ul>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36" target="_blank">What is a Closure?</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9" target="_blank">What is the Difference Between Class &amp; Prototypal Inheritance?</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-pure-function-d1c076bec976#.4256pjcfq" target="_blank">What is a Pure Function?</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0#.i84zm53fb" target="_blank">What is Function Composition?</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0#.jddz30xy3" target="_blank">What is Functional Programming?</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261#.aa7ubggsy" target="_blank">What is a Promise?</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-soft-skills-a8a5fb02c466" target="_blank">Soft Skills</a></li>
+</ul></li>
+<li>Eric Elliot on <a href="https://medium.com/javascript-scene/inside-the-dev-team-death-spiral-6a7ea255467b" target="_blank">why you should stay away from OO</a><br /></li>
+</ul>
               
             </div>
           </div>
@@ -1360,6 +1538,25 @@ s.setAttribute('data-timestamp', +new Date());
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/">
+                <h3 class="media-heading">How to do Object Oriented Programming in JavaScript</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implement OOP via Prototypal inheritance.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
                 <h3 class="media-heading">Principles To Code By: How To Solve Problems With Code</h3>
               </a>
@@ -1522,25 +1719,6 @@ s.setAttribute('data-timestamp', +new Date());
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/">
-                <h3 class="media-heading">Building an Isomorphic Webapp</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Mar 3, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>I&rsquo;ve always lived by the &ldquo;Separation of Concern&rdquo; principle when it comes to software design.  Recently, I&rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.</p>
-
-<p></p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -1548,7 +1726,7 @@ s.setAttribute('data-timestamp', +new Date());
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         15 posts found
+         16 posts found
       </p>
     </div>
   </div>

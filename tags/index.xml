@@ -34,7 +34,7 @@
     <item>
       <title>Javascript</title>
       <link>http://xiaoyunyang.github.io/tags/javascript/</link>
-      <pubDate>Mon, 23 Apr 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/tags/javascript/</guid>
       <description></description>
@@ -77,11 +77,29 @@
     </item>
     
     <item>
+      <title>Programming</title>
+      <link>http://xiaoyunyang.github.io/tags/programming/</link>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Scala</title>
       <link>http://xiaoyunyang.github.io/tags/scala/</link>
       <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/tags/scala/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Software Design</title>
+      <link>http://xiaoyunyang.github.io/tags/software-design/</link>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/tags/software-design/</guid>
       <description></description>
     </item>
     
