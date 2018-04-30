@@ -36,7 +36,7 @@
 ">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Applying Algorithmic Thinking To Solve A Problem In JavaScript">
-    <meta property="og:url" content="/post/applying-algorithmic-thinking-to-solve-a-problem-in-javascript/">
+    <meta property="og:url" content="http://xiaoyunyang.github.io/post/applying-algorithmic-thinking-to-solve-a-problem-in-javascript/">
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
@@ -204,6 +204,16 @@
 
   <li class="sidebar-button">
      
+      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
+      
+      <span class="sidebar-button-desc">AngelList</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
      <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
      
       <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
@@ -239,9 +249,9 @@
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-04-22T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-04-30T00:00:00Z">
         
-  April 22, 2018
+  April 30, 2018
 
       </time>
     
@@ -305,222 +315,6 @@ const newOpenCnt = (c, openCnt) =&gt; {
 }
 
 </code></pre>
-
-<p>It is necessary to extensively unit test your code.</p>
-
-<pre><code class="language-javascript">let testCases = [
-  {test: '(', shouldBe: false},
-  {test: '())', shouldBe: false},
-  {test: null, shouldBe: false},
-  {test: undefined, shouldBe: false},
-  {test: 22, shouldBe: false},
-  {test: ')(', shouldBe: false},
-  {test: '', shouldBe: true},
-  {test: '()', shouldBe: true},
-  {test: '()()', shouldBe: true},
-  {test: '(())', shouldBe: true},
-  {test: 'hi', shouldBe: true},
-  {test: '(hi)', shouldBe: true},
-  {test: '(((())(())',shouldBe: false}
-];
-let fun = (str) =&gt; isBalanced(str, 0);
-const test = (testCases, fun) =&gt; {
-  testCases.map(t =&gt; {
-    const shouldBe = t.shouldBe;
-    const is = fun(t.test);
-    const res = (shouldBe === is) ? 'passed' : 'failed';
-    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
-    console.log(`${res} ${moreInfo}`);
-  })
-}
-test(testCases, fun)
-</code></pre>
-
-<h2 id="url-string-transform">URL String transform</h2>
-
-<p>We want to transform the article title into a string of all lower case words joined by &lsquo;-&rsquo;.</p>
-
-<p><strong>Option #1 - use Array.map, then Array.join</strong></p>
-
-<pre><code class="language-javascript">phrase.split(' ').map(w =&gt; w.toLowerCase()).join('-');
-</code></pre>
-
-<p>The disadvantage of this approach is it&rsquo;s <a href="https://stackoverflow.com/questions/22614237/javascript-runtime-complexity-of-array-functions" target="_blank">slow</a>. map is O(N). join is O(N) we can do better.</p>
-
-<p><strong>Option #2 - use Array.reduce</strong></p>
-
-<pre><code class="language-javascript">phrase.split(' ').reduce((res, a) =&gt; res + '-' + a.toLowerCase(), '').slice(1)
-//&gt; &quot;three-ways-to-title-case-a-sentence-in-javascript&quot;
-
-// Why .slice(1) at the end?
-
-phrase.split(' ')
-	.map(w =&gt; w.toLowerCase())
-	.reduce((res,a) =&gt; {
-		console.log('res = ', res);
-		console.log('a = ', a);
-		return res+'-'+a
-	}, '')
-
-</code></pre>
-
-<pre><code>//res =  
-// a =  three
-// res =  -three
-// a =  ways
-// res =  -three-ways
-// a =  to
-// res =  -three-ways-to
-// a =  title
-// res =  -three-ways-to-title
-// a =  case
-// res =  -three-ways-to-title-case
-// a =  a
-// res =  -three-ways-to-title-case-a
-// a =  sentence
-// res =  -three-ways-to-title-case-a-sentence
-// a =  in
-// res =  -three-ways-to-title-case-a-sentence-in
-// a =  javascript
-// &quot;-three-ways-to-title-case-a-sentence-in-javascript&quot;
-</code></pre>
-
-<p><strong>Option #3 - ES6</strong></p>
-
-<pre><code class="language-javascript">let arr = phrase.split(' ')
-
-// ES6
-let [first] = arr //&gt; &quot;Three&quot; ...es6 solution using destructuring
-[first, ...rest] = arr
-first //&gt; &quot;Three&quot;
-rest //&gt; [&quot;Ways&quot;, &quot;to&quot;, &quot;Title&quot;, &quot;Case&quot;, &quot;a&quot;, &quot;Sentence&quot;, &quot;in&quot;, &quot;JavaScript&quot;]
-let urlStr = rest.reduce((res, a) =&gt; res + '-' + a.toLowerCase(), first.toLowerCase())
-//&gt; &quot;three-ways-to-title-case-a-sentence-in-javascript&quot;
-</code></pre>
-
-<pre><code class="language-javascript">// ES5
-let first = arr[0]
-let rest = arr.slice(1)
-let urlStr = rest.reduce((res, a) =&gt; res + '-' + a.toLowerCase(), first.toLowerCase())
-</code></pre>
-
-<p><strong>Aside: Tips on array operations</strong></p>
-
-<p><em>Caveat:</em> use arr[0], don&rsquo;t use arr.pop() because Array.pop() has the side effect of modifying your original array.</p>
-
-<pre><code>arr = [1, 2, 3]
-arr[0] //&gt; 1
-arr //&gt; [1, 2, 3]
-
-arr = [1, 2, 3]
-arr.pop(0) //&gt; 1 ... but is O(1)
-arr //&gt; [2, 3]
-
-// Tip:  use Array.slice(1), don't use Array.splice(1). Array.slice and Array.splice are both O(N)
-arr = [1, 2, 3]
-arr.slice(1) //&gt; [2, 3]
-arr //&gt; [1, 2, 3]
-
-arr = [1, 2, 3]
-arr.splice(1) //&gt; [2, 3] ... O(N)
-arr //&gt; [1]
-</code></pre>
-
-<p>Tip: if you care about performance of getting rest with O(1), use Array.pop()</p>
-
-<h2 id="html-string-transform">HTML String Transform</h2>
-
-<p>Try it out in <a href="https://repl.it/@xiaoyunyang/StrReplace" target="_blank">repl.it</a></p>
-
-<p>Symbols used in HTML document consist of special character sets, including <code>&amp;lt;</code> for &amp; and <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_13.html" target="_blank">some others</a>.</p>
-
-<pre><code class="language-javascript">// &amp;lt; =&gt; '&lt;''
-// &amp;gt; =&gt; '&gt;'
-// &amp;quot; =&gt; ''\&quot;'
-
-
-// Takes a string and encodes the characters as HTML characters
-function encodeV1(char) {
-  switch (char) {
-    case '&lt;': return '&amp;lt;'
-    case '&gt;': return '&amp;gt;'
-    case '\&quot;': return '&amp;quot;'
-  }
-  return char
-}
-
-let s = &quot;1 &gt; 0 and 1 &lt; 12, \&quot;hello\&quot;&quot;
-let encode = encodeV1
-s.split('').map(char =&gt; encode(char)).join('')
-//&gt; '1 &amp;gt; 0, 1 &amp;lt; 12, 1 &amp;gt;= 1. &amp;quot;hello&amp;quot;''
-</code></pre>
-
-<p>This works but the <code>encode</code> function is hard-coded with simples. If we want to write a <code>decode</code> function that makes the string transformation in reverse, that would require writing out all those mappings again, requiring us to refactor code. It would be desirable to have a single source of truth that dictates all available encoding. Let&rsquo;s make a data structure called <code>dict</code> that provides the collection of tuples for encoding and decoding our characters and HTML special characters.</p>
-
-<p>Some refactoring is necessary:</p>
-
-<pre><code class="language-javascript">const dict = [
-  {char: '&lt;', code: '&amp;lt;'},
-  {char: '&gt;', code: '&amp;gt;'},
-  {char: '\&quot;', code: '&amp;quot;'},  
-]
-
-// Build a switch based on array
-function encodeV2(dict) {
-  return char =&gt; {
-    let res = char
-    for(let i=0; i&lt;dict.length; i++) {
-      if(dict[i].char === char) {
-        res = dict[i].code
-        break
-      }  
-    }
-    return res
-  }
-}
-
-// This is so we don't have to change our interface encode(c) below
-encode = encodeV2(dict)
-s.split('').map(c =&gt; encode(c)).join('')
-//&gt; '1 &amp;gt; 0, 1 &amp;lt; 12, 1 &amp;gt;= 1. &amp;quot;hello&amp;quot;''
-</code></pre>
-
-<p>Let&rsquo;s also write <code>decode</code> to use <code>dict</code>. Previously for <code>encode</code>, we are able to partition the string into an array of characters for processing. However for <code>decode</code>, this step is not so straight forward since our code e.g., <code>&amp;gt;</code> consists of multiple character. So what do we do?</p>
-
-<p>Let&rsquo;s write a helper function that handles partitioning of the string to arrays of regular characters or</p>
-
-<pre><code class="language-javascript">function decodeV2(dict) {
-  return code =&gt; {
-    let res = code
-    for(let i=0; i&lt;dict.length; i++) {
-      if(dict[i].code === code) {
-        res = dict[i].char
-        break
-      }  
-    }
-    return res
-  }
-}
-const matchHTMLChar = new RegExp(/&amp;(lt|gt|quot);/, 'g')
-
-let encoded = s.split('').map(char =&gt; encode(char)).join('')
-
-let decode = decodeV2(dict)
-let decoded = encoded.replace(matchHTMLChar, decode)
-s === decoded //&gt; true
-</code></pre>
-
-<p>Can we make the solution more general? Yes, in the following ways:
-1. notice the <code>decode</code> and <code>encode</code> functions have basically the same functional structure. That is, it runs a loop to update the result based on value from the array of objects. We can generalize it further.
-2. The pattern we are matching in the <code>matchHTMLChar</code> RegExp is hardcoded. We should make that dependent on  <code>dict</code>.</p>
-
-<p>I&rsquo;ll leave these two problems to you as an exercise.</p>
-
-<h1 id="array-algorithms">Array Algorithms</h1>
-
-<h1 id="object-oriented-programming">Object Oriented programming</h1>
-
-<h1 id="case-study">Case Study</h1>
               
             </div>
           </div>
@@ -740,33 +534,8 @@ s.setAttribute('data-timestamp', +new Date());
 <div id="share-options-mask" class="share-options-mask"></div>
     </div>
     
-    <div id="about">
-  <div id="about-card">
-    <div id="about-btn-close">
-      <i class="fa fa-remove"></i>
-    </div>
-    
-      <img id="about-card-picture" src="https://avatars3.githubusercontent.com/u/5825343?s=400&amp;u=57ea29978721c8be7b830ce02f304e67f82cf34f&amp;v=4" alt="Author&#39;s picture" />
-    
-    <h4 id="about-card-name">Xiaoyun Yang</h4>
-    
-      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
-    
-    
-      <div id="about-card-job">
-        <i class="fa fa-briefcase"></i>
-        <br/>
-        Software Engineer
-      </div>
-    
-    
-      <div id="about-card-location">
-        <i class="fa fa-map-marker"></i>
-        <br/>
-        Washington DC
-      </div>
-    
-  </div>
+    <div id="aboutme">
+
 </div>
 
     <div id="algolia-search-modal" class="modal-container">
@@ -840,6 +609,42 @@ s.setAttribute('data-timestamp', +new Date());
               <div class="media-content hide-xs font-merryweather"><p>Kyle, a friend of mine, introduced me to his method for turning stress into an action plan.</p>
 
 <p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/">
+                <h3 class="media-heading">How to do Object Oriented Programming in JavaScript</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implement OOP via Prototypal inheritance.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
+                <h3 class="media-heading">Principles To Code By: How To Solve Problems With Code</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>What I love most about programming is the problem solving. I don&rsquo;t believe anyone is born with problem solving skills. It&rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -938,44 +743,6 @@ s.setAttribute('data-timestamp', +new Date());
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/">
-                <h3 class="media-heading">Using Hugo To Build A Personal Brand Website</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Apr 4, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>It&rsquo;s not always clear why we need need a personal website. But here&rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like <a href="https://gohugo.io/" target="_blank">Hugo</a>.</p>
-
-<p></p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/">
-                <h3 class="media-heading">Why I Pay to Work At a Co-working Space</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Apr 4, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>If you asked me to give you three facts about myself, I would tell you (1) I&rsquo;m a evening and weekend entrepreneur, (2) when I start working on something I enjoy, I can&rsquo;t put it down, and (3) I love coffee. This a formula for disaster because I have a full time job that I have to show up to by 9AM and I&rsquo;m a normal human person who needs at least 6 hours of sleep.</p>
-
-<p></p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -983,7 +750,7 @@ s.setAttribute('data-timestamp', +new Date());
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         17 posts found
+         19 posts found
       </p>
     </div>
   </div>
