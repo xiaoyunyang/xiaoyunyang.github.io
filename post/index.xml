@@ -8,43 +8,10 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Mon, 30 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Applying Algorithmic Thinking To Solve A Problem In JavaScript</title>
-      <link>http://xiaoyunyang.github.io/post/applying-algorithmic-thinking-to-solve-a-problem-in-javascript/</link>
-      <pubDate>Mon, 30 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/applying-algorithmic-thinking-to-solve-a-problem-in-javascript/</guid>
-      <description>&lt;p&gt;This is a deep dive of a coding challenge that my friend was asked to solve during an interview. I like this problem a lot because the solution requires both algorithmic thinking and familiarity with some fundamental frameworks and techniques in computer science.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>From Military To Tech Entrepreneur:  How I made the Leap</title>
-      <link>http://xiaoyunyang.github.io/post/from-military-to-tech-entrepreneur--how-i-made-the-leap/</link>
-      <pubDate>Mon, 30 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/from-military-to-tech-entrepreneur--how-i-made-the-leap/</guid>
-      <description>&lt;p&gt;I commissioned to serve in the US Navy when I received my university degrees. The service commitment is 5 years. I signed the contract when I was a sophomore in college. I didn&amp;rsquo;t know that I wanted to be a tech entrepreneur or wanted to work in the high tech industry when I was in college. It was not until a year after I commissioned that I realized that I prefer a job in innovation and allows me to be creative and indulge in hands-on problem solving. I&amp;rsquo;ve spent the last 5 years exploring my interests and working on closing skills gaps that would preclude me from a smooth transition to a job I would enjoy doing. I did this while still serving in the military.  Here&amp;rsquo;s my journey.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Use A Stress Journal To Turn Stress into An Action Plan</title>
-      <link>http://xiaoyunyang.github.io/post/use-a-stress-journal-to-turn-stress-into-an-action-plan/</link>
-      <pubDate>Mon, 30 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/use-a-stress-journal-to-turn-stress-into-an-action-plan/</guid>
-      <description>&lt;p&gt;Kyle, a friend of mine, introduced me to his method for turning stress into an action plan.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>How to do Object Oriented Programming in JavaScript</title>
