@@ -21,7 +21,7 @@ var TopNav = React.createClass({
               <div className="background">
                 <img src="../assets/images/table3.png"/>
                </div>
-               <img className="circle" src="http://xiaoyunyang.github.io/assets/data/profile/photo/xyang.png"/>
+               <img className="circle" src="https://avatars3.githubusercontent.com/u/5825343?s=460&v=4"/>
                <div className="row">
                  <div className="col l2 m2 s2">
                    <a href="https://github.com/xiaoyunyang"><i className="fab fa-github fa-lg"></i></a>
