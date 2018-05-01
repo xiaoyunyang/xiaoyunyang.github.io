@@ -1,6 +1,6 @@
 ---
 title: "Use A Stress Journal To Turn Stress into An Action Plan"
-date: 2018-04-30
+date: 2018-05-30
 categories:
   - blog
 tags:

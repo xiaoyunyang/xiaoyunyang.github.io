@@ -14,8 +14,9 @@ keywords:
   - interview prep
   - prototypal inheritance
   - classical inheritance
-thumbnailImagePosition: top
-thumbnailImage: /post/images/jsDev.png
+  - functional composition
+thumbnailImagePosition: left
+thumbnailImage: /post/images/function-factory.png
 ---
 
 Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implement OOP via Prototypal inheritance.
@@ -23,9 +24,9 @@ Object Oriented Programming (OOP) is a software design pattern that allows you t
 <!--more-->
 
 # Primer: What is an Object?
-OOP is concerned with composing objects with that manages simple tasks to create complex computer programs. Objects have a notion of self and reused behavior inherited from a blueprint (classical inheritance) or other objects (prototypal inheritance).
+OOP is concerned with composing objects that manages simple tasks to create complex computer programs. Objects have a notion of self and reused behavior inherited from a blueprint (classical inheritance) or other objects (prototypal inheritance).
 
-The goal of inheritance is to speed up development by promoting code reuse.
+Inheritance is the ability to say that these objects are just like that other set of objects EXCEPT for these changes. The goal of inheritance is to speed up development by promoting code reuse.
 
 # Classical Inheritance
 In classical OOP, classes are blueprints for objects. Objects are created or *instantiated* from classes. There's a constructor that is used to create an instance of the class with custom properties.
@@ -52,15 +53,15 @@ class Person {
 
 The `class` key word from ES6 is used to create the `Person` class with properties stored in `this` called `firstName` and `lastName`, which are set in the `constructor` and accessed in the `getFullName` function.
 
-We instantiate an object called `celebrity` from the `Person` class with the `new` key word as follows:
+We instantiate an object called `person` from the `Person` class with the `new` key word as follows:
 
 ```javascript
-let celebrity = new Person('Chris', 'Pratt')
-celebrity.getFullName() //> "Chris Pratt"
+let person = new Person('Dan', 'Abramov')
+person.getFullName() //> "Dan Abramov"
 
 // We can use an accessor function or access directly
-celebrity.firstName //> "Chris"
-celebrity.lastName //> "Pratt"
+person.firstName //> "Dan"
+person.lastName //> "Abramov"
 ```
 
 Objects created using the `new` keyword are mutable. In other words, changes to a class affects all objects created from that class and all derived classes which *extends* from the class.
@@ -91,15 +92,15 @@ In the code above, we created a `User` class which *extends* the capability of t
 
 ```javascript
 function App() {
-  let user = new User('Chris', 'Pratt', 'chris@pratt.com', 'lolWut')
-  user.getFullName() //> "Chris Pratt"
-  user.getEmail() //> "chris@pratt.com"
-  user.getPassword() //> "lolWut"
+  let user = new User('Dan', 'Abramov', 'dan@abramov.com', 'iLuvES6')
+  user.getFullName() //> "Dan Abramov"
+  user.getEmail() //> "dan@abramov.com"
+  user.getPassword() //> "iLuvES6"
 
-  user.firstName //> "Chris"
-  user.lastName //> "Pratt"
-  user.email //> "chris@pratt.com"
-  user.password //> "lolWut"
+  user.firstName //> "Dan"
+  user.lastName //> "Abramov"
+  user.email //> "dan@abramov.com"
+  user.password //> "iLuvES6"
 }
 ```
 
@@ -149,16 +150,16 @@ Suppose we want to extend the `Array` prototype by introducing a new method call
 
 ```javascript
 Array.prototype.partition = function(pred) {
-  let left = []
-  let right = []
+  let passed = []
+  let failed = []
   for(let i=0; i< this.length; i++) {
-    if(pred(this[i])) {
+    if (pred(this[i])) {
       passed.push(this[i])
     } else {
       failed.push(this[i])
     }
   }
-  return [passed, failed];
+  return [ passed, failed ];
 }
 ```
 
@@ -169,6 +170,137 @@ Now we can use `partition` on any array:
 //> [[1, 2, 3], [4, 5]]
 ```
 
+`[1,2,3,4,5]` is called a literal. [Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Array_literals) is one way to create an object. We can also use [factory functions](https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91) or [`Object.create()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) to create the same array:
+
+```javascript
+// Literal
+[1,2,3,4,5]
+
+// Factory Function
+Array(1,2,3,4,5)
+
+// Object.create
+let arr = Object.create(Array.prototype)
+arr.push(1)
+arr.push(2)
+arr.push(3)
+arr.push(4)
+arr.push(5)
+```
+
+A factory function is any function which is not a class or constructor that returns a (presumably new) object. In JavaScript, any function can return an object. When it does so without the new keyword, it’s a factory function.
+
+Factory functions have [always been attractive in JavaScript](https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1) because they offer the ability to easily produce object instances without diving into the complexities of classes and the new keyword.
+
+Creating `Person` and `User` using prototypal inheritance:
+
+```javascript
+function Person(firstName, lastName) {
+  this.firstName = firstName
+  this.lastName = lastName
+}
+Person.prototype.getFullName = function () {  
+  return this.firstName + ' ' + this.lastName
+}
+```
+
+Now we can use the `Person` like so:
+
+```javascript
+let person = new Person('Dan', 'Abramov')
+person.getFullName() //> Dan Abramov
+```
+
+`person` is an object. Doing a `console.log(person)` gives us the following:
+
+```
+Person {
+  firstName: "Dan",
+  lastName: "Abramov",
+  __proto__: {
+    getFullName: f
+    constructor: f Person(firstName, lastName)
+  },
+  __proto__: Object  
+}
+```
+
+For our `User`, we just need to extend the `Person` class:
+
+```javascript
+function User(firstName, lastName, email, password) {
+  Person.call(this, firstName, lastName) // call super constructor.
+  this.email = email
+  this.password = password
+}
+
+User.prototype = Object.create(Person.prototype);
+
+User.prototype.setEmail = function(email) {
+  this.email = email
+}
+
+User.prototype.getEmail = function() {
+  return this.email
+}
+
+user.setEmail('dan@abramov.com')
+```
+
+`user` is an object. Doing a `console.log(user)` gives us the following:
+
+```
+User {
+  firstName: "Dan",
+  lastName: "Abramov",
+  email: "dan@abramov.com",
+  password: "iLuvES6",
+  __proto__: Person {
+    getEmail: f ()
+    setEmail: f (email)
+    __proto__: {
+      getFullName: f,
+      constructor: f Person(firstName, lastName)
+      __proto__: Object
+
+    }
+  }
+}
+```
+
+What if we want to customize the `getFullName` function for `User`? How is the following code going to affect `person` and `user`?
+
+```javascript
+User.prototype.getFullName = function () {  
+  return 'User Name: '+this.firstName + ' ' + this.lastName
+}
+
+user.getFullName() //> "User Name: Dan Abramov"
+person.getFullName() //> "Dan Abramov"
+```
+As we expect, `person` is not be affected at all.
+
+How about decorating the `Person` object by adding a gender attribute and corresponding getter and setter functions?
+
+```javascript
+Person.prototype.setGender = function (gender) {  
+  this.gender = gender
+}
+Person.prototype.getGender = function () {  
+  return this.gender
+}
+
+person.setGender('male')
+person.getGender() //> male
+
+user.getGender() //> returns undefined ... but is a function
+user.setGender('male')
+user.getGender() //> male
+```
+
+Both `person` and `user` are affected because `Person` is prototyped from `User` so if `User` changes, `Person` changes too.
+
+The decorator pattern from prototypal inheritance is not so different from the classical inheritance.
 
 {{< blockquote "Eric Elliot" "https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9" "Master the JavaScript Interview: What’s the Difference Between Class & Prototypal Inheritance?" >}} Unlike most other languages, JavaScript’s object system is based on prototypes, not classes. Unfortunately, most JavaScript developers don’t understand JavaScript’s object system, or how to put it to best use. {{< /blockquote >}}
 
@@ -187,6 +319,24 @@ As Dan Abramov puts it in [How to use Classes and Sleep at Night](https://medium
 
 ## Object Composition
 
+```javascript
+const Person = {
+  firstName: '',
+  lastName: '',
+  getFullName: `${this.firstName} ${this.lastName}`
+}
+```
+
+```javascript
+let person = Object.create(Person)
+
+person.getFullName() //> "first last"
+person.firstName = 'Dan'
+person.lastName = 'Abramov'
+person.getFullName() //> "Dan Abramov"
+```
+
+Notice how
 ## Functional composition
 
-Functional Programming provides a way to create complex applications without using classes.
+Functional Programming provides a way to create complex applications without using inheritance. How do we create objects with reused behavior if we don't use inheritance? Consider the following example:

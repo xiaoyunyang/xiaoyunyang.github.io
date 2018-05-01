@@ -954,6 +954,7 @@ let foobar = {...foo, ...bar} //> {a: "a", b: "b", c: "c", d: "d"}
 
 
 # Resources
+* JavaScript [Grammar and Types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types)
 * Master The JavaScript Interview Series:
   * [What is a Closure?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
   * [What is the Difference Between Class & Prototypal Inheritance?](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)
