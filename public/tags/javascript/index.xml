@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on Xiaoyun Yang</title>
+    <link>http://xiaoyunyang.github.io/tags/javascript/</link>
+    <description>Recent content in Javascript on Xiaoyun Yang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
+    <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
+    <lastBuildDate>Sat, 28 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://xiaoyunyang.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to do Object Oriented Programming in JavaScript</title>
+      <link>http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/</link>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/</guid>
+      <description>&lt;p&gt;Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implement OOP via Prototypal inheritance.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Principles To Code By: How To Solve Problems With Code</title>
+      <link>http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</link>
+      <pubDate>Mon, 23 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</guid>
+      <description>&lt;p&gt;What I love most about programming is the problem solving. I don&amp;rsquo;t believe anyone is born with problem solving skills. It&amp;rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&amp;rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>An Interview Study Guide For Overachievers</title>
+      <link>http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/</guid>
+      <description>&lt;p&gt;Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&amp;rsquo;t have all the qualifications.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Problem Solving Using JavaScript</title>
+      <link>http://xiaoyunyang.github.io/post/problem-solving-using-javascript/</link>
+      <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/problem-solving-using-javascript/</guid>
+      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&amp;rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&amp;rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Building A React Native Travel App</title>
+      <link>http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</link>
+      <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</guid>
+      <description>&lt;p&gt;When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Building an Isomorphic Webapp</title>
+      <link>http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</link>
+      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s Get Productive With JavaScript</title>
+      <link>http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</guid>
+      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&amp;rsquo;s console (hit &lt;code&gt;Cmd&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt; if you are using Chrome and Mac) and start typing.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>How Functional Programming Promotes Developer Productivity</title>
+      <link>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</link>
+      <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</guid>
+      <description>&lt;p&gt;Functional Programming is more than just a buzzword these days. It&amp;rsquo;s super useful and makes you rethink everything you&amp;rsquo;ve learned about software.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
