@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software Design on Xiaoyun Yang</title>
+    <link>http://xiaoyunyang.github.io/tags/software-design/</link>
+    <description>Recent content in Software Design on Xiaoyun Yang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
+    <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
+    <lastBuildDate>Sat, 28 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://xiaoyunyang.github.io/tags/software-design/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to do Object Oriented Programming in JavaScript</title>
+      <link>http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/</link>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/</guid>
+      <description>&lt;p&gt;Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implement OOP via Prototypal inheritance.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Principles To Code By: How To Solve Problems With Code</title>
+      <link>http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</link>
+      <pubDate>Mon, 23 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</guid>
+      <description>&lt;p&gt;What I love most about programming is the problem solving. I don&amp;rsquo;t believe anyone is born with problem solving skills. It&amp;rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&amp;rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>How Functional Programming Promotes Developer Productivity</title>
+      <link>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</link>
+      <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</guid>
+      <description>&lt;p&gt;Functional Programming is more than just a buzzword these days. It&amp;rsquo;s super useful and makes you rethink everything you&amp;rsquo;ve learned about software.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
