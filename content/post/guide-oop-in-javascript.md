@@ -336,7 +336,6 @@ person.lastName = 'Abramov'
 person.getFullName() //> "Dan Abramov"
 ```
 
-Notice how
 ## Functional composition
 
-Functional Programming provides a way to create complex applications without using inheritance. How do we create objects with reused behavior if we don't use inheritance? Consider the following example:
+Functional Programming provides a way to create complex applications without using inheritance. How do we create objects with reused behavior if we don't use inheritance?
