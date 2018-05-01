@@ -1,0 +1,1223 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.38.1 with theme Tranquilpeak 0.4.3-BETA">
+    <title>Problem Solving Using JavaScript</title>
+    <meta name="author" content="Xiaoyun Yang">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="http://xiaoyunyang.github.io/favicon-96x96.png">
+    
+
+    
+    <meta name="description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
+
+">
+    <meta property="og:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Problem Solving Using JavaScript">
+    <meta property="og:url" content="http://xiaoyunyang.github.io/post/problem-solving-using-javascript/">
+    <meta property="og:site_name" content="Xiaoyun Yang">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Xiaoyun Yang">
+    <meta name="twitter:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
+
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/algorithms-xkcd.png">
+    
+    
+    
+
+    
+      <meta property="og:image" content="https://avatars3.githubusercontent.com/u/5825343?s=400&u=57ea29978721c8be7b830ce02f304e67f82cf34f&v=4">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="http://xiaoyunyang.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="http://xiaoyunyang.github.io/css/custom.css">
+      
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="http://xiaoyunyang.github.io/">Xiaoyun Yang</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="http://xiaoyunyang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://avatars3.githubusercontent.com/u/5825343?s=400&amp;u=57ea29978721c8be7b830ce02f304e67f82cf34f&amp;v=4" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="http://xiaoyunyang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://avatars3.githubusercontent.com/u/5825343?s=400&amp;u=57ea29978721c8be7b830ce02f304e67f82cf34f&amp;v=4" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
+        
+          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/categories/projects">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-code"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/categories/blog">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
+      
+      <span class="sidebar-button-desc">Medium</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">Linkedin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
+      
+      <span class="sidebar-button-desc">AngelList</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+     <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
+     
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Email Me</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Problem Solving Using JavaScript
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-04-16T00:00:00Z">
+        
+  April 16, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://xiaoyunyang.github.io/categories/blog">blog</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.</p>
+
+<p></p>
+
+<div class="alert info ">
+  <p>This is a Live Document. I will be updating it periodically.</p>
+</div>
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#string-algorithms">String Algorithms</a>
+<ul>
+<li><a href="#reverse-strings">Reverse Strings</a></li>
+<li><a href="#palindrome">Palindrome</a>
+<ul>
+<li><a href="#naive-algorithm">Naive Algorithm</a></li>
+<li><a href="#more-efficient-algorithm">More Efficient Algorithm</a></li>
+<li><a href="#unit-test">Unit Test</a></li>
+</ul></li>
+<li><a href="#capitalize-letters-in-a-sentence">Capitalize Letters In A Sentence</a>
+<ul>
+<li><a href="#the-algorithm">The Algorithm</a></li>
+<li><a href="#unit-test-1">Unit Test:</a></li>
+</ul></li>
+<li><a href="#match-parentheses-in-a-string">Match parentheses in a string</a>
+<ul>
+<li><a href="#the-algorithm-1">The Algorithm</a></li>
+<li><a href="#unit-test-2">Unit Test</a></li>
+</ul></li>
+<li><a href="#url-string-transform">URL String transform</a>
+<ul>
+<li><a href="#option-1-use-array-map-then-array-join">Option 1 - use Array.map, then Array.join</a></li>
+<li><a href="#option-2-use-array-reduce">Option 2 - use Array.reduce</a></li>
+<li><a href="#option-3-es6">Option 3 - ES6</a></li>
+<li><a href="#unit-test-3">Unit Test</a></li>
+</ul></li>
+<li><a href="#html-string-transform">HTML String Transform</a></li>
+</ul></li>
+<li><a href="#array-algorithms">Array Algorithms</a>
+<ul>
+<li><a href="#flatmap">Flatmap</a></li>
+</ul></li>
+<li><a href="#object-oriented-programming">Object Oriented programming</a></li>
+<li><a href="#case-study">Case Study</a></li>
+</ul>
+</nav>
+
+<h1 id="string-algorithms">String Algorithms</h1>
+
+<h2 id="reverse-strings">Reverse Strings</h2>
+
+<pre><code class="language-javascript">// takes a string and returns the reverse of that string
+function reverse(s) {
+  return s.split('').reduce((res, d) =&gt;
+    d + res, ''
+  );
+}
+</code></pre>
+
+<h2 id="palindrome">Palindrome</h2>
+
+<p>Given string <code>s</code>, returns <code>true</code> if <code>s</code> is a palindrome, false otherwise.
+Example:</p>
+
+<ul>
+<li><code>isPalindrome('aba')</code> returns <code>true</code>.</li>
+<li><code>isPalindrome('abb')</code> returns <code>false</code>.</li>
+<li><code>isPalindrome('abba')</code> returns <code>true</code>.</li>
+</ul>
+
+<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/palindrome" target="_blank">repl.it</a></p>
+
+<h3 id="naive-algorithm">Naive Algorithm</h3>
+
+<p>The simple way to determine if the string is a palindrome is by comparing the original string with the reverse of the string and see if they are equal.</p>
+
+<pre><code class="language-javascript">function isPalindrome(s) {
+  if (typeof s !== 'string') return false;
+  return s === reverse(s);
+}
+</code></pre>
+
+<p>However, this may not be the most efficient since the computational complexity is always O(N) regardless of whether the string is a palindrome or not. We want an efficient algorithm such that we can return immediately if the head and tail of the string don&rsquo;t match.</p>
+
+<h3 id="more-efficient-algorithm">More Efficient Algorithm</h3>
+
+<p>A more efficient algorithm is this:</p>
+
+<pre><code class="language-javascript">function isPalindrome2(s) {
+  if (typeof s !== 'string') return false;
+  let first = s.slice(0,1)
+  let last = s.slice(-1)
+
+  // not a palindrome
+  if(first !== last) return false
+  if(first === '') return true
+
+  return isPalindrome2(s.slice(1, -1))
+}
+</code></pre>
+
+<h3 id="unit-test">Unit Test</h3>
+
+<pre><code class="language-javascript">let testCases = [
+  {test: 'hello', shouldBe: false},
+  {test: 42, shouldBe: false},
+  {test: null, shouldBe: false},
+  {test: undefined, shouldBe: false},
+  {test: 'aba', shouldBe: true},
+  {test: 'abba', shouldBe: true},
+  {test: 'a bba', shouldBe: false},
+  {test: 'a bb a', shouldBe: true},
+  {test: 'ab ba', shouldBe: true},
+  {test: '', shouldBe: true},
+];
+let fun = (str) =&gt; isPalindrome2(str);
+const test = (testCases, fun) =&gt; {
+  testCases.map(t =&gt; {
+    const shouldBe = t.shouldBe;
+    const is = fun(t.test);
+    const res = (shouldBe === is) ? 'passed' : 'failed';
+    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
+    console.log(`${res} ${moreInfo}`);
+  })
+}
+test(testCases, fun)
+</code></pre>
+
+<h2 id="capitalize-letters-in-a-sentence">Capitalize Letters In A Sentence</h2>
+
+<h3 id="the-algorithm">The Algorithm</h3>
+
+<p>Using reduce vice a map and join gives you a slight performance boost.</p>
+
+<p>When your phrase is really long, you should care about performance also. Doing a <code>map</code> then <code>join</code> is going to be slower than doing a <code>reduce</code> based on <a href="https://jsperf.com/test-map-join-vs-reduce" target="_blank">this benchmark</a>.</p>
+
+<pre><code class="language-javascript">const capitalize = (word) =&gt; {
+  const rest = word.slice(1);
+  const firstLtr = word.charAt(0);
+  return firstLtr.toUpperCase() + rest.toLowerCase();
+}
+const titleCase = (phrase) =&gt; {
+  if(!phrase) return phrase;
+  [first, ...rest] = phrase.split(' ');
+  return rest.reduce((res,a) =&gt;  res +' ' + capitalize(a),
+                                            capitalize(first))
+}
+</code></pre>
+
+<h3 id="unit-test-1">Unit Test:</h3>
+
+<p>I wrote a helper assert function and some test cases. This is by no means an exhaustive test.</p>
+
+<pre><code class="language-javascript">const assert = (fun, input, expected) =&gt; {
+ return fun(input) === expected ?
+  'passed' :
+  `failed on input=${input}. expected ${expected}, but got ${fun(input)}`;
+}
+</code></pre>
+
+<p>Test cases:</p>
+
+<pre><code class="language-javascript">let testCases = [
+ {input: &quot;I’m a little tea pot&quot;, expected: &quot;I’m A Little Tea Pot&quot;},
+ {input: &quot;sHoRt AnD sToUt&quot;, expected: &quot;Short And Stout&quot;},
+ {input: &quot;sHoRt AnD sToUt&quot;, expected: &quot;Short And Stout&quot;},
+ {input: &quot;HERE IS MY HANDLE HERE IS MY SPOUT&quot;, expected: &quot;Here Is My Handle Here Is My Spout&quot;},
+ {input: &quot;&quot;, expected: &quot;&quot;},
+ {input: undefined, expected: undefined},
+ ]
+</code></pre>
+
+<p>Doing this test, you should get all tests passed:</p>
+
+<pre><code class="language-javascript">let testResult = testCases.map(d =&gt; assert(titleCase, d.input, d.expected))
+testResult.filter(d =&gt; d!=='passed').length === 0 ? 'passed all tests' :
+                                                    'failed at least one test'
+</code></pre>
+
+<h2 id="match-parentheses-in-a-string">Match parentheses in a string</h2>
+
+<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/MatchParentheses" target="_blank">repl.it</a></p>
+
+<h3 id="the-algorithm-1">The Algorithm</h3>
+
+<pre><code class="language-javascript">function isBalanced(str, openCnt) {
+  if (typeof str !== 'string') return false;
+  if (openCnt &lt;  0) return false;
+  if (str.length === 0) return openCnt === 0;
+
+  const fst = str[0];
+  const rst = str.slice(1);
+  return isBalanced(rst, newOpenCnt(fst, openCnt));
+}
+const newOpenCnt = (c, openCnt) =&gt; {
+  if(c === '(') return openCnt + 1;
+  if(c === ')') return openCnt - 1;
+  return openCnt;
+}
+
+</code></pre>
+
+<h3 id="unit-test-2">Unit Test</h3>
+
+<p>It is necessary to extensively unit test your code.</p>
+
+<pre><code class="language-javascript">let testCases = [
+  {test: '(', shouldBe: false},
+  {test: '())', shouldBe: false},
+  {test: null, shouldBe: false},
+  {test: undefined, shouldBe: false},
+  {test: 22, shouldBe: false},
+  {test: ')(', shouldBe: false},
+  {test: '', shouldBe: true},
+  {test: '()', shouldBe: true},
+  {test: '()()', shouldBe: true},
+  {test: '(())', shouldBe: true},
+  {test: 'hi', shouldBe: true},
+  {test: '(hi)', shouldBe: true},
+  {test: '(((())(())',shouldBe: false}
+];
+let fun = (str) =&gt; isBalanced(str, 0);
+const test = (testCases, fun) =&gt; {
+  testCases.map(t =&gt; {
+    const shouldBe = t.shouldBe;
+    const is = fun(t.test);
+    const res = (shouldBe === is) ? 'passed' : 'failed';
+    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
+    console.log(`${res} ${moreInfo}`);
+  })
+}
+test(testCases, fun)
+</code></pre>
+
+<h2 id="url-string-transform">URL String transform</h2>
+
+<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/urlStringTransform" target="_blank">repl.it</a></p>
+
+<p>Given an article title for a blog, create a url string of all lower case words joined by &lsquo;-&rsquo;.</p>
+
+<h3 id="option-1-use-array-map-then-array-join">Option 1 - use Array.map, then Array.join</h3>
+
+<pre><code class="language-javascript">function createURL(title) {
+  if(typeof title !== 'string') return ''
+  return title.split(' ')
+              .map(word =&gt; word.toLowerCase())
+              .join('-');
+}
+</code></pre>
+
+<p>The disadvantage of this approach is it&rsquo;s <a href="https://stackoverflow.com/questions/22614237/javascript-runtime-complexity-of-array-functions" target="_blank">slow</a>. map is O(N). join is O(N) we can do better.</p>
+
+<h3 id="option-2-use-array-reduce">Option 2 - use Array.reduce</h3>
+
+<pre><code class="language-javascript">function createURL2(title) {
+  if(typeof title !== 'string') return ''
+
+  return title.split(' ')
+              .reduce((res, word) =&gt;  
+                res + '-' + word.toLowerCase(),
+                '')
+              .slice(1)
+}
+</code></pre>
+
+<p>Question for the reader: why <code>.slice(1)</code> at the end?</p>
+
+<h3 id="option-3-es6">Option 3 - ES6</h3>
+
+<pre><code class="language-javascript">function createURL3(title) {
+  if(typeof title !== 'string') return ''
+
+  let [first, ...rest] = title.split(' ')
+
+  return rest.reduce((res, word) =&gt;
+              res + '-' + word.toLowerCase(),
+              first.toLowerCase())
+}
+</code></pre>
+
+<h3 id="unit-test-3">Unit Test</h3>
+
+<pre><code class="language-javascript">let testCases = [
+  {test: '', shouldBe: ''},
+  {test: 'hello', shouldBe: 'hello'},
+  {test: 'hello world', shouldBe: 'hello-world'},
+  {test: undefined, shouldBe: ''}
+];
+let fun = (str) =&gt; createURL3(str);
+
+const test = (testCases, fun) =&gt; {
+  testCases.map(t =&gt; {
+    const shouldBe = t.shouldBe;
+    const is = fun(t.test);
+    const res = (shouldBe === is) ? 'passed' : 'failed';
+    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
+    console.log(`${res} ${moreInfo}`);
+  })
+}
+test(testCases, fun)
+</code></pre>
+
+<h2 id="html-string-transform">HTML String Transform</h2>
+
+<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/strReplace" target="_blank">repl.it</a></p>
+
+<p>Symbols used in HTML document consist of special character sets, including <code>&amp;lt;</code> for &amp; and <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_13.html" target="_blank">some others</a>.</p>
+
+<pre><code class="language-javascript">// &amp;lt; =&gt; '&lt;''
+// &amp;gt; =&gt; '&gt;'
+// &amp;quot; =&gt; ''\&quot;'
+
+
+// Takes a string and encodes the characters as HTML characters
+function encodeV1(char) {
+  switch (char) {
+    case '&lt;': return '&amp;lt;'
+    case '&gt;': return '&amp;gt;'
+    case '\&quot;': return '&amp;quot;'
+  }
+  return char
+}
+
+let s = &quot;1 &gt; 0 and 1 &lt; 12, \&quot;hello\&quot;&quot;
+let encode = encodeV1
+s.split('').map(char =&gt; encode(char)).join('')
+//&gt; '1 &amp;gt; 0, 1 &amp;lt; 12, 1 &amp;gt;= 1. &amp;quot;hello&amp;quot;''
+</code></pre>
+
+<p>This works but the <code>encode</code> function is hard-coded with simples. If we want to write a <code>decode</code> function that makes the string transformation in reverse, that would require writing out all those mappings again, requiring us to refactor code. It would be desirable to have a single source of truth that dictates all available encoding. Let&rsquo;s make a data structure called <code>dict</code> that provides the collection of tuples for encoding and decoding our characters and HTML special characters.</p>
+
+<p>Some refactoring is necessary:</p>
+
+<pre><code class="language-javascript">const dict = [
+  {char: '&lt;', code: '&amp;lt;'},
+  {char: '&gt;', code: '&amp;gt;'},
+  {char: '\&quot;', code: '&amp;quot;'},  
+]
+
+// Build a switch based on array
+function encodeV2(dict) {
+  return char =&gt; {
+    let res = char
+    for(let i=0; i&lt;dict.length; i++) {
+      if(dict[i].char === char) {
+        res = dict[i].code
+        break
+      }  
+    }
+    return res
+  }
+}
+
+// This is so we don't have to change our interface encode(c) below
+encode = encodeV2(dict)
+s.split('').map(c =&gt; encode(c)).join('')
+//&gt; '1 &amp;gt; 0, 1 &amp;lt; 12, 1 &amp;gt;= 1. &amp;quot;hello&amp;quot;''
+</code></pre>
+
+<p>Let&rsquo;s also write <code>decode</code> to use <code>dict</code>. Previously for <code>encode</code>, we are able to partition the string into an array of characters for processing. However for <code>decode</code>, this step is not so straight forward since our code e.g., <code>&amp;gt;</code> consists of multiple character. So what do we do?</p>
+
+<p>Let&rsquo;s write a helper function that handles partitioning of the string to arrays of regular characters or</p>
+
+<pre><code class="language-javascript">function decodeV2(dict) {
+  return code =&gt; {
+    let res = code
+    for(let i=0; i&lt;dict.length; i++) {
+      if(dict[i].code === code) {
+        res = dict[i].char
+        break
+      }  
+    }
+    return res
+  }
+}
+const matchHTMLChar = new RegExp(/&amp;(lt|gt|quot);/, 'g')
+
+let encoded = s.split('').map(char =&gt; encode(char)).join('')
+
+let decode = decodeV2(dict)
+let decoded = encoded.replace(matchHTMLChar, decode)
+s === decoded //&gt; true
+</code></pre>
+
+<p>Can we make the solution more general? Yes, in the following ways:
+1. notice the <code>decode</code> and <code>encode</code> functions have basically the same functional structure. That is, they both run a loop to update the result based on value from the array of objects. We can generalize it further and abstract away that boilerplate.
+2. The pattern we are matching in the <code>matchHTMLChar</code> RegExp is hardcoded. We should make that dependent on  <code>dict</code>.</p>
+
+<p>I&rsquo;ll leave these two problems to you as an exercise.</p>
+
+<div class="alert info ">
+  <p>Note: Abstraction is vital in helping us to cope with the complexity of large systems. One of the tenets of functional programming, a <strong>problem solving framework</strong>, is the principle of abstraction. Some parts of your code are boilerplate. Some parts of your code are unique. The goal of abstraction is to capture that boilerplate stuff in a higher order function.</p>
+</div>
+
+<h1 id="array-algorithms">Array Algorithms</h1>
+
+<h2 id="flatmap">Flatmap</h2>
+
+<p>Write a function that converts &ldquo;hello&rdquo; to &ldquo;h.e.l.l.o.&rdquo; There are two parts to this: <code>flat</code> and <code>map</code>.</p>
+
+<pre><code class="language-javascript">const arr = &quot;hello&quot;.split(&quot;&quot;) //&gt; [&quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;]
+
+const matrix = arr.map(s =&gt; [s, &quot;.&quot;])
+// [Array(2), Array(2), Array(2), Array(2), Array(2)]
+// 0: (2) [&quot;h&quot;, &quot;.&quot;]
+// 1: (2) [&quot;e&quot;, &quot;.&quot;]
+// 2: (2) [&quot;l&quot;, &quot;.&quot;]
+// 3: (2) [&quot;l&quot;, &quot;.&quot;]
+// 4: (2) [&quot;o&quot;, &quot;.&quot;]
+
+const flat = (data) =&gt; data.reduce((res, d) =&gt; {
+  return res.concat(d);
+}, []);
+
+
+flat(matrix) //&gt; [&quot;h&quot;, &quot;.&quot;, &quot;e&quot;, &quot;.&quot;, &quot;l&quot;, &quot;.&quot;, &quot;l&quot;, &quot;.&quot;, &quot;o&quot;, &quot;.&quot;]
+
+flat(matrix).join(&quot;&quot;) //&gt; &quot;h.e.l.l.o.&quot;
+
+</code></pre>
+
+<h1 id="object-oriented-programming">Object Oriented programming</h1>
+
+<h1 id="case-study">Case Study</h1>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
+
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/guide/">Guide</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/" data-tooltip="An Interview Study Guide For Overachievers">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/" data-tooltip="Creating LooseLeaf: A Platform To Support The Future Of Work">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/problem-solving-using-javascript/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/problem-solving-using-javascript/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/problem-solving-using-javascript/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http://xiaoyunyang.github.io/post/problem-solving-using-javascript/";  
+this.page.identifier = "Problem Solving Using JavaScript"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://http-xiaoyunyang-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Xiaoyun Yang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/" data-tooltip="An Interview Study Guide For Overachievers">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/" data-tooltip="Creating LooseLeaf: A Platform To Support The Future Of Work">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/problem-solving-using-javascript/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/problem-solving-using-javascript/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/problem-solving-using-javascript/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fproblem-solving-using-javascript%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fproblem-solving-using-javascript%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fproblem-solving-using-javascript%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://avatars3.githubusercontent.com/u/5825343?s=400&amp;u=57ea29978721c8be7b830ce02f304e67f82cf34f&amp;v=4" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Xiaoyun Yang</h4>
+    
+      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Washington DC
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/">
+                <h3 class="media-heading">How to do Object Oriented Programming in JavaScript</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implement OOP via Prototypal inheritance.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
+                <h3 class="media-heading">Principles To Code By: How To Solve Problems With Code</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>What I love most about programming is the problem solving. I don&rsquo;t believe anyone is born with problem solving skills. It&rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/">
+                <h3 class="media-heading">An Interview Study Guide For Overachievers</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&rsquo;t have all the qualifications.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/problem-solving-using-javascript/">
+                <h3 class="media-heading">Problem Solving Using JavaScript</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">
+                <h3 class="media-heading">Creating LooseLeaf: A Platform To Support The Future Of Work</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p><a href="http://looseleafapp.com" target="_blank">LooseLeaf</a> is a passion project and a startup I&rsquo;ve been building while serving a 5 year commitment in the military. I&rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/">
+                <h3 class="media-heading">Everything You Need To Know About Git</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This is a cheatsheet of all the git commands that I&rsquo;ve ever used in my career as a programmer and contributor of open source projects. I&rsquo;m not a git power user (I use about three commands on a daily basis). From time to time, I still use this cheatsheet to for a quick lookup of a special command.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/is-employee-loyalty-important/">
+                <h3 class="media-heading">Is Employee Loyalty Important?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>High-value employees are a major assets for a strong company. Losing a high contributing team member could leave a void and impact the team&rsquo;s morale and workflow. Investors are also concerned by high turnover rates, especially amongst the senior executives. Groupon had trouble retaining their senior executives, which contributed to <a href="https://www.youtube.com/watch?v=zeNQE3VBRnQ" target="_blank">an 85% drop in their value</a> a year after going public. It&rsquo;s clear we want to <strong>retain</strong> high-valued employees, but is <strong>employee loyalty</strong> the way to achieve retention?</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/">
+                <h3 class="media-heading">Using Hugo To Build A Personal Brand Website</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>It&rsquo;s not always clear why we need need a personal website. But here&rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like <a href="https://gohugo.io/" target="_blank">Hugo</a>.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/">
+                <h3 class="media-heading">Why I Pay to Work At a Co-working Space</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>If you asked me to give you three facts about myself, I would tell you (1) I&rsquo;m a evening and weekend entrepreneur, (2) when I start working on something I enjoy, I can&rsquo;t put it down, and (3) I love coffee. This a formula for disaster because I have a full time job that I have to show up to by 9AM and I&rsquo;m a normal human person who needs at least 6 hours of sleep.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+                <h3 class="media-heading">Building A React Native Travel App</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         16 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('http://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="http://xiaoyunyang.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/problem-solving-using-javascript\/';
+          
+            this.page.identifier = '\/post\/problem-solving-using-javascript\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'http-xiaoyunyang-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,1823 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.38.1 with theme Tranquilpeak 0.4.3-BETA">
+    <title>Let&#39;s Get Productive With JavaScript</title>
+    <meta name="author" content="Xiaoyun Yang">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="http://xiaoyunyang.github.io/favicon-96x96.png">
+    
+
+    
+    <meta name="description" content="JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit Cmd&#43;Shift&#43;C if you are using Chrome and Mac) and start typing.
+
+">
+    <meta property="og:description" content="JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit Cmd&#43;Shift&#43;C if you are using Chrome and Mac) and start typing.
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Let&#39;s Get Productive With JavaScript">
+    <meta property="og:url" content="http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/">
+    <meta property="og:site_name" content="Xiaoyun Yang">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Xiaoyun Yang">
+    <meta name="twitter:description" content="JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit Cmd&#43;Shift&#43;C if you are using Chrome and Mac) and start typing.
+
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/jsDev.png">
+    
+    
+    
+
+    
+      <meta property="og:image" content="https://avatars3.githubusercontent.com/u/5825343?s=400&u=57ea29978721c8be7b830ce02f304e67f82cf34f&v=4">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="http://xiaoyunyang.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="http://xiaoyunyang.github.io/css/custom.css">
+      
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="http://xiaoyunyang.github.io/">Xiaoyun Yang</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="http://xiaoyunyang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://avatars3.githubusercontent.com/u/5825343?s=400&amp;u=57ea29978721c8be7b830ce02f304e67f82cf34f&amp;v=4" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="http://xiaoyunyang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://avatars3.githubusercontent.com/u/5825343?s=400&amp;u=57ea29978721c8be7b830ce02f304e67f82cf34f&amp;v=4" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
+        
+          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/categories/projects">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-code"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/categories/blog">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
+      
+      <span class="sidebar-button-desc">Medium</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">Linkedin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
+      
+      <span class="sidebar-button-desc">AngelList</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+     <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
+     
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Email Me</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Let&#39;s Get Productive With JavaScript
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-02-08T00:00:00Z">
+        
+  February 8, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://xiaoyunyang.github.io/categories/blog">blog</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&rsquo;s console (hit <code>Cmd</code>+<code>Shift</code>+<code>C</code> if you are using Chrome and Mac) and start typing.</p>
+
+<p></p>
+
+<div class="alert info ">
+  <p>This is a Live Document. I will be updating it periodically.</p>
+</div>
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#array">Array</a>
+<ul>
+<li><a href="#constructing">Constructing</a>
+<ul>
+<li><a href="#add-things-to-an-array">Add things to an array</a></li>
+<li><a href="#create-an-array-statically">Create an array Statically</a></li>
+<li><a href="#concatenating">Concatenating</a></li>
+<li><a href="#create-an-array-dynamically">Create an array dynamically</a></li>
+<li><a href="#array-concatenation">Array Concatenation</a></li>
+</ul></li>
+<li><a href="#destructing">Destructing</a>
+<ul>
+<li><a href="#get-one-element-by-index">Get One Element By Index</a></li>
+<li><a href="#get-multiple-elements-with-slice">Get Multiple Elements with slice</a></li>
+<li><a href="#get-last-element-from-array">Get Last Element From Array</a>
+<ul>
+<li><a href="#with-side-effects-using-array-pop">With side effects using Array.pop</a></li>
+<li><a href="#with-no-side-effects-using-array-slice">With no side effects using Array.slice</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#destructuring-es6">Destructuring (ES6)</a>
+<ul>
+<li><a href="#rest-spread">Rest Spread</a></li>
+<li><a href="#swapping">Swapping</a></li>
+<li><a href="#async-await">Async/Await</a></li>
+</ul></li>
+<li><a href="#processing">Processing</a>
+<ul>
+<li><a href="#remove-any-elements-from-array">Remove any Elements From Array</a>
+<ul>
+<li><a href="#without-side-effect-using-array-slice">Without Side Effect Using Array.slice</a></li>
+<li><a href="#with-side-effects-using-array-splice">With Side Effects using Array.splice</a></li>
+</ul></li>
+<li><a href="#combine-elements-of-array">Combine Elements of Array</a></li>
+<li><a href="#combine-sub-arrays">Combine sub-arrays</a></li>
+<li><a href="#sorting">Sorting</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#functions">Functions</a>
+<ul>
+<li><a href="#the-basics">The Basics</a></li>
+<li><a href="#how-to-pass-arguments">How to Pass Arguments</a></li>
+<li><a href="#alternative-to-doing-a-loop">Alternative to doing a loop</a></li>
+<li><a href="#math-functions">Math Functions</a>
+<ul>
+<li><a href="#max">Max</a></li>
+<li><a href="#random">Random</a></li>
+</ul></li>
+<li><a href="#console-log">Console.log</a></li>
+<li><a href="#function-composition">Function Composition</a></li>
+<li><a href="#the-javascript-closure">The JavaScript Closure</a>
+<ul>
+<li><a href="#what-is-a-closure">What is a Closure</a></li>
+<li><a href="#two-common-uses-for-closures">Two Common uses for closures</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#string">String</a>
+<ul>
+<li><a href="#get-characters-from-string">Get Characters from String</a></li>
+<li><a href="#getting-substrings">Getting Substrings</a></li>
+<li><a href="#regexp">RegExp</a></li>
+</ul></li>
+<li><a href="#json">JSON</a>
+<ul>
+<li><a href="#creating-json">Creating JSON</a></li>
+<li><a href="#converting-json-from-one-form-to-another">Converting JSON from one form to another</a></li>
+<li><a href="#retrieving-things-from-json">Retrieving Things from JSON</a></li>
+<li><a href="#retrieving-by-value-from-array-of-objects">Retrieving By Value from Array Of objects</a></li>
+<li><a href="#update-json">Update JSON</a></li>
+<li><a href="#operations-on-json">Operations on JSON</a></li>
+<li><a href="#get-all-keys-from-json">Get all keys from JSON</a></li>
+<li><a href="#check-if-a-key-exists-in-a-json">Check if a key exists in a JSON</a></li>
+<li><a href="#json-stringify">JSON.stringify</a></li>
+<li><a href="#swap-key-and-val-of-json-objects">Swap Key and Val of JSON Objects</a></li>
+<li><a href="#destructuring">Destructuring</a></li>
+<li><a href="#merging-two-json-objects">Merging two JSON objects</a></li>
+</ul></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+</nav>
+
+<h1 id="array">Array</h1>
+
+<ul>
+<li>See <a href="https://lorenstewart.me/2017/01/22/javascript-array-methods-mutating-vs-non-mutating/" target="_blank">Mutating vs Non-mutating array operation</a></li>
+<li>Check out <a href="https://lodash.com/docs/4.17.4#range" target="_blank">lodash</a> and underscore for useful array operators.</li>
+</ul>
+
+<h2 id="constructing">Constructing</h2>
+
+<h3 id="add-things-to-an-array">Add things to an array</h3>
+
+<ul>
+<li><code>array.push()</code> adds an item to the end of the array</li>
+<li><code>array.unshift()</code> adds an item to the beginning of the array.</li>
+</ul>
+
+<pre><code class="language-javascript">// since the array will be mutated,
+// use 'let' rather than 'const'
+let mutatingAdd = ['a', 'b', 'c', 'd', 'e'];
+
+mutatingAdd.push('f'); // ['a', 'b', 'c', 'd', 'e', 'f']
+mutatingAdd.unshift('z'); // ['z', 'b', 'c', 'd', 'e' 'f']
+</code></pre>
+
+<h3 id="create-an-array-statically">Create an array Statically</h3>
+
+<pre><code class="language-javascript">let arr = []
+arr[0] = 1 //&gt; [1]
+arr[2] = 2 //&gt; [1, empty, 2]
+
+arr[1] //&gt; undefined
+</code></pre>
+
+<h3 id="concatenating">Concatenating</h3>
+
+<pre><code class="language-javascript">const one = ['a', 'b', 'c']
+const two = ['d', 'e', 'f']
+const three = ['g', 'h', 'i']
+// Old way #1
+const result = one.concat(two, three)
+// Old way #2
+const result = [].concat(one, two, three)
+
+// New with ES6 spread operator
+const result = [...one, ...two, ...three]
+</code></pre>
+
+<p>Why JavaScript lets you create an array this way is &hellip; different. In Java, arrays have a fixed sized. The space for the array needs to be allocated upfront before you can modify elements. The compiler will yell at you if you are trying to modify the nth element of an array of size n. I suppose in JavaScript, arrays are more like array lists.</p>
+
+<h3 id="create-an-array-dynamically">Create an array dynamically</h3>
+
+<pre><code class="language-javascript">let vals = Array.from({length: 13}, (v, i) =&gt; i)
+//&gt; (13) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+vals = vals.map(v =&gt; v-1)
+//&gt; (13) [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+</code></pre>
+
+<h3 id="array-concatenation">Array Concatenation</h3>
+
+<pre><code class="language-javascript">let arr1 = [1,2,3]
+let arr2 = [4,5]
+arr.concat(arr2) //&gt; [1,2,3,4,5]
+</code></pre>
+
+<h2 id="destructing">Destructing</h2>
+
+<h3 id="get-one-element-by-index">Get One Element By Index</h3>
+
+<p>Given an array:</p>
+
+<pre><code class="language-JavaScript">const arr = [1, 2, 3, 4];
+</code></pre>
+
+<p>We want to get elements from this array. How?</p>
+
+<pre><code class="language-javascript">arr[0] //&gt; 1
+arr[3] //&gt; 4
+</code></pre>
+
+<h3 id="get-multiple-elements-with-slice">Get Multiple Elements with slice</h3>
+
+<p>Slice lets us remove one or multiple chunks of contiguous elements from the array.</p>
+
+<pre><code class="language-javascript">let arr = [1,2,3]
+arr.slice(1) //&gt; [2, 3]
+arr.slice(2) //&gt; [3]
+arr.slice(3) //&gt; []
+</code></pre>
+
+<p>Note, the following two expressions are equivalent and both gives us the last element of the array:</p>
+
+<pre><code class="language-javascript">arr.slice(-1) //&gt; [3]
+arr.slice(arr.length-1) //&gt; [3]
+</code></pre>
+
+<p>What happens when we do the following?</p>
+
+<pre><code class="language-javascript">arr.slice(arr.length+1) //&gt; []
+</code></pre>
+
+<p>As you expect, if we slice off more things from the array than the array contains, we get an empty array.</p>
+
+<h3 id="get-last-element-from-array">Get Last Element From Array</h3>
+
+<h4 id="with-side-effects-using-array-pop">With side effects using Array.pop</h4>
+
+<pre><code class="language-javascript">let arr = [1,2,3]
+arr.pop() //&gt; 3
+arr //&gt; [1, 2] ... Very Bad. Your original array got changed
+
+let arr2 = [1,2,3]
+arr2.pop()
+arr2 //&gt; Even const can't help you
+
+let arr3 = arr
+arr3.pop() //&gt;2
+arr //&gt; [1] ... arr got changed even though arr3 did the pop
+</code></pre>
+
+<div class="alert warning ">
+  <p>Use <code>arr[arr.length-1]</code> or <code>arr.slice(-1)</code> to get the last element of the array if you don&rsquo;t want to modify the original array.  Using <code>arr.pop()</code> has the side effect of modifying your original array.</p>
+</div>
+
+<p>But if the goal is to modify your original array, which we will look at later, then Array.pop() is more efficient than Array.slice since it doesn&rsquo;t need to copy over the array.</p>
+
+<h4 id="with-no-side-effects-using-array-slice">With no side effects using Array.slice</h4>
+
+<pre><code class="language-javascript">let arr = [1,2,3]
+arr.slice(-1)[0] //&gt; 3
+arr //&gt; [1, 2, 3]
+</code></pre>
+
+<p>Or you can try the ES6 syntax for deconstructuring:</p>
+
+<pre><code class="language-JavaScript">let [last] = arr.slice(-1)
+</code></pre>
+
+<p>More on <code>Array.slice</code>:</p>
+
+<pre><code class="language-javascript">let arr = [1, 2, 3]
+arr.slice(-1) //&gt; [3]
+arr.slice(0) //&gt; [1, 2, 3]
+arr.slice(1) //&gt; [2, 3]
+arr.slice(2) //&gt; [3]
+</code></pre>
+
+<h2 id="destructuring-es6">Destructuring (ES6)</h2>
+
+<h3 id="rest-spread">Rest Spread</h3>
+
+<pre><code class="language-javascript">let arr = [1, 2, 3, 4]
+let [first, second] = arr
+first //&gt; 1
+second //&gt; 2
+</code></pre>
+
+<p>Using the spread operator <code>...rest</code>:</p>
+
+<pre><code class="language-JavaScript">let [first, ...rest] = arr
+first //&gt; 1
+rest //&gt; [2, 3, 4]
+
+[first, second, ...rest] = arr
+first //&gt; 1
+second //&gt; 2
+rest //&gt; [3, 4]
+</code></pre>
+
+<p>Destructuring is a shortcut for performing <code>slice</code> on the array multiple times:</p>
+
+<pre><code class="language-javascript">let first = arr.slice(0,1) //&gt; [1]
+let rest = arr.slice(1) //&gt; [2,3,4]
+</code></pre>
+
+<h3 id="swapping">Swapping</h3>
+
+<pre><code class="language-javaacript">let a = 'world', b = 'hello'
+[a, b] = [b, a]
+console.log(a) // -&gt; hello
+console.log(b) // -&gt; world
+// Yes, it's magic
+</code></pre>
+
+<p>This ES6 hack was <a href="https://medium.com/dailyjs/7-hacks-for-es6-developers-4e24ff425d0b" target="_blank">courtesy of Tal Bereznitskey</a>.</p>
+
+<h3 id="async-await">Async/Await</h3>
+
+<pre><code class="language-javascript">const [user, account] = await Promise.all([
+  fetch('/user'),
+  fetch('/account')
+])
+</code></pre>
+
+<h2 id="processing">Processing</h2>
+
+<h3 id="remove-any-elements-from-array">Remove any Elements From Array</h3>
+
+<p>There are two ways to do it: with side effect or without side effect. The side effect is modifying the original array. Let&rsquo;s take a look at both these options.</p>
+
+<h4 id="without-side-effect-using-array-slice">Without Side Effect Using Array.slice</h4>
+
+<p>Per the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" target="_blank">docs</a> <code>slice</code> takes two arguments:</p>
+
+<pre><code>arr.slice([begin[, end]])
+</code></pre>
+
+<ul>
+<li><code>begin</code> is inclusive and <code>end</code> is exclusive.</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code class="language-javascript">let arr  = [1,2,3,4]
+
+// get elements beginning with the element at arr.length - 1
+// in other words, get the last element
+arr.slice(-1) //&gt; [4]
+
+// get elements beginning with the last two elements
+arr.slice(-2) //&gt; [3, 4]
+
+// get the sub-array from index 0 to index arr.length - 1 (exclusive)
+arr.slice(0, -1) //&gt; [1, 2, 3]
+
+// get third element, that is, element at index 2 through 3 (exclusive)
+arr.slice(2,3)
+</code></pre>
+
+<h4 id="with-side-effects-using-array-splice">With Side Effects using Array.splice</h4>
+
+<div class="alert warning ">
+  <p>Use <code>arr[0]</code> or <code>arr.slice(1)</code> to get the first element of the array if you don&rsquo;t want to modify the original array.  Using <code>arr.splice(1)</code> has the side effect of modifying your original array.</p>
+</div>
+
+<pre><code class="language-javascript">arr = [1, 2, 3]
+arr[0] //&gt; 1
+arr //&gt; [1, 2, 3]
+
+arr = [1, 2, 3]
+arr.pop(0) //&gt; 1 ... but is O(1)
+arr //&gt; [2, 3]
+
+// Tip:  use Array.slice(1), don't use Array.splice(1). Array.slice and Array.splice are both O(N)
+arr = [1, 2, 3]
+arr.slice(1) //&gt; [2, 3]
+arr //&gt; [1, 2, 3]
+
+arr = [1, 2, 3]
+arr.splice(1) //&gt; [2, 3] ... O(N)
+arr //&gt; [1]
+</code></pre>
+
+<h3 id="combine-elements-of-array">Combine Elements of Array</h3>
+
+<pre><code class="language-javascript">let arr = [1, 2, 3]
+let [first, ... rest] = arr;
+rest.reduce((sum, elem) =&gt; { sum + elem;}, first);
+//&gt; total is 6
+</code></pre>
+
+<pre><code class="language-javascript">['hello', 'World'].reduce( (res, elem) =&gt; res + elem ) //&gt; &quot;helloWorld&quot;
+
+['a', 'b', 'c'].reduce( (res, elem) =&gt; { return elem + res }, &quot; is the reverse.&quot;)
+//&gt; &quot;cba is the reverse.&quot;
+</code></pre>
+
+<pre><code class="language-javascript">['a','b','c'].join(&quot;&quot;) //&gt; &quot;abc&quot;
+['a','b','c'].map(d =&gt; &quot;1&quot;+d).join(&quot;,&quot;) //&gt; &quot;1a,1b,1c&quot;
+</code></pre>
+
+<p>If you don’t pass in an initial value, reduce will assume the first item in your array is your initial value.</p>
+
+<h3 id="combine-sub-arrays">Combine sub-arrays</h3>
+
+<pre><code class="language-javascript">// Flat
+
+const flat = (data) =&gt; data.reduce((total, amount) =&gt; {
+  return total.concat(amount);
+}, []);
+
+var data = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+flat(data) // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+</code></pre>
+
+<h3 id="sorting">Sorting</h3>
+
+<pre><code class="language-javascript">['a','c','b'].sort((a,b) =&gt; a &gt; b) //&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+
+[1,3,2].sort((a,b) =&gt; a - b) //&gt; [1, 2, 3]
+
+[1,3,2].sort((a,b) =&gt; b - a) //&gt; [3, 2, 1]
+
+[1,3,2].sort((a,b) =&gt; b &gt; a) //&gt; [3, 2, 1]
+</code></pre>
+
+<h1 id="functions">Functions</h1>
+
+<h2 id="the-basics">The Basics</h2>
+
+<p>Functions in JavaScript are objects. Objects are collections of name/value pairs having a hidden link to a prototype object.</p>
+
+<p>The function’s name is optional. The function can use its name to call itself recursively. The name can also be used by debuggers and development tools to identify the function. If a function is not given a name, as shown in the example below, it is said to be anonymous.</p>
+
+<p>Following are identical ways of declaring a function that create a variable called <code>add</code> and store a function in it that adds two numbers:</p>
+
+<pre><code class="language-javascript">var add = function (a, b) {
+  return a + b;
+};
+</code></pre>
+
+<pre><code class="language-javascript">function add(a, b) {
+  return a + b;
+};
+</code></pre>
+
+<pre><code class="language-javascript">const =  (a, b) =&gt;  a + b;
+</code></pre>
+
+<p>We call the function <code>add</code> the following way:</p>
+
+<pre><code class="language-JavaScript">add(1,2) //3
+</code></pre>
+
+<p>We can also declare and call the function in one action:</p>
+
+<pre><code class="language-javascript">((a, b) =&gt; a + b)(1,2) // 3
+</code></pre>
+
+<p>In the example above, you don&rsquo;t need to give the function <code>(a,b) =&gt; a+b</code> a name. Because it doesn&rsquo;t have a name, we call it an anonymous function.</p>
+
+<h2 id="how-to-pass-arguments">How to Pass Arguments</h2>
+
+<p><strong>Option 1</strong></p>
+
+<p>Not great. This function is not resilient to change.
+You have to change the function signature if you add/remove arguments</p>
+
+<pre><code class="language-javascript">const getStuffNotBad = (id, force, verbose) =&gt; {
+  // ...do stuff
+}
+
+// Somewhere else in the codebase... WTF is true, true?
+getStuffNotBad(150, true, true)
+</code></pre>
+
+<p><strong>Option 2</strong></p>
+
+<pre><code class="language-javascript">// Better
+const getStuffAwesome = ({ id, name, force, verbose }) =&gt; {
+  ...do stuff
+}
+// Somewhere else in the codebase... I ❤ JS!!!
+getStuffAwesome({ id: 150, force: true, verbose: true })
+</code></pre>
+
+<h2 id="alternative-to-doing-a-loop">Alternative to doing a loop</h2>
+
+<pre><code class="language-javascript">let arr = Array.from(Array(10).keys()) //&gt; (10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+arr.map(d =&gt; /* your function */)
+</code></pre>
+
+<h2 id="math-functions">Math Functions</h2>
+
+<h3 id="max">Max</h3>
+
+<pre><code class="language-javascript">Math.max(1,2) //&gt; 2
+</code></pre>
+
+<p>Hack with ES6 Array Destructuring:</p>
+
+<pre><code class="language-javascript">let arr = [1, 2, 3]
+Math.max(...arr)
+</code></pre>
+
+<h3 id="random">Random</h3>
+
+<pre><code class="language-javascript">// returns a random number between 0 amd 1
+const rand = Math.random();
+const rand2 = Math.random();
+const rand3 = Math.random();
+
+// returns a number between 0 and 9
+const numProj = Math.ceil(rand * 10);
+
+// returns a number between 0 and 13
+const numMonths = Math.ceil(rand2 * 14);
+
+const numBest = Math.floor(rand3 * numProj);
+
+const msg = `Completed ${numProj} projects in the past ${numMonths} months. Won best project ${numBest} times`;
+</code></pre>
+
+<h2 id="console-log">Console.log</h2>
+
+<p>Hack 1</p>
+
+<pre><code class="language-javascript">console.log('my number is this:', 42)
+</code></pre>
+
+<p>Hack 2</p>
+
+<pre><code class="language-javascript">console.log(`my number is this: ${42}`)
+</code></pre>
+
+<p>Hack 3</p>
+
+<pre><code class="language-javascript">const a = 5, b = 6, c = 7
+console.log({ a, b, c })
+// outputs this nice object:
+// {
+//    a: 5,
+//    b: 6,
+//    c: 7
+// }
+</code></pre>
+
+<h2 id="function-composition">Function Composition</h2>
+
+<blockquote>
+  <p> Function composition is the process of combining two or more functions to produce a new function. Composing functions together is like snapping together a series of pipes for our data to flow through. </p>
+  <footer>
+    <strong>Eric Elliot</strong>
+    
+      <cite><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0" target="_blank" rel="external">Master the JavaScript Interview: What is Function Composition</a></cite>
+    
+  </footer>
+</blockquote>
+
+<pre><code class="language-javascript">const curry = fn =&gt; (...args) =&gt; fn.bind(null, ...args);
+const map = curry((fn, arr) =&gt; arr.map(fn));
+const join = curry((str, arr) =&gt; arr.join(str));
+const toLowerCase = str =&gt; str.toLowerCase();
+const split = curry((splitOn, str) =&gt; str.split(splitOn));
+</code></pre>
+
+<h2 id="the-javascript-closure">The JavaScript Closure</h2>
+
+<blockquote>
+  <p> Closures are frequently used in JavaScript for object data privacy, in event handlers and callback functions, and in partial applications, currying, and other functional programming patterns. </p>
+  <footer>
+    <strong>Eric Elliot</strong>
+    
+      <cite><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36" target="_blank" rel="external">Master the JavaScript Interview: What is closure?</a></cite>
+    
+  </footer>
+</blockquote>
+
+<div class="alert info ">
+  <p>See the article I published on Medium:  <a href="https://medium.com/dailyjs/some-examples-to-help-understand-javascripts-closure-372e42fff94d" target="_blank">Making Sense Of JavaScript’s Closure With Some Examples</a></p>
+</div>
+
+<p>We have to be able to explain the basic mechanics of closure. Understanding the basic mechanics comes with building actual JavaScript applications.</p>
+
+<h3 id="what-is-a-closure">What is a Closure</h3>
+
+<ul>
+<li>A closure is a way to access and manipulate external variables from within the function.</li>
+<li>A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). The bundling occurs <em>at function creation time</em>.</li>
+<li>In other words, a closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created.</li>
+<li>The inner function maintains closured reference to everything it uses from its <em>parent&rsquo;s lexical scope</em>. This means the inner function will have access to the variables in the outer function scope, even after the outer function has returned.</li>
+</ul>
+
+<p>To use a closure, simply define a function inside another function and expose it. To expose an function, return it or pass it to another function.</p>
+
+<h3 id="two-common-uses-for-closures">Two Common uses for closures</h3>
+
+<p><strong>Data Privacy</strong></p>
+
+<p>Among other things, closures are commonly used to give objects data privacy. Data privacy is an essential property that helps us program to an interface, not an implementation. In JavaScript, closures are the primary mechanism used to enable data privacy. When you use closures for data privacy, the enclosed variables are only in scope within the containing (outer) function.</p>
+
+<pre><code class="language-javascript">// Data Privacy Example
+function Rectangle(color) {
+  let state = {
+    width: 10,
+    height: 20,
+    color: color,
+    key: 'secret'
+  }
+  function updateColor(color) {
+    state = {...state}
+    state.color = color
+  }
+  function updateWidth(width) {
+    state = {...state}
+    state.width = width
+  }
+  return {
+    draw: () =&gt; {
+      return {
+        width: state.width,
+        height: state.height,
+        color: state.color
+      }
+    },
+    drawWrong: {
+      width: state.width,
+      height: state.height,
+      color: state.color
+    },
+    updateColor: (c) =&gt; updateColor(c),
+    updateWidth: (w) =&gt; updateWidth(w)
+  }
+}
+</code></pre>
+
+<p>The <code>state</code> object in <code>Rectangle</code> is private to <code>Rectangle</code>, which returns accessors and modifiers to the <code>state</code> variable inside <code>Rectangle</code>. In the example, we use <code>draw</code> to get width, height, and color properties for the rectangle and we use <code>updateColor</code> and <code>updateWidth</code> to modify width and height.</p>
+
+<p><code>updateColor</code> and <code>updateWidth</code> are inner functions of <code>Rectangle</code> and thus maintain a closured reference to <code>state</code> at creation time.</p>
+
+<p><code>Rectangle</code> is created as follows:</p>
+
+<pre><code class="language-javascript">let shape = new Rectangle('red')
+console.log('draw: ', shape.draw())
+console.log('drawWrong: ', shape.drawWrong)
+
+console.log('updating color ..................')
+shape.updateColor('blue')
+console.log(shape.draw())
+console.log('draw: ', shape.draw())
+console.log('drawWrong: ', shape.drawWrong)
+
+console.log('updating width ..................')
+shape.updateWidth(40)
+console.log('draw: ', shape.draw())
+console.log('drawWrong: ', shape.drawWrong)
+</code></pre>
+
+<p>Console:</p>
+
+<pre><code>draw:  { width: 10, height: 20, color: 'red' }
+drawWrong:  { width: 10, height: 20, color: 'red' }
+updating color ..................
+{ width: 10, height: 20, color: 'blue' }
+draw:  { width: 10, height: 20, color: 'blue' }
+drawWrong:  { width: 10, height: 20, color: 'red' }
+updating width ..................
+draw:  { width: 40, height: 20, color: 'blue' }
+drawWrong:  { width: 10, height: 20, color: 'red' }
+</code></pre>
+
+<p><code>drawWrong</code> is wrong. Why?</p>
+
+<div class="alert info ">
+  <p>Try this example out in  <a href="https://repl.it/@xiaoyunyang/ClosureExample" target="_blank">repl.it</a></p>
+</div>
+
+<p><strong>Partial Application</strong></p>
+
+<p>Option 1: ES5</p>
+
+<pre><code class="language-javascript">function multThenAdd(num) {
+  function multiplyBy(num2) {
+    function add(num3) {
+      return num * num2 + num3
+    }
+    return add
+  }
+  return multiplyBy
+}
+</code></pre>
+
+<p>Option 2: ES6</p>
+
+<pre><code class="language-javascript">const multThenAdd2 = num =&gt; num2 =&gt; num3 =&gt;  num * num2 + num3
+</code></pre>
+
+<p>Creating a partially applied function called <code>timesTwoPlusFour</code>:</p>
+
+<pre><code class="language-javascript">const timesTwoPlusFour = (num) =&gt; multThenAdd(num)(2)(4)
+
+timesTwoPlusFour(1) //&gt; 6
+timesTwoPlusFour(10) //&gt; 24
+</code></pre>
+
+<p>What’s happening in the code above is that you created a closure to keep the value <code>num</code> passed to the function <code>multThenAdd</code> even after the inner function is returned. The inner function  <code>multiply</code> that is being returned is created within an outer function, making it a closure. More specifically:</p>
+
+<ul>
+<li><code>multiply</code> is an inner function of <code>multThenAdd</code> that returns a function called <code>add</code>.<br /></li>
+<li><code>add</code> is an inner function of <code>multiply</code> that maintains a closured reference to <code>num2</code> and returns a number.</li>
+</ul>
+
+<h1 id="string">String</h1>
+
+<h2 id="get-characters-from-string">Get Characters from String</h2>
+
+<p>Use <code>chartAt()</code> on a string to get the character at a specific index.</p>
+
+<pre><code class="language-javascript">let str = 'hello'
+str.charAt(0) //&gt; 'h'
+str.charAt(str.length-1) //&gt; 'o'
+str.charAt(str.length) //&gt; ''
+</code></pre>
+
+<p>What happens if you do the following?</p>
+
+<pre><code class="language-javascript">str.charAt(str.length) //&gt; ''
+</code></pre>
+
+<p>It returns an empty string! You don&rsquo;t get any help like the index out of bounds error that people who work with a statically typed language with a compiler like Java would be familiar with. This could be a really nasty bug. A similar thing happens with arrays when you access an index out of bound array element:  <code>arr[arr.length]</code> gives you <code>undefined</code>.</p>
+
+<div class="alert warning ">
+  <p>JavaScript, being a scripting language with a dynamic typed system, lacks a compiler that provides error checking support like throwing index out of bounds error. This is why we need to use a <a href="https://github.com/airbnb/javascript" target="_blank">linter</a> on vanilla JavaScript or write code in TypeScript that provides a compiler and static type-checking.</p>
+</div>
+
+<h2 id="getting-substrings">Getting Substrings</h2>
+
+<p>Say we have &ldquo;hello world&rdquo; as our string but we only want &ldquo;world&rdquo;. What do we do?</p>
+
+<pre><code class="language-javascript">// Option 1:  Split using RegExp, then slice and take the part of the array
+&quot;hello world&quot;.split(new RegExp(&quot;hello&quot;)) //&gt; [&quot;&quot;, [&quot;&quot;, &quot;world&quot;]]
+&quot;hello world&quot;.split(new RegExp(&quot;hello&quot;)).slice(1) //&gt; [&quot;&quot;, &quot;world&quot;]
+&quot;hello world&quot;.split(new RegExp(&quot;hello&quot;)).slice(1)[1] //&gt; &quot;world&quot;
+</code></pre>
+
+<pre><code class="language-javascript">// Option 2:  Slice recursively. &quot;hello&quot; plus space is 6 characters
+&quot;hello world&quot;.slice(6) //&gt; &quot;world&quot;
+</code></pre>
+
+<p>Option 2 using <code>slice</code> works because a string is really just an array of characters.</p>
+
+<h2 id="regexp">RegExp</h2>
+
+<pre><code class="language-javascript">const matchLetters = new RegExp(/[a-zA-Z]/,'g')
+const matchVowels = new RegExp(/[aeiouAEIOU]/, 'g')
+const matchExact = new RegExp(/^abc$/, 'g')
+const matchHTMLChar = new RegExp(/&amp;(lt|gt|quot);/, 'g')
+
+let str = 'abcde'
+str.match(matchLetters) //&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
+str.match(matchVowels) //&gt; [&quot;a&quot;, &quot;e&quot;]
+str.match(matchExact) //&gt; [&quot;abcde&quot;]
+&quot;abc&quot;.match(matchExact) //&gt; null
+&quot;abcdef&quot;.match(matchExact) //&gt; null
+
+let str = 'abcde &amp;lt; &amp;quot; hello &amp;quot; hm';
+function decode(match) {
+    if(match === '&amp;lt;') return '&lt;';
+    else if(match === '&amp;quot;') return '\&quot;'
+}
+str.replace(matchHTMLChar, decode) //&gt; &quot;abcde &lt; ' hello ' hm&quot;
+</code></pre>
+
+<p>The below regex will match the strings that starts and ends with alpha character.</p>
+
+<pre><code class="language-javascript">/^[a-z].*[a-z]$/igm
+</code></pre>
+
+<p>Explanation (see <a href="http://www.mpi.nl/corpus/html/trova/ch01s04.html" target="_blank">this tutorial</a> or <a href="https://eloquentjavascript.net/09_regexp.html" target="_blank">this tutorial</a>):</p>
+
+<pre><code>/abc/	        A sequence of characters
+/[abc]/	      Any character from a set of characters
+/[a-z]/       alphabatic  character (lowercase only).
+/[^abc]/	    Any character not in a set of characters
+/[0-9]/   	  Any character in a range of characters
+/x+/	        One or more occurrences of the pattern x
+/x+?/	        One or more occurrences, nongreedy
+/x*/	        Zero or more occurrences
+/x?/	        Zero or one occurrence
+/x{2,4}/	    Two to four occurrences
+/(abc)/	      A group
+/a|b|c/	      Any one of several patterns
+/\d/	        Any digit character
+/\w/	        An alphanumeric character (“word character”)
+/\s/	        Any whitespace character
+/.*/          Any character 0 or more times
+/./	          Any character except newlines
+/\b/	        A word boundary
+/^/	          Start of input
+/$/	          End of input
+
+/a/i          case-insensitive match
+/a/g          global
+/a/m          multiline
+</code></pre>
+
+<ul>
+<li><code>g</code> flag:
+
+<ul>
+<li>if we ran <code>match</code> on regex without the <code>g</code> flag, we get the first match</li>
+<li>if we ran <code>match</code> on regex with the <code>g</code> flag, we get all matches</li>
+</ul></li>
+<li><code>^</code> and <code>$</code> - See <a href="https://javascript.info/regexp-anchors" target="_blank">this tutorial</a></li>
+<li><code>[abc]</code> means &ldquo;a or b or c&rdquo;, e.g. query &ldquo;[br]ang&rdquo; will match both &ldquo;adbarnirrang&rdquo; and &ldquo;bang&rdquo;</li>
+<li><code>[^abc]</code> means &ldquo;begins with any character but a,b,c&rdquo;, e.g. query [^aeou]ang will match &ldquo;rang&rdquo; but not &ldquo;baang&rdquo;</li>
+<li><code>[a-zA-Z]</code> means &ldquo;a character from a/A through z/Z&rdquo;, e.g. <code>b[a-zA-Z]</code> will match &ldquo;bang&rdquo;, &ldquo;bLang&rdquo; or &ldquo;baang&rdquo; but not &ldquo;b8ng&rdquo;</li>
+<li><code>.</code> (the dot) means &ldquo;any character&rdquo;, e.g. &ldquo;b.ng&rdquo; will match &ldquo;bang&rdquo;, &ldquo;b8ng&rdquo;, but not &ldquo;baang&rdquo;</li>
+<li><code>X*</code> means &ldquo;X zero or more times&rdquo;, e.g. &ldquo;ba*ng&rdquo; will match &ldquo;bng&rdquo;, &ldquo;bang&rdquo;, &ldquo;baang&rdquo;, &ldquo;baaang&rdquo; etc.</li>
+<li><code>X+</code> means &ldquo;X one or more time&rdquo;, e.g. &ldquo;ba+ng&rdquo; will match &ldquo;bang&rdquo;, &ldquo;baang&rdquo; but not &ldquo;bng&rdquo;</li>
+<li><code>^</code> means &ldquo;the beginning of the annotation&rdquo;, e.g. &ldquo;^ng&rdquo; will match &ldquo;ngabi&rdquo; but not &ldquo;bukung&rdquo;</li>
+<li><code>$</code> means &ldquo;the end of the annotation&rdquo;, e.g. &ldquo;ung$&rdquo; will match &ldquo;bukung&rdquo; but not &ldquo;ngabi&rdquo;</li>
+<li><code>\b</code> matches only word boundaries. For example:
+
+<ul>
+<li><code>/\bMoz/</code> matches any word beginning with &ldquo;Moz&rdquo;, like &ldquo;Mozilla&rdquo; or &ldquo;Mozillathon&rdquo;</li>
+<li><code>/Moz\b/</code> matches any word ending with &ldquo;Moz&rdquo;, like &ldquo;myMoz&rdquo; or &ldquo;bigMoz&rdquo;</li>
+<li><code>/\bMoz\b/</code> matches only the word &ldquo;Moz&rdquo; &ndash; not &ldquo;Mozilla&rdquo; or &ldquo;myMoz&rdquo;</li>
+</ul></li>
+</ul>
+
+<p>Cases where the <code>g</code> flag should be used is when you want to replace all occurrences of something in a string</p>
+
+<pre><code class="language-javascript">// replace all 'a' in the string with '1'
+'abbaaab'.replace(/a/g, '1') //&gt; &quot;1bb111b&quot;
+
+'hello world hello'.replace(/hello/, 'hi') //&gt; &quot;hi world hello&quot;
+'hello world hello'.replace(/hello/g, 'hi') //&gt; &quot;hi world hi&quot;
+</code></pre>
+
+<h1 id="json">JSON</h1>
+
+<p>JSON or JavaScript Object Notation encodes data as key value pairs. It’s faster and easier to parse with JavaScript than XML.</p>
+
+<h2 id="creating-json">Creating JSON</h2>
+
+<p>Dynamically</p>
+
+<pre><code class="language-javascript">// ES6 Syntax
+[1,2,3].map(d =&gt; {
+  return {[d]: -d}
+});
+
+// ES 5 Syntax
+[1,2,3].map(d =&gt; {
+  var tmp = {};
+  tmp[d] = -d;
+  return tmp;
+});
+
+// or
+[1,2,3].map(d =&gt; ({[d]: -d}));
+
+// yields
+//&gt; [{1: -1}, {2: -2}, {3: -3}]
+</code></pre>
+
+<p>Statically</p>
+
+<pre><code class="language-javascript">var stooge = {
+   firstName: &quot;Jerome&quot;,
+   lastName: &quot;Howard&quot;
+};
+
+var flight = {
+   airline: &quot;Oceanic&quot;,
+   number: 815,
+   departure: {
+      IATA: &quot;SYD&quot;,
+      time: &quot;2004-09-22 14:55&quot;,
+       city: &quot;Sydney&quot;
+   },
+   arrival: {
+      IATA: &quot;LAX&quot;,
+      time: &quot;2004-09-23 10:42&quot;,
+      city: &quot;Los Angeles&quot;
+   }
+};
+</code></pre>
+
+<p>A property’s name can be any string, including the empty string. The quotes around a property’s name in an object literal are optional if the name would be a legal JavaScript name and not a reserved word. So quotes are required around “last-name&rdquo;, but are optional around first_name. Commas are used to separate the pairs.</p>
+
+<h2 id="converting-json-from-one-form-to-another">Converting JSON from one form to another</h2>
+
+<pre><code class="language-javascript">// Create array of objects
+var foo = [1,2,3].map(d =&gt; {
+  return {[d]: null};
+});
+
+// Create object with original arrays as keys and null as the values
+var bar = foo.reduce((acc, x) =&gt; {
+  for (let key in x) acc[key] = x[key];
+  return acc;
+}, {});
+</code></pre>
+
+<h2 id="retrieving-things-from-json">Retrieving Things from JSON</h2>
+
+<pre><code class="language-javascript">stooge.firstName //&gt; “Jerome”
+stooge[“lastName”] //&gt; Howard
+flight.departure.IATA  //&gt; &quot;SYD&quot;
+</code></pre>
+
+<p>The undefined value is produced if an attempt is made to retrieve a non existent member:</p>
+
+<pre><code class="language-javascript">stooge[&quot;middleName&quot;]  //&gt; undefined
+flight.status   //&gt; undefined
+stooge[&quot;FIRSTNAME&quot;]   //&gt; undefined
+</code></pre>
+
+<p>The <code>||</code> operator can be used to fill in default values:</p>
+
+<pre><code class="language-javascript">var middle = stooge[&quot;middleName&quot;] || &quot;(none)&quot;;
+var middle = stooge[&quot;middleName&quot;] || &quot;(none)&quot;;
+var status = flight.status || &quot;unknown&quot;
+</code></pre>
+
+<p>The <code>&amp;&amp;</code> operator can be used to guard against retrieving values from <code>undefined</code></p>
+
+<pre><code class="language-javascript">flight.equipment //&gt; undefined
+flight.equipment.model //&gt; throw &quot;TypeError&quot;
+flight.equipment &amp;&amp; flight.equipment.model //&gt; undefined
+</code></pre>
+
+<h2 id="retrieving-by-value-from-array-of-objects">Retrieving By Value from Array Of objects</h2>
+
+<p>Use <code>filter</code></p>
+
+<pre><code class="language-javascript">const dict = [
+  {char: '&lt;', code: '&amp;lt'},
+  {char: '&gt;', code: '&amp;gt'},
+  {char: '&gt;=', code: '&amp;ge'},
+  {char: '&lt;=', code: '&amp;ge'},  
+]
+dict.filter(obj =&gt; {return obj.char === '&gt;'}) //&gt; [{ char: '&gt;', code: '&amp;gt' }]
+dict.filter(obj =&gt; {return obj.char === 'foo'}) //&gt; []
+
+</code></pre>
+
+<h2 id="update-json">Update JSON</h2>
+
+<p>If the object does not already have that property name, the object is augmented:</p>
+
+<pre><code class="language-javascript">stooge.firstName = 'Jerome';
+stooge['middleName'] = 'Lester';
+stooge.nickname = 'Curly';
+</code></pre>
+
+<h2 id="operations-on-json">Operations on JSON</h2>
+
+<pre><code class="language-javascript">let users = [
+	{&quot;name&quot;: &quot;andrew&quot;, &quot;country&quot;: &quot;usa&quot;},
+	{&quot;name&quot;: &quot;mary&quot;}
+]
+users[0] //&gt; {name: &quot;andrew&quot;, country: &quot;usa&quot;}
+users[0].country //&gt; &quot;usa&quot;
+users[1].country //&gt; undefined
+users.filter(u =&gt; u.country !== null).map(u =&gt; u.username) //&gt; [&quot;xy&quot;]
+</code></pre>
+
+<h2 id="get-all-keys-from-json">Get all keys from JSON</h2>
+
+<pre><code class="language-javascript">let foo = {&quot;name&quot;: &quot;andrew&quot;, &quot;country&quot;: &quot;usa&quot;}
+let keys = Object.keys(foo) //&gt; [“name”, “country”]
+</code></pre>
+
+<h2 id="check-if-a-key-exists-in-a-json">Check if a key exists in a JSON</h2>
+
+<pre><code class="language-javascript">let user = {&quot;name&quot;: &quot;andrew&quot;, &quot;country&quot;: &quot;usa&quot;}
+user.hasOwnProperty(&quot;name&quot;) //&gt;true
+user.hasOwnProperty(&quot;andrew&quot;) //&gt; false
+user.hasOwnProperty(&quot;country&quot;) //&gt; true
+user.hasOwnProperty(&quot;city&quot;) //&gt; false
+</code></pre>
+
+<h2 id="json-stringify">JSON.stringify</h2>
+
+<pre><code class="language-javascript">var foo = {&quot;name&quot;: &quot;andrew&quot;, &quot;country&quot;: &quot;usa&quot;};
+var bar = {&quot;name&quot;: &quot;xiaoyun&quot;, &quot;city&quot;: &quot;dc&quot; };
+var baz = {&quot;name&quot;: &quot;andrew&quot;, &quot;country&quot;: &quot;usa&quot;}
+JSON.stringify(foo) == JSON.stringify(baz) //&gt; true
+JSON.stringify(foo) === JSON.stringify(baz) //&gt; true
+JSON.stringify(foo) == JSON.stringify(bar); //&gt; false
+</code></pre>
+
+<p>Then you can use <code>indexOf</code> is an operation on a <code>string</code>.</p>
+
+<pre><code class="language-javascript">let a = JSON.stringify(foo) //&gt; &quot;{&quot;name&quot;:&quot;andrew&quot;,&quot;country&quot;:&quot;usa”}&quot;
+a.indexOf(&quot;{&quot;) //&gt; 0
+a.indexOf(&quot;n&quot;) //&gt; 2
+a.indexOf(&quot;france&quot;) //&gt; -1
+a.indexOf(&quot;usaa&quot;) //&gt; -1
+a.indexOf(&quot;usa&quot;) //&gt; 28
+a.indexOf(&quot;u&quot;) //&gt; 20
+a.indexOf(&quot;sa&quot;) //&gt; 29
+a.indexOf(&quot;s&quot;) //&gt; 29
+a.indexOf(&quot;}&quot;) //&gt; 32
+</code></pre>
+
+<h2 id="swap-key-and-val-of-json-objects">Swap Key and Val of JSON Objects</h2>
+
+<pre><code class="language-javascript">const objKey = (d, i) =&gt; Object.keys(d)[i]
+const objVal = (d, i) =&gt; d[objKey(d,i)]
+
+// create JSON from an array of keys
+
+const swap = (data) =&gt; Object.keys(data).reduce( (obj,key) =&gt; {
+   obj[ data[key] ] = key;
+   return obj;
+},{});
+
+var data = {A : 1, B : 2, C : 3, D : 4}
+var newData = swap(data)
+
+console.log(newData); //&gt; {1: &quot;A&quot;, 2: &quot;B&quot;, 3: &quot;C&quot;, 4: &quot;D&quot;}
+</code></pre>
+
+<h2 id="destructuring">Destructuring</h2>
+
+<p>Using object destructuring saves you from creating temporary references for those properties.</p>
+
+<pre><code class="language-javascript">var user = {firstName: &quot;Amy&quot;, lastName:&quot;Winehouse&quot;}
+var {firstName, lastName} = user
+firstName //&gt; &quot;Amy&quot;
+lastName //&gt; &quot;Winehouse&quot;
+</code></pre>
+
+<h2 id="merging-two-json-objects">Merging two JSON objects</h2>
+
+<p>There&rsquo;s a more verbose way of doing it but we are using ES6&rsquo;s spread operator here:</p>
+
+<pre><code class="language-javascript">let foo = {a: 'a', b: 'b'}
+let bar = {c: 'c', d: 'd'}
+let foobar = {...foo, ...bar} //&gt; {a: &quot;a&quot;, b: &quot;b&quot;, c: &quot;c&quot;, d: &quot;d&quot;}
+</code></pre>
+
+<h1 id="resources">Resources</h1>
+
+<ul>
+<li>JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types" target="_blank">Grammar and Types</a></li>
+<li>Master The JavaScript Interview Series:
+
+<ul>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36" target="_blank">What is a Closure?</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9" target="_blank">What is the Difference Between Class &amp; Prototypal Inheritance?</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-pure-function-d1c076bec976#.4256pjcfq" target="_blank">What is a Pure Function?</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0#.i84zm53fb" target="_blank">What is Function Composition?</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0#.jddz30xy3" target="_blank">What is Functional Programming?</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261#.aa7ubggsy" target="_blank">What is a Promise?</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-soft-skills-a8a5fb02c466" target="_blank">Soft Skills</a></li>
+</ul></li>
+<li>Eric Elliot on <a href="https://medium.com/javascript-scene/inside-the-dev-team-death-spiral-6a7ea255467b" target="_blank">why you should stay away from OO</a><br /></li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
+
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/guide/">Guide</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/" data-tooltip="Building an Isomorphic Webapp">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/how-formal-education-closes-doors-to-opportunities/" data-tooltip="How Formal Education Closes Doors To Opportunities">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/";  
+this.page.identifier = "Let's Get Productive With JavaScript"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://http-xiaoyunyang-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Xiaoyun Yang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/" data-tooltip="Building an Isomorphic Webapp">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/how-formal-education-closes-doors-to-opportunities/" data-tooltip="How Formal Education Closes Doors To Opportunities">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Flets-get-productive-with-javascript%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Flets-get-productive-with-javascript%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Flets-get-productive-with-javascript%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://avatars3.githubusercontent.com/u/5825343?s=400&amp;u=57ea29978721c8be7b830ce02f304e67f82cf34f&amp;v=4" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Xiaoyun Yang</h4>
+    
+      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Washington DC
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/">
+                <h3 class="media-heading">How to do Object Oriented Programming in JavaScript</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implement OOP via Prototypal inheritance.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
+                <h3 class="media-heading">Principles To Code By: How To Solve Problems With Code</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>What I love most about programming is the problem solving. I don&rsquo;t believe anyone is born with problem solving skills. It&rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/">
+                <h3 class="media-heading">An Interview Study Guide For Overachievers</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&rsquo;t have all the qualifications.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/problem-solving-using-javascript/">
+                <h3 class="media-heading">Problem Solving Using JavaScript</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">
+                <h3 class="media-heading">Creating LooseLeaf: A Platform To Support The Future Of Work</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p><a href="http://looseleafapp.com" target="_blank">LooseLeaf</a> is a passion project and a startup I&rsquo;ve been building while serving a 5 year commitment in the military. I&rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/">
+                <h3 class="media-heading">Everything You Need To Know About Git</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This is a cheatsheet of all the git commands that I&rsquo;ve ever used in my career as a programmer and contributor of open source projects. I&rsquo;m not a git power user (I use about three commands on a daily basis). From time to time, I still use this cheatsheet to for a quick lookup of a special command.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/is-employee-loyalty-important/">
+                <h3 class="media-heading">Is Employee Loyalty Important?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>High-value employees are a major assets for a strong company. Losing a high contributing team member could leave a void and impact the team&rsquo;s morale and workflow. Investors are also concerned by high turnover rates, especially amongst the senior executives. Groupon had trouble retaining their senior executives, which contributed to <a href="https://www.youtube.com/watch?v=zeNQE3VBRnQ" target="_blank">an 85% drop in their value</a> a year after going public. It&rsquo;s clear we want to <strong>retain</strong> high-valued employees, but is <strong>employee loyalty</strong> the way to achieve retention?</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/">
+                <h3 class="media-heading">Using Hugo To Build A Personal Brand Website</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>It&rsquo;s not always clear why we need need a personal website. But here&rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like <a href="https://gohugo.io/" target="_blank">Hugo</a>.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/">
+                <h3 class="media-heading">Why I Pay to Work At a Co-working Space</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>If you asked me to give you three facts about myself, I would tell you (1) I&rsquo;m a evening and weekend entrepreneur, (2) when I start working on something I enjoy, I can&rsquo;t put it down, and (3) I love coffee. This a formula for disaster because I have a full time job that I have to show up to by 9AM and I&rsquo;m a normal human person who needs at least 6 hours of sleep.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+                <h3 class="media-heading">Building A React Native Travel App</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         16 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('http://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="http://xiaoyunyang.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/lets-get-productive-with-javascript\/';
+          
+            this.page.identifier = '\/post\/lets-get-productive-with-javascript\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'http-xiaoyunyang-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

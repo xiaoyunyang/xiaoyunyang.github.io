@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scala on Xiaoyun Yang</title>
+    <link>http://xiaoyunyang.github.io/tags/scala/</link>
+    <description>Recent content in Scala on Xiaoyun Yang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
+    <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
+    <lastBuildDate>Sun, 03 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://xiaoyunyang.github.io/tags/scala/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How Functional Programming Promotes Developer Productivity</title>
+      <link>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</link>
+      <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</guid>
+      <description>&lt;p&gt;Functional Programming is more than just a buzzword these days. It&amp;rsquo;s super useful and makes you rethink everything you&amp;rsquo;ve learned about software.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
