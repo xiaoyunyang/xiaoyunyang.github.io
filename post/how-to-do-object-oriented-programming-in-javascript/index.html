@@ -28,10 +28,10 @@
     
 
     
-    <meta name="description" content="Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C&#43;&#43;, Ruby, Python) use class-based inheritance. JavaScript implement OOP via Prototypal inheritance.
+    <meta name="description" content="Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C&#43;&#43;, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.
 
 ">
-    <meta property="og:description" content="Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C&#43;&#43;, Ruby, Python) use class-based inheritance. JavaScript implement OOP via Prototypal inheritance.
+    <meta property="og:description" content="Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C&#43;&#43;, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.
 
 ">
     <meta property="og:type" content="blog">
@@ -40,7 +40,7 @@
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C&#43;&#43;, Ruby, Python) use class-based inheritance. JavaScript implement OOP via Prototypal inheritance.
+    <meta name="twitter:description" content="Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C&#43;&#43;, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.
 
 ">
     
@@ -270,13 +270,13 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implement OOP via Prototypal inheritance.</p>
+              <p>Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.</p>
 
 <p></p>
 
 <h1 id="primer-what-is-an-object">Primer: What is an Object?</h1>
 
-<p>OOP is concerned with composing objects that manages simple tasks to create complex computer programs. Objects have a notion of self and reused behavior inherited from a blueprint (classical inheritance) or other objects (prototypal inheritance).</p>
+<p>OOP is concerned with composing objects that manages simple tasks to create complex computer programs. An object consists of private mutable states and functions (called methods) that operate on these mutable states. Objects have a notion of self and reused behavior inherited from a blueprint (classical inheritance) or other objects (prototypal inheritance).</p>
 
 <p>Inheritance is the ability to say that these objects are just like that other set of objects EXCEPT for these changes. The goal of inheritance is to speed up development by promoting code reuse.</p>
 
@@ -369,7 +369,7 @@ person.lastName //&gt; &quot;Abramov&quot;
 <p>Get enough clients using <code>new</code>, and you can’t back out of the constructor implementation even if you want to, because code you don’t own will break if you try.</p>
 </blockquote>
 
-<p>When many derived classes with wildly different use cases are created from the same base class, any seemingly benign change to the base class could cause the derived classes to malfunction. At the cost of increased complexity to your code and the entire software creation process, you could try to bandage mitigate side effects by creating a dependency injection container to provide an uniform service instantiation interface by abstracting the instantiation details. Is there a better way?</p>
+<p>When many derived classes with wildly different use cases are created from the same base class, any seemingly benign change to the base class could cause the derived classes to malfunction. At the cost of increased complexity to your code and the entire software creation process, you could try to mitigate side effects by creating a <a href="https://medium.com/the-everyday-developer/creating-an-ioc-container-with-dependency-injection-in-javascript-9db228d34060" target="_blank">dependency injection container</a> to provide an uniform service instantiation interface by abstracting the instantiation details. Is there a better way?</p>
 
 <h3 id="prototypal-inheritance">Prototypal Inheritance</h3>
 
@@ -381,7 +381,7 @@ person.lastName //&gt; &quot;Abramov&quot;
 typeof User //&gt; &quot;function&quot;
 </code></pre>
 
-<p>ES6 classes are actually <a href="https://stackoverflow.com/questions/36419713/are-es6-classes-just-syntactic-sugar-for-the-prototypal-pattern-in-javascript/36419728" target="_blank">syntactic sugar</a> over JavaScript&rsquo;s existing prototypal inheritance. Under the hood, creating a class with a <code>new</code> keyword creates a function object with code from the <code>constructor</code>.</p>
+<p>ES6 classes are actually <a href="https://stackoverflow.com/questions/36419713/are-es6-classes-just-syntactic-sugar-for-the-prototypal-pattern-in-javascript/36419728" target="_blank">syntactic sugar</a> of JavaScript&rsquo;s existing prototypal inheritance. Under the hood, creating a class with a <code>new</code> keyword creates a function object with code from the <code>constructor</code>.</p>
 
 <p>JavaScript is fundamentally a prototype-oriented language.</p>
 
@@ -401,11 +401,38 @@ The simple types of JavaScript are numbers, strings, booleans (true and false), 
 
 <p>Array instances inherit from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype" target="_blank">Array.prototype</a> which includes many methods which are categorized as accessors (do not modify the original array), mutators (modifies the original array), and iterators (applies the function passed in as an argument onto every element in the array).</p>
 
+<p><strong>Accessors:</strong></p>
+
 <ul>
-<li>Accessors: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank"><code>Array.prototype.includes()</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" target="_blank"><code>Array.prototype.slice()</code></a></li>
-<li>Mutators:  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push" target="_blank"><code>Array.prototype.push()</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" target="_blank"> <code>Array.prototype.pop()</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank"><code>Array.prototype.splice()</code></a>)</li>
-<li>Iterators: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank"><code>Array.prototype.map</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank"><code>Array.prototype.filter</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank"><code>Array.prototype.forEach</code></a></li>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank"><code>Array.prototype.includes(e)</code></a> - returns true if element <code>e</code> is included in the array. False otherwise.</p></li>
+
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" target="_blank"><code>Array.prototype.slice(i,j)</code></a> - extract array from index <code>i</code> to index <code>j</code> (exclusive). Return as new array.</p></li>
 </ul>
+
+<p><strong>Mutators:</strong></p>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push" target="_blank"><code>Array.prototype.push(e)</code></a> - add <code>e</code> to the tail</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" target="_blank"><code>Array.prototype.pop(e)</code></a> - remove <code>e</code> from the tail</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank"><code>Array.prototype.splice(i, j)</code></a> - extract array from index <code>i</code> to index <code>j</code> (exclusive). Discard the rest.</li>
+</ul>
+
+<p>Mutator functions modify the original array. <code>splice</code> gives you the same sub-array as <code>slice</code> but you want to maintain the original array, <code>slice</code> is a better choice.</p>
+
+<p><strong>Iterators:</strong></p>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank"><code>Array.prototype.map(f)</code></a> - applies the function <code>f</code> onto every element of the given array to compute the new elements of the resultant array.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank"><code>Array.prototype.filter(f)</code></a> - evaluates every element of the given array against a predicate <code>f</code> and returns it with the resultant array if it passes <code>f</code>.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank"><code>Array.prototype.forEach(f)</code></a> - applies the function <code>f</code> onto every element of the given array.</li>
+</ul>
+
+<p><code>map</code> and <code>forEach</code> are similar in that they are doing <em>something</em> to everything to the array but the key difference is <code>map</code> returns an array while <code>forEach</code> is like a void function and returns nothing. Good functional software design practices says we should always write functions that has no side effects, i.e., don&rsquo;t use void functions. <code>forEach</code> doesn&rsquo;t do anything to the original array so <code>map</code> is a better choice if you want to do any data transformation. One potential use case of <code>forEach</code> is printing to console for debugging:</p>
+
+<pre><code class="language-javascript">let arr = [1,2,3]
+arr.forEach(e =&gt; console.log(e))
+arr //&gt; [1,2,3]
+</code></pre>
 
 <p>Suppose we want to extend the <code>Array</code> prototype by introducing a new method called <code>partition</code>, which divides the array into two arrays based on a predicate. For example [1,2,3,4,5] becomes [[1,2,3], [4,5]] if the predicate is &ldquo;less than or equal to 3&rdquo;. Let&rsquo;s write some code to add <code>partition</code> to the Array prototype:</p>
 
@@ -429,7 +456,7 @@ The simple types of JavaScript are numbers, strings, booleans (true and false), 
 //&gt; [[1, 2, 3], [4, 5]]
 </code></pre>
 
-<p><code>[1,2,3,4,5]</code> is called a literal. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Array_literals" target="_blank">Literals</a> is one way to create an object. We can also use <a href="https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91" target="_blank">factory functions</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank"><code>Object.create()</code></a> to create the same array:</p>
+<p><code>[1,2,3,4,5]</code> is called a literal. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Array_literals" target="_blank">Literals</a> is one way to create an object. We can also use <a href="https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91" target="_blank">factory functions</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank">Object.create</a> to create the same array:</p>
 
 <pre><code class="language-javascript">// Literal
 [1,2,3,4,5]
@@ -448,7 +475,37 @@ arr.push(5)
 
 <p>A factory function is any function which is not a class or constructor that returns a (presumably new) object. In JavaScript, any function can return an object. When it does so without the new keyword, it’s a factory function.</p>
 
-<p>Factory functions have <a href="https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1" target="_blank">always been attractive in JavaScript</a> because they offer the ability to easily produce object instances without diving into the complexities of classes and the new keyword.</p>
+<p>In the code above, we created an object called <code>arr</code> using <code>Object.create</code> and pushed 5 elements into the array. <code>arr</code> comes with all the functions inherited from the <code>Array</code> prototype such as <code>map</code>, <code>pop</code>, <code>slice</code>, and even <code>partition</code> that we just created for the <code>Array</code> prototype. Let&rsquo;s add some more functionality to the <code>arr</code> object:</p>
+
+<pre><code class="language-javascript">arr.hello = () =&gt; &quot;hello&quot;
+</code></pre>
+
+<p>We can also delete:</p>
+
+<p><strong>Quiz time!</strong> What&rsquo;s going to be returned when we run the following code?</p>
+
+<pre><code class="language-javascript">arr.partition(e =&gt; e &lt; 3) // #1
+
+arr.hello() // #2
+
+let foo = [1,2,3]
+foo.hello() // #3
+
+Array.prototype.bye = () =&gt; &quot;bye&quot;
+arr.bye() // #4
+foo.bye() // #5
+</code></pre>
+
+<p><strong>Answers</strong></p>
+
+<ul>
+<li>#1 is going to return <code>[[1,2], [3,4,5]]</code> because <code>partition</code> is defined for <code>Array</code>, which <code>arr</code> inherits from.</li>
+<li>#2 is going to return &ldquo;hello&rdquo; because we created a new function for <code>arr</code> object called <code>hello</code> that takes no arguments and returns the string &ldquo;hello&rdquo;.</li>
+<li>For #3, If you guess &ldquo;TypeError: foo.hello is not a function&rdquo;, you are correct. Since <code>foo</code> is a new object created from the <code>Array</code> prototype and <code>hello</code> is not defined for <code>Array</code>, <code>hello</code> will not be defined for <code>foo</code>.</li>
+<li>#4 and #5 are both going to return &ldquo;bye&rdquo; because in the line above, we added the function <code>bye</code> to the <code>Array</code> prototype from which <code>arr</code> and <code>foo</code> both inherit. Any changes to the prototype will affect every object that inherits from the object, even <em>after the object has been created</em>.</li>
+</ul>
+
+<p>Factory functions have <a href="https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1" target="_blank">always been attractive in JavaScript</a> because they offer the ability to easily produce object instances without diving into the complexities of classes and the <code>new</code> keyword.</p>
 
 <p>Creating <code>Person</code> and <code>User</code> using prototypal inheritance:</p>
 
@@ -566,21 +623,145 @@ user.getGender() //&gt; male
 
 <p>Dan Abramov <a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank">advices</a> that</p>
 
-<blockquote>
-<p>Instead of creating a class hierarchy, consider creating several factory functions. They may call each other in chain, tweaking the behavior of each other. You may also teach the “base” factory function to accept a “strategy” object modulating the behavior, and have the other factory functions provide it.</p>
-</blockquote>
-
-<h1 id="a-third-way-no-oop">A Third way: No OOP</h1>
-
-<p>As Dan Abramov puts it in <a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank">How to use Classes and Sleep at Night</a>:</p>
-
 <ul>
 <li>Classes obscure the prototypal inheritance at the core of JS.</li>
 <li>Classes encourage inheritance but you should prefer composition.</li>
 <li>Classes tend to lock you into the first bad design you came up with.</li>
 </ul>
 
-<h2 id="object-composition">Object Composition</h2>
+<blockquote>
+<p>Instead of creating a class hierarchy, consider creating several factory functions. They may call each other in chain, tweaking the behavior of each other. You may also teach the “base” factory function to accept a “strategy” object modulating the behavior, and have the other factory functions provide it.</p>
+</blockquote>
+
+<h1 id="a-third-way-no-oop">A Third way: No OOP</h1>
+
+<p>The three cornerstones of OOP - Inheritance, Encapsulation, and Polymorphism - are powerful programming tools/concepts but have their shortcomings:</p>
+
+<h2 id="inheritance">Inheritance</h2>
+
+<p>Inheritance promotes code reuse but you are often forced to take more than what you want.</p>
+
+<p>Joe Armstrong (creator of Erlang) puts it best:</p>
+
+<blockquote>
+<p>The problem with object-oriented languages is they’ve got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.</p>
+</blockquote>
+
+<p>So what if there&rsquo;s more than what we ask for? Can&rsquo;t we just ignore the stuff we don&rsquo;t need? Only if it&rsquo;s that simple. When we need classes that depend on other classes, which depend on other classes, we&rsquo;re going to have to deal with <a href="https://www.wikiwand.com/en/Dependency_hell" target="_blank">dependency hell</a>, which really slows down the build and debugging processes. Additionally, applications that carry a long chain of dependencies are not very portable.</p>
+
+<p>There&rsquo;s of course the fragile base class problem as mentioned above. It&rsquo;s <a href="https://medium.com/@cscalfani/goodbye-object-oriented-programming-a59cda4c0e53" target="_blank">unrealistic to expect everything to fall neatly into place</a> when we create mappings between real-world objects and their classes. Inheritance is not forgiving when you need to refactor your code, especially the base class. Also, <a href="http://www.informit.com/articles/article.aspx?p=2210836" target="_blank">inheritance weakens encapsulation</a>, the next cornerstone of OOP:</p>
+
+<blockquote>
+<p>The problem is that if you inherit an implementation from a superclass and then change that implementation, the change from the superclass ripples through the class hierarchy. This rippling effect potentially affects all the subclasses.</p>
+</blockquote>
+
+<h2 id="encapsulation">Encapsulation</h2>
+
+<p>Encapsulation keeps every object&rsquo;s internal state variables safe from the outside. The ideal case is that your program would consist of &ldquo;islands of objects&rdquo; each with their own states passing messages back and forth. This sounds like a good idea in theory if you are building a perfectly distributed system but in practice, designing a program consisting of perfectly self-contained objects is hard and limiting.</p>
+
+<p>Lots of real world applications require solving difficult problems with many moving parts. When you take an OOP approach to design your application, you&rsquo;re going to run into conundrums like how do you divide up the functionalities of your overall applications between different objects and how to manage interactions and data sharing between different objects. <a href="https://medium.com/@brianwill/object-oriented-programming-a-personal-disaster-1b044c2383ab" target="_blank">This article</a> has some interesting points about the design challenges OOP applications:</p>
+
+<blockquote>
+<p>When we consider the needed functionality of our code, many behaviors are inherently cross-cutting concerns and so don’t really belong to any particular data type. Yet these behaviors have to live somewhere, so we end up concocting nonsense <a href="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank">Doer</a> classes to contain them&hellip;And these nonsense entities have a habit of begetting more nonsense entities: when I have umpteen Manager objects, I then need a ManagerManager.</p>
+</blockquote>
+
+<p>It&rsquo;s true. I&rsquo;ve seen &ldquo;ManagerManager classes&rdquo; in production software that wasn&rsquo;t originally designed to be this way has grown in complexity over the years.</p>
+
+<p>As we will see next when I introduce function composition (the alternative to OOP), we have something much simpler than objects that encapsulates its private variables and performs a specific task - it&rsquo;s called functions!</p>
+
+<p>But before we go there, we need to talk about the last cornerstone of OOP:</p>
+
+<h2 id="polymorphism">Polymorphism</h2>
+
+<p>Polymorphism let&rsquo;s us specify behavior regardless of data type. In OOP, this means designing a class or prototype that can be adapted by objects that need to work with different kinds of data. The objects that use the polymorphic class/prototype needs to define type-specific behavior to make it work. Let&rsquo;s see an example.</p>
+
+<p>Suppose to want to create a general (polymorphic) object that takes some data and a status flag as parameters. If the status says the data is valid (i.e., <code>status === true</code>), a function will be applied onto the data and the result will be returned. If the status flags the data as invalid, then the function will not be applied onto the data and the data, along with the invalid status flag, will be returned.</p>
+
+<p>Let&rsquo;s start with creating a polymorphic prototype object called <code>Option</code>:</p>
+
+<pre><code class="language-javascript">function Option({data, status}) {
+  this.data = data
+  this.status = status
+}
+
+Option.prototype.apply = function (f) {
+  if(this.status) {
+    return f(this.data)
+  }
+  return {data: this.data, status: this.status}
+}
+</code></pre>
+
+<p>Now we create two objects from the <code>Option</code> prototype called <code>Number</code>:</p>
+
+<pre><code class="language-javascript">function Number(data) {
+  let status = (typeof data === 'number')
+  Option.call(this, {data, status})
+}
+Number.prototype = Object.create(Option.prototype)
+</code></pre>
+
+<p>and <code>String</code>:</p>
+
+<pre><code class="language-javascript">function String(data) {
+  let status = (typeof data === 'string')
+  Option.call(this, {data, status})
+}
+String.prototype = Object.create(Option.prototype)
+</code></pre>
+
+<p>Let&rsquo;s see our objects in action. We create a function called <code>increment</code> that&rsquo;s only defined for numbers and another function called <code>split</code> that&rsquo;s only defined for strings:</p>
+
+<pre><code class="language-javascript">const increment = num =&gt; num + 1
+const split = str =&gt; str.split('')
+</code></pre>
+
+<p>Because JavaScript is not type safe, it won&rsquo;t prevent you from incrementing a string or splitting a number. You will see a runtime error when you uses an undefined method on a data type. For example, suppose we try the following:</p>
+
+<pre><code class="language-javascript">let foop = 12
+foop.split('')
+</code></pre>
+
+<p>That&rsquo;s going to give you a type error when you run the code.</p>
+
+<p>However, if we used our <code>Number</code> and <code>String</code> objects to <em>wrap</em> the numbers and strings before operating on them, we can prevent these run time errors:</p>
+
+<pre><code class="language-javascript">let numValid = new Number(12)
+let numInvalid = new Number(&quot;foo&quot;)
+let strValid = new String(&quot;hello world&quot;)
+let strInvalid = new String(-1)
+
+let a = numValid.apply(increment)
+let b = numInvalid.apply(increment)
+let c = strValid.apply(split)
+let d = strInvalid.apply(split)
+</code></pre>
+
+<p>What will this print out?</p>
+
+<pre><code class="language-javascript">console.log({a, b, c, d})
+</code></pre>
+
+<p>Since we designed our <code>Option</code> prototype to only apply the function onto the data if the data is the right type, this will be logged to console:</p>
+
+<pre><code>{
+  a: 13,
+  b: { data: 'foo', status: false },
+  c: [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd' ],
+  d: { data: -1, status: false }
+}
+</code></pre>
+
+<h2 id="function-composition">Function composition</h2>
+
+<p>As alluded to earlier, there&rsquo;s something much simpler than class/prototypes which can be easily reused, encapsulates internal states, performs a given operation on any type of data, and be polymorphic - it&rsquo;s called a function.</p>
+
+<p>Making functions the first class citizen
+We can pay the overhead of immutable data on today’s machines.</p>
+
+<p>Functional Programming provides a way to create complex applications without using inheritance. How do we create objects with reused behavior if we don&rsquo;t use inheritance?</p>
+
+<h2 id="object-composition">Object composition</h2>
 
 <pre><code class="language-javascript">const Person = {
   firstName: '',
@@ -596,10 +777,6 @@ person.firstName = 'Dan'
 person.lastName = 'Abramov'
 person.getFullName() //&gt; &quot;Dan Abramov&quot;
 </code></pre>
-
-<h2 id="functional-composition">Functional composition</h2>
-
-<p>Functional Programming provides a way to create complex applications without using inheritance. How do we create objects with reused behavior if we don&rsquo;t use inheritance?</p>
               
             </div>
           </div>
@@ -880,7 +1057,7 @@ s.setAttribute('data-timestamp', +new Date());
                   Apr 4, 2018
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implement OOP via Prototypal inheritance.</p>
+              <div class="media-content hide-xs font-merryweather"><p>Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.</p>
 
 <p></p></div>
             </div>

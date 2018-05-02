@@ -129,7 +129,7 @@ typeof Person //> "function"
 typeof User //> "function"
 ```
 
-ES6 classes are actually [syntactic sugar](https://stackoverflow.com/questions/36419713/are-es6-classes-just-syntactic-sugar-for-the-prototypal-pattern-in-javascript/36419728) over JavaScript's existing prototypal inheritance. Under the hood, creating a class with a `new` keyword creates a function object with code from the `constructor`.
+ES6 classes are actually [syntactic sugar](https://stackoverflow.com/questions/36419713/are-es6-classes-just-syntactic-sugar-for-the-prototypal-pattern-in-javascript/36419728) of JavaScript's existing prototypal inheritance. Under the hood, creating a class with a `new` keyword creates a function object with code from the `constructor`.
 
 JavaScript is fundamentally a prototype-oriented language.
 
