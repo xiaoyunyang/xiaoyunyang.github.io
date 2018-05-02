@@ -675,7 +675,7 @@ user.getGender() //&gt; male
 
 <p>Polymorphism let&rsquo;s us specify behavior regardless of data type. In OOP, this means designing a class or prototype that can be adapted by objects that need to work with different kinds of data. The objects that use the polymorphic class/prototype needs to define type-specific behavior to make it work. Let&rsquo;s see an example.</p>
 
-<p>Suppose to want to create a general (polymorphic) object that takes some data and a status flag as parameters. If the status says the data is valid (i.e., <code>status === true</code>), a function will be applied onto the data and the result will be returned. If the status flags the data as invalid, then the function will not be applied onto the data and the data, along with the invalid status flag, will be returned.</p>
+<p>Suppose to want to create a general (polymorphic) object that takes some data and a status flag as parameters. If the status says the data is valid (i.e., <code>status === true</code>), a function can be applied onto the data and the result, along with the status flag, will be returned. If the status flags the data as invalid, then the function will not be applied onto the data and the data, along with the invalid status flag, will be returned.</p>
 
 <p>Let&rsquo;s start with creating a polymorphic prototype object called <code>Option</code>:</p>
 
@@ -686,9 +686,15 @@ user.getGender() //&gt; male
 
 Option.prototype.apply = function (f) {
   if(this.status) {
-    return f(this.data)
+    return new Option({data: f(this.data), status: this.status})
   }
-  return {data: this.data, status: this.status}
+  return new Option({data: this.data, status: this.status})
+}
+
+Option.prototype.getOrElse = function (msg) {
+  if(this.status) return this.data
+
+  return msg
 }
 </code></pre>
 
@@ -731,13 +737,14 @@ let numInvalid = new Number(&quot;foo&quot;)
 let strValid = new String(&quot;hello world&quot;)
 let strInvalid = new String(-1)
 
-let a = numValid.apply(increment)
-let b = numInvalid.apply(increment)
-let c = strValid.apply(split)
-let d = strInvalid.apply(split)
+let a = numValid.apply(increment).getOrElse('TypeError!')
+let b = numInvalid.apply(increment).getOrElse('TypeError Boo!')
+let c = strValid.apply(split).getOrElse('TypeError!')
+let d = strInvalid.apply(split).getOrElse('TypeError :(')
+console.log({a, b, c, d})
 </code></pre>
 
-<p>What will this print out?</p>
+<p>What will the following print out?</p>
 
 <pre><code class="language-javascript">console.log({a, b, c, d})
 </code></pre>
@@ -746,9 +753,9 @@ let d = strInvalid.apply(split)
 
 <pre><code>{
   a: 13,
-  b: { data: 'foo', status: false },
+  b: 'TypeError Boo!',
   c: [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd' ],
-  d: { data: -1, status: false }
+  d: 'TypeError :('
 }
 </code></pre>
 
