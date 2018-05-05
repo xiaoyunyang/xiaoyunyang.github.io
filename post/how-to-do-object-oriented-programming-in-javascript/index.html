@@ -1,0 +1,1377 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.38.1 with theme Tranquilpeak 0.4.3-BETA">
+    <title>How to do Object Oriented Programming in JavaScript</title>
+    <meta name="author" content="Xiaoyun Yang">
+    <meta name="keywords" content="object oriented programming, computer science, javascript, interview prep, prototypal inheritance, classical inheritance, functional composition">
+
+    <link rel="icon" href="http://xiaoyunyang.github.io/favicon-96x96.png">
+    
+
+    
+    <meta name="description" content="Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C&#43;&#43;, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.
+
+">
+    <meta property="og:description" content="Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C&#43;&#43;, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="How to do Object Oriented Programming in JavaScript">
+    <meta property="og:url" content="http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/">
+    <meta property="og:site_name" content="Xiaoyun Yang">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Xiaoyun Yang">
+    <meta name="twitter:description" content="Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C&#43;&#43;, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.
+
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/function-factory.png">
+    
+    
+    
+
+    
+      <meta property="og:image" content="https://avatars3.githubusercontent.com/u/5825343?s=400&u=57ea29978721c8be7b830ce02f304e67f82cf34f&v=4">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="http://xiaoyunyang.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="http://xiaoyunyang.github.io/css/custom.css">
+      
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="http://xiaoyunyang.github.io/">Xiaoyun Yang</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="http://xiaoyunyang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://avatars3.githubusercontent.com/u/5825343?s=400&amp;u=57ea29978721c8be7b830ce02f304e67f82cf34f&amp;v=4" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="http://xiaoyunyang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://avatars3.githubusercontent.com/u/5825343?s=400&amp;u=57ea29978721c8be7b830ce02f304e67f82cf34f&amp;v=4" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
+        
+          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/categories/projects">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-code"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/categories/blog">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
+      
+      <span class="sidebar-button-desc">Medium</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">Linkedin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
+      
+      <span class="sidebar-button-desc">AngelList</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+     <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
+     
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Email Me</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      How to do Object Oriented Programming in JavaScript
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-04-28T00:00:00Z">
+        
+  April 28, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://xiaoyunyang.github.io/categories/blog">blog</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.</p>
+
+<p></p>
+
+<h1 id="primer-what-is-an-object">Primer: What is an Object?</h1>
+
+<p>OOP is concerned with composing objects that manages simple tasks to create complex computer programs. An object consists of private mutable states and functions (called methods) that operate on these mutable states. Objects have a notion of self and reused behavior inherited from a blueprint (classical inheritance) or other objects (prototypal inheritance).</p>
+
+<p>Inheritance is the ability to say that these objects are just like that other set of objects <em>except</em> for these changes. The goal of inheritance is to speed up development by promoting code reuse.</p>
+
+<h1 id="classical-inheritance">Classical Inheritance</h1>
+
+<p>In classical OOP, classes are blueprints for objects. Objects are created or <em>instantiated</em> from classes. There&rsquo;s a constructor that is used to create an instance of the class with custom properties.</p>
+
+<p>Consider the following example:</p>
+
+<pre><code class="language-javascript">class Person {
+
+  this = {
+    firstName:  '',
+    lastName: ''
+  }
+
+  constructor(firstName, lastName) {
+    this.firstName = firstName
+    this.lastName = lastName
+  }
+  getFullName() {
+    return this.firstName + ' ' + this.lastName
+  }
+}
+</code></pre>
+
+<p>The <code>class</code> key word from ES6 is used to create the <code>Person</code> class with properties stored in <code>this</code> called <code>firstName</code> and <code>lastName</code>, which are set in the <code>constructor</code> and accessed in the <code>getFullName</code> function.</p>
+
+<p>We instantiate an object called <code>person</code> from the <code>Person</code> class with the <code>new</code> key word as follows:</p>
+
+<pre><code class="language-javascript">let person = new Person('Dan', 'Abramov')
+person.getFullName() //&gt; &quot;Dan Abramov&quot;
+
+// We can use an accessor function or access directly
+person.firstName //&gt; &quot;Dan&quot;
+person.lastName //&gt; &quot;Abramov&quot;
+</code></pre>
+
+<p>Objects created using the <code>new</code> keyword are mutable. In other words, changes to a class affect all objects created from that class and all derived classes which <em>extends</em> from the class.</p>
+
+<p>To extend a class, we can create another class. Let&rsquo;s extend the <code>Person</code> class to make a <code>User</code>. A <code>User</code> is a Person with an email and a password.</p>
+
+<pre><code class="language-javascript">class User extends Person {
+  this = {
+    email: '',
+    password: ''
+  }
+  constructor(firstName, lastName, email, password) {
+    super(firstName, lastName)
+    this.email = email
+    this.password = password
+  }
+  getEmail() {
+    return this.email
+  }
+  getPassword() {
+    return this.password
+  }
+}
+</code></pre>
+
+<p>In the code above, we created a <code>User</code> class which <em>extends</em> the capability of the <code>Person</code> class by adding email and password properties and accessor functions. In the <code>App</code> function below, a <code>user</code> object is <em>instantiated</em> from the <code>User</code> class:</p>
+
+<pre><code class="language-javascript">function App() {
+  let user = new User('Dan', 'Abramov', 'dan@abramov.com', 'iLuvES6')
+  user.getFullName() //&gt; &quot;Dan Abramov&quot;
+  user.getEmail() //&gt; &quot;dan@abramov.com&quot;
+  user.getPassword() //&gt; &quot;iLuvES6&quot;
+
+  user.firstName //&gt; &quot;Dan&quot;
+  user.lastName //&gt; &quot;Abramov&quot;
+  user.email //&gt; &quot;dan@abramov.com&quot;
+  user.password //&gt; &quot;iLuvES6&quot;
+}
+</code></pre>
+
+<p>That seems to work just fine but there&rsquo;s a big design flaw with using the classical inheritance approach: <strong>How the heck do the users of the <code>User</code> class (e.g., <code>App</code>) know <code>User</code> comes with firstName and lastName and there&rsquo;s a function called <code>getFullName</code> that can be used?</strong> Looking at the code for <code>User</code> class does not tell us anything about the data or methods from its super class. We have to dig into the documentation or trace code through the class hierarchy.</p>
+
+<p>As Dan Abramov <a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank">puts it</a>:</p>
+
+<blockquote>
+<p>The problem with inheritance is that the descendants have too much access to the implementation details of every base class in the hierarchy, and vice versa. When the requirements change, refactoring a class hierarchy is so hard that it turns into a WTF sandwich with traces of outdated requirements.</p>
+</blockquote>
+
+<p>Classical inheritance is based on establishing relationships through dependencies. The base class (or super class) sets the baseline for the derived classes. Classical inheritance is OK for small and simple applications that don&rsquo;t often change and has no more than one level of inheritance (keeping our inheritance trees shallow to avoid <a href="https://www.wikiwand.com/en/Fragile_base_class" target="_blank">The Fragile Base Class</a> problem) or wildly different use cases. Class-based inheritance can become unmaintainable as the class hierarchy expands.</p>
+
+<p>Eric Elliot described how classical inheritance can potentially lead to project failure, and in the worst cases, <a href="https://medium.com/javascript-scene/inside-the-dev-team-death-spiral-6a7ea255467b" target="_blank">company failures</a>:</p>
+
+<blockquote>
+<p>Get enough clients using <code>new</code>, and you can’t back out of the constructor implementation even if you want to, because code you don’t own will break if you try.</p>
+</blockquote>
+
+<p>When many derived classes with wildly different use cases are created from the same base class, any seemingly benign change to the base class could cause the derived classes to malfunction. At the cost of increased complexity to your code and the entire software creation process, you could try to mitigate side effects by creating a <a href="https://medium.com/the-everyday-developer/creating-an-ioc-container-with-dependency-injection-in-javascript-9db228d34060" target="_blank">dependency injection container</a> to provide an uniform service instantiation interface by abstracting the instantiation details. Is there a better way?</p>
+
+<h3 id="prototypal-inheritance">Prototypal Inheritance</h3>
+
+<p>Prototypal inheritance do not use classes at all. Instead, objects are created from other objects. We start with a <em>generalized object</em> we called a prototype. We can use the prototype to create other by cloning it or extend it with custom features.</p>
+
+<p>Although in the previous section, we showed how to use the ES6 <code>class</code>, <a href="https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee" target="_blank"><strong>JavaScript classes are not classy</strong></a>.</p>
+
+<pre><code class="language-javascript">typeof Person //&gt; &quot;function&quot;
+typeof User //&gt; &quot;function&quot;
+</code></pre>
+
+<p>ES6 classes are actually <a href="https://stackoverflow.com/questions/36419713/are-es6-classes-just-syntactic-sugar-for-the-prototypal-pattern-in-javascript/36419728" target="_blank">syntactic sugar</a> of JavaScript&rsquo;s existing prototypal inheritance. Under the hood, creating a class with a <code>new</code> keyword creates a function object with code from the <code>constructor</code>.</p>
+
+<p>JavaScript is fundamentally a prototype-oriented language.</p>
+
+<blockquote>
+  <p>
+The simple types of JavaScript are numbers, strings, booleans (true and false), null, and undefined. All other values are objects.  Numbers, strings, and booleans are object-like in that they have methods, but they are immutable. Objects in JavaScript are mutable keyed collections. In JavaScript, arrays are objects, functions are objects, regular expressions are objects, and, of course, objects are objects.
+</p>
+  <footer>
+    <strong>Douglas Crockford (creator of JSON)</strong>
+    
+      <cite><a href="https://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742" target="_blank" rel="external">JavaScript: The Good Parts</a></cite>
+    
+  </footer>
+</blockquote>
+
+<p>Let&rsquo;s look at one of these objects that JavaScript gives us for free out-of-the-box: the <code>Array</code>.</p>
+
+<p>Array instances inherit from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype" target="_blank">Array.prototype</a> which includes many methods which are categorized as accessors (do not modify the original array), mutators (modifies the original array), and iterators (applies the function passed in as an argument onto every element in the array).</p>
+
+<p><strong>Accessors:</strong>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank"><code>Array.prototype.includes(e)</code></a> - returns true if element <code>e</code> is included in the array. False otherwise.
+* <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" target="_blank"><code>Array.prototype.slice(i,j)</code></a> - extract array from index <code>i</code> to index <code>j</code> (exclusive). Return as new array.</p>
+
+<p><strong>Mutators:</strong></p>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push" target="_blank"><code>Array.prototype.push(e)</code></a> - add <code>e</code> to the tail</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" target="_blank"><code>Array.prototype.pop(e)</code></a> - remove <code>e</code> from the tail</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank"><code>Array.prototype.splice(i, j)</code></a> - extract array from index <code>i</code> to index <code>j</code> (exclusive). Discard the rest.</li>
+</ul>
+
+<p>Mutator functions modify the original array. <code>splice</code> gives you the same sub-array as <code>slice</code> but you want to maintain the original array, <code>slice</code> is a better choice.</p>
+
+<p><strong>Iterators:</strong></p>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank"><code>Array.prototype.map(f)</code></a> - applies the function <code>f</code> onto every element of the given array to compute the new elements of the resultant array.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank"><code>Array.prototype.filter(f)</code></a> - evaluates every element of the given array against a predicate <code>f</code> and returns it with the resultant array if it passes <code>f</code>.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank"><code>Array.prototype.forEach(f)</code></a> - applies the function <code>f</code> onto every element of the given array.</li>
+</ul>
+
+<p><code>map</code> and <code>forEach</code> are similar in that they are doing <em>something</em> to everything to the array but the key difference is <code>map</code> returns an array while <code>forEach</code> is like a void function and returns nothing. Good functional software design practices say we should always write functions that has no side effects, i.e., don&rsquo;t use void functions. <code>forEach</code> doesn&rsquo;t do anything to the original array so <code>map</code> is a better choice if you want to do any data transformation. One potential use case of <code>forEach</code> is printing to console for debugging:</p>
+
+<pre><code class="language-javascript">let arr = [1,2,3]
+arr.forEach(e =&gt; console.log(e))
+arr //&gt; [1,2,3]
+</code></pre>
+
+<p>Suppose we want to extend the <code>Array</code> prototype by introducing a new method called <code>partition</code>, which divides the array into two arrays based on a predicate. For example [1,2,3,4,5] becomes [[1,2,3], [4,5]] if the predicate is &ldquo;less than or equal to 3&rdquo;. Let&rsquo;s write some code to add <code>partition</code> to the Array prototype:</p>
+
+<pre><code class="language-javascript">Array.prototype.partition = function(pred) {
+  let passed = []
+  let failed = []
+  for(let i=0; i&lt;this.length; i++) {
+    if (pred(this[i])) {
+      passed.push(this[i])
+    } else {
+      failed.push(this[i])
+    }
+  }
+  return [ passed, failed ]
+}
+</code></pre>
+
+<p>Now we can use <code>partition</code> on any array:</p>
+
+<pre><code class="language-JavaScript">[1,2,3,4,5].partition(e =&gt; e &lt;=3)
+//&gt; [[1, 2, 3], [4, 5]]
+</code></pre>
+
+<p><code>[1,2,3,4,5]</code> is called a literal. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Array_literals" target="_blank">Literals</a> is one way to create an object. We can also use <a href="https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91" target="_blank">factory functions</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank">Object.create</a> to create the same array:</p>
+
+<pre><code class="language-javascript">// Literal
+[1,2,3,4,5]
+
+// Factory Function
+Array(1,2,3,4,5)
+
+// Object.create
+let arr = Object.create(Array.prototype)
+arr.push(1)
+arr.push(2)
+arr.push(3)
+arr.push(4)
+arr.push(5)
+</code></pre>
+
+<p>A factory function is any function which is not a class or constructor that returns a (presumably new) object. In JavaScript, any function can return an object. When it does so without the <code>new</code> keyword, it’s a factory function.</p>
+
+<p>In the code above, we created an object called <code>arr</code> using <code>Object.create</code> and pushed 5 elements into the array. <code>arr</code> comes with all the functions inherited from the <code>Array</code> prototype such as <code>map</code>, <code>pop</code>, <code>slice</code>, and even <code>partition</code> that we just created for the <code>Array</code> prototype. Let&rsquo;s add some more functionality to the <code>arr</code> object:</p>
+
+<pre><code class="language-javascript">arr.hello = () =&gt; &quot;hello&quot;
+</code></pre>
+
+<p><strong>Quiz time!</strong> What&rsquo;s going to be returned when we run the following code?</p>
+
+<pre><code class="language-javascript">arr.partition(e =&gt; e &lt; 3) // #1
+
+arr.hello() // #2
+
+let foo = [1,2,3]
+foo.hello() // #3
+
+Array.prototype.bye = () =&gt; &quot;bye&quot;
+arr.bye() // #4
+foo.bye() // #5
+</code></pre>
+
+<p><strong>Answers</strong></p>
+
+<ul>
+<li><strong>#1</strong> is going to return <code>[[1,2], [3,4,5]]</code> because <code>partition</code> is defined for <code>Array</code>, which <code>arr</code> inherits from.</li>
+<li><strong>#2</strong> is going to return &ldquo;hello&rdquo; because we created a new function for <code>arr</code> object called <code>hello</code> that takes no arguments and returns the string &ldquo;hello&rdquo;.</li>
+<li>For <strong>#3</strong>, If you guessed &ldquo;TypeError: foo.hello is not a function&rdquo;, you are correct. Since <code>foo</code> is a new object created from the <code>Array</code> prototype and <code>hello</code> is not defined for <code>Array</code>, <code>hello</code> will not be defined for <code>foo</code>.</li>
+<li><strong>#4</strong> and <strong>#5</strong> are both going to return &ldquo;bye&rdquo; because in the line above, we added the function <code>bye</code> to the <code>Array</code> prototype from which <code>arr</code> and <code>foo</code> both inherit. Any changes to the prototype will affect every object that inherits from the object, even <em>after the object has been created</em>.</li>
+</ul>
+
+<p>Factory functions have <a href="https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1" target="_blank">always been attractive in JavaScript</a> because they offer the ability to easily produce object instances without diving into the complexities of classes and the <code>new</code> keyword.</p>
+
+<p>Creating <code>Person</code> and <code>User</code> using prototypal inheritance:</p>
+
+<pre><code class="language-javascript">function Person(firstName, lastName) {
+  this.firstName = firstName
+  this.lastName = lastName
+}
+Person.prototype.getFullName = function () {  
+  return this.firstName + ' ' + this.lastName
+}
+</code></pre>
+
+<p>Now we can use the <code>Person</code> prototype like so:</p>
+
+<pre><code class="language-javascript">let person = new Person('Dan', 'Abramov')
+person.getFullName() //&gt; Dan Abramov
+</code></pre>
+
+<p><code>person</code> is an object. Doing a <code>console.log(person)</code> gives us the following:</p>
+
+<pre><code>Person {
+  firstName: &quot;Dan&quot;,
+  lastName: &quot;Abramov&quot;,
+  __proto__: {
+    getFullName: f
+    constructor: f Person(firstName, lastName)
+  },
+  __proto__: Object  
+}
+</code></pre>
+
+<p>For our <code>User</code>, we just need to extend the <code>Person</code> class:</p>
+
+<pre><code class="language-javascript">function User(firstName, lastName, email, password) {
+  Person.call(this, firstName, lastName) // call super constructor.
+  this.email = email
+  this.password = password
+}
+
+User.prototype = Object.create(Person.prototype);
+
+User.prototype.setEmail = function(email) {
+  this.email = email
+}
+
+User.prototype.getEmail = function() {
+  return this.email
+}
+
+user.setEmail('dan@abramov.com')
+</code></pre>
+
+<p><code>user</code> is an object. Doing a <code>console.log(user)</code> gives us the following:</p>
+
+<pre><code>User {
+  firstName: &quot;Dan&quot;,
+  lastName: &quot;Abramov&quot;,
+  email: &quot;dan@abramov.com&quot;,
+  password: &quot;iLuvES6&quot;,
+  __proto__: Person {
+    getEmail: f ()
+    setEmail: f (email)
+    __proto__: {
+      getFullName: f,
+      constructor: f Person(firstName, lastName)
+      __proto__: Object
+
+    }
+  }
+}
+</code></pre>
+
+<p>What if we want to customize the <code>getFullName</code> function for <code>User</code>? How is the following code going to affect <code>person</code> and <code>user</code>?</p>
+
+<pre><code class="language-javascript">User.prototype.getFullName = function () {  
+  return 'User Name: '+this.firstName + ' ' + this.lastName
+}
+
+user.getFullName() //&gt; &quot;User Name: Dan Abramov&quot;
+person.getFullName() //&gt; &quot;Dan Abramov&quot;
+</code></pre>
+
+<p>As we expect, <code>person</code> is not be affected at all.</p>
+
+<p>How about decorating the <code>Person</code> object by adding a gender attribute and corresponding getter and setter functions?</p>
+
+<pre><code class="language-javascript">Person.prototype.setGender = function (gender) {  
+  this.gender = gender
+}
+Person.prototype.getGender = function () {  
+  return this.gender
+}
+
+person.setGender('male')
+person.getGender() //&gt; male
+
+user.getGender() //&gt; returns undefined ... but is a function
+user.setGender('male')
+user.getGender() //&gt; male
+</code></pre>
+
+<p>Both <code>person</code> and <code>user</code> are affected because <code>Person</code> is prototyped from <code>User</code> so if <code>User</code> changes, <code>Person</code> changes too.</p>
+
+<p>The decorator pattern from prototypal inheritance is not so different from the classical inheritance.</p>
+
+<blockquote>
+  <p> Unlike most other languages, JavaScript’s object system is based on prototypes, not classes. Unfortunately, most JavaScript developers don’t understand JavaScript’s object system, or how to put it to best use. </p>
+  <footer>
+    <strong>Eric Elliot</strong>
+    
+      <cite><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9" target="_blank" rel="external">Master the JavaScript Interview: What’s the Difference Between Class &amp; Prototypal Inheritance?</a></cite>
+    
+  </footer>
+</blockquote>
+
+<p>Dan Abramov <a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank">advices</a> that</p>
+
+<ul>
+<li>Classes obscure the prototypal inheritance at the core of JS.</li>
+<li>Classes encourage inheritance but you should prefer composition.</li>
+<li>Classes tend to lock you into the first bad design you came up with.</li>
+</ul>
+
+<blockquote>
+<p>Instead of creating a class hierarchy, consider creating several factory functions. They may call each other in chain, tweaking the behavior of each other. You may also teach the “base” factory function to accept a “strategy” object modulating the behavior, and have the other factory functions provide it.</p>
+</blockquote>
+
+<h1 id="a-third-way-no-oop">A Third way: No OOP</h1>
+
+<p>The three cornerstones of OOP - Inheritance, Encapsulation, and Polymorphism - are powerful programming tools/concepts but have their shortcomings:</p>
+
+<h2 id="inheritance">Inheritance</h2>
+
+<p>Inheritance promotes code reuse but you are often forced to take more than what you want.</p>
+
+<p>Joe Armstrong (creator of Erlang) puts it best:</p>
+
+<blockquote>
+<p>The problem with object-oriented languages is they’ve got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.</p>
+</blockquote>
+
+<p>So what if there&rsquo;s more than what we ask for? Can&rsquo;t we just ignore the stuff we don&rsquo;t need? Only if it&rsquo;s that simple. When we need classes that depend on other classes, which depend on other classes, we&rsquo;re going to have to deal with <a href="https://www.wikiwand.com/en/Dependency_hell" target="_blank">dependency hell</a>, which really slows down the build and debugging processes. Additionally, applications that carry a long chain of dependencies are not very portable.</p>
+
+<p>There&rsquo;s of course the fragile base class problem as mentioned above. It&rsquo;s <a href="https://medium.com/@cscalfani/goodbye-object-oriented-programming-a59cda4c0e53" target="_blank">unrealistic to expect everything to fall neatly into place</a> when we create mappings between real-world objects and their classes. Inheritance is not forgiving when you need to refactor your code, especially the base class. Also, <a href="http://www.informit.com/articles/article.aspx?p=2210836" target="_blank">inheritance weakens encapsulation</a>, the next cornerstone of OOP:</p>
+
+<blockquote>
+<p>The problem is that if you inherit an implementation from a superclass and then change that implementation, the change from the superclass ripples through the class hierarchy. This rippling effect potentially affects all the subclasses.</p>
+</blockquote>
+
+<h2 id="encapsulation">Encapsulation</h2>
+
+<p>Encapsulation keeps every object&rsquo;s internal state variables safe from the outside. The ideal case is that your program would consist of &ldquo;islands of objects&rdquo; each with their own states passing messages back and forth. This sounds like a good idea in theory if you are building a perfectly distributed system but in practice, designing a program consisting of perfectly self-contained objects is hard and limiting.</p>
+
+<p>Lots of real world applications require solving difficult problems with many moving parts. When you take an OOP approach to design your application, you&rsquo;re going to run into conundrums like how do you divide up the functionalities of your overall applications between different objects and how to manage interactions and data sharing between different objects. <a href="https://medium.com/@brianwill/object-oriented-programming-a-personal-disaster-1b044c2383ab" target="_blank">This article</a> has some interesting points about the design challenges OOP applications:</p>
+
+<blockquote>
+<p>When we consider the needed functionality of our code, many behaviors are inherently cross-cutting concerns and so don’t really belong to any particular data type. Yet these behaviors have to live somewhere, so we end up concocting nonsense <a href="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank">Doer</a> classes to contain them&hellip;And these nonsense entities have a habit of begetting more nonsense entities: when I have umpteen Manager objects, I then need a ManagerManager.</p>
+</blockquote>
+
+<p>It&rsquo;s true. I&rsquo;ve seen &ldquo;ManagerManager classes&rdquo; in production software that wasn&rsquo;t originally designed to be this way has grown in complexity over the years.</p>
+
+<p>As we will see next when I introduce function composition (the alternative to OOP), we have something much simpler than objects that encapsulates its private variables and performs a specific task - it&rsquo;s called functions!</p>
+
+<p>But before we go there, we need to talk about the last cornerstone of OOP:</p>
+
+<h2 id="polymorphism">Polymorphism</h2>
+
+<p>Polymorphism let&rsquo;s us specify behavior regardless of data type. In OOP, this means designing a class or prototype that can be adapted by objects that need to work with different kinds of data. The objects that use the polymorphic class/prototype needs to define type-specific behavior to make it work. Let&rsquo;s see an example.</p>
+
+<p>Suppose to want to create a general (polymorphic) object that takes some data and a status flag as parameters. If the status says the data is valid (i.e., <code>status === true</code>), a function can be applied onto the data and the result, along with the status flag, will be returned. If the status flags the data as invalid, then the function will not be applied onto the data and the data, along with the invalid status flag, will be returned.</p>
+
+<p>Let&rsquo;s start with creating a polymorphic prototype object called <code>Option</code>:</p>
+
+<pre><code class="language-javascript">function Option({data, status}) {
+  this.data = data
+  this.status = status
+}
+
+Option.prototype.apply = function (f) {
+  if(this.status) {
+    return new Option({data: f(this.data), status: this.status})
+  }
+  return new Option({data: this.data, status: this.status})
+}
+
+Option.prototype.getOrElse = function (msg) {
+  if(this.status) return this.data
+
+  return msg
+}
+</code></pre>
+
+<p>Now we create two objects from the <code>Option</code> prototype called <code>Number</code>:</p>
+
+<pre><code class="language-javascript">function Number(data) {
+  let status = (typeof data === 'number')
+  Option.call(this, {data, status})
+}
+Number.prototype = Object.create(Option.prototype)
+</code></pre>
+
+<p>and <code>String</code>:</p>
+
+<pre><code class="language-javascript">function String(data) {
+  let status = (typeof data === 'string')
+  Option.call(this, {data, status})
+}
+String.prototype = Object.create(Option.prototype)
+</code></pre>
+
+<p>Let&rsquo;s see our objects in action. We create a function called <code>increment</code> that&rsquo;s only defined for numbers and another function called <code>split</code> that&rsquo;s only defined for strings:</p>
+
+<pre><code class="language-javascript">const increment = num =&gt; num + 1
+const split = str =&gt; str.split('')
+</code></pre>
+
+<p>Because JavaScript is not type safe, it won&rsquo;t prevent you from incrementing a string or splitting a number. You will see a runtime error when you uses an undefined method on a data type. For example, suppose we try the following:</p>
+
+<pre><code class="language-javascript">let foop = 12
+foop.split('')
+</code></pre>
+
+<p>That&rsquo;s going to give you a type error when you run the code.</p>
+
+<p>However, if we used our <code>Number</code> and <code>String</code> objects to <em>wrap</em> the numbers and strings before operating on them, we can prevent these run time errors:</p>
+
+<pre><code class="language-javascript">let numValid = new Number(12)
+let numInvalid = new Number(&quot;foo&quot;)
+let strValid = new String(&quot;hello world&quot;)
+let strInvalid = new String(-1)
+
+let a = numValid.apply(increment).getOrElse('TypeError!')
+let b = numInvalid.apply(increment).getOrElse('TypeError Boo!')
+let c = strValid.apply(split).getOrElse('TypeError!')
+let d = strInvalid.apply(split).getOrElse('TypeError :(')
+</code></pre>
+
+<p>What will the following print out?</p>
+
+<pre><code class="language-javascript">console.log({a, b, c, d})
+</code></pre>
+
+<p>Since we designed our <code>Option</code> prototype to only apply the function onto the data if the data is the right type, this will be logged to console:</p>
+
+<pre><code>{
+  a: 13,
+  b: 'TypeError Boo!',
+  c: [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd' ],
+  d: 'TypeError :('
+}
+</code></pre>
+
+<h2 id="composition">Composition</h2>
+
+<p>As alluded to earlier, there&rsquo;s something much simpler than class/prototypes which can be easily reused, encapsulates internal states, performs a given operation on any type of data, and be polymorphic - it&rsquo;s called a function.</p>
+
+<p>JavaScript easily lets us bundle related functions and data together in an object:</p>
+
+<pre><code class="language-javascript">const Person = {
+  firstName: 'firstName',
+  lastName: 'lastName',
+  getFullName: function() {
+    return `${this.firstName} ${this.lastName}`
+  }
+}
+</code></pre>
+
+<p>Then we can use the <code>Person</code> object directly like this:</p>
+
+<pre><code class="language-javascript">let person = Object.create(Person)
+
+person.getFullName() //&gt; &quot;first last&quot;
+
+// Assign internal state variables
+person.firstName = 'Dan'
+person.lastName = 'Abramov'
+
+// Access internal state variables
+person.getFullName() //&gt; &quot;Dan Abramov&quot;
+</code></pre>
+
+<p>Let&rsquo;s make a <code>User</code> object by cloning the <code>Person</code> object, then augmenting it with additional data and functions:</p>
+
+<pre><code class="language-javascript">const User = Object.create(Person)
+User.email = ''
+User.password = ''
+User.getEmail = function() {
+  return this.email
+}
+</code></pre>
+
+<p>Then we can create an instance of user using <code>Object.create</code></p>
+
+<pre><code class="language-javascript">let user = Object.create(User)
+user.firstName = 'Dan'
+user.lastName = 'Abramov'
+user.email = 'dan@abramov.com'
+user.password = 'iLuvES6'
+</code></pre>
+
+<p>A gotcha here is use <code>Object.create</code> whenever you want to copy. Objects in JavaScript are mutable so when you straight out assigning to create a new object and you mutate the second object, it will change the original object!</p>
+
+<p>Except for numbers, strings, and boolean, everything in JavaScript is an object.</p>
+
+<pre><code class="language-javascript">// Wrong
+const arr = [1,2,3]
+const arr2 = arr
+arr2.pop()
+arr //&gt; [1,2]
+</code></pre>
+
+<p>In the above example, I used <code>const</code> to show that it doesn&rsquo;t protect you from mutating objects. Objects are defined by their reference so while <code>const</code> prevents you from reassigning <code>arr</code>, it doesn&rsquo;t make the object &ldquo;constant&rdquo;.</p>
+
+<p><code>Object.create</code> makes sure we are copying an object instead of passing its reference around.</p>
+
+<p>Like Lego pieces, we can create copies of the same objects and tweak them, compose them, and pass them onto other objects to augment the capability of other objects.</p>
+
+<p>For example, we define a <code>Customer</code> object with data and functions. When our <code>User</code> converts, we want to add the <code>Customer</code> stuff our user instance.</p>
+
+<pre><code class="language-javascript">const Customer = {
+
+}
+</code></pre>
+
+<p>When we want to supply a object with some additional capability, higher order objects cover every use case.</p>
+
+<p>Favor composition over class inheritance because  composition is <a href="https://medium.com/javascript-scene/3-different-kinds-of-prototypal-inheritance-es6-edition-32d777fa16c9" target="_blank">simpler, more expressive, and more flexible</a>:</p>
+
+<blockquote>
+<p>Classical inheritance creates <strong>is-a</strong> relationships with restrictive taxonomies, all of which are eventually wrong for new use-cases. But it turns out, we usually employ inheritance for <strong>has-a</strong>, <strong>uses-a</strong>, or <strong>can-do</strong> relationships.</p>
+</blockquote>
+
+<h1 id="resources">Resources</h1>
+
+<ul>
+<li><a href="https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e" target="_blank">JavaScript Factory Functions vs Constructor Functions vs Classes</a></li>
+<li><a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank">How to Use Classes and Sleep at Night</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9" target="_blank">Master the JavaScript Interview: What’s the Difference Between Class &amp; Prototypal Inheritance?</a></li>
+<li><a href="https://medium.com/ecmascript-2015/es6-classes-and-inheritance-607804080906" target="_blank">ES6 — classes and inheritance</a></li>
+<li><a href="http://javascriptissexy.com/javascript-objects-in-detail/" target="_blank">JavaScript Objects In Detail</a></li>
+<li><a href="https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91" target="_blank">Factory Function Patterns In Depth</a></li>
+<li><a href="https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee" target="_blank">Elegant patterns in modern JavaScript: Ice Factory</a></li>
+<li><a href="https://medium.com/@copyconstruct/small-functions-considered-harmful-91035d316c29" target="_blank">Small Functions considered Harmful</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
+
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/programming/">Programming</a>
+
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/software-design/">Software Design</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/" data-tooltip="Getting Started With Startup Seed Funding">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/" data-tooltip="Principles To Code By: How To Solve Problems With Code">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/";  
+this.page.identifier = "How to do Object Oriented Programming in JavaScript"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://http-xiaoyunyang-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Xiaoyun Yang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/" data-tooltip="Getting Started With Startup Seed Funding">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/" data-tooltip="Principles To Code By: How To Solve Problems With Code">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-do-object-oriented-programming-in-javascript%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-do-object-oriented-programming-in-javascript%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-do-object-oriented-programming-in-javascript%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://avatars3.githubusercontent.com/u/5825343?s=400&amp;u=57ea29978721c8be7b830ce02f304e67f82cf34f&amp;v=4" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Xiaoyun Yang</h4>
+    
+      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Washington DC
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/">
+                <h3 class="media-heading">Getting Started With Startup Seed Funding</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This documents my journey applying to the NSF Seed Fund.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-in-javascript/">
+                <h3 class="media-heading">How to do Object Oriented Programming in JavaScript</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
+                <h3 class="media-heading">Principles To Code By: How To Solve Problems With Code</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>What I love most about programming is the problem solving. I don&rsquo;t believe anyone is born with problem solving skills. It&rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/">
+                <h3 class="media-heading">An Interview Study Guide For Overachievers</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&rsquo;t have all the qualifications.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/problem-solving-using-javascript/">
+                <h3 class="media-heading">Problem Solving Using JavaScript</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">
+                <h3 class="media-heading">Creating LooseLeaf: A Platform To Support The Future Of Work</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p><a href="http://looseleafapp.com" target="_blank">LooseLeaf</a> is a passion project and a startup I&rsquo;ve been building while serving a 5 year commitment in the military. I&rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/">
+                <h3 class="media-heading">Everything You Need To Know About Git</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This is a cheatsheet of all the git commands that I&rsquo;ve ever used in my career as a programmer and contributor of open source projects. I&rsquo;m not a git power user (I use about three commands on a daily basis). From time to time, I still use this cheatsheet to for a quick lookup of a special command.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/is-employee-loyalty-important/">
+                <h3 class="media-heading">Is Employee Loyalty Important?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>High-value employees are a major assets for a strong company. Losing a high contributing team member could leave a void and impact the team&rsquo;s morale and workflow. Investors are also concerned by high turnover rates, especially amongst the senior executives. Groupon had trouble retaining their senior executives, which contributed to <a href="https://www.youtube.com/watch?v=zeNQE3VBRnQ" target="_blank">an 85% drop in their value</a> a year after going public. It&rsquo;s clear we want to <strong>retain</strong> high-valued employees, but is <strong>employee loyalty</strong> the way to achieve retention?</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/">
+                <h3 class="media-heading">Using Hugo To Build A Personal Brand Website</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>It&rsquo;s not always clear why we need need a personal website. But here&rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like <a href="https://gohugo.io/" target="_blank">Hugo</a>.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/">
+                <h3 class="media-heading">Why I Pay to Work At a Co-working Space</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>If you asked me to give you three facts about myself, I would tell you (1) I&rsquo;m a evening and weekend entrepreneur, (2) when I start working on something I enjoy, I can&rsquo;t put it down, and (3) I love coffee. This a formula for disaster because I have a full time job that I have to show up to by 9AM and I&rsquo;m a normal human person who needs at least 6 hours of sleep.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         17 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('http://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="http://xiaoyunyang.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/how-to-do-object-oriented-programming-in-javascript\/';
+          
+            this.page.identifier = '\/post\/how-to-do-object-oriented-programming-in-javascript\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'http-xiaoyunyang-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

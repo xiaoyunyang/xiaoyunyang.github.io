@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Entrepreneurship on Xiaoyun Yang</title>
+    <link>http://xiaoyunyang.github.io/tags/entrepreneurship/</link>
+    <description>Recent content in Entrepreneurship on Xiaoyun Yang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
+    <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
+    <lastBuildDate>Sat, 05 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://xiaoyunyang.github.io/tags/entrepreneurship/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Getting Started With Startup Seed Funding</title>
+      <link>http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</link>
+      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</guid>
+      <description>&lt;p&gt;This documents my journey applying to the NSF Seed Fund.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
