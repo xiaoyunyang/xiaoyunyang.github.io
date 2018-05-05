@@ -5,7 +5,7 @@ categories:
   - projects
 tags:
   - WebApp
-  - Startup
+  - Entrepreneurship
 thumbnailImagePosition: left
 thumbnailImage: /post/images/looseleaf/logo.png
 ---

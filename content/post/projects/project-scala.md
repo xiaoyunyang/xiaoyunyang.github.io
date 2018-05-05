@@ -5,7 +5,6 @@ categories:
   - projects
 tags:
   - WebApp
-  - Startup
   - Open Source
 thumbnailImagePosition: left
 thumbnailImage: /post/images/scala.png

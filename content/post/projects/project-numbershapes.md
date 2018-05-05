@@ -5,7 +5,7 @@ categories:
   - projects
 tags:
   - MobileApp
-  - Startup
+  - Entrepreneurship
 thumbnailImagePosition: left
 thumbnailImage: /post/images/projects/numbershapes/logo.png
 ---
