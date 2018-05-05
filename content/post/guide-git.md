@@ -290,7 +290,7 @@ $ git submodule init
 ```
 
 ```
-$ git submodule add -b master https://github.com/xiaoyunyang/xiaoyunyang.github.io.git public
+$ git submodule add -b master git@github.com:xiaoyunyang/xiaoyunyang.github.io.git public
 ```
 
 **Removing a submodule**
