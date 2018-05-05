@@ -1,7 +1,0 @@
-[submodule "themes/tranquilpeak"]
-	path = themes/tranquilpeak
-	url = https://github.com/kakawait/hugo-tranquilpeak-theme.git
-[submodule "public"]
-	path = public
-	url = https://github.com/xiaoyunyang/xiaoyunyang.github.io.git
-	branch = master
