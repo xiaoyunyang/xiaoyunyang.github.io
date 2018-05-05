@@ -279,6 +279,8 @@ Thumbs.db
 
 Submodules is like a repo inside of a repo. See [GitHub Blog](https://blog.github.com/2016-02-01-working-with-submodules/) for a brief tutorial.
 
+**Pro-tip:** Use GitKraken to simplify the process of working with submodules. [See Tutorial](https://support.gitkraken.com/working-with-repositories/submodules)
+
 **Adding a submodule:**
 
 ```
