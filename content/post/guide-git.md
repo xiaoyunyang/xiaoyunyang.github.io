@@ -16,7 +16,11 @@ This is a cheatsheet of all the git commands that I've ever used in my career as
 
 {{< alert info >}} This is a Live Document. I won't be updating it that often. {{< /alert >}}
 
+<!-- toc -->
+
 This is a tutorial for Unix and Git newbies.
+
+# Basics
 
 *Assume:*
 
@@ -30,7 +34,7 @@ This is a tutorial for Unix and Git newbies.
 
 <!-- toc -->
 
-# Git Tutorial For userA
+## Git Tutorial For userA
 Go to https://<span></span>github.com/`userA`/ and click the "New" button. Name the new repo `project-name`.
 
 1. On your computer, go to terminal and `cd` into the directory you want to host the local repo, then do:
@@ -103,7 +107,7 @@ In the Terminal, do the following:
 	$`git pull origin master`
 
 
-# Git Tutorial For userC
+## Git Tutorial For userC
 Go to https://<span></span>github.com/`userB`/`project-name` and click the "Fork" button.
 
 In the Terminal, do the following:
@@ -268,3 +272,25 @@ build
 Thumbs.db
 
 ```
+
+# Advanced Topics
+
+## Submodules
+
+Submodules is like a repo inside of a repo. See [GitHub Blog](https://blog.github.com/2016-02-01-working-with-submodules/) for a brief tutorial.
+
+**Adding a submodule:**
+
+```
+$ git submodule add https://github.com/kakawait/hugo-tranquilpeak-theme.git themes/tranquilpeak
+$ git submodule update
+$ git submodule init
+```
+
+```
+$ git submodule add -b master git@github.com:xiaoyunyang/xiaoyunyang.github.io.git public
+```
+
+**Removing a submodule**
+
+It's painful with the command line. I was in a git hell for a long time and couldn't get it working. I ended up using [Gitkraken](https://www.gitkraken.com/) to remove my submodules and it worked like a charm.

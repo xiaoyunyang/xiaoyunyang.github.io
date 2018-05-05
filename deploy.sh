@@ -2,9 +2,6 @@
 
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
-# Clean out the public folder
-rm public/*
-
 # Build the site to the public submodule
 hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
 
