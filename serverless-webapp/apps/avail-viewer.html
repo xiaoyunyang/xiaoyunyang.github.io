@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../build/react-with-addons.min.js"></script>
+  <script src="../build/react-dom.min.js"></script>
+  <script src="../build/JSXTransformer.js"></script>
+  <link rel='stylesheet' type='text/css' href="../assets/css/main.css">
+  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+  <!-- device scaling-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Avail Viewer</title>
+</head>
+<body>
+  <div id="nav"><!-- rendered by react --></div>
+  <div class="row white container">
+    <div class="col s12 m12 l10 offset-l1">
+      <h4>Availability Viewer</h4>
+      <p>Put ship class names, get availability.</p>
+      <div id="root"><!-- rendered by react --></div>
+    </div>
+  </div>
+  <div id="footer"><!-- rendered by react --></div>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="../assets/js/materialize.js"></script>
+  <script type="text/jsx" src="topnav.jsx"></script>
+  <script type="text/jsx" src="footer.jsx"></script>
+  <script type="text/jsx">
+    var InputDropdown = React.createClass({
+      componentDidMount: function() {
+        $('#'+this.props.id).material_select(
+          this.handleClick.bind(this)
+        );
+      },
+      handleClick: function() {
+        var newData = $('#'+this.props.id).val();
+        this.props.setState(newData)
+      },
+      renderUnits: function(data, units) {
+        if(!units) return '';
+
+        if (typeof(data) === 'number') {
+          return data > 1 ? units + 's' : units;
+        }
+        return units;
+      },
+      render: function() {
+        return (
+          <div className='input-field col l6 m6 s12'>
+            <select id={this.props.id}>
+              <option value='None' disabled selected>{this.props.label}</option>
+              {
+                this.props.choices.map(function(d,i) {
+                  return (
+                    <option value={d}>
+                      {d + ' ' + this.renderUnits(d, this.props.units)}
+                    </option>);
+                }.bind(this))
+              }
+            </select>
+            <label>{this.props.label}</label>
+          </div>
+        );
+      },
+    });
+    var InputTags = React.createClass({
+      componentDidMount: function() {
+        var tags = this.props.selectedTags.map(function(d) {
+          return {tag: d};
+        });
+        var options = this.props.tags.map(function(d) {
+          var tmp = {};
+          tmp[d] = null;
+          return tmp;
+        }).reduce(function(acc, x) {
+          for (var key in x) acc[key] = x[key];
+          return acc;
+        }, {});
+
+        $('#'+this.props.id).material_chip({
+          data: tags,
+          placeholder: this.props.label,
+          secondaryPlaceholder: this.props.hint,
+          autocompleteOptions: {
+            data: options,
+            limit: Infinity,
+            minLength: 1
+          }
+        });
+        $('#'+this.props.id).on('chip.add', function(e, chip){
+          this.handleAddTag(chip.tag);
+        }.bind(this));
+        $('#'+this.props.id).on('chip.delete', function(e, chip){
+          this.handleDeleteTag(chip.tag);
+        }.bind(this));
+      },
+      handleAddTag: function(tag) {
+        var selectedNew = this.props.selectedTags.concat(tag);
+        this.props.setState(selectedNew);
+      },
+      handleDeleteTag: function(tag) {
+        var selectedNew = this.props.selectedTags.filter(function(d){
+          return d !== tag;
+        });
+        this.props.setState(selectedNew);
+      },
+      render: function() {
+        return (
+          <div className="col l12 m12 s12">
+            <label>{this.props.label}</label>
+            <div className="chips" id={this.props.id}></div>
+          </div>
+        );
+      }
+    });
+    var App = React.createClass({
+      getInitialState: function() {
+        return {
+          hulls: this.props.hulls,
+          selectedHulls: [this.props.hulls[0]],
+          intervalChoices: this.props.intervals,
+          selectedInterval: this.props.intervals[0],
+          projects: this.props.projects,
+          selectedProject: this.props.projects[0]
+        };
+      },
+      componentDidMount: function() {
+        this.initializeDropdown();
+        Materialize.updateTextFields();
+      },
+      initializeDropdown: function() {
+        $('.dropdown-button').dropdown({
+          inDuration: 300,
+          outDuration: 225,
+          constrainWidth: true, // changes width of dropdown to that of the activator
+          hover: false, // Activate on hover
+          gutter: 0, // Spacing from edge
+          belowOrigin: true, // Displays dropdown below the button
+          alignment: 'left', // Displays dropdown with edge aligned to the left of button
+          stopPropagation: false // Stops event propagation
+        });
+      },
+      handleIntervalClickBtn: function(d, e) {
+        var newInterval = d;
+        this.setState({
+          selectedInterval: newInterval
+        });
+      },
+      getLink: function(selectedHulls, selectedInterval, selectedProject) {
+        var strHulls = 'strHulls=' + function() {
+          if(selectedProject==='None') {
+            return selectedHulls.reduce(function(a,b) {
+              return (a==='') ? b: a+','+b}, '');
+          }
+          return '';
+        }();
+        var strInterval = 'strInterval=' + selectedInterval;
+        var strProject = 'strProject=' + selectedProject;
+        return strHulls+' & '+strInterval+' & '+strProject;
+      },
+      renderIntervalInputBtn: function() {
+        return (
+          <div className="col l12 m12 s12">
+            <h5>Choose Time Interval</h5>
+            <a className='dropdown-button btn' href='#' data-activates='dropdown1'>
+              {'Interval: '+this.state.selectedInterval + (this.state.selectedInterval==='1' ? ' Year' : ' Years')}
+            </a>
+            <ul id='dropdown1' className='dropdown-content'>
+            {
+              this.state.intervalChoices.map(function(d, i) {
+                return (<li><a href="#!" onClick={this.handleIntervalClickBtn.bind(this, d)}>
+                {d + (d==='1' ? ' Year' : ' Years')}
+                </a></li>)
+              }.bind(this))
+            }
+            </ul>
+          </div>
+        );
+      },
+      renderLink: function(link) {
+        return (
+          <div className="row">
+            <div className="input-field col l11 m11 s11">
+                <input value={link} id="link" type="text" className="validate" />
+                <label className="active" for="link">Link</label>
+            </div>
+            <div className="col l1 m1 s1">
+              <a className="btn-floating btn-large waves-effect waves-light">
+                <i className="material-icons">arrow_forward</i>
+              </a>
+            </div>
+          </div>
+        );
+      },
+      render: function() {
+        return(
+          <div className="row">
+            <InputTags
+                id='select-hulls'
+                label='Add Hulls'
+                hint='+Hull'
+                tags={this.state.hulls}
+                selectedTags={this.state.selectedHulls}
+                setState={ds => this.setState({selectedHulls: ds})}
+            />
+            <InputDropdown
+                id='select-project'
+                label='Choose Project'
+                choices={this.state.projects}
+                setState={d => this.setState({selectedProject: d})}
+            />
+            <InputDropdown
+                id='select-interval'
+                label='Choose Interval'
+                choices={this.state.intervalChoices}
+                units={'year'}
+                setState={d => this.setState({selectedInterval: d})}
+            />
+            {this.renderIntervalInputBtn()}
+            <div className="col l12 m12 s12">
+              <p>Note: If you choose a project, the app will ignore your selected hulls</p>
+            </div>
+            <div className="col l12 m12 s12">
+              {
+                this.renderLink(this.getLink(
+                  this.state.selectedHulls,
+                  this.state.selectedInterval,
+                  this.state.selectedProject))
+              }
+            </div>
+          </div>
+        );
+      }
+    });
+    ReactDOM.render(<App hulls={['CVN 78', 'SSBN 730', 'SSN 774']}
+                         projects={['None', 'A1B', 'A4W', 'S6G', 'S6W', 'S8G', 'S9G']}
+                         intervals={[1, 2, 5, 10]}/>, document.getElementById('root'));
+  </script>
+
+</body>
+
+</html>

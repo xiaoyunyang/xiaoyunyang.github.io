@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../build/react-with-addons.min.js"></script>
+  <script src="../build/react-dom.min.js"></script>
+  <script src="../build/JSXTransformer.js"></script>
+  <link rel='stylesheet' type='text/css' href="../assets/css/main.css">
+  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+  <!-- device scaling-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>URL Builder</title>
+</head>
+<body>
+  <div id="nav"><!-- rendered by react --></div>
+  <div class="row white container">
+    <div class="col s12 m12 l10 offset-l1">
+      <h4>URL Generator</h4>
+      <p>
+        A tool that generates a URL that you can click on to open a webpage. It's basically a function
+        that takes an ID as input and outputs a URL. The ID input can be a NR letter number, a green number, an
+        ECS commitment number, a requisition document number, or a NIIN.
+      </p>
+      <div id="root"><!-- rendered by react --></div>
+    </div>
+  </div>
+  <div id="footer"><!-- rendered by react --></div>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="../assets/js/materialize.js"></script>
+  <script type="text/jsx" src="topnav.jsx"></script>
+  <script type="text/jsx" src="footer.jsx"></script>
+  <script type="text/jsx">
+    var LinkGen = React.createClass({
+      getInitialState: function() {
+        return {id: this.props.default}
+      },
+      handleChange: function(event) {
+        this.setState({id: event.target.value})
+      },
+      render: function() {
+        return(
+          <div className="card-panel">
+            <span className="black-text">
+              <h5>{this.props.page}</h5>
+              <input type="text" value={this.state.id} placeholder={"e.g., "+this.props.default} onChange={this.handleChange}/>
+              <i className="fas fa-external-link-alt"></i>
+              <a href={this.props.base+this.state.id} target="_blank">{"   "+this.props.base+this.state.id.toLowerCase()}</a>
+            </span>
+          </div>
+        );
+      }
+    });
+    var App = React.createClass({
+      render: function() {
+        return (
+          <div className="row">
+            <div className="col s12 m12 l12">
+              <LinkGen page={"Medium"} base={"https://medium.com/@"} default={"xiaoyunyang"}/>
+              <LinkGen page={"Github"} base={"https://github.com/"} default={"xiaoyunyang"}/>
+            </div>
+          </div>
+        );
+      }
+    });
+    ReactDOM.render(<App/>, document.getElementById('root'));
+  </script>
+
+</body>
+
+</html>
