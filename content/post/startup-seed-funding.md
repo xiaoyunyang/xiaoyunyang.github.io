@@ -14,7 +14,7 @@ thumbnailImagePosition: left
 thumbnailImage: /post/images/money.png
 
 ---
-This documents my journey applying to the National Science Foundation (NSF) Seed Fund.
+This documents my journey applying to the National Science Foundation (NSF) Seed Fund for my startup, [LooseLeaf](/post/creating-looseleaf-a-platform-to-support-the-future-of-work/).
 
 <!--more-->
 
@@ -23,7 +23,7 @@ This documents my journey applying to the National Science Foundation (NSF) Seed
 <!-- toc -->
 
 # What is NSF Seed Fund
-The NSF SBIR program seeks innovative proposals that show promise of commercial and societal impact. We invite the submission of proposals in almost any area of science and technology. NSF Seed Fund is a grant. They take no equity in your company.
+The NSF Seed Fund is a Small Business Innovation Research (SBIR) initiative which provides seed funding for startups that work on innovations with promise of commercial and societal impact. NSF Seed Fund accepts proposals in almost any area of science and technology. NSF Seed Fund is a grant so they take no equity in your company.
 
 As discussed in [this article](http://www.davidcrobinson.com/2015/09/05/part-2-the-rocky-relationship-of-sbir-with-venture-capital/), the NSF Seed Fund offers an effective way for small companies to de-risk technologies that are often too early for venture or even angel investing.
 
@@ -40,7 +40,7 @@ For every criterion, the team's qualification would be factored into the assessm
 
 One tip to [improve your chances of success](http://www.davidcrobinson.com/2015/09/05/part-3-how-to-improve-your-chances-of-success-when-applying-for-an-sbirsttr/) for the NSF Seed Fund is to make sure you meet all the prerequisites for applying. This includes getting a business license, a DUNS number, register with the government System for Award Management (SAM). Once you've completed the pre-requisites, you are ready to register with the agency that you think might fund your technology or company. For LooseLeaf, this would be either:
 
-* Educational Technologies and Applications (EA) - See EA [Categories](https://seedfund.nsf.gov/portfolio/#educational-technologies-and-applications-ea).
+* Educational Technologies and Applications (EA) - See [EA Categories](https://seedfund.nsf.gov/portfolio/#educational-technologies-and-applications-ea).
 * Information Technologies (IT), or Other Topics (OT) - See [See IT Categories](https://seedfund.nsf.gov/topics/information-technologies/).
 
 See [current Phase I awardees](https://seedfund.nsf.gov/awardees/phase-1/) to get a flavor of what kind of startups win NSF Seed Fund.
@@ -63,35 +63,15 @@ Per the [SBIR Solicitation](https://www.nsf.gov/pubs/2018/nsf18550/nsf18550.htm)
 1. Incorporate your startup as a LLC, C-Corp, or S-Corp. I used LegalZoom to incorporate LooseLeaf as a single-entity LLC.
 2. Once you obtain documentation to verify your company's existence, you can obtain a DUNS number. I called the number listed on the [Dun & Bradstreet's website](https://www.dnb.com/duns-number/get-a-duns.html) to have them email me a link to submit copies of the business documentation. I submitted a Certificate of Organization and EIN Confirmation and Application.
 3. You have to wait a few days for the DUNS number to get entered into the system. Once that happens, you can start your SAM registration.
+4. Register your company with the SBIR. See https://www.sbir.gov/registration/
 4. Once you completed completed your SAM registration, you can begin entering your proposal in FastLane.
 
-Steps for System for Award Management (SAM) Registrations:
+## SAM Registration
 
-1. Go to [www.sam.gov](www.sam.gov).
-2. Create a Personal Account and Login.
-3. Click Register New Entity under Register/Update Entity on your My SAM page.
-4. Review Registration Overview and click Start Registration
-5. Select the type of Entity (typically Business or Organization)
-6. Select Yes for Do you wish to bid on contracts? Then Click Next
-7. Confirm Purpose and Click Next
-8. Complete Core Data as follows:
-  * a. Validate your DUNS information.
-  * b. Enter Business Information (TIN and so on).
-  * c. Enter the CAGE code if you have one. If not, one will be assigned to you after your registration is completed. Foreign registrants must enter an NCAGE code.
-  * d. Enter General Information (business types, organization structure, etc.).
-  * e. Financial Information (Electronic Funds Transfer (EFT) Information).
-  * f. Executive Compensation.
-  * g. Proceedings Details.
-9. Complete Assertions as follows:
-    * a. Goods and Services (NAICS, PSC, etc.).
-    * b. Size Metrics.
-    * c. EDI Information.
-    * d. Disaster Relief Information.
-10. Complete Representations and Certifications as follows:
-    * a. FAR Responses.
-    * b. Architect-Engineer Responses.
-    * c. DFARS Responses.
-11. Complete Points of Contact.
+The System for Award Management (SAM) is the primary registrant database for entities to do business with the U.S. Government. This SAM registration must be maintained with current information at all times during which the organization has an active award or a proposal under consideration by NSF. See the [step-by-step](/post/getting-started-with-sam-application/) for how I completed the SAM Application for LooseLeaf.
+
+## SBA Company Registration
+Receipt of a Small Business Concern identification number (SBC ID) is required prior to submission of the proposal. SBA maintains and manages a Company Registry for SBIR/STTR applicants at https://www.sbir.gov/registration/ to track ownership and affiliation requirements. All SBCs must report and/or update ownership information to SBA prior to each SBIR/STTR application submission or if any information changes prior to award. Please see the SBA registration documentation section of the Proposal Submission Instructions.
 
 ## Pre-Submittal Feedback (Optional)
 
@@ -99,7 +79,7 @@ You fill out a [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfyZt4vfPc
 
 **1. Briefly describe the company and team:**
 
-* LooseLeaf provide opportunities for people looking to close skills gaps and make a career change. LooseLeaf's team consists of one software engineer and a math teacher.
+* LooseLeaf is a platform which provides hands-on training opportunities for people looking to close skills gaps and make a career change. LooseLeaf's team consists of one passionate software engineer.
 
 **2. Describe the market opportunity, value proposition, and customers (1-2 paragraphs or up to 500 words):**
 
