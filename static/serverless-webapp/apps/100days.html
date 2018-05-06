@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../build/react-with-addons.min.js"></script>
+  <script src="../build/react-dom.min.js"></script>
+  <script src="../build/JSXTransformer.js"></script>
+  <link rel='stylesheet' type='text/css' href="../assets/css/main.css">
+  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+  <!-- device scaling-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>#100DaysOfCode - What day am I on?</title>
+</head>
+
+<body>
+  <div id="nav"><!-- rendered by react --></div>
+  <div class="row white container">
+    <div class="col s12 m12 l10 offset-l1">
+      <h4>#100DaysOfCode Progress Tracker</h4>
+      <p>Shows you how many days you have done, how many days you have left, and when you are expected
+        to complete your <a target="_blank"
+        href="https://medium.freecodecamp.org/join-the-100daysofcode-556ddb4579e4">
+        #100DaysOfCode</a> challenge.
+      <div id="root"><!-- rendered by react --></div>
+    </div>
+  </div>
+  <div id="footer"><!-- rendered by react --></div>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script type="text/javascript" src="../assets/js/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="../assets/js/materialize.js"></script>
+  <script type="text/jsx" src="topnav.jsx"></script>
+  <script type="text/jsx" src="footer.jsx"></script>
+  <script>
+    Date.prototype.monthNames = [
+      "January", "February", "March",
+      "April", "May", "June",
+      "July", "August", "September",
+      "October", "November", "December"
+    ];
+    Date.prototype.getMonthName = function() {
+      return this.monthNames[this.getMonth()];
+    };
+    Date.prototype.getShortMonthName = function () {
+      return this.getMonthName().substr(0, 3);
+    };
+  </script>
+  <script type="text/jsx">
+
+    var App = React.createClass({
+      getInitialState() {
+        var todayRaw = new Date()
+        var today = this.convertDate2String(todayRaw);
+        return {
+          startDate: "",
+          today: today,
+          daysPassed: "",
+          todayRaw: todayRaw,
+          hundrethDay: ""
+        }
+      },
+      componentWillMount: function() {
+        this.setupDatePicker();
+      },
+      componentDidMount: function() {
+        this.setupDatePicker()
+      },
+      setupDatePicker: function() {
+        // datepicker is based on http://amsul.ca/pickadate.js/api/
+        // Fix issue with onClose: https://github.com/amsul/pickadate.js/issues/160
+        $('.datepicker').pickadate({
+          selectMonths: true,
+          selectYears: 15,
+          today: 'Today',
+          clear: 'Clear',
+          close: 'Ok',
+          closeOnSelect: false,
+          onClose: function() {
+            $(":focus").blur();
+          },
+          onSet: function(context) {
+            this.handleStartDateChange(context.select)
+          }.bind(this)
+        });
+      },
+      handleStartDateChange: function(startDate_ms) {
+        var startDate = new Date(startDate_ms);
+        var hundrethDay = new Date(startDate.setDate(startDate.getDate() + 100));
+        var oneDay_ms = 1000*60*60*24; //get 1 day in milliseconds
+        var diff_ms = this.state.todayRaw.getTime() - startDate_ms;
+        var daysPassed = Math.round(diff_ms/oneDay_ms);
+
+        this.setState({
+          startDate: startDate,
+          hundrethDay: this.convertDate2String(hundrethDay),
+          daysPassed: daysPassed
+        });
+      },
+      convertDate2String: function(date) {
+        return date.getDate() + " "
+              + date.getMonthName() + ", "
+              + date.getFullYear();
+      },
+      render: function() {
+        return (
+          <div className="row">
+            <div className="col s12 m12 l12">
+              <div className="card-panel">
+                <span className="black-text">
+                  <h5><i className="fas fa-calendar-alt"></i>{" I started on"}</h5>
+                  <input type="text"
+                         placeholder="Click to select date"
+                         onChange={this.handleChange}
+                         className="datepicker"/>
+                </span>
+              </div>
+              <div className="card-panel">
+                <span className="black-text">
+                  <h5><i className="fas fa-calendar-alt"></i>{" Today is"}</h5>
+                  <p>{this.state.today}</p>
+                </span>
+              </div>
+              <div className="card-panel">
+                <span className="black-text">
+                  <h5><i className="fas fa-calendar-alt"></i>{" I'm on day"}</h5>
+                  <p>{this.state.daysPassed}</p>
+                </span>
+              </div>
+              <div className="card-panel">
+                <span className="black-text">
+                  <h5><i className="fas fa-calendar-alt"></i>{" My 100th day will be"}</h5>
+                  <p>{this.state.hundrethDay}</p>
+                </span>
+              </div>
+            </div>
+          </div>
+        );
+      }
+    });
+    ReactDOM.render(<App/>, document.getElementById('root'));
+  </script>
+
+</body>
+
+</html>
