@@ -4,7 +4,7 @@ date: 2018-04-07
 categories:
   - projects
 tags:
-  - WebApp
+  - Web App
   - Career
   - Productivity
 thumbnailImagePosition: left

@@ -4,8 +4,9 @@ date: 2017-03-12
 categories:
   - projects
 tags:
-  - WebApp
+  - Web App
   - Open Source
+  - Scala
 thumbnailImagePosition: left
 thumbnailImage: /post/images/scala.png
 ---

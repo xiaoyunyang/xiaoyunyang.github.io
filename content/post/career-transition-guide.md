@@ -1,5 +1,5 @@
 ---
-title: "An Interview Study Guide For Overachievers"
+title: "An Career Transition Guide For Overachievers"
 date: 2018-04-20
 categories:
   - blog
@@ -110,6 +110,13 @@ A programming language is a tool also. It provides an interface for programmers 
 * *Go* - Designed to build concurrent applications. Being used to build concurrent applications. I've talked to a few startups who use Go to build their web app's backend that requires speed and high performance.
 * *C++* - Designed to be a system programming language. This means writing applications for embedded systems (microprocessors, game consoles) where there are not that much memory to be elegant but inefficient. System programming are defined by their main operating loops and low level logic (e.g., final state machines).
 
+A consideration is **Performance/Correctness vs rapid development.** Languages like C, C++, and Java offer great performance but takes long to develop and compile time ramps up when your code grows. These languages often provide type safety features such as static type checking at compile time, which contributes to compile time.  Type checking at compile time is a useful feature to prevent type errors (inconsistencies). Languages that support dynamic typing doesn't help you catch type errors and let these type errors manifest in runtime errors, or worse, incorrect or inconsistent behavior during runtime, which would result in many hours of debugging.
+
+Having to compile before you can run your code can really hurt rapid development. That's why languages like Ruby and Python are popular with developers concerned with making something quick. But Ruby and python are notorious for being slow.
+
+{{< image classes="fancybox fig-100 center clear" src="/post/images/xkcd-compiling.png"
+thumbnail="/post/images/xkcd-compiling.png" title="XKCD Compiling">}}
+
 Since the JavaScript is what I decided to use for building my web app and mobile app projects, I've a collection of JavaScript books that I always have handy for reference when I'm stuck on a problem or studying something in-depth:
 
 * [JavaScript: The Good Parts](https://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742/ref=sr_1_1?s=books&ie=UTF8&qid=1524273920&sr=1-1&keywords=javascript+the+good+parts) by Douglas Crockford - covers Grammar, Object, functions, inheritance, arrays, regular expressions, methods, good parts and bad parts about JavaScript. Note, this book was published in 2008 before ES6 came out.
@@ -172,6 +179,8 @@ I like to read these articles and books on my phone while riding the subway, exe
 
 # Job Hunt
 
+## Getting Invited To Interviews
+
 I don't have a lot to say about how many resumes you should send out or how to meet people at networking events to connect you with people who will give you an interview.
 
 I never sent out a single resume or applied to any job post. **I let the recruiters come to me.**
@@ -185,6 +194,17 @@ If you don't put your work out there, no one will know what you are capable of. 
 >We built an algorithm that selects recently active candidates and gives them a score based on work experience, education, and skills. The A-List team then goes through the candidates with high scores and selects who to invite.
 
 AngelList's algorithm selected me for the A-List even though I never worked as a day *getting paid* as a programmer. That's validation that I'm doing something right with respect to building up my work experience on my own!
+
+## Coding Interview Prep
+
+* [Cracking the Coding Interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?ie=UTF8&qid=1525587700&sr=8-1&keywords=cracking+the+coding+interview) (CTCI) is a study guide written by the founder of CareerCups. The one advice I got from a friend of mine who recently got a job at Facebook is to practice whiteboard problems from this book.
+* The same friend who recommended CTCI also recommended to do a few "mock interviews" with companies that I don't want to work for, as practice.
+* [CareerCup](https://careercup.com/page) has a bunch of coding questions.
+* [CoderByte](https://coderbyte.com/) provides a collection of coding challenges in various languages.
+* [The Algorithms Design Manual](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.471.4772&rep=rep1&type=pdf) - The Facebook recruiter told me to do problems from there
+* [Edabit](https://edabit.com/explore) contains a bunch of coding challenges.
+* [leetcode](https://leetcode.com/problemset/all/) is like a one-stop shop for preparing for interviews, including introduction to data structures and algorithms, problem sets problem sets to practice on, and mock interviews (premium)
+* [Betterteam's Interview Questions By Industry](https://www.betterteam.com/interview-questions)
 
 # My Journey
 

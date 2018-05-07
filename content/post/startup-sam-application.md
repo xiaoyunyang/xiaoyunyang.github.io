@@ -4,12 +4,15 @@ date: 2018-05-04
 categories:
   - blog
 tags:
-  - Career
+  - Fundraising
   - Entrepreneurship
+  - Guide
 keywords:
   - Entrepreneurship
   - seed funding
   - government grant
+  - Fundraising
+  - Startup
 thumbnailImagePosition: left
 thumbnailImage: /post/images/sam-money.png
 

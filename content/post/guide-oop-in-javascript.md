@@ -5,7 +5,6 @@ categories:
   - blog
 tags:
   - JavaScript
-  - Programming
   - Software Design
 keywords:
   - object oriented programming
@@ -141,6 +140,7 @@ Let's look at one of these objects that JavaScript gives us for free out-of-the-
 Array instances inherit from [Array.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype) which includes many methods which are categorized as accessors (do not modify the original array), mutators (modifies the original array), and iterators (applies the function passed in as an argument onto every element in the array).
 
 **Accessors:**
+
 * [`Array.prototype.includes(e)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) - returns true if element `e` is included in the array. False otherwise.
 * [`Array.prototype.slice(i,j)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) - extract array from index `i` to index `j` (exclusive). Return as new array.
 
@@ -568,6 +568,10 @@ When we want to supply a object with some additional capability, higher order ob
 Favor composition over class inheritance because  composition is [simpler, more expressive, and more flexible](https://medium.com/javascript-scene/3-different-kinds-of-prototypal-inheritance-es6-edition-32d777fa16c9):
 
 > Classical inheritance creates **is-a** relationships with restrictive taxonomies, all of which are eventually wrong for new use-cases. But it turns out, we usually employ inheritance for **has-a**, **uses-a**, or **can-do** relationships.
+
+# Conclusion
+
+Programmers often have to make a tradeoff between **Code reusability and code scalability.**  Classical OOP probably makes sense for enterprise software because they don't change that much. In OOP behavior is hard coded in abstract classes but is configurable to some extent during construction. This promotes better code reuse, which saves developers a lot of time upfront.  However, if you expect your code to extend more capability later and have to revise your design many times in the future, then OOP will end up hurting developer productivity and make the code highly coupled with the environment and untestable.
 
 # Resources
 

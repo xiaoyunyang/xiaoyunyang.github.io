@@ -39,7 +39,7 @@ Example:
 * `isPalindrome('abb')` returns `false`.
 * `isPalindrome('abba')` returns `true`.
 
-Try out the solution in [repl.it](https://repl.it/@xiaoyunyang/palindrome)
+Try out the solution: https://repl.it/@xiaoyunyang/palindrome
 
 ### Naive Algorithm
 The simple way to determine if the string is a palindrome is by comparing the original string with the reverse of the string and see if they are equal.
@@ -97,6 +97,31 @@ const test = (testCases, fun) => {
 test(testCases, fun)
 ```
 
+## Match Two Strings
+
+Create a function that takes two strings and returns true if the first argument ends with the 2nd argument; otherwise return false .
+Example:
+
+* "abc", "d" ➞ false
+* "samurai", "zi" ➞ false
+* "feminine", "nine" ➞ true
+* "convention", "tio" ➞ false
+
+### The Algorithm
+```javascript
+function checkEnding(str1, str2) {
+  let str1Rev = str1.split('').reverse().join('')
+  let str2Rev = str2.split('').reverse().join('')
+  let regex = new RegExp(str2Rev, 'i')
+  let match = str1Rev.match(regex)
+
+  if (!match) return false
+  return match.index === 0
+}
+```
+
+Try out the solution: https://repl.it/@xiaoyunyang/checkEnding
+
 ## Capitalize Letters In A Sentence
 
 ### The Algorithm
@@ -118,7 +143,7 @@ const titleCase = (phrase) => {
 }
 ```
 
-### Unit Test:
+### Unit Test
 I wrote a helper assert function and some test cases. This is by no means an exhaustive test.
 
 ```javascript
@@ -394,9 +419,4 @@ const flat = (data) => data.reduce((res, d) => {
 flat(matrix) //> ["h", ".", "e", ".", "l", ".", "l", ".", "o", "."]
 
 flat(matrix).join("") //> "h.e.l.l.o."
-
 ```
-
-# Object Oriented programming
-
-# Case Study

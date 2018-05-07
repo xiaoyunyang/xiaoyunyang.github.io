@@ -4,7 +4,7 @@ date: 2018-04-12
 categories:
   - projects
 tags:
-  - WebApp
+  - Web App
   - Entrepreneurship
 thumbnailImagePosition: left
 thumbnailImage: /post/images/looseleaf/logo.png

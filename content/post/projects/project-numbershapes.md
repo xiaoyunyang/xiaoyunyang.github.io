@@ -4,7 +4,7 @@ date: 2015-08-12
 categories:
   - projects
 tags:
-  - MobileApp
+  - Mobile App
   - Entrepreneurship
 thumbnailImagePosition: left
 thumbnailImage: /post/images/projects/numbershapes/logo.png

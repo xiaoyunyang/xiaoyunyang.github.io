@@ -4,7 +4,7 @@ date: 2018-03-30
 categories:
   - projects
 tags:
-  - MobileApp
+  - Mobile App
   - JavaScript
   - Open Source
 thumbnailImagePosition: left

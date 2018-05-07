@@ -5,7 +5,7 @@ categories:
   - projects
 tags:
   - JavaScript
-  - WebApp
+  - Web App
   - Open Source
 thumbnailImagePosition: left
 thumbnailImage: /post/images/theFuture.png

@@ -330,6 +330,21 @@ flat(data) // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 [1,3,2].sort((a,b) => b > a) //> [3, 2, 1]
 ```
 
+
+Find Smallest Number:
+
+```javascript
+function findSmallestNum(arr) {
+  return arr.sort((a,b) => b-a).pop()
+}
+```
+
+For sorting an array of alphanumeric characters:
+
+```javascript
+['b','a','c'].sort() //> ['a','b','c']
+```
+
 # Functions
 
 ## The Basics
@@ -657,6 +672,7 @@ Option 2 using `slice` works because a string is really just an array of charact
 const matchLetters = new RegExp(/[a-zA-Z]/,'g')
 const matchVowels = new RegExp(/[aeiouAEIOU]/, 'g')
 const matchExact = new RegExp(/^abc$/, 'g')
+const matchExact2 = new RegExp('abc', 'i')
 const matchHTMLChar = new RegExp(/&(lt|gt|quot);/, 'g')
 
 let str = 'abcde'
