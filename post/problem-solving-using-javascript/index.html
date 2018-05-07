@@ -289,14 +289,18 @@
 <li><a href="#more-efficient-algorithm">More Efficient Algorithm</a></li>
 <li><a href="#unit-test">Unit Test</a></li>
 </ul></li>
-<li><a href="#capitalize-letters-in-a-sentence">Capitalize Letters In A Sentence</a>
+<li><a href="#match-two-strings">Match Two Strings</a>
 <ul>
 <li><a href="#the-algorithm">The Algorithm</a></li>
-<li><a href="#unit-test-1">Unit Test:</a></li>
+</ul></li>
+<li><a href="#capitalize-letters-in-a-sentence">Capitalize Letters In A Sentence</a>
+<ul>
+<li><a href="#the-algorithm-1">The Algorithm</a></li>
+<li><a href="#unit-test-1">Unit Test</a></li>
 </ul></li>
 <li><a href="#match-parentheses-in-a-string">Match parentheses in a string</a>
 <ul>
-<li><a href="#the-algorithm-1">The Algorithm</a></li>
+<li><a href="#the-algorithm-2">The Algorithm</a></li>
 <li><a href="#unit-test-2">Unit Test</a></li>
 </ul></li>
 <li><a href="#url-string-transform">URL String transform</a>
@@ -312,8 +316,6 @@
 <ul>
 <li><a href="#flatmap">Flatmap</a></li>
 </ul></li>
-<li><a href="#object-oriented-programming">Object Oriented programming</a></li>
-<li><a href="#case-study">Case Study</a></li>
 </ul>
 </nav>
 
@@ -340,7 +342,7 @@ Example:</p>
 <li><code>isPalindrome('abba')</code> returns <code>true</code>.</li>
 </ul>
 
-<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/palindrome" target="_blank">repl.it</a></p>
+<p>Try out the solution: <a href="https://repl.it/@xiaoyunyang/palindrome" target="_blank">https://repl.it/@xiaoyunyang/palindrome</a></p>
 
 <h3 id="naive-algorithm">Naive Algorithm</h3>
 
@@ -398,9 +400,36 @@ const test = (testCases, fun) =&gt; {
 test(testCases, fun)
 </code></pre>
 
-<h2 id="capitalize-letters-in-a-sentence">Capitalize Letters In A Sentence</h2>
+<h2 id="match-two-strings">Match Two Strings</h2>
+
+<p>Create a function that takes two strings and returns true if the first argument ends with the 2nd argument; otherwise return false .
+Example:</p>
+
+<ul>
+<li>&ldquo;abc&rdquo;, &ldquo;d&rdquo; ➞ false</li>
+<li>&ldquo;samurai&rdquo;, &ldquo;zi&rdquo; ➞ false</li>
+<li>&ldquo;feminine&rdquo;, &ldquo;nine&rdquo; ➞ true</li>
+<li>&ldquo;convention&rdquo;, &ldquo;tio&rdquo; ➞ false</li>
+</ul>
 
 <h3 id="the-algorithm">The Algorithm</h3>
+
+<pre><code class="language-javascript">function checkEnding(str1, str2) {
+  let str1Rev = str1.split('').reverse().join('')
+  let str2Rev = str2.split('').reverse().join('')
+  let regex = new RegExp(str2Rev, 'i')
+  let match = str1Rev.match(regex)
+
+  if (!match) return false
+  return match.index === 0
+}
+</code></pre>
+
+<p>Try out the solution: <a href="https://repl.it/@xiaoyunyang/checkEnding" target="_blank">https://repl.it/@xiaoyunyang/checkEnding</a></p>
+
+<h2 id="capitalize-letters-in-a-sentence">Capitalize Letters In A Sentence</h2>
+
+<h3 id="the-algorithm-1">The Algorithm</h3>
 
 <p>Using reduce vice a map and join gives you a slight performance boost.</p>
 
@@ -419,7 +448,7 @@ const titleCase = (phrase) =&gt; {
 }
 </code></pre>
 
-<h3 id="unit-test-1">Unit Test:</h3>
+<h3 id="unit-test-1">Unit Test</h3>
 
 <p>I wrote a helper assert function and some test cases. This is by no means an exhaustive test.</p>
 
@@ -453,7 +482,7 @@ testResult.filter(d =&gt; d!=='passed').length === 0 ? 'passed all tests' :
 
 <p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/MatchParentheses" target="_blank">repl.it</a></p>
 
-<h3 id="the-algorithm-1">The Algorithm</h3>
+<h3 id="the-algorithm-2">The Algorithm</h3>
 
 <pre><code class="language-javascript">function isBalanced(str, openCnt) {
   if (typeof str !== 'string') return false;
@@ -688,12 +717,7 @@ const flat = (data) =&gt; data.reduce((res, d) =&gt; {
 flat(matrix) //&gt; [&quot;h&quot;, &quot;.&quot;, &quot;e&quot;, &quot;.&quot;, &quot;l&quot;, &quot;.&quot;, &quot;l&quot;, &quot;.&quot;, &quot;o&quot;, &quot;.&quot;]
 
 flat(matrix).join(&quot;&quot;) //&gt; &quot;h.e.l.l.o.&quot;
-
 </code></pre>
-
-<h1 id="object-oriented-programming">Object Oriented programming</h1>
-
-<h1 id="case-study">Case Study</h1>
               
             </div>
           </div>
@@ -720,7 +744,7 @@ flat(matrix).join(&quot;&quot;) //&gt; &quot;h.e.l.l.o.&quot;
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/" data-tooltip="An Interview Study Guide For Overachievers">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/an-career-transition-guide-for-overachievers/" data-tooltip="An Career Transition Guide For Overachievers">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -823,7 +847,7 @@ s.setAttribute('data-timestamp', +new Date());
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/" data-tooltip="An Interview Study Guide For Overachievers">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/an-career-transition-guide-for-overachievers/" data-tooltip="An Career Transition Guide For Overachievers">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -964,6 +988,25 @@ s.setAttribute('data-timestamp', +new Date());
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/">
+                <h3 class="media-heading">So You Wanna Be A Gopher Eh?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Go is becoming pretty mainstream. Every job posting I&rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. Here&rsquo;s a guide to help you hit the ground running with Go.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/">
                 <h3 class="media-heading">Getting Started With Startup Seed Funding</h3>
               </a>
@@ -1038,8 +1081,8 @@ s.setAttribute('data-timestamp', +new Date());
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/">
-                <h3 class="media-heading">An Interview Study Guide For Overachievers</h3>
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/an-career-transition-guide-for-overachievers/">
+                <h3 class="media-heading">An Career Transition Guide For Overachievers</h3>
               </a>
               <span class="media-meta">
                 <span class="media-date text-small">
@@ -1128,25 +1171,6 @@ s.setAttribute('data-timestamp', +new Date());
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/">
-                <h3 class="media-heading">Using Hugo To Build A Personal Brand Website</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Apr 4, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>It&rsquo;s not always clear why we need need a personal website. But here&rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like <a href="https://gohugo.io/" target="_blank">Hugo</a>.</p>
-
-<p></p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -1154,7 +1178,7 @@ s.setAttribute('data-timestamp', +new Date());
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         18 posts found
+         19 posts found
       </p>
     </div>
   </div>

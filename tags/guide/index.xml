@@ -8,10 +8,43 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Mon, 23 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 06 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/tags/guide/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>So You Wanna Be A Gopher Eh?</title>
+      <link>http://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/</link>
+      <pubDate>Sun, 06 May 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/</guid>
+      <description>&lt;p&gt;Go is becoming pretty mainstream. Every job posting I&amp;rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. Here&amp;rsquo;s a guide to help you hit the ground running with Go.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Getting Started With Startup Seed Funding</title>
+      <link>http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</link>
+      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</guid>
+      <description>&lt;p&gt;This documents my journey applying to the National Science Foundation (NSF) Seed Fund for my startup, &lt;a href=&#34;http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/&#34;&gt;LooseLeaf&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Getting Started With The SAM Application</title>
+      <link>http://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/</link>
+      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/</guid>
+      <description>&lt;p&gt;The System for Award Management (SAM) is the primary registrant database for entities to do business with the U.S. Government. You must register with SAM before &lt;a href=&#34;http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/&#34;&gt;applying for a seed fund from the government&lt;/a&gt; for your startup.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Principles To Code By: How To Solve Problems With Code</title>
@@ -23,11 +56,11 @@
     </item>
     
     <item>
-      <title>An Interview Study Guide For Overachievers</title>
-      <link>http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/</link>
+      <title>An Career Transition Guide For Overachievers</title>
+      <link>http://xiaoyunyang.github.io/post/an-career-transition-guide-for-overachievers/</link>
       <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/</guid>
+      <guid>http://xiaoyunyang.github.io/post/an-career-transition-guide-for-overachievers/</guid>
       <description>&lt;p&gt;Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&amp;rsquo;t have all the qualifications.&lt;/p&gt;</description>
     </item>
     

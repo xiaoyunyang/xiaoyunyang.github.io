@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/</loc>
+    <lastmod>2018-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</loc>
     <lastmod>2018-05-05T00:00:00+00:00</lastmod>
   </url>
@@ -23,7 +28,7 @@
   </url>
   
   <url>
-    <loc>http://xiaoyunyang.github.io/post/an-interview-study-guide-for-overachievers/</loc>
+    <loc>http://xiaoyunyang.github.io/post/an-career-transition-guide-for-overachievers/</loc>
     <lastmod>2018-04-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -103,19 +108,19 @@
   
   <url>
     <loc>http://xiaoyunyang.github.io/categories/blog/</loc>
-    <lastmod>2018-05-05T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xiaoyunyang.github.io/tags/career/</loc>
-    <lastmod>2018-05-05T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xiaoyunyang.github.io/categories/</loc>
-    <lastmod>2018-05-05T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -131,8 +136,20 @@
   </url>
   
   <url>
+    <loc>http://xiaoyunyang.github.io/tags/fundraising/</loc>
+    <lastmod>2018-05-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://xiaoyunyang.github.io/tags/go/</loc>
+    <lastmod>2018-05-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://xiaoyunyang.github.io/tags/guide/</loc>
-    <lastmod>2018-04-23T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -149,7 +166,7 @@
   </url>
   
   <url>
-    <loc>http://xiaoyunyang.github.io/tags/mobileapp/</loc>
+    <loc>http://xiaoyunyang.github.io/tags/mobile-app/</loc>
     <lastmod>2018-03-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -162,19 +179,13 @@
   
   <url>
     <loc>http://xiaoyunyang.github.io/post/</loc>
-    <lastmod>2018-05-05T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xiaoyunyang.github.io/tags/productivity/</loc>
     <lastmod>2018-04-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://xiaoyunyang.github.io/tags/programming/</loc>
-    <lastmod>2018-04-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -203,19 +214,19 @@
   
   <url>
     <loc>http://xiaoyunyang.github.io/tags/</loc>
-    <lastmod>2018-05-05T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://xiaoyunyang.github.io/tags/webapp/</loc>
+    <loc>http://xiaoyunyang.github.io/tags/web-app/</loc>
     <lastmod>2018-04-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xiaoyunyang.github.io/</loc>
-    <lastmod>2018-05-05T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

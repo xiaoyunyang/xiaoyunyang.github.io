@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on Xiaoyun Yang</title>
+    <link>http://xiaoyunyang.github.io/tags/go/</link>
+    <description>Recent content in Go on Xiaoyun Yang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
+    <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
+    <lastBuildDate>Sun, 06 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://xiaoyunyang.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>So You Wanna Be A Gopher Eh?</title>
+      <link>http://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/</link>
+      <pubDate>Sun, 06 May 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/</guid>
+      <description>&lt;p&gt;Go is becoming pretty mainstream. Every job posting I&amp;rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. Here&amp;rsquo;s a guide to help you hit the ground running with Go.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
