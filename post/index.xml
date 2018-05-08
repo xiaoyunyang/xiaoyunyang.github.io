@@ -8,10 +8,21 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Sun, 06 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Coding Interview Prep Plan</title>
+      <link>http://xiaoyunyang.github.io/post/coding-interview-prep-plan/</link>
+      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/coding-interview-prep-plan/</guid>
+      <description>&lt;p&gt;Being great at coding interviews doesn&amp;rsquo;t necessarily make you a great developer and being a great developer doesn&amp;rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>So You Wanna Be A Gopher Eh?</title>
