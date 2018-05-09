@@ -281,11 +281,10 @@
 <h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
 <ul>
 <li><a href="#advice">Advice</a></li>
-<li><a href="#coding">Coding</a>
-<ul>
-<li><a href="#cracking-the-coding-interview">Cracking The Coding interview</a></li>
-</ul></li>
-<li><a href="#whiteboarding">Whiteboarding</a></li>
+<li><a href="#coding">Coding</a></li>
+<li><a href="#whiteboarding-onsite">Whiteboarding (Onsite)</a></li>
+<li><a href="#behavioral-interview">Behavioral Interview</a></li>
+<li><a href="#system-design">System Design</a></li>
 </ul>
 </nav>
 
@@ -308,9 +307,9 @@
 <p>The advice I got for interviewing at Facebook and Google include:</p>
 
 <ul>
-<li><p>Know your Computer Science 101 really well.</p></li>
+<li><p>Know your Computer Science 101 really well. The Facebook recruiter told me to study from <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.471.4772&amp;rep=rep1&amp;type=pdf" target="_blank">The Algorithms Design Manual</a>. This book has interview problems and programming challenges.</p></li>
 
-<li><p>Interviews are very difficult and require more preparation than even a difficult computer science exam at a top university. You don&rsquo;t get partial credits.</p></li>
+<li><p>Interviews are very difficult and require more preparation than even a difficult computer science exam at a top university. You don&rsquo;t get partial credits. If you don&rsquo;t provide the correct solution at any stage of the interview, they will decline you immediately.</p></li>
 
 <li><p>There&rsquo;s a phone screen involving coding with a time limit, usually 45 minutes. If your code doesn&rsquo;t work or doesn&rsquo;t handle edge cases, you fail to meet their minimum standard and you won&rsquo;t go on to the onsite interview.</p></li>
 
@@ -325,6 +324,8 @@ but they have the run code function turned off. <em>No reference material is all
 
 <li><p>Coding challenges are an additional step that they add sometimes before you get the onsite. Coding challenges can be a take home project, an online quiz, or an online code exercise. Nobody is watching you and you usually have a week to do it. Though once you start you may be timed.</p></li>
 
+<li><p>For the take-home project, sometimes they may ask you to submit to github. Make sure to adhere to good git practices, such as having a .gitignore for node_modules. A friend who did a take-home project got docked for pushing node_modules along with his project onto the github repo.</p></li>
+
 <li><p>Onsite coding is like the phone interview but on a whiteboard. You need to write the code that can compile on the whiteboard.</p>
 
 <blockquote>
@@ -337,24 +338,66 @@ but they have the run code function turned off. <em>No reference material is all
 
 <li><p>For interview prep, spend half your time on system design and half on coding.</p></li>
 
-<li><p>Practice whiteboard problem from Cracking the Coding Interview.</p>
+<li><p>Practice whiteboard problem from <a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?ie=UTF8&amp;qid=1525587700&amp;sr=8-1&amp;keywords=cracking+the+coding+interview" target="_blank">Cracking the Coding Interview</a> (CTCI).</p>
 
 <blockquote>
 <p>If you don&rsquo;t have a copy of CTCI get one. I haven&rsquo;t really tried online coding challenges. I mostly practice on a white board with another engineer giving me a question from the book. Practice Practice Practice.</p>
 </blockquote></li>
+
+<li><p>For the phone interview, make sure to practice on <a href="https://coderpad.io/" target="_blank">coderpad.io</a>. A bunch of companies use it. It looks like repl, leetcode, and coderbyte. It doesn&rsquo;t give you autocompletion like an IDE will, but lets you execute the code that you run exactly as you write it.</p></li>
 </ul>
 
 <h1 id="coding">Coding</h1>
 
-<h2 id="cracking-the-coding-interview">Cracking The Coding interview</h2>
+<p>Steps to prepare for the coding questions:</p>
+
+<ol>
+<li>Do all problems from <a href="https://leetcode.com/problemset/all/" target="_blank">leetcode</a>. Need to be able to solve all problems with no reference material and write code that runs and passes the test the first time you submit.<br />
 
 <ul>
+<li>For easy questions, need to be able to do them in less than 15 minutes. For medium problems, need to do them within 20 minutes. For hard problems, need to do them within 45 minutes.</li>
+<li>Review the best solutions for each problem on leetcode.</li>
+</ul></li>
+<li>Extra practice:
+
+<ul>
+<li><a href="https://edabit.com/explore" target="_blank">Edabit</a> contains a bunch of coding challenges.</li>
+<li><a href="https://coderbyte.com/" target="_blank">CoderByte</a> provides a collection of coding challenges in various languages.</li>
+</ul></li>
+<li>Best answers for difficult problems:
+
+<ul>
+<li><a href="https://careercup.com/page" target="_blank">CareerCup</a> has a bunch of coding questions.</li>
+</ul></li>
+</ol>
+
+<h1 id="whiteboarding-onsite">Whiteboarding (Onsite)</h1>
+
+<ol>
+<li><a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?ie=UTF8&amp;qid=1525587700&amp;sr=8-1&amp;keywords=cracking+the+coding+interview" target="_blank">Cracking the Coding Interview</a>
+
+<ul>
+<li>The book has solutions. They also have a github repo with solutions coded up in different languages.</li>
 <li><a href="https://github.com/careercup/CtCI-6th-Edition-JavaScript/tree/ec307944f9c824376ea36bf9d730b0b709b9a923" target="_blank">JavaScript Solutions</a> to chapters 1-10</li>
-</ul>
+</ul></li>
+<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.471.4772&amp;rep=rep1&amp;type=pdf" target="_blank">The Algorithms Design Manual</a></li>
+<li>Mock Interview: <a href="https://interviewing.io/" target="_blank">https://interviewing.io/</a>. They do mock interviews with real interviewers and if you do really well they&rsquo;ll invite you to do real interviews.</li>
+</ol>
 
-<h1 id="whiteboarding">Whiteboarding</h1>
+<h1 id="behavioral-interview">Behavioral Interview</h1>
 
-<p>Onsite interviews consist of solving problems on a whiteboard.</p>
+<p>I started reading that cracking  the coding interview book and preparing for the interviews. One of the earlier chapters talk about behavior question you might expect, like <strong>Why Do You Want to Work Here?</strong> I composed a response for why I want to work at Facebook. In composing the response, I discovered what I’m really long for in a job: (1) inclusivity and cultivating ecosystems, (2) empowering regular people and developers with open source tools, (3) company is entrepreneurial and always taking risks. Facebook has been taking risks for years. Pushing limits all the time. People got over it and Facebook has more users than ever.</p>
+
+<p>Why do I want to work at Facebook? I want to help people. Regular people, users, consumers, and creators all benefit from Facebook’s products. Facebook empowers developers and people with ideas to implement and market their ideas. Inclusivity and ecosystem building are what Facebook is about they are very important to me. These goals give deeper meaning to hard work and I’m really motivated to work hard to achieve these goals. As an entrepreneur, I’ve benefited so much from Facebook’s software products like React and open auth, and Facebook’s platform lets me create a brand for a company that I didn’t have a website for. In fact, I’ve seen lots of freelancers and online personalities use facebook’s pages in lieu of having to build a website of their own. I’ve also benefited greatly from Facebook’s ad platform. I saw a coworking space as and that prompted me to investigate coworking spaces. I ended up signing up for one and that significantly boosted my productivity and General well being. I’ve also used Facebook to reach out to long lost friends and people I’ve met once at college, asked them for advice about things like how to get a job at Facebook.</p>
+
+<p>Facebook is the only big company I want to work at (maybe Google also) because it&rsquo;s kinda startupy. I would like to join a startup or work at my own startup if I get funding. Facebook is pretty chill about people leaving to start companies and eventually coming back. Many ex-Facebookers started successful companies like Quora and Asana.</p>
+
+<h1 id="system-design">System Design</h1>
+
+<ol>
+<li><a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?ie=UTF8&amp;qid=1525587700&amp;sr=8-1&amp;keywords=cracking+the+coding+interview" target="_blank">Cracking the Coding Interview</a></li>
+<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.471.4772&amp;rep=rep1&amp;type=pdf" target="_blank">The Algorithms Design Manual</a></li>
+</ol>
               
             </div>
           </div>
