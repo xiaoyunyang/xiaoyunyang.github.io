@@ -7,6 +7,8 @@ tags:
   - JavaScript
   - Web App
   - Open Source
+  - React
+  - Node
 thumbnailImagePosition: left
 thumbnailImage: /post/images/theFuture.png
 ---

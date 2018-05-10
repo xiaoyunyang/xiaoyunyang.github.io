@@ -7,6 +7,7 @@ tags:
   - Mobile App
   - JavaScript
   - Open Source
+  - React Native
 thumbnailImagePosition: left
 thumbnailImage: /post/images/projects/japan-app-icon.png
 ---

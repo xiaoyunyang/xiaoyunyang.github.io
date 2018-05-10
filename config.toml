@@ -41,7 +41,7 @@ canonifyurls = true
   # gravatarEmail = "xiaoyun@looseleafapp.com"
   # Your profile picture
   # Overwritten by your gravatar image if `author.gravatarEmail` is filled
-  picture = "https://avatars3.githubusercontent.com/u/5825343?s=400&u=57ea29978721c8be7b830ce02f304e67f82cf34f&v=4"
+  picture = "images/xyang.png"
   # Your Twitter username without the @. E.g : thibaudlepretre
   # twitter = "thibaudlepretre"
   # Your google plus profile id. E.g : +ThibaudLepretre or 114625208755123718311

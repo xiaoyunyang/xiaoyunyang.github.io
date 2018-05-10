@@ -35,7 +35,7 @@ Coffeeshops address the problem of a loneliness and providing a separate workspa
 
 **Expensive**: I live in northwest part of Washington DC, which has a vibrant Coffee house scene. People go to coffeeshops such as [Tryst](https://www.yelp.com/biz/tryst-washington), [The Coup](https://www.yelp.com/biz/the-coup-calgary), and [Potter's House](https://www.yelp.com/biz/potters-house-washington), which open until late in the evening, offer people with computers coffee, food, and a comfortable place to work. I went to coffeeshops a lot a one point - almost every day. The bills ran up to $800 a month at one point. While I still visit these coffeeshops sometimes, I can't afford to do it everyday.
 
-{{< image classes="fancybox fig-50" src="/post/images/tryst.png"
+{{< image classes="fancybox fig-50" src="/post/images/life/tryst.png"
 thumbnail="/post/images/life/tryst.png" title="Tryst in Adams Morgan">}}
 {{< image classes="fancybox fig-50 clear" src="/post/images/life/the-coup.png" thumbnail="/post/images/life/the-coup.png" title="The Coup in Columbia Heights">}}
 

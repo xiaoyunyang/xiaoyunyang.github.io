@@ -6,6 +6,8 @@ categories:
 tags:
   - Web App
   - Entrepreneurship
+  - React
+  - Node
 thumbnailImagePosition: left
 thumbnailImage: /post/images/looseleaf/logo.png
 ---

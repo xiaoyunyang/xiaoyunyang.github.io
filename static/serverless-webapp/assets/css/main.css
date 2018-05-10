@@ -614,3 +614,10 @@ footer.page-footer {
     height: 31px;
     background-position:right top;
 }
+
+.user-view a {
+  color: #f7f7f7;
+}
+.user-view a:hover {
+  color: #fff;
+}

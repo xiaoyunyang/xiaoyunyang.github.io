@@ -185,6 +185,8 @@ There are a few concerns with using a bootcamp to close the skills and experienc
 
 We help career-changers try out the careers they want to enter by working on projects for non-profits, entrepreneurs, and intrapreneurs for free. In exchange, they get feedback from their clients and get a feel for what it's like to work as a developer, designer, or writer.
 
+When you work for free, you're not working for exposure. Freelancers [work for gratitude, shout-outs, and opportunities that this would lead to something else](https://www.youtube.com/watch?v=MeVj-ASeGLs). It's often your initiative and may materialize to something down the line.
+
 ## 3. Candidate Sourcing
 
 The last cornerstone of LooseLeaf's product is the candidate sourcing, which is a combination of the Recruitment Candidate Relationship Manage System (CRM) and Application Tracking System (ATS).
