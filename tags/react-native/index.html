@@ -1,0 +1,588 @@
+
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.38.1 with theme Tranquilpeak 0.4.3-BETA">
+    <title>React Native</title>
+    <meta name="author" content="Xiaoyun Yang">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="http://xiaoyunyang.github.io/favicon-96x96.png">
+    
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="http://xiaoyunyang.github.io/tags/react-native/index.xml">
+    
+
+    
+    <meta name="description" content="Hugo tranquilpeak theme demo">
+    <meta property="og:description" content="Hugo tranquilpeak theme demo">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="React Native">
+    <meta property="og:url" content="http://xiaoyunyang.github.io/tags/react-native/">
+    <meta property="og:site_name" content="Xiaoyun Yang">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Xiaoyun Yang">
+    <meta name="twitter:description" content="Hugo tranquilpeak theme demo">
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      <meta property="og:image" content="http://xiaoyunyang.github.io/images/xyang.png">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="http://xiaoyunyang.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="http://xiaoyunyang.github.io/css/custom.css">
+      
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="1">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="http://xiaoyunyang.github.io/">Xiaoyun Yang</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="http://xiaoyunyang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="http://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="1">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="http://xiaoyunyang.github.io/#about">
+          <img class="sidebar-profile-picture" src="http://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
+        
+          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/categories/projects">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-code"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/categories/blog">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="http://xiaoyunyang.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
+      
+      <span class="sidebar-button-desc">Medium</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">Linkedin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
+      
+      <span class="sidebar-button-desc">AngelList</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+     <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
+     
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Email Me</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+        
+
+      
+      <div id="main" data-behavior="1"
+        class="
+               hasCoverMetaIn
+               ">
+        
+          <section class="postShorten-group main-content-wrap">
+            
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+          Building A React Native Travel App
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-03-30T00:00:00Z">
+        
+  March 30, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://xiaoyunyang.github.io/categories/projects">projects</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.</p>
+      <p>
+        <a href="http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+    <a href="http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+      <div class="postShorten-thumbnailimg">
+        <img alt="" itemprop="image" src="http://xiaoyunyang.github.io/post/images/projects/japan-app-icon.png"/>
+      </div>
+    </a>
+  
+</article>
+
+            
+            
+
+          </section>
+        
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Xiaoyun Yang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="http://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Xiaoyun Yang</h4>
+    
+      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Washington DC
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/serverless-web-app-for-work/">
+                <h3 class="media-heading">Serverless Web App For Work</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/coding-interview-prep-plan/">
+                <h3 class="media-heading">Coding Interview Prep Plan</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Being great at coding interviews doesn&rsquo;t necessarily make you a great developer and being a great developer doesn&rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/">
+                <h3 class="media-heading">So You Wanna Be A Gopher Eh?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Go is becoming pretty mainstream. Every job posting I&rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. Here&rsquo;s a guide to help you hit the ground running with Go.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/">
+                <h3 class="media-heading">Getting Started With Startup Seed Funding</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This documents my journey applying to the National Science Foundation (NSF) Seed Fund for my startup, <a href="http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">LooseLeaf</a>.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/">
+                <h3 class="media-heading">Getting Started With The SAM Application</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>The System for Award Management (SAM) is the primary registrant database for entities to do business with the U.S. Government. You must register with SAM before <a href="http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/">applying for a seed fund from the government</a> for your startup.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/">
+                <h3 class="media-heading">How To Do Object Oriented Programming The Right Way</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
+                <h3 class="media-heading">Principles To Code By: How To Solve Problems With Code</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>What I love most about programming is the problem solving. I don&rsquo;t believe anyone is born with problem solving skills. It&rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/an-career-transition-guide-for-overachievers/">
+                <h3 class="media-heading">An Career Transition Guide For Overachievers</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&rsquo;t have all the qualifications.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/problem-solving-using-javascript/">
+                <h3 class="media-heading">Problem Solving Using JavaScript</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">
+                <h3 class="media-heading">Creating LooseLeaf: A Platform To Support The Future Of Work</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p><a href="http://looseleafapp.com" target="_blank">LooseLeaf</a> is a passion project and a startup I&rsquo;ve been building while serving a 5 year commitment in the military. I&rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         21 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('http://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="http://xiaoyunyang.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
