@@ -49,5 +49,5 @@ I got a membership to a local co-working space called [Cove](https://cove.is/). 
 
 {{< image classes="fancybox fig-50" src="/post/images/life/cove1.png"
 thumbnail="/post/images/life/cove1.png" title="Cove on 14th Street">}}
-{{< image classes="fancybox fig-50" src="/post/images/life/cove2.png"
+{{< image classes="fancybox fig-50 clear" src="/post/images/life/cove2.png"
 thumbnail="/post/images/life/cove2.png" title="Cove at Dupont Circle">}}

@@ -91,7 +91,7 @@ You fill out a [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfyZt4vfPc
 
 **3. Describe the technology/innovation (1-2 paragraphs or up to 500 words)**
 
-**4. Describe the technical challenges to overcome (1-2 paragraphs or up to 500 words)**
+**4. Describe the technical challenges to overcome (1-2 paragraphs or up to 500 words)**x
 
 **5. Describe the competition (1-2 paragraphs or up to 500 words)**
 
@@ -103,6 +103,9 @@ You fill out a [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfyZt4vfPc
 
 
 # LooseLeaf Product
+
+{{< image classes="fancybox fig-100 clear" src="/post/images/looseleaf/product-flowchart.png"
+thumbnail="/post/images/looseleaf/product-flowchart.png" title="LooseLeaf Product Flowchart">}}
 
 ## 1. Job Insights
 
@@ -218,6 +221,11 @@ There are a [whole plethora of recruiting websites](https://www.betterteam.com/t
 * [State of Recruitment Marketing 2018](https://blog.beamery.com/recruitment-marketing-2018-key-takeaways/)
 
 # Market Opportunity
+
+## The Problem
+
+The [skills gap](https://www.youtube.com/watch?v=gTLcM4iZSTo) is a major contributor of unemployment and underemployment. Low skilled work opportunities are disappearing, being automated away.
+
 Some data which indicate market opportunity in the career pivot and candidate relationship management industry:
 
 * Google announced its new project -  [Google for Jobs](https://www.blog.google/products/search/connecting-more-americans-jobs/) - which addresses the concern that many job seekers feel like they can’t find the job they’re looking for or apply to roles that aren’t the right fit. At the same time [46 percent of U.S. employers face talent shortages and have issues filling open positions with the right candidate](https://www.manpowergroup.us/campaigns/talent-shortage/).
