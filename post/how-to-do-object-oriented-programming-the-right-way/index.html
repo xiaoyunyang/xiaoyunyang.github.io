@@ -277,13 +277,8 @@
 <h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
 <ul>
 <li><a href="#primer-what-is-an-object">Primer: What is an Object?</a></li>
-<li><a href="#classical-inheritance">Classical Inheritance</a>
-<ul>
-<li>
-<ul>
+<li><a href="#classical-inheritance">Classical Inheritance</a></li>
 <li><a href="#prototypal-inheritance">Prototypal Inheritance</a></li>
-</ul></li>
-</ul></li>
 <li><a href="#a-third-way-no-oop">A Third way: No OOP</a>
 <ul>
 <li><a href="#inheritance">Inheritance</a></li>
@@ -309,12 +304,6 @@
 <p>Consider the following example:</p>
 
 <pre><code class="language-javascript">class Person {
-
-  this = {
-    firstName:  '',
-    lastName: ''
-  }
-
   constructor(firstName, lastName) {
     this.firstName = firstName
     this.lastName = lastName
@@ -325,7 +314,7 @@
 }
 </code></pre>
 
-<p>The <code>class</code> key word from ES6 is used to create the <code>Person</code> class with properties stored in <code>this</code> called <code>firstName</code> and <code>lastName</code>, which are set in the <code>constructor</code> and accessed in the <code>getFullName</code> function.</p>
+<p>The <code>class</code> keyword from ES6 is used to create the <code>Person</code> class with properties stored in <code>this</code> called <code>firstName</code> and <code>lastName</code>, which are set in the <code>constructor</code> and accessed in the <code>getFullName</code> method.</p>
 
 <p>We instantiate an object called <code>person</code> from the <code>Person</code> class with the <code>new</code> key word as follows:</p>
 
@@ -342,10 +331,6 @@ person.lastName //&gt; &quot;Abramov&quot;
 <p>To extend a class, we can create another class. Let&rsquo;s extend the <code>Person</code> class to make a <code>User</code>. A <code>User</code> is a Person with an email and a password.</p>
 
 <pre><code class="language-javascript">class User extends Person {
-  this = {
-    email: '',
-    password: ''
-  }
   constructor(firstName, lastName, email, password) {
     super(firstName, lastName)
     this.email = email
@@ -393,9 +378,9 @@ person.lastName //&gt; &quot;Abramov&quot;
 
 <p>When many derived classes with wildly different use cases are created from the same base class, any seemingly benign change to the base class could cause the derived classes to malfunction. At the cost of increased complexity to your code and the entire software creation process, you could try to mitigate side effects by creating a <a href="https://medium.com/the-everyday-developer/creating-an-ioc-container-with-dependency-injection-in-javascript-9db228d34060" target="_blank">dependency injection container</a> to provide an uniform service instantiation interface by abstracting the instantiation details. Is there a better way?</p>
 
-<h3 id="prototypal-inheritance">Prototypal Inheritance</h3>
+<h1 id="prototypal-inheritance">Prototypal Inheritance</h1>
 
-<p>Prototypal inheritance do not use classes at all. Instead, objects are created from other objects. We start with a <em>generalized object</em> we called a prototype. We can use the prototype to create other by cloning it or extend it with custom features.</p>
+<p>Prototypal inheritance does not use classes at all. Instead, objects are created from other objects. We start with a <em>generalized object</em> we called a prototype. We can use the prototype to create other objects by cloning it or extend it with custom features.</p>
 
 <p>Although in the previous section, we showed how to use the ES6 <code>class</code>, <a href="https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee" target="_blank"><strong>JavaScript classes are not classy</strong></a>.</p>
 
@@ -421,7 +406,7 @@ The simple types of JavaScript are numbers, strings, booleans (true and false), 
 
 <p>Let&rsquo;s look at one of these objects that JavaScript gives us for free out-of-the-box: the <code>Array</code>.</p>
 
-<p>Array instances inherit from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype" target="_blank">Array.prototype</a> which includes many methods which are categorized as accessors (do not modify the original array), mutators (modifies the original array), and iterators (applies the function passed in as an argument onto every element in the array).</p>
+<p>Array instances inherit from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype" target="_blank">Array.prototype</a> which includes many methods which are categorized as accessors (do not modify the original array), mutators (modifies the original array), and iterators (applies the function passed in as an argument onto every element in the array to create a new array).</p>
 
 <p><strong>Accessors:</strong></p>
 
@@ -494,14 +479,14 @@ arr.push(4)
 arr.push(5)
 </code></pre>
 
-<p>A factory function is any function which is not a class or constructor that returns a (presumably new) object. In JavaScript, any function can return an object. When it does so without the <code>new</code> keyword, it’s a factory function.</p>
+<p>A factory function is any function that takes a few arguments and returns a new object composed of those arguments. In JavaScript, any function can return an object. When it does so without the <code>new</code> keyword, it’s a factory function.</p>
 
 <p>In the code above, we created an object called <code>arr</code> using <code>Object.create</code> and pushed 5 elements into the array. <code>arr</code> comes with all the functions inherited from the <code>Array</code> prototype such as <code>map</code>, <code>pop</code>, <code>slice</code>, and even <code>partition</code> that we just created for the <code>Array</code> prototype. Let&rsquo;s add some more functionality to the <code>arr</code> object:</p>
 
 <pre><code class="language-javascript">arr.hello = () =&gt; &quot;hello&quot;
 </code></pre>
 
-<p><strong>Quiz time!</strong> What&rsquo;s going to be returned when we run the following code?</p>
+<p><strong>Pop Quiz!</strong> What&rsquo;s going to be returned when we run the following code?</p>
 
 <pre><code class="language-javascript">arr.partition(e =&gt; e &lt; 3) // #1
 
@@ -716,7 +701,7 @@ user.getGender() //&gt; male
 }
 </code></pre>
 
-<p>We can add another funding to the <code>Maybe</code> prototype which gets the data or returns a message if there&rsquo;s an error with the data.</p>
+<p>We can add another function to the <code>Maybe</code> prototype which gets the data or returns a message if there&rsquo;s an error with the data.</p>
 
 <pre><code class="language-javascript">Maybe.prototype.getOrElse = function (msg) {
   if(this.status) return this.data
@@ -785,13 +770,13 @@ let d = strInvalid.apply(split).getOrElse('TypeError :(')
 }
 </code></pre>
 
-<p>What we just did is a type of a <a href="https://www.wikiwand.com/en/Monad_(functional_programming)#/overview" target="_blank">monad</a> (albeit I didn&rsquo;t implement the <code>Maybe</code> to follow all the <a href="https://miklos-martin.github.io/learn/fp/2016/03/10/monad-laws-for-regular-developers.html" target="_blank">monad laws</a>). The <code>Maybe</code> monad is a wrapper that&rsquo;s used when a value can be absent or some validation can fail and you don&rsquo;t care about the exact cause. Typically in data retrieval and validation logic. Sometimes, it&rsquo;s called <code>Try</code>, which handles failure in validation or failure in applying a function. We handled the failure in type validation by printing to a string, but we can easily revise the <code>getOrElse</code> function to call another function which handles the validation error.</p>
+<p>What we just did is a type of a <a href="https://www.wikiwand.com/en/Monad_(functional_programming)#/overview" target="_blank">monad</a> (albeit I didn&rsquo;t implement <code>Maybe</code>  to follow all the <a href="https://miklos-martin.github.io/learn/fp/2016/03/10/monad-laws-for-regular-developers.html" target="_blank">monad laws</a>). The <code>Maybe</code> monad is a wrapper that&rsquo;s used when a value can be absent or some validation can fail and you don&rsquo;t care about the exact cause. Typically this can occur during data retrieval and validation. Maybe handles failure in validation or failure in applying a function similar to the <code>try-catch</code> you&rsquo;ve likely seen before. In <code>Maybe</code>, we are handling the failure in type validation by printing to a string, but we can easily revise the <code>getOrElse</code> function to call another function which handles the validation error.</p>
 
 <p>Some programming languages like Haskell <a href="https://functional.works-hub.com/learn/demystifying-the-monad-in-scala-cf414" target="_blank">come with a built-in monad type</a> but in JavaScript, you have to <a href="https://moduscreate.com/blog/monad-pattern-for-functional-programming-in-es6/" target="_blank">roll your own</a>. ES6 introduced <code>Promise</code>, which is a monad for dealing with latency. Sometimes you need data that could take a while to retrieve. <code>Promise</code> lets you write code that appears synchronous while delaying operation on the data until the data becomes available. Using <code>Promise</code> is a cleaner way of asynchronous programming than using callback functions, which could lead to a phenomenon called the callback hell.</p>
 
 <h2 id="composition">Composition</h2>
 
-<p>As alluded to earlier, there&rsquo;s something much simpler than class/prototypes which can be easily reused, encapsulates internal states, performs a given operation on any type of data, and be polymorphic - it&rsquo;s called a function.</p>
+<p>As alluded to earlier, there&rsquo;s something much simpler than class/prototypes which can be easily reused, encapsulates internal states, performs a given operation on any type of data, and be polymorphic - it&rsquo;s called functional composition.</p>
 
 <p>JavaScript easily lets us bundle related functions and data together in an object:</p>
 
@@ -808,7 +793,7 @@ let d = strInvalid.apply(split).getOrElse('TypeError :(')
 
 <pre><code class="language-javascript">let person = Object.create(Person)
 
-person.getFullName() //&gt; &quot;first last&quot;
+person.getFullName() //&gt; &quot;firstName lastName&quot;
 
 // Assign internal state variables
 person.firstName = 'Dan'
