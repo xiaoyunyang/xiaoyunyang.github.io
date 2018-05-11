@@ -785,6 +785,10 @@ let d = strInvalid.apply(split).getOrElse('TypeError :(')
 }
 </code></pre>
 
+<p>What we just did is a type of a <a href="https://www.wikiwand.com/en/Monad_(functional_programming)#/overview" target="_blank">monad</a> (albeit I didn&rsquo;t implement the <code>Maybe</code> to follow all the <a href="https://miklos-martin.github.io/learn/fp/2016/03/10/monad-laws-for-regular-developers.html" target="_blank">monad laws</a>). The <code>Maybe</code> monad is a wrapper that&rsquo;s used when a value can be absent or some validation can fail and you don&rsquo;t care about the exact cause. Typically in data retrieval and validation logic. Sometimes, it&rsquo;s called <code>Try</code>, which handles failure in validation or failure in applying a function. We handled the failure in type validation by printing to a string, but we can easily revise the <code>getOrElse</code> function to call another function which handles the validation error.</p>
+
+<p>Some programming languages like Haskell <a href="https://functional.works-hub.com/learn/demystifying-the-monad-in-scala-cf414" target="_blank">come with a built-in monad type</a> but in JavaScript, you have to <a href="https://moduscreate.com/blog/monad-pattern-for-functional-programming-in-es6/" target="_blank">roll your own</a>. ES6 introduced <code>Promise</code>, which is a monad for dealing with latency. Sometimes you need data that could take a while to retrieve. <code>Promise</code> lets you write code that appears synchronous while delaying operation on the data until the data becomes available. Using <code>Promise</code> is a cleaner way of asynchronous programming than using callback functions, which could lead to a phenomenon called the callback hell.</p>
+
 <h2 id="composition">Composition</h2>
 
 <p>As alluded to earlier, there&rsquo;s something much simpler than class/prototypes which can be easily reused, encapsulates internal states, performs a given operation on any type of data, and be polymorphic - it&rsquo;s called a function.</p>
@@ -853,13 +857,33 @@ arr //&gt; [1,2]
 <p>For example, we define a <code>Customer</code> object with data and functions. When our <code>User</code> converts, we want to add the <code>Customer</code> stuff our user instance.</p>
 
 <pre><code class="language-javascript">const Customer = {
+  plan: 'trial'
+}
+Customer.setPremium = function() {
+  this.plan = 'premium'
+}
+</code></pre>
 
+<p>Now we can augment user object with an Customer methods and fields.</p>
+
+<pre><code class="language-javascript">user.customer = Customer
+user.customer.setPremium()
+</code></pre>
+
+<p>After running the above two lines of codes, this becomes our <code>user</code> object:</p>
+
+<pre><code>{
+  firstName: 'Dan',
+  lastName: 'Abramov',
+  email: 'dan@abramov.com',
+  password: 'iLuvES6',
+  customer: { plan: 'premium', setPremium: [Function] }
 }
 </code></pre>
 
 <p>When we want to supply a object with some additional capability, higher order objects cover every use case.</p>
 
-<p>Favor composition over class inheritance because  composition is <a href="https://medium.com/javascript-scene/3-different-kinds-of-prototypal-inheritance-es6-edition-32d777fa16c9" target="_blank">simpler, more expressive, and more flexible</a>:</p>
+<p>As shown in the example above, we should favor composition over class inheritance because  composition is <a href="https://medium.com/javascript-scene/3-different-kinds-of-prototypal-inheritance-es6-edition-32d777fa16c9" target="_blank">simpler, more expressive, and more flexible</a>:</p>
 
 <blockquote>
 <p>Classical inheritance creates <strong>is-a</strong> relationships with restrictive taxonomies, all of which are eventually wrong for new use-cases. But it turns out, we usually employ inheritance for <strong>has-a</strong>, <strong>uses-a</strong>, or <strong>can-do</strong> relationships.</p>
