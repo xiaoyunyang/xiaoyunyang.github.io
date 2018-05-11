@@ -274,6 +274,28 @@
 
 <p></p>
 
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#primer-what-is-an-object">Primer: What is an Object?</a></li>
+<li><a href="#classical-inheritance">Classical Inheritance</a>
+<ul>
+<li>
+<ul>
+<li><a href="#prototypal-inheritance">Prototypal Inheritance</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#a-third-way-no-oop">A Third way: No OOP</a>
+<ul>
+<li><a href="#inheritance">Inheritance</a></li>
+<li><a href="#encapsulation">Encapsulation</a></li>
+<li><a href="#polymorphism">Polymorphism</a></li>
+<li><a href="#composition">Composition</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+</nav>
+
 <h1 id="primer-what-is-an-object">Primer: What is an Object?</h1>
 
 <p>OOP is concerned with composing objects that manages simple tasks to create complex computer programs. An object consists of private mutable states and functions (called methods) that operate on these mutable states. Objects have a notion of self and reused behavior inherited from a blueprint (classical inheritance) or other objects (prototypal inheritance).</p>
@@ -674,21 +696,29 @@ user.getGender() //&gt; male
 
 <p>Suppose to want to create a general (polymorphic) object that takes some data and a status flag as parameters. If the status says the data is valid (i.e., <code>status === true</code>), a function can be applied onto the data and the result, along with the status flag, will be returned. If the status flags the data as invalid, then the function will not be applied onto the data and the data, along with the invalid status flag, will be returned.</p>
 
-<p>Let&rsquo;s start with creating a polymorphic prototype object called <code>Option</code>:</p>
+<p>Let&rsquo;s start with creating a polymorphic prototype object called <code>Maybe</code>:</p>
 
-<pre><code class="language-javascript">function Option({data, status}) {
+<pre><code class="language-javascript">function Maybe({data, status}) {
   this.data = data
   this.status = status
 }
+</code></pre>
 
-Option.prototype.apply = function (f) {
+<p><code>Maybe</code> is a wrapper for <code>data</code>. To wrap the <code>data</code> in <code>Maybe</code>, we provide an additional field called <code>status</code> that indicates if the data is valid or not.</p>
+
+<p>We can make <code>Maybe</code> a prototype with a function called <code>apply</code>, which takes a function and applies it on the data only if the status of the data indicates that it is valid.</p>
+
+<pre><code class="language-javascript">Maybe.prototype.apply = function (f) {
   if(this.status) {
-    return new Option({data: f(this.data), status: this.status})
+    return new Maybe({data: f(this.data), status: this.status})
   }
-  return new Option({data: this.data, status: this.status})
+  return new Maybe({data: this.data, status: this.status})
 }
+</code></pre>
 
-Option.prototype.getOrElse = function (msg) {
+<p>We can add another funding to the <code>Maybe</code> prototype which gets the data or returns a message if there&rsquo;s an error with the data.</p>
+
+<pre><code class="language-javascript">Maybe.prototype.getOrElse = function (msg) {
   if(this.status) return this.data
 
   return msg
@@ -699,18 +729,18 @@ Option.prototype.getOrElse = function (msg) {
 
 <pre><code class="language-javascript">function Number(data) {
   let status = (typeof data === 'number')
-  Option.call(this, {data, status})
+  Maybe.call(this, {data, status})
 }
-Number.prototype = Object.create(Option.prototype)
+Number.prototype = Object.create(Maybe.prototype)
 </code></pre>
 
 <p>and <code>String</code>:</p>
 
 <pre><code class="language-javascript">function String(data) {
   let status = (typeof data === 'string')
-  Option.call(this, {data, status})
+  Maybe.call(this, {data, status})
 }
-String.prototype = Object.create(Option.prototype)
+String.prototype = Object.create(Maybe.prototype)
 </code></pre>
 
 <p>Let&rsquo;s see our objects in action. We create a function called <code>increment</code> that&rsquo;s only defined for numbers and another function called <code>split</code> that&rsquo;s only defined for strings:</p>
@@ -735,7 +765,7 @@ let strValid = new String(&quot;hello world&quot;)
 let strInvalid = new String(-1)
 
 let a = numValid.apply(increment).getOrElse('TypeError!')
-let b = numInvalid.apply(increment).getOrElse('TypeError Boo!')
+let b = numInvalid.apply(increment).getOrElse('TypeError Oh no!')
 let c = strValid.apply(split).getOrElse('TypeError!')
 let d = strInvalid.apply(split).getOrElse('TypeError :(')
 </code></pre>
@@ -745,11 +775,11 @@ let d = strInvalid.apply(split).getOrElse('TypeError :(')
 <pre><code class="language-javascript">console.log({a, b, c, d})
 </code></pre>
 
-<p>Since we designed our <code>Option</code> prototype to only apply the function onto the data if the data is the right type, this will be logged to console:</p>
+<p>Since we designed our <code>Maybe</code> prototype to only apply the function onto the data if the data is the right type, this will be logged to console:</p>
 
 <pre><code>{
   a: 13,
-  b: 'TypeError Boo!',
+  b: 'TypeError Oh no!',
   c: [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd' ],
   d: 'TypeError :('
 }
@@ -930,7 +960,7 @@ arr //&gt; [1,2]
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -1033,7 +1063,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
