@@ -420,3 +420,6 @@ flat(matrix) //> ["h", ".", "e", ".", "l", ".", "l", ".", "o", "."]
 
 flat(matrix).join("") //> "h.e.l.l.o."
 ```
+
+# Resources
+* [How to think like a programmer](https://medium.freecodecamp.org/how-to-think-like-a-programmer-lessons-in-problem-solving-d1d8bf1de7d2)

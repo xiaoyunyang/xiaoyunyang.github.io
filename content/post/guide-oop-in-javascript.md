@@ -22,6 +22,8 @@ Object Oriented Programming (OOP) is a software design pattern that allows you t
 
 <!--more-->
 
+<!--toc-->
+
 # Primer: What is an Object?
 OOP is concerned with composing objects that manages simple tasks to create complex computer programs. An object consists of private mutable states and functions (called methods) that operate on these mutable states. Objects have a notion of self and reused behavior inherited from a blueprint (classical inheritance) or other objects (prototypal inheritance).
 
@@ -34,12 +36,6 @@ Consider the following example:
 
 ```javascript
 class Person {
-
-  this = {
-    firstName:  '',
-    lastName: ''
-  }
-
   constructor(firstName, lastName) {
     this.firstName = firstName
     this.lastName = lastName
@@ -50,7 +46,7 @@ class Person {
 }
 ```
 
-The `class` key word from ES6 is used to create the `Person` class with properties stored in `this` called `firstName` and `lastName`, which are set in the `constructor` and accessed in the `getFullName` function.
+The `class` keyword from ES6 is used to create the `Person` class with properties stored in `this` called `firstName` and `lastName`, which are set in the `constructor` and accessed in the `getFullName` method.
 
 We instantiate an object called `person` from the `Person` class with the `new` key word as follows:
 
@@ -69,10 +65,6 @@ To extend a class, we can create another class. Let's extend the `Person` class 
 
 ```javascript
 class User extends Person {
-  this = {
-    email: '',
-    password: ''
-  }
   constructor(firstName, lastName, email, password) {
     super(firstName, lastName)
     this.email = email
@@ -117,8 +109,8 @@ Eric Elliot described how classical inheritance can potentially lead to project 
 
 When many derived classes with wildly different use cases are created from the same base class, any seemingly benign change to the base class could cause the derived classes to malfunction. At the cost of increased complexity to your code and the entire software creation process, you could try to mitigate side effects by creating a [dependency injection container](https://medium.com/the-everyday-developer/creating-an-ioc-container-with-dependency-injection-in-javascript-9db228d34060) to provide an uniform service instantiation interface by abstracting the instantiation details. Is there a better way?
 
-### Prototypal Inheritance
-Prototypal inheritance do not use classes at all. Instead, objects are created from other objects. We start with a *generalized object* we called a prototype. We can use the prototype to create other by cloning it or extend it with custom features.
+# Prototypal Inheritance
+Prototypal inheritance does not use classes at all. Instead, objects are created from other objects. We start with a *generalized object* we called a prototype. We can use the prototype to create other objects by cloning it or extend it with custom features.
 
 Although in the previous section, we showed how to use the ES6 `class`, [**JavaScript classes are not classy**](https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee).
 
@@ -137,7 +129,7 @@ The simple types of JavaScript are numbers, strings, booleans (true and false), 
 
 Let's look at one of these objects that JavaScript gives us for free out-of-the-box: the `Array`.
 
-Array instances inherit from [Array.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype) which includes many methods which are categorized as accessors (do not modify the original array), mutators (modifies the original array), and iterators (applies the function passed in as an argument onto every element in the array).
+Array instances inherit from [Array.prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype) which includes many methods which are categorized as accessors (do not modify the original array), mutators (modifies the original array), and iterators (applies the function passed in as an argument onto every element in the array to create a new array).
 
 **Accessors:**
 
@@ -208,7 +200,7 @@ arr.push(4)
 arr.push(5)
 ```
 
-A factory function is any function which is not a class or constructor that returns a (presumably new) object. In JavaScript, any function can return an object. When it does so without the `new` keyword, it’s a factory function.
+A factory function is any function that takes a few arguments and returns a new object composed of those arguments. In JavaScript, any function can return an object. When it does so without the `new` keyword, it’s a factory function.
 
 In the code above, we created an object called `arr` using `Object.create` and pushed 5 elements into the array. `arr` comes with all the functions inherited from the `Array` prototype such as `map`, `pop`, `slice`, and even `partition` that we just created for the `Array` prototype. Let's add some more functionality to the `arr` object:
 
@@ -216,7 +208,7 @@ In the code above, we created an object called `arr` using `Object.create` and p
 arr.hello = () => "hello"
 ```
 
-**Quiz time!** What's going to be returned when we run the following code?
+**Pop Quiz!** What's going to be returned when we run the following code?
 
 ```javascript
 arr.partition(e => e < 3) // #1
@@ -398,36 +390,46 @@ Polymorphism let's us specify behavior regardless of data type. In OOP, this mea
 
 Suppose to want to create a general (polymorphic) object that takes some data and a status flag as parameters. If the status says the data is valid (i.e., `status === true`), a function can be applied onto the data and the result, along with the status flag, will be returned. If the status flags the data as invalid, then the function will not be applied onto the data and the data, along with the invalid status flag, will be returned.
 
-Let's start with creating a polymorphic prototype object called `Option`:
+Let's start with creating a polymorphic prototype object called `Maybe`:
 
 ```javascript
-function Option({data, status}) {
+function Maybe({data, status}) {
   this.data = data
   this.status = status
 }
+```
 
-Option.prototype.apply = function (f) {
+`Maybe` is a wrapper for `data`. To wrap the `data` in `Maybe`, we provide an additional field called `status` that indicates if the data is valid or not.
+
+We can make `Maybe` a prototype with a function called `apply`, which takes a function and applies it on the data only if the status of the data indicates that it is valid.
+
+```javascript
+Maybe.prototype.apply = function (f) {
   if(this.status) {
-    return new Option({data: f(this.data), status: this.status})
+    return new Maybe({data: f(this.data), status: this.status})
   }
-  return new Option({data: this.data, status: this.status})
+  return new Maybe({data: this.data, status: this.status})
 }
+```
 
-Option.prototype.getOrElse = function (msg) {
+We can add another function to the `Maybe` prototype which gets the data or returns a message if there's an error with the data.
+
+```javascript
+Maybe.prototype.getOrElse = function (msg) {
   if(this.status) return this.data
 
   return msg
 }
 ```
 
-Now we create two objects from the `Option` prototype called `Number`:
+Now we create two objects from the `Maybe` prototype called `Number`:
 
 ```javascript
 function Number(data) {
   let status = (typeof data === 'number')
-  Option.call(this, {data, status})
+  Maybe.call(this, {data, status})
 }
-Number.prototype = Object.create(Option.prototype)
+Number.prototype = Object.create(Maybe.prototype)
 ```
 
 and `String`:
@@ -435,9 +437,9 @@ and `String`:
 ```javascript
 function String(data) {
   let status = (typeof data === 'string')
-  Option.call(this, {data, status})
+  Maybe.call(this, {data, status})
 }
-String.prototype = Object.create(Option.prototype)
+String.prototype = Object.create(Maybe.prototype)
 ```
 
 Let's see our objects in action. We create a function called `increment` that's only defined for numbers and another function called `split` that's only defined for strings:
@@ -464,7 +466,7 @@ let strValid = new String("hello world")
 let strInvalid = new String(-1)
 
 let a = numValid.apply(increment).getOrElse('TypeError!')
-let b = numInvalid.apply(increment).getOrElse('TypeError Boo!')
+let b = numInvalid.apply(increment).getOrElse('TypeError Oh no!')
 let c = strValid.apply(split).getOrElse('TypeError!')
 let d = strInvalid.apply(split).getOrElse('TypeError :(')
 ```
@@ -475,20 +477,24 @@ What will the following print out?
 console.log({a, b, c, d})
 ```
 
-Since we designed our `Option` prototype to only apply the function onto the data if the data is the right type, this will be logged to console:
+Since we designed our `Maybe` prototype to only apply the function onto the data if the data is the right type, this will be logged to console:
 
 ```
 {
   a: 13,
-  b: 'TypeError Boo!',
+  b: 'TypeError Oh no!',
   c: [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd' ],
   d: 'TypeError :('
 }
 ```
 
+What we just did is a type of a [monad](https://www.wikiwand.com/en/Monad_(functional_programming)#/overview) (albeit I didn't implement `Maybe`  to follow all the [monad laws](https://miklos-martin.github.io/learn/fp/2016/03/10/monad-laws-for-regular-developers.html)). The `Maybe` monad is a wrapper that's used when a value can be absent or some validation can fail and you don't care about the exact cause. Typically this can occur during data retrieval and validation. Maybe handles failure in validation or failure in applying a function similar to the `try-catch` you've likely seen before. In `Maybe`, we are handling the failure in type validation by printing to a string, but we can easily revise the `getOrElse` function to call another function which handles the validation error.
+
+Some programming languages like Haskell [come with a built-in monad type](https://functional.works-hub.com/learn/demystifying-the-monad-in-scala-cf414) but in JavaScript, you have to [roll your own](https://moduscreate.com/blog/monad-pattern-for-functional-programming-in-es6/). ES6 introduced `Promise`, which is a monad for dealing with latency. Sometimes you need data that could take a while to retrieve. `Promise` lets you write code that appears synchronous while delaying operation on the data until the data becomes available. Using `Promise` is a cleaner way of asynchronous programming than using callback functions, which could lead to a phenomenon called the callback hell.
+
 ## Composition
 
-As alluded to earlier, there's something much simpler than class/prototypes which can be easily reused, encapsulates internal states, performs a given operation on any type of data, and be polymorphic - it's called a function.
+As alluded to earlier, there's something much simpler than class/prototypes which can be easily reused, encapsulates internal states, performs a given operation on any type of data, and be polymorphic - it's called functional composition.
 
 JavaScript easily lets us bundle related functions and data together in an object:
 
@@ -507,7 +513,7 @@ Then we can use the `Person` object directly like this:
 ```javascript
 let person = Object.create(Person)
 
-person.getFullName() //> "first last"
+person.getFullName() //> "firstName lastName"
 
 // Assign internal state variables
 person.firstName = 'Dan'
@@ -559,13 +565,36 @@ For example, we define a `Customer` object with data and functions. When our `Us
 
 ```javascript
 const Customer = {
-
+  plan: 'trial'
+}
+Customer.setPremium = function() {
+  this.plan = 'premium'
 }
 ```
 
+Now we can augment user object with an Customer methods and fields.
+
+```javascript
+user.customer = Customer
+user.customer.setPremium()
+```
+
+After running the above two lines of codes, this becomes our `user` object:
+
+```
+{
+  firstName: 'Dan',
+  lastName: 'Abramov',
+  email: 'dan@abramov.com',
+  password: 'iLuvES6',
+  customer: { plan: 'premium', setPremium: [Function] }
+}
+```
+
+
 When we want to supply a object with some additional capability, higher order objects cover every use case.
 
-Favor composition over class inheritance because  composition is [simpler, more expressive, and more flexible](https://medium.com/javascript-scene/3-different-kinds-of-prototypal-inheritance-es6-edition-32d777fa16c9):
+As shown in the example above, we should favor composition over class inheritance because  composition is [simpler, more expressive, and more flexible](https://medium.com/javascript-scene/3-different-kinds-of-prototypal-inheritance-es6-edition-32d777fa16c9):
 
 > Classical inheritance creates **is-a** relationships with restrictive taxonomies, all of which are eventually wrong for new use-cases. But it turns out, we usually employ inheritance for **has-a**, **uses-a**, or **can-do** relationships.
 

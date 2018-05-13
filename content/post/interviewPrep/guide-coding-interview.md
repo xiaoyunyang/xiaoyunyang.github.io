@@ -33,6 +33,7 @@ To understand the process, difficulty, and best way to prepare for a coding inte
 * [Yangshun Tay's Guide](https://medium.freecodecamp.org/coding-interviews-for-dummies-5e048933b82b)
 * [TripleBytes' Guide](https://quip.com/q41AA3OmoZbC)
 * [Connor Leech's Guide](https://codeburst.io/the-2-types-of-software-engineering-interviews-and-how-to-prepare-for-them-2e7bd4daa0b)
+* [Googley as Heck](https://medium.freecodecamp.org/why-i-studied-full-time-for-8-months-for-a-google-interview-cc662ce9bb13)
 
 The advice I got for interviewing at Facebook and Google include:
 

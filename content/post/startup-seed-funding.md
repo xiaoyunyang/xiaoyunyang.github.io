@@ -224,7 +224,35 @@ There are a [whole plethora of recruiting websites](https://www.betterteam.com/t
 
 ## The Problem
 
-The [skills gap](https://www.youtube.com/watch?v=gTLcM4iZSTo) is a major contributor of unemployment and underemployment. Low skilled work opportunities are disappearing, being automated away.
+The [skills gap](https://www.youtube.com/watch?v=gTLcM4iZSTo) is a major contributor of unemployment and underemployment. Low skilled work opportunities are disappearing, being automated away. Companies are in the business of educating workers. They are not schools and many have few resources to train new hires. New hires are expected to acquire the skills and knowledge demanded by the jobs they are applying to *before* they apply to the jobs.
+
+The traditional methods for acquiring skills and knowledge is college. Colleges are really expensive. Some cost effective methods include coding bootcamps or self study. Coding bootcamps are there to [guide students through the complicated paths into the software industry](https://medium.com/bits-and-behavior/what-i-learned-from-researching-coding-bootcamps-f594c15bd9e0)
+
+> Even though bootcamps could be as short as three months, **a full career change into the software industry could take up to a year or more**, which surprised some students. This time could be financially costly for students as well
+
+Bootcamps are not a replacement for putting in the work to:
+1. Obtain fundamental computer science knowledge
+2. Software industry work experience
+3. Online portfolios
+4. Networking with employers, software engineers and other students
+5. Interviewing abilities (in particular “whiteboarding”)
+
+That's just for software but the same kind of expectations apply for any candidate. Specifically:
+
+1. Fundamental knowledge, as assessed during the knowledge interview or looking at the candidates' college degree / education background
+2. Problem solving skills, as asessed during the technical interview
+3. Practical experience and ability to "hit the ground running" if they hire you. This is evidenced by your relevant work experience and personal projects.
+
+Networking and interviewing skills are important for getting invited to the job interview.
+
+Non-traditional methods include apprenticeship programs LinkedIn's [REACH](https://careers.linkedin.com/reach/AboutReach):
+
+> LinkedIn’s vision is to create economic opportunity for every member of the global workforce. This program is designed for candidates who have non-traditional career paths. We encourage applications from candidates without Computer Science degrees who are self-taught, re-entering the workforce, starting second careers, veterans, or those who have attended boot camp style programming courses.
+
+Microsoft offers a similar apprenticeship program called [LEAP](http://www.industryexplorers.com/applicants).
+
+
+## Resources exist for
 
 Some data which indicate market opportunity in the career pivot and candidate relationship management industry:
 
