@@ -274,11 +274,17 @@
 <li><a href="#whiteboard">Whiteboard</a></li>
 <li><a href="#the-code">The Code</a></li>
 <li><a href="#analysis">Analysis</a></li>
+<li><a href="#optimization">Optimization</a></li>
 </ul></li>
+<li><a href="#practice">Practice</a></li>
+<li><a href="#resources">Resources</a></li>
 </ul>
 </nav></p>
 
 <h1 id="quicksort">QuickSort</h1>
+
+<p><a href="https://medium.com/basecs/pivoting-to-understand-quicksort-part-1-75178dfb9313" target="_blank">The Quicksort algo in a nutshell</a>
+&gt; The quicksort algorithm is a sorting algorithm that sorts a collection by choosing a pivot point, and partitioning the collection around the pivot, so that elements smaller than the pivot are before it, and elements larger than the pivot are after it.</p>
 
 <p>Examples</p>
 
@@ -403,6 +409,49 @@ Array.prototype.partition = function(fun) {
 <ul>
 <li>In our divide and conquer step, we want to pick <code>Array.pop</code>, which is a mutator function, because that&rsquo;s a O(1) operation and gives us both the pivot and the subArr. We could extract the subArr using <code>arr.slice(0, arr.length-1)</code> but that creates a whole new array, which is O(N) operation. This doesn&rsquo;t affect the big-O complexity as O(2N logN) is O(N logN) since we drop the constant.</li>
 <li>Our quicksort function is not tail recursive. In a compiled language, the compiler will translate the a tail recursive function to a loop so it&rsquo;s more efficient under the hood. In a real recursion, a new stack frame is built for each function call.</li>
+</ul>
+
+<h2 id="optimization">Optimization</h2>
+
+<p>The partition logic we just implemented is not smart. It chooses the last element every time. Ideally, we want to choose the median of the array as our pivot so we can evenly offload work to the left and right subproblems.</p>
+
+<p>Another place we can optimize is in space efficiency. Our basic quicksort have us build new arrays (i.e., <code>left</code> and <code>right</code>). Instead of building new arrays, we want to recursively mutate the original array, swapping the elements around until the array is completely sorted.</p>
+
+<p>There are more efficient quicksort implementations that swaps elements in the array.</p>
+
+<p>Some pseudocode:
+* let pivot be last elem (30)
+* look at first elem (6) and last elem before the pivot (12)
+* Swap</p>
+
+<pre><code>let arr = [6, 3, 17, 11, 4, 44, 76, 23, 12, 30]
+let pivot = 30
+let leftIndex = 0 // points to 6
+let rightIndex = arr.length - 1 // points to 12
+
+pivot = 30
+[6, 3, 17, 11, 4, 44, 76, 23, 12, 30]
+
+swap 12 , change pivot to
+pivot =
+[12, 3, 17, 11, 4, 44, 76, 23, 6, 30]
+
+
+</code></pre>
+
+<p>The names for these are the Hoarse partition and Lomuto partition. Hoarse partition is more efficient than the Lomuto partition. See <a href="http://blog.benoitvallon.com/sorting-algorithms-in-javascript/the-quicksort-algorithm/" target="_blank">all the quicksort implementations here</a>.</p>
+
+<h1 id="practice">Practice</h1>
+
+<ul>
+<li><a href="https://repl.it/@xiaoyunyang/TwoSum" target="_blank">TwoSum</a> - Easy</li>
+<li><a href="https://repl.it/@xiaoyunyang/AddTwoNumbers" target="_blank">AddTwoNumbers</a> - Medium</li>
+</ul>
+
+<h1 id="resources">Resources</h1>
+
+<ul>
+<li><a href="http://blog.benoitvallon.com/" target="_blank">Ben&rsquo;s Blog</a> - Basic Algos implemented in JavaScript.</li>
 </ul>
               
             </div>
