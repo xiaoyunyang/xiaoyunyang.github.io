@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Sun, 13 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Data Structure with JavaScript Object: LinkedList</title>
+      <link>http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linkedlist/</link>
+      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linkedlist/</guid>
+      <description>&lt;p&gt;LinkedList is like an array but more flexible. Elements in an array are stored contiguously in memory while LinkedList are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement LinkedList in JavaScript and go over some algorithms with Linked List.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Algos to Practice Whiteboarding for The Coding Interview</title>

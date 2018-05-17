@@ -1,5 +1,9 @@
 
 
+  
+    
+  
+
 
   
 
@@ -16,31 +20,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.38.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Life</title>
+    <title>Data Structure with JavaScript Object: LinkedList</title>
     <meta name="author" content="Xiaoyun Yang">
     <meta name="keywords" content="">
 
     <link rel="icon" href="http://xiaoyunyang.github.io/favicon-96x96.png">
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="http://xiaoyunyang.github.io/tags/life/index.xml">
-    
 
     
-    <meta name="description" content="Hugo tranquilpeak theme demo">
-    <meta property="og:description" content="Hugo tranquilpeak theme demo">
+    <meta name="description" content="LinkedList is like an array but more flexible. Elements in an array are stored contiguously in memory while LinkedList are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement LinkedList in JavaScript and go over some algorithms with Linked List.">
+    <meta property="og:description" content="LinkedList is like an array but more flexible. Elements in an array are stored contiguously in memory while LinkedList are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement LinkedList in JavaScript and go over some algorithms with Linked List.">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Life">
-    <meta property="og:url" content="http://xiaoyunyang.github.io/tags/life/">
+    <meta property="og:title" content="Data Structure with JavaScript Object: LinkedList">
+    <meta property="og:url" content="http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linkedlist/">
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="Hugo tranquilpeak theme demo">
+    <meta name="twitter:description" content="LinkedList is like an array but more flexible. Elements in an array are stored contiguously in memory while LinkedList are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement LinkedList in JavaScript and go over some algorithms with Linked List.">
     
     
 
     
     
 
+    
+      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/algo/algo-logo.png">
     
     
     
@@ -73,7 +77,7 @@
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="1">
+      <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="http://xiaoyunyang.github.io/">Xiaoyun Yang</a>
@@ -93,7 +97,7 @@
   
 </header>
 
-      <nav id="sidebar" data-behavior="1">
+      <nav id="sidebar" data-behavior="4">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -222,40 +226,26 @@
 </nav>
 
       
-        
 
-      
-      <div id="main" data-behavior="1"
+      <div id="main" data-behavior="4"
         class="
                hasCoverMetaIn
                ">
-        
-          <section class="postShorten-group main-content-wrap">
-            
-            
-              
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
   
-    
+    <h1 class="post-title" itemprop="headline">
+      Data Structure with JavaScript Object: LinkedList
+    </h1>
   
-
-
   
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/is-employee-loyalty-important/">
-          Is Employee Loyalty Important?
-        </a>
-      </h1>
-      
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-04-12T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-05-16T00:00:00Z">
         
-  April 12, 2018
+  May 16, 2018
 
       </time>
     
@@ -270,147 +260,405 @@
 
   </div>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>High-value employees are a major assets for a strong company. Losing a high contributing team member could leave a void and impact the team&rsquo;s morale and workflow. Investors are also concerned by high turnover rates, especially amongst the senior executives. Groupon had trouble retaining their senior executives, which contributed to <a href="https://www.youtube.com/watch?v=zeNQE3VBRnQ" target="_blank">an 85% drop in their value</a> a year after going public. It&rsquo;s clear we want to <strong>retain</strong> high-valued employees, but is <strong>employee loyalty</strong> the way to achieve retention?</p>
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>LinkedList is like an array but more flexible. Elements in an array are stored contiguously in memory while LinkedList are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement LinkedList in JavaScript and go over some algorithms with Linked List.</p>
 
-<p></p>
-      <p>
-        <a href="http://xiaoyunyang.github.io/post/is-employee-loyalty-important/" class="postShorten-excerpt_link link">Continue reading</a>
+<p>
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#definition">Definition</a></li>
+<li><a href="#linkedlist-basics">LinkedList Basics</a>
+<ul>
+<li><a href="#add-to-tail">Add to tail</a></li>
+<li><a href="#add-to-head">Add to head</a></li>
+<li><a href="#remove-from-head">Remove from head</a></li>
+</ul></li>
+<li><a href="#algo">Algo:</a>
+<ul>
+<li><a href="#create-linkedlist-from-array">Create LinkedList from Array</a></li>
+<li><a href="#zip">Zip</a></li>
+<li><a href="#reverse">Reverse</a></li>
+</ul></li>
+</ul>
+</nav></p>
+
+<h1 id="definition">Definition</h1>
+
+<pre><code class="language-javascript">function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+</code></pre>
+
+<h1 id="linkedlist-basics">LinkedList Basics</h1>
+
+<h2 id="add-to-tail">Add to tail</h2>
+
+<p>Adding to tail of a LinkedList of size N is an O(N) operation because you have to traverse the entire LinkedList to the end. We can create a LinkedList manually by keep adding to the tail:</p>
+
+<pre><code class="language-javascript">let l = new ListNode(1)
+l.next = new ListNode(2)
+l.next.next = new ListNode(3)
+</code></pre>
+
+<p>This creates the following LinkedList:</p>
+
+<pre><code>ListNode {
+  val: 1,
+  next: ListNode {
+    val: 2,
+    next:
+    ListNode {
+      val: 3,
+      next: null
+    }
+  }
+}
+</code></pre>
+
+<p>LinkedList is often drawn as such:  <code>1 -&gt; 2 -&gt; 3 -&gt; null</code>.</p>
+
+<p>We can also create a method for <code>ListNode</code> that adds a new node to the end of a given chain of ListNodes:</p>
+
+<pre><code class="language-javascript">ListNode.prototype.add = function(val) {
+  let curr = this
+  while(curr) {
+    if(!curr.next) {
+      curr.next = new ListNode(val)
+      return this
+    }
+    curr = curr.next  
+  }
+  return this
+}
+</code></pre>
+
+<p>In the code above, <code>curr</code> is a pointer that traverses the entire LinkedList. <code>add</code> is a mutator method which modifies the original LinkedList (i.e., <code>this</code>). Specifically, it modifies the <code>next</code> of the last node in the original list by making it point to a new node instead of being null (which means it doesn&rsquo;t point to anything).</p>
+
+<pre><code>console.log('l before adding\n', l //&gt; 1 -&gt; 2 -&gt; 3 -&gt; null
+let lmod = l.add(4)
+
+console.log('lmod after adding\n', lmod) //&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null
+console.log('l after adding\n', l) //&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null
+</code></pre>
+
+<h2 id="add-to-head">Add to head</h2>
+
+<p>Adding to the head of the LinkedList is an O(1) operation. Let&rsquo;s write a method for <code>ListNode</code> called <code>push</code>.</p>
+
+<pre><code class="language-javascript">ListNode.prototype.push = function(val) {
+  let head = new ListNode(val)
+  head.next = this
+  return head
+}
+</code></pre>
+
+<p><code>push</code> does not modify the original list, which becomes a subset of the extended list with a new head whose <code>next</code> points to the original array.</p>
+
+<pre><code class="language-javascript">let lmod = l.push(0)
+console.log('lmod', lmod) // 0 -&gt; 1 -&gt; 2 -&gt; 3
+console.log('l', l) // 1 -&gt; 2 -&gt; 3 ...same as before
+</code></pre>
+
+<h2 id="remove-from-head">Remove from head</h2>
+
+<pre><code class="language-javascript">ListNode.prototype.pop = function() {
+  return this.next
+}
+</code></pre>
+
+<h1 id="algo">Algo:</h1>
+
+<h2 id="create-linkedlist-from-array">Create LinkedList from Array</h2>
+
+<p>Create a Linked List from an array:</p>
+
+<pre><code class="language-javascript">let arr1 = ['a', 'b', 'c']
+let arr2 = ['x', 'y', 'z']
+let curr = new ListNode(0)
+let tail = null
+
+let l1 = createLL(arr1)
+let l2 = createLL(arr2)
+</code></pre>
+
+<p>Now we write our <code>createLL</code> function:</p>
+
+<pre><code class="language-javascript">function createLL(arr) {
+  let ll, head
+  // initialize ll:
+  ll = null
+  for(let i=arr.length-1; i&gt;=0; i--) {
+    head = new ListNode(arr[i])
+    head.next = ll
+    ll = head
+  }
+  return ll
+}
+</code></pre>
+
+<p>The result:</p>
+
+<pre><code class="language-javascript">console.log('l1:\n', l1)
+console.log('l2:\n', l2)
+</code></pre>
+
+<p>which print out</p>
+
+<pre><code>l1:
+ ListNode {
+  val: 'a',
+  next: ListNode {
+    val: 'b',
+    next: ListNode {
+      val: 'c',
+      next: null
+    }
+  }
+}
+l2:
+ ListNode {
+  val: 'x',
+  next: ListNode {
+    val: 'y',
+    next: ListNode {
+      val: 'z',
+      next: null
+    }
+  }
+}
+</code></pre>
+
+<p><code>push</code> and <code>pop</code> are stack operations.  Stack is a data structure that&rsquo;s generally implemented with a LinkedList.</p>
+
+<h2 id="zip">Zip</h2>
+
+<p><code>zip</code> takes two linked lists and return a linked list that is the result of combining the arguments:</p>
+
+<pre><code class="language-javascript">function zip(l1,l2) {
+  let l3, tail, pred
+  // initialize l3
+  l3 = new ListNode('')
+  tail = l3
+  while(l1 || l2) {
+    if(l1 !== null) tail.val += l1.val
+    if(l2 !== null) tail.val += l2.val
+
+    tail.next = new ListNode('')
+    pred = tail
+    tail = tail.next
+
+    l1 = l1 ? l1.next : l1
+    l2 = l2 ? l2.next : l2
+  }
+
+  pred.next = null // Doing tail = null here doesn't work. Why?
+
+  return l3
+}
+</code></pre>
+
+<p>Let&rsquo;s run <code>zip</code> on <code>l1</code> and <code>l2</code> from earlier:</p>
+
+<pre><code class="language-javascript">let l3 = zip(l1,l2)
+console.log('l3:\n', l3)
+</code></pre>
+
+<pre><code>l3:
+ ListNode {
+  val: 'ax',
+  next: ListNode {
+    val: 'by',
+    next: ListNode {
+      val: 'cz',
+      next: null
+    }
+  }
+}
+</code></pre>
+
+<p>Why did we need <code>pred</code>? Why can&rsquo;t we do <code>tail = null</code> or <code>tail = tail.next</code>?</p>
+
+<p>Well, when we break out of the loop, <code>tail</code> is point to an object <code>ListNode {val: '', next: null}</code>, which is part of <code>l3</code> Setting <code>tail</code> to null doesn&rsquo;t set that object to null but rather destroys the reference to that object. setting <code>pred.next</code> to null modifies the predecessor node so instead of point to <code>ListNode {val: '', next: null}</code>, it points to null.</p>
+
+<p>An simpler example to understand the concept of JavaScript object and references is with this example:</p>
+
+<pre><code class="language-javascript">let arr = [1,2,3]
+let arr2 = arr
+arr2.pop()
+console.log('arr:', arr) // #1
+arr2 = null
+console.log('arr:', arr) // #2
+</code></pre>
+
+<p><code>#1</code> prints out <code>arr: [1,2]</code> because arr2 is a reference to arr and when we use the Array mutator method <code>pop</code> on arr2, arr is mutated.</p>
+
+<p><code>#2</code> prints out <code>arr: [1,2]</code>, not null. When we set <code>arr2</code> to null, we destroy a reference to the array in arr2 but <code>arr</code> still maintains a reference to the array.</p>
+
+<p>JavaScript has some primitives which are object-like because they have methods, but making a copy actually makes a hard copy:</p>
+
+<p>JavaScript primitive: Number</p>
+
+<pre><code class="language-javascript">let a = 1
+let b = a
+b = 13
+console.log(a) //&gt; 1
+</code></pre>
+
+<p>JavaScript primitive: String</p>
+
+<pre><code class="language-javascript">let c = 'hi'
+let d = c
+d = 'bye'
+console.log(c) //&gt; &quot;hi&quot;
+</code></pre>
+
+<h2 id="reverse">Reverse</h2>
+
+<p>Write a function <code>reverseLL</code> which takes a LinkedList and returns a LinkedList that&rsquo;s the reverse. For example, <code>1 -&gt; 2 -&gt; 3 -&gt; null</code> becomes <code>3 -&gt; 2 -&gt; 1 -&gt; null</code>I&rsquo;m using a recursive function but you can use a loop to do this.</p>
+
+<pre><code class="language-javascript">const reverseLL = (ll, revLL) =&gt; {
+  if(ll === null) return revLL
+  let newRevLL = new ListNode(ll.val)
+  newRevLL.next = revLL
+  return reverseLL(ll.next, newRevLL)    
+}
+
+let l3Rev = reverseLL(l3, null)
+console.log('l3Rev:\n', l3Rev)
+</code></pre>
+
+<pre><code>l3Rev:
+ ListNode {
+  val: 'cz',
+  next: ListNode {
+    val: 'by',
+    next: ListNode {
+      val: 'ax',
+      next: null
+    }
+  }
+}
+</code></pre>
+
+<p>All the code is <a href="https://repl.it/@xiaoyunyang/DataStructure-LinkedList" target="_blank">here</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
+
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/programming/">Programming</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/" data-tooltip="Algos to Practice Whiteboarding for The Coding Interview">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
         
-      </p>
-    </div>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linkedlist/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linkedlist/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linkedlist/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
   </div>
-  
-    <a href="http://xiaoyunyang.github.io/post/is-employee-loyalty-important/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="http://xiaoyunyang.github.io/post/images/careerSad.png"/>
-      </div>
-    </a>
-  
-</article>
+
 
             
               
-  
-    
-  
+                <div id="disqus_thread"></div>
+<script>
 
 
-  
 
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/">
-          Why I Pay to Work At a Co-working Space
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2018-04-07T00:00:00Z">
-        
-  April 7, 2018
 
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="http://xiaoyunyang.github.io/categories/blog">blog</a>
-    
-  
+var disqus_config = function () {
+this.page.url = "http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linkedlist/";  
+this.page.identifier = "Data Structure with JavaScript Object: LinkedList"; 
+};
 
-  </div>
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://http-xiaoyunyang-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>If you asked me to give you three facts about myself, I would tell you (1) I&rsquo;m a evening and weekend entrepreneur, (2) when I start working on something I enjoy, I can&rsquo;t put it down, and (3) I love coffee. This a formula for disaster because I have a full time job that I have to show up to by 9AM and I&rsquo;m a normal human person who needs at least 6 hours of sleep.</p>
-
-<p></p>
-      <p>
-        <a href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="http://xiaoyunyang.github.io/post/images/working.png"/>
-      </div>
-    </a>
-  
-</article>
-
-            
               
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/how-formal-education-closes-doors-to-opportunities/">
-          How Formal Education Closes Doors To Opportunities
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2018-01-14T00:00:00Z">
-        
-  January 14, 2018
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="http://xiaoyunyang.github.io/categories/blog">blog</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>The average completion rate of Online Open Course (MOOC) certification programs is abysmally low. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2889436" target="_blank">A report published in 2016 by researchers at Harvard and MIT</a> based on 4 years of data indicated an average certification completion rate of just 5.5%. This does not discredit MOOCs to be a good source of quality education content for those looking for good information to improve their understanding for a particular subject; however, the depressing statistics underlines a deeper concern with the ineffectiveness of using a college curriculum to steer people&rsquo;s professional development.</p>
-
-<p></p>
-      <p>
-        <a href="http://xiaoyunyang.github.io/post/how-formal-education-closes-doors-to-opportunities/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="http://xiaoyunyang.github.io/post/how-formal-education-closes-doors-to-opportunities/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="http://xiaoyunyang.github.io/post/images/mooc.png"/>
-      </div>
-    </a>
-  
-</article>
-
             
-            
-
-          </section>
-        
+          </div>
+        </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
     &copy; 2018 Xiaoyun Yang. All Rights Reserved
@@ -418,6 +666,102 @@
 </footer>
 
       </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/" data-tooltip="Algos to Practice Whiteboarding for The Coding Interview">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linkedlist/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linkedlist/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linkedlist/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fdata-structure-with-javascript-object-linkedlist%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fdata-structure-with-javascript-object-linkedlist%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fdata-structure-with-javascript-object-linkedlist%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
     </div>
     
     <div id="about">
@@ -693,6 +1037,32 @@ $(document).ready(function() {
 });
 </script>
 
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/data-structure-with-javascript-object-linkedlist\/';
+          
+            this.page.identifier = '\/post\/data-structure-with-javascript-object-linkedlist\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'http-xiaoyunyang-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
 
 
 
