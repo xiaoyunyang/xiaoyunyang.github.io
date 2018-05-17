@@ -18,6 +18,9 @@ We are going to go over a set of coding and whiteboard problems that would be as
 
 # QuickSort
 
+[The Quicksort algo in a nutshell](https://medium.com/basecs/pivoting-to-understand-quicksort-part-1-75178dfb9313)
+> The quicksort algorithm is a sorting algorithm that sorts a collection by choosing a pivot point, and partitioning the collection around the pivot, so that elements smaller than the pivot are before it, and elements larger than the pivot are after it.
+
 Examples
 
 ```javascript
@@ -73,3 +76,68 @@ Work at each level of the tree is O(N) because for each pivot, we have to go thr
 
 * In our divide and conquer step, we want to pick `Array.pop`, which is a mutator function, because that's a O(1) operation and gives us both the pivot and the subArr. We could extract the subArr using `arr.slice(0, arr.length-1)` but that creates a whole new array, which is O(N) operation. This doesn't affect the big-O complexity as O(2N logN) is O(N logN) since we drop the constant.
 * Our quicksort function is not tail recursive. In a compiled language, the compiler will translate the a tail recursive function to a loop so it's more efficient under the hood. In a real recursion, a new stack frame is built for each function call.
+
+## Optimization
+The partition logic we just implemented is not smart. It chooses the last element every time. Ideally, we want to choose the median of the array as our pivot so we can evenly offload work to the left and right subproblems.
+
+Another place we can optimize is in space efficiency. Our basic quicksort have us build new arrays (i.e., `left` and `right`). Instead of building new arrays, we want to recursively mutate the original array, swapping the elements around until the array is completely sorted.
+
+There are more efficient quicksort implementations that swaps elements in the array.
+
+The names for these are the Hoarse partition and Lomuto partition. Hoarse partition is more efficient than the Lomuto partition. See [all the quicksort implementations here](http://blog.benoitvallon.com/sorting-algorithms-in-javascript/the-quicksort-algorithm/).
+
+# LinkedList Zip
+
+Write a function `zip` that takes two linked lists and return a
+linked list that is the result of combining the arguments.
+
+## Whiteboard
+{{< image classes="fancybox fig-100 clear" src="/post/images/algo/ll-zip.png"
+thumbnail="/post/images/algo/ll-zip.png" title="LinkedList Zip">}}
+
+An issue with the whiteboarded code is right before the loop ends, l1 and l2 are incremented. However, one of them could be null. Getting `next` from null will result in an error. We can fix this by using a conditional ternary operator:
+
+```javascript
+l1 = l1 ? l1.next : l1
+l2 = l2 ? l2.next : l2
+```
+
+## The Code
+
+```javascript
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+```
+
+```javascript
+function zip(l1,l2) {
+  let l3, tail, pred
+  // initialize l3
+  l3 = new ListNode('')
+  tail = l3
+  while(l1 || l2) {
+    if(l1 !== null) tail.val += l1.val
+    if(l2 !== null) tail.val += l2.val
+
+    tail.next = new ListNode('')
+    pred = tail
+    tail = tail.next
+
+    l1 = l1 ? l1.next : l1
+    l2 = l2 ? l2.next : l2
+  }
+
+  pred.next = null
+
+  return l3
+}
+```
+
+# Practice
+* [TwoSum](https://repl.it/@xiaoyunyang/TwoSum) - Easy
+* [AddTwoNumbers](https://repl.it/@xiaoyunyang/AddTwoNumbers) - Medium
+
+# Resources
+* [Ben's Blog](http://blog.benoitvallon.com/) - Basic Algos implemented in JavaScript.

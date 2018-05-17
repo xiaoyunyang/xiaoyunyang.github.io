@@ -82,7 +82,10 @@ You fill out a [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfyZt4vfPc
 
 **1. Briefly describe the company and team:**
 
-* LooseLeaf is a platform which provides hands-on training opportunities for people looking to close skills gaps and make a career change. LooseLeaf is a single-member LLC consisting of one passionate software engineer who started LooseLeaf while serving in the Navy.
+LooseLeaf is an online marketplace for aspiring newcomers of the tech and creative industries to acquire relevant work experience, professional connections, and mentorship through completing projects for non-profits, entrepreneurs, and intrapreneurs.
+
+LooseLeaf is founded by a service member-turned software engineer and entrepreneur who has experienced career transition first-hand and brings the right skills, insight, and determination to build the best online incubator for budding tech and creative talents.
+
 
 **2. Describe the market opportunity, value proposition, and customers (1-2 paragraphs or up to 500 words):**
 
@@ -91,7 +94,7 @@ You fill out a [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfyZt4vfPc
 
 **3. Describe the technology/innovation (1-2 paragraphs or up to 500 words)**
 
-**4. Describe the technical challenges to overcome (1-2 paragraphs or up to 500 words)**x
+**4. Describe the technical challenges to overcome (1-2 paragraphs or up to 500 words)**
 
 **5. Describe the competition (1-2 paragraphs or up to 500 words)**
 
@@ -243,16 +246,24 @@ That's just for software but the same kind of expectations apply for any candida
 2. Problem solving skills, as asessed during the technical interview
 3. Practical experience and ability to "hit the ground running" if they hire you. This is evidenced by your relevant work experience and personal projects.
 
-Networking and interviewing skills are important for getting invited to the job interview.
+**Networking and practical experience (portfolio) are important for getting invited to the job interview.**
 
-Non-traditional methods include apprenticeship programs LinkedIn's [REACH](https://careers.linkedin.com/reach/AboutReach):
+[A Boston Globe article](https://www.bostonglobe.com/business/2013/10/05/will-mooc-help-you-open-career-doors/pmjHbLCghsH0lEbulWC9VL/story.html) notes:
 
-> LinkedIn’s vision is to create economic opportunity for every member of the global workforce. This program is designed for candidates who have non-traditional career paths. We encourage applications from candidates without Computer Science degrees who are self-taught, re-entering the workforce, starting second careers, veterans, or those who have attended boot camp style programming courses.
+> While MOOCs seem like they can only enhance a job candidate’s appeal, many people I talked to noted an important shift in the world of hiring. Credentials, whether a MOOC certificate or an MBA degree, are declining in importance, while **portfolios are on the rise**.
 
-Microsoft offers a similar apprenticeship program called [LEAP](http://www.industryexplorers.com/applicants).
+What’s a portfolio?
+
+> Some sort of **evidence of your expertise and abilities** online, like design work showcased on Dribbble.com, software code on GitHub, a mobile app you’ve built, or a sales presentation you developed and posted to SlideShare. “Education is becoming less than 10 percent of a candidate’s total score when we hire,” says Apollo Sinkevicius, managing director at One Mighty Roar, a Boston design and innovation firm. Portfolios and work samples “have the highest weight in my hiring,” he says.
 
 
-## Resources exist for
+Relevant Work Experience?
+
+* Non-traditional methods include apprenticeship programs LinkedIn's [REACH](https://careers.linkedin.com/reach/AboutReach):
+
+    > LinkedIn’s vision is to create economic opportunity for every member of the global workforce. This program is designed for candidates who have non-traditional career paths. We encourage applications from candidates without Computer Science degrees who are self-taught, re-entering the workforce, starting second careers, veterans, or those who have attended boot camp style programming courses.
+
+* Microsoft offers a similar apprenticeship program called [LEAP](http://www.industryexplorers.com/applicants).
 
 Some data which indicate market opportunity in the career pivot and candidate relationship management industry:
 
@@ -261,12 +272,65 @@ Some data which indicate market opportunity in the career pivot and candidate re
 
     > the number of coding bootcamp graduates has **grown 10x** since the first bootcamps launched in 2012. Coding bootcamps are a $260 million industry and will graduate ~23,000 developers in 2017.
 
+* [TechBeacon](https://techbeacon.com/bootcamps-wont-make-you-coder-heres-what-will) reported that:
+
+    > In a recent review of bootcamps, TechBeacon found that 17 of 24 programs claimed that 90% or more of their students got full-time programming jobs or freelancing positions within six-to-12 months of graduation. But those numbers can be misleading. According to the Coding Bootcamp Market Sizing Report, the developer job market is [flooded with bootcamp graduates](https://medium.com/@marceldegas/san-francisco-bootcamp-bubble-cee59e48bf3e#.64f229tc9), and that makes it hard for individual graduates to stand out.
+
+**Bottomline** is job seekers need to stand out from the crowd with portfolio and sample work online which provide evidence for their abilities and talent.
+
+
+## Market Research
+
+**We Expect LooseLeaf users to be:**
+
+* MOOC users looking to build careers, a subset of which attend coding and UX design bootcamps.
+* Looking for project opportunities beyond formal education or MOOCs to stand out from the crowd.
+* Those who are desperate/committed enough to pay $11K and spend 14 weeks in an intensive coding bootcamp. The typical bootcamper is is college educated working professional in their late 20s and early 30s looking for a career change.
+
+### TAM, SAM, SOM
+**TAM**  
+
+Total Addressable Market (TAM) is everyone you wish to reach with your product. For estimating the TAM, we use the MOOC market size as baseline:
+
+* USD 1.83 Billion in 2015 to USD 8.50 Billion by 2020, at a compound annual growth rate (CAGR) of 36.0% ([Source](https://www.prnewswire.com/news-releases/massive-open-online-course-mooc-market-size-to-grow-from-usd-183-billion-in-2015-to-usd-850-billion-by-2020-561561611.html)).
+* There are 81M students on MOOC ([Source](https://www.class-central.com/report/mooc-stats-2017/)).
+
+**SAM**
+
+Serviceable Available Market (SAM) is the portion of the TAM that we can actually address.
+According to [a Harvard Business Review Survey](https://hbr.org/2015/09/whos-benefiting-from-moocs-and-why):
+
+>Career benefits are the more common reason for taking a MOOC. **Fifty-two percent** of the people surveyed report a primary goal of improving their current job or finding a new job — they are “career builders.”
+
+
+As such, we are estimating that 52% of 81M students or **42M users** as our SAM.
+
+
+According to a [Harvard Business Review survey](https://hbr.org/2018/01/can-moocs-solve-your-training-problem)
+
+> one-fifth of those surveyed said they enrolled in MOOCs solely in the hope of finding a new job or starting a business. Rather, many people look at these courses as part of their self-directed career development, whether they have a clearly defined plan or are working toward broader objectives, such as maintaining their overall employability and keeping their skill set up-to-date.
+
+
+
+LooseLeaf can put the concepts they learn from MOOCs into context.
+
+**SOM**
+
+Serviceable Obtainable Market (SOM) is the realistic prediction of our ability to acquire share of our SAM, considering competition, locality, our distribution and sales channels and any other market influences.
+
+Coding Bootcamp Market Size: $260M industry, graduating 23K developers in 2017, and has grown 10x since founded in 2012 [Source](https://www.coursereport.com/reports/2017-coding-bootcamp-market-size-research).
+
+
 ## Competition
 
 1. Recruiting Software
     * See [Top Recruiting Software of 2018](https://ideal.com/top-recruiting-software/)
+    * [Connectifier](https://www.crunchbase.com/organization/connectifier) - Connectifier helps recruiters discover, qualify, and connect with exceptional job candidates at roughly twice the rate of other solutions.
 2. Career Pivot Services
     * [Mission Collaborative](https://www.missioncollaborative.com/) - Offers career design and career change coaching.
+    * [Career Foundry](https://www.crunchbase.com/organization/careerfoundry#section-overview) - CareerFoundry is the world’s first career accelerator for vocational tech skills. We build online programs delivered by expert mentors to bring complete beginners up to employable standards in technology.
+3. MOOCs:
+    * Popular MOOC platforms like coursera are moving away from offering free open online courses to issuing [certificates as part of corporate training for career advancement](https://www.forbes.com/sites/alexkonrad/2017/12/20/coursera-goes-corporate-to-keep-alive-promise-of-moocs/#23997ca8543c). Coursera has put [graded assignments behind paywall](https://campustechnology.com/articles/2018/02/12/report-moocs-attracting-more-paying-customers.aspx), which further denies free access to feedback that online learners need.
 
 ## Career Pivoters
 [Top 5 career pivotors startups love to hire](https://www.planted.com/blog/5-career-pivoters-startups-love-to-hire) are
@@ -287,3 +351,6 @@ Why people make a career pivot? [According to this article](https://www.entrepre
 * [Business Model Generation](https://docs.google.com/file/d/0B4E64nqKSeljZWtBZnpraGtqS0k/view) - a handbook.
 * [Career Pivot to Startup Life](https://medium.com/@guesto/the-mindset-shift-needed-for-a-mid-career-pivot-to-startup-life-e8132f0af5e4)
 * [Signals For a Career Pivot](https://www.entrepreneur.com/article/295131)
+* [TAM SAM SOM](https://www.thebusinessplanshop.com/blog/en/entry/tam_sam_som) - Also [see this](http://www.floattanksolutions.com/fancy-acronyms-business-plan-tam-sam-som/).
+* [Essential Job Sites for Creative Careers](https://www.creativeboom.com/tips/20-essential-job-sites-for-creative-careers/)
+* [HBR: Who's Benefitting rom MOOCs, and Why](https://hbr.org/2015/09/whos-benefiting-from-moocs-and-why)
