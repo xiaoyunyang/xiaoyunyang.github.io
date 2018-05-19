@@ -19,15 +19,15 @@
       <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</guid>
-      <description>&lt;p&gt;We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&amp;rsquo;m drawing these problems from &lt;a href=&#34;https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=2E72V7DJM4CV4DNTBTKD&#34; target=&#34;_blank&#34;&gt;Cracking the Coding Interview&lt;/a&gt; They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental frameworks and techniques in computer science.&lt;/p&gt;</description>
+      <description>&lt;p&gt;We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&amp;rsquo;m drawing these problems from &lt;a href=&#34;https://leetcode.com/&#34; target=&#34;_blank&#34;&gt;LeetCode&lt;/a&gt; and &lt;a href=&#34;https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=2E72V7DJM4CV4DNTBTKD&#34; target=&#34;_blank&#34;&gt;Cracking the Coding Interview&lt;/a&gt;. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Coding Interview Prep Plan</title>
-      <link>http://xiaoyunyang.github.io/post/coding-interview-prep-plan/</link>
+      <title>The Coding Interview: What to Expect</title>
+      <link>http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</link>
       <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/coding-interview-prep-plan/</guid>
+      <guid>http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</guid>
       <description>&lt;p&gt;Being great at coding interviews doesn&amp;rsquo;t necessarily make you a great developer and being a great developer doesn&amp;rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -65,11 +65,11 @@
     </item>
     
     <item>
-      <title>How Formal Education Closes Doors To Opportunities</title>
-      <link>http://xiaoyunyang.github.io/post/how-formal-education-closes-doors-to-opportunities/</link>
+      <title>How Formal Education May Close Doors To Opportunities</title>
+      <link>http://xiaoyunyang.github.io/post/how-formal-education-may-close-doors-to-opportunities/</link>
       <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/how-formal-education-closes-doors-to-opportunities/</guid>
+      <guid>http://xiaoyunyang.github.io/post/how-formal-education-may-close-doors-to-opportunities/</guid>
       <description>&lt;p&gt;The average completion rate of Online Open Course (MOOC) certification programs is abysmally low. &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2889436&#34; target=&#34;_blank&#34;&gt;A report published in 2016 by researchers at Harvard and MIT&lt;/a&gt; based on 4 years of data indicated an average certification completion rate of just 5.5%. This does not discredit MOOCs to be a good source of quality education content for those looking for good information to improve their understanding for a particular subject; however, the depressing statistics underlines a deeper concern with the ineffectiveness of using a college curriculum to steer people&amp;rsquo;s professional development.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>

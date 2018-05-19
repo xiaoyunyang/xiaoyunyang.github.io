@@ -20,23 +20,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.38.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Building A React Native Travel App</title>
+    <title>Data Structure with JavaScript Object: Linked List</title>
     <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="computer science, javascript, interview prep, algorithms, data structure, learn to code, linked list">
 
     <link rel="icon" href="http://xiaoyunyang.github.io/favicon-96x96.png">
     
 
     
-    <meta name="description" content="When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.">
-    <meta property="og:description" content="When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.">
+    <meta name="description" content="Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.">
+    <meta property="og:description" content="Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Building A React Native Travel App">
-    <meta property="og:url" content="http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+    <meta property="og:title" content="Data Structure with JavaScript Object: Linked List">
+    <meta property="og:url" content="http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/">
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.">
+    <meta name="twitter:description" content="Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.">
     
     
 
@@ -44,7 +44,7 @@
     
 
     
-      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/projects/japan-app-icon.png">
+      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/algo/linked-list.png">
     
     
     
@@ -237,15 +237,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Building A React Native Travel App
+      Data Structure with JavaScript Object: Linked List
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-03-30T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-05-16T00:00:00Z">
         
-  March 30, 2018
+  May 16, 2018
 
       </time>
     
@@ -254,7 +254,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="http://xiaoyunyang.github.io/categories/projects">projects</a>
+      <a class="category-link" href="http://xiaoyunyang.github.io/categories/blog">blog</a>
     
   
 
@@ -264,25 +264,261 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.</p>
+              <p>Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.</p>
 
 <p>
-<a href="https://github.com/xiaoyunyang/react-native-travel-app" target="_blank">This Cross-Platform MobileApp</a> is made with ReactNative and designed to be a tool for planning a trip with your friends. It gives you:</p>
-
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
 <ul>
-<li>Access to your itinerary via calendar view</li>
-<li>Access to your list of planned activities</li>
-<li>An integrated to-do-list and a map for the area</li>
-<li>A quick lookup on the stuff you researched, including travel destination articles and translations for words from the local language to English</li>
+<li><a href="#definition">Definition</a></li>
+<li><a href="#linked-list-basics">Linked List Basics</a>
+<ul>
+<li><a href="#add-to-tail">Add to tail</a></li>
+<li><a href="#add-to-head">Add to head</a></li>
+<li><a href="#remove-from-head">Remove from head</a></li>
+</ul></li>
+<li><a href="#algo">Algo:</a>
+<ul>
+<li><a href="#create-linked-list-from-array">Create Linked List from Array</a></li>
+<li><a href="#zip">Zip</a></li>
+<li><a href="#reverse">Reverse</a></li>
+</ul></li>
 </ul>
+</nav></p>
 
-<p>I made this app in ReactNative. ReactNative is a game changer.</p>
+<p>We are only going to focus on singly linked list for this article.</p>
 
-<p>It makes the barrier of entry low to make a cross-platform mobile app. The hallmark of Mobile Travel App I made (see <a href="https://github.com/xiaoyunyang/react-native-travel-app" target="_blank">react-native-travel-app</a> repo) is that it took full advantage of the ReactNative open source ecosystem. There is a component for everything you need.</p>
+<h1 id="definition">Definition</h1>
 
-<p><img src="http://xiaoyunyang.github.io/post/images/projects/travel-japan.png" alt="React Native Travel App a mobile app for you to plan your next trip with your friends" /></p>
+<pre><code class="language-javascript">function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+</code></pre>
 
-<p>Often times in the javascript ecosystem, you are dealing with a lot of little libraries and you are bringing them together to form a framework that makes sense for your application. So it’s helpful to know what all these little libraries do. Many of them are very simple. But at the end of the day, it’s your job as the developer working in this ecosystem to mix and match them and put them in a composable fashion that makes sense for the application that you are trying to build.</p>
+<h1 id="linked-list-basics">Linked List Basics</h1>
+
+<h2 id="add-to-tail">Add to tail</h2>
+
+<p>Adding to tail of a linked list of size N is an O(N) operation because you have to traverse the entire linked list to the end. We can create a linked list manually by keep adding to the tail:</p>
+
+<pre><code class="language-javascript">let l = new ListNode(1)
+l.next = new ListNode(2)
+l.next.next = new ListNode(3)
+</code></pre>
+
+<p>This creates the following linked list:</p>
+
+<pre><code>ListNode {
+  val: 1,
+  next: ListNode {
+    val: 2,
+    next:
+    ListNode {
+      val: 3,
+      next: null
+    }
+  }
+}
+</code></pre>
+
+<p>linked list is often drawn as such:  <code>1 -&gt; 2 -&gt; 3 -&gt; null</code>.</p>
+
+<p>We can also create a method for <code>ListNode</code> that adds a new node to the end of a given chain of ListNodes:</p>
+
+<pre><code class="language-javascript">ListNode.prototype.add = function(val) {
+  let curr = this
+  while(curr) {
+    if(!curr.next) {
+      curr.next = new ListNode(val)
+      return this
+    }
+    curr = curr.next  
+  }
+  return this
+}
+</code></pre>
+
+<p>In the code above, <code>curr</code> is a pointer that traverses the entire linked list. <code>add</code> is a mutator method which modifies the original linked list (i.e., <code>this</code>). Specifically, it modifies the <code>next</code> of the last node in the original list by making it point to a new node instead of being null (which means it doesn&rsquo;t point to anything).</p>
+
+<pre><code>console.log('l before adding\n', l //&gt; 1 -&gt; 2 -&gt; 3 -&gt; null
+let lmod = l.add(4)
+
+console.log('lmod after adding\n', lmod) //&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null
+console.log('l after adding\n', l) //&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null
+</code></pre>
+
+<h2 id="add-to-head">Add to head</h2>
+
+<p>Adding to the head of the linked list is an O(1) operation. Let&rsquo;s write a method for <code>ListNode</code> called <code>push</code>.</p>
+
+<pre><code class="language-javascript">ListNode.prototype.push = function(val) {
+  let head = new ListNode(val)
+  head.next = this
+  return head
+}
+</code></pre>
+
+<p><code>push</code> does not modify the original list, which becomes a subset of the extended list with a new head whose <code>next</code> points to the original array.</p>
+
+<pre><code class="language-javascript">let lmod = l.push(0)
+console.log('lmod', lmod) // 0 -&gt; 1 -&gt; 2 -&gt; 3
+console.log('l', l) // 1 -&gt; 2 -&gt; 3 ...same as before
+</code></pre>
+
+<h2 id="remove-from-head">Remove from head</h2>
+
+<pre><code class="language-javascript">ListNode.prototype.pop = function() {
+  return this.next
+}
+</code></pre>
+
+<h1 id="algo">Algo:</h1>
+
+<h2 id="create-linked-list-from-array">Create Linked List from Array</h2>
+
+<pre><code class="language-javascript">let arr1 = ['a', 'b', 'c']
+let arr2 = ['x', 'y', 'z']
+let curr = new ListNode(0)
+let tail = null
+
+let l1 = createLL(arr1)
+let l2 = createLL(arr2)
+</code></pre>
+
+<p>Now we write our <code>createLL</code> function:</p>
+
+<pre><code class="language-javascript">function createLL(arr) {
+  let ll, head
+  // initialize ll:
+  ll = null
+  for(let i=arr.length-1; i&gt;=0; i--) {
+    head = new ListNode(arr[i])
+    head.next = ll
+    ll = head
+  }
+  return ll
+}
+</code></pre>
+
+<p>The result:</p>
+
+<pre><code class="language-javascript">console.log('l1:\n', l1) //&gt; a -&gt; b -&gt; c -&gt; null
+console.log('l2:\n', l2)  //&gt; x -&gt; y -&gt; z -&gt; null
+</code></pre>
+
+<p><code>push</code> and <code>pop</code> are stack operations.  Stack is a data structure that&rsquo;s generally implemented with a linked list.</p>
+
+<h2 id="zip">Zip</h2>
+
+<p><code>zip</code> takes two linked lists and return a linked list that is the result of combining the arguments:</p>
+
+<pre><code class="language-javascript">function zip(l1,l2) {
+  let l3, tail, pred
+  // initialize l3
+  l3 = new ListNode('')
+  tail = l3
+  while(l1 || l2) {
+    if(l1 !== null) tail.val += l1.val
+    if(l2 !== null) tail.val += l2.val
+
+    tail.next = new ListNode('')
+    pred = tail
+    tail = tail.next
+
+    l1 = l1 ? l1.next : l1
+    l2 = l2 ? l2.next : l2
+  }
+
+  pred.next = null // Doing tail = null here doesn't work. Why?
+
+  return l3
+}
+</code></pre>
+
+<p>Let&rsquo;s run <code>zip</code> on <code>l1</code> and <code>l2</code> from earlier:</p>
+
+<pre><code class="language-javascript">let l3 = zip(l1,l2)
+console.log('l3:\n', l3)
+</code></pre>
+
+<pre><code>l3:
+ ListNode {
+  val: 'ax',
+  next: ListNode {
+    val: 'by',
+    next: ListNode {
+      val: 'cz',
+      next: null
+    }
+  }
+}
+</code></pre>
+
+<p>Why did we need <code>pred</code>? Why can&rsquo;t we do <code>tail = null</code> or <code>tail = tail.next</code>?</p>
+
+<p>Well, when we break out of the loop, <code>tail</code> is point to an object <code>ListNode {val: '', next: null}</code>, which is part of <code>l3</code> Setting <code>tail</code> to null doesn&rsquo;t set that object to null but rather destroys the reference to that object. setting <code>pred.next</code> to null modifies the predecessor node so instead of point to <code>ListNode {val: '', next: null}</code>, it points to null.</p>
+
+<p>An simpler example to understand the concept of JavaScript object and references is with this example:</p>
+
+<pre><code class="language-javascript">let arr = [1,2,3]
+let arr2 = arr
+arr2.pop()
+console.log('arr:', arr) // #1
+arr2 = null
+console.log('arr:', arr) // #2
+</code></pre>
+
+<p><code>#1</code> prints out <code>arr: [1,2]</code> because arr2 is a reference to arr and when we use the Array mutator method <code>pop</code> on arr2, arr is mutated.</p>
+
+<p><code>#2</code> prints out <code>arr: [1,2]</code>, not null. When we set <code>arr2</code> to null, we destroy a reference to the array in arr2 but <code>arr</code> still maintains a reference to the array.</p>
+
+<p>JavaScript has some primitives which are object-like because they have methods, but making a copy actually makes a hard copy:</p>
+
+<p>JavaScript primitive: Number</p>
+
+<pre><code class="language-javascript">let a = 1
+let b = a
+b = 13
+console.log(a) //&gt; 1
+</code></pre>
+
+<p>JavaScript primitive: String</p>
+
+<pre><code class="language-javascript">let c = 'hi'
+let d = c
+d = 'bye'
+console.log(c) //&gt; &quot;hi&quot;
+</code></pre>
+
+<h2 id="reverse">Reverse</h2>
+
+<p>Write a function <code>reverseLL</code> which takes a linked list and returns a linked list that&rsquo;s the reverse. For example, <code>1 -&gt; 2 -&gt; 3 -&gt; null</code> becomes <code>3 -&gt; 2 -&gt; 1 -&gt; null</code>I&rsquo;m using a recursive function but you can use a loop to do this.</p>
+
+<pre><code class="language-javascript">const reverseLL = (ll, revLL) =&gt; {
+  if(ll === null) return revLL
+  let newRevLL = new ListNode(ll.val)
+  newRevLL.next = revLL
+  return reverseLL(ll.next, newRevLL)    
+}
+
+let l3Rev = reverseLL(l3, null)
+console.log('l3Rev:\n', l3Rev)
+</code></pre>
+
+<pre><code>l3Rev:
+ ListNode {
+  val: 'cz',
+  next: ListNode {
+    val: 'by',
+    next: ListNode {
+      val: 'ax',
+      next: null
+    }
+  }
+}
+</code></pre>
+
+<p>All the code is <a href="https://repl.it/@xiaoyunyang/DataStructure-LinkedList" target="_blank">here</a></p>
               
             </div>
           </div>
@@ -294,13 +530,9 @@
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/mobile-app/">Mobile App</a>
-
   <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
 
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/open-source/">Open Source</a>
-
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/react-native/">React Native</a>
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/programming/">Programming</a>
 
                   </div>
                 
@@ -313,7 +545,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/" data-tooltip="Why I Pay to Work At a Co-working Space">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -321,7 +553,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/" data-tooltip="Building an Isomorphic Webapp">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/" data-tooltip="Algos to Practice Whiteboarding for The Coding Interview">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -339,19 +571,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -366,7 +598,7 @@
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -384,8 +616,8 @@
 
 
 var disqus_config = function () {
-this.page.url = "http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/";  
-this.page.identifier = "Building A React Native Travel App"; 
+this.page.url = "http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/";  
+this.page.identifier = "Data Structure with JavaScript Object: Linked List"; 
 };
 
 (function() { 
@@ -416,7 +648,7 @@ s.setAttribute('data-timestamp', +new Date());
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/" data-tooltip="Why I Pay to Work At a Co-working Space">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -424,7 +656,7 @@ s.setAttribute('data-timestamp', +new Date());
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/" data-tooltip="Building an Isomorphic Webapp">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/" data-tooltip="Algos to Practice Whiteboarding for The Coding Interview">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -442,19 +674,19 @@ s.setAttribute('data-timestamp', +new Date());
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -469,7 +701,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -484,19 +716,19 @@ s.setAttribute('data-timestamp', +new Date());
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fbuilding-a-react-native-travel-app%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fdata-structure-with-javascript-object-linked-list%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fbuilding-a-react-native-travel-app%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fdata-structure-with-javascript-object-linked-list%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fbuilding-a-react-native-travel-app%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fdata-structure-with-javascript-object-linked-list%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -784,9 +1016,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/building-a-react-native-travel-app\/';
+          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/data-structure-with-javascript-object-linked-list\/';
           
-            this.page.identifier = '\/post\/building-a-react-native-travel-app\/'
+            this.page.identifier = '\/post\/data-structure-with-javascript-object-linked-list\/'
           
         };
         (function() {

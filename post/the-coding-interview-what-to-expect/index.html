@@ -20,23 +20,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.38.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Building A React Native Travel App</title>
+    <title>The Coding Interview: What to Expect</title>
     <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="computer science, interview prep, algorithms, data structure, productivity, guide">
 
     <link rel="icon" href="http://xiaoyunyang.github.io/favicon-96x96.png">
     
 
     
-    <meta name="description" content="When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.">
-    <meta property="og:description" content="When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.">
+    <meta name="description" content="Being great at coding interviews doesn&rsquo;t necessarily make you a great developer and being a great developer doesn&rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.
+
+">
+    <meta property="og:description" content="Being great at coding interviews doesn&rsquo;t necessarily make you a great developer and being a great developer doesn&rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.
+
+">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Building A React Native Travel App">
-    <meta property="og:url" content="http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+    <meta property="og:title" content="The Coding Interview: What to Expect">
+    <meta property="og:url" content="http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/">
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.">
+    <meta name="twitter:description" content="Being great at coding interviews doesn&rsquo;t necessarily make you a great developer and being a great developer doesn&rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.
+
+">
     
     
 
@@ -44,7 +50,7 @@
     
 
     
-      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/projects/japan-app-icon.png">
+      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/CTCI.png">
     
     
     
@@ -237,15 +243,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Building A React Native Travel App
+      The Coding Interview: What to Expect
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-03-30T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-05-07T00:00:00Z">
         
-  March 30, 2018
+  May 7, 2018
 
       </time>
     
@@ -254,7 +260,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="http://xiaoyunyang.github.io/categories/projects">projects</a>
+      <a class="category-link" href="http://xiaoyunyang.github.io/categories/blog">blog</a>
     
   
 
@@ -264,25 +270,135 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.</p>
+              <p>Being great at coding interviews doesn&rsquo;t necessarily make you a great developer and being a great developer doesn&rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.</p>
 
-<p>
-<a href="https://github.com/xiaoyunyang/react-native-travel-app" target="_blank">This Cross-Platform MobileApp</a> is made with ReactNative and designed to be a tool for planning a trip with your friends. It gives you:</p>
+<p></p>
+
+<div class="alert info ">
+  <p>This is a Live Document. I will be updating it often.</p>
+</div>
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#advice">Advice</a></li>
+<li><a href="#coding">Coding</a></li>
+<li><a href="#whiteboarding-onsite">Whiteboarding (Onsite)</a></li>
+<li><a href="#behavioral-interview">Behavioral Interview</a></li>
+<li><a href="#system-design">System Design</a></li>
+</ul>
+</nav>
+
+<h1 id="advice">Advice</h1>
+
+<p>To understand the process, difficulty, and best way to prepare for a coding interviews at a top tech company, I talked to people I know who interviewed with and got hired by Facebook and Dropbox. I talked to a few recruiters, including one from Facebook, about the interview process and how to prepare for the phone screen and onsite. Additionally, I reviewed various articles people have written about their coding interview prep:</p>
 
 <ul>
-<li>Access to your itinerary via calendar view</li>
-<li>Access to your list of planned activities</li>
-<li>An integrated to-do-list and a map for the area</li>
-<li>A quick lookup on the stuff you researched, including travel destination articles and translations for words from the local language to English</li>
+<li><a href="https://medium.freecodecamp.org/software-engineering-interviews-744380f4f2af" target="_blank">Andyy Hope&rsquo;s Journey</a></li>
+<li><a href="https://medium.com/@XiaohanZeng/i-interviewed-at-five-top-companies-in-silicon-valley-in-five-days-and-luckily-got-five-job-offers-25178cf74e0f" target="_blank">Xiaohan Zeng&rsquo;s journey</a></li>
+<li><a href="https://medium.com/@MatttLloyd/my-thoughtworks-interview-or-how-i-stopped-worrying-and-learnt-to-love-the-interview-9cfdb5ee6217" target="_blank">Matt Lloyd&rsquo;s journey</a></li>
+<li><a href="https://medium.freecodecamp.org/how-i-landed-offers-from-microsoft-amazon-and-twitter-without-an-ivy-league-degree-d62cfe286eb8" target="_blank">Zhia Hwa Chong&rsquo;s Journey</a></li>
+<li>A series of <a href="https://www.youtube.com/watch?v=ZgdS0EUmn70" target="_blank">vlogs on YouTube</a> by an ex-Facebooker on how the interview process at Facebook or most high tech companies works and how to prepare for each interview.</li>
+<li><a href="https://blog.stephanbehnke.com/how-i-learned-to-stop-worrying-and-love-the-job-hunt-in-toronto/" target="_blank">Stephan Behnke&rsquo;s Guide</a></li>
+<li><a href="https://medium.freecodecamp.org/coding-interviews-for-dummies-5e048933b82b" target="_blank">Yangshun Tay&rsquo;s Guide</a></li>
+<li><a href="https://quip.com/q41AA3OmoZbC" target="_blank">TripleBytes&rsquo; Guide</a></li>
+<li><a href="https://codeburst.io/the-2-types-of-software-engineering-interviews-and-how-to-prepare-for-them-2e7bd4daa0b" target="_blank">Connor Leech&rsquo;s Guide</a></li>
+<li><a href="https://medium.freecodecamp.org/why-i-studied-full-time-for-8-months-for-a-google-interview-cc662ce9bb13" target="_blank">Googley as Heck</a></li>
 </ul>
 
-<p>I made this app in ReactNative. ReactNative is a game changer.</p>
+<p>The advice I got for interviewing at Facebook and Google include:</p>
 
-<p>It makes the barrier of entry low to make a cross-platform mobile app. The hallmark of Mobile Travel App I made (see <a href="https://github.com/xiaoyunyang/react-native-travel-app" target="_blank">react-native-travel-app</a> repo) is that it took full advantage of the ReactNative open source ecosystem. There is a component for everything you need.</p>
+<ul>
+<li><p>Know your Computer Science 101 really well. The Facebook recruiter told me to study from <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.471.4772&amp;rep=rep1&amp;type=pdf" target="_blank">The Algorithms Design Manual</a>. This book has interview problems and programming challenges.</p></li>
 
-<p><img src="http://xiaoyunyang.github.io/post/images/projects/travel-japan.png" alt="React Native Travel App a mobile app for you to plan your next trip with your friends" /></p>
+<li><p>Interviews are very difficult and require more preparation than even a difficult computer science exam at a top university. You don&rsquo;t get partial credits. If you don&rsquo;t provide the correct solution at any stage of the interview, they will decline you immediately.</p></li>
 
-<p>Often times in the javascript ecosystem, you are dealing with a lot of little libraries and you are bringing them together to form a framework that makes sense for your application. So it’s helpful to know what all these little libraries do. Many of them are very simple. But at the end of the day, it’s your job as the developer working in this ecosystem to mix and match them and put them in a composable fashion that makes sense for the application that you are trying to build.</p>
+<li><p>There&rsquo;s a phone screen involving coding with a time limit, usually 45 minutes. If your code doesn&rsquo;t work or doesn&rsquo;t handle edge cases, you fail to meet their minimum standard and you won&rsquo;t go on to the onsite interview.</p></li>
+
+<li><p>For the phone interview, Facebook uses <a href="https://coderpad.io/" target="_blank">coderpad.io</a> and ask you to write an answer to a problem they saw on <a href="https://leetcode.com/problemset/all/" target="_blank">leetcode</a>
+but they have the run code function turned off. <em>No reference material is allowed</em> So you need to know your syntax really well. For the frontend developer job, the recruiter told me you need to know ES6 really well. Be able to write ES6 on paper and expect that to work if you run it.</p>
+
+<blockquote>
+<p>Do <a href="https://leetcode.com/problemset/all/" target="_blank">leetcode</a> questions and make sure you know what the best answer is. It&rsquo;s the kind of thing where it&rsquo;s worth making note cards. Read the solutions on leetcode. Even if your code works, it doesn&rsquo;t mean it&rsquo;s the most efficient. You&rsquo;ll get points off for that.</p>
+</blockquote></li>
+
+<li><p>Phone interview lasts 45 minutes.  If they give you one easy problem then you must finish that one quickly and do another. If they give you medium or difficult you can use the whole time. They usually expect you to do two medium questions in 45 minutes. You want to be able to do any medium question in less than 20 minutes with no reference material. My friend was asked to solve the word split problem.</p></li>
+
+<li><p>Coding challenges are an additional step that they add sometimes before you get the onsite. Coding challenges can be a take home project, an online quiz, or an online code exercise. Nobody is watching you and you usually have a week to do it. Though once you start you may be timed.</p></li>
+
+<li><p>For the take-home project, sometimes they may ask you to submit to github. Make sure to adhere to good git practices, such as having a .gitignore for node_modules. A friend who did a take-home project got docked for pushing node_modules along with his project onto the github repo.</p></li>
+
+<li><p>Onsite coding is like the phone interview but on a whiteboard. You need to write the code that can compile on the whiteboard.</p>
+
+<blockquote>
+<p>They will type it up and it should work. It&rsquo;s pretty brutal.</p>
+</blockquote></li>
+
+<li><p>Prepare for system design questions like object oriented design questions. Design a game like hangman or snake at the command line is pretty popular.</p></li>
+
+<li><p>Startups are easier to interview at. Most decent public companies (Facebook, Google, Airbnb, Twitter, Amazon, Uber, Lyft) do basically the same thing.</p></li>
+
+<li><p>For interview prep, spend half your time on system design and half on coding.</p></li>
+
+<li><p>Practice whiteboard problem from <a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?ie=UTF8&amp;qid=1525587700&amp;sr=8-1&amp;keywords=cracking+the+coding+interview" target="_blank">Cracking the Coding Interview</a> (CTCI).</p>
+
+<blockquote>
+<p>If you don&rsquo;t have a copy of CTCI get one. I haven&rsquo;t really tried online coding challenges. I mostly practice on a white board with another engineer giving me a question from the book. Practice Practice Practice.</p>
+</blockquote></li>
+
+<li><p>For the phone interview, make sure to practice on <a href="https://coderpad.io/" target="_blank">coderpad.io</a>. A bunch of companies use it. It looks like repl, leetcode, and coderbyte. It doesn&rsquo;t give you autocompletion like an IDE will, but lets you execute the code that you run exactly as you write it.</p></li>
+</ul>
+
+<h1 id="coding">Coding</h1>
+
+<p>Steps to prepare for the coding questions:</p>
+
+<ol>
+<li>Do all problems from <a href="https://leetcode.com/problemset/all/" target="_blank">leetcode</a>. Need to be able to solve all problems with no reference material and write code that runs and passes the test the first time you submit.<br />
+
+<ul>
+<li>For easy questions, need to be able to do them in less than 15 minutes. For medium problems, need to do them within 20 minutes. For hard problems, need to do them within 45 minutes.</li>
+<li>Review the best solutions for each problem on leetcode.</li>
+</ul></li>
+<li>Extra practice:
+
+<ul>
+<li><a href="https://edabit.com/explore" target="_blank">Edabit</a> contains a bunch of coding challenges.</li>
+<li><a href="https://coderbyte.com/" target="_blank">CoderByte</a> provides a collection of coding challenges in various languages.</li>
+</ul></li>
+<li>Best answers for difficult problems:
+
+<ul>
+<li><a href="https://careercup.com/page" target="_blank">CareerCup</a> has a bunch of coding questions.</li>
+</ul></li>
+</ol>
+
+<h1 id="whiteboarding-onsite">Whiteboarding (Onsite)</h1>
+
+<ol>
+<li><a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?ie=UTF8&amp;qid=1525587700&amp;sr=8-1&amp;keywords=cracking+the+coding+interview" target="_blank">Cracking the Coding Interview</a>
+
+<ul>
+<li>The book has solutions. They also have a github repo with solutions coded up in different languages.</li>
+<li><a href="https://github.com/careercup/CtCI-6th-Edition-JavaScript/tree/ec307944f9c824376ea36bf9d730b0b709b9a923" target="_blank">JavaScript Solutions</a> to chapters 1-10</li>
+</ul></li>
+<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.471.4772&amp;rep=rep1&amp;type=pdf" target="_blank">The Algorithms Design Manual</a></li>
+<li>Mock Interview: <a href="https://interviewing.io/" target="_blank">https://interviewing.io/</a>. They do mock interviews with real interviewers and if you do really well they&rsquo;ll invite you to do real interviews.</li>
+</ol>
+
+<h1 id="behavioral-interview">Behavioral Interview</h1>
+
+<p>I started reading that cracking  the coding interview book and preparing for the interviews. One of the earlier chapters talk about behavior question you might expect, like <strong>Why Do You Want to Work Here?</strong> I composed a response for why I want to work at Facebook. In composing the response, I discovered what I’m really long for in a job: (1) inclusivity and cultivating ecosystems, (2) empowering regular people and developers with open source tools, (3) company is entrepreneurial and always taking risks. Facebook has been taking risks for years. Pushing limits all the time. People got over it and Facebook has more users than ever.</p>
+
+<p>Why do I want to work at Facebook? I want to help people. Regular people, users, consumers, and creators all benefit from Facebook’s products. Facebook empowers developers and people with ideas to implement and market their ideas. Inclusivity and ecosystem building are what Facebook is about they are very important to me. These goals give deeper meaning to hard work and I’m really motivated to work hard to achieve these goals. As an entrepreneur, I’ve benefited so much from Facebook’s software products like React and open auth, and Facebook’s platform lets me create a brand for a company that I didn’t have a website for. In fact, I’ve seen lots of freelancers and online personalities use facebook’s pages in lieu of having to build a website of their own. I’ve also benefited greatly from Facebook’s ad platform. I saw a coworking space as and that prompted me to investigate coworking spaces. I ended up signing up for one and that significantly boosted my productivity and General well being. I’ve also used Facebook to reach out to long lost friends and people I’ve met once at college, asked them for advice about things like how to get a job at Facebook.</p>
+
+<p>Facebook is the only big company I want to work at (maybe Google also) because it&rsquo;s kinda startupy. I would like to join a startup or work at my own startup if I get funding. Facebook is pretty chill about people leaving to start companies and eventually coming back. Many ex-Facebookers started successful companies like Quora and Asana.</p>
+
+<h1 id="system-design">System Design</h1>
+
+<ol>
+<li><a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?ie=UTF8&amp;qid=1525587700&amp;sr=8-1&amp;keywords=cracking+the+coding+interview" target="_blank">Cracking the Coding Interview</a></li>
+<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.471.4772&amp;rep=rep1&amp;type=pdf" target="_blank">The Algorithms Design Manual</a></li>
+</ol>
               
             </div>
           </div>
@@ -294,13 +410,13 @@
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/mobile-app/">Mobile App</a>
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/productivity/">Productivity</a>
 
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/guide/">Guide</a>
 
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/open-source/">Open Source</a>
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/programming/">Programming</a>
 
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/react-native/">React Native</a>
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/career/">Career</a>
 
                   </div>
                 
@@ -313,7 +429,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/" data-tooltip="Why I Pay to Work At a Co-working Space">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/serverless-web-app-for-work/" data-tooltip="Serverless Web App For Work">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -321,7 +437,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/" data-tooltip="Building an Isomorphic Webapp">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/" data-tooltip="So You Wanna Be A Gopher Eh?">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -339,19 +455,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -366,7 +482,7 @@
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -384,8 +500,8 @@
 
 
 var disqus_config = function () {
-this.page.url = "http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/";  
-this.page.identifier = "Building A React Native Travel App"; 
+this.page.url = "http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/";  
+this.page.identifier = "The Coding Interview: What to Expect"; 
 };
 
 (function() { 
@@ -416,7 +532,7 @@ s.setAttribute('data-timestamp', +new Date());
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/" data-tooltip="Why I Pay to Work At a Co-working Space">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/serverless-web-app-for-work/" data-tooltip="Serverless Web App For Work">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -424,7 +540,7 @@ s.setAttribute('data-timestamp', +new Date());
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/" data-tooltip="Building an Isomorphic Webapp">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/" data-tooltip="So You Wanna Be A Gopher Eh?">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -442,19 +558,19 @@ s.setAttribute('data-timestamp', +new Date());
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -469,7 +585,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -484,19 +600,19 @@ s.setAttribute('data-timestamp', +new Date());
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fbuilding-a-react-native-travel-app%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fthe-coding-interview-what-to-expect%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fbuilding-a-react-native-travel-app%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fthe-coding-interview-what-to-expect%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fbuilding-a-react-native-travel-app%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fthe-coding-interview-what-to-expect%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -784,9 +900,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/building-a-react-native-travel-app\/';
+          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/the-coding-interview-what-to-expect\/';
           
-            this.page.identifier = '\/post\/building-a-react-native-travel-app\/'
+            this.page.identifier = '\/post\/the-coding-interview-what-to-expect\/'
           
         };
         (function() {

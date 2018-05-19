@@ -20,23 +20,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.38.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Building A React Native Travel App</title>
+    <title>Algorithms for Web Developers</title>
     <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="computer science, algorithms, data structure, web development">
 
     <link rel="icon" href="http://xiaoyunyang.github.io/favicon-96x96.png">
     
 
     
-    <meta name="description" content="When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.">
-    <meta property="og:description" content="When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.">
+    <meta name="description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
+
+">
+    <meta property="og:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
+
+">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Building A React Native Travel App">
-    <meta property="og:url" content="http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+    <meta property="og:title" content="Algorithms for Web Developers">
+    <meta property="og:url" content="http://xiaoyunyang.github.io/post/algorithms-for-web-developers/">
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.">
+    <meta name="twitter:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.
+
+">
     
     
 
@@ -44,7 +50,7 @@
     
 
     
-      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/projects/japan-app-icon.png">
+      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/algorithms-xkcd.png">
     
     
     
@@ -237,15 +243,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Building A React Native Travel App
+      Algorithms for Web Developers
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-03-30T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-04-16T00:00:00Z">
         
-  March 30, 2018
+  April 16, 2018
 
       </time>
     
@@ -254,7 +260,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="http://xiaoyunyang.github.io/categories/projects">projects</a>
+      <a class="category-link" href="http://xiaoyunyang.github.io/categories/blog">blog</a>
     
   
 
@@ -264,25 +270,461 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.</p>
+              <p>JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.</p>
 
-<p>
-<a href="https://github.com/xiaoyunyang/react-native-travel-app" target="_blank">This Cross-Platform MobileApp</a> is made with ReactNative and designed to be a tool for planning a trip with your friends. It gives you:</p>
+<p></p>
+
+<div class="alert info ">
+  <p>This is a Live Document. I will be updating it periodically.</p>
+</div>
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#string-algorithms">String Algorithms</a>
+<ul>
+<li><a href="#reverse-strings">Reverse Strings</a></li>
+<li><a href="#palindrome">Palindrome</a>
+<ul>
+<li><a href="#naive-algorithm">Naive Algorithm</a></li>
+<li><a href="#more-efficient-algorithm">More Efficient Algorithm</a></li>
+<li><a href="#unit-test">Unit Test</a></li>
+</ul></li>
+<li><a href="#match-two-strings">Match Two Strings</a>
+<ul>
+<li><a href="#the-algorithm">The Algorithm</a></li>
+</ul></li>
+<li><a href="#capitalize-letters-in-a-sentence">Capitalize Letters In A Sentence</a>
+<ul>
+<li><a href="#the-algorithm-1">The Algorithm</a></li>
+<li><a href="#unit-test-1">Unit Test</a></li>
+</ul></li>
+<li><a href="#match-parentheses-in-a-string">Match parentheses in a string</a>
+<ul>
+<li><a href="#the-algorithm-2">The Algorithm</a></li>
+<li><a href="#unit-test-2">Unit Test</a></li>
+</ul></li>
+<li><a href="#url-string-transform">URL String transform</a>
+<ul>
+<li><a href="#option-1-use-array-map-then-array-join">Option 1 - use Array.map, then Array.join</a></li>
+<li><a href="#option-2-use-array-reduce">Option 2 - use Array.reduce</a></li>
+<li><a href="#option-3-es6">Option 3 - ES6</a></li>
+<li><a href="#unit-test-3">Unit Test</a></li>
+</ul></li>
+<li><a href="#html-string-transform">HTML String Transform</a></li>
+</ul></li>
+<li><a href="#array-algorithms">Array Algorithms</a>
+<ul>
+<li><a href="#flatmap">Flatmap</a></li>
+</ul></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+</nav>
+
+<h1 id="string-algorithms">String Algorithms</h1>
+
+<h2 id="reverse-strings">Reverse Strings</h2>
+
+<pre><code class="language-javascript">// takes a string and returns the reverse of that string
+function reverse(s) {
+  return s.split('').reduce((res, d) =&gt;
+    d + res, ''
+  );
+}
+</code></pre>
+
+<h2 id="palindrome">Palindrome</h2>
+
+<p>Given string <code>s</code>, returns <code>true</code> if <code>s</code> is a palindrome, false otherwise.
+Example:</p>
 
 <ul>
-<li>Access to your itinerary via calendar view</li>
-<li>Access to your list of planned activities</li>
-<li>An integrated to-do-list and a map for the area</li>
-<li>A quick lookup on the stuff you researched, including travel destination articles and translations for words from the local language to English</li>
+<li><code>isPalindrome('aba')</code> returns <code>true</code>.</li>
+<li><code>isPalindrome('abb')</code> returns <code>false</code>.</li>
+<li><code>isPalindrome('abba')</code> returns <code>true</code>.</li>
 </ul>
 
-<p>I made this app in ReactNative. ReactNative is a game changer.</p>
+<p>Try out the solution: <a href="https://repl.it/@xiaoyunyang/palindrome" target="_blank">https://repl.it/@xiaoyunyang/palindrome</a></p>
 
-<p>It makes the barrier of entry low to make a cross-platform mobile app. The hallmark of Mobile Travel App I made (see <a href="https://github.com/xiaoyunyang/react-native-travel-app" target="_blank">react-native-travel-app</a> repo) is that it took full advantage of the ReactNative open source ecosystem. There is a component for everything you need.</p>
+<h3 id="naive-algorithm">Naive Algorithm</h3>
 
-<p><img src="http://xiaoyunyang.github.io/post/images/projects/travel-japan.png" alt="React Native Travel App a mobile app for you to plan your next trip with your friends" /></p>
+<p>The simple way to determine if the string is a palindrome is by comparing the original string with the reverse of the string and see if they are equal.</p>
 
-<p>Often times in the javascript ecosystem, you are dealing with a lot of little libraries and you are bringing them together to form a framework that makes sense for your application. So it’s helpful to know what all these little libraries do. Many of them are very simple. But at the end of the day, it’s your job as the developer working in this ecosystem to mix and match them and put them in a composable fashion that makes sense for the application that you are trying to build.</p>
+<pre><code class="language-javascript">function isPalindrome(s) {
+  if (typeof s !== 'string') return false;
+  return s === reverse(s);
+}
+</code></pre>
+
+<p>However, this may not be the most efficient since the computational complexity is always O(N) regardless of whether the string is a palindrome or not. We want an efficient algorithm such that we can return immediately if the head and tail of the string don&rsquo;t match.</p>
+
+<h3 id="more-efficient-algorithm">More Efficient Algorithm</h3>
+
+<p>A more efficient algorithm is this:</p>
+
+<pre><code class="language-javascript">function isPalindrome2(s) {
+  if (typeof s !== 'string') return false;
+  let first = s.slice(0,1)
+  let last = s.slice(-1)
+
+  // not a palindrome
+  if(first !== last) return false
+  if(first === '') return true
+
+  return isPalindrome2(s.slice(1, -1))
+}
+</code></pre>
+
+<h3 id="unit-test">Unit Test</h3>
+
+<pre><code class="language-javascript">let testCases = [
+  {test: 'hello', shouldBe: false},
+  {test: 42, shouldBe: false},
+  {test: null, shouldBe: false},
+  {test: undefined, shouldBe: false},
+  {test: 'aba', shouldBe: true},
+  {test: 'abba', shouldBe: true},
+  {test: 'a bba', shouldBe: false},
+  {test: 'a bb a', shouldBe: true},
+  {test: 'ab ba', shouldBe: true},
+  {test: '', shouldBe: true},
+];
+let fun = (str) =&gt; isPalindrome2(str);
+const test = (testCases, fun) =&gt; {
+  testCases.map(t =&gt; {
+    const shouldBe = t.shouldBe;
+    const is = fun(t.test);
+    const res = (shouldBe === is) ? 'passed' : 'failed';
+    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
+    console.log(`${res} ${moreInfo}`);
+  })
+}
+test(testCases, fun)
+</code></pre>
+
+<h2 id="match-two-strings">Match Two Strings</h2>
+
+<p>Create a function that takes two strings and returns true if the first argument ends with the 2nd argument; otherwise return false .
+Example:</p>
+
+<ul>
+<li>&ldquo;abc&rdquo;, &ldquo;d&rdquo; ➞ false</li>
+<li>&ldquo;samurai&rdquo;, &ldquo;zi&rdquo; ➞ false</li>
+<li>&ldquo;feminine&rdquo;, &ldquo;nine&rdquo; ➞ true</li>
+<li>&ldquo;convention&rdquo;, &ldquo;tio&rdquo; ➞ false</li>
+</ul>
+
+<h3 id="the-algorithm">The Algorithm</h3>
+
+<pre><code class="language-javascript">function checkEnding(str1, str2) {
+  let str1Rev = str1.split('').reverse().join('')
+  let str2Rev = str2.split('').reverse().join('')
+  let regex = new RegExp(str2Rev, 'i')
+  let match = str1Rev.match(regex)
+
+  if (!match) return false
+  return match.index === 0
+}
+</code></pre>
+
+<p>Try out the solution: <a href="https://repl.it/@xiaoyunyang/checkEnding" target="_blank">https://repl.it/@xiaoyunyang/checkEnding</a></p>
+
+<h2 id="capitalize-letters-in-a-sentence">Capitalize Letters In A Sentence</h2>
+
+<h3 id="the-algorithm-1">The Algorithm</h3>
+
+<p>Using reduce vice a map and join gives you a slight performance boost.</p>
+
+<p>When your phrase is really long, you should care about performance also. Doing a <code>map</code> then <code>join</code> is going to be slower than doing a <code>reduce</code> based on <a href="https://jsperf.com/test-map-join-vs-reduce" target="_blank">this benchmark</a>.</p>
+
+<pre><code class="language-javascript">const capitalize = (word) =&gt; {
+  const rest = word.slice(1);
+  const firstLtr = word.charAt(0);
+  return firstLtr.toUpperCase() + rest.toLowerCase();
+}
+const titleCase = (phrase) =&gt; {
+  if(!phrase) return phrase;
+  [first, ...rest] = phrase.split(' ');
+  return rest.reduce((res,a) =&gt;  res +' ' + capitalize(a),
+                                            capitalize(first))
+}
+</code></pre>
+
+<h3 id="unit-test-1">Unit Test</h3>
+
+<p>I wrote a helper assert function and some test cases. This is by no means an exhaustive test.</p>
+
+<pre><code class="language-javascript">const assert = (fun, input, expected) =&gt; {
+ return fun(input) === expected ?
+  'passed' :
+  `failed on input=${input}. expected ${expected}, but got ${fun(input)}`;
+}
+</code></pre>
+
+<p>Test cases:</p>
+
+<pre><code class="language-javascript">let testCases = [
+ {input: &quot;I’m a little tea pot&quot;, expected: &quot;I’m A Little Tea Pot&quot;},
+ {input: &quot;sHoRt AnD sToUt&quot;, expected: &quot;Short And Stout&quot;},
+ {input: &quot;sHoRt AnD sToUt&quot;, expected: &quot;Short And Stout&quot;},
+ {input: &quot;HERE IS MY HANDLE HERE IS MY SPOUT&quot;, expected: &quot;Here Is My Handle Here Is My Spout&quot;},
+ {input: &quot;&quot;, expected: &quot;&quot;},
+ {input: undefined, expected: undefined},
+ ]
+</code></pre>
+
+<p>Doing this test, you should get all tests passed:</p>
+
+<pre><code class="language-javascript">let testResult = testCases.map(d =&gt; assert(titleCase, d.input, d.expected))
+testResult.filter(d =&gt; d!=='passed').length === 0 ? 'passed all tests' :
+                                                    'failed at least one test'
+</code></pre>
+
+<h2 id="match-parentheses-in-a-string">Match parentheses in a string</h2>
+
+<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/MatchParentheses" target="_blank">repl.it</a></p>
+
+<h3 id="the-algorithm-2">The Algorithm</h3>
+
+<pre><code class="language-javascript">function isBalanced(str, openCnt) {
+  if (typeof str !== 'string') return false;
+  if (openCnt &lt;  0) return false;
+  if (str.length === 0) return openCnt === 0;
+
+  const fst = str[0];
+  const rst = str.slice(1);
+  return isBalanced(rst, newOpenCnt(fst, openCnt));
+}
+const newOpenCnt = (c, openCnt) =&gt; {
+  if(c === '(') return openCnt + 1;
+  if(c === ')') return openCnt - 1;
+  return openCnt;
+}
+
+</code></pre>
+
+<h3 id="unit-test-2">Unit Test</h3>
+
+<p>It is necessary to extensively unit test your code.</p>
+
+<pre><code class="language-javascript">let testCases = [
+  {test: '(', shouldBe: false},
+  {test: '())', shouldBe: false},
+  {test: null, shouldBe: false},
+  {test: undefined, shouldBe: false},
+  {test: 22, shouldBe: false},
+  {test: ')(', shouldBe: false},
+  {test: '', shouldBe: true},
+  {test: '()', shouldBe: true},
+  {test: '()()', shouldBe: true},
+  {test: '(())', shouldBe: true},
+  {test: 'hi', shouldBe: true},
+  {test: '(hi)', shouldBe: true},
+  {test: '(((())(())',shouldBe: false}
+];
+let fun = (str) =&gt; isBalanced(str, 0);
+const test = (testCases, fun) =&gt; {
+  testCases.map(t =&gt; {
+    const shouldBe = t.shouldBe;
+    const is = fun(t.test);
+    const res = (shouldBe === is) ? 'passed' : 'failed';
+    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
+    console.log(`${res} ${moreInfo}`);
+  })
+}
+test(testCases, fun)
+</code></pre>
+
+<h2 id="url-string-transform">URL String transform</h2>
+
+<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/urlStringTransform" target="_blank">repl.it</a></p>
+
+<p>Given an article title for a blog, create a url string of all lower case words joined by &lsquo;-&rsquo;.</p>
+
+<h3 id="option-1-use-array-map-then-array-join">Option 1 - use Array.map, then Array.join</h3>
+
+<pre><code class="language-javascript">function createURL(title) {
+  if(typeof title !== 'string') return ''
+  return title.split(' ')
+              .map(word =&gt; word.toLowerCase())
+              .join('-');
+}
+</code></pre>
+
+<p>The disadvantage of this approach is it&rsquo;s <a href="https://stackoverflow.com/questions/22614237/javascript-runtime-complexity-of-array-functions" target="_blank">slow</a>. map is O(N). join is O(N) we can do better.</p>
+
+<h3 id="option-2-use-array-reduce">Option 2 - use Array.reduce</h3>
+
+<pre><code class="language-javascript">function createURL2(title) {
+  if(typeof title !== 'string') return ''
+
+  return title.split(' ')
+              .reduce((res, word) =&gt;  
+                res + '-' + word.toLowerCase(),
+                '')
+              .slice(1)
+}
+</code></pre>
+
+<p>Question for the reader: why <code>.slice(1)</code> at the end?</p>
+
+<h3 id="option-3-es6">Option 3 - ES6</h3>
+
+<pre><code class="language-javascript">function createURL3(title) {
+  if(typeof title !== 'string') return ''
+
+  let [first, ...rest] = title.split(' ')
+
+  return rest.reduce((res, word) =&gt;
+              res + '-' + word.toLowerCase(),
+              first.toLowerCase())
+}
+</code></pre>
+
+<h3 id="unit-test-3">Unit Test</h3>
+
+<pre><code class="language-javascript">let testCases = [
+  {test: '', shouldBe: ''},
+  {test: 'hello', shouldBe: 'hello'},
+  {test: 'hello world', shouldBe: 'hello-world'},
+  {test: undefined, shouldBe: ''}
+];
+let fun = (str) =&gt; createURL3(str);
+
+const test = (testCases, fun) =&gt; {
+  testCases.map(t =&gt; {
+    const shouldBe = t.shouldBe;
+    const is = fun(t.test);
+    const res = (shouldBe === is) ? 'passed' : 'failed';
+    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
+    console.log(`${res} ${moreInfo}`);
+  })
+}
+test(testCases, fun)
+</code></pre>
+
+<h2 id="html-string-transform">HTML String Transform</h2>
+
+<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/strReplace" target="_blank">repl.it</a></p>
+
+<p>Symbols used in HTML document consist of special character sets, including <code>&amp;lt;</code> for &amp; and <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_13.html" target="_blank">some others</a>.</p>
+
+<pre><code class="language-javascript">// &amp;lt; =&gt; '&lt;''
+// &amp;gt; =&gt; '&gt;'
+// &amp;quot; =&gt; ''\&quot;'
+
+
+// Takes a string and encodes the characters as HTML characters
+function encodeV1(char) {
+  switch (char) {
+    case '&lt;': return '&amp;lt;'
+    case '&gt;': return '&amp;gt;'
+    case '\&quot;': return '&amp;quot;'
+  }
+  return char
+}
+
+let s = &quot;1 &gt; 0 and 1 &lt; 12, \&quot;hello\&quot;&quot;
+let encode = encodeV1
+s.split('').map(char =&gt; encode(char)).join('')
+//&gt; '1 &amp;gt; 0, 1 &amp;lt; 12, 1 &amp;gt;= 1. &amp;quot;hello&amp;quot;''
+</code></pre>
+
+<p>This works but the <code>encode</code> function is hard-coded with simples. If we want to write a <code>decode</code> function that makes the string transformation in reverse, that would require writing out all those mappings again, requiring us to refactor code. It would be desirable to have a single source of truth that dictates all available encoding. Let&rsquo;s make a data structure called <code>dict</code> that provides the collection of tuples for encoding and decoding our characters and HTML special characters.</p>
+
+<p>Some refactoring is necessary:</p>
+
+<pre><code class="language-javascript">const dict = [
+  {char: '&lt;', code: '&amp;lt;'},
+  {char: '&gt;', code: '&amp;gt;'},
+  {char: '\&quot;', code: '&amp;quot;'},  
+]
+
+// Build a switch based on array
+function encodeV2(dict) {
+  return char =&gt; {
+    let res = char
+    for(let i=0; i&lt;dict.length; i++) {
+      if(dict[i].char === char) {
+        res = dict[i].code
+        break
+      }  
+    }
+    return res
+  }
+}
+
+// This is so we don't have to change our interface encode(c) below
+encode = encodeV2(dict)
+s.split('').map(c =&gt; encode(c)).join('')
+//&gt; '1 &amp;gt; 0, 1 &amp;lt; 12, 1 &amp;gt;= 1. &amp;quot;hello&amp;quot;''
+</code></pre>
+
+<p>Let&rsquo;s also write <code>decode</code> to use <code>dict</code>. Previously for <code>encode</code>, we are able to partition the string into an array of characters for processing. However for <code>decode</code>, this step is not so straight forward since our code e.g., <code>&amp;gt;</code> consists of multiple character. So what do we do?</p>
+
+<p>Let&rsquo;s write a helper function that handles partitioning of the string to arrays of regular characters or</p>
+
+<pre><code class="language-javascript">function decodeV2(dict) {
+  return code =&gt; {
+    let res = code
+    for(let i=0; i&lt;dict.length; i++) {
+      if(dict[i].code === code) {
+        res = dict[i].char
+        break
+      }  
+    }
+    return res
+  }
+}
+const matchHTMLChar = new RegExp(/&amp;(lt|gt|quot);/, 'g')
+
+let encoded = s.split('').map(char =&gt; encode(char)).join('')
+
+let decode = decodeV2(dict)
+let decoded = encoded.replace(matchHTMLChar, decode)
+s === decoded //&gt; true
+</code></pre>
+
+<p>Can we make the solution more general? Yes, in the following ways:
+1. notice the <code>decode</code> and <code>encode</code> functions have basically the same functional structure. That is, they both run a loop to update the result based on value from the array of objects. We can generalize it further and abstract away that boilerplate.
+2. The pattern we are matching in the <code>matchHTMLChar</code> RegExp is hardcoded. We should make that dependent on  <code>dict</code>.</p>
+
+<p>I&rsquo;ll leave these two problems to you as an exercise.</p>
+
+<div class="alert info ">
+  <p>Note: Abstraction is vital in helping us to cope with the complexity of large systems. One of the tenets of functional programming, a <strong>problem solving framework</strong>, is the principle of abstraction. Some parts of your code are boilerplate. Some parts of your code are unique. The goal of abstraction is to capture that boilerplate stuff in a higher order function.</p>
+</div>
+
+<h1 id="array-algorithms">Array Algorithms</h1>
+
+<h2 id="flatmap">Flatmap</h2>
+
+<p>Write a function that converts &ldquo;hello&rdquo; to &ldquo;h.e.l.l.o.&rdquo; There are two parts to this: <code>flat</code> and <code>map</code>.</p>
+
+<pre><code class="language-javascript">const arr = &quot;hello&quot;.split(&quot;&quot;) //&gt; [&quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;]
+
+const matrix = arr.map(s =&gt; [s, &quot;.&quot;])
+// [Array(2), Array(2), Array(2), Array(2), Array(2)]
+// 0: (2) [&quot;h&quot;, &quot;.&quot;]
+// 1: (2) [&quot;e&quot;, &quot;.&quot;]
+// 2: (2) [&quot;l&quot;, &quot;.&quot;]
+// 3: (2) [&quot;l&quot;, &quot;.&quot;]
+// 4: (2) [&quot;o&quot;, &quot;.&quot;]
+
+const flat = (data) =&gt; data.reduce((res, d) =&gt; {
+  return res.concat(d);
+}, []);
+
+
+flat(matrix) //&gt; [&quot;h&quot;, &quot;.&quot;, &quot;e&quot;, &quot;.&quot;, &quot;l&quot;, &quot;.&quot;, &quot;l&quot;, &quot;.&quot;, &quot;o&quot;, &quot;.&quot;]
+
+flat(matrix).join(&quot;&quot;) //&gt; &quot;h.e.l.l.o.&quot;
+</code></pre>
+
+<h1 id="resources">Resources</h1>
+
+<ul>
+<li><a href="https://medium.freecodecamp.org/how-to-think-like-a-programmer-lessons-in-problem-solving-d1d8bf1de7d2" target="_blank">How to think like a programmer</a></li>
+</ul>
               
             </div>
           </div>
@@ -294,13 +736,9 @@
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/mobile-app/">Mobile App</a>
-
   <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
 
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/open-source/">Open Source</a>
-
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/react-native/">React Native</a>
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/guide/">Guide</a>
 
                   </div>
                 
@@ -313,7 +751,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/" data-tooltip="Why I Pay to Work At a Co-working Space">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/an-career-transition-guide-for-overachievers/" data-tooltip="An Career Transition Guide For Overachievers">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -321,7 +759,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/" data-tooltip="Building an Isomorphic Webapp">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/" data-tooltip="Creating LooseLeaf: A Platform To Support The Future Of Work">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -339,19 +777,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/algorithms-for-web-developers/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/algorithms-for-web-developers/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/algorithms-for-web-developers/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -366,7 +804,7 @@
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -384,8 +822,8 @@
 
 
 var disqus_config = function () {
-this.page.url = "http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/";  
-this.page.identifier = "Building A React Native Travel App"; 
+this.page.url = "http://xiaoyunyang.github.io/post/algorithms-for-web-developers/";  
+this.page.identifier = "Algorithms for Web Developers"; 
 };
 
 (function() { 
@@ -416,7 +854,7 @@ s.setAttribute('data-timestamp', +new Date());
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/" data-tooltip="Why I Pay to Work At a Co-working Space">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/an-career-transition-guide-for-overachievers/" data-tooltip="An Career Transition Guide For Overachievers">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -424,7 +862,7 @@ s.setAttribute('data-timestamp', +new Date());
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/" data-tooltip="Building an Isomorphic Webapp">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/" data-tooltip="Creating LooseLeaf: A Platform To Support The Future Of Work">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -442,19 +880,19 @@ s.setAttribute('data-timestamp', +new Date());
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/algorithms-for-web-developers/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/algorithms-for-web-developers/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/algorithms-for-web-developers/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -469,7 +907,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -484,19 +922,19 @@ s.setAttribute('data-timestamp', +new Date());
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fbuilding-a-react-native-travel-app%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Falgorithms-for-web-developers%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fbuilding-a-react-native-travel-app%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Falgorithms-for-web-developers%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fbuilding-a-react-native-travel-app%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Falgorithms-for-web-developers%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -784,9 +1222,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/building-a-react-native-travel-app\/';
+          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/algorithms-for-web-developers\/';
           
-            this.page.identifier = '\/post\/building-a-react-native-travel-app\/'
+            this.page.identifier = '\/post\/algorithms-for-web-developers\/'
           
         };
         (function() {
