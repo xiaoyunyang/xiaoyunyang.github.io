@@ -7,14 +7,43 @@ tags:
   - JavaScript
   - Career
   - Programming
+keywords:
+  - computer science
+  - javascript
+  - interview prep
+  - algorithms
+  - data structure
+  - productivity
 thumbnailImagePosition: left
 thumbnailImage: /post/images/algo/algo-logo.png
 ---
 
-We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I'm drawing these problems from [Cracking the Coding Interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&psc=1&refRID=2E72V7DJM4CV4DNTBTKD) They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental frameworks and techniques in computer science.
+We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I'm drawing these problems from [LeetCode](https://leetcode.com/) and [Cracking the Coding Interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&psc=1&refRID=2E72V7DJM4CV4DNTBTKD). They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.
 
 <!--more-->
 <!--toc-->
+
+# LeetCode Practice
+* [TwoSum](https://leetcode.com/problems/multiply-strings/description/) - Easy
+  * [MySolution](https://repl.it/@xiaoyunyang/TwoSum)
+  * Gotcha: you can easily develop a O(N^2) algorithm with a nested loop but we can develop a single-pass O(N) algorithm by creating a hash map
+  * Knowledge:  hash map
+  * Complexity: O(N^2) or O(N)
+* [AddTwoNumbers](https://leetcode.com/problems/add-two-numbers/description/) -  Medium
+  * [MySolution](https://repl.it/@xiaoyunyang/AddTwoNumbers)
+  * Gotcha: You can add things to the end of the linked list while generating a linked list by creating a hole at the end and keep a `tail` reference to that hole.
+  * Knowledge:  Linked List
+  * Complexity: O(N)
+* [MultiplyStrings](https://leetcode.com/problems/multiply-strings/description/) - Medium
+  * [MySolution](https://repl.it/@xiaoyunyang/MultiplyStrings)
+  * Gotcha: A many-step problem that has a lot of room for error. *handle your edge cases!* The way to solve this problem is to do grade school multiplication. Don't forget to handle edge condition e.g., one of the two numbers is "0", return "0" right away.
+  * Knowledge:  arrays and strings, be careful with edge case handling
+  * Complexity: O(M*N)
+* [Path Sum II](https://leetcode.com/problems/path-sum-ii/description/) - Medium
+  * [MySolution](https://repl.it/@xiaoyunyang/PathSum-II)
+  * Gotcha: `node` is a leaf if `!node.left && !node.right`. Keep a mutable data structure outside of your recursive function to accumulate result.
+  * Knowledge: Graph, binary search tree, depth first search, recursion  
+  * Complexity: O(log N) ... height of the tree if perfectly balanced but could be O(N) if not a balanced tree
 
 # QuickSort
 
@@ -135,9 +164,22 @@ function zip(l1,l2) {
 }
 ```
 
-# Practice
-* [TwoSum](https://repl.it/@xiaoyunyang/TwoSum) - Easy
-* [AddTwoNumbers](https://repl.it/@xiaoyunyang/AddTwoNumbers) - Medium
+# Tricks and Shortcut
+
+Convert a string representation of a number to a number:
+
+```javascript
+let s = '2'
+typeof s //>  "string"
+let n = s - '0' //<-- Trick
+typeof n //>  "number"
+```
+
+Declare an Array and Initialize
+```javascript
+const pos = new Array(5);
+pos.fill(0) //<-- Shortcut
+```
 
 # Resources
 * [Ben's Blog](http://blog.benoitvallon.com/) - Basic Algos implemented in JavaScript.

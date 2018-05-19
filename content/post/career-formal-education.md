@@ -1,5 +1,5 @@
 ---
-title: "How Formal Education Closes Doors To Opportunities"
+title: "How Formal Education May Close Doors To Opportunities"
 date: 2018-01-14
 categories:
   - blog

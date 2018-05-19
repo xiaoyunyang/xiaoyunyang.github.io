@@ -1,5 +1,5 @@
 ---
-title: "Coding Interview Prep Plan"
+title: "The Coding Interview: What to Expect"
 date: 2018-05-07
 categories:
   - blog
@@ -8,6 +8,13 @@ tags:
   - Guide
   - Programming
   - Career
+keywords:
+  - computer science
+  - interview prep
+  - algorithms
+  - data structure
+  - productivity
+  - guide
 thumbnailImagePosition: left
 thumbnailImage: /post/images/CTCI.png
 ---

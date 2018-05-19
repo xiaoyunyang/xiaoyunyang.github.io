@@ -1,19 +1,29 @@
 ---
-title: "Data Structure with JavaScript Object: LinkedList"
+title: "Data Structure with JavaScript Object: Linked List"
 date: 2018-05-16
 categories:
   - blog
 tags:
   - JavaScript
   - Programming
+keywords:
+  - computer science
+  - javascript
+  - interview prep
+  - algorithms
+  - data structure
+  - learn to code
+  - linked list
 thumbnailImagePosition: left
-thumbnailImage: /post/images/algo/algo-logo.png
+thumbnailImage: /post/images/algo/linked-list.png
 ---
 
-LinkedList is like an array but more flexible. Elements in an array are stored contiguously in memory while LinkedList are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement LinkedList in JavaScript and go over some algorithms with Linked List.
+Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.
 
 <!--more-->
 <!--toc-->
+
+We are only going to focus on singly linked list for this article.
 
 # Definition
 ```javascript
@@ -23,11 +33,11 @@ function ListNode(val) {
 }
 ```
 
-# LinkedList Basics
+# Linked List Basics
 
 ## Add to tail
 
-Adding to tail of a LinkedList of size N is an O(N) operation because you have to traverse the entire LinkedList to the end. We can create a LinkedList manually by keep adding to the tail:
+Adding to tail of a linked list of size N is an O(N) operation because you have to traverse the entire linked list to the end. We can create a linked list manually by keep adding to the tail:
 
 ```javascript
 let l = new ListNode(1)
@@ -35,7 +45,7 @@ l.next = new ListNode(2)
 l.next.next = new ListNode(3)
 ```
 
-This creates the following LinkedList:
+This creates the following linked list:
 
 ```
 ListNode {
@@ -51,7 +61,7 @@ ListNode {
 }
 ```
 
-LinkedList is often drawn as such:  `1 -> 2 -> 3 -> null`.
+linked list is often drawn as such:  `1 -> 2 -> 3 -> null`.
 
 We can also create a method for `ListNode` that adds a new node to the end of a given chain of ListNodes:
 
@@ -69,7 +79,7 @@ ListNode.prototype.add = function(val) {
 }
 ```
 
-In the code above, `curr` is a pointer that traverses the entire LinkedList. `add` is a mutator method which modifies the original LinkedList (i.e., `this`). Specifically, it modifies the `next` of the last node in the original list by making it point to a new node instead of being null (which means it doesn't point to anything).
+In the code above, `curr` is a pointer that traverses the entire linked list. `add` is a mutator method which modifies the original linked list (i.e., `this`). Specifically, it modifies the `next` of the last node in the original list by making it point to a new node instead of being null (which means it doesn't point to anything).
 
 ```
 console.log('l before adding\n', l //> 1 -> 2 -> 3 -> null
@@ -81,7 +91,7 @@ console.log('l after adding\n', l) //> 1 -> 2 -> 3 -> 4 -> null
 
 ## Add to head
 
-Adding to the head of the LinkedList is an O(1) operation. Let's write a method for `ListNode` called `push`.
+Adding to the head of the linked list is an O(1) operation. Let's write a method for `ListNode` called `push`.
 
 ```javascript
 ListNode.prototype.push = function(val) {
@@ -109,9 +119,7 @@ ListNode.prototype.pop = function() {
 
 # Algo:
 
-## Create LinkedList from Array
-
-Create a Linked List from an array:
+## Create Linked List from Array
 
 ```javascript
 let arr1 = ['a', 'b', 'c']
@@ -142,39 +150,12 @@ function createLL(arr) {
 The result:
 
 ```javascript
-console.log('l1:\n', l1)
-console.log('l2:\n', l2)
-```
-
-which print out
-
-```
-l1:
- ListNode {
-  val: 'a',
-  next: ListNode {
-    val: 'b',
-    next: ListNode {
-      val: 'c',
-      next: null
-    }
-  }
-}
-l2:
- ListNode {
-  val: 'x',
-  next: ListNode {
-    val: 'y',
-    next: ListNode {
-      val: 'z',
-      next: null
-    }
-  }
-}
+console.log('l1:\n', l1) //> a -> b -> c -> null
+console.log('l2:\n', l2)  //> x -> y -> z -> null
 ```
 
 
-`push` and `pop` are stack operations.  Stack is a data structure that's generally implemented with a LinkedList.
+`push` and `pop` are stack operations.  Stack is a data structure that's generally implemented with a linked list.
 
 ## Zip
 
@@ -265,7 +246,7 @@ console.log(c) //> "hi"
 
 ## Reverse
 
-Write a function `reverseLL` which takes a LinkedList and returns a LinkedList that's the reverse. For example, `1 -> 2 -> 3 -> null` becomes `3 -> 2 -> 1 -> null`I'm using a recursive function but you can use a loop to do this.
+Write a function `reverseLL` which takes a linked list and returns a linked list that's the reverse. For example, `1 -> 2 -> 3 -> null` becomes `3 -> 2 -> 1 -> null`I'm using a recursive function but you can use a loop to do this.
 
 ```javascript
 const reverseLL = (ll, revLL) => {

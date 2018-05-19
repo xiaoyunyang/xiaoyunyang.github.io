@@ -1,11 +1,16 @@
 ---
-title: "Problem Solving Using JavaScript"
+title: "Algorithms for Web Developers"
 date: 2018-04-16
 categories:
   - blog
 tags:
   - JavaScript
   - Guide
+keywords:
+  - computer science
+  - algorithms
+  - data structure
+  - web development
 thumbnailImagePosition: top
 thumbnailImage: /post/images/algorithms-xkcd.png
 ---

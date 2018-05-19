@@ -612,3 +612,4 @@ Programmers often have to make a tradeoff between **Code reusability and code sc
 * [Factory Function Patterns In Depth](https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91)
 * [Elegant patterns in modern JavaScript: Ice Factory](https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee)
 * [Small Functions considered Harmful](https://medium.com/@copyconstruct/small-functions-considered-harmful-91035d316c29)
+* [Prototypes In JavaScript](https://hackernoon.com/prototypes-in-javascript-5bba2990e04b)
