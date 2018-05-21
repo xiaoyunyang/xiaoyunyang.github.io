@@ -23,7 +23,14 @@ Linked list is like an array but more flexible. Elements in an array are stored 
 <!--more-->
 <!--toc-->
 
-We are only going to focus on singly linked list for this article.
+We are only going to focus on singly linked list for this article. Doubly linked lists are also implemented sometimes but having an extra pointer to the predecessor of each node increases the overhead of a linked list as we have to keep twice as many pointers.
+
+# Motivation
+
+The main benefit of a linked list is that it is a more memory efficient way of maintaining a dynamic collection of things that could get really large. Because the relationship between the thing and the next thing in the collection is defined by a pointer rather than the proximity in memory, things that are next to each other in the linked list don't need to be physically stored next to each other in memory. As such, you can use a linked list for solving the following problems:
+
+* Maintain a sorted list that you can keep adding things to without overhead of copying the entire list to a new array.
+* Maintain a Last in, first out (LIFO) or a stack. Stacks are used for managing computer processes when your main process get interrupted by calling a subroutine.
 
 # Definition
 ```javascript
@@ -117,7 +124,7 @@ ListNode.prototype.pop = function() {
 }
 ```
 
-# Algo:
+# Algos:
 
 ## Create Linked List from Array
 

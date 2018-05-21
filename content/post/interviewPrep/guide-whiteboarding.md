@@ -181,5 +181,23 @@ const pos = new Array(5);
 pos.fill(0) //<-- Shortcut
 ```
 
+# Fundamental Knowledge Review
+
+Tim Roughgarden's [Algorithms Algorithms: Design and Analysis](http://theory.stanford.edu/~tim/videos.html)
+
+## Part I
+
+[YouTube Videos](https://www.youtube.com/playlist?list=PLXFMmlk03Dt7Q0xr1PIAriY5623cKiH7V)
+
+* **Divide and Conquer, Sorting and Searching, and Randomized Algo** - Integer Multiplication, Karatsuba Multiplication, Merge Sort, Big Oh Notation, O(NlogN) Algorithms for Counting Inversions, Strassen's Subcubic Matrix Multiplication Algo, O(NlogN) Closest Pair Algo, Quicksort, Randomized Selection Algo, Deterministic Selection Algo, Graphs and Minimum Cuts, Random Contraction Algo, Counting Minimum Cuts
+* **Graph Search, Shortest Paths, and Data Structures** - Graph Search, Breadth First Search (BFS), Shortest Paths, Undirected Connectivity, Depth First Search (DFS) (Topological Sort), Structure of the Web, Dijkstra's Shortest Path Algo, Heaps, Balanced Search Trees (BST), Red Black Trees, Rotations, Hash Tables, Pathological Data Sets, Universal Hashing, Bloom Filters
+
+## Part II
+
+[YouTube Videos](https://www.youtube.com/playlist?list=PLXFMmlk03Dt5EMI2s2WQBsLsZl7A5HEK6)
+
+  * **Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming** - Internet Routing, Sequence, Greedy Algorithms, Optimal Caching, Scheduling, Handling Ties, Prim's Minimum Spanning Tree (MST) Algo, Kruskal's MST Algo, Clustering, Advanced Union-Find: Path Compression The Hopcroft Ullman, Advanced Union-Find: The Ackermann Function, Tarjans Analysis, Huffman Codes, Dynamic Programming, the Knapsack Problem: A Dynamic Programming Algo, Sequence Alignment
+  * **NP-Complete Problems** - Optimal Binary Search Trees, the Bellman-Ford Algo for Single-Source Shortest Paths and optimal substructure, All-pairs Shortest Paths: The Floyd Warshall Algo, NP-Complete: Polynomial Time Solvable, Reduction and Completeness, Local Search Algo: The Max Cut Problem, The 2-SAT Problem, Random Walks on a Line, Analysis of Papadimitriou's, Stable Matching.
+
 # Resources
 * [Ben's Blog](http://blog.benoitvallon.com/) - Basic Algos implemented in JavaScript.

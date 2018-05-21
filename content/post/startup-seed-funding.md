@@ -82,23 +82,46 @@ You fill out a [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfyZt4vfPc
 
 **1. Briefly describe the company and team:**
 
-LooseLeaf is an online marketplace for aspiring newcomers of the tech and creative industries to acquire relevant work experience, professional connections, and mentorship through completing projects for non-profits, entrepreneurs, and intrapreneurs.
+LooseLeaf is an online marketplace and professional networking platform for aspiring newcomers of the tech and creative industries to try out a career path, acquire relevant work experience, professional connections, and mentorship through completing projects for non-profits, entrepreneurs, and intrapreneurs.
 
-LooseLeaf is founded by a service member-turned software engineer and entrepreneur who has experienced career transition first-hand and brings the right skills, insight, and determination to build the best online incubator for budding tech and creative talents.
-
+LooseLeaf is founded by a service member turned software engineer and entrepreneur who has first-hand experience in career change and brings the right skills, insight, and determination to build the best online incubator for budding developers, designers, and content creators.
 
 **2. Describe the market opportunity, value proposition, and customers (1-2 paragraphs or up to 500 words):**
 
-* LooseLeaf provides a platform to help people who are looking for opportunities to close skills gaps and obtain relevant work experience complete assignments for non-profits who desperately need volunteers to make a website, create marketing material, and contribute to their blogs. LooseLeaf’s potential users are college students, recent college graduates who are unemployed or underemployed as well as those who are looking for a career transition.
-* LooseLeaf’s customers are the non-profits. Many non-profits lack a tech-savvy staff, a marketing department, or funds to work with contractors and freelancers that would provide the best outcome. LooseLeaf’s assignment creation tool assists non-profits in creating an assignment for the developers, graphic designers, and writers that can clearly articulate what kind of website, marketing content, or blog article they want to be created. Another group of customers are partners who sell educational products and tools targeted at assisting the users in completing their assignments for the non-profits.
+There is a long-held belief that college degrees and internships are necessary prerequisites for developing marketable skills and obtaining relevant work experience. The advent of massive open online courses and coding bootcamps have offered alternatives to the traditional education-to-work pipeline but fall short of offering the same benefits which universities and internships provide, in particular, the ability to advance through a career development process with peers, networking with professionals, alumni and recruiters, and a clear path to employment.
+
+LooseLeaf is a platform for newcomers of the tech and creative industries to improve their skills and resumes by working on projects for non-profits and entrepreneurs. LooseLeaf serves a two-sided market: (1) the newcomers who look for career building opportunities by volunteering their time in exchange for feedback and validation of their abilities and (2) the non-profits and entrepreneurs looking for a way to de-risk and minimize cost for their operations. By addressing all of the necessary components for career building and adding the benefits of being free to use and asynchronous, LooseLeaf is instrumental for people who are in the midst of changing careers, college students who are establishing new careers, and high school students who are exploring career tracks.
 
 **3. Describe the technology/innovation (1-2 paragraphs or up to 500 words)**
 
+The major challenges of self-study for a career change include the lack of insight on what skills to build, what to work on to build these skills, and how the skill building activity will improve chance of employment in a chosen career track. LooseLeaf's innovation specifically address these challenges by integrating data from job boards and profile of companies who are posting to these job boards into LooseLeaf's information system to inform newcomers on how to work on each project to maximize their return-on-investment with regard to acquiring in-demand skills and relevant work experience. Preliminary research on recruiting and hiring trends revealed that companies now source prospective employees through professional networking sites like LinkedIn which utilize algorithms that scan candidates' resumes and online profiles for knowledge and experience keywords that match a job description. These algorithms then recommend those candidates to recruiters who further assess the candidates' viability through reviewing their portfolio and work experience for work samples and evidence of their abilities. LooseLeaf's innovation helps to career-changers laser focus their self-study effort to target the specific in-demand skills, relevant experience, and knowledge areas by completing projects, which are collected in a portfolio that impresses recruiters.
+
+Another challenge of self-study is the ability to stay motivated and focused to effectively and efficiently filter through and utilize the massive collection of free learning resources online. LooseLeaf's second innovation is the integration of social networking features to create a peer mentorship system, in which newcomers can observe what someone else of at their experience level would do to complete a project like creating a landing page for a non-profit or designing a logo for a startup founder and provide encouragement and feedback to each other during the project completion process. The peer mentorship system group newcomers of similar skill level, aspirations, and interest areas, and shared projects to create social networks. When newcomers browse open projects in areas of their interest, they can add the projects they want to work on to their todo-list and watch-list. They can document their efforts in how they are completing these projects, which sends notifications to other newcomers in their network.
+
+
 **4. Describe the technical challenges to overcome (1-2 paragraphs or up to 500 words)**
+
+Job posting data from various job boards needs to be imported and organized into LooseLeaf's database systems. Based on initial research, a few job boards provide an API for third party developers to query the jobs database, many do not offer that service. As such, methods need to be investigated or developed to effectively fetch the latest data from various job boards to maintain in LooseLeaf's information system that powers the insight provided to newcomers on the return-on-investment in working on a project.
+
+Another technical challenge is the development of an interface for project creators to monitor activities of the project contributors, answer questions about the project goals, and provide feedback to the project submissions after the deadline is reached. Because there is no limit to how many people can work on each project, traditional methods to hand-off a project like emailing a deliverable may be infeasible and undesirable for the project creators. Also, it is desirable to have the project deliverable publicly available online since portfolio building is a goal and a feature of LooseLeaf. Therefore, support for file sharing and a file hosting strategy would have to be developed.
 
 **5. Describe the competition (1-2 paragraphs or up to 500 words)**
 
+People looking for a career change to the tech and creative industries use online courses that come with video lectures and projects to practice what they learned. Coursera and Skillshare are two platforms for online learning. Coursera was developed to deliver university courses to the masses and Skillshare offer classes taught by experts and working professionals on emerging trends and topics. While both options cater to remote learners, the same demographics targeted by LooseLeaf, these online learning platforms are focused on delivering instructions for building knowledge, sometimes behind a paywall as in the case of Skillshare, while LooseLeaf is focused on delivering opportunities to obtain relevant work experience for free. Additionally, online courses are designed to enrich the learners, not addressing the immediate concern of a career-changer to build demonstrable skills and an online portfolio that showcases their abilities and develop a professional network of other career-changers and project creators (non-profits, entrepreneurs) who can vouch for their abilities.
+
+Coding and design bootcamps, such as General Assembly, Hack Reactor, Hackbright Academy, and Flatiron School specially target career-changers who are pivoting to careers in the tech and creative industries. Bootcamps last on average 14 weeks, cost up to $21,000, and offer intensive learning and project-based programs with a dedicated staff designed to make students viable candidates for employers in the tech industry. In addition to developing fundamental knowledge and a portfolio, students also learn interview skills and are exposed to professional networking opportunities. LooseLeaf distinguishes itself from bootcamps by offering same portfolio building opportunities, a peer support group, and professional network building opportunities for no cost to the career-changer.
+
+*Side Note:*
+
+* Being a good passive candidate - having a strong resume and portfolio of relevant work to impress career platform's matching algorithms and recruiters will improve your chance of getting invited to job interviews.
+* Bootcamps also attract entrepreneurs who lack the skills and knowledge implement their startup ideas.
+
+
 **6. In which topic area does the technology best fit?**
+
+EA (Education Technologies and Application, specifically EA7 (Education & Training for the Emerging Fourth Sector Eco-system EA7) best describes LooseLeaf because LooseLeaf's model of professional development is a substitute for the unsustainable cycle of higher education and debt. LooseLeaf's platform supports non-profits and entrepreneurs, who are focused on providing social good and innovation and not profits, in bringing their ideas to market.
+
+*My Choices are*:
 
 * Educational Technologies and Applications (EA) - See EA [Categories](https://seedfund.nsf.gov/portfolio/#educational-technologies-and-applications-ea).
 * Information Technologies (IT), or Other Topics (OT) - See [See IT Categories](https://seedfund.nsf.gov/topics/information-technologies/).
@@ -107,8 +130,22 @@ LooseLeaf is founded by a service member-turned software engineer and entreprene
 
 # LooseLeaf Product
 
+## How It Works
+LooseLeaf provides a platform for newcomers of the tech and creative industries to improve their skills and resumes by working on projects for non-profits and entrepreneurs.
+
+1. The newcomers can browse open projects in the marketplace posted by non-profits, entrepreneurs, and other newcomers to work on to acquire relevant work experience, professional connections, and mentorship. There is no limit to how many people can work on each project.
+  * Non-profits, entrepreneurs, intrapreneurs, and other newcomers post projects they need help with in exchange for offering mentorship and feedback to everyone working on the projects. There is no money exchanged for working on these projects so there is no limit to how many people can work on each project.
+2. Newcomers can browse open projects in areas of their interest and add the projects they want to work on to their todo-list and watch-list. They can document their efforts in how they are completing these projects, and receive notifications of how other people are completing their projects.
+  * While all submittals to a project receives a shout-out and reviews from the project creator, the best submittal receives a badge. The best submittal is judged by the project creator and the community. Over time, newcomers will have a portfolio of sample work, reviews, and shout-outs will be created and skills acquired through the various projects.
+  * *Side Note*, When the newcomers are browsing open projects in areas of their interests and can add it to their todo-list or ignore it, giving feedback to the project creator why (not interesting, project description too vague, no clear goal for the deliverable).
+3. The project creators provide direct feedback for all those who contribute a deliverable to the projects. A history of completed projects and the feedback received is accumulated on a newcomer's profile, which provides an overview of the newcomer's abilities.
+4. Peer Mentorship System
+  * (1) a daily/weekly digest email that is sent to a newcomer's inbox which consist of the activities of how other newcomers are completing their projects and (2) a tool for other newcomers to interact with that newcomer's action plan and milestones updates.
+  * To allow newcomers to browse open projects in the marketplace to acquire relevant work experience for working at a companies, professional connections, and mentorship.
+
 {{< image classes="fancybox fig-100 clear" src="/post/images/looseleaf/product-flowchart.png"
 thumbnail="/post/images/looseleaf/product-flowchart.png" title="LooseLeaf Product Flowchart">}}
+
 
 ## 1. Job Insights
 
@@ -197,6 +234,10 @@ When you work for free, you're not working for exposure. Freelancers [work for g
 
 The last cornerstone of LooseLeaf's product is the candidate sourcing, which is a combination of the Recruitment Candidate Relationship Manage System (CRM) and Application Tracking System (ATS).
 
+Marc Miller on CareerPivot says you should [target the company and quit chasing jobs](https://careerpivot.com/2017/target-the-company-quit-chasing-job/). This is because:
+
+> the traditional job search is dead and [may it rest in peace](https://careerpivot.com/2015/the-traditional-job-search-is-dead-r-i-p/). Now companies source perspective employees, notice I did not say job seekers, via LinkedIn, Google and other social and career platforms. They no longer care that you are not looking for a job. If you want to play this game you need to be a [good passive candidate or someone who is easily found](https://careerpivot.com/2016/anatomy-passive-candidate-linkedin-profile/).
+
 CRM is used by recruiters and a company's talent sourcing team [to identify strong active and passive candidates](https://blog.beamery.com/ats-vs-crm/) and encourage them to apply to the position.
 
 > **CRM:** Your candidate relationship management system is for job seekers and candidates. It’s the engine that drives your sourcing team, lets you create talent pools and helps you build and nurture relationships with passive talent.
@@ -231,7 +272,7 @@ The [skills gap](https://www.youtube.com/watch?v=gTLcM4iZSTo) is a major contrib
 
 The traditional methods for acquiring skills and knowledge is college. Colleges are really expensive. Some cost effective methods include coding bootcamps or self study. Coding bootcamps are there to [guide students through the complicated paths into the software industry](https://medium.com/bits-and-behavior/what-i-learned-from-researching-coding-bootcamps-f594c15bd9e0)
 
-> Even though bootcamps could be as short as three months, **a full career change into the software industry could take up to a year or more**, which surprised some students. This time could be financially costly for students as well
+> Even though bootcamps could be as short as three months, **a full career change into the software industry could take up to a year or more**, which surprised some students. This time could be financially costly for students as well.
 
 Bootcamps are not a replacement for putting in the work to:
 1. Obtain fundamental computer science knowledge
@@ -288,14 +329,14 @@ Some data which indicate market opportunity in the career pivot and candidate re
 * Those who are desperate/committed enough to pay $11K and spend 14 weeks in an intensive coding bootcamp. The typical bootcamper is is college educated working professional in their late 20s and early 30s looking for a career change.
 
 ### TAM, SAM, SOM
-**TAM**  
+**TAM: Accept**  
 
 Total Addressable Market (TAM) is everyone you wish to reach with your product. For estimating the TAM, we use the MOOC market size as baseline:
 
 * USD 1.83 Billion in 2015 to USD 8.50 Billion by 2020, at a compound annual growth rate (CAGR) of 36.0% ([Source](https://www.prnewswire.com/news-releases/massive-open-online-course-mooc-market-size-to-grow-from-usd-183-billion-in-2015-to-usd-850-billion-by-2020-561561611.html)).
 * There are 81M students on MOOC ([Source](https://www.class-central.com/report/mooc-stats-2017/)).
 
-**SAM**
+**SAM: Attract**
 
 Serviceable Available Market (SAM) is the portion of the TAM that we can actually address.
 According to [a Harvard Business Review Survey](https://hbr.org/2015/09/whos-benefiting-from-moocs-and-why):
@@ -314,7 +355,7 @@ According to a [Harvard Business Review survey](https://hbr.org/2018/01/can-mooc
 
 LooseLeaf can put the concepts they learn from MOOCs into context.
 
-**SOM**
+**SOM: Own**
 
 Serviceable Obtainable Market (SOM) is the realistic prediction of our ability to acquire share of our SAM, considering competition, locality, our distribution and sales channels and any other market influences.
 
@@ -329,8 +370,19 @@ Coding Bootcamp Market Size: $260M industry, graduating 23K developers in 2017, 
 2. Career Pivot Services
     * [Mission Collaborative](https://www.missioncollaborative.com/) - Offers career design and career change coaching.
     * [Career Foundry](https://www.crunchbase.com/organization/careerfoundry#section-overview) - CareerFoundry is the world’s first career accelerator for vocational tech skills. We build online programs delivered by expert mentors to bring complete beginners up to employable standards in technology.
-3. MOOCs:
+3. Bootcamps
+    * Hackbright Academy, General Assembly, Flatiron School
+4. MOOCs:
     * Popular MOOC platforms like coursera are moving away from offering free open online courses to issuing [certificates as part of corporate training for career advancement](https://www.forbes.com/sites/alexkonrad/2017/12/20/coursera-goes-corporate-to-keep-alive-promise-of-moocs/#23997ca8543c). Coursera has put [graded assignments behind paywall](https://campustechnology.com/articles/2018/02/12/report-moocs-attracting-more-paying-customers.aspx), which further denies free access to feedback that online learners need.
+4. Side Hustle website
+    * [College Recruiter](https://www.collegerecruiter.com/) - This is for college students or recent graduates looking for freelance work, part-time jobs, seasonal, internship, and entry-level jobs of any type.  College Recruiter is a place for people looking to hire college students to post jobs. College Recruiter does not support any development or get users to come back.
+    * [HireCoder](https://www.hirecoder.com/) - Live video chat and hire top 1% global coder, assign projects and tasks, Scrum and project delivery managed by HireCoder.
+    * [Skillshare](https://www.crunchbase.com/organization/skillshare#section-overview) - An online learning community where anyone can discover, take, or even teach a class.
+
+      >  Skillshare's mission is to close the professional skills gap and provide universal access to high-quality learning. For only $10/month, students get unlimited, on-demand, access to thousands of online classes.
+      > By teaching the skills needed in tomorrow’s world, Skillshare empowers people to advance their careers, improve their lives, and pursue the work they love.
+
+    * [Facebook](https://www.crunchbase.com/organization/facebook) - Facebook groups can be a platform for peer mentorship. For example, study group for algorithms course on coursera or 100DaysOfCode are some examples.
 
 ## Career Pivoters
 [Top 5 career pivotors startups love to hire](https://www.planted.com/blog/5-career-pivoters-startups-love-to-hire) are
