@@ -269,6 +269,7 @@
 <p>
 <h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
 <ul>
+<li><a href="#motivation">Motivation</a></li>
 <li><a href="#definition">Definition</a></li>
 <li><a href="#linked-list-basics">Linked List Basics</a>
 <ul>
@@ -276,7 +277,7 @@
 <li><a href="#add-to-head">Add to head</a></li>
 <li><a href="#remove-from-head">Remove from head</a></li>
 </ul></li>
-<li><a href="#algo">Algo:</a>
+<li><a href="#algos">Algos:</a>
 <ul>
 <li><a href="#create-linked-list-from-array">Create Linked List from Array</a></li>
 <li><a href="#zip">Zip</a></li>
@@ -285,7 +286,16 @@
 </ul>
 </nav></p>
 
-<p>We are only going to focus on singly linked list for this article.</p>
+<p>We are only going to focus on singly linked list for this article. Doubly linked lists are also implemented sometimes but having an extra pointer to the predecessor of each node increases the overhead of a linked list as we have to keep twice as many pointers.</p>
+
+<h1 id="motivation">Motivation</h1>
+
+<p>The main benefit of a linked list is that it is a more memory efficient way of maintaining a dynamic collection of things that could get really large. Because the relationship between the thing and the next thing in the collection is defined by a pointer rather than the proximity in memory, things that are next to each other in the linked list don&rsquo;t need to be physically stored next to each other in memory. As such, you can use a linked list for solving the following problems:</p>
+
+<ul>
+<li>Maintain a sorted list that you can keep adding things to without overhead of copying the entire list to a new array.</li>
+<li>Maintain a Last in, first out (LIFO) or a stack. Stacks are used for managing computer processes when your main process get interrupted by calling a subroutine.</li>
+</ul>
 
 <h1 id="definition">Definition</h1>
 
@@ -372,7 +382,7 @@ console.log('l', l) // 1 -&gt; 2 -&gt; 3 ...same as before
 }
 </code></pre>
 
-<h1 id="algo">Algo:</h1>
+<h1 id="algos">Algos:</h1>
 
 <h2 id="create-linked-list-from-array">Create Linked List from Array</h2>
 
