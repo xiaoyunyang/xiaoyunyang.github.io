@@ -56,7 +56,7 @@ Per the [SBIR Solicitation](https://www.nsf.gov/pubs/2018/nsf18550/nsf18550.htm)
 
 **Timeline**
 
-* **5PM on June 14, 2018** is the deadline for the full application.
+* **5PM on Thursday, June 14, 2018** is the deadline for the full application.
 * 1-3 months after the deadline, panel and merit review will be performed.
 * 4-6 months after the deadline, you'll be Notified on whether your proposal is accepted or declined.
 * 5-6 months after the deadline, you'll receive funding of up to $225K if your proposal is accepted.
@@ -65,9 +65,10 @@ Per the [SBIR Solicitation](https://www.nsf.gov/pubs/2018/nsf18550/nsf18550.htm)
 
 1. Incorporate your startup as a LLC, C-Corp, or S-Corp. I used LegalZoom to incorporate LooseLeaf as a single-entity LLC.
 2. Once you obtain documentation to verify your company's existence, you can obtain a DUNS number. I called the number listed on the [Dun & Bradstreet's website](https://www.dnb.com/duns-number/get-a-duns.html) to have them email me a link to submit copies of the business documentation. I submitted a Certificate of Organization and EIN Confirmation and Application.
-3. You have to wait a few days for the DUNS number to get entered into the system. Once that happens, you can start your SAM registration.
+3. You have to wait a few days for the DUNS number to get entered into the system. Once that happens, you can start your SAM registration. SAM registration takes up to 3 weeks.
 4. Register your company with the SBIR. See https://www.sbir.gov/registration/
-4. Once you completed completed your SAM registration, you can begin entering your proposal in FastLane.
+5. Register your company with NSF in [Research.gov](https://www.research.gov/research-portal/appmanager/base/desktop?_nfpb=true&_pageLabel=research_home_page) (Online Grant Management for the NSF Community). Only after registering with Research.gov can you login to FastLane and begin preparing your proposal.
+6. Once your SAM registration and Research.gov registration are activated, you can begin entering your proposal in [FastLane](https://www.fastlane.nsf.gov/). It is recommended you explore FastLane before submitting your application.
 
 ## SAM Registration
 
@@ -94,9 +95,9 @@ LooseLeaf is a platform for newcomers of the tech and creative industries to imp
 
 **3. Describe the technology/innovation (1-2 paragraphs or up to 500 words)**
 
-The major challenges of self-study for a career change include the lack of insight on what skills to build, what to work on to build these skills, and how the skill building activity will improve chance of employment in a chosen career track. LooseLeaf's innovation specifically address these challenges by integrating data from job boards and profile of companies who are posting to these job boards into LooseLeaf's information system to inform newcomers on how to work on each project to maximize their return-on-investment with regard to acquiring in-demand skills and relevant work experience. Preliminary research on recruiting and hiring trends revealed that companies now source prospective employees through professional networking sites like LinkedIn which utilize algorithms that scan candidates' resumes and online profiles for knowledge and experience keywords that match a job description. These algorithms then recommend those candidates to recruiters who further assess the candidates' viability through reviewing their portfolio and work experience for work samples and evidence of their abilities. LooseLeaf's innovation helps to career-changers laser focus their self-study effort to target the specific in-demand skills, relevant experience, and knowledge areas by completing projects, which are collected in a portfolio that impresses recruiters.
+The major challenges of self-study for a career change include the lack of insight on what skills to build, what to work on to build these skills, and how the skill building activity will improve chance of employment in a chosen career track. LooseLeaf's innovation specifically addresses these challenges by integrating data from job boards and profile of companies who are posting to these job boards into LooseLeaf's information system to inform newcomers on how to work on each project to maximize their return-on-investment with regard to acquiring in-demand skills and relevant work experience. Preliminary research on recruiting and hiring trends revealed that companies now source prospective employees through professional networking sites like LinkedIn which utilize algorithms that scan candidates' resumes and online profiles for knowledge and experience keywords that match a job description. These algorithms then recommend those candidates to recruiters who further assess the candidates' viability through reviewing their portfolio and work experience for work samples and evidence of their abilities. LooseLeaf's innovation helps career-changers laser focus their self-study effort to target the specific in-demand skills, relevant experience, and knowledge areas by completing projects, which are collected in a portfolio that impresses recruiters.
 
-Another challenge of self-study is the ability to stay motivated and focused to effectively and efficiently filter through and utilize the massive collection of free learning resources online. LooseLeaf's second innovation is the integration of social networking features to create a peer mentorship system, in which newcomers can observe what someone else of at their experience level would do to complete a project like creating a landing page for a non-profit or designing a logo for a startup founder and provide encouragement and feedback to each other during the project completion process. The peer mentorship system group newcomers of similar skill level, aspirations, and interest areas, and shared projects to create social networks. When newcomers browse open projects in areas of their interest, they can add the projects they want to work on to their todo-list and watch-list. They can document their efforts in how they are completing these projects, which sends notifications to other newcomers in their network.
+Another challenge of self-study is the ability to stay motivated and focused to effectively and efficiently filter through and utilize the massive collection of free learning resources online. LooseLeaf's second innovation is the integration of social networking features to create a peer mentorship system, in which newcomers can (1) observe what someone else at their experience level would do to complete a project (e.g., creating a landing page for a non-profit or designing a logo for a startup founder) and (2) provide encouragement and feedback to each other during the project completion process. The peer mentorship system groups newcomers of similar skill levels, aspirations, and interest areas, and shared projects to create social networks. When newcomers browse open projects in areas of their interest, they can add the projects they would like to complete to their todo-list and watch-list. They can document their efforts in how they are completing these projects, which sends notifications to other newcomers in their network.
 
 
 **4. Describe the technical challenges to overcome (1-2 paragraphs or up to 500 words)**
@@ -107,302 +108,22 @@ Another technical challenge is the development of an interface for project creat
 
 **5. Describe the competition (1-2 paragraphs or up to 500 words)**
 
-People looking for a career change to the tech and creative industries use online courses that come with video lectures and projects to practice what they learned. Coursera and Skillshare are two platforms for online learning. Coursera was developed to deliver university courses to the masses and Skillshare offer classes taught by experts and working professionals on emerging trends and topics. While both options cater to remote learners, the same demographics targeted by LooseLeaf, these online learning platforms are focused on delivering instructions for building knowledge, sometimes behind a paywall as in the case of Skillshare, while LooseLeaf is focused on delivering opportunities to obtain relevant work experience for free. Additionally, online courses are designed to enrich the learners, not addressing the immediate concern of a career-changer to build demonstrable skills and an online portfolio that showcases their abilities and develop a professional network of other career-changers and project creators (non-profits, entrepreneurs) who can vouch for their abilities.
+People looking for a career change to the tech and creative industries use online courses that come with video lectures and projects to practice what they learned. Coursera and Skillshare are two platforms for online learning. Coursera was developed to deliver university courses to the masses and Skillshare offer classes taught by experts and working professionals on emerging trends and topics. While both options cater to remote learners (the same demographics targeted by LooseLeaf), these online learning platforms are focused on delivering instructions for building knowledge, sometimes behind a paywall as the case of Skillshare, while LooseLeaf is focused on delivering opportunities to obtain relevant work experience for free. Additionally, online courses are designed to enrich the learners, not addressing the immediate concern of a career-changer to build demonstrable skills and an online portfolio that showcases their abilities and develop a professional network of other career-changers and project creators (non-profits, entrepreneurs) who can vouch for their abilities.
 
-Coding and design bootcamps, such as General Assembly, Hack Reactor, Hackbright Academy, and Flatiron School specially target career-changers who are pivoting to careers in the tech and creative industries. Bootcamps last on average 14 weeks, cost up to $21,000, and offer intensive learning and project-based programs with a dedicated staff designed to make students viable candidates for employers in the tech industry. In addition to developing fundamental knowledge and a portfolio, students also learn interview skills and are exposed to professional networking opportunities. LooseLeaf distinguishes itself from bootcamps by offering same portfolio building opportunities, a peer support group, and professional network building opportunities for no cost to the career-changer.
+Coding and design bootcamps, such as General Assembly, Hack Reactor, Hackbright Academy, and Flatiron School specially target career-changers who are pivoting to careers in the tech and creative industries. Bootcamps last an average of 14 weeks, cost up to $21,000, and offer intensive learning and project-based programs with a dedicated staff designed to make students viable candidates to employers in the tech industry. In addition to developing fundamental knowledge and a portfolio, students also learn interview skills and are exposed to professional networking opportunities. LooseLeaf distinguishes itself from bootcamps by offering the same portfolio building opportunities, a peer support group, and professional network building opportunities for no cost to the career-changer.
 
 *Side Note:*
 
 * Being a good passive candidate - having a strong resume and portfolio of relevant work to impress career platform's matching algorithms and recruiters will improve your chance of getting invited to job interviews.
-* Bootcamps also attract entrepreneurs who lack the skills and knowledge implement their startup ideas.
+* Bootcamps also attract entrepreneurs who lack the skills and knowledge to implement their startup ideas.
 
 
 **6. In which topic area does the technology best fit?**
 
-EA (Education Technologies and Application, specifically EA7 (Education & Training for the Emerging Fourth Sector Eco-system EA7) best describes LooseLeaf because LooseLeaf's model of professional development is a substitute for the unsustainable cycle of higher education and debt. LooseLeaf's platform supports non-profits and entrepreneurs, who are focused on providing social good and innovation and not profits, in bringing their ideas to market.
+EA (Education Technologies and Application, specifically EA7 (Education & Training for the Emerging Fourth Sector Eco-system EA7) best describes LooseLeaf. LooseLeaf's model of professional development is a substitute for the unsustainable cycle of higher education and debt. LooseLeaf's platform supports non-profits and entrepreneurs, who are focused on providing social good and innovation to nob-profits, in bringing their ideas to market.
 
 *My Choices are*:
 
 * Educational Technologies and Applications (EA) - See EA [Categories](https://seedfund.nsf.gov/portfolio/#educational-technologies-and-applications-ea).
 * Information Technologies (IT), or Other Topics (OT) - See [See IT Categories](https://seedfund.nsf.gov/topics/information-technologies/).
 * View [current Phase I awardees](https://seedfund.nsf.gov/awardees/phase-1/)
-
-
-# LooseLeaf Product
-
-## How It Works
-LooseLeaf provides a platform for newcomers of the tech and creative industries to improve their skills and resumes by working on projects for non-profits and entrepreneurs.
-
-1. The newcomers can browse open projects in the marketplace posted by non-profits, entrepreneurs, and other newcomers to work on to acquire relevant work experience, professional connections, and mentorship. There is no limit to how many people can work on each project.
-  * Non-profits, entrepreneurs, intrapreneurs, and other newcomers post projects they need help with in exchange for offering mentorship and feedback to everyone working on the projects. There is no money exchanged for working on these projects so there is no limit to how many people can work on each project.
-2. Newcomers can browse open projects in areas of their interest and add the projects they want to work on to their todo-list and watch-list. They can document their efforts in how they are completing these projects, and receive notifications of how other people are completing their projects.
-  * While all submittals to a project receives a shout-out and reviews from the project creator, the best submittal receives a badge. The best submittal is judged by the project creator and the community. Over time, newcomers will have a portfolio of sample work, reviews, and shout-outs will be created and skills acquired through the various projects.
-  * *Side Note*, When the newcomers are browsing open projects in areas of their interests and can add it to their todo-list or ignore it, giving feedback to the project creator why (not interesting, project description too vague, no clear goal for the deliverable).
-3. The project creators provide direct feedback for all those who contribute a deliverable to the projects. A history of completed projects and the feedback received is accumulated on a newcomer's profile, which provides an overview of the newcomer's abilities.
-4. Peer Mentorship System
-  * (1) a daily/weekly digest email that is sent to a newcomer's inbox which consist of the activities of how other newcomers are completing their projects and (2) a tool for other newcomers to interact with that newcomer's action plan and milestones updates.
-  * To allow newcomers to browse open projects in the marketplace to acquire relevant work experience for working at a companies, professional connections, and mentorship.
-
-{{< image classes="fancybox fig-100 clear" src="/post/images/looseleaf/product-flowchart.png"
-thumbnail="/post/images/looseleaf/product-flowchart.png" title="LooseLeaf Product Flowchart">}}
-
-
-## 1. Job Insights
-
-The first cornerstone for LooseLeaf's product is to demystify the career track by offering new career seekers a preview of the available job opportunities and the type of skills and experience a successful candidate must possess. The best way to get that insight is from **Job boards**.  Job boards are a type of search engine which aggregate and display jobs posted by employers seeking new employees. These job boards often target one specific industry like technology, design. They are among the most popular sites on the Internet.
-
-Based on Betterteam's ranking for [best Job Board](https://www.betterteam.com/job-boards), Indeed, Glassdoor, Craigslist, LinkedIn, Facebook are considered some of the best general job boards. There are some specialized job boards. There are many jobs [specializing in tech jobs](https://careersidekick.com/best-tech-job-boards/)
-
-**TODO:** Investigate each of the job boards below to determine if they have an API for third party developers to access data on jobs.
-
-**Tech Jobs**
-
-* [Dice](http://www.dice.com/) focuses on information technology, engineering professionals, and high level tech positions
-* [Hired](http://hired.com)
-* OneWire - Jobs in the financial sector
-* JournalismJobs - Professional journalism jobs
-* [Stack Overflow](http://stackoverflow.com/jobs) - Programming Jobs
-* [AngelList](http://angel.co/jobs) - Job board for startups. AngelList is like LinkedIn for entrepreneurs and tech founders/tech workers. It appears their job boards api have been discontinued.
-* [The Ladders](https://careersidekick.com/best-tech-job-boards/) - for high level people ($100K+ jobs)
-* [Crunchbase](http://www.crunchboard.com/jobs)
-* [Github Jobs](http://jobs.github.com) has a [Job Board API](https://jobs.github.com/api) 🙌
-* [iCrunchData](http://www.icrunchdata.com)
-* [Mashable](http://jobs.mashable.com )
-* [IT Job Cafe](http://itjobcafe.com)
-* [TopTechJobs](http://toptechjobs.com)
-* [TechCareers](http://www.techcareers.com)
-* [JustTechJobs](http://www.justtechjobs.com)
-* [StartupJobs](http://startupjobs.com)
-* [WeWorkRemotely](http://weworkremotely.com)
-* [StartupHire](http://www.startuphire.com)
-* [StartupZone](http://www.startupzone.com/)
-* [ITJobPro](http://ITJobPro.com)
-* [F6s](http://www.f6s.com/jobs)
-* [GeekWork](http://www.geekwork.com)
-* [YCombinator](http://news.ycombinator.com/jobs)
-* [JobsMatchSkills](http://jobsmatchskills.com/)
-* [UnderDog](http://underdog.io/)
-* [Venture Loop](http://www.ventureloop.com/)
-* [DigitalNYC](http://www.digital.nyc/jobs)
-* [Smash Magazine](https://www.smashingmagazine.com/jobs/)
-* [Remotive](http://jobs.remotive.io)
-* [Geek Work](http://www.geekwork.com)
-* [TechFetch](http://www.techfetch.com/)
-
-**Data Science Jobs**
-
-* [Hot Data Jobs](http://www.hotdatajobs.com/)
-* [Data Jobs](http://datajobs.com)
-* [Big Data Jobs](http://www.bigdatajobs.com)
-
-**Design Jobs**
-
-* Authentic Jobs - "the leading job board for designers, hackers, and creative pros"
-* Dribble - Jobs for visual creatives to post their portfolios so companies such as Facebook, Microsoft, Amazon, and Salesforce can view them.
-* [Krop](http://www.krop.com/) - Jobs for copywriters, product managers, and various types of visual creatives who want to work with companies like Apple. Verizon, PBS, Tesla, and ESPN
-* Coroflot - A niche site that allows creatives to post portfolios that employers and recruiters can view, similar to Dribbble.
-* Behance - Jobs for visual artists that lets you show off your portfolio to the likes of Washington Post and New York City Ballet
-* [DSGN](http://www.dsgnjbs.com/)
-
-**Internship**
-
-* Youtern - The "Best" internship job board
-* College Recruiter - Internship jobs for college students
-
-**Other**
-
-* [SnagAJob](SnagAJob is focused on the hourly job market)
-
-
-## 2. Skills, Knowledge, and Portfolio Building
-
-The second cornerstone of LooseLeaf's product is the skills, knowledge, and portfolio building. Based on [the latest coding bootcamp market research](https://www.coursereport.com/reports/2017-coding-bootcamp-market-size-research)
-
-> the number of coding bootcamp graduates has **grown 10x** since the first bootcamps launched in 2012. Coding bootcamps are a $260 million industry and will graduate ~23,000 developers in 2017.
-
-There are a few concerns with using a bootcamp to close the skills and experience gap:
-
-1. Cost - Average tuition price of qualifying courses is ~$11,400.
-2. Format - An average program length of 14.1 weeks. Bootcamps are trending longer – up from 12.9 weeks in 2016 to add computer science basics to the curriculum. If you never coded in your life, 13 weeks is not going to be enough to be a good software developer. Coding and problem solving skills are like muscle that you need to build up with practice.
-3. Exclusivity - There are prep schools for coding bootcamps. You have to be accepted into the bootcamp, like college. Many people are working a full time job, with bills, mortgage, and a family, so they can't drop everything to attend a bootcamp. Also, there're no bootcamps for content creators and designers looking to hone their skills through lots of practice.
-
-We help career-changers try out the careers they want to enter by working on projects for non-profits, entrepreneurs, and intrapreneurs for free. In exchange, they get feedback from their clients and get a feel for what it's like to work as a developer, designer, or writer.
-
-When you work for free, you're not working for exposure. Freelancers [work for gratitude, shout-outs, and opportunities that this would lead to something else](https://www.youtube.com/watch?v=MeVj-ASeGLs). It's often your initiative and may materialize to something down the line.
-
-## 3. Candidate Sourcing
-
-The last cornerstone of LooseLeaf's product is the candidate sourcing, which is a combination of the Recruitment Candidate Relationship Manage System (CRM) and Application Tracking System (ATS).
-
-Marc Miller on CareerPivot says you should [target the company and quit chasing jobs](https://careerpivot.com/2017/target-the-company-quit-chasing-job/). This is because:
-
-> the traditional job search is dead and [may it rest in peace](https://careerpivot.com/2015/the-traditional-job-search-is-dead-r-i-p/). Now companies source perspective employees, notice I did not say job seekers, via LinkedIn, Google and other social and career platforms. They no longer care that you are not looking for a job. If you want to play this game you need to be a [good passive candidate or someone who is easily found](https://careerpivot.com/2016/anatomy-passive-candidate-linkedin-profile/).
-
-CRM is used by recruiters and a company's talent sourcing team [to identify strong active and passive candidates](https://blog.beamery.com/ats-vs-crm/) and encourage them to apply to the position.
-
-> **CRM:** Your candidate relationship management system is for job seekers and candidates. It’s the engine that drives your sourcing team, lets you create talent pools and helps you build and nurture relationships with passive talent.
-
-ATS is used by the hiring team to track and automate some of the processes for job applicants to go through each stage of the hiring process. Many employers are [having difficulty](https://www.betterteam.com/applicant-tracking-system) finding candidates or sorting through the vast number of applicants they get.
-
-Many ATS systems offer additional features, such as note taking, bulk emailing, and job posting. ATS works by tracking who has applied for each job, when they applied, and what stages of the hiring process they've gone through and still need to go through. Some ATS also integrates **CV scanner** (i.e., allow CVs to be searched and filtered quickly to filter out candidates), **assessment platform** (e.g., candidate testing platforms, including code testing, video interviewing, personality testing, and more), and **Recruiting CRM** (candidate relationship management system for job seekers, candidates)
-
-There are a [whole plethora of recruiting websites](https://www.betterteam.com/top-job-posting-sites) dedicated to posting jobs, integrating Applicant Tracking Software (ATS), and hiring qualified candidates. Many of them have APIs for the companies posting jobs since they are the customers. Few have APIs for third party developers to acquire data from job postings to inform a talented but not-yet-qualified candidate on what the opportunities are and in what areas they need to build their skills and experience.
-
-* The [SmartRecruiters API](https://dev.smartrecruiters.com/customer-api/posting-api/endpoints/postings/) lets you grab active postings published by given company. Companies posting jobs using SmartRecruiters include Atlassian (See [example](https://www.smartrecruiters.com/Atlassian/743999668426546)).
-* Not Friendly to 3rd Party Developers (Yet).
-
-    * [Greenhouse.io API](https://developers.greenhouse.io/harvest.html#job-posts) provides Job Posts, which provides online job posts for a particular organization's jobs. I don't think they offer third party developers access to the job postings. Companies using Greenhouse includes Github (See [example](https://boards.greenhouse.io/github/jobs/1137157#.Wu9pxdPwZZ0)).
-    * [Workable API](https://workable.readme.io/docs/jobs). They have an API, but it’s only for paying customers (i.e., employers) to access and manage their own data: https://workable.readme.io/docs/generate-an-access-token) seems to be only for  paying customers (i.e., employers) to access and manage their own data. ActionIQ and Gitbook use workable to post jobs. See example [here](https://actioniq.workable.com/j/610FFCEB61) and [here](https://gitbook.workable.com/j/7F8654B9FD).
-
-
-> Put simply, your ATS is a workflow and compliance tool that manages applicants, your CRM is an ecosystem of all passive and active candidates, as well as everyone who has previously applied to your company. It’s a **complete talent intelligence hub**.
-
-## Research
-* [Betterteam's Intro to Applicant Tracking System](https://www.betterteam.com/applicant-tracking-system)
-* [AI for Recruiting](https://blog.beamery.com/ai-recruiting/)
-* [Recruiting in the Age of Data](https://blog.beamery.com/candidate-data/)
-* [How to Walk a Mile in the Candidate's Shoes](https://blog.beamery.com/walk-a-mile-in-candidates-shoes/)
-* [State of Recruitment Marketing 2018](https://blog.beamery.com/recruitment-marketing-2018-key-takeaways/)
-
-# Market Opportunity
-
-## The Problem
-
-The [skills gap](https://www.youtube.com/watch?v=gTLcM4iZSTo) is a major contributor of unemployment and underemployment. Low skilled work opportunities are disappearing, being automated away. Companies are in the business of educating workers. They are not schools and many have few resources to train new hires. New hires are expected to acquire the skills and knowledge demanded by the jobs they are applying to *before* they apply to the jobs.
-
-The traditional methods for acquiring skills and knowledge is college. Colleges are really expensive. Some cost effective methods include coding bootcamps or self study. Coding bootcamps are there to [guide students through the complicated paths into the software industry](https://medium.com/bits-and-behavior/what-i-learned-from-researching-coding-bootcamps-f594c15bd9e0)
-
-> Even though bootcamps could be as short as three months, **a full career change into the software industry could take up to a year or more**, which surprised some students. This time could be financially costly for students as well.
-
-Bootcamps are not a replacement for putting in the work to:
-1. Obtain fundamental computer science knowledge
-2. Software industry work experience
-3. Online portfolios
-4. Networking with employers, software engineers and other students
-5. Interviewing abilities (in particular “whiteboarding”)
-
-That's just for software but the same kind of expectations apply for any candidate. Specifically:
-
-1. Fundamental knowledge, as assessed during the knowledge interview or looking at the candidates' college degree / education background
-2. Problem solving skills, as asessed during the technical interview
-3. Practical experience and ability to "hit the ground running" if they hire you. This is evidenced by your relevant work experience and personal projects.
-
-**Networking and practical experience (portfolio) are important for getting invited to the job interview.**
-
-[A Boston Globe article](https://www.bostonglobe.com/business/2013/10/05/will-mooc-help-you-open-career-doors/pmjHbLCghsH0lEbulWC9VL/story.html) notes:
-
-> While MOOCs seem like they can only enhance a job candidate’s appeal, many people I talked to noted an important shift in the world of hiring. Credentials, whether a MOOC certificate or an MBA degree, are declining in importance, while **portfolios are on the rise**.
-
-What’s a portfolio?
-
-> Some sort of **evidence of your expertise and abilities** online, like design work showcased on Dribbble.com, software code on GitHub, a mobile app you’ve built, or a sales presentation you developed and posted to SlideShare. “Education is becoming less than 10 percent of a candidate’s total score when we hire,” says Apollo Sinkevicius, managing director at One Mighty Roar, a Boston design and innovation firm. Portfolios and work samples “have the highest weight in my hiring,” he says.
-
-
-Relevant Work Experience?
-
-* Non-traditional methods include apprenticeship programs LinkedIn's [REACH](https://careers.linkedin.com/reach/AboutReach):
-
-    > LinkedIn’s vision is to create economic opportunity for every member of the global workforce. This program is designed for candidates who have non-traditional career paths. We encourage applications from candidates without Computer Science degrees who are self-taught, re-entering the workforce, starting second careers, veterans, or those who have attended boot camp style programming courses.
-
-* Microsoft offers a similar apprenticeship program called [LEAP](http://www.industryexplorers.com/applicants).
-
-Some data which indicate market opportunity in the career pivot and candidate relationship management industry:
-
-* Google announced its new project -  [Google for Jobs](https://www.blog.google/products/search/connecting-more-americans-jobs/) - which addresses the concern that many job seekers feel like they can’t find the job they’re looking for or apply to roles that aren’t the right fit. At the same time [46 percent of U.S. employers face talent shortages and have issues filling open positions with the right candidate](https://www.manpowergroup.us/campaigns/talent-shortage/).
-* Based on [the latest coding bootcamp market research](https://www.coursereport.com/reports/2017-coding-bootcamp-market-size-research):
-
-    > the number of coding bootcamp graduates has **grown 10x** since the first bootcamps launched in 2012. Coding bootcamps are a $260 million industry and will graduate ~23,000 developers in 2017.
-
-* [TechBeacon](https://techbeacon.com/bootcamps-wont-make-you-coder-heres-what-will) reported that:
-
-    > In a recent review of bootcamps, TechBeacon found that 17 of 24 programs claimed that 90% or more of their students got full-time programming jobs or freelancing positions within six-to-12 months of graduation. But those numbers can be misleading. According to the Coding Bootcamp Market Sizing Report, the developer job market is [flooded with bootcamp graduates](https://medium.com/@marceldegas/san-francisco-bootcamp-bubble-cee59e48bf3e#.64f229tc9), and that makes it hard for individual graduates to stand out.
-
-**Bottomline** is job seekers need to stand out from the crowd with portfolio and sample work online which provide evidence for their abilities and talent.
-
-
-## Market Research
-
-**We Expect LooseLeaf users to be:**
-
-* MOOC users looking to build careers, a subset of which attend coding and UX design bootcamps.
-* Looking for project opportunities beyond formal education or MOOCs to stand out from the crowd.
-* Those who are desperate/committed enough to pay $11K and spend 14 weeks in an intensive coding bootcamp. The typical bootcamper is is college educated working professional in their late 20s and early 30s looking for a career change.
-
-### TAM, SAM, SOM
-**TAM: Accept**  
-
-Total Addressable Market (TAM) is everyone you wish to reach with your product. For estimating the TAM, we use the MOOC market size as baseline:
-
-* USD 1.83 Billion in 2015 to USD 8.50 Billion by 2020, at a compound annual growth rate (CAGR) of 36.0% ([Source](https://www.prnewswire.com/news-releases/massive-open-online-course-mooc-market-size-to-grow-from-usd-183-billion-in-2015-to-usd-850-billion-by-2020-561561611.html)).
-* There are 81M students on MOOC ([Source](https://www.class-central.com/report/mooc-stats-2017/)).
-
-**SAM: Attract**
-
-Serviceable Available Market (SAM) is the portion of the TAM that we can actually address.
-According to [a Harvard Business Review Survey](https://hbr.org/2015/09/whos-benefiting-from-moocs-and-why):
-
->Career benefits are the more common reason for taking a MOOC. **Fifty-two percent** of the people surveyed report a primary goal of improving their current job or finding a new job — they are “career builders.”
-
-
-As such, we are estimating that 52% of 81M students or **42M users** as our SAM.
-
-
-According to a [Harvard Business Review survey](https://hbr.org/2018/01/can-moocs-solve-your-training-problem)
-
-> one-fifth of those surveyed said they enrolled in MOOCs solely in the hope of finding a new job or starting a business. Rather, many people look at these courses as part of their self-directed career development, whether they have a clearly defined plan or are working toward broader objectives, such as maintaining their overall employability and keeping their skill set up-to-date.
-
-
-
-LooseLeaf can put the concepts they learn from MOOCs into context.
-
-**SOM: Own**
-
-Serviceable Obtainable Market (SOM) is the realistic prediction of our ability to acquire share of our SAM, considering competition, locality, our distribution and sales channels and any other market influences.
-
-Coding Bootcamp Market Size: $260M industry, graduating 23K developers in 2017, and has grown 10x since founded in 2012 [Source](https://www.coursereport.com/reports/2017-coding-bootcamp-market-size-research).
-
-
-## Competition
-
-1. Recruiting Software
-    * See [Top Recruiting Software of 2018](https://ideal.com/top-recruiting-software/)
-    * [Connectifier](https://www.crunchbase.com/organization/connectifier) - Connectifier helps recruiters discover, qualify, and connect with exceptional job candidates at roughly twice the rate of other solutions.
-2. Career Pivot Services
-    * [Mission Collaborative](https://www.missioncollaborative.com/) - Offers career design and career change coaching.
-    * [Career Foundry](https://www.crunchbase.com/organization/careerfoundry#section-overview) - CareerFoundry is the world’s first career accelerator for vocational tech skills. We build online programs delivered by expert mentors to bring complete beginners up to employable standards in technology.
-3. Bootcamps
-    * Hackbright Academy, General Assembly, Flatiron School
-4. MOOCs:
-    * Popular MOOC platforms like coursera are moving away from offering free open online courses to issuing [certificates as part of corporate training for career advancement](https://www.forbes.com/sites/alexkonrad/2017/12/20/coursera-goes-corporate-to-keep-alive-promise-of-moocs/#23997ca8543c). Coursera has put [graded assignments behind paywall](https://campustechnology.com/articles/2018/02/12/report-moocs-attracting-more-paying-customers.aspx), which further denies free access to feedback that online learners need.
-4. Side Hustle website
-    * [College Recruiter](https://www.collegerecruiter.com/) - This is for college students or recent graduates looking for freelance work, part-time jobs, seasonal, internship, and entry-level jobs of any type.  College Recruiter is a place for people looking to hire college students to post jobs. College Recruiter does not support any development or get users to come back.
-    * [HireCoder](https://www.hirecoder.com/) - Live video chat and hire top 1% global coder, assign projects and tasks, Scrum and project delivery managed by HireCoder.
-    * [Skillshare](https://www.crunchbase.com/organization/skillshare#section-overview) - An online learning community where anyone can discover, take, or even teach a class.
-
-      >  Skillshare's mission is to close the professional skills gap and provide universal access to high-quality learning. For only $10/month, students get unlimited, on-demand, access to thousands of online classes.
-      > By teaching the skills needed in tomorrow’s world, Skillshare empowers people to advance their careers, improve their lives, and pursue the work they love.
-
-    * [Facebook](https://www.crunchbase.com/organization/facebook) - Facebook groups can be a platform for peer mentorship. For example, study group for algorithms course on coursera or 100DaysOfCode are some examples.
-
-## Career Pivoters
-[Top 5 career pivotors startups love to hire](https://www.planted.com/blog/5-career-pivoters-startups-love-to-hire) are
-
-* Investment bankers and consultants
-* Journalists - they make the perfect copywriters and content creators
-* Political Campaign Members - they make excellent Sales and Business Development team members
-* Teachers - their problem solving, management, and communication skills are easily transferable
-* Waiters, Baristas, and Retail Associates - They make great customer relations people
-
-Why people make a career pivot? [According to this article](https://www.entrepreneur.com/article/295131):
-
-* signals for a Career Pivot include:  your job has changed in a fundamental way, your skills are losing value or relevance, You feel restless/unhappy/bored (feeling burnout at work), feeling vulnerable (company's in trouble).
-* To prepare for a successful pivot, do two things:  never stop learning and have a passion side project.
-
-# Resources
-
-* [Business Model Generation](https://docs.google.com/file/d/0B4E64nqKSeljZWtBZnpraGtqS0k/view) - a handbook.
-* [Career Pivot to Startup Life](https://medium.com/@guesto/the-mindset-shift-needed-for-a-mid-career-pivot-to-startup-life-e8132f0af5e4)
-* [Signals For a Career Pivot](https://www.entrepreneur.com/article/295131)
-* [TAM SAM SOM](https://www.thebusinessplanshop.com/blog/en/entry/tam_sam_som) - Also [see this](http://www.floattanksolutions.com/fancy-acronyms-business-plan-tam-sam-som/).
-* [Essential Job Sites for Creative Careers](https://www.creativeboom.com/tips/20-essential-job-sites-for-creative-careers/)
-* [HBR: Who's Benefitting rom MOOCs, and Why](https://hbr.org/2015/09/whos-benefiting-from-moocs-and-why)

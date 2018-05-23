@@ -96,6 +96,21 @@ Steps to prepare for the coding questions:
 2. [The Algorithms Design Manual](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.471.4772&rep=rep1&type=pdf)
 3. Mock Interview: https://interviewing.io/. They do mock interviews with real interviewers and if you do really well they'll invite you to do real interviews.
 
+So what CS stuff should you study and memorize before a technical interview at a * major tech company?
+
+* Hash tables
+* Linked lists
+* Binary search trees
+* Dynamic programming
+* Breadth-first search, depth-first search
+* Quicksort, merge sort
+* 2D arrays
+* Dynamic arrays
+* Big-O analysis
+
+To name a few. Those are just the really, really common ones.
+
+
 # Behavioral Interview
 
 I started reading that cracking  the coding interview book and preparing for the interviews. One of the earlier chapters talk about behavior question you might expect, like **Why Do You Want to Work Here?** I composed a response for why I want to work at Facebook. In composing the response, I discovered what I’m really long for in a job: (1) inclusivity and cultivating ecosystems, (2) empowering regular people and developers with open source tools, (3) company is entrepreneurial and always taking risks. Facebook has been taking risks for years. Pushing limits all the time. People got over it and Facebook has more users than ever.
@@ -107,3 +122,9 @@ Facebook is the only big company I want to work at (maybe Google also) because i
 # System Design
 1. [Cracking the Coding Interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?ie=UTF8&qid=1525587700&sr=8-1&keywords=cracking+the+coding+interview)
 2. [The Algorithms Design Manual](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.471.4772&rep=rep1&type=pdf)
+
+# Brainteasers?
+
+Laszlo Bock, senior vice president of People Operations at Google said:
+
+> "Some of these interview questions [brainteasers] have been and I’m sure continue to be used at the company. Sorry about that. We do everything we can to discourage this, and when our senior leaders—myself included—review applicants each week, we ignore the answers to these questions."
