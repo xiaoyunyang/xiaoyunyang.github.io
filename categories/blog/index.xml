@@ -8,10 +8,21 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Wed, 16 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Getting Started With Career Pivot on LooseLeaf</title>
+      <link>http://xiaoyunyang.github.io/post/getting-started-with-career-pivot-on-looseleaf/</link>
+      <pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/getting-started-with-career-pivot-on-looseleaf/</guid>
+      <description>&lt;p&gt;This documents the market research I&amp;rsquo;ve completed for my startup, &lt;a href=&#34;http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/&#34;&gt;LooseLeaf&lt;/a&gt;. This is a long and exhaustive market research. There&amp;rsquo;s a &lt;a href=&#34;http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/#pre-submittal-feedback-optional&#34;&gt;TL;DR version of the value proposition&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Data Structure with JavaScript Object: Linked List</title>
