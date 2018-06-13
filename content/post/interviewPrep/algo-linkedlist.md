@@ -217,7 +217,7 @@ Why did we need `pred`? Why can't we do `tail = null` or `tail = tail.next`?
 
 Well, when we break out of the loop, `tail` is point to an object `ListNode {val: '', next: null}`, which is part of `l3` Setting `tail` to null doesn't set that object to null but rather destroys the reference to that object. setting `pred.next` to null modifies the predecessor node so instead of point to `ListNode {val: '', next: null}`, it points to null.
 
-An simpler example to understand the concept of JavaScript object and references is with this example:
+A simpler example to understand the concept of JavaScript object and references is with this example:
 
 ```javascript
 let arr = [1,2,3]

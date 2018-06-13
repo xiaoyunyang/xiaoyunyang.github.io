@@ -182,7 +182,7 @@ Now we can use `partition` on any array:
 //> [[1, 2, 3], [4, 5]]
 ```
 
-`[1,2,3,4,5]` is called a literal. [Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Array_literals) is one way to create an object. We can also use [factory functions](https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91) or [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) to create the same array:
+`[1,2,3,4,5]` is called a literal. The [Literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Array_literals) is one way to create an object. We can also use [factory functions](https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91) or [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) to create the same array:
 
 ```javascript
 // Literal
@@ -200,7 +200,7 @@ arr.push(4)
 arr.push(5)
 ```
 
-A factory function is any function that takes a few arguments and returns a new object composed of those arguments. In JavaScript, any function can return an object. When it does so without the `new` keyword, it’s a factory function.
+A factory function is any function that takes a few arguments and returns a new object composed of those arguments. In JavaScript, any function can return an object. When it does so without the `new` keyword, it’s a factory function. Factory functions have [always been attractive in JavaScript](https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1) because they offer the ability to easily produce object instances without diving into the complexities of classes and the `new` keyword.
 
 In the code above, we created an object called `arr` using `Object.create` and pushed 5 elements into the array. `arr` comes with all the functions inherited from the `Array` prototype such as `map`, `pop`, `slice`, and even `partition` that we just created for the `Array` prototype. Let's add some more functionality to the `arr` object:
 
@@ -230,9 +230,7 @@ foo.bye() // #5
 * For **#3**, If you guessed "TypeError: foo.hello is not a function", you are correct. Since `foo` is a new object created from the `Array` prototype and `hello` is not defined for `Array`, `hello` will not be defined for `foo`.
 * **#4** and **#5** are both going to return "bye" because in the line above, we added the function `bye` to the `Array` prototype from which `arr` and `foo` both inherit. Any changes to the prototype will affect every object that inherits from the object, even *after the object has been created*.
 
-Factory functions have [always been attractive in JavaScript](https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1) because they offer the ability to easily produce object instances without diving into the complexities of classes and the `new` keyword.
-
-Creating `Person` and `User` using prototypal inheritance:
+Now we understand the fundamental of prototype, let's go back to the previous example and create `Person` and `User` using prototypal inheritance:
 
 ```javascript
 function Person(firstName, lastName) {
@@ -342,8 +340,7 @@ Both `person` and `user` are affected because `Person` is prototyped from `User`
 
 The decorator pattern from prototypal inheritance is not so different from the classical inheritance.
 
-{{< blockquote "Eric Elliot" "https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9" "Master the JavaScript Interview: What’s the Difference Between Class & Prototypal Inheritance?" >}} Unlike most other languages, JavaScript’s object system is based on prototypes, not classes. Unfortunately, most JavaScript developers don’t understand JavaScript’s object system, or how to put it to best use. {{< /blockquote >}}
-
+## Classes vs. Prototypes
 Dan Abramov [advices](https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4) that
 
 * Classes obscure the prototypal inheritance at the core of JS.
@@ -351,6 +348,9 @@ Dan Abramov [advices](https://medium.com/@dan_abramov/how-to-use-classes-and-sle
 * Classes tend to lock you into the first bad design you came up with.
 
 > Instead of creating a class hierarchy, consider creating several factory functions. They may call each other in chain, tweaking the behavior of each other. You may also teach the “base” factory function to accept a “strategy” object modulating the behavior, and have the other factory functions provide it.
+
+
+{{< blockquote "Eric Elliot" "https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9" "Master the JavaScript Interview: What’s the Difference Between Class & Prototypal Inheritance?" >}} Unlike most other languages, JavaScript’s object system is based on prototypes, not classes. Unfortunately, most JavaScript developers don’t understand JavaScript’s object system, or how to put it to best use. {{< /blockquote >}}
 
 # A Third way: No OOP
 
@@ -561,7 +561,7 @@ In the above example, I used `const` to show that it doesn't protect you from mu
 
 Like Lego pieces, we can create copies of the same objects and tweak them, compose them, and pass them onto other objects to augment the capability of other objects.
 
-For example, we define a `Customer` object with data and functions. When our `User` converts, we want to add the `Customer` stuff our user instance.
+For example, we define a `Customer` object with data and functions. When our `User` converts, we want to add the `Customer` stuff to our user instance.
 
 ```javascript
 const Customer = {

@@ -33,6 +33,7 @@ The traditional methods for acquiring skills and knowledge is college. Colleges 
 > Even though bootcamps could be as short as three months, **a full career change into the software industry could take up to a year or more**, which surprised some students. This time could be financially costly for students as well.
 
 Bootcamps are not a replacement for putting in the work to:
+
 1. Obtain fundamental computer science knowledge
 2. Software industry work experience
 3. Online portfolios
@@ -101,6 +102,7 @@ Some data which indicate market opportunity in the career pivot and candidate re
     > “While I love that programming is an egalitarian field where degrees and certifications are irrelevant in the face of experience, you still gotta put in your ten thousand hours like the rest of us.”
 
 * Going in, bootcamp students may not realize that computer science is actually a [low-success educational field](http://www.bricklin.com/wontprogram.htm). And there’s plenty of evidence showing that computer science programs [don’t have stellar graduation rates](http://www.software.ac.uk/blog/2013-10-31-whats-wrong-computer-scientists). Between 30 and 60 percent of first-year students in university computer science departments [fail their first programming course](https://blog.codinghorror.com/separating-programming-sheep-from-non-programming-goats/). So why would anyone expect bootcamps to be significantly more successful? What's more, developers who get computer science degrees say that they are [largely self-taught](http://techbeacon.com/highlights-stack-overflow-2016-developer-survey), according to the 2016 Stack Overflow Developer Survey. What's more, A 2008 survey of nearly 900 developers on Stack Overflow revealed that, [if your interest in programming didn't start between the ages of 8 and 18](http://www.stackprinter.com/export?service=meta.stackoverflow&question=33970&printer=false&linktohome=true), your chances of being motivated enough to become a developer are low.
+
     🤔 **LL_IDEA:**  People who can figure things out on their own without any formal education or structure make better programmers.
 
 * Documentation for all of the open source tools, languages, and frameworks that bootcamps teach are available online. There are countless free online tutorials on just about any development technology that bootcamps will teach you. All you need to do is pick a technology and run a Google search. There's also [this convenient list of links](http://github.com/prakhar1989/awesome-courses) to several massively open online courses (MOOC’s) on programming.
@@ -108,14 +110,16 @@ Some data which indicate market opportunity in the career pivot and candidate re
 
 ### Developer Shortage and Broken Hiring Process
 
-[Hiring is Broken](https://daedtech.com/hiring-is-broken/) and developer shortage is an artifact of the broken/antiquated hiring process based on algorithms.
+[Hiring is Broken](https://daedtech.com/hiring-is-broken/) and developer shortage is an artifact of the broken/antiquated hiring process based on algorithms. Companies like Google are aware that their algorithm-centric interview process is ineffective in assessing the abilities of a candidate and a culture fit with the company. Google studied tens of thousands of their own hiring decisions and concluded that their interview process was broken.
 
-The complaint:
+There are complaints from both sides of the interviewee and interviewer.
+
+The Interviewee who got rejected by Google:
 
 > I’ve built some open source tools, shared some tutorials, and built a following in the programmer community, all of which constitute a form of social proof and demonstrated value to the industry.  But when I go to apply for jobs at a lot of organizations, particularly large ones (only Google is mentioned by name), none of this seems to matter.  They could learn about me if they looked at any of this, but they don’t.  My experience interviewing across the board has been so depressing — so assembly-line and bureaucratic — that I’m ready to give up.  I don’t think that I’m all that great a programmer, necessarily, but clearly people out there value what I do, and there’s clearly a programming shortage, so something doesn’t add up.
 
 
-Google interviewer fired back at a developer who was criticizing the algorithm-centric interview:
+Google interviewer:
 
 > "I don’t have time to read your github projects, or your blog, or your existing code, or your meticulous attention to detail in your commit messages. I get a resume in, I look at it for 10 minutes, if it’s sane I set up a phone screen. ONLY to prove that you can pass the most basic coding test... Once we meet in person, you need to show me that you can code and articulate a design to a problem. The format sucks, sure. But you need to be prepared. I’m not going to spend 2 hours reading your blog for every candidate that I interview. I don’t have time for that."
 
@@ -171,6 +175,7 @@ What could recruiters do at scale that would be much more illustrative of a deve
 ### Github Contribution
 
 Is your Github contribution a measurement of passion? A GitHub account isn't a résumé in most case but a portfolio should be a major factor in the hiring decision. According to this article on [Hiring Indicators, OSS, and the Value of GitHub](https://jobtipsforgeeks.com/2013/11/19/githubhiring/)
+
 > …GitHub has no way of customizing your profile page, and what is shown by default is the projects with the most stars, and the projects you’ve recently pushed to… You have no say about what you consider important, or worthwhile, or interesting, or well-engineered, or valuable.
 
 * Why GH profiles and not interviews? We want to know how candidates will perform over n months, yet don’t have n months to assess someone working in our environment before providing a paycheck.  An impasse. Recruiters and hiring managers look for indicators of talent based on experience with previous hires. The existence of GitHub code for many recruiters serves as a useful indicator, and forks and followers might be considered a stronger indicator (crowdsourced data). Just like everyone who makes it past the interview won’t be a good hire, there will be false positives.
@@ -179,11 +184,20 @@ Is your Github contribution a measurement of passion? A GitHub account isn't a r
 * Those reviewing GitHub accounts care less about influence and followers and more about code.
 * GitHub and SO have some value just as employment by certain selective companies means you’re likely to pass tech interviews for other firms. Degrees from certain schools give some evidence, and it’s not always the ones you expect.
 
-### The Gig Economy?
+### The Gig Economy
 
-[Thoughts from DaedTech](https://daedtech.com/a-players-dont-hire-a-players-they-partner-with-a-players/)
+While project-based work used to be most common among the recently laid off or those unable to nail down more permanent posts, it could soon be the main mode for a significant portion of the population. Also known as freelance economy, on-demand economy, and sharing economy, the gig economy will define the future of work.
+
+According to the [Freelancer Union](https://www.upwork.com/i/freelancing-in-america/2017), More than 55 million Americans work as independent contractors or moonlighters, a figure that’s grown by 2 million over the last two years. At its current growth rate, the majority of the U.S. workforce will be freelancers by 2027. See [Freelancing in America 2017 Results Deck](https://www.slideshare.net/upwork/freelancing-in-america-2017/1)
+
+However, [the Freelance Economy is getting more cliquey](https://www.fastcompany.com/40460457/you-cant-gig-with-us-why-the-freelance-economy-is-getting-more-cliquey) as “curated” marketplaces separate elite freelance talent from the rest, the gig economy is taking a stratified turn.
+
+
+[Thoughts from DaedTech](https://daedtech.com/a-players-dont-hire-a-players-they-partner-with-a-players/):
 
 > A Players Don’t Hire A Players — They Partner with A Players
+
+
 
 ## Market Research
 
@@ -233,6 +247,11 @@ Coding Bootcamp Market Size: $260M industry, graduating 23K developers in 2017, 
     * See [Top Recruiting Software of 2018](https://ideal.com/top-recruiting-software/)
     * [Connectifier](https://www.crunchbase.com/organization/connectifier) - Connectifier helps recruiters discover, qualify, and connect with exceptional job candidates at roughly twice the rate of other solutions.
 2. Career Pivot Services
+    * [Praxis](https://discoverpraxis.com/) - career accelerator (bootcamp).
+      * The Degree is Dead. You Need Experience. We'll help you find and build your skills, then put them to work in a startup apprenticeship."
+      * The opportunity to build your career around value creation, not just titles and credentials.
+      * One of the biggest complaints I hear from high-caliber young people who leave school to start something on their own is that they lack a sense of community and are lonely.
+      * [Why do Praxis when you can just go get a job?](https://discoverpraxis.com/praxis-get-a-job/)
     * [Mission Collaborative](https://www.missioncollaborative.com/) - Offers career design and career change coaching.
     * [Career Foundry](https://www.crunchbase.com/organization/careerfoundry#section-overview) - CareerFoundry is the world’s first career accelerator for vocational tech skills. We build online programs delivered by expert mentors to bring complete beginners up to employable standards in technology.
 3. Bootcamps
@@ -367,7 +386,7 @@ When you work for free, you're not working for exposure. Freelancers [work for g
 
 ## 3. Candidate Sourcing
 
-The last cornerstone of LooseLeaf's product is the candidate sourcing, which is a combination of the Recruitment Candidate Relationship Manage System (CRM) and Application Tracking System (ATS).
+The last cornerstone of LooseLeaf's product is the candidate sourcing, which is a combination of the Recruitment Candidate Relationship Manage System (CRM) and Applicant Tracking System (ATS).
 
 LooseLeaf's platform is the answer for how to fix the broken hiring process.
 

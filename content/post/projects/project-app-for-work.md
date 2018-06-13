@@ -50,7 +50,7 @@ Media transferring the zipped repo to the intranet. I had to make a few syntacti
 
 Every URL has some unchanging parts and some variable parts. The variable parts could be a single value like a unique identifier, or a collection of values delimited by commas (let's call it a collection-based URL).
 
-The code I imported contained some dummy url to test out so I had to manually input the unchanging parts of the urls in a data structure and for the collection-based uRLS, all the possible values for a collection-based URL into another data-structure so it could be used for the dropdown menu with auto-complete capabilities.
+The code I imported contained some dummy url to test out so I had to manually input the unchanging parts of the urls in a data structure and for the collection-based URLS, all the possible values for a collection-based URL into another data-structure so it could be used for the dropdown menu with auto-complete capabilities.
 
 ![Serverless WebApp](/post/images/projects/serverless-webapp.png)
 

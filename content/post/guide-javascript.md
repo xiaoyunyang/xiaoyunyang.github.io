@@ -968,6 +968,13 @@ let bar = {c: 'c', d: 'd'}
 let foobar = {...foo, ...bar} //> {a: "a", b: "b", c: "c", d: "d"}
 ```
 
+# Utility Libraries
+
+* [Sugar](https://github.com/andrewplummer/Sugar) - A JavaScript utility library for working with native objects.
+* [Moment](https://github.com/moment/moment/) - A JavaScript date and time manipulation library for parsing, validating, manipulating, and formatting dates.
+* [Ramda](https://github.com/ramda/ramda) - A utility library is designed for functional programming.
+* [MathJS](https://github.com/josdejong/mathjs) - An extensive math library for JavaScript and Node.js.
+
 
 # Resources
 * JavaScript [Grammar and Types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types)
