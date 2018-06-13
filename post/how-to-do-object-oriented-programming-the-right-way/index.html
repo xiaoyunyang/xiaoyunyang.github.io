@@ -278,7 +278,10 @@
 <ul>
 <li><a href="#primer-what-is-an-object">Primer: What is an Object?</a></li>
 <li><a href="#classical-inheritance">Classical Inheritance</a></li>
-<li><a href="#prototypal-inheritance">Prototypal Inheritance</a></li>
+<li><a href="#prototypal-inheritance">Prototypal Inheritance</a>
+<ul>
+<li><a href="#classes-vs-prototypes">Classes vs. Prototypes</a></li>
+</ul></li>
 <li><a href="#a-third-way-no-oop">A Third way: No OOP</a>
 <ul>
 <li><a href="#inheritance">Inheritance</a></li>
@@ -462,7 +465,7 @@ arr //&gt; [1,2,3]
 //&gt; [[1, 2, 3], [4, 5]]
 </code></pre>
 
-<p><code>[1,2,3,4,5]</code> is called a literal. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Array_literals" target="_blank">Literals</a> is one way to create an object. We can also use <a href="https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91" target="_blank">factory functions</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank">Object.create</a> to create the same array:</p>
+<p><code>[1,2,3,4,5]</code> is called a literal. The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Array_literals" target="_blank">Literal</a> is one way to create an object. We can also use <a href="https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91" target="_blank">factory functions</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank">Object.create</a> to create the same array:</p>
 
 <pre><code class="language-javascript">// Literal
 [1,2,3,4,5]
@@ -479,7 +482,7 @@ arr.push(4)
 arr.push(5)
 </code></pre>
 
-<p>A factory function is any function that takes a few arguments and returns a new object composed of those arguments. In JavaScript, any function can return an object. When it does so without the <code>new</code> keyword, it’s a factory function.</p>
+<p>A factory function is any function that takes a few arguments and returns a new object composed of those arguments. In JavaScript, any function can return an object. When it does so without the <code>new</code> keyword, it’s a factory function. Factory functions have <a href="https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1" target="_blank">always been attractive in JavaScript</a> because they offer the ability to easily produce object instances without diving into the complexities of classes and the <code>new</code> keyword.</p>
 
 <p>In the code above, we created an object called <code>arr</code> using <code>Object.create</code> and pushed 5 elements into the array. <code>arr</code> comes with all the functions inherited from the <code>Array</code> prototype such as <code>map</code>, <code>pop</code>, <code>slice</code>, and even <code>partition</code> that we just created for the <code>Array</code> prototype. Let&rsquo;s add some more functionality to the <code>arr</code> object:</p>
 
@@ -509,9 +512,7 @@ foo.bye() // #5
 <li><strong>#4</strong> and <strong>#5</strong> are both going to return &ldquo;bye&rdquo; because in the line above, we added the function <code>bye</code> to the <code>Array</code> prototype from which <code>arr</code> and <code>foo</code> both inherit. Any changes to the prototype will affect every object that inherits from the object, even <em>after the object has been created</em>.</li>
 </ul>
 
-<p>Factory functions have <a href="https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1" target="_blank">always been attractive in JavaScript</a> because they offer the ability to easily produce object instances without diving into the complexities of classes and the <code>new</code> keyword.</p>
-
-<p>Creating <code>Person</code> and <code>User</code> using prototypal inheritance:</p>
+<p>Now we understand the fundamental of prototype, let&rsquo;s go back to the previous example and create <code>Person</code> and <code>User</code> using prototypal inheritance:</p>
 
 <pre><code class="language-javascript">function Person(firstName, lastName) {
   this.firstName = firstName
@@ -615,15 +616,7 @@ user.getGender() //&gt; male
 
 <p>The decorator pattern from prototypal inheritance is not so different from the classical inheritance.</p>
 
-<blockquote>
-  <p> Unlike most other languages, JavaScript’s object system is based on prototypes, not classes. Unfortunately, most JavaScript developers don’t understand JavaScript’s object system, or how to put it to best use. </p>
-  <footer>
-    <strong>Eric Elliot</strong>
-    
-      <cite><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9" target="_blank" rel="external">Master the JavaScript Interview: What’s the Difference Between Class &amp; Prototypal Inheritance?</a></cite>
-    
-  </footer>
-</blockquote>
+<h2 id="classes-vs-prototypes">Classes vs. Prototypes</h2>
 
 <p>Dan Abramov <a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank">advices</a> that</p>
 
@@ -635,6 +628,16 @@ user.getGender() //&gt; male
 
 <blockquote>
 <p>Instead of creating a class hierarchy, consider creating several factory functions. They may call each other in chain, tweaking the behavior of each other. You may also teach the “base” factory function to accept a “strategy” object modulating the behavior, and have the other factory functions provide it.</p>
+</blockquote>
+
+<blockquote>
+  <p> Unlike most other languages, JavaScript’s object system is based on prototypes, not classes. Unfortunately, most JavaScript developers don’t understand JavaScript’s object system, or how to put it to best use. </p>
+  <footer>
+    <strong>Eric Elliot</strong>
+    
+      <cite><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9" target="_blank" rel="external">Master the JavaScript Interview: What’s the Difference Between Class &amp; Prototypal Inheritance?</a></cite>
+    
+  </footer>
 </blockquote>
 
 <h1 id="a-third-way-no-oop">A Third way: No OOP</h1>
@@ -839,7 +842,7 @@ arr //&gt; [1,2]
 
 <p>Like Lego pieces, we can create copies of the same objects and tweak them, compose them, and pass them onto other objects to augment the capability of other objects.</p>
 
-<p>For example, we define a <code>Customer</code> object with data and functions. When our <code>User</code> converts, we want to add the <code>Customer</code> stuff our user instance.</p>
+<p>For example, we define a <code>Customer</code> object with data and functions. When our <code>User</code> converts, we want to add the <code>Customer</code> stuff to our user instance.</p>
 
 <pre><code class="language-javascript">const Customer = {
   plan: 'trial'
@@ -1161,6 +1164,25 @@ s.setAttribute('data-timestamp', +new Date());
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/use-a-stress-journal-to-turn-stress-into-an-action-plan/">
+                <h3 class="media-heading">Use A Stress Journal To Turn Stress into An Action Plan</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Kyle, a friend of mine, introduced me to his method for turning stress into an action plan.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/getting-started-with-career-pivot-on-looseleaf/">
                 <h3 class="media-heading">Getting Started With Career Pivot on LooseLeaf</h3>
               </a>
@@ -1325,23 +1347,6 @@ s.setAttribute('data-timestamp', +new Date());
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
-                <h3 class="media-heading">Principles To Code By: How To Solve Problems With Code</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Apr 4, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>What I love most about programming is the problem solving. I don&rsquo;t believe anyone is born with problem solving skills. It&rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -1349,7 +1354,7 @@ s.setAttribute('data-timestamp', +new Date());
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         24 posts found
+         25 posts found
       </p>
     </div>
   </div>
