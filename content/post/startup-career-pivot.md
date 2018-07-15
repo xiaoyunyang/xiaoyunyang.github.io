@@ -1,5 +1,5 @@
 ---
-title: "Getting Started With Career Pivot on LooseLeaf"
+title: "Getting Started With Career Pivot With LooseLeaf"
 date: 2018-05-22
 categories:
   - blog
@@ -25,6 +25,17 @@ This documents the market research I've completed for my startup, [LooseLeaf](/p
 # Market Opportunity
 
 ## The Problem
+
+> I had a career in a field I enjoyed, but in an industry that is dying. There seems to be only a small handful of careers that are booming today. My friends who got into the software industry seem to be quite happy with their careers. If I knew then what I know now, I would have started this process 10 years ago. I want to be where the world is heading, not where it’s been.
+
+> most people who try this challenge fail. Many people start #100DaysOfCode with the aspiration of getting a job as a programmer (Literally tens of thousands of people from all over the world), but few of them actually achieve their goal.
+
+> And this is despite an abundance of quality resources and guides, many of which are even free. It’s just a simple reality that the majority of people don’t see their goals through to the end. They fail primarily due to lack of determination and excuses.
+
+~ [Why I coded every day for a year, what I learned, and how you can do it, too.](https://medium.freecodecamp.org/why-i-coded-every-day-for-a-year-what-i-learned-and-how-you-can-do-it-too-aebe949dd178)
+
+
+
 
 The [skills gap](https://www.youtube.com/watch?v=gTLcM4iZSTo) is a major contributor of unemployment and underemployment. Low skilled work opportunities are disappearing, being automated away. Companies are in the business of educating workers. They are not schools and many have few resources to train new hires. New hires are expected to acquire the skills and knowledge demanded by the jobs they are applying to *before* they apply to the jobs.
 

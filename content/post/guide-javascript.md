@@ -854,6 +854,7 @@ flight.equipment && flight.equipment.model //> undefined
 ## Retrieving By Value from Array Of objects
 
 Use `filter`
+
 ```javascript
 const dict = [
   {char: '<', code: '&lt'},

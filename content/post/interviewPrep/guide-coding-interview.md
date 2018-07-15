@@ -80,12 +80,13 @@ but they have the run code function turned off. *No reference material is allowe
 # Coding
 Steps to prepare for the coding questions:
 
-1. Do all problems from [leetcode](https://leetcode.com/problemset/all/). Need to be able to solve all problems with no reference material and write code that runs and passes the test the first time you submit.  
+1. Do all problems from [leetcode](https://leetcode.com/problemset/all/). Need to be able to solve all problems with no reference material and write code that runs and passes the test the first time you submit. What's most impressive about the CoderByte practice problems are that they are actually pretty hard and require you to be proficient in your Computer Science 101. CoderByte hosts a weekly coding challenge every Saturday.
   * For easy questions, need to be able to do them in less than 15 minutes. For medium problems, need to do them within 20 minutes. For hard problems, need to do them within 45 minutes.
   * Review the best solutions for each problem on leetcode.
 2. Extra practice:
   * [Edabit](https://edabit.com/explore) contains a bunch of coding challenges.
-  * [CoderByte](https://coderbyte.com/) provides a collection of coding challenges in various languages.
+  * [CoderByte](https://coderbyte.com/) provides a collection of coding challenges in various languages. For JavaScript CoderByte doesn't have that many hard Computer Science 101 questions. They are focused on knowledge-based problem solving in a specific language.
+  * [InterviewBit](https://www.interviewbit.com/) provides a gamified experience in preparing you with all aspects of the coding interview (Big-Oh, algorithm, and system design) with videos and tutorials and sample problems. It doesn't seem to have as many problems as CoderByte, but it has a peer mock interview feature. What's more, InterviewBit offers curated collections of interview questions as seem from [Google](https://www.interviewbit.com/google-interview-questions/), [Facebook](https://www.interviewbit.com/facebook-interview-questions/),[Amazon](https://www.interviewbit.com/amazon-interview-questions/), and [Microsoft](https://www.interviewbit.com/microsoft-interview-questions/).
 3. Best answers for difficult problems:
   * [CareerCup](https://careercup.com/page) has a bunch of coding questions.
 
@@ -117,7 +118,7 @@ I started reading that cracking  the coding interview book and preparing for the
 
 Why do I want to work at Facebook? I want to help people. Regular people, users, consumers, and creators all benefit from Facebook’s products. Facebook empowers developers and people with ideas to implement and market their ideas. Inclusivity and ecosystem building are what Facebook is about they are very important to me. These goals give deeper meaning to hard work and I’m really motivated to work hard to achieve these goals. As an entrepreneur, I’ve benefited so much from Facebook’s software products like React and open auth, and Facebook’s platform lets me create a brand for a company that I didn’t have a website for. In fact, I’ve seen lots of freelancers and online personalities use facebook’s pages in lieu of having to build a website of their own. I’ve also benefited greatly from Facebook’s ad platform. I saw a coworking space as and that prompted me to investigate coworking spaces. I ended up signing up for one and that significantly boosted my productivity and General well being. I’ve also used Facebook to reach out to long lost friends and people I’ve met once at college, asked them for advice about things like how to get a job at Facebook.
 
-Facebook is the only big company I want to work at (maybe Google also) because it's kinda startupy. I would like to join a startup or work at my own startup if I get funding. Facebook is pretty chill about people leaving to start companies and eventually coming back. Many ex-Facebookers started successful companies like Quora and Asana.
+Facebook is the only big company I want to work at (maybe Google also) because it's kinda startupy. Facebook has an astounding collection of [open source tools and libraries](https://opensource.fb.com/) that helps you build anything. I greatly admire a company who sees the value in making open sourcing a core mission statement and puts so much effort into developing and maintaining its open source projects. I would like to join a startup or work at my own startup if I get funding. Facebook is pretty chill about people leaving to start companies and eventually coming back. Many ex-Facebookers started successful companies like Quora and Asana.
 
 # System Design
 1. [Cracking the Coding Interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?ie=UTF8&qid=1525587700&sr=8-1&keywords=cracking+the+coding+interview)

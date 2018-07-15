@@ -336,7 +336,7 @@ user.setGender('male')
 user.getGender() //> male
 ```
 
-Both `person` and `user` are affected because `Person` is prototyped from `User` so if `User` changes, `Person` changes too.
+Both `person` and `user` are affected because `User` is prototyped from `Person` so if `Person` changes, `User` changes too.
 
 The decorator pattern from prototypal inheritance is not so different from the classical inheritance.
 
@@ -575,7 +575,7 @@ Customer.setPremium = function() {
 Now we can augment user object with an Customer methods and fields.
 
 ```javascript
-user.customer = Customer
+User.customer = Customer
 user.customer.setPremium()
 ```
 
