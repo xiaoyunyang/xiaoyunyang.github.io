@@ -8,10 +8,22 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Tue, 22 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/tags/entrepreneurship/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Journey To Building A Company Culture As CTO</title>
+      <link>http://xiaoyunyang.github.io/post/the-journey-to-building-a-company-culture-as-cto/</link>
+      <pubDate>Wed, 18 Jul 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/the-journey-to-building-a-company-culture-as-cto/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://xiaoyunyang.github.io/post/images/company-culture-unicorn.png&#34; alt=&#34;credit - https://medium.com/marketing-and-entrepreneurship/an-inside-look-at-what-angel-investors-want-cf54e5ac73e1&#34; /&gt;
+High-value employees are hard to come by. Attracting top talent is a goal that every company in the world strives to achieve but for a young company, hiring a top talent who is a wrong culture fit could be an disastrous mistake. This article discusses how does a startup should build its culture and hire talented people who are the right culture fit. This article also documents my process and journey for establishing a culture for &lt;a href=&#34;https://www.halosinsurance.com/&#34; target=&#34;_blank&#34;&gt;Halos Insurance&lt;/a&gt;, a startup for which I am the CTO and has the privilege of building a team from scratch.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Getting Started With Career Pivot With LooseLeaf</title>
@@ -53,6 +65,17 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34; target=&#34;_blank&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Is Employee Loyalty Important?</title>
+      <link>http://xiaoyunyang.github.io/post/is-employee-loyalty-important/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/is-employee-loyalty-important/</guid>
+      <description>&lt;p&gt;High-value employees are a major assets for a strong company. Losing a high contributing team member could leave a void and impact the team&amp;rsquo;s morale and workflow. Investors are also concerned by high turnover rates, especially amongst the senior executives. Groupon had trouble retaining their senior executives, which contributed to &lt;a href=&#34;https://www.youtube.com/watch?v=zeNQE3VBRnQ&#34; target=&#34;_blank&#34;&gt;an 85% drop in their value&lt;/a&gt; a year after going public. It&amp;rsquo;s clear we want to &lt;strong&gt;retain&lt;/strong&gt; high-valued employees, but is &lt;strong&gt;employee loyalty&lt;/strong&gt; the way to achieve retention?&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
