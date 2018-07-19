@@ -9,6 +9,7 @@ tags:
   - Guide
 keywords:
   - career transition
+  - career pivot
   - learn programming
   - coding bootcamps
   - interview prep

@@ -1,6 +1,6 @@
 ---
 title: "The Algorithm for Managing Stress"
-date: 2018-07-18
+date: 2018-08-17
 categories:
   - blog
 tags:
@@ -17,7 +17,7 @@ showDate: true
 
 ---
 
-What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I'm going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another "top 10 things you can do to ...." article. I will be discussing specific algorithms and heuristics that can be followed for every step of your journey to eliminating the source of your stress. The algorithm for stress management I will discuss has roots in computer science and mathematics.
+What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I'm going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another "top 10 things you can do to ...." article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.
 
 <!--more-->
 

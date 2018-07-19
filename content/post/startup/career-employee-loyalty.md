@@ -6,6 +6,14 @@ categories:
 tags:
   - Life
   - Career
+  - Entrepreneurship
+keywords:
+  - Startup
+  - Entrepreneurship
+  - Career Pivot
+  - Career Transition
+  - Employee Loyalty
+  - How to attract talent
 thumbnailImagePosition: left
 thumbnailImage: /post/images/careerSad.png
 
