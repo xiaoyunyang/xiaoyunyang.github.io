@@ -1,5 +1,5 @@
 ---
-title: "The Journey To Building A Company Culture As CTO"
+title: "Building A Company Culture"
 date: 2018-07-18
 categories:
   - blog
@@ -17,7 +17,7 @@ thumbnailImage: /post/images/company-culture-plant.png
 
 ---
 ![credit - https://medium.com/marketing-and-entrepreneurship/an-inside-look-at-what-angel-investors-want-cf54e5ac73e1](/post/images/company-culture-unicorn.png)
-High-value employees are hard to come by. Attracting top talent is a goal that every company in the world strives to achieve but for a young company, hiring a top talent who is a wrong culture fit could be an disastrous mistake. This article discusses how does a startup should build its culture and hire talented people who are the right culture fit. This article also documents my process and journey for establishing a culture for [Halos Insurance](https://www.halosinsurance.com/), a startup for which I am the CTO and has the privilege of building a team from scratch.
+High-value employees are hard to come by. Attracting top talent is a goal that every company in the world strives to achieve but for a young company, hiring a top talent who is a wrong culture fit could be an disastrous mistake. This article discusses how does a startup should build its culture and hire talented people who are the right culture fit. This article also documents my process and journey for establishing a culture for [LooseLeaf](https://www.halosinsurance.com/), a startup for which I am CEO.
 
 <!--more-->
 
@@ -83,6 +83,7 @@ For a new company, the founders are the first members of the team. Finding the f
 We need to baseline the candidates' personality, work habits, and personal values with those of our own to assess whether they are someone that we can work with. The following describe me:
 
 * I'm very process oriented.
+* I hope for the best but prepare for the worst.
 * I hate to see mistakes repeated. Documenting lessons learned, reflecting on actions in the past are what I do to prevent mistakes from being repeated.
 * I have no patience with inefficiency. I read productivity books like Algorithms to Live By and refactor my processes to eliminate inefficiencies.
 * Career focused. I don’t see success in career as a means to an end but as a way to get paid to do what I love.
