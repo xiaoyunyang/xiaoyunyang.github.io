@@ -21,27 +21,27 @@ This post is part of the Web Developer Playbook series, which are created to pro
 ![](/post/images/webdev-manual-cover.png)
 ## What is a Slug?
 
-A slug is the last part of the url containing a unique string which identifies the resource being served by the web service. In that sense, a slug is a unique identifier for the resource. For example, the slug for this article, which has the url of http://xiaoyunyang.github.io//web-developer-playbook-slug is: "web-developer-playbook-slug".
+A slug is the last part of the url containing a unique string which identifies the resource being served by the web service. In that sense, a slug is a unique identifier for the resource. For example, the slug for this article, which has the url of http://xiaoyunyang.github.io//web-developer-playbook-slug is: `web-developer-playbook-slug`.
 
 Some websites are designed to have slugs contain actual words of the title of the resource being services. For instance:
 
 * Medium
   * URL:  https://medium.com/@xiaoyunyang/how-to-do-object-oriented-programming-the-right-way-1339c1a25286
-  * Slug: `how-to-do-object-oriented-programming-the-right-way-1339c1a25286`.
+  * Slug: `how-to-do-object-oriented-programming-the-right-way-1339c1a25286`
 * Blog of the famous movie critic Roger Ebert
   * URL: https://www.rogerebert.com/reviews/great-movie-mulholland-dr-2001
-  * Slug: `great-movie-mulholland-dr-2001`.
+  * Slug: `great-movie-mulholland-dr-2001`
 * Yelp:
   * URL: https://www.yelp.com/biz/old-ebbitt-grill-washington
-  * Slug: `old-ebbitt-grill-washington`.
+  * Slug: `old-ebbitt-grill-washington`
 * Crunchyroll:
   * URL: http://www.crunchyroll.com/food-wars-shokugeki-no-soma/episode-1-challenging-the-elite-ten-749165
-  * Slug: `episode-1-challenging-the-elite-ten-749165`.
+  * Slug: `episode-1-challenging-the-elite-ten-749165`
 * Repl.it
   * URL: https://repl.it/@xiaoyunyang/slugify
   * Slug: `slugify`
 
-Other websites are designed to have slugs that contain seemingly random string of characters. For example:
+Other websites are designed to have slugs that contain seemingly random string of characters. For instance:
 
 * Codepen:
   * URL: https://codepen.io/stefanjudis/full/gkHwJ
@@ -70,7 +70,7 @@ DON'T
 
 Now we know why having a url containing title of our resource is useful, let's walk through how to create a url with slugified title.
 
-The URL is case sensitive, so the best practice for embedding a title of the resource into the url is to have all lowercase letters joined by a dash (kebab case). We can create a function called `slugify` (courtesy of [Matt Hagemann's post](https://medium.com/gatemill/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1)), which creates a kebab case, url friendly version of the title string:
+The URL is case sensitive, so the best practice for embedding a title of the resource into the url is to have all lowercase letters joined by a dash (kebab case). We can create a function called `slugify` (courtesy of [Matt Hagemann's Medium post](https://medium.com/gatemill/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1)), which creates a kebab case, url friendly version of the title string:
 
 ```javascript
 const slugify = (string) => {
@@ -129,7 +129,7 @@ And that's it!
 
 Finally, how do we integrate the slug into our overall web service and what does the interaction between the client application and server application look like?
 
-Suppose the user is creating a new item for sale on an e-commerce website (let's call it *www.mytrashyourtreasure.com*) using a form. The client application manages the form and collecting data from the user input for submittal to the server.
+Suppose the user is creating a new item for sale on an e-commerce website (let's call it *www.mytrashyourtreasure.com*, which I'm surprised is not a real site!) using a form. The client application manages the form and collecting data from the user input for submittal to the server.
 
 When the user presses the "Submit" button, the client application will send all the form data to the server application by making an HTTP POST request.
 

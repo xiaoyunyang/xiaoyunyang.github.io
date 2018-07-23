@@ -81,6 +81,9 @@ Here are some details about me:
 * I studied Electrical and Computer Engineering at Carnegie Mellon University.
 * I got a B.S. and a M.S in 4.5 years through an integrated bachelors and masters program.
 
+## My Super Power
+My super power is my extreme attention to details without losing sight of the big picture and I always challenge my assumptions and continuously critique everything I do to make adjustments as necessary. I recognize the importance of details in affecting the final outcome, as accumulation of small mistakes leads to failure. Being result-driven, I'm dedicated to working out these details even if they are not so glorious or interesting. My ability to prioritize helps me work strategically and smartly applying resources.
+
 ## Trivia
 * I have the honor of serving 5 years of active duty in the military at Naval Reactors. I commissioned in 2013 through the Navy Reserved Officer Training Corp (ROTC).
 * Here are some words that describe me:  Love learning, independent, pragmatic, inquisitive, adaptable, good communicator, diligent, attention to detail.
