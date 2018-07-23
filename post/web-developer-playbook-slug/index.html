@@ -315,7 +315,7 @@
 </ul></li>
 </ul>
 
-<p>Other websites are designed to have slugs that contain seemingly random string of characters. For example:</p>
+<p>Other websites are designed to have slugs that contain seemingly random string of characters. For instance:</p>
 
 <ul>
 <li>Codepen:
@@ -356,7 +356,7 @@
 
 <p>Now we know why having a url containing title of our resource is useful, let&rsquo;s walk through how to create a url with slugified title.</p>
 
-<p>The URL is case sensitive, so the best practice for embedding a title of the resource into the url is to have all lowercase letters joined by a dash (kebab case). We can create a function called <code>slugify</code> (courtesy of <a href="https://medium.com/gatemill/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1" target="_blank">Matt Hagemann&rsquo;s post</a>), which creates a kebab case, url friendly version of the title string:</p>
+<p>The URL is case sensitive, so the best practice for embedding a title of the resource into the url is to have all lowercase letters joined by a dash (kebab case). We can create a function called <code>slugify</code> (courtesy of <a href="https://medium.com/gatemill/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1" target="_blank">Matt Hagemann&rsquo;s Medium post</a>), which creates a kebab case, url friendly version of the title string:</p>
 
 <pre><code class="language-javascript">const slugify = (string) =&gt; {
   const a = 'àáäâãåèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
@@ -411,7 +411,7 @@ const slug = urlSlug(title, cuid.slug());
 
 <p>Finally, how do we integrate the slug into our overall web service and what does the interaction between the client application and server application look like?</p>
 
-<p>Suppose the user is creating a new item for sale on an e-commerce website (let&rsquo;s call it <em>www.mytrashyourtreasure.com</em>) using a form. The client application manages the form and collecting data from the user input for submittal to the server.</p>
+<p>Suppose the user is creating a new item for sale on an e-commerce website (let&rsquo;s call it <em>www.mytrashyourtreasure.com</em>, which I&rsquo;m surprised is not a real site!) using a form. The client application manages the form and collecting data from the user input for submittal to the server.</p>
 
 <p>When the user presses the &ldquo;Submit&rdquo; button, the client application will send all the form data to the server application by making an HTTP POST request.</p>
 
