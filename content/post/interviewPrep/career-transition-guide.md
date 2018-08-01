@@ -1,5 +1,5 @@
 ---
-title: "An Career Transition Guide For Overachievers"
+title: "A Career Transition Guide For Overachievers"
 date: 2018-04-20
 categories:
   - blog

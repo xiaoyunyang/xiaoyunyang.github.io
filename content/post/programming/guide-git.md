@@ -20,6 +20,10 @@ This is a cheatsheet of all the git commands that I've ever used in my career as
 
 This is a tutorial for Unix and Git newbies.
 
+# Setting it all up from scratch
+
+[This](https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-2-5fbdea95f8a1) provides a good tutorial for how to create a repo on github, use `ssh-keygen` to generate a SSH private/public key pair.
+
 # Basics
 
 *Assume:*
