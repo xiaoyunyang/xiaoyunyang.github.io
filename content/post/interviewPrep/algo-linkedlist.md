@@ -89,7 +89,7 @@ ListNode.prototype.add = function(val) {
 In the code above, `curr` is a pointer that traverses the entire linked list. `add` is a mutator method which modifies the original linked list (i.e., `this`). Specifically, it modifies the `next` of the last node in the original list by making it point to a new node instead of being null (which means it doesn't point to anything).
 
 ```
-console.log('l before adding\n', l //> 1 -> 2 -> 3 -> null
+console.log('l before adding\n', l) //> 1 -> 2 -> 3 -> null
 let lmod = l.add(4)
 
 console.log('lmod after adding\n', lmod) //> 1 -> 2 -> 3 -> 4 -> null
@@ -215,7 +215,7 @@ l3:
 
 Why did we need `pred`? Why can't we do `tail = null` or `tail = tail.next`?
 
-Well, when we break out of the loop, `tail` is point to an object `ListNode {val: '', next: null}`, which is part of `l3` Setting `tail` to null doesn't set that object to null but rather destroys the reference to that object. setting `pred.next` to null modifies the predecessor node so instead of point to `ListNode {val: '', next: null}`, it points to null.
+Well, when we break out of the loop, `tail` is point to an object `ListNode {val: '', next: null}`, which is part of `l3`. Setting `tail` to null doesn't set that object to null but rather destroys the reference to that object. setting `pred.next` to null modifies the predecessor node so instead of point to `ListNode {val: '', next: null}`, it points to null.
 
 A simpler example to understand the concept of JavaScript object and references is with this example:
 

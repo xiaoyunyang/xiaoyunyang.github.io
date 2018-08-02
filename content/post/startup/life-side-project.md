@@ -59,6 +59,11 @@ If your startup has great people but a mediocre idea, you can still succeed by s
 
 To attract talented people to help you build a company, you have to be a talented person. I lose count of how many non-tech people are on [CoFoundersLab](https://cofounderslab.com/) with ideas for an app looking for a tech co-founder to build it all. Whenever one of these people reach out to me, I ask them why they haven't started building something on their own and their response ranges from "I don't know where to start" to "That's not my core competency. I'm a business guy."
 
-There are so many free tools, step-by-step tutorials, books, and videos out there that you can use to do anything you want. It amazes me why people don't take advantage of these. It's easier than ever to be a self-starter.
+There are so many free tools, step-by-step tutorials, books, and videos out there that you can use to do anything you want. It amazes me why people don't take advantage of these. It has never been easier to be a self-starter.
 
-My advice to them is that if you want to build a technology company but you don't know how the technology works, you are going to run into a lot problems when it comes to hiring, working with freelancers, communicating with your technical cofounder, and estimating how long / expensive an engineering effort takes. Taking some initiative to learn what it's like building the product is really going to pay off.
+My advice to them is that if you want to build a technology company but you don't know how the technology works, you are going to run into a lot problems when it comes to hiring, working with freelancers, communicating with your technical cofounder, and estimating how long / expensive an engineering effort takes. Taking some initiative to learn what it's like building the product is really going to pay off. Also, consider your value proposition to the technical co-founder and consider from [their perspective](https://medium.com/swlh/nobody-wants-to-be-your-technical-co-founder-thats-the-truth-758e2e00eb53):
+
+> you’re talking to eminently experienced and qualified people who have spent years building their skills and honing their craft and you’re asking them to take a run on the board and a massive risk with no guarantee of success and the potential of absolutely nothing to show for it.
+
+# More Reading
+[Riding Out Failures to Bootstrap a $220k/mo SaaS Company](https://www.indiehackers.com/interview/riding-out-failures-to-bootstrap-a-25k-mo-saas-company-19f3172f86?utm_source=Indie+Hackers+Newsletter&utm_campaign=indie-hackers-newsletter-20180730) A story of how someone bootstrapped products after products until finally one succeeds in generating $25,000 a month of passive income for him. Absolutely inspiring!
