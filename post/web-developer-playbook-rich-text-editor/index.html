@@ -284,9 +284,37 @@ Let&rsquo;s get started!
 
 <p></p>
 
+<div class="alert warning ">
+  <p>All the code discussed in this article is contained in these gists here: <a href="https://gist.github.com/xiaoyunyang/c0cea1c753c2920ac07b4d6863ebced2" target="_blank">PostEditor</a>, which lets you use Draft.js to create rich text.
+and <a href="https://gist.github.com/xiaoyunyang/c385179a1fe78a72ba57ebee3429803e" target="_blank">PostDisplay</a>, which lets you use Draft.js to display the rich text created using the Draft.js editor.</p>
+</div>
+
 <h1 id="draft-js-overview">Draft.js Overview</h1>
 
 <p>Draft.js is a React framework for building text editors. It&rsquo;s one of many amazing frontend projects <a href="https://opensource.fb.com/" target="_blank">open sourced by Facebook</a>. According to <a href="https://github.com/facebook/draft-js" target="_blank">its github repo</a> commit history, Draft.js was open sourced on Feb 22, 2016, so it has not been around for that long.</p>
+
+<p>At the core of Draft.js is the <a href="https://draftjs.org/docs/advanced-topics-entities.html#creating-and-retrieving-entities" target="_blank">Entity system</a>, which encapsulates raw data (i.e., text) with metadata that describes how it should appear.</p>
+
+<blockquote>
+<p>Entities introduce levels of richness beyond styled text. Links, mentions, and embedded content can all be implemented using entities. ~<a href="https://draftjs.org/docs/advanced-topics-entities.html" target="_blank">official doc</a></p>
+</blockquote>
+
+<p>Draft.js supplies the <code>&lt;Editor /&gt;</code> component (<a href="https://draftjs.org/docs/api-reference-editor.html" target="_blank">docs</a>) which is built on top of the entity system. We are going to use the <code>&lt;Editor /&gt;</code> and a few plugins created for Draft.js to create our rich text editor.</p>
+
+<p>A few important things to note for the <code>&lt;Editor /&gt;</code> component:</p>
+
+<ul>
+<li>It takes an <code>editorState</code> object and an <code>onChange</code> function as props. The <code>editorState</code> object  represents the entire state of a Draft editor, including the fully decorated representation of the contents. The <code>onChange</code> function to be executed by the Editor when edits and selection changes occur.</li>
+
+<li><p>There are two ways to create an <code>editorState</code>:</p>
+
+<ol>
+<li>Use <code>EditorState.createEmpty</code>, which returns a new <code>EditorState</code> object with an empty <code>ContentState</code> and default configuration.</li>
+<li>Use <code>EditorState.createWithContent</code>, which returns a new EditorState object based on the ContentState and decorator provided.</li>
+</ol></li>
+</ul>
+
+<p>As we will see later, we will use <code>createEmpty</code> to create the editor for creating rich text and we will use <code>createWithContent</code> to create the readOnly editor to display the rich text.</p>
 
 <p>The following video (or click <a href="https://www.youtube.com/watch?v=1d9R-mD_wOs&amp;feature=youtu.be" target="_blank">this link</a>) contains a preview of the Rich Text editor Draft.js lets us build. I will show you how to get this set up in your project.</p>
 
@@ -296,21 +324,27 @@ Let&rsquo;s get started!
 </div>
 
 
-<p>Before we install dependencies and start writing code, let&rsquo;s go over all the plugins we will use.</p>
+<p>Before we install dependencies and start writing code, let&rsquo;s first go over all the plugins we will use.</p>
 
 <p>Draft.js, being highly customizable, has a lot of <a href="https://www.draft-js-plugins.com/" target="_blank">great plugins</a> to do everything from shortcuts for mentions and hashtags shortcuts like in Twitter to adding stickers and emojis to the text areas.</p>
 
 <p>For this tutorial, we are going to use these three plugins:</p>
 
-<p><a href="https://www.draft-js-plugins.com/plugin/inline-toolbar" target="_blank">Inline Toolbar</a> -  This plugin draws a a little toolbar in a tooltip when you select text to add style to the selected text.</p>
+<h5 id="inline-toolbar-https-www-draft-js-plugins-com-plugin-inline-toolbar"><a href="https://www.draft-js-plugins.com/plugin/inline-toolbar" target="_blank">Inline Toolbar</a></h5>
+
+<p>This plugin draws a a little toolbar in a tooltip when you select text to add style to the selected text.</p>
 
 <p><img src="http://xiaoyunyang.github.io/post/images/projects/draftjs-inline-toolbar.png" alt="draftjs inline toolbar" /></p>
 
-<p><a href="https://www.draft-js-plugins.com/plugin/anchor" target="_blank">Anchor Plugin</a> - This plugin is an add-on to the Inline Toolbar plugin. It lets you add a hyperlink to any selected text.</p>
+<h5 id="anchor-plugin-https-www-draft-js-plugins-com-plugin-anchor"><a href="https://www.draft-js-plugins.com/plugin/anchor" target="_blank">Anchor Plugin</a></h5>
+
+<p>This plugin is an add-on to the Inline Toolbar plugin. It lets you add a hyperlink to any selected text.</p>
 
 <p><img src="http://xiaoyunyang.github.io/post/images/projects/draftjs-anchor-plugin.png" alt="draftjs anchor plugin" /></p>
 
-<p><a href="https://github.com/withspectrum/draft-js-markdown-plugin" target="_blank">draft-js-markdown-plugin</a> - this plugin lets us use markdown shortcuts to create styles. This is super useful for things like ordered lists and unordered lists.</p>
+<h5 id="markdown-plugin-https-github-com-withspectrum-draft-js-markdown-plugin"><a href="https://github.com/withspectrum/draft-js-markdown-plugin" target="_blank">Markdown Plugin</a></h5>
+
+<p>This plugin lets us use markdown shortcuts to create styles. This is super useful for things like ordered lists and unordered lists.</p>
 
 <p><img src="http://xiaoyunyang.github.io/post/images/projects/draftjs-markdown-plugin.gif" alt="" /></p>
 
@@ -345,11 +379,22 @@ $ npm install --save draft-js-markdown-plugin
 
 <p>If you are using create-react-app, add the import statement to your index.js file.</p>
 
-<h1 id="the-code">The Code</h1>
+<h1 id="create-an-editor">Create An Editor</h1>
 
-<p>We are going to create a component called <code>PostEditor</code> which incorporates the Draft.js rich text editor and the three plugins. In the video showcase above, I show the editor inside of a <a href="https://materializecss.com/cards.html" target="_blank">materializeCSS card</a> component (if you are interested). The actual Draft-js editor</p>
+<p>We are going to create a component called <code>&lt;PostEditor /&gt;</code> (<a href="https://gist.github.com/xiaoyunyang/c0cea1c753c2920ac07b4d6863ebced2" target="_blank">see code</a>) which incorporates the Draft.js <code>&lt;Editor /&gt;</code> and the three plugins discussed above. In the video showcase above, I show the editor inside of a <a href="https://materializecss.com/cards.html" target="_blank">materializeCSS card</a> component (if you are interested).</p>
 
-<p><strong>All the code is contained in <a href="https://gist.github.com/xiaoyunyang/c0cea1c753c2920ac07b4d6863ebced2" target="_blank">this gist here</a>.</strong></p>
+<div class="alert warning ">
+  <p>All the code is contained in the gist here: <a href="https://gist.github.com/xiaoyunyang/c0cea1c753c2920ac07b4d6863ebced2" target="_blank">PostEditor</a>.</p>
+</div>
+
+<p>This is how you call the <code>&lt;PostEditor /&gt;</code> component. It takes four props:</p>
+
+<ol>
+<li><code>handlePost</code> - The parent component&rsquo;s function for handling the posting of data collected from the Draft.js editor when user presses the &ldquo;post&rdquo; button.</li>
+<li><code>placeholder</code> - The text diplayed in the Draft.js Editor when there is no text input. The default is &ldquo;Write something&hellip;&rdquo;</li>
+<li><code>userDisplayName</code> - The username you see displayed on top of the Draft.js editor in the example.</li>
+<li><code>userPic</code> - The user picture you see displayed on top of the Draft.js editor in the example.</li>
+</ol>
 
 <p>I&rsquo;m not going to walk through line-by-line what&rsquo;s in here. You can refer to the <a href="https://draftjs.org/docs/getting-started.html" target="_blank">official doc</a> for Draft.js and the tutorials from the DraftJS Plugins website for <a href="https://www.draft-js-plugins.com/plugin/inline-toolbar" target="_blank">the Inline Toolbar</a> and <a href="https://www.draft-js-plugins.com/plugin/anchor" target="_blank">the Anchor Plugin</a>. I will, however, point out a few Gotchas and hurdles that I had to work through to get the editor working.</p>
 
@@ -359,16 +404,16 @@ $ npm install --save draft-js-markdown-plugin
 
 <p><img src="http://xiaoyunyang.github.io/post/images/projects/draftjs-id-mismatch.png" alt="" /></p>
 
-<p>This issue was <a href="https://github.com/facebook/draft-js/issues/385" target="_blank">discussed in detail here</a>. Basically, the ids created inside the Editor is pseudo-random. Every time you refresh the page, the hash changes. To avoid the id-mismatch error in your isomorphic app, my workaround is to use <code>componentDidMount</code> to toggle a state variable for the <code>PostEditor</code> component called <code>clientModeOn</code> (a boolean) to make sure the server application renders <code>null</code> while the client application renders <code>Editor</code>.</p>
+<p>This issue was <a href="https://github.com/facebook/draft-js/issues/385" target="_blank">discussed in detail here</a>. Basically, the ids created inside the Editor is pseudo-random. Every time you refresh the page, the hash changes. To avoid the id-mismatch error in your isomorphic app, my workaround is to use <code>componentDidMount</code> to toggle a state variable for the <code>&lt;PostEditor /&gt;</code> component called <code>clientModeOn</code> (a boolean) to make sure the server application renders <code>null</code> while the client application renders <code>Editor</code>.</p>
 
 <h2 id="gotcha-2-placeholder">Gotcha 2: Placeholder</h2>
 
 <p>The placeholder appears behind a bullet as shown here:
 <img src="http://xiaoyunyang.github.io/post/images/projects/draftjs-placeholder-behind-bullet.png" alt="" /></p>
 
-<p>As discussed <a href="https://github.com/facebook/draft-js/issues/446" target="_blank">here</a> and <a href="https://github.com/facebook/draft-js/issues/1205" target="_blank">here</a>, placeholder renders conditionally if there is text in <code>Editor</code> but it still renders if you have a single unordered-list-item block without any text. Having the bullet directly on top of the placeholder text is obviously not acceptable. Some users of Draft.js prefers to have the placeholder shifted to the right to the right of the bullet. My workaround is to add some logic to make the placeholder value an empty string if there is any decorator like ordered list or unordered list in <code>Editor</code>.</p>
+<p>As discussed <a href="https://github.com/facebook/draft-js/issues/446" target="_blank">here</a> and <a href="https://github.com/facebook/draft-js/issues/1205" target="_blank">here</a>, placeholder renders conditionally if there is text in <code>Editor</code> but it still renders if you have a single unordered-list-item block without any text. Having the bullet directly on top of the placeholder text is obviously not acceptable. Some users of Draft.js prefers to have the placeholder shifted to the right to the right of the bullet. My workaround is to add some logic to make the placeholder value an empty string if there is any decorator like ordered list or unordered list in <code>&lt;Editor /&gt;</code>.</p>
 
-<p>The following function was added to <code>PostEditor</code>:</p>
+<p>The following function was added to the <code>&lt;PostEditor /&gt;</code> component:</p>
 
 <pre><code class="language-javascript">renderPlaceholder(placeholder, editorState) {
   const contentState = editorState.getCurrentContent();
@@ -377,6 +422,116 @@ $ npm install --save draft-js-markdown-plugin
   return shouldHide ? '' : placeholder;
 }
 </code></pre>
+
+<h1 id="post-content">Post Content</h1>
+
+<p>Within the <code>&lt;PostEditor /&gt;</code> component, there&rsquo;s a function called <code>handlePost</code>:</p>
+
+<pre><code class="language-javascript">handlePost() {
+  const content = this.state.editorState.getCurrentContent();
+  // content to save to the db
+  const contentToSave = JSON.stringify(convertToRaw(content));
+  this.props.handlePost(contentToSave);
+}
+</code></pre>
+
+<p>When you press the &ldquo;post&rdquo; button, this function is executed to convert the <code>editorState</code> into a string. Specifically:</p>
+
+<p><code>convertToRaw(content)</code> is an object in the following form:</p>
+
+<pre><code>{blocks: Array(2), entityMap: {…}}
+</code></pre>
+
+<p>Then <code>JSON.stringify</code> converts the JSON into a string, a format which we could save to the database.</p>
+
+<h1 id="fetch-and-display-content">Fetch and Display Content</h1>
+
+<p>Next, we are going to create a component called <code>&lt;PostDisplay /&gt;</code> (<a href="https://gist.github.com/xiaoyunyang/c385179a1fe78a72ba57ebee3429803e" target="_blank">see code</a>) which displays the the rich text generated from a Draft.js Editor.</p>
+
+<p>This component is significantly simpler than the <code>&lt;PostEditor /&gt;</code> component. It takes a few props:
+1. <code>editorContent</code> - The stringified version of the Draft.js editor content saved to the database.
+2. <code>userDisplayName</code> - The username you see displayed on top of the Draft.js editor in the example.
+3. <code>userPic</code> - The user picture you see displayed on top of the Draft.js editor in the example.</p>
+
+<p>After converting the <code>editorContent</code> back to <code>EditorState</code>, We use the same Draft.js Editor component to display a <code>readOnly</code> version of the rich text:</p>
+
+<pre><code class="language-javascript">&lt;Editor
+  editorState={convertToEditorState(editorContent)}
+  readOnly
+/&gt;
+</code></pre>
+
+<p>The <code>convertToEditorState</code> function is a custom function I wrote to get the stringified editor content back into the editorEditor format:</p>
+
+<pre><code class="language-javascript">const convertToEditorState = (editorContent) =&gt; {
+  const content = convertFromRaw(JSON.parse(editorContent));
+  const editorState = EditorState.createWithContent(content, decorator);
+  return editorState;
+};
+</code></pre>
+
+<p>For the post part, everything is exactly in reverse of the process for converting the editorState into the <code>contentToSave</code> from the <code>&lt;PostEditor /&gt;</code> component&rsquo;s <code>handlePost</code> function but there&rsquo;s one key gotcha: When we use <code>EditorState.createWithContent</code>, we need to pass the decorator also:</p>
+
+<pre><code>EditorState.createWithContent(content, decorator)
+</code></pre>
+
+<p>where <code>decorator</code> is</p>
+
+<pre><code class="language-javascript">const decorator = new CompositeDecorator([{
+  strategy: findLinkEntities,
+  component: Link
+}]);
+</code></pre>
+
+<p>and <code>findLinkEntities</code> and <code>Link</code> are:</p>
+
+<pre><code class="language-javascript">function findLinkEntities(contentBlock, callback, contentState) {
+  contentBlock.findEntityRanges(
+    (character) =&gt; {
+      const entityKey = character.getEntity();
+      return (
+        entityKey !== null &amp;&amp;
+        contentState.getEntity(entityKey).getType() === 'LINK'
+      );
+    },
+    callback
+  );
+}
+const Link = (props) =&gt; {
+  const {url} = props.contentState.getEntity(props.entityKey).getData();
+  return (
+    &lt;a rel=&quot;nofollow noreferrer&quot; href={url} target=&quot;_blank&quot;&gt;
+      {props.children}
+    &lt;/a&gt;
+  );
+};
+</code></pre>
+
+<p>This code is basically taken directly from the <a href="https://github.com/facebook/draft-js/blob/master/examples/draft-0-10-0/link/link.html" target="_blank">Draft.js Github Page Link Example</a>.</p>
+
+<p>If we don&rsquo;t pass the decorator, everything else like code block, bold text, quote etc will still render correctly in the Draft.js Editor because these are regular text with properties controlled by CSS and the style attribute. With Link, however, we need the decorator to create an anchor tag.</p>
+
+<p>Link is the only non-text-based entity we are using in this example so that&rsquo;s the only decorator we are using with <code>createWithContent</code>. If you use other plugins like <a href="https://www.draft-js-plugins.com/plugin/emoji" target="_blank">emoji</a>, <a href="https://www.draft-js-plugins.com/plugin/mention" target="_blank">mention</a>, or <a href="https://www.draft-js-plugins.com/plugin/hashtag" target="_blank">hashtag</a>.</p>
+
+<h1 id="the-result">The Result</h1>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/yq5QFfVekuk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<p><a href="https://youtu.be/yq5QFfVekuk" target="_blank">Link to the video</a></p>
+
+<h1 id="resources">Resources</h1>
+
+<ul>
+<li><a href="https://github.com/nikgraf/awesome-draft-js" target="_blank">Awesome Draft.js</a> - Awesome list of Draft.js resources</li>
+<li><a href="https://reactrocket.com/post/draft-js-persisting-content/" target="_blank">Saving Draft.js data to server</a> by React Rocket</li>
+<li><a href="http://frontendgirl.com/8-playgrounds-for-examples-from-official-draft-js-repository-v-0-10-0/" target="_blank">Draft.js Playgrounds</a></li>
+<li><a href="https://medium.com/@siobhanpmahoney/building-a-rich-text-editor-with-draft-js-react-redux-and-rails-ef8d2e2897bf" target="_blank">5 part tutorial on Draft.js</a> by Siobhan Mahoney</li>
+<li><a href="https://medium.com/@adrianmcli/a-beginner-s-guide-to-draft-js-d1823f58d8cc" target="_blank">A Beginner&rsquo;s Guide to Draft.js</a> by Adrian Li</li>
+</ul>
               
             </div>
           </div>
