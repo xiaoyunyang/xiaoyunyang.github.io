@@ -110,3 +110,24 @@ renderPlaceholder(placeholder, editorState) {
   return shouldHide ? '' : placeholder;
 }
 ```
+
+# Post Content
+
+When you press the "post" button, the function function will be executed:
+
+```javascript
+handlePost() {
+  const content = this.state.editorState.getCurrentContent();
+  this.props.handlePost(convertToRaw(content));
+}
+```
+
+`convertToRaw(content)` is an object in the following form:
+
+```
+{blocks: Array(2), entityMap: {…}}
+```
+
+# Resources
+
+- [Draft.js Playgrounds](http://frontendgirl.com/8-playgrounds-for-examples-from-official-draft-js-repository-v-0-10-0/)
