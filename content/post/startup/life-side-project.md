@@ -67,3 +67,4 @@ My advice to them is that if you want to build a technology company but you don'
 
 # More Reading
 * [Riding Out Failures to Bootstrap a $220k/mo SaaS Company](https://www.indiehackers.com/interview/riding-out-failures-to-bootstrap-a-25k-mo-saas-company-19f3172f86?utm_source=Indie+Hackers+Newsletter&utm_campaign=indie-hackers-newsletter-20180730) -  A story of how someone bootstrapped products after products until finally one succeeds in generating $25,000 a month of passive income for him. Absolutely inspiring!
+* [Creative Side Projects](https://www.shopify.com/partners/blog/creative-side-projects-a-how-to-guide)
