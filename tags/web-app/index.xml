@@ -8,10 +8,35 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Wed, 09 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/tags/web-app/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Web Developer Playbook: Rich Text Editor</title>
+      <link>http://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</link>
+      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</guid>
+      <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34; target=&#34;_blank&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
+&lt;img src=&#34;http://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34; /&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s get started!&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Web Developer Playbook: Slug</title>
+      <link>http://xiaoyunyang.github.io/post/web-developer-playbook-slug/</link>
+      <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/post/web-developer-playbook-slug/</guid>
+      <description>&lt;p&gt;This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Serverless Web App For Work</title>
