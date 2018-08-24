@@ -21,6 +21,8 @@ thumbnailImage: /post/images/algo/linked-list.png
 Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.
 
 <!--more-->
+{{< alert info >}} This article was also [published on Medium](https://codeburst.io/cs-with-js-linked-list-e27008cfc9d9) under Codeburst. {{< /alert >}}
+
 <!--toc-->
 
 We are only going to focus on singly linked list for this article. Doubly linked lists are also implemented sometimes but having an extra pointer to the predecessor of each node increases the overhead of a linked list as we have to keep twice as many pointers.

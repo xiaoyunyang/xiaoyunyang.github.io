@@ -6,14 +6,20 @@ categories:
 tags:
   - JavaScript
   - Guide
+  - Web App
+  - UX
+  - React
 keywords:
   - Software Design
   - web development
   - JavaScript
+  - Draft.js
+  - Rich Text Editor
+  - React
 ---
 
-In this article, I will show you add a rich text editor based on Draft.js to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-![draftjs](/post/images/projects/draftjs.png).
+In this article, I will show you add a rich text editor based on [Draft.js](https://draftjs.org/) to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
+![draftjs](/post/images/projects/draftjs.png)
 
 Let's get started!
 
@@ -45,7 +51,7 @@ A few important things to note for the `<Editor />` component:
 
 As we will see later, we will use `createEmpty` to create the editor for creating rich text and we will use `createWithContent` to create the readOnly editor to display the rich text.
 
-The following video (or click [this link](https://www.youtube.com/watch?v=1d9R-mD_wOs&feature=youtu.be)) contains a preview of the Rich Text editor Draft.js lets us build. I will show you how to get this set up in your project.
+The following video (or click [this link](https://www.youtube.com/watch?v=1d9R-mD_wOs&feature=youtu.be)) contains a preview of the Rich Text editor that Draft.js lets us build. I will show you how to get this set up in your project.
 
 {{< youtube 1d9R-mD_wOs >}}
 
@@ -105,10 +111,6 @@ If you are using create-react-app, add the import statement to your index.js fil
 # Create An Editor
 
 We are going to create a component called `<PostEditor />` ([see code](https://gist.github.com/xiaoyunyang/c0cea1c753c2920ac07b4d6863ebced2)) which incorporates the Draft.js `<Editor />` and the three plugins discussed above. In the video showcase above, I show the editor inside of a [materializeCSS card](https://materializecss.com/cards.html) component (if you are interested).
-
-{{< alert warning >}}
-All the code is contained in the gist here: [PostEditor](https://gist.github.com/xiaoyunyang/c0cea1c753c2920ac07b4d6863ebced2).
-{{< /alert >}}
 
 This is how you call the `<PostEditor />` component. It takes four props:
 
@@ -203,7 +205,7 @@ For the post part, everything is exactly in reverse of the process for convertin
 EditorState.createWithContent(content, decorator)
 ```
 
-where `decorator` is
+where `decorator` is:
 
 ```javascript
 const decorator = new CompositeDecorator([{

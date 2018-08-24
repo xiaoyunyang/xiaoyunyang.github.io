@@ -6,19 +6,22 @@ categories:
 tags:
   - JavaScript
   - Guide
+  - Web App
+  - Node
 keywords:
   - Software Design
   - web development
   - JavaScript
-thumbnailImagePosition: top
-thumbnailImage: /post/images/webdev-manual-cover.png
+  - Slug
+  - SEO
 ---
-
+![](/post/images/webdev-manual-cover.png)
 This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
 
-<!--more-->
 
-![](/post/images/webdev-manual-cover.png)
+<!--more-->
+{{< alert info >}} This article was also [published on Medium](https://medium.com/dailyjs/web-developer-playbook-slug-a6dcbe06c284) under DailyJS. {{< /alert >}}
+
 ## What is a Slug?
 
 A slug is the last part of the url containing a unique string which identifies the resource being served by the web service. In that sense, a slug is a unique identifier for the resource. For example, the slug for this article, which has the url of http://xiaoyunyang.github.io//web-developer-playbook-slug is: `web-developer-playbook-slug`.

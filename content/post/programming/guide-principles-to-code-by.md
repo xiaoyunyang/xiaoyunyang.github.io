@@ -24,7 +24,7 @@ thumbnailImage: /post/images/brain-lightbulb.png
 What I love most about programming is the problem solving. I don't believe anyone is born with problem solving skills. It's a muscle that is built and sustained by repeated exercise. Like any exercise, there's a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.
 
 <!--more-->
-{{< alert info >}} This article was also [published under DailyJS on Medium](https://medium.com/dailyjs/principles-to-code-by-3c516ad61fcc) under DailyJS. {{< /alert >}}
+{{< alert info >}} This article was also [published on Medium](https://medium.com/dailyjs/principles-to-code-by-3c516ad61fcc) under DailyJS. {{< /alert >}}
 
 ![](/post/images/brain-lightbulb-wide.png)
 

@@ -21,7 +21,7 @@ thumbnailImage: /post/images/oop.png
 Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I'm going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.  
 
 <!--more-->
-
+{{< alert info >}} This article was also [published on Medium](https://medium.com/@xiaoyunyang/how-to-do-object-oriented-programming-the-right-way-1339c1a25286). {{< /alert >}}
 <!--toc-->
 
 # Primer: What is an Object?

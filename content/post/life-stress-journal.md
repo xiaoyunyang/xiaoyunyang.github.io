@@ -1,6 +1,6 @@
 ---
 title: "The Algorithm for Managing Stress"
-date: 2018-08-17
+date: 2018-10-17
 categories:
   - blog
 tags:
