@@ -29,13 +29,13 @@
 
     
     <meta name="description" content="In this article, I will show you add a rich text editor based on Draft.js to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-.
+
 
 Let&rsquo;s get started!
 
 ">
     <meta property="og:description" content="In this article, I will show you add a rich text editor based on Draft.js to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-.
+
 
 Let&rsquo;s get started!
 
@@ -47,7 +47,7 @@ Let&rsquo;s get started!
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
     <meta name="twitter:description" content="In this article, I will show you add a rich text editor based on Draft.js to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-.
+
 
 Let&rsquo;s get started!
 
@@ -278,7 +278,7 @@ Let&rsquo;s get started!
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>In this article, I will show you add a rich text editor based on <a href="https://draftjs.org/" target="_blank">Draft.js</a> to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-<img src="http://xiaoyunyang.github.io/post/images/projects/draftjs.png" alt="draftjs" />.</p>
+<img src="http://xiaoyunyang.github.io/post/images/projects/draftjs.png" alt="draftjs" /></p>
 
 <p>Let&rsquo;s get started!</p>
 
@@ -316,7 +316,7 @@ and <a href="https://gist.github.com/xiaoyunyang/c385179a1fe78a72ba57ebee3429803
 
 <p>As we will see later, we will use <code>createEmpty</code> to create the editor for creating rich text and we will use <code>createWithContent</code> to create the readOnly editor to display the rich text.</p>
 
-<p>The following video (or click <a href="https://www.youtube.com/watch?v=1d9R-mD_wOs&amp;feature=youtu.be" target="_blank">this link</a>) contains a preview of the Rich Text editor Draft.js lets us build. I will show you how to get this set up in your project.</p>
+<p>The following video (or click <a href="https://www.youtube.com/watch?v=1d9R-mD_wOs&amp;feature=youtu.be" target="_blank">this link</a>) contains a preview of the Rich Text editor that Draft.js lets us build. I will show you how to get this set up in your project.</p>
 
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -382,10 +382,6 @@ $ npm install --save draft-js-markdown-plugin
 <h1 id="create-an-editor">Create An Editor</h1>
 
 <p>We are going to create a component called <code>&lt;PostEditor /&gt;</code> (<a href="https://gist.github.com/xiaoyunyang/c0cea1c753c2920ac07b4d6863ebced2" target="_blank">see code</a>) which incorporates the Draft.js <code>&lt;Editor /&gt;</code> and the three plugins discussed above. In the video showcase above, I show the editor inside of a <a href="https://materializecss.com/cards.html" target="_blank">materializeCSS card</a> component (if you are interested).</p>
-
-<div class="alert warning ">
-  <p>All the code is contained in the gist here: <a href="https://gist.github.com/xiaoyunyang/c0cea1c753c2920ac07b4d6863ebced2" target="_blank">PostEditor</a>.</p>
-</div>
 
 <p>This is how you call the <code>&lt;PostEditor /&gt;</code> component. It takes four props:</p>
 
@@ -817,7 +813,7 @@ s.setAttribute('data-timestamp', +new Date());
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>In this article, I will show you add a rich text editor based on <a href="https://draftjs.org/" target="_blank">Draft.js</a> to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-<img src="http://xiaoyunyang.github.io/post/images/projects/draftjs.png" alt="draftjs" />.</p>
+<img src="http://xiaoyunyang.github.io/post/images/projects/draftjs.png" alt="draftjs" /></p>
 
 <p>Let&rsquo;s get started!</p>
 
@@ -857,9 +853,8 @@ s.setAttribute('data-timestamp', +new Date());
                   Jul 7, 2018
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.</p>
-
-<p></p></div>
+              <div class="media-content hide-xs font-merryweather"><p><img src="http://xiaoyunyang.github.io/post/images/webdev-manual-cover.png" alt="" />
+This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>

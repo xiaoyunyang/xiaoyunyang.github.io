@@ -20,7 +20,7 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</guid>
       <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34; target=&#34;_blank&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-&lt;img src=&#34;http://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34; /&gt;.&lt;/p&gt;
+&lt;img src=&#34;http://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s get started!&lt;/p&gt;
 
@@ -44,9 +44,8 @@
       <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/post/web-developer-playbook-slug/</guid>
-      <description>&lt;p&gt;This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;http://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34; /&gt;
+This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -128,9 +127,7 @@
       <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/</guid>
-      <description>&lt;p&gt;Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&amp;rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&amp;rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.&lt;/p&gt;</description>
     </item>
     
     <item>
