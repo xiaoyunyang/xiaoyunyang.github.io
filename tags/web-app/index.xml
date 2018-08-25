@@ -81,16 +81,5 @@ This post is part of the Web Developer Playbook series, which are created to pro
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
-    <item>
-      <title>Maintaining a Repository Of Learning For Scala</title>
-      <link>http://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</link>
-      <pubDate>Sun, 12 Mar 2017 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</guid>
-      <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34; target=&#34;_blank&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
   </channel>
 </rss>
