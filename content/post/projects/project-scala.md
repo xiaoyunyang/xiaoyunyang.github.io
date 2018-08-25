@@ -4,9 +4,13 @@ date: 2017-03-12
 categories:
   - projects
 tags:
-  - Web App
   - Open Source
   - Scala
+keywords:
+  - Open Source
+  - Scala
+  - Coursera
+  - Knowledge repository
 thumbnailImagePosition: left
 thumbnailImage: /post/images/scala.png
 ---
