@@ -407,7 +407,7 @@ $ npm install --save draft-js-markdown-plugin
 <p>The placeholder appears behind a bullet as shown here:
 <img src="http://xiaoyunyang.github.io/post/images/projects/draftjs-placeholder-behind-bullet.png" alt="" /></p>
 
-<p>As discussed <a href="https://github.com/facebook/draft-js/issues/446" target="_blank">here</a> and <a href="https://github.com/facebook/draft-js/issues/1205" target="_blank">here</a>, placeholder renders conditionally if there is text in <code>Editor</code> but it still renders if you have a single unordered-list-item block without any text. Having the bullet directly on top of the placeholder text is obviously not acceptable. Some users of Draft.js prefers to have the placeholder shifted to the right to the right of the bullet. My workaround is to add some logic to make the placeholder value an empty string if there is any decorator like ordered list or unordered list in <code>&lt;Editor /&gt;</code>.</p>
+<p>As discussed <a href="https://github.com/facebook/draft-js/issues/446" target="_blank">here</a> and <a href="https://github.com/facebook/draft-js/issues/1205" target="_blank">here</a>, placeholder renders conditionally if there is text in <code>Editor</code> but it still renders if you have a single unordered-list-item block without any text. Having the bullet directly on top of the placeholder text is obviously not acceptable. Some users of Draft.js prefer to have the placeholder shifted to the right to the right of the bullet. My workaround is to add some logic to make the placeholder value an empty string if there is any decorator like ordered list or unordered list in <code>&lt;Editor /&gt;</code>.</p>
 
 <p>The following function was added to the <code>&lt;PostEditor /&gt;</code> component:</p>
 
@@ -444,10 +444,13 @@ $ npm install --save draft-js-markdown-plugin
 
 <p>Next, we are going to create a component called <code>&lt;PostDisplay /&gt;</code> (<a href="https://gist.github.com/xiaoyunyang/c385179a1fe78a72ba57ebee3429803e" target="_blank">see code</a>) which displays the the rich text generated from a Draft.js Editor.</p>
 
-<p>This component is significantly simpler than the <code>&lt;PostEditor /&gt;</code> component. It takes a few props:
-1. <code>editorContent</code> - The stringified version of the Draft.js editor content saved to the database.
-2. <code>userDisplayName</code> - The username you see displayed on top of the Draft.js editor in the example.
-3. <code>userPic</code> - The user picture you see displayed on top of the Draft.js editor in the example.</p>
+<p>This component is significantly simpler than the <code>&lt;PostEditor /&gt;</code> component. It takes a few props:</p>
+
+<ol>
+<li><code>editorContent</code> - The stringified version of the Draft.js editor content saved to the database.</li>
+<li><code>userDisplayName</code> - The username you see displayed on top of the Draft.js editor in the example.</li>
+<li><code>userPic</code> - The user picture you see displayed on top of the Draft.js editor in the example.</li>
+</ol>
 
 <p>After converting the <code>editorContent</code> back to <code>EditorState</code>, We use the same Draft.js Editor component to display a <code>readOnly</code> version of the rich text:</p>
 
