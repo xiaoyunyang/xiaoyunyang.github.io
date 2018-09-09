@@ -752,11 +752,11 @@ Cases where the `g` flag should be used is when you want to replace all occurren
 'hello world hello'.replace(/hello/g, 'hi') //> "hi world hi"
 ```
 
-# JSON
+# JS Object
 
-JSON or JavaScript Object Notation encodes data as key value pairs. It’s faster and easier to parse with JavaScript than XML.
+JavaScript Object encodes data as key value pairs. You probably heard of JSON, which is a text format that conforms to the JS Object format and is used to share data between server and client. Compared to XML, JSON is faster and easier to parse with JavaScript.
 
-## Creating JSON
+## Creating JS Object
 
 Dynamically
 
@@ -803,9 +803,10 @@ var flight = {
    }
 };
 ```
+
 A property’s name can be any string, including the empty string. The quotes around a property’s name in an object literal are optional if the name would be a legal JavaScript name and not a reserved word. So quotes are required around “last-name", but are optional around first_name. Commas are used to separate the pairs.
 
-## Converting JSON from one form to another
+## Converting JS Object from one form to another
 
 ```javascript
 // Create array of objects
@@ -820,7 +821,7 @@ var bar = foo.reduce((acc, x) => {
 }, {});
 ```
 
-## Retrieving Things from JSON
+## Retrieving Things from JS Object
 
 ```javascript
 stooge.firstName //> “Jerome”
@@ -851,6 +852,7 @@ flight.equipment //> undefined
 flight.equipment.model //> throw "TypeError"
 flight.equipment && flight.equipment.model //> undefined
 ```
+
 ## Retrieving By Value from Array Of objects
 
 Use `filter`
@@ -867,7 +869,8 @@ dict.filter(obj => {return obj.char === 'foo'}) //> []
 
 ```
 
-## Update JSON
+## Update JS Object
+
 If the object does not already have that property name, the object is augmented:
 
 ```javascript
@@ -875,12 +878,46 @@ stooge.firstName = 'Jerome';
 stooge['middleName'] = 'Lester';
 stooge.nickname = 'Curly';
 ```
-## Operations on JSON
+
+JavaScript Object can be used as a dictionary. If we want to maintain a list of unique things and when we encounter a new thing, we want to update the list only if the this thing does not exist in the list already, maintaining the list of things as an array would be pretty expensive. The reason array is a bad datastructure for maintaintaing a list of unique things that could change overtime is because every time we want to add a new thing list, we have to search through the entire array to see if this thing already exists or not. Add operation becomes O(N) in time complexity. If we maintain the list of unique things as a dictionary, the Add operation would be O(1).
+
+```javascript
+const addToDict = (dict, newKey) => {
+  if (dict[newKey]) return dict;
+  const newDict = Object.assign({}, dict);
+  newDict[newKey] = new Date();
+  return newDict;
+};
+```
+
+A Gotcha here is we need to make sure we make a copy of the old `dict` with `Object.assign`. Otherwise, the code is going to fail due to side effects. `dict` is a reference to object, not the actual thing. This is especially true if your `dict` is a dynamically loaded object. An important programming principle is our function should not have side effect (i.e., mutate any argument). Rather, the function should return a copy of the dict that’s modified.
+
+Similarly, we can delete item from a list. Time complexity of the delete operation is O(1) is O(1) if the list is maintained as a dictionary and in worst case O(N) if the list is maintained as an array.
+
+```javascript
+const deleteFromDict = (dict, key) => {
+  if (!dict[key]) return dict;
+  const newDict = Object.assign({}, dict);
+  newDict[key] = null;
+  return newDict;
+};
+```
+
+## Size of JS Object
+
+```javascript
+let basket = {}
+Object.keys(basket).length; // 0
+basket = {apple: 2}
+Object.keys(basket).length; // 1
+```
+
+## Operations on JS Object
 
 ```javascript
 let users = [
-	{"name": "andrew", "country": "usa"},
-	{"name": "mary"}
+  {"name": "andrew", "country": "usa"},
+  {"name": "mary"}
 ]
 users[0] //> {name: "andrew", country: "usa"}
 users[0].country //> "usa"
@@ -888,13 +925,14 @@ users[1].country //> undefined
 users.filter(u => u.country !== null).map(u => u.username) //> ["xy"]
 ```
 
-## Get all keys from JSON
+## Get all keys from JS Object
 
 ```javascript
 let foo = {"name": "andrew", "country": "usa"}
 let keys = Object.keys(foo) //> [“name”, “country”]
 ```
-## Check if a key exists in a JSON
+
+## Check if a key exists in a JS Object
 
 ```javascript
 let user = {"name": "andrew", "country": "usa"}
@@ -906,6 +944,8 @@ user.hasOwnProperty("city") //> false
 
 ## JSON.stringify
 
+`JSON.stringify` is very useful when you are debugging server side using `console.log`. Serverside javascript prints out to terminal and if you are trying to print out an object, you will see 'object' getting printed out on console, which is not very helpful.
+
 ```javascript
 var foo = {"name": "andrew", "country": "usa"};
 var bar = {"name": "xiaoyun", "city": "dc" };
@@ -914,6 +954,7 @@ JSON.stringify(foo) == JSON.stringify(baz) //> true
 JSON.stringify(foo) === JSON.stringify(baz) //> true
 JSON.stringify(foo) == JSON.stringify(bar); //> false
 ```
+
 Then you can use `indexOf` is an operation on a `string`.
 
 ```javascript
@@ -929,20 +970,20 @@ a.indexOf("s") //> 29
 a.indexOf("}") //> 32
 ```
 
-## Swap Key and Val of JSON Objects
+## Swap Key and Val of JS Objects
 
 ```javascript
 const objKey = (d, i) => Object.keys(d)[i]
 const objVal = (d, i) => d[objKey(d,i)]
 
-// create JSON from an array of keys
+// create JS Object from an array of keys
 
 const swap = (data) => Object.keys(data).reduce( (obj,key) => {
    obj[ data[key] ] = key;
    return obj;
 },{});
 
-var data = {A : 1, B : 2, C : 3, D : 4}
+var data = { A : 1, B : 2, C : 3, D : 4 }
 var newData = swap(data)
 
 console.log(newData); //> {1: "A", 2: "B", 3: "C", 4: "D"}
@@ -953,13 +994,13 @@ console.log(newData); //> {1: "A", 2: "B", 3: "C", 4: "D"}
 Using object destructuring saves you from creating temporary references for those properties.
 
 ```javascript
-var user = {firstName: "Amy", lastName:"Winehouse"}
-var {firstName, lastName} = user
+var user = { firstName: "Amy", lastName:"Winehouse" }
+var { firstName, lastName } = user
 firstName //> "Amy"
 lastName //> "Winehouse"
 ```
 
-## Merging two JSON objects
+## Merging two JS objects
 
 There's a more verbose way of doing it but we are using ES6's spread operator here:
 

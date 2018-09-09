@@ -135,7 +135,7 @@ This issue was [discussed in detail here](https://github.com/facebook/draft-js/i
 The placeholder appears behind a bullet as shown here:
 ![](/post/images/projects/draftjs-placeholder-behind-bullet.png)
 
-As discussed [here](https://github.com/facebook/draft-js/issues/446) and [here](https://github.com/facebook/draft-js/issues/1205), placeholder renders conditionally if there is text in `Editor` but it still renders if you have a single unordered-list-item block without any text. Having the bullet directly on top of the placeholder text is obviously not acceptable. Some users of Draft.js prefers to have the placeholder shifted to the right to the right of the bullet. My workaround is to add some logic to make the placeholder value an empty string if there is any decorator like ordered list or unordered list in `<Editor />`.
+As discussed [here](https://github.com/facebook/draft-js/issues/446) and [here](https://github.com/facebook/draft-js/issues/1205), placeholder renders conditionally if there is text in `Editor` but it still renders if you have a single unordered-list-item block without any text. Having the bullet directly on top of the placeholder text is obviously not acceptable. Some users of Draft.js prefer to have the placeholder shifted to the right to the right of the bullet. My workaround is to add some logic to make the placeholder value an empty string if there is any decorator like ordered list or unordered list in `<Editor />`.
 
 The following function was added to the `<PostEditor />` component:
 
@@ -176,6 +176,7 @@ Then `JSON.stringify` converts the JSON into a string, a format which we could s
 Next, we are going to create a component called `<PostDisplay />` ([see code](https://gist.github.com/xiaoyunyang/c385179a1fe78a72ba57ebee3429803e)) which displays the the rich text generated from a Draft.js Editor.
 
 This component is significantly simpler than the `<PostEditor />` component. It takes a few props:
+
 1. `editorContent` - The stringified version of the Draft.js editor content saved to the database.
 2. `userDisplayName` - The username you see displayed on top of the Draft.js editor in the example.
 3. `userPic` - The user picture you see displayed on top of the Draft.js editor in the example.

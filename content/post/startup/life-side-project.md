@@ -16,7 +16,7 @@ thumbnailImagePosition: left
 thumbnailImage: /post/images/wrong-way.png
 ---
 
-People have different reasons to want to quit our 9-5 to pursue entrepreneurship full time. I was drawn to the opportunity to take something from idea to product and being able to “be my own boss”. We all want the lifestyle of a successful entrepreneur but you don’t need to have your own VC funded startup to build a great product.
+People have different reasons to want to quit their 9-5 to pursue entrepreneurship full time. I was drawn to the opportunity to take something from idea to product and being able to “be my own boss”. We all want the lifestyle of a successful entrepreneur but you don’t need to have your own VC funded startup to build a great product.
 
 <!--more-->
 
