@@ -342,20 +342,21 @@
 <li><a href="#getting-substrings">Getting Substrings</a></li>
 <li><a href="#regexp">RegExp</a></li>
 </ul></li>
-<li><a href="#json">JSON</a>
+<li><a href="#js-object">JS Object</a>
 <ul>
-<li><a href="#creating-json">Creating JSON</a></li>
-<li><a href="#converting-json-from-one-form-to-another">Converting JSON from one form to another</a></li>
-<li><a href="#retrieving-things-from-json">Retrieving Things from JSON</a></li>
+<li><a href="#creating-js-object">Creating JS Object</a></li>
+<li><a href="#converting-js-object-from-one-form-to-another">Converting JS Object from one form to another</a></li>
+<li><a href="#retrieving-things-from-js-object">Retrieving Things from JS Object</a></li>
 <li><a href="#retrieving-by-value-from-array-of-objects">Retrieving By Value from Array Of objects</a></li>
-<li><a href="#update-json">Update JSON</a></li>
-<li><a href="#operations-on-json">Operations on JSON</a></li>
-<li><a href="#get-all-keys-from-json">Get all keys from JSON</a></li>
-<li><a href="#check-if-a-key-exists-in-a-json">Check if a key exists in a JSON</a></li>
+<li><a href="#update-js-object">Update JS Object</a></li>
+<li><a href="#size-of-js-object">Size of JS Object</a></li>
+<li><a href="#operations-on-js-object">Operations on JS Object</a></li>
+<li><a href="#get-all-keys-from-js-object">Get all keys from JS Object</a></li>
+<li><a href="#check-if-a-key-exists-in-a-js-object">Check if a key exists in a JS Object</a></li>
 <li><a href="#json-stringify">JSON.stringify</a></li>
-<li><a href="#swap-key-and-val-of-json-objects">Swap Key and Val of JSON Objects</a></li>
+<li><a href="#swap-key-and-val-of-js-objects">Swap Key and Val of JS Objects</a></li>
 <li><a href="#destructuring">Destructuring</a></li>
-<li><a href="#merging-two-json-objects">Merging two JSON objects</a></li>
+<li><a href="#merging-two-js-objects">Merging two JS objects</a></li>
 </ul></li>
 <li><a href="#utility-libraries">Utility Libraries</a></li>
 <li><a href="#resources">Resources</a></li>
@@ -1085,11 +1086,11 @@ str.replace(matchHTMLChar, decode) //&gt; &quot;abcde &lt; ' hello ' hm&quot;
 'hello world hello'.replace(/hello/g, 'hi') //&gt; &quot;hi world hi&quot;
 </code></pre>
 
-<h1 id="json">JSON</h1>
+<h1 id="js-object">JS Object</h1>
 
-<p>JSON or JavaScript Object Notation encodes data as key value pairs. It’s faster and easier to parse with JavaScript than XML.</p>
+<p>JavaScript Object encodes data as key value pairs. You probably heard of JSON, which is a text format that conforms to the JS Object format and is used to share data between server and client. Compared to XML, JSON is faster and easier to parse with JavaScript.</p>
 
-<h2 id="creating-json">Creating JSON</h2>
+<h2 id="creating-js-object">Creating JS Object</h2>
 
 <p>Dynamically</p>
 
@@ -1137,7 +1138,7 @@ var flight = {
 
 <p>A property’s name can be any string, including the empty string. The quotes around a property’s name in an object literal are optional if the name would be a legal JavaScript name and not a reserved word. So quotes are required around “last-name&rdquo;, but are optional around first_name. Commas are used to separate the pairs.</p>
 
-<h2 id="converting-json-from-one-form-to-another">Converting JSON from one form to another</h2>
+<h2 id="converting-js-object-from-one-form-to-another">Converting JS Object from one form to another</h2>
 
 <pre><code class="language-javascript">// Create array of objects
 var foo = [1,2,3].map(d =&gt; {
@@ -1151,7 +1152,7 @@ var bar = foo.reduce((acc, x) =&gt; {
 }, {});
 </code></pre>
 
-<h2 id="retrieving-things-from-json">Retrieving Things from JSON</h2>
+<h2 id="retrieving-things-from-js-object">Retrieving Things from JS Object</h2>
 
 <pre><code class="language-javascript">stooge.firstName //&gt; “Jerome”
 stooge[“lastName”] //&gt; Howard
@@ -1194,7 +1195,7 @@ dict.filter(obj =&gt; {return obj.char === 'foo'}) //&gt; []
 
 </code></pre>
 
-<h2 id="update-json">Update JSON</h2>
+<h2 id="update-js-object">Update JS Object</h2>
 
 <p>If the object does not already have that property name, the object is augmented:</p>
 
@@ -1203,11 +1204,41 @@ stooge['middleName'] = 'Lester';
 stooge.nickname = 'Curly';
 </code></pre>
 
-<h2 id="operations-on-json">Operations on JSON</h2>
+<p>JavaScript Object can be used as a dictionary. If we want to maintain a list of unique things and when we encounter a new thing, we want to update the list only if the this thing does not exist in the list already, maintaining the list of things as an array would be pretty expensive. The reason array is a bad datastructure for maintaintaing a list of unique things that could change overtime is because every time we want to add a new thing list, we have to search through the entire array to see if this thing already exists or not. Add operation becomes O(N) in time complexity. If we maintain the list of unique things as a dictionary, the Add operation would be O(1).</p>
+
+<pre><code class="language-javascript">const addToDict = (dict, newKey) =&gt; {
+  if (dict[newKey]) return dict;
+  const newDict = Object.assign({}, dict);
+  newDict[newKey] = new Date();
+  return newDict;
+};
+</code></pre>
+
+<p>A Gotcha here is we need to make sure we make a copy of the old <code>dict</code> with <code>Object.assign</code>. Otherwise, the code is going to fail due to side effects. <code>dict</code> is a reference to object, not the actual thing. This is especially true if your <code>dict</code> is a dynamically loaded object. An important programming principle is our function should not have side effect (i.e., mutate any argument). Rather, the function should return a copy of the dict that’s modified.</p>
+
+<p>Similarly, we can delete item from a list. Time complexity of the delete operation is O(1) is O(1) if the list is maintained as a dictionary and in worst case O(N) if the list is maintained as an array.</p>
+
+<pre><code class="language-javascript">const deleteFromDict = (dict, key) =&gt; {
+  if (!dict[key]) return dict;
+  const newDict = Object.assign({}, dict);
+  newDict[key] = null;
+  return newDict;
+};
+</code></pre>
+
+<h2 id="size-of-js-object">Size of JS Object</h2>
+
+<pre><code class="language-javascript">let basket = {}
+Object.keys(basket).length; // 0
+basket = {apple: 2}
+Object.keys(basket).length; // 1
+</code></pre>
+
+<h2 id="operations-on-js-object">Operations on JS Object</h2>
 
 <pre><code class="language-javascript">let users = [
-	{&quot;name&quot;: &quot;andrew&quot;, &quot;country&quot;: &quot;usa&quot;},
-	{&quot;name&quot;: &quot;mary&quot;}
+  {&quot;name&quot;: &quot;andrew&quot;, &quot;country&quot;: &quot;usa&quot;},
+  {&quot;name&quot;: &quot;mary&quot;}
 ]
 users[0] //&gt; {name: &quot;andrew&quot;, country: &quot;usa&quot;}
 users[0].country //&gt; &quot;usa&quot;
@@ -1215,13 +1246,13 @@ users[1].country //&gt; undefined
 users.filter(u =&gt; u.country !== null).map(u =&gt; u.username) //&gt; [&quot;xy&quot;]
 </code></pre>
 
-<h2 id="get-all-keys-from-json">Get all keys from JSON</h2>
+<h2 id="get-all-keys-from-js-object">Get all keys from JS Object</h2>
 
 <pre><code class="language-javascript">let foo = {&quot;name&quot;: &quot;andrew&quot;, &quot;country&quot;: &quot;usa&quot;}
 let keys = Object.keys(foo) //&gt; [“name”, “country”]
 </code></pre>
 
-<h2 id="check-if-a-key-exists-in-a-json">Check if a key exists in a JSON</h2>
+<h2 id="check-if-a-key-exists-in-a-js-object">Check if a key exists in a JS Object</h2>
 
 <pre><code class="language-javascript">let user = {&quot;name&quot;: &quot;andrew&quot;, &quot;country&quot;: &quot;usa&quot;}
 user.hasOwnProperty(&quot;name&quot;) //&gt;true
@@ -1231,6 +1262,8 @@ user.hasOwnProperty(&quot;city&quot;) //&gt; false
 </code></pre>
 
 <h2 id="json-stringify">JSON.stringify</h2>
+
+<p><code>JSON.stringify</code> is very useful when you are debugging server side using <code>console.log</code>. Serverside javascript prints out to terminal and if you are trying to print out an object, you will see &lsquo;object&rsquo; getting printed out on console, which is not very helpful.</p>
 
 <pre><code class="language-javascript">var foo = {&quot;name&quot;: &quot;andrew&quot;, &quot;country&quot;: &quot;usa&quot;};
 var bar = {&quot;name&quot;: &quot;xiaoyun&quot;, &quot;city&quot;: &quot;dc&quot; };
@@ -1254,19 +1287,19 @@ a.indexOf(&quot;s&quot;) //&gt; 29
 a.indexOf(&quot;}&quot;) //&gt; 32
 </code></pre>
 
-<h2 id="swap-key-and-val-of-json-objects">Swap Key and Val of JSON Objects</h2>
+<h2 id="swap-key-and-val-of-js-objects">Swap Key and Val of JS Objects</h2>
 
 <pre><code class="language-javascript">const objKey = (d, i) =&gt; Object.keys(d)[i]
 const objVal = (d, i) =&gt; d[objKey(d,i)]
 
-// create JSON from an array of keys
+// create JS Object from an array of keys
 
 const swap = (data) =&gt; Object.keys(data).reduce( (obj,key) =&gt; {
    obj[ data[key] ] = key;
    return obj;
 },{});
 
-var data = {A : 1, B : 2, C : 3, D : 4}
+var data = { A : 1, B : 2, C : 3, D : 4 }
 var newData = swap(data)
 
 console.log(newData); //&gt; {1: &quot;A&quot;, 2: &quot;B&quot;, 3: &quot;C&quot;, 4: &quot;D&quot;}
@@ -1276,13 +1309,13 @@ console.log(newData); //&gt; {1: &quot;A&quot;, 2: &quot;B&quot;, 3: &quot;C&quo
 
 <p>Using object destructuring saves you from creating temporary references for those properties.</p>
 
-<pre><code class="language-javascript">var user = {firstName: &quot;Amy&quot;, lastName:&quot;Winehouse&quot;}
-var {firstName, lastName} = user
+<pre><code class="language-javascript">var user = { firstName: &quot;Amy&quot;, lastName:&quot;Winehouse&quot; }
+var { firstName, lastName } = user
 firstName //&gt; &quot;Amy&quot;
 lastName //&gt; &quot;Winehouse&quot;
 </code></pre>
 
-<h2 id="merging-two-json-objects">Merging two JSON objects</h2>
+<h2 id="merging-two-js-objects">Merging two JS objects</h2>
 
 <p>There&rsquo;s a more verbose way of doing it but we are using ES6&rsquo;s spread operator here:</p>
 
@@ -1617,7 +1650,7 @@ s.setAttribute('data-timestamp', +new Date());
                   Jul 7, 2018
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>People have different reasons to want to quit our 9-5 to pursue entrepreneurship full time. I was drawn to the opportunity to take something from idea to product and being able to “be my own boss”. We all want the lifestyle of a successful entrepreneur but you don’t need to have your own VC funded startup to build a great product.</p>
+              <div class="media-content hide-xs font-merryweather"><p>People have different reasons to want to quit their 9-5 to pursue entrepreneurship full time. I was drawn to the opportunity to take something from idea to product and being able to “be my own boss”. We all want the lifestyle of a successful entrepreneur but you don’t need to have your own VC funded startup to build a great product.</p>
 
 <p></p></div>
             </div>
