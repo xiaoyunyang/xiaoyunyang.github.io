@@ -1088,6 +1088,86 @@ console.log('combined2', combined2)
 //> combined2 { apple: 2, pear: 3}
 ```
 
+# Time
+
+## Date
+
+```javascript
+const today = new Date();
+typeof today; //> "object"
+```
+
+Like many things in JavaScript, `Date` is an object.
+
+```javascript
+const getTomorrow = today => {
+  return new Date(today.getTime()+1000*60*60*24);
+}
+```
+
+```javascript
+const areDatesSame = (d1, d2) => {
+  return d1.toDateString() === d2.toDateString()
+};
+```
+
+You can get `num` days from today using `getTomorrow` recursively.
+
+## Display DateString
+
+```javascript
+(new Date()).toDateString() //> "Sun Sep 16 2018"
+```
+
+Using the `Date.toLocaleDateString` with `en-US` date format, we get the date string displayed in the following format: "Sep 16, 2018"
+
+```javascript
+const dateFormatted = dateStr => {
+  if (!dateStr) return '';
+
+  const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+  // The split is to chop off the day of the week
+  const formatted = new Date(dateStr).toLocaleDateString('en-US', options).split(/,(.+)/)[1];
+  return formatted;
+};
+```
+
+You can also write your own dateString generator:
+
+```javascript
+const date2DateString = (date, format) => {
+  let dateString = date.toDateString()
+  if(format="YYYY-MM-DD") {
+    return dateString = date.getFullYear() + '-'
+           + ('0' + (date.getMonth()+1)).slice(-2) + '-'
+           + ('0' + date.getDate()).slice(-2)
+  }
+  return dateString;
+};
+```
+
+## Elapsed Date
+
+```javascript
+const getElapsedDates = (startDate, endDate) => {
+  //TODO: Need to add logic here if startDate is greater than endDate, then return. Something's wrong
+  //TODO: convert this ugly imperative code to map then a reduce
+
+  //TODO: is there a way to not have to copy the getTomorrow and areDatesSane functions into this function?
+  let getTomorrow = (today) => {
+    return new Date(today.getTime()+1000*60*60*24);
+  };
+
+  let start = startDate
+  var arr = [];
+  while(!areDatesSame(start, endDate)) {
+    arr = arr.concat(start)
+    start = getTomorrow(start)
+  }
+  return arr;
+};
+```
+
 # Utility Libraries
 
 * [Sugar](https://github.com/andrewplummer/Sugar) - A JavaScript utility library for working with native objects.
