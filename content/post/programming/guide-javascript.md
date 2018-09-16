@@ -39,6 +39,26 @@ mutatingAdd.push('f'); // ['a', 'b', 'c', 'd', 'e', 'f']
 mutatingAdd.unshift('z'); // ['z', 'b', 'c', 'd', 'e' 'f']
 ```
 
+### Add things to an array (immutable)
+
+Use `Array.prototype.concat` to add things to the front or bad of an array without mutating the original array.
+
+```javascript
+const arr1 = [1, 2];
+const arr2 = [3, 4];
+
+const arr3 = arr1.concat(arr2); //> [1, 2, 3, 4]
+console.log('arr1', arr1); //> [1, 2]
+console.log('arr2', arr2); //> [3, 4]
+
+const arr0 = [0];
+const arr4 = arr0.concat(arr3); //> [0, 1, 2, 3, 4]
+console.log('arr1', arr1); //> [1, 2]
+console.log('arr2', arr2); //> [3, 4]
+console.log('arr3', arr3); //> [1, 2, 3, 4]
+console.log('arr4', arr4); //> [0, 1, 2, 3, 4]
+```
+
 ### Create an array Statically
 
 ```javascript
@@ -970,11 +990,37 @@ a.indexOf("s") //> 29
 a.indexOf("}") //> 32
 ```
 
+## Object.values
+
+Create an array of values from the JavaScript object.
+
+```javascript
+const addressBook = {
+  mary: {gender: 'female', age: 12},
+  jason: {gender: 'male', age: 22}
+};
+const values = Object.values(addressBook);
+console.log(values); //> [ { gender: 'female', age: 12 }, { gender: 'male', age: 22 } ]
+```
+
+## Make Hard Copy of JS Object
+
+For the previous example:
+
+```javascript
+const shallowCopy = addressBook;
+const deepCopy = Object.assign({}, addressBook)
+```
+
+`shallowCopy` only makes a copy of the reference to addressBook, not making a deep copy.
+
+For making a deep copy, use `Object.assign`
+
 ## Swap Key and Val of JS Objects
 
 ```javascript
 const objKey = (d, i) => Object.keys(d)[i]
-const objVal = (d, i) => d[objKey(d,i)]
+const objVal = (d, i) => d[objKey(d, i)]
 
 // create JS Object from an array of keys
 
@@ -1008,6 +1054,38 @@ There's a more verbose way of doing it but we are using ES6's spread operator he
 let foo = {a: 'a', b: 'b'}
 let bar = {c: 'c', d: 'd'}
 let foobar = {...foo, ...bar} //> {a: "a", b: "b", c: "c", d: "d"}
+```
+
+The more verbose way to do it is with `Object.assign`.
+
+```javascript
+const basket1 = {
+  apple: 2,
+}
+const basket2 = {
+  pear: 3,
+  apple: 8,
+  orange: 4
+}
+const { pear, oranges } = basket2;
+
+const combined1 = Object.assign(basket1, basket2)
+
+console.log('basket1', basket1)
+//> basket1 { apple: 2, pear: 3, oranges: 0} ... Side effect! basket1 got mutated
+// by Object.assign above. Stuff from basket2 got combined into basket1.
+
+console.log('basket2', basket2)
+//> basket1 { apple: 2, pear: 3, oranges: 0}
+
+const combined2 = Object.assign(basket1, {pear})
+
+
+console.log('combined1', combined1)
+//> combined1 {}
+
+console.log('combined2', combined2)
+//> combined2 { apple: 2, pear: 3}
 ```
 
 # Utility Libraries
