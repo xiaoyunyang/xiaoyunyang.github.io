@@ -285,6 +285,7 @@
 <li><a href="#constructing">Constructing</a>
 <ul>
 <li><a href="#add-things-to-an-array">Add things to an array</a></li>
+<li><a href="#add-things-to-an-array-immutable">Add things to an array (immutable)</a></li>
 <li><a href="#create-an-array-statically">Create an array Statically</a></li>
 <li><a href="#concatenating">Concatenating</a></li>
 <li><a href="#create-an-array-dynamically">Create an array dynamically</a></li>
@@ -354,6 +355,8 @@
 <li><a href="#get-all-keys-from-js-object">Get all keys from JS Object</a></li>
 <li><a href="#check-if-a-key-exists-in-a-js-object">Check if a key exists in a JS Object</a></li>
 <li><a href="#json-stringify">JSON.stringify</a></li>
+<li><a href="#object-values">Object.values</a></li>
+<li><a href="#make-hard-copy-of-js-object">Make Hard Copy of JS Object</a></li>
 <li><a href="#swap-key-and-val-of-js-objects">Swap Key and Val of JS Objects</a></li>
 <li><a href="#destructuring">Destructuring</a></li>
 <li><a href="#merging-two-js-objects">Merging two JS objects</a></li>
@@ -385,6 +388,25 @@ let mutatingAdd = ['a', 'b', 'c', 'd', 'e'];
 
 mutatingAdd.push('f'); // ['a', 'b', 'c', 'd', 'e', 'f']
 mutatingAdd.unshift('z'); // ['z', 'b', 'c', 'd', 'e' 'f']
+</code></pre>
+
+<h3 id="add-things-to-an-array-immutable">Add things to an array (immutable)</h3>
+
+<p>Use <code>Array.prototype.concat</code> to add things to the front or bad of an array without mutating the original array.</p>
+
+<pre><code class="language-javascript">const arr1 = [1, 2];
+const arr2 = [3, 4];
+
+const arr3 = arr1.concat(arr2); //&gt; [1, 2, 3, 4]
+console.log('arr1', arr1); //&gt; [1, 2]
+console.log('arr2', arr2); //&gt; [3, 4]
+
+const arr0 = [0];
+const arr4 = arr0.concat(arr3); //&gt; [0, 1, 2, 3, 4]
+console.log('arr1', arr1); //&gt; [1, 2]
+console.log('arr2', arr2); //&gt; [3, 4]
+console.log('arr3', arr3); //&gt; [1, 2, 3, 4]
+console.log('arr4', arr4); //&gt; [0, 1, 2, 3, 4]
 </code></pre>
 
 <h3 id="create-an-array-statically">Create an array Statically</h3>
@@ -1287,10 +1309,34 @@ a.indexOf(&quot;s&quot;) //&gt; 29
 a.indexOf(&quot;}&quot;) //&gt; 32
 </code></pre>
 
+<h2 id="object-values">Object.values</h2>
+
+<p>Create an array of values from the JavaScript object.</p>
+
+<pre><code class="language-javascript">const addressBook = {
+  mary: {gender: 'female', age: 12},
+  jason: {gender: 'male', age: 22}
+};
+const values = Object.values(addressBook);
+console.log(values); //&gt; [ { gender: 'female', age: 12 }, { gender: 'male', age: 22 } ]
+</code></pre>
+
+<h2 id="make-hard-copy-of-js-object">Make Hard Copy of JS Object</h2>
+
+<p>For the previous example:</p>
+
+<pre><code class="language-javascript">const shallowCopy = addressBook;
+const deepCopy = Object.assign({}, addressBook)
+</code></pre>
+
+<p><code>shallowCopy</code> only makes a copy of the reference to addressBook, not making a deep copy.</p>
+
+<p>For making a deep copy, use <code>Object.assign</code></p>
+
 <h2 id="swap-key-and-val-of-js-objects">Swap Key and Val of JS Objects</h2>
 
 <pre><code class="language-javascript">const objKey = (d, i) =&gt; Object.keys(d)[i]
-const objVal = (d, i) =&gt; d[objKey(d,i)]
+const objVal = (d, i) =&gt; d[objKey(d, i)]
 
 // create JS Object from an array of keys
 
@@ -1322,6 +1368,37 @@ lastName //&gt; &quot;Winehouse&quot;
 <pre><code class="language-javascript">let foo = {a: 'a', b: 'b'}
 let bar = {c: 'c', d: 'd'}
 let foobar = {...foo, ...bar} //&gt; {a: &quot;a&quot;, b: &quot;b&quot;, c: &quot;c&quot;, d: &quot;d&quot;}
+</code></pre>
+
+<p>The more verbose way to do it is with <code>Object.assign</code>.</p>
+
+<pre><code class="language-javascript">const basket1 = {
+  apple: 2,
+}
+const basket2 = {
+  pear: 3,
+  apple: 8,
+  orange: 4
+}
+const { pear, oranges } = basket2;
+
+const combined1 = Object.assign(basket1, basket2)
+
+console.log('basket1', basket1)
+//&gt; basket1 { apple: 2, pear: 3, oranges: 0} ... Side effect! basket1 got mutated
+// by Object.assign above. Stuff from basket2 got combined into basket1.
+
+console.log('basket2', basket2)
+//&gt; basket1 { apple: 2, pear: 3, oranges: 0}
+
+const combined2 = Object.assign(basket1, {pear})
+
+
+console.log('combined1', combined1)
+//&gt; combined1 {}
+
+console.log('combined2', combined2)
+//&gt; combined2 { apple: 2, pear: 3}
 </code></pre>
 
 <h1 id="utility-libraries">Utility Libraries</h1>
