@@ -361,6 +361,12 @@
 <li><a href="#destructuring">Destructuring</a></li>
 <li><a href="#merging-two-js-objects">Merging two JS objects</a></li>
 </ul></li>
+<li><a href="#time">Time</a>
+<ul>
+<li><a href="#date">Date</a></li>
+<li><a href="#display-datestring">Display DateString</a></li>
+<li><a href="#elapsed-date">Elapsed Date</a></li>
+</ul></li>
 <li><a href="#utility-libraries">Utility Libraries</a></li>
 <li><a href="#resources">Resources</a></li>
 </ul>
@@ -1399,6 +1405,79 @@ console.log('combined1', combined1)
 
 console.log('combined2', combined2)
 //&gt; combined2 { apple: 2, pear: 3}
+</code></pre>
+
+<h1 id="time">Time</h1>
+
+<h2 id="date">Date</h2>
+
+<pre><code class="language-javascript">const today = new Date();
+typeof today; //&gt; &quot;object&quot;
+</code></pre>
+
+<p>Like many things in JavaScript, <code>Date</code> is an object.</p>
+
+<pre><code class="language-javascript">const getTomorrow = today =&gt; {
+  return new Date(today.getTime()+1000*60*60*24);
+}
+</code></pre>
+
+<pre><code class="language-javascript">const areDatesSame = (d1, d2) =&gt; {
+  return d1.toDateString() === d2.toDateString()
+};
+</code></pre>
+
+<p>You can get <code>num</code> days from today using <code>getTomorrow</code> recursively.</p>
+
+<h2 id="display-datestring">Display DateString</h2>
+
+<pre><code class="language-javascript">(new Date()).toDateString() //&gt; &quot;Sun Sep 16 2018&quot;
+</code></pre>
+
+<p>Using the <code>Date.toLocaleDateString</code> with <code>en-US</code> date format, we get the date string displayed in the following format: &ldquo;Sep 16, 2018&rdquo;</p>
+
+<pre><code class="language-javascript">const dateFormatted = dateStr =&gt; {
+  if (!dateStr) return '';
+
+  const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+  // The split is to chop off the day of the week
+  const formatted = new Date(dateStr).toLocaleDateString('en-US', options).split(/,(.+)/)[1];
+  return formatted;
+};
+</code></pre>
+
+<p>You can also write your own dateString generator:</p>
+
+<pre><code class="language-javascript">const date2DateString = (date, format) =&gt; {
+  let dateString = date.toDateString()
+  if(format=&quot;YYYY-MM-DD&quot;) {
+    return dateString = date.getFullYear() + '-'
+           + ('0' + (date.getMonth()+1)).slice(-2) + '-'
+           + ('0' + date.getDate()).slice(-2)
+  }
+  return dateString;
+};
+</code></pre>
+
+<h2 id="elapsed-date">Elapsed Date</h2>
+
+<pre><code class="language-javascript">const getElapsedDates = (startDate, endDate) =&gt; {
+  //TODO: Need to add logic here if startDate is greater than endDate, then return. Something's wrong
+  //TODO: convert this ugly imperative code to map then a reduce
+
+  //TODO: is there a way to not have to copy the getTomorrow and areDatesSane functions into this function?
+  let getTomorrow = (today) =&gt; {
+    return new Date(today.getTime()+1000*60*60*24);
+  };
+
+  let start = startDate
+  var arr = [];
+  while(!areDatesSame(start, endDate)) {
+    arr = arr.concat(start)
+    start = getTomorrow(start)
+  }
+  return arr;
+};
 </code></pre>
 
 <h1 id="utility-libraries">Utility Libraries</h1>
