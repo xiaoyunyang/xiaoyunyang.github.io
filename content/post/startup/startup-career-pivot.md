@@ -169,6 +169,7 @@ Startups and small companies tend to be more innovative when it comes to develop
 🤔 **LL_IDEA:**  "Use LooseLeaf to build a Rockstart Team".
 
 What could recruiters do at scale that would be much more illustrative of a developer's abilities than algorithm questions?
+
 * Use tools to analyze the quality of code samples
 * Find out how widely a candidate’s code was included as a dependency in a package ecosystem such as npm (that’s how an academic researcher’s work would be judged)
 * Give candidates a take-home, realistic (or real) work sample project
@@ -403,7 +404,7 @@ LooseLeaf's platform is the answer for how to fix the broken hiring process.
 
 Marc Miller on CareerPivot says you should [target the company and quit chasing jobs](https://careerpivot.com/2017/target-the-company-quit-chasing-job/). This is because:
 
-> the traditional job search is dead and [may it rest in peace](https://careerpivot.com/2015/the-traditional-job-search-is-dead-r-i-p/). Now companies source perspective employees, notice I did not say job seekers, via LinkedIn, Google and other social and career platforms. They no longer care that you are not looking for a job. If you want to play this game you need to be a [good passive candidate or someone who is easily found](https://careerpivot.com/2016/anatomy-passive-candidate-linkedin-profile/).
+> the traditional job search is dead and [may it rest in peace](https://careerpivot.com/2015/the-traditional-job-search-is-dead-r-i-p/). Now companies source prospective employees, notice I did not say job seekers, via LinkedIn, Google and other social and career platforms. They no longer care that you are not looking for a job. If you want to play this game you need to be a [good passive candidate or someone who is easily found](https://careerpivot.com/2016/anatomy-passive-candidate-linkedin-profile/).
 
 CRM is used by recruiters and a company's talent sourcing team [to identify strong active and passive candidates](https://blog.beamery.com/ats-vs-crm/) and encourage them to apply to the position.
 

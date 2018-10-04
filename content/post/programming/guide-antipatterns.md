@@ -1,6 +1,6 @@
 ---
 title: "JavaScript Antipatterns to Avoid"
-date: 2018-09-23
+date: 2018-10-23
 categories:
   - blog
 tags:
