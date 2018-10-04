@@ -20,27 +20,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.46 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Serverless Web App For Work</title>
+    <title>How To Deploy Your Node-React-Mongo App To Amazon Web Service</title>
     <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="AWS, Docker, DevOps, MERN">
 
     <link rel="icon" href="http://xiaoyunyang.github.io/favicon-96x96.png">
     
 
     
-    <meta name="description" content="When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.
+    <meta name="description" content="In this tutorial, I will provide a step-by-step guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.
 
 ">
-    <meta property="og:description" content="When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.
+    <meta property="og:description" content="In this tutorial, I will provide a step-by-step guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.
 
 ">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Serverless Web App For Work">
-    <meta property="og:url" content="http://xiaoyunyang.github.io/post/serverless-web-app-for-work/">
+    <meta property="og:title" content="How To Deploy Your Node-React-Mongo App To Amazon Web Service">
+    <meta property="og:url" content="http://xiaoyunyang.github.io/post/how-to-deploy-your-node-react-mongo-app-to-amazon-web-service/">
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.
+    <meta name="twitter:description" content="In this tutorial, I will provide a step-by-step guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.
 
 ">
     
@@ -50,7 +50,7 @@
     
 
     
-      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/react.png">
+      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/deployapp/docker-on-aws.png">
     
     
     
@@ -243,15 +243,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Serverless Web App For Work
+      How To Deploy Your Node-React-Mongo App To Amazon Web Service
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-05-09T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-10-03T00:00:00Z">
         
-  May 9, 2018
+  October 3, 2018
 
       </time>
     
@@ -260,7 +260,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="http://xiaoyunyang.github.io/categories/projects">projects</a>
+      <a class="category-link" href="http://xiaoyunyang.github.io/categories/blog">blog</a>
     
   
 
@@ -270,59 +270,383 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.</p>
+              <p>In this tutorial, I will provide a step-by-step guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.</p>
 
 <p></p>
 
-<h1 id="motivation">Motivation</h1>
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#prep-app-for-deployment">Prep App for Deployment</a>
+<ul>
+<li><a href="#step-1-optimize-build">Step 1: Optimize Build</a></li>
+<li><a href="#step-2-automate-scripts">Step 2: Automate scripts</a></li>
+<li><a href="#step-3-dockerize-your-app">Step 3: Dockerize Your App</a></li>
+</ul></li>
+<li><a href="#deploy-docker-image-to-aws-ecs">Deploy Docker Image to AWS ECS</a></li>
+<li><a href="#following-deployment">Following Deployment</a>
+<ul>
+<li><a href="#route-53">Route 53</a></li>
+<li><a href="#ssl">SSL</a></li>
+</ul></li>
+<li><a href="#gotchas">Gotchas</a>
+<ul>
+<li><a href="#image-proliferation">Image Proliferation</a></li>
+<li><a href="#aws-elastic-beanstalk">AWS Elastic Beanstalk</a></li>
+<li><a href="#using-mongo-shell-via-container">Using Mongo Shell Via Container</a></li>
+</ul></li>
+</ul>
+</nav>
 
-<p>On our intranet, the files are very well organized but the websites for accessing those files are slow and cumbersome. While some of the websites are stateful, many are stateless and have a unique URL for each endpoint. Documents reside at the endpoints and the documents are what we want. There were two ways of getting the documents:</p>
+<h1 id="prep-app-for-deployment">Prep App for Deployment</h1>
+
+<h2 id="step-1-optimize-build">Step 1: Optimize Build</h2>
+
+<p>I have an isomorphic app which leverages webpack with code splitting.</p>
+
+<p>The motivation for optimizing production build is twofold: increase performance and decrease build time and size.</p>
+
+<p>When running the webpack build script in production mode, the following warning messages are provided:</p>
+
+<blockquote>
+<p>WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.</p>
+</blockquote>
+
+<p>and</p>
+
+<blockquote>
+<p>WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:</p>
+</blockquote>
+
+<p><a href="https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size" target="_blank">Google Web Fundamentals</a> for decreasing frontend size provides a few strategies for decreasing the size and build time of your production app bundles, including using url-loader, utilizing css-loader with the minimize option, making sure you use the &ndash;production flag when building your production bundles, and a few optimizations your can include in your webpack configuration file. These optimizations provide marginal improvements. But through my other research, it became apparent that the splitChunks plugin is a necessary optimization, especially if you use a lot of big node modules like react and your app is set up with code splitting.</p>
+
+<p>According to the <a href="https://webpack.js.org/guides/code-splitting/" target="_blank">Webpack docs</a>, Code splitting has a pitfall in which common vendor code used in all your bundles are duplicated in your bundles. This makes all your bundles big and increases overall build time. We can remove the duplicated modules with the <a href="https://itnext.io/react-router-and-webpack-v4-code-splitting-using-splitchunksplugin-f0a48f110312" target="_blank">splitChunksPlugin</a>. To use this optimization, add the following to your webpack.config.js:</p>
+
+<pre><code class="language-javascript">// webpack.config.js
+module.exports = {
+  mode: // ...
+  entry: // ...
+  output: // ...
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        vendors: false,
+        vendor: {
+          name: 'vendor',
+          chunks: 'all',
+          test: /node_modules/
+        }
+      }
+    }
+  }
+}
+</code></pre>
+
+<p>
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure fig-50" >
+  
+    <a class="fancybox" href="http://xiaoyunyang.github.io/post/images/deployapp/webpack-no-optimization.png" title="Webpack Build without optimization" data-fancybox-group="">
+  
+    <img class="fig-img" src="http://xiaoyunyang.github.io/post/images/deployapp/webpack-no-optimization.png"  alt="Webpack Build without optimization">
+  
+    </a>
+  
+   
+    <span class="caption">Webpack Build without optimization</span>
+  
+</div>
+
+
+ 
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure fig-50" >
+  
+    <a class="fancybox" href="http://xiaoyunyang.github.io/post/images/deployapp/webpack-with-optimization.png" title="Webpack Build with optimization" data-fancybox-group="">
+  
+    <img class="fig-img" src="http://xiaoyunyang.github.io/post/images/deployapp/webpack-with-optimization.png"  alt="Webpack Build with optimization">
+  
+    </a>
+  
+   
+    <span class="caption">Webpack Build with optimization</span>
+  
+</div>
+
+  <div style="clear:both;"></div>
+</p>
+
+<h2 id="step-2-automate-scripts">Step 2: Automate scripts</h2>
+
+<p>I added a few npm run scripts in order to allow different ways of spinning up the servers.</p>
+
+<pre><code class="language-javascript">// package.json
+{
+  &quot;name&quot;: &quot;looseleaf-node&quot;,
+  &quot;private&quot;: true,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;scripts&quot;: {
+    &quot;build:prod&quot;: &quot;./node_modules/.bin/webpack --mode production&quot;,
+    &quot;build:dev&quot;: &quot;./node_modules/.bin/webpack --mode development&quot;,
+    &quot;prestart&quot;: &quot;npm run build:prod&quot;,
+    &quot;start&quot;: &quot;node server/run-prod.js&quot;,
+    &quot;start-server&quot;: &quot;node server/run-prod.js&quot;,
+    &quot;start-server-dev&quot;: &quot;nodemon server/run-dev.js --watch server --watch client/iso-middleware --watch client/src&quot;,
+    &quot;start-client&quot;: &quot;node server/start-client.js&quot;,
+    &quot;start-dev&quot;: &quot;concurrently \&quot;npm run start-server-dev\&quot; \&quot;npm run start-client\&quot;&quot;,
+  },
+  &quot;dependencies&quot;: {
+    // ...
+  }
+}
+</code></pre>
+
+<p>Since <code>npm prestart</code> is always executed with <code>npm start</code>, we want to create a separate run script for when we just want to fire up our server without rebuilding bundles. Thus, <code>start-server</code> was added.</p>
+
+<p>Additionally, we want a version which can be used to spin up servers with <code>nodemon</code> and concurrently run our isomorphic app on one server (<code>npm run start-server</code>) and create-react-app with hot module reload and react hot loader on another server.</p>
+
+<p>Note, start client is defined in another file:</p>
+
+<pre><code class="language-javascript">// start-client.js
+const args = ['start'];
+const opts = { stdio: 'inherit', cwd: 'client', shell: true };
+require('child_process').spawn('npm', args, opts);
+</code></pre>
+
+<h2 id="step-3-dockerize-your-app">Step 3: Dockerize Your App</h2>
+
+<p><a href="https://www.codementor.io/collections/aws-ecs-lbxm7zj38" target="_blank">Gokce Yalcin</a> provides a great primer for Docker and ECS.</p>
+
+<blockquote>
+<p>Docker is a way to manage and run containers - it is an abstraction that lets you share host resources with your application by process isolation.</p>
+</blockquote>
+
+<p>The motivation for Docker is portability. Apps come with a lot of environmental configurations that would run on one computer but break on another computer which does not have the right configuration.</p>
+
+<p>As <a href="https://cloudacademy.com/blog/amazon-ec2-container-service-docker-aws/" target="_blank">this article puts it</a>:</p>
+
+<blockquote>
+<p>modern DevOps practices demand the ability to quickly build servers and ship code to be run in different environments. Welcome to the world of containers: extremely lightweight, abstracted user space instances that can be easily launched on any compatible server and reliably provide a predictable experience.</p>
+</blockquote>
+
+<p>For our MERN app, the environmental configuration is our mongo database.</p>
+
+<p>A lot of tutorials I found show you how to create container for simple apps which do not depend on other images like mongo. The build definition provided by <code>Dockerfile</code> was not adequate in associating the app build with mongo. The app ends up failing upon initial launch due to failing to .</p>
+
+<p>To dockerize our MERN app for running locally, we need to create two files: <strong>Dockerfile</strong> and <strong>docker-compose.yml</strong>.</p>
+
+<p>Dockerfile is required if you want to use Docker to containerize your app but docker-compose is optional but useful if you want to fire up a Docker container locally to use Mongodb.</p>
+
+<p>Before when I run the server locally, I&rsquo;d have to make sure to run <code>mongod</code> and <code>mongo</code> in the command line to fire up the  mongo daemon and mongo shell.</p>
+
+<p>But with containerization, I can create an image that includes the app and the mongodb image and driver mapping that the app depends on.</p>
+
+<p><strong>Dockerfile</strong>:</p>
+
+<pre><code>FROM node:8.11.1
+
+# Set image metadata
+LABEL version=&quot;1.0&quot;
+LABEL description=&quot;LooseLeaf Node&quot;
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# install dependencies
+COPY package*.json ./
+RUN npm cache clean --force &amp;&amp; npm install
+
+
+# copy app source to image _after_ npm install so that
+# application code changes don't bust the docker cache of npm install step
+COPY . .
+
+# set application PORT and expose docker PORT, 80 is what Elastic Beanstalk expects
+EXPOSE 3001
+
+CMD [ &quot;npm&quot;, &quot;run&quot;, &quot;start&quot; ]
+</code></pre>
+
+<p><strong>docker-compose.yml</strong></p>
+
+<pre><code>version: &quot;2&quot;
+services:
+  web:
+    container_name: looseleaf-node-app
+    build: .
+    ports:
+      - &quot;3001:3001&quot;
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    ports:
+      - &quot;27017:27017&quot;
+    volumes:
+      - data-volume:/data/db
+volumes:
+  data-volume:
+</code></pre>
+
+<p>To run both our app and mongo in the container, we run this command:</p>
+
+<pre><code>$ docker-compose up
+</code></pre>
+
+<h1 id="deploy-docker-image-to-aws-ecs">Deploy Docker Image to AWS ECS</h1>
+
+<p><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html" target="_blank">The official docs from Amazon</a> provides  detailed information on how AWS ECS leverages Docker.</p>
+
+<blockquote>
+<p>Amazon ECS uses Docker images in task definitions to launch containers on EC2 instances in your clusters.</p>
+</blockquote>
+
+<p>I find AWS&rsquo;s docs overwhelming because it always contains more information than necessary and not enough examples. I suggest following <a href="https://node.university/blog/978472/aws-ecs-containers" target="_blank">this tutorial from Node University</a> which walks you through (with screenshot) an actual example deploying a node app containerized with mongo to ECS.</p>
+
+<p>In short, we need to take the following steps:</p>
 
 <ol>
-<li>Go to the website that provides an interface for the database/files system where the document you want is hosted, enter a unique identifier for the document into a form or enter all the fields for generating the form. The websites are very slow and have bad UX.</li>
-<li>Click on a link that someone else sends you.</li>
+<li>Create EC2 Container Registry.</li>
+<li>Create a repository under Amazon ECS. This is where you push your docker images using the aws cli.</li>
+<li>Create new task definition, which includes port mapping and your two containers (node app and mongodb).</li>
+<li>Create a Cluster. A Cluster is where AWS runs containers. I use EC2 instance type m4.large.</li>
+<li>Create a Service.</li>
 </ol>
 
-<p>When I discovered the patterns in the URLs, I relied on editing the URL directly to avoid having to use the website. When I told coworkers about this method, it wasn&rsquo;t as sensational as I had hoped. It&rsquo;s difficult for a human to construct the right URL by modifying a substring in the URL because the URLs we have are very long and full of seemingly random characters.</p>
-
-<p>That&rsquo;s what gave me the idea of creating a SPA which generates a URL with a simple and user friendly form. 💡</p>
-
-<p>The goal became how to provide a user friendly interface for accessing files using URLs. I decided to build some SPAs consist of forms with nice UI to help construct a URL that can be clicked to access documents from various filesystems on our intranet.</p>
-
-<h1 id="design-decision">Design Decision</h1>
-
-<p>These are the constraints for the SPAs:</p>
+<p>For all these steps, you can use Amazon&rsquo;s console and AWS CLI.</p>
 
 <ul>
-<li>Needs to run on Internet Explorer 11.</li>
-<li>Need to run without internet.</li>
+<li>Note: There&rsquo;s an open source cli called <a href="https://github.com/coldbrewcloud/coldbrew-cli" target="_blank">coldbrew</a> that you can download from Github which automates your Docker container deployment process. I couldn&rsquo;t figure out how the configuration file suppose to look if I wanted to fire up the app container with mongo. Also, Coldbrew seem to have a lot of &ldquo;magic&rdquo; that when my deployed app failed to launch, I couldn&rsquo;t figure out how to troubleshoot.</li>
 </ul>
 
-<p>These constraints motivated the design goal that the apps need to be standalone, with minimal dependencies (zipped with all the files necessary to run the apps), and no preprocessing before it can be run - so no Babel transpiling or npm. Just vanilla JavaScript with ES5.</p>
+<p>As step 0, we need to <a href="https://docs.aws.amazon.com/cli/latest/userguide/installing.html" target="_blank">install AWS CLI</a> and configure it.</p>
 
-<p>I used React to build the SPAs with JSXTransformer although <a href="https://reactjs.org/blog/2015/06/12/deprecating-jstransform-and-react-tools.html" target="_blank">it has been deprecated</a>.</p>
+<p>Next, we use the Docker CLI to build our image:</p>
 
-<p>The repository for the SPAs are hosted here and contain more specification on the stack:</p>
+<pre><code>$ docker build -t &lt;image-name&gt; .
+</code></pre>
 
-<div class="alert success no-icon ">
-  <p><strong>Repo:</strong>  <a href="https://github.com/xiaoyunyang/serverless-webapp-no-internet" target="_blank">https://github.com/xiaoyunyang/serverless-webapp-no-internet</a></p>
-</div>
+<p>Don&rsquo;t forget the &ldquo;dot&rdquo; at the end of the command.</p>
 
-<h1 id="deployment">Deployment</h1>
+<p>Then tag our built image and use the Docker CLI to push the image to our AWS ECS repository. You use two commands which you can copy-paste into your Terminal from the AWS ECS console.</p>
 
-<p>Media transferring the zipped repo to the intranet. I had to make a few syntactical changes to the JavaScript I wrote and tested out in Chrome so it can run on IE 11.</p>
+<p>For example:</p>
 
-<p>Every URL has some unchanging parts and some variable parts. The variable parts could be a single value like a unique identifier, or a collection of values delimited by commas (let&rsquo;s call it a collection-based URL).</p>
+<p><img src="http://xiaoyunyang.github.io/post/images/deployapp/aws-ecs-repo.png" alt="AWS ECS Repo" /></p>
 
-<p>The code I imported contained some dummy url to test out so I had to manually input the unchanging parts of the urls in a data structure and for the collection-based URLS, all the possible values for a collection-based URL into another data-structure so it could be used for the dropdown menu with auto-complete capabilities.</p>
+<p><img src="http://xiaoyunyang.github.io/post/images/deployapp/aws-ecs-commands.png" alt="AWS ECS Repo" /></p>
 
-<p><img src="http://xiaoyunyang.github.io/post/images/projects/serverless-webapp.png" alt="Serverless WebApp" /></p>
+<p>Before you push, make sure to to authenticate Docker to an Amazon ECR registry with get-login.</p>
 
-<h1 id="demo">Demo</h1>
+<pre><code>$ aws ecr get-login
+</code></pre>
 
-<div class="alert success no-icon ">
-  <p>🌎 <a href="http://xiaoyunyang.github.io/serverless-webapp/apps/avail-viewer.html">Click Here</a> for the live Demo</p>
-</div>
+<p>For our example, the complete sequence of commands for first and subsequent deploys is:</p>
+
+<pre><code>$ docker build -t looseleaf-node .
+$ aws ecr get-login
+$ docker tag looseleaf-node:latest 767822753727.dkr.ecr.us-east-1.amazonaws.com/looseleaf-node:latest
+$ docker push 767822753727.dkr.ecr.us-east-1.amazonaws.com/looseleaf-node:latest
+</code></pre>
+
+<h1 id="following-deployment">Following Deployment</h1>
+
+<h2 id="route-53">Route 53</h2>
+
+<h2 id="ssl">SSL</h2>
+
+<h1 id="gotchas">Gotchas</h1>
+
+<h2 id="image-proliferation">Image Proliferation</h2>
+
+<ul>
+<li>Everytime you run <code>docker-compose up</code>, you are building a new image. These images could be more than a gigabite in size. I wasn&rsquo;t aware that these images are being built and retained after I <code>ctrl+c</code> from the docker process. Quickly my hard drive was running low on memory. Make sure you delete outdated images with the following lines of commands:</li>
+</ul>
+
+<p>List containers</p>
+
+<pre><code>$ docker ps -a
+</code></pre>
+
+<p>Remove containers by id</p>
+
+<pre><code>$ docker rm &lt;CONTAINER ID&gt;
+</code></pre>
+
+<p>List images</p>
+
+<pre><code>$ docker images
+</code></pre>
+
+<p>Remove images</p>
+
+<pre><code>$ docker rmi &lt;IMAGE ID&gt;
+</code></pre>
+
+<p>Make sure to run <code>docker rm</code> to delete the containers before removing the images. Otherwise, you&rsquo;ll get this error:</p>
+
+<blockquote>
+<p>Error response from daemon: conflict: unable to delete 3d2765b2fe31 (must be forced) - image is being used by stopped container 5ee892b7f037</p>
+</blockquote>
+
+<h2 id="aws-elastic-beanstalk">AWS Elastic Beanstalk</h2>
+
+<h2 id="using-mongo-shell-via-container">Using Mongo Shell Via Container</h2>
+
+<pre><code>$ docker run -it -d mongo
+592a2dfdcffd8a2c59615800eace1e922ba5e88bb836eaf11c06e06278112ed9
+
+$ docker ps
+
+CONTAINER ID        IMAGE                        COMMAND                  CREATED             STATUS              PORTS                            NAMES
+592a2dfdcffd        mongo                        &quot;docker-entrypoint.s…&quot;   8 seconds ago       Up 7 seconds        27017/tcp                        cranky_chebyshev
+
+$ docker exec -it cranky_chebyshev bash
+root@592a2dfdcffd:/#
+# docker stop cranky_chebyshev
+# docker rm cranky_chebyshev
+</code></pre>
               
             </div>
           </div>
@@ -334,17 +658,11 @@
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/web-app/">Web App</a>
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/life/">Life</a>
 
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/open-source/">Open Source</a>
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/career/">Career</a>
 
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
-
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/ux/">UX</a>
-
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/productivity/">Productivity</a>
-
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/react/">React</a>
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/entrepreneurship/">Entrepreneurship</a>
 
                   </div>
                 
@@ -357,7 +675,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/" data-tooltip="Algos to Practice Whiteboarding for The Coding Interview">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -365,7 +683,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/" data-tooltip="The Coding Interview: What to Expect">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/" data-tooltip="Web Developer Playbook: Rich Text Editor">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -383,19 +701,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/serverless-web-app-for-work/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/how-to-deploy-your-node-react-mongo-app-to-amazon-web-service/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/serverless-web-app-for-work/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/how-to-deploy-your-node-react-mongo-app-to-amazon-web-service/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/serverless-web-app-for-work/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/how-to-deploy-your-node-react-mongo-app-to-amazon-web-service/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -410,7 +728,7 @@
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -428,8 +746,8 @@
 
 
 var disqus_config = function () {
-this.page.url = "http://xiaoyunyang.github.io/post/serverless-web-app-for-work/";  
-this.page.identifier = "Serverless Web App For Work"; 
+this.page.url = "http://xiaoyunyang.github.io/post/how-to-deploy-your-node-react-mongo-app-to-amazon-web-service/";  
+this.page.identifier = "How To Deploy Your Node-React-Mongo App To Amazon Web Service"; 
 };
 
 (function() { 
@@ -460,7 +778,7 @@ s.setAttribute('data-timestamp', +new Date());
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/" data-tooltip="Algos to Practice Whiteboarding for The Coding Interview">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -468,7 +786,7 @@ s.setAttribute('data-timestamp', +new Date());
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/" data-tooltip="The Coding Interview: What to Expect">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/" data-tooltip="Web Developer Playbook: Rich Text Editor">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -486,19 +804,19 @@ s.setAttribute('data-timestamp', +new Date());
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/serverless-web-app-for-work/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/how-to-deploy-your-node-react-mongo-app-to-amazon-web-service/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/serverless-web-app-for-work/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/how-to-deploy-your-node-react-mongo-app-to-amazon-web-service/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/serverless-web-app-for-work/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/how-to-deploy-your-node-react-mongo-app-to-amazon-web-service/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -513,7 +831,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -528,19 +846,19 @@ s.setAttribute('data-timestamp', +new Date());
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fserverless-web-app-for-work%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-deploy-your-node-react-mongo-app-to-amazon-web-service%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fserverless-web-app-for-work%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-deploy-your-node-react-mongo-app-to-amazon-web-service%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fserverless-web-app-for-work%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-deploy-your-node-react-mongo-app-to-amazon-web-service%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -834,9 +1152,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/serverless-web-app-for-work\/';
+          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/how-to-deploy-your-node-react-mongo-app-to-amazon-web-service\/';
           
-            this.page.identifier = '\/post\/serverless-web-app-for-work\/'
+            this.page.identifier = '\/post\/how-to-deploy-your-node-react-mongo-app-to-amazon-web-service\/'
           
         };
         (function() {
