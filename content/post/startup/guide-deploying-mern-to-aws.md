@@ -4,9 +4,8 @@ date: 2018-10-03
 categories:
   - blog
 tags:
-  - Life
-  - Career
-  - Entrepreneurship
+  - DevOps
+  - Web App
 keywords:
   - AWS
   - Docker
@@ -22,6 +21,8 @@ In this tutorial, I will provide a step-by-step guide for how to containerize yo
 <!--more-->
 
 <!--toc-->
+![https://cloudonaut.io/aws-velocity-containerized-ecs-based-app-ci-cd-pipeline/](/post/images/deployapp/docker-on-aws.png)
+
 
 # Prep App for Deployment
 
@@ -102,7 +103,7 @@ Since `npm prestart` is always executed with `npm start`, we want to create a se
 
 Additionally, we want a version which can be used to spin up servers with `nodemon` and concurrently run our isomorphic app on one server (`npm run start-server`) and create-react-app with hot module reload and react hot loader on another server.
 
-Note, start client is defined in another file:
+Note, start-client is defined in another file:
 
 ```javascript
 // start-client.js
@@ -246,12 +247,56 @@ $ docker tag looseleaf-node:latest 767822753727.dkr.ecr.us-east-1.amazonaws.com/
 $ docker push 767822753727.dkr.ecr.us-east-1.amazonaws.com/looseleaf-node:latest
 ```
 
+
 # Following Deployment
 
-## Route 53
+## Add SSL
 
-## SSL
+The [AWS Tutorial](https://aws.amazon.com/blogs/aws/new-aws-certificate-manager-deploy-ssltls-based-apps-on-aws/) guides you through setting up your [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/).
 
+> SSL/TLS certificates are used to secure network communications and establish the identity of websites over the Internet as well as resources on private networks.
+
+SL/TLS certificates provisioned through AWS Certificate Manager are free.
+
+The AWS Tutorial linked above is a little out-dated.
+
+Steps:
+
+1. Login to your AWS Console and click to Services > Certificate Manager.
+2. Get started on Provision Certificates.
+3. Request a Public Certificate.
+4. On the domain names, add your domain name (e.g., `looseleafapp.com` and `*.looseleafapp.com`). Click next.
+5. Validation method: DNS.
+6. On the review page, click "Confirm and request" once you are satisfied.
+7. On the Validation page, use Amazon Route 53 to validate CNAME for you. If everything goes well, you'll get this message:
+
+> The DNS record was written to your Route 53 hosted zone. It can take 30 minutes or longer for the changes to propagate and for AWS to validate the domain and issue the certificate.
+
+It doesn't take 30 minutes. I refreshed the page and Validation status changed to Success.
+
+## Create Load Balancer
+
+If you haven't set up your service with elastic load balancer, do that. Go to ECS console > Clusters > click on the name of your cluster > under services tab, click "Create".
+
+- Launch type: EC2
+- Choose Task definition and Revision from the dropdown.
+- Choose Cluster from the Dropdown.
+- Service type: REPLICA
+- Number of tasks: 1
+- Load balancer type: choose Classic. You get a warning that No load balancer is found. Click the link to create a load balancer in the EC2 Console. Check out [AWS official tutorial](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html) for how to create a classic Load Balancer with an HTTPS Listener.  
+[This video](https://www.youtube.com/watch?v=E5MYky95atE) is helpful.
+
+
+> The Network Load Balancer is the best option for managing secure traffic as it provides support for TCP traffic pass through, without decrypting and then re-encrypting the traffic. ~[AWS Compute Blog](https://aws.amazon.com/blogs/compute/maintaining-transport-layer-security-all-the-way-to-your-container-using-the-network-load-balancer-with-amazon-ecs/)
+
+![https://aws.amazon.com/blogs/compute/maintaining-transport-layer-security-all-the-way-to-your-container-using-the-network-load-balancer-with-amazon-ecs/](/post/images/deployapp/ecs-diagram-1.png)
+
+
+## Link to Domain Name
+
+Use AWS Route 53 to associate your ECS instance with a domain name.
+
+I purchased my domain name from Google Domains. I got on chat with the customer service representative from Google Domains who walked me through how to set up route for AWS Route 53.
 
 
 # Gotchas
@@ -304,4 +349,27 @@ $ docker exec -it cranky_chebyshev bash
 root@592a2dfdcffd:/#
 # docker stop cranky_chebyshev
 # docker rm cranky_chebyshev
+```
+
+## Useful Commands
+
+See which process is running in port 3000, then kill that process.
+
+```
+$ lsof -i tcp:3000
+$ kill <PID>
+```
+
+Kill all mongo servers
+
+```
+$ lsof -i | grep mongo
+~$ lsof -i | grep mongo
+mongod    19557 xiaoyun   10u  IPv4 0x6b9c9aebc1dd3e63      0t0  TCP localhost:27017 (LISTEN)
+mongod    19557 xiaoyun   32u  IPv4 0x6b9c9aebdea763e3      0t0  TCP localhost:27017->localhost:56383 (ESTABLISHED)
+mongod    19557 xiaoyun   34u  IPv4 0x6b9c9aebe1fafe63      0t0  TCP localhost:27017->localhost:56370 (ESTABLISHED)
+mongod    19557 xiaoyun   35u  IPv4 0x6b9c9aebadd5c3e3      0t0  TCP localhost:27017->localhost:56385 (ESTABLISHED)
+mongod    19557 xiaoyun   37u  IPv4 0x6b9c9aebe97b1123      0t0  TCP localhost:27017->localhost:56389 (ESTABLISHED)
+mongo     19569 xiaoyun    7u  IPv4 0x6b9c9aebdde83e63      0t0  TCP localhost:56370->localhost:27017 (ESTABLISHED)
+$ kill 19557
 ```
