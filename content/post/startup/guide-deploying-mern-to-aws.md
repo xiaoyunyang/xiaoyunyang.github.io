@@ -1,5 +1,5 @@
 ---
-title: "How To Deploy Your Node-React-Mongo App To Amazon Web Service"
+title: "How To Deploy Your MERN App To Amazon Web Service"
 date: 2018-10-03
 categories:
   - blog
@@ -11,18 +11,16 @@ keywords:
   - Docker
   - DevOps
   - MERN
-thumbnailImagePosition: top
-thumbnailImage: /post/images/deployapp/docker-on-aws.png
 
 ---
+
+![](/post/images/deployapp/ecs-docker.png)
 
 In this tutorial, I will provide a step-by-step guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn't work, how I prepared the app for deployment and accomplished the deployment.
 
 <!--more-->
 
 <!--toc-->
-![https://cloudonaut.io/aws-velocity-containerized-ecs-based-app-ci-cd-pipeline/](/post/images/deployapp/docker-on-aws.png)
-
 
 # Prep App for Deployment
 
@@ -201,6 +199,9 @@ $ docker-compose up
 
 I find AWS's docs overwhelming because it always contains more information than necessary and not enough examples. I suggest following [this tutorial from Node University](https://node.university/blog/978472/aws-ecs-containers) which walks you through (with screenshot) an actual example deploying a node app containerized with mongo to ECS.
 
+![https://cloudonaut.io/aws-velocity-containerized-ecs-based-app-ci-cd-pipeline/](/post/images/deployapp/docker-on-aws.png)
+
+
 In short, we need to take the following steps:
 
 1. Create EC2 Container Registry.
@@ -250,7 +251,7 @@ $ docker push 767822753727.dkr.ecr.us-east-1.amazonaws.com/looseleaf-node:latest
 
 # Following Deployment
 
-## Add SSL
+## Step 1: Add SSL
 
 The [AWS Tutorial](https://aws.amazon.com/blogs/aws/new-aws-certificate-manager-deploy-ssltls-based-apps-on-aws/) guides you through setting up your [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/).
 
@@ -258,9 +259,9 @@ The [AWS Tutorial](https://aws.amazon.com/blogs/aws/new-aws-certificate-manager-
 
 SL/TLS certificates provisioned through AWS Certificate Manager are free.
 
-The AWS Tutorial linked above is a little out-dated.
+The AWS Tutorial linked above is actually a little out-dated.
 
-Steps:
+Here are the steps I took:
 
 1. Login to your AWS Console and click to Services > Certificate Manager.
 2. Get started on Provision Certificates.
@@ -274,55 +275,67 @@ Steps:
 
 It doesn't take 30 minutes. I refreshed the page and Validation status changed to Success.
 
-## Create Load Balancer
+## Step 2: Update Your EC2 Instance
 
-If you haven't set up your service with elastic load balancer, do that. Go to ECS console > Clusters > click on the name of your cluster > under services tab, click "Create".
+A EC2 instance is automatically created by ECS and associated with the VPC. Go to the EC2 dashboard. For the ECS instance, click on the Security Group. Add an inbound rule with Type HTTPS and port 443.
 
-- Launch type: EC2
-- Choose Task definition and Revision from the dropdown.
-- Choose Cluster from the Dropdown.
-- Service type: REPLICA
-- Number of tasks: 1
-- Load balancer type: choose Classic. You get a warning that No load balancer is found. Click the link to create a load balancer in the EC2 Console. Check out [AWS official tutorial](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html) for how to create a classic Load Balancer with an HTTPS Listener.  
-[This video](https://www.youtube.com/watch?v=E5MYky95atE) is helpful.
-
+## Step 3: Create Load Balancer
 
 > The Network Load Balancer is the best option for managing secure traffic as it provides support for TCP traffic pass through, without decrypting and then re-encrypting the traffic. ~[AWS Compute Blog](https://aws.amazon.com/blogs/compute/maintaining-transport-layer-security-all-the-way-to-your-container-using-the-network-load-balancer-with-amazon-ecs/)
 
 ![https://aws.amazon.com/blogs/compute/maintaining-transport-layer-security-all-the-way-to-your-container-using-the-network-load-balancer-with-amazon-ecs/](/post/images/deployapp/ecs-diagram-1.png)
 
+I followed this [video tutorial](https://www.youtube.com/watch?v=E5MYky95atE) to create a classic load balancer.
 
-## Link to Domain Name
+You can also Check out [AWS official tutorial](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html) for how to create a classic Load Balancer with an HTTPS Listener.
+
+Make sure your load balancer settings are:
+
+- VPC ID: the VPC ID for your ECS container
+- Scheme: internet-facing
+- Listeners: (1) load balancer port HTTPS 443 --> instance port HTTP 80 and (2) load balancer port HTTP 80 --> instance port HTTP --> 80
+- Health Check: Ping Target HTTP:80/<filename> where <filename> is a file that your website serves from the root. For my site, it's index.css.
+
+## Step 4: Link to Domain Name
 
 Use AWS Route 53 to associate your ECS instance with a domain name.
 
-I purchased my domain name from Google Domains. I got on chat with the customer service representative from Google Domains who walked me through how to set up route for AWS Route 53.
+I purchased my domain name from Google Domains. I got on chat with the customer service representative from Google Domains who walked me through how to set up route for AWS Route 53 with:
 
+- CNAME (canonical name)
+- MX (mail exchange if you use G Suite)
+- NS (Name server)
+- SOA (Start of authority)
+
+After you've done all that, Create Record, select "Type A-IPv4 address", select Yes for Alias, and select the load balancer from Alias Target. This gives you https://yourdomain.com and forwards  https://yourdomain.com.
+
+**Optional:** You may be able to create another Alias for www.yourdomain.com to forward to https://yourdomain.com. I don't know how to do that yet.
 
 # Gotchas
 
 ## Image Proliferation
 
-- Everytime you run `docker-compose up`, you are building a new image. These images could be more than a gigabite in size. I wasn't aware that these images are being built and retained after I `ctrl+c` from the docker process. Quickly my hard drive was running low on memory. Make sure you delete outdated images with the following lines of commands:
+- Everytime you run `docker-compose up`, you are building a new image. These images could be more than a gigabyte in size. I wasn't aware that these images are being built and retained after I `ctrl+c` from the docker process. Quickly my hard drive was running low on memory. Make sure you delete outdated images with the following lines of commands:
 
-List containers
+List containers:
 
 ```
 $ docker ps -a
 ```
-Remove containers by id
+Remove containers by id:
 
 ```
 $ docker rm <CONTAINER ID>
 ```
 
-List images
+List images:
 
 ```
 $ docker images
 ```
 
-Remove images
+Remove images:
+
 ```
 $ docker rmi <IMAGE ID>
 ```
@@ -333,6 +346,7 @@ Make sure to run `docker rm` to delete the containers before removing the images
 
 ## AWS Elastic Beanstalk
 
+Don't use it. Use AWS ECS instead.
 
 ## Using Mongo Shell Via Container
 
