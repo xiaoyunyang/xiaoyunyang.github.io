@@ -20,31 +20,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.46 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Principles To Code By: How To Solve Problems With Code</title>
+    <title>How To Deploy Your MERN App To Amazon Web Service</title>
     <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="software design principles, computer science, javascript, interview prep, algorithms, separation of concerns, learn to code, balanced parentheses, recursion">
+    <meta name="keywords" content="AWS, Docker, DevOps, MERN">
 
     <link rel="icon" href="http://xiaoyunyang.github.io/favicon-96x96.png">
     
 
     
-    <meta name="description" content="What I love most about programming is the problem solving. I don&rsquo;t believe anyone is born with problem solving skills. It&rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.">
-    <meta property="og:description" content="What I love most about programming is the problem solving. I don&rsquo;t believe anyone is born with problem solving skills. It&rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.">
+    <meta name="description" content="
+
+In this tutorial, I will provide a step-by-step guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.
+
+">
+    <meta property="og:description" content="
+
+In this tutorial, I will provide a step-by-step guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.
+
+">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Principles To Code By: How To Solve Problems With Code">
-    <meta property="og:url" content="http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
+    <meta property="og:title" content="How To Deploy Your MERN App To Amazon Web Service">
+    <meta property="og:url" content="http://xiaoyunyang.github.io/post/how-to-deploy-your-mern-app-to-amazon-web-service/">
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="What I love most about programming is the problem solving. I don&rsquo;t believe anyone is born with problem solving skills. It&rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.">
+    <meta name="twitter:description" content="
+
+In this tutorial, I will provide a step-by-step guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.
+
+">
     
     
 
     
     
 
-    
-      <meta property="og:image" content="http://xiaoyunyang.github.io/post/images/brain-lightbulb.png">
     
     
     
@@ -237,15 +247,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Principles To Code By: How To Solve Problems With Code
+      How To Deploy Your MERN App To Amazon Web Service
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-04-23T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-10-03T00:00:00Z">
         
-  April 23, 2018
+  October 3, 2018
 
       </time>
     
@@ -264,315 +274,481 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>What I love most about programming is the problem solving. I don&rsquo;t believe anyone is born with problem solving skills. It&rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.</p>
+              <p><img src="http://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png" alt="" /></p>
+
+<p>In this tutorial, I will provide a step-by-step guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.</p>
+
+<p></p>
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#prep-app-for-deployment">Prep App for Deployment</a>
+<ul>
+<li><a href="#step-1-optimize-build">Step 1: Optimize Build</a></li>
+<li><a href="#step-2-automate-scripts">Step 2: Automate scripts</a></li>
+<li><a href="#step-3-dockerize-your-app">Step 3: Dockerize Your App</a></li>
+</ul></li>
+<li><a href="#deploy-docker-image-to-aws-ecs">Deploy Docker Image to AWS ECS</a></li>
+<li><a href="#following-deployment">Following Deployment</a>
+<ul>
+<li><a href="#step-1-add-ssl">Step 1: Add SSL</a></li>
+<li><a href="#step-2-update-your-ec2-instance">Step 2: Update Your EC2 Instance</a></li>
+<li><a href="#step-3-create-load-balancer">Step 3: Create Load Balancer</a></li>
+<li><a href="#step-4-link-to-domain-name">Step 4: Link to Domain Name</a></li>
+</ul></li>
+<li><a href="#gotchas">Gotchas</a>
+<ul>
+<li><a href="#image-proliferation">Image Proliferation</a></li>
+<li><a href="#aws-elastic-beanstalk">AWS Elastic Beanstalk</a></li>
+<li><a href="#using-mongo-shell-via-container">Using Mongo Shell Via Container</a></li>
+<li><a href="#useful-commands">Useful Commands</a></li>
+</ul></li>
+</ul>
+</nav>
+
+<h1 id="prep-app-for-deployment">Prep App for Deployment</h1>
+
+<h2 id="step-1-optimize-build">Step 1: Optimize Build</h2>
+
+<p>I have an isomorphic app which leverages webpack with code splitting.</p>
+
+<p>The motivation for optimizing production build is twofold: increase performance and decrease build time and size.</p>
+
+<p>When running the webpack build script in production mode, the following warning messages are provided:</p>
+
+<blockquote>
+<p>WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.</p>
+</blockquote>
+
+<p>and</p>
+
+<blockquote>
+<p>WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:</p>
+</blockquote>
+
+<p><a href="https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size" target="_blank">Google Web Fundamentals</a> for decreasing frontend size provides a few strategies for decreasing the size and build time of your production app bundles, including using url-loader, utilizing css-loader with the minimize option, making sure you use the &ndash;production flag when building your production bundles, and a few optimizations your can include in your webpack configuration file. These optimizations provide marginal improvements. But through my other research, it became apparent that the splitChunks plugin is a necessary optimization, especially if you use a lot of big node modules like react and your app is set up with code splitting.</p>
+
+<p>According to the <a href="https://webpack.js.org/guides/code-splitting/" target="_blank">Webpack docs</a>, Code splitting has a pitfall in which common vendor code used in all your bundles are duplicated in your bundles. This makes all your bundles big and increases overall build time. We can remove the duplicated modules with the <a href="https://itnext.io/react-router-and-webpack-v4-code-splitting-using-splitchunksplugin-f0a48f110312" target="_blank">splitChunksPlugin</a>. To use this optimization, add the following to your webpack.config.js:</p>
+
+<pre><code class="language-javascript">// webpack.config.js
+module.exports = {
+  mode: // ...
+  entry: // ...
+  output: // ...
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        vendors: false,
+        vendor: {
+          name: 'vendor',
+          chunks: 'all',
+          test: /node_modules/
+        }
+      }
+    }
+  }
+}
+</code></pre>
 
 <p>
-<div class="alert info ">
-  <p>This article was also <a href="https://medium.com/dailyjs/principles-to-code-by-3c516ad61fcc" target="_blank">published on Medium</a> under DailyJS.</p>
-</div></p>
 
-<p><img src="http://xiaoyunyang.github.io/post/images/brain-lightbulb-wide.png" alt="" /></p>
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
 
-<h1 id="1-keep-it-simple-kiss">1. Keep It Simple (KISS)</h1>
+<div class="figure fig-50" >
+  
+    <a class="fancybox" href="http://xiaoyunyang.github.io/post/images/deployapp/webpack-no-optimization.png" title="Webpack Build without optimization" data-fancybox-group="">
+  
+    <img class="fig-img" src="http://xiaoyunyang.github.io/post/images/deployapp/webpack-no-optimization.png"  alt="Webpack Build without optimization">
+  
+    </a>
+  
+   
+    <span class="caption">Webpack Build without optimization</span>
+  
+</div>
 
-<p>If there&rsquo;s anything you should takeaway from this article, it&rsquo;s the &ldquo;keep it simple&rdquo; principle. This principle is often known as <a href="https://effectivesoftwaredesign.com/2013/08/05/simplicity-in-software-design-kiss-yagni-and-occams-razor/" target="_blank">KISS</a>, which stands for &ldquo;Keep it simple, stupid&rdquo;.</p>
 
-<p>Just because the problem we have to solve is complex, it doesn&rsquo;t mean our solution has to be complex.</p>
+ 
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
 
-<p>The rest of the principles guide our problem solving strategy to achieve simplicity in our solution. Generally speaking, we develop simple solutions to complicated problems by breaking the complex problem down to simpler sub-problems that we can easily solve.</p>
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
 
-<p>I&rsquo;m a fan of learning from examples so let&rsquo;s look at an example of what keeping it simple looks like.</p>
+<div class="figure fig-50" >
+  
+    <a class="fancybox" href="http://xiaoyunyang.github.io/post/images/deployapp/webpack-with-optimization.png" title="Webpack Build with optimization" data-fancybox-group="">
+  
+    <img class="fig-img" src="http://xiaoyunyang.github.io/post/images/deployapp/webpack-with-optimization.png"  alt="Webpack Build with optimization">
+  
+    </a>
+  
+   
+    <span class="caption">Webpack Build with optimization</span>
+  
+</div>
 
-<p>Suppose you were asked to write a function with the following signature to check for balanced parentheses in a string. For example, <code>'('</code> returns false, <code>')('</code> returns false, <code>'()'</code> returns true, and <code>'foo'</code> returns true.</p>
+  <div style="clear:both;"></div>
+</p>
 
-<pre><code class="language-javascript">function hasBalancedParen(str) {
-  return false;
+<h2 id="step-2-automate-scripts">Step 2: Automate scripts</h2>
+
+<p>I added a few npm run scripts in order to allow different ways of spinning up the servers.</p>
+
+<pre><code class="language-javascript">// package.json
+{
+  &quot;name&quot;: &quot;looseleaf-node&quot;,
+  &quot;private&quot;: true,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;scripts&quot;: {
+    &quot;build:prod&quot;: &quot;./node_modules/.bin/webpack --mode production&quot;,
+    &quot;build:dev&quot;: &quot;./node_modules/.bin/webpack --mode development&quot;,
+    &quot;prestart&quot;: &quot;npm run build:prod&quot;,
+    &quot;start&quot;: &quot;node server/run-prod.js&quot;,
+    &quot;start-server&quot;: &quot;node server/run-prod.js&quot;,
+    &quot;start-server-dev&quot;: &quot;nodemon server/run-dev.js --watch server --watch client/iso-middleware --watch client/src&quot;,
+    &quot;start-client&quot;: &quot;node server/start-client.js&quot;,
+    &quot;start-dev&quot;: &quot;concurrently \&quot;npm run start-server-dev\&quot; \&quot;npm run start-client\&quot;&quot;,
+  },
+  &quot;dependencies&quot;: {
+    // ...
+  }
 }
 </code></pre>
 
-<p>So how do we approach this problem?</p>
+<p>Since <code>npm prestart</code> is always executed with <code>npm start</code>, we want to create a separate run script for when we just want to fire up our server without rebuilding bundles. Thus, <code>start-server</code> was added.</p>
 
-<p>Step 1 is to apply the KISS principle, develop an outline for an algorithm that can be articulated in simple English:</p>
+<p>Additionally, we want a version which can be used to spin up servers with <code>nodemon</code> and concurrently run our isomorphic app on one server (<code>npm run start-server</code>) and create-react-app with hot module reload and react hot loader on another server.</p>
+
+<p>Note, start-client is defined in another file:</p>
+
+<pre><code class="language-javascript">// start-client.js
+const args = ['start'];
+const opts = { stdio: 'inherit', cwd: 'client', shell: true };
+require('child_process').spawn('npm', args, opts);
+</code></pre>
+
+<h2 id="step-3-dockerize-your-app">Step 3: Dockerize Your App</h2>
+
+<p><a href="https://www.codementor.io/collections/aws-ecs-lbxm7zj38" target="_blank">Gokce Yalcin</a> provides a great primer for Docker and ECS.</p>
 
 <blockquote>
-<p>Given a string, <code>s</code>, which consists of characters</p>
+<p>Docker is a way to manage and run containers - it is an abstraction that lets you share host resources with your application by process isolation.</p>
+</blockquote>
+
+<p>The motivation for Docker is portability. Apps come with a lot of environmental configurations that would run on one computer but break on another computer which does not have the right configuration.</p>
+
+<p>As <a href="https://cloudacademy.com/blog/amazon-ec2-container-service-docker-aws/" target="_blank">this article puts it</a>:</p>
+
+<blockquote>
+<p>modern DevOps practices demand the ability to quickly build servers and ship code to be run in different environments. Welcome to the world of containers: extremely lightweight, abstracted user space instances that can be easily launched on any compatible server and reliably provide a predictable experience.</p>
+</blockquote>
+
+<p>For our MERN app, the environmental configuration is our mongo database.</p>
+
+<p>A lot of tutorials I found show you how to create container for simple apps which do not depend on other images like mongo. The build definition provided by <code>Dockerfile</code> was not adequate in associating the app build with mongo. The app ends up failing upon initial launch due to failing to .</p>
+
+<p>To dockerize our MERN app for running locally, we need to create two files: <strong>Dockerfile</strong> and <strong>docker-compose.yml</strong>.</p>
+
+<p>Dockerfile is required if you want to use Docker to containerize your app but docker-compose is optional but useful if you want to fire up a Docker container locally to use Mongodb.</p>
+
+<p>Before when I run the server locally, I&rsquo;d have to make sure to run <code>mongod</code> and <code>mongo</code> in the command line to fire up the  mongo daemon and mongo shell.</p>
+
+<p>But with containerization, I can create an image that includes the app and the mongodb image and driver mapping that the app depends on.</p>
+
+<p><strong>Dockerfile</strong>:</p>
+
+<pre><code>FROM node:8.11.1
+
+# Set image metadata
+LABEL version=&quot;1.0&quot;
+LABEL description=&quot;LooseLeaf Node&quot;
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# install dependencies
+COPY package*.json ./
+RUN npm cache clean --force &amp;&amp; npm install
+
+
+# copy app source to image _after_ npm install so that
+# application code changes don't bust the docker cache of npm install step
+COPY . .
+
+# set application PORT and expose docker PORT, 80 is what Elastic Beanstalk expects
+EXPOSE 3001
+
+CMD [ &quot;npm&quot;, &quot;run&quot;, &quot;start&quot; ]
+</code></pre>
+
+<p><strong>docker-compose.yml</strong></p>
+
+<pre><code>version: &quot;2&quot;
+services:
+  web:
+    container_name: looseleaf-node-app
+    build: .
+    ports:
+      - &quot;3001:3001&quot;
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    ports:
+      - &quot;27017:27017&quot;
+    volumes:
+      - data-volume:/data/db
+volumes:
+  data-volume:
+</code></pre>
+
+<p>To run both our app and mongo in the container, we run this command:</p>
+
+<pre><code>$ docker-compose up
+</code></pre>
+
+<h1 id="deploy-docker-image-to-aws-ecs">Deploy Docker Image to AWS ECS</h1>
+
+<p><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html" target="_blank">The official docs from Amazon</a> provides  detailed information on how AWS ECS leverages Docker.</p>
+
+<blockquote>
+<p>Amazon ECS uses Docker images in task definitions to launch containers on EC2 instances in your clusters.</p>
+</blockquote>
+
+<p>I find AWS&rsquo;s docs overwhelming because it always contains more information than necessary and not enough examples. I suggest following <a href="https://node.university/blog/978472/aws-ecs-containers" target="_blank">this tutorial from Node University</a> which walks you through (with screenshot) an actual example deploying a node app containerized with mongo to ECS.</p>
+
+<p><img src="http://xiaoyunyang.github.io/post/images/deployapp/docker-on-aws.png" alt="https://cloudonaut.io/aws-velocity-containerized-ecs-based-app-ci-cd-pipeline/" /></p>
+
+<p>In short, we need to take the following steps:</p>
 
 <ol>
-<li>Start from the leftmost character and look at each character in the string</li>
-<li>Keep track of occurrences of <code>(</code>.</li>
-<li>Keep track of occurrences of <code>)</code> to &ldquo;cancel out&rdquo; a previous occurrence of <code>(</code>.</li>
-<li>Ignore characters that are not <code>(</code> or <code>)</code>.</li>
-<li>If there&rsquo;s a <code>)</code> for which there&rsquo;s no <code>(</code>, return false.</li>
-<li>Once we finish looking at the last character, if there&rsquo;s no leftover <code>(</code> or <code>)</code>, return true.</li>
+<li>Create EC2 Container Registry.</li>
+<li>Create a repository under Amazon ECS. This is where you push your docker images using the aws cli.</li>
+<li>Create new task definition, which includes port mapping and your two containers (node app and mongodb).</li>
+<li>Create a Cluster. A Cluster is where AWS runs containers. I use EC2 instance type m4.large.</li>
+<li>Create a Service.</li>
 </ol>
+
+<p>For all these steps, you can use Amazon&rsquo;s console and AWS CLI.</p>
+
+<ul>
+<li>Note: There&rsquo;s an open source cli called <a href="https://github.com/coldbrewcloud/coldbrew-cli" target="_blank">coldbrew</a> that you can download from Github which automates your Docker container deployment process. I couldn&rsquo;t figure out how the configuration file suppose to look if I wanted to fire up the app container with mongo. Also, Coldbrew seem to have a lot of &ldquo;magic&rdquo; that when my deployed app failed to launch, I couldn&rsquo;t figure out how to troubleshoot.</li>
+</ul>
+
+<p>As step 0, we need to <a href="https://docs.aws.amazon.com/cli/latest/userguide/installing.html" target="_blank">install AWS CLI</a> and configure it.</p>
+
+<p>Next, we use the Docker CLI to build our image:</p>
+
+<pre><code>$ docker build -t &lt;image-name&gt; .
+</code></pre>
+
+<p>Don&rsquo;t forget the &ldquo;dot&rdquo; at the end of the command.</p>
+
+<p>Then tag our built image and use the Docker CLI to push the image to our AWS ECS repository. You use two commands which you can copy-paste into your Terminal from the AWS ECS console.</p>
+
+<p>For example:</p>
+
+<p><img src="http://xiaoyunyang.github.io/post/images/deployapp/aws-ecs-repo.png" alt="AWS ECS Repo" /></p>
+
+<p><img src="http://xiaoyunyang.github.io/post/images/deployapp/aws-ecs-commands.png" alt="AWS ECS Repo" /></p>
+
+<p>Before you push, make sure to to authenticate Docker to an Amazon ECR registry with get-login.</p>
+
+<pre><code>$ aws ecr get-login
+</code></pre>
+
+<p>For our example, the complete sequence of commands for first and subsequent deploys is:</p>
+
+<pre><code>$ docker build -t looseleaf-node .
+$ aws ecr get-login
+$ docker tag looseleaf-node:latest 767822753727.dkr.ecr.us-east-1.amazonaws.com/looseleaf-node:latest
+$ docker push 767822753727.dkr.ecr.us-east-1.amazonaws.com/looseleaf-node:latest
+</code></pre>
+
+<h1 id="following-deployment">Following Deployment</h1>
+
+<h2 id="step-1-add-ssl">Step 1: Add SSL</h2>
+
+<p>The <a href="https://aws.amazon.com/blogs/aws/new-aws-certificate-manager-deploy-ssltls-based-apps-on-aws/" target="_blank">AWS Tutorial</a> guides you through setting up your <a href="https://aws.amazon.com/certificate-manager/" target="_blank">AWS Certificate Manager</a>.</p>
+
+<blockquote>
+<p>SSL/TLS certificates are used to secure network communications and establish the identity of websites over the Internet as well as resources on private networks.</p>
 </blockquote>
 
-<p>The computational complexity is O(N) where N is the length of the string. In the worst case, we have to look at all of the characters in the string to be able to say that the string has balanced parentheses.</p>
+<p>SL/TLS certificates provisioned through AWS Certificate Manager are free.</p>
 
-<h1 id="2-separation-of-concerns-soc">2. Separation of Concerns (SoC)</h1>
+<p>The AWS Tutorial linked above is actually a little out-dated.</p>
 
-<p>So we have developed our algorithm in simple English, which is essentially pseudocode! There are three logical domains for our algorithm:</p>
+<p>Here are the steps I took:</p>
 
 <ol>
-<li><strong>Continue or Stop?</strong>: Logic for whether to continue looking at the characters or stop and return true or false.</li>
-<li><strong>Parentheses Tally</strong>: Logic for tallying up occurrences of <code>(</code> and <code>)</code> as we go through the characters.</li>
-<li><strong>What to Look At Next?</strong> Logic for determining what to look at next.</li>
+<li>Login to your AWS Console and click to Services &gt; Certificate Manager.</li>
+<li>Get started on Provision Certificates.</li>
+<li>Request a Public Certificate.</li>
+<li>On the domain names, add your domain name (e.g., <code>looseleafapp.com</code> and <code>*.looseleafapp.com</code>). Click next.</li>
+<li>Validation method: DNS.</li>
+<li>On the review page, click &ldquo;Confirm and request&rdquo; once you are satisfied.</li>
+<li>On the Validation page, use Amazon Route 53 to validate CNAME for you. If everything goes well, you&rsquo;ll get this message:</li>
 </ol>
 
-<p>Let&rsquo;s map the 6 steps of the pseudocode above to one of these three logical domains:</p>
-
-<table>
-<thead>
-<tr>
-<th>Continue or Stop?</th>
-<th>Parentheses Tally</th>
-<th>What to Look At Next?</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>If there&rsquo;s a <code>)</code> for which there&rsquo;s no <code>(</code>, return false</td>
-<td>Keep track of occurrences of <code>(</code></td>
-<td>Start from the leftmost character and look at each character in the string</td>
-</tr>
-
-<tr>
-<td>Once we finish looking at the last character, if there&rsquo;s no leftover <code>(</code> or <code>)</code>, return true</td>
-<td>Keep track of occurrences of <code>)</code> to &ldquo;cancel out&rdquo; a previous occurrence of <code>(</code>.</td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td>Ignore characters that are not <code>(</code> or <code>)</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<p>What we just did was we partitioned the algorithm into three logical domains each dealing with a particular concern. Each domain specific concern can be tackled independently by a software component. The three software components are each designed to accomplish a specific mission and need not be concerned with what other components are doing. This demonstrates the principle of Separation of Concerns or SoC.</p>
-
-<p>SoC is the key to developing a complicated application or software system with many moving parts. For example, web applications separate concerns between presentation (how the webpage looks), business logic (content of the webpage), and content delivery (accessing the resource via a JSON API, querying the database, etc).</p>
-
-<h2 id="poorly-executed-soc">Poorly executed SoC</h2>
-
-<p>I&rsquo;ve seen poorly designed software in which the software is divided into separate domains but concerns are not separated. Consider the following example:</p>
-
 <blockquote>
-<p>Write a function foo that doubles then increments every number in an array of numbers.</p>
+<p>The DNS record was written to your Route 53 hosted zone. It can take 30 minutes or longer for the changes to propagate and for AWS to validate the domain and issue the certificate.</p>
 </blockquote>
 
-<pre><code class="language-javascript">// Poorly executed separation of concerns
+<p>It doesn&rsquo;t take 30 minutes. I refreshed the page and Validation status changed to Success.</p>
 
-// Helper Functions
-function double(arrIn) {
-  let arrOut = []
-  for (let i = 0; i &lt; arrIn.length; i++) {
-    arrOut[i] = arrIn[i] * 2
-  }
-  return arrOut
-}
-function increment(arrIn) {
-  let arrOut = []
-  for (let i = 0; i &lt; arrIn.length; i++) {
-    arrOut[i] = arrIn[i] + 1
-  }
-  return arrOut
-}
+<h2 id="step-2-update-your-ec2-instance">Step 2: Update Your EC2 Instance</h2>
 
-// foo
-function foo(arrIn) {
-  return increment(double(arrIn))
-}
-</code></pre>
+<p>A EC2 instance is automatically created by ECS and associated with the VPC. Go to the EC2 dashboard. For the ECS instance, click on the Security Group. Add an inbound rule with Type HTTPS and port 443.</p>
 
-<p>Why is this a poor execution of SoC?</p>
-
-<p>Well, <code>double</code> and <code>increment</code> are both concerned with looping through an array to modify each elements. Notice how the <code>double</code> and <code>increment</code> functions look almost identical with the exception of how they modify the array element. This is called boilerplate.</p>
-
-<p>Whenever you have boilerplate in your code, you know you can do better in separating concerns. This plays into the next principle:</p>
-
-<h1 id="3-don-t-repeat-yourself-dry">3. Don&rsquo;t Repeat Yourself (DRY)</h1>
-
-<p>The Don&rsquo;t Repeat Yourself (DRY) principle and SoC go hand-in-hand. The DRY principle is aimed at reducing repetition and boilerplate in the software by forming abstractions. I can write a whole separate article on abstractions but here are the key points for how to apply abstraction to write code that doesn&rsquo;t repeat itself:</p>
-
-<ul>
-<li>Create functions for common software patterns. We call them <em>higher order functions</em>.</li>
-<li>Replace the boilerplate in your code with higher order functions.</li>
-</ul>
-
-<p>Some examples of higher order functions include:</p>
-
-<ul>
-<li><code>map</code> - modifying each element in the array based on a give rule</li>
-<li><code>filter</code> - getting a subset of the array that passes a given criterion</li>
-<li><code>reduce</code> - combining everything in the array based on a given rule</li>
-</ul>
-
-<p>Let&rsquo;s apply the DRY principle and rewrite <code>foo</code> to abstract away the boilerplate using the <code>map</code> higher order function:</p>
-
-<pre><code class="language-javascript">// Well executed separation of concerns and DRY code
-
-const double = elem =&gt; elem * 2
-const increment = elem =&gt; elem + 1  
-
-function foo(arrIn) {
-  return arrIn.map(elem =&gt; increment(double(elem)))
-}
-</code></pre>
-
-<p>I&rsquo;m taking a shortcut by using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank">ES6 arrow functions</a>, which lets you create elegant one-liners. JavaScript provides higher order functions like <code>map</code> function for Array. <code>Array.map</code> takes one argument: a function. In this example, this function is <code>elem =&gt; increment(double(elem))</code>, which takes an argument <code>elem</code> and returns <code>elem * 2 + 1</code>.  Since this function doesn&rsquo;t have a name, it&rsquo;s called an <em>anonymous function</em>.</p>
-
-<p><strong>Ok that was a long detour. Can we get back to the hasBalancedParen problem?</strong></p>
-
-<p>Yes! We are close to arriving at the final solution but there&rsquo;s one more principle we need:</p>
-
-<h1 id="4-divide-and-conquer">4. Divide and Conquer</h1>
-
-<p>When you hear &ldquo;Divide and Conquer&rdquo; in the context of algorithm design, think recursion. The term recursion has roots in mathematics and commonly entails applying a rule repeatedly to update itself to create an infinite sequence for which the next things in the sequence depends on the previous things in the sequence. For example, fractals, the fibonacci series, and Pascal&rsquo;s triangle are all recursive mathematical constructs.</p>
-
-<p>For the <a href="https://www.wikiwand.com/en/Divide_and_conquer_algorithm" target="_blank">Divide and Conquer algorithms</a>, we are interested in the repeated application of a rule but instead of constructing a sequence, we want to deconstruct the problem space and eventually return a final solution. In pseudo code, a recursive function for divide and conquer algorithm has the basic structure:</p>
-
-<pre><code>function recursiveFun(input, output) {
-  if we hit a base case, updated output as necessary and return the final output
-
-  otherwise, simplify the input. update the output then
-  return recursiveFun(simplerInput, updatedOutput)
-}
-</code></pre>
-
-<p>The emphasis is simplifying input until the problem becomes trivial to solve and we can return an output immediately in the beginning of the function. This is called the <em>base case</em>. What if we forget to add a base case to the recursive function? The function will keep calling itself forever until you run out of memory and get a stack overflow error.</p>
-
-<p>Note, we don&rsquo;t have to use a recursive function to implement a Divide and Conquer algorithm. We can use a loop and a mutable data structure. I&rsquo;m not a fan of mutable data structures option although it is more efficient sometimes.</p>
-
-<p>Let&rsquo;s look at a simple example for a Divide and Conquer algorithm implemented with a recursive function and a mutable data structure:</p>
+<h2 id="step-3-create-load-balancer">Step 3: Create Load Balancer</h2>
 
 <blockquote>
-<p>Write a function sum that takes an array of numbers and returns the sum of all the numbers</p>
+<p>The Network Load Balancer is the best option for managing secure traffic as it provides support for TCP traffic pass through, without decrypting and then re-encrypting the traffic. ~<a href="https://aws.amazon.com/blogs/compute/maintaining-transport-layer-security-all-the-way-to-your-container-using-the-network-load-balancer-with-amazon-ecs/" target="_blank">AWS Compute Blog</a></p>
 </blockquote>
 
-<h2 id="option-1-recursive-function">Option 1: Recursive Function</h2>
+<p><img src="http://xiaoyunyang.github.io/post/images/deployapp/ecs-diagram-1.png" alt="https://aws.amazon.com/blogs/compute/maintaining-transport-layer-security-all-the-way-to-your-container-using-the-network-load-balancer-with-amazon-ecs/" /></p>
 
-<pre><code class="language-javascript">function sum(arr) {
+<p>I followed this <a href="https://www.youtube.com/watch?v=E5MYky95atE" target="_blank">video tutorial</a> to create a classic load balancer.</p>
 
-  function add(arr, sum) {
-    // Base Case
-    if (arr.length === 0) return sum
+<p>You can also Check out <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html" target="_blank">AWS official tutorial</a> for how to create a classic Load Balancer with an HTTPS Listener.</p>
 
-    // Recursive Step
-    return add(arr.slice(1), sum + arr[0])
-  }
+<p>Make sure your load balancer settings are:</p>
 
-  return add(arr, 0) // &lt;-- Initial Values
-}
+<ul>
+<li>VPC ID: the VPC ID for your ECS container</li>
+<li>Scheme: internet-facing</li>
+<li>Listeners: (1) load balancer port HTTPS 443 &ndash;&gt; instance port HTTP 80 and (2) load balancer port HTTP 80 &ndash;&gt; instance port HTTP &ndash;&gt; 80</li>
+<li>Health Check: Ping Target HTTP:80/<filename> where <filename> is a file that your website serves from the root. For my site, it&rsquo;s index.css.</li>
+</ul>
+
+<h2 id="step-4-link-to-domain-name">Step 4: Link to Domain Name</h2>
+
+<p>Use AWS Route 53 to associate your ECS instance with a domain name.</p>
+
+<p>I purchased my domain name from Google Domains. I got on chat with the customer service representative from Google Domains who walked me through how to set up route for AWS Route 53 with:</p>
+
+<ul>
+<li>CNAME (canonical name)</li>
+<li>MX (mail exchange if you use G Suite)</li>
+<li>NS (Name server)</li>
+<li>SOA (Start of authority)</li>
+</ul>
+
+<p>After you&rsquo;ve done all that, Create Record, select &ldquo;Type A-IPv4 address&rdquo;, select Yes for Alias, and select the load balancer from Alias Target. This gives you <a href="https://yourdomain.com" target="_blank">https://yourdomain.com</a> and forwards  <a href="https://yourdomain.com" target="_blank">https://yourdomain.com</a>.</p>
+
+<p><strong>Optional:</strong> You may be able to create another Alias for www.yourdomain.com to forward to <a href="https://yourdomain.com" target="_blank">https://yourdomain.com</a>. I don&rsquo;t know how to do that yet.</p>
+
+<h1 id="gotchas">Gotchas</h1>
+
+<h2 id="image-proliferation">Image Proliferation</h2>
+
+<ul>
+<li>Everytime you run <code>docker-compose up</code>, you are building a new image. These images could be more than a gigabyte in size. I wasn&rsquo;t aware that these images are being built and retained after I <code>ctrl+c</code> from the docker process. Quickly my hard drive was running low on memory. Make sure you delete outdated images with the following lines of commands:</li>
+</ul>
+
+<p>List containers:</p>
+
+<pre><code>$ docker ps -a
 </code></pre>
 
-<h2 id="option-2-mutable-data-structure">Option 2: Mutable Data Structure</h2>
+<p>Remove containers by id:</p>
 
-<pre><code class="language-javascript">function sum(arr) {
-
-  // Initial Values
-  let result = 0
-  let elems = arr // &lt;-- mutable data structure
-
-  while(elems.length &gt; 0) { // &lt;-- Base Case
-    result += elems.pop() // &lt;-- Recursive step
-  }
-
-  return result
-}
+<pre><code>$ docker rm &lt;CONTAINER ID&gt;
 </code></pre>
 
-<p>In both Options 1 and 2, every time we repeat the procedure of adding the next element to the current sum, we are creating a simpler array and an updated sum that’s a little closer to the final solution. The stopping point is when we run out of things in the array to add to the current sum, in which case we just return the current sum which is the final solution.</p>
+<p>List images:</p>
 
-<p>Fans of functional programming and one-liners will implement sum as follows using the higher order function <code>reduce</code>, which JavaScript gives you out-of-the-box for the Array prototype:</p>
-
-<pre><code class="language-javascript">const sum = (arr) =&gt; arr.reduce((res, elem) =&gt; res + elem, 0)
+<pre><code>$ docker images
 </code></pre>
 
-<p>With Divide and Conquer, we have the last important problem solving principle to solve the hasBalancedParen problem:</p>
+<p>Remove images:</p>
 
-<pre><code class="language-javascript">// Parentheses Tally
-const newOpenCnt = (c, openCnt) =&gt; {
-  if(c === '(') return openCnt + 1
-  if(c === ')') return openCnt - 1
-  return openCnt
-}
-
-function isBalanced(str, openCnt) {
-  // Continue or Stop?
-  if (typeof str !== 'string') return false
-  if (openCnt &lt;  0) return false
-  if (str.length === 0) return openCnt === 0
-
-  // What to Look At Next?
-  const fst = str[0]
-  const rst = str.slice(1)
-  return isBalanced(rst, newOpenCnt(fst, openCnt))
-}
-
-function hasBalancedParen(str) {
-  return isBalanced(str, 0)
-}
+<pre><code>$ docker rmi &lt;IMAGE ID&gt;
 </code></pre>
 
-<h1 id="5-always-test-your-code">5. Always Test Your Code</h1>
+<p>Make sure to run <code>docker rm</code> to delete the containers before removing the images. Otherwise, you&rsquo;ll get this error:</p>
 
-<p>The final problem solving principle is to always test your code to make sure there&rsquo;s no mistake in the implementation and your code behaves correctly for all edge cases. Below I created a unit test that incorporated most of the previous design principles:</p>
+<blockquote>
+<p>Error response from daemon: conflict: unable to delete 3d2765b2fe31 (must be forced) - image is being used by stopped container 5ee892b7f037</p>
+</blockquote>
 
-<h3 id="kiss">KISS</h3>
+<h2 id="aws-elastic-beanstalk">AWS Elastic Beanstalk</h2>
 
-<p>Create a unit test function called <code>test</code> that performs unit testing on a function <code>fun</code> using a set of test cases. We want to be able to run a test for any function like so:</p>
+<p>Don&rsquo;t use it. Use AWS ECS instead.</p>
 
-<pre><code class="language-javascript">test(fun, testCases)
+<h2 id="using-mongo-shell-via-container">Using Mongo Shell Via Container</h2>
+
+<pre><code>$ docker run -it -d mongo
+592a2dfdcffd8a2c59615800eace1e922ba5e88bb836eaf11c06e06278112ed9
+
+$ docker ps
+
+CONTAINER ID        IMAGE                        COMMAND                  CREATED             STATUS              PORTS                            NAMES
+592a2dfdcffd        mongo                        &quot;docker-entrypoint.s…&quot;   8 seconds ago       Up 7 seconds        27017/tcp                        cranky_chebyshev
+
+$ docker exec -it cranky_chebyshev bash
+root@592a2dfdcffd:/#
+# docker stop cranky_chebyshev
+# docker rm cranky_chebyshev
 </code></pre>
 
-<p>For each test case, <code>test</code> should print to console &ldquo;passed&rdquo; if successful or &ldquo;failed&rdquo; with more details if unsuccessful.</p>
+<h2 id="useful-commands">Useful Commands</h2>
 
-<p><strong>SoC</strong> -  Keep the data (the input and expected value) in a data structure called <code>testCases</code> separate from the business logic of unit testing:</p>
+<p>See which process is running in port 3000, then kill that process.</p>
 
-<pre><code class="language-javascript">let testCases = [
-  {test: '(', shouldBe: false},
-  {test: '())', shouldBe: false},
-  {test: null, shouldBe: false},
-  {test: undefined, shouldBe: false},
-  {test: 22, shouldBe: false},
-  {test: ')(', shouldBe: false},
-  {test: '', shouldBe: true},
-  {test: '()', shouldBe: true},
-  {test: '()()', shouldBe: true},
-  {test: '(())', shouldBe: true},
-  {test: 'hi', shouldBe: true},
-  {test: '(hi)', shouldBe: true},
-  {test: '(((())(())',shouldBe: false}
-]
+<pre><code>$ lsof -i tcp:3000
+$ kill &lt;PID&gt;
 </code></pre>
 
-<h3 id="dry">DRY</h3>
+<p>Kill all mongo servers</p>
 
-<p>Abstract away the part of code that loops through all the testCases by using a higher order function <code>map</code>:</p>
-
-<pre><code class="language-javascript">const test = (fun testCases) =&gt; {
-  testCases.map(t =&gt; {
-    const shouldBe = t.shouldBe;
-    const is = fun(t.test);
-    const res = (shouldBe === is) ? 'passed' : 'failed';
-    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
-    console.log(`${res} ${moreInfo}`);
-  })
-}
+<pre><code>$ lsof -i | grep mongo
+~$ lsof -i | grep mongo
+mongod    19557 xiaoyun   10u  IPv4 0x6b9c9aebc1dd3e63      0t0  TCP localhost:27017 (LISTEN)
+mongod    19557 xiaoyun   32u  IPv4 0x6b9c9aebdea763e3      0t0  TCP localhost:27017-&gt;localhost:56383 (ESTABLISHED)
+mongod    19557 xiaoyun   34u  IPv4 0x6b9c9aebe1fafe63      0t0  TCP localhost:27017-&gt;localhost:56370 (ESTABLISHED)
+mongod    19557 xiaoyun   35u  IPv4 0x6b9c9aebadd5c3e3      0t0  TCP localhost:27017-&gt;localhost:56385 (ESTABLISHED)
+mongod    19557 xiaoyun   37u  IPv4 0x6b9c9aebe97b1123      0t0  TCP localhost:27017-&gt;localhost:56389 (ESTABLISHED)
+mongo     19569 xiaoyun    7u  IPv4 0x6b9c9aebdde83e63      0t0  TCP localhost:56370-&gt;localhost:27017 (ESTABLISHED)
+$ kill 19557
 </code></pre>
-
-<p><strong>Run the test:</strong></p>
-
-<pre><code class="language-javascript">let fun = (str) =&gt; hasBalancedParen(str)
-test(fun, testCases)
-</code></pre>
-
-<h1 id="conclusion">Conclusion</h1>
-
-<p>Problem solving is the application of knowledge and tools to achieve a desired outcome so the better your knowledge and tools are, the better your problem solving will be. Without a framework for problem solving, the process of problem solving could be inefficient and iterative, requiring rounds of experimentation and refactoring. Use the these five principles to power your problem solving process to write more efficient and beautiful code!</p>
               
             </div>
           </div>
@@ -584,11 +760,9 @@ test(fun, testCases)
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/devops/">DevOps</a>
 
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/guide/">Guide</a>
-
-  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/software-design/">Software Design</a>
+  <a class="tag tag--primary tag--small" href="http://xiaoyunyang.github.io/tags/web-app/">Web App</a>
 
                   </div>
                 
@@ -601,7 +775,7 @@ test(fun, testCases)
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/" data-tooltip="How To Do Object Oriented Programming The Right Way">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -609,7 +783,7 @@ test(fun, testCases)
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/" data-tooltip="A Career Transition Guide For Overachievers">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/" data-tooltip="Web Developer Playbook: Rich Text Editor">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -627,19 +801,19 @@ test(fun, testCases)
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/how-to-deploy-your-mern-app-to-amazon-web-service/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/how-to-deploy-your-mern-app-to-amazon-web-service/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/how-to-deploy-your-mern-app-to-amazon-web-service/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -654,7 +828,7 @@ test(fun, testCases)
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -672,8 +846,8 @@ test(fun, testCases)
 
 
 var disqus_config = function () {
-this.page.url = "http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/";  
-this.page.identifier = "Principles To Code By: How To Solve Problems With Code"; 
+this.page.url = "http://xiaoyunyang.github.io/post/how-to-deploy-your-mern-app-to-amazon-web-service/";  
+this.page.identifier = "How To Deploy Your MERN App To Amazon Web Service"; 
 };
 
 (function() { 
@@ -704,7 +878,7 @@ s.setAttribute('data-timestamp', +new Date());
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/" data-tooltip="How To Do Object Oriented Programming The Right Way">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -712,7 +886,7 @@ s.setAttribute('data-timestamp', +new Date());
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/" data-tooltip="A Career Transition Guide For Overachievers">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/" data-tooltip="Web Developer Playbook: Rich Text Editor">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -730,19 +904,19 @@ s.setAttribute('data-timestamp', +new Date());
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://xiaoyunyang.github.io/post/how-to-deploy-your-mern-app-to-amazon-web-service/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://xiaoyunyang.github.io/post/how-to-deploy-your-mern-app-to-amazon-web-service/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://xiaoyunyang.github.io/post/how-to-deploy-your-mern-app-to-amazon-web-service/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -757,7 +931,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -772,19 +946,19 @@ s.setAttribute('data-timestamp', +new Date());
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fprinciples-to-code-by-how-to-solve-problems-with-code%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-deploy-your-mern-app-to-amazon-web-service%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fprinciples-to-code-by-how-to-solve-problems-with-code%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-deploy-your-mern-app-to-amazon-web-service%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fprinciples-to-code-by-how-to-solve-problems-with-code%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-deploy-your-mern-app-to-amazon-web-service%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -1080,9 +1254,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/principles-to-code-by-how-to-solve-problems-with-code\/';
+          this.page.url = 'http:\/\/xiaoyunyang.github.io\/post\/how-to-deploy-your-mern-app-to-amazon-web-service\/';
           
-            this.page.identifier = '\/post\/principles-to-code-by-how-to-solve-problems-with-code\/'
+            this.page.identifier = '\/post\/how-to-deploy-your-mern-app-to-amazon-web-service\/'
           
         };
         (function() {
