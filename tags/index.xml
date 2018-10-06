@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xiaoyunyang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -16,16 +16,25 @@
     <item>
       <title>Career</title>
       <link>http://xiaoyunyang.github.io/tags/career/</link>
-      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/tags/career/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Devops</title>
+      <link>http://xiaoyunyang.github.io/tags/devops/</link>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>http://xiaoyunyang.github.io/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Entrepreneurship</title>
       <link>http://xiaoyunyang.github.io/tags/entrepreneurship/</link>
-      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/tags/entrepreneurship/</guid>
       <description></description>
@@ -70,7 +79,7 @@
     <item>
       <title>Life</title>
       <link>http://xiaoyunyang.github.io/tags/life/</link>
-      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/tags/life/</guid>
       <description></description>
@@ -169,7 +178,7 @@
     <item>
       <title>Web App</title>
       <link>http://xiaoyunyang.github.io/tags/web-app/</link>
-      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>http://xiaoyunyang.github.io/tags/web-app/</guid>
       <description></description>

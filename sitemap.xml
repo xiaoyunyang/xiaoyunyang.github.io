@@ -159,7 +159,7 @@
   
   <url>
     <loc>http://xiaoyunyang.github.io/tags/career/</loc>
-    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -175,8 +175,14 @@
   </url>
   
   <url>
-    <loc>http://xiaoyunyang.github.io/tags/entrepreneurship/</loc>
+    <loc>http://xiaoyunyang.github.io/tags/devops/</loc>
     <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://xiaoyunyang.github.io/tags/entrepreneurship/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -206,7 +212,7 @@
   
   <url>
     <loc>http://xiaoyunyang.github.io/tags/life/</loc>
-    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -283,7 +289,7 @@
   
   <url>
     <loc>http://xiaoyunyang.github.io/tags/</loc>
-    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -295,7 +301,7 @@
   
   <url>
     <loc>http://xiaoyunyang.github.io/tags/web-app/</loc>
-    <lastmod>2018-08-14T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
