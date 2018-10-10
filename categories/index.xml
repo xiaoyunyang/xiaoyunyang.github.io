@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Xiaoyun Yang</title>
-    <link>http://xiaoyunyang.github.io/categories/</link>
+    <link>https://xiaoyunyang.github.io/categories/</link>
     <description>Recent content in Categories on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,42 +10,42 @@
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
     <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://xiaoyunyang.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xiaoyunyang.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blog</title>
-      <link>http://xiaoyunyang.github.io/categories/blog/</link>
+      <link>https://xiaoyunyang.github.io/categories/blog/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/categories/blog/</guid>
+      <guid>https://xiaoyunyang.github.io/categories/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Category</title>
-      <link>http://xiaoyunyang.github.io/categories/category/</link>
+      <link>https://xiaoyunyang.github.io/categories/category/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/categories/category/</guid>
+      <guid>https://xiaoyunyang.github.io/categories/category/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Projects</title>
-      <link>http://xiaoyunyang.github.io/categories/projects/</link>
+      <link>https://xiaoyunyang.github.io/categories/projects/</link>
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/categories/projects/</guid>
+      <guid>https://xiaoyunyang.github.io/categories/projects/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Subcategory</title>
-      <link>http://xiaoyunyang.github.io/categories/subcategory/</link>
+      <link>https://xiaoyunyang.github.io/categories/subcategory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/categories/subcategory/</guid>
+      <guid>https://xiaoyunyang.github.io/categories/subcategory/</guid>
       <description></description>
     </item>
     

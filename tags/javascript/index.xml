@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javascript on Xiaoyun Yang</title>
-    <link>http://xiaoyunyang.github.io/tags/javascript/</link>
+    <link>https://xiaoyunyang.github.io/tags/javascript/</link>
     <description>Recent content in Javascript on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,17 @@
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
     <lastBuildDate>Tue, 14 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://xiaoyunyang.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xiaoyunyang.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Web Developer Playbook: Rich Text Editor</title>
-      <link>http://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</link>
+      <link>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</link>
       <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</guid>
+      <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</guid>
       <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34; target=&#34;_blank&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-&lt;img src=&#34;http://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s get started!&lt;/p&gt;
 
@@ -29,38 +29,38 @@
     
     <item>
       <title>Web Developer Playbook: Slug</title>
-      <link>http://xiaoyunyang.github.io/post/web-developer-playbook-slug/</link>
+      <link>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</link>
       <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/web-developer-playbook-slug/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34; /&gt;
+      <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34; /&gt;
 This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Data Structure with JavaScript Object: Linked List</title>
-      <link>http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/</link>
+      <link>https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/</link>
       <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/</guid>
+      <guid>https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/</guid>
       <description>&lt;p&gt;Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Algos to Practice Whiteboarding for The Coding Interview</title>
-      <link>http://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</link>
+      <link>https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</link>
       <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</guid>
+      <guid>https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</guid>
       <description>&lt;p&gt;We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&amp;rsquo;m drawing these problems from &lt;a href=&#34;https://leetcode.com/&#34; target=&#34;_blank&#34;&gt;LeetCode&lt;/a&gt; and &lt;a href=&#34;https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=2E72V7DJM4CV4DNTBTKD&#34; target=&#34;_blank&#34;&gt;Cracking the Coding Interview&lt;/a&gt;. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Serverless Web App For Work</title>
-      <link>http://xiaoyunyang.github.io/post/serverless-web-app-for-work/</link>
+      <link>https://xiaoyunyang.github.io/post/serverless-web-app-for-work/</link>
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/serverless-web-app-for-work/</guid>
+      <guid>https://xiaoyunyang.github.io/post/serverless-web-app-for-work/</guid>
       <description>&lt;p&gt;When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -68,37 +68,37 @@ This post is part of the Web Developer Playbook series, which are created to pro
     
     <item>
       <title>How To Do Object Oriented Programming The Right Way</title>
-      <link>http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/</link>
+      <link>https://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/</link>
       <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/</guid>
+      <guid>https://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/</guid>
       <description>&lt;p&gt;Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&amp;rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Principles To Code By: How To Solve Problems With Code</title>
-      <link>http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</link>
+      <link>https://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</link>
       <pubDate>Mon, 23 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</guid>
+      <guid>https://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</guid>
       <description>&lt;p&gt;What I love most about programming is the problem solving. I don&amp;rsquo;t believe anyone is born with problem solving skills. It&amp;rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&amp;rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>A Career Transition Guide For Overachievers</title>
-      <link>http://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</link>
+      <link>https://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</link>
       <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</guid>
+      <guid>https://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</guid>
       <description>&lt;p&gt;Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&amp;rsquo;t have all the qualifications.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Algorithms for Web Developers</title>
-      <link>http://xiaoyunyang.github.io/post/algorithms-for-web-developers/</link>
+      <link>https://xiaoyunyang.github.io/post/algorithms-for-web-developers/</link>
       <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/algorithms-for-web-developers/</guid>
+      <guid>https://xiaoyunyang.github.io/post/algorithms-for-web-developers/</guid>
       <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&amp;rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&amp;rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -106,19 +106,19 @@ This post is part of the Web Developer Playbook series, which are created to pro
     
     <item>
       <title>Building A React Native Travel App</title>
-      <link>http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</link>
+      <link>https://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</link>
       <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</guid>
+      <guid>https://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</guid>
       <description>&lt;p&gt;When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Building an Isomorphic Webapp</title>
-      <link>http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</link>
+      <link>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</link>
       <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
+      <guid>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -126,10 +126,10 @@ This post is part of the Web Developer Playbook series, which are created to pro
     
     <item>
       <title>Let&#39;s Get Productive With JavaScript</title>
-      <link>http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</link>
+      <link>https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</link>
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</guid>
+      <guid>https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</guid>
       <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&amp;rsquo;s console (hit &lt;code&gt;Cmd&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt; if you are using Chrome and Mac) and start typing.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -137,10 +137,10 @@ This post is part of the Web Developer Playbook series, which are created to pro
     
     <item>
       <title>How Functional Programming Promotes Developer Productivity</title>
-      <link>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</link>
+      <link>https://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</link>
       <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</guid>
+      <guid>https://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</guid>
       <description>&lt;p&gt;Functional Programming is more than just a buzzword these days. It&amp;rsquo;s super useful and makes you rethink everything you&amp;rsquo;ve learned about software.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>

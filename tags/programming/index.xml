@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming on Xiaoyun Yang</title>
-    <link>http://xiaoyunyang.github.io/tags/programming/</link>
+    <link>https://xiaoyunyang.github.io/tags/programming/</link>
     <description>Recent content in Programming on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,33 +10,33 @@
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
     <lastBuildDate>Wed, 16 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://xiaoyunyang.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xiaoyunyang.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Data Structure with JavaScript Object: Linked List</title>
-      <link>http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/</link>
+      <link>https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/</link>
       <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/</guid>
+      <guid>https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/</guid>
       <description>&lt;p&gt;Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Algos to Practice Whiteboarding for The Coding Interview</title>
-      <link>http://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</link>
+      <link>https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</link>
       <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</guid>
+      <guid>https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</guid>
       <description>&lt;p&gt;We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&amp;rsquo;m drawing these problems from &lt;a href=&#34;https://leetcode.com/&#34; target=&#34;_blank&#34;&gt;LeetCode&lt;/a&gt; and &lt;a href=&#34;https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=2E72V7DJM4CV4DNTBTKD&#34; target=&#34;_blank&#34;&gt;Cracking the Coding Interview&lt;/a&gt;. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>The Coding Interview: What to Expect</title>
-      <link>http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</link>
+      <link>https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</link>
       <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</guid>
+      <guid>https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</guid>
       <description>&lt;p&gt;Being great at coding interviews doesn&amp;rsquo;t necessarily make you a great developer and being a great developer doesn&amp;rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>

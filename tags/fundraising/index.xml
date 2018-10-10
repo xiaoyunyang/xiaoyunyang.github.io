@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fundraising on Xiaoyun Yang</title>
-    <link>http://xiaoyunyang.github.io/tags/fundraising/</link>
+    <link>https://xiaoyunyang.github.io/tags/fundraising/</link>
     <description>Recent content in Fundraising on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,27 +10,27 @@
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
     <lastBuildDate>Sat, 05 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://xiaoyunyang.github.io/tags/fundraising/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xiaoyunyang.github.io/tags/fundraising/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Getting Started With Startup Seed Funding</title>
-      <link>http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</link>
+      <link>https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</link>
       <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</guid>
-      <description>&lt;p&gt;This documents my journey applying to the National Science Foundation (NSF) Seed Fund for my startup, &lt;a href=&#34;http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/&#34;&gt;LooseLeaf&lt;/a&gt;.&lt;/p&gt;
+      <guid>https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</guid>
+      <description>&lt;p&gt;This documents my journey applying to the National Science Foundation (NSF) Seed Fund for my startup, &lt;a href=&#34;https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/&#34;&gt;LooseLeaf&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Getting Started With The SAM Application</title>
-      <link>http://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/</link>
+      <link>https://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/</link>
       <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/</guid>
-      <description>&lt;p&gt;The System for Award Management (SAM) is the primary registrant database for entities to do business with the U.S. Government. You must register with SAM before &lt;a href=&#34;http://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/&#34;&gt;applying for a seed fund from the government&lt;/a&gt; for your startup.&lt;/p&gt;
+      <guid>https://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/</guid>
+      <description>&lt;p&gt;The System for Award Management (SAM) is the primary registrant database for entities to do business with the U.S. Government. You must register with SAM before &lt;a href=&#34;https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/&#34;&gt;applying for a seed fund from the government&lt;/a&gt; for your startup.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

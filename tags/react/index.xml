@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>React on Xiaoyun Yang</title>
-    <link>http://xiaoyunyang.github.io/tags/react/</link>
+    <link>https://xiaoyunyang.github.io/tags/react/</link>
     <description>Recent content in React on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,17 @@
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
     <lastBuildDate>Tue, 14 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://xiaoyunyang.github.io/tags/react/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xiaoyunyang.github.io/tags/react/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Web Developer Playbook: Rich Text Editor</title>
-      <link>http://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</link>
+      <link>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</link>
       <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</guid>
+      <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</guid>
       <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34; target=&#34;_blank&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-&lt;img src=&#34;http://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s get started!&lt;/p&gt;
 
@@ -29,10 +29,10 @@
     
     <item>
       <title>Serverless Web App For Work</title>
-      <link>http://xiaoyunyang.github.io/post/serverless-web-app-for-work/</link>
+      <link>https://xiaoyunyang.github.io/post/serverless-web-app-for-work/</link>
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/serverless-web-app-for-work/</guid>
+      <guid>https://xiaoyunyang.github.io/post/serverless-web-app-for-work/</guid>
       <description>&lt;p&gt;When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -40,10 +40,10 @@
     
     <item>
       <title>Creating LooseLeaf: A Platform To Support The Future Of Work</title>
-      <link>http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</link>
+      <link>https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</link>
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</guid>
+      <guid>https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34; target=&#34;_blank&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -51,10 +51,10 @@
     
     <item>
       <title>Building an Isomorphic Webapp</title>
-      <link>http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</link>
+      <link>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</link>
       <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
+      <guid>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Devops on Xiaoyun Yang</title>
-    <link>http://xiaoyunyang.github.io/tags/devops/</link>
+    <link>https://xiaoyunyang.github.io/tags/devops/</link>
     <description>Recent content in Devops on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,16 +10,16 @@
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
     <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://xiaoyunyang.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xiaoyunyang.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How To Deploy Your Web App To Amazon Web Service</title>
-      <link>http://xiaoyunyang.github.io/post/how-to-deploy-your-web-app-to-amazon-web-service/</link>
+      <link>https://xiaoyunyang.github.io/post/how-to-deploy-your-web-app-to-amazon-web-service/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>http://xiaoyunyang.github.io/post/how-to-deploy-your-web-app-to-amazon-web-service/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+      <guid>https://xiaoyunyang.github.io/post/how-to-deploy-your-web-app-to-amazon-web-service/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This a comprehensive guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&amp;rsquo;t work, how I prepared the app for deployment and accomplished the deployment.&lt;/p&gt;
 
