@@ -1,5 +1,5 @@
 ---
-title: "How To Deploy Your MERN App To Amazon Web Service"
+title: "How To Deploy Your Web App To Amazon Web Service"
 date: 2018-10-03
 categories:
   - blog
@@ -16,7 +16,7 @@ keywords:
 
 ![](/post/images/deployapp/ecs-docker.png)
 
-In this tutorial, I will provide a step-by-step guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn't work, how I prepared the app for deployment and accomplished the deployment.
+This a comprehensive guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn't work, how I prepared the app for deployment and accomplished the deployment.
 
 <!--more-->
 
@@ -29,6 +29,9 @@ In this tutorial, I will provide a step-by-step guide for how to containerize yo
 I have an isomorphic app which leverages webpack with code splitting.  
 
 The motivation for optimizing production build is twofold: increase performance and decrease build time and size.
+
+{{< image classes="fancybox fig-100 center" src="/post/images/deployapp/xkcd-compiling.png"
+thumbnail="/post/images/deployapp/xkcd-compiling.png" title="XKCD: Compiling">}}
 
 When running the webpack build script in production mode, the following warning messages are provided:
 
@@ -87,7 +90,7 @@ I added a few npm run scripts in order to allow different ways of spinning up th
     "prestart": "npm run build:prod",
     "start": "node server/run-prod.js",
     "start-server": "node server/run-prod.js",
-    "start-server-dev": "nodemon server/run-dev.js --watch server --watch client/iso-middleware --watch client/src",
+    "start-server-dev": "nodemon server/run-dev.js --watch server --watch client/iso-middleware",
     "start-client": "node server/start-client.js",
     "start-dev": "concurrently \"npm run start-server-dev\" \"npm run start-client\"",
   },
@@ -112,7 +115,7 @@ require('child_process').spawn('npm', args, opts);
 
 ## Step 3: Dockerize Your App
 
-[Gokce Yalcin](https://www.codementor.io/collections/aws-ecs-lbxm7zj38) provides a great primer for Docker and ECS.
+[Gokce Yalcin](https://www.codementor.io/collections/aws-ecs-lbxm7zj38) and [Jake Wright](https://www.youtube.com/watch?v=YFl2mCHdv24) provide a great primer for Docker and ECS.
 
 > Docker is a way to manage and run containers - it is an abstraction that lets you share host resources with your application by process isolation.
 
@@ -122,15 +125,15 @@ As [this article puts it](https://cloudacademy.com/blog/amazon-ec2-container-ser
 
 > modern DevOps practices demand the ability to quickly build servers and ship code to be run in different environments. Welcome to the world of containers: extremely lightweight, abstracted user space instances that can be easily launched on any compatible server and reliably provide a predictable experience.
 
-For our MERN app, the environmental configuration is our mongo database.
+For our MERN app, the environmental configuration is our Mongo database.
 
-A lot of tutorials I found show you how to create container for simple apps which do not depend on other images like mongo. The build definition provided by `Dockerfile` was not adequate in associating the app build with mongo. The app ends up failing upon initial launch due to failing to .
+A lot of tutorials I found show you how to create container for simple apps which do not depend on other images like Mongo. The build definition provided by **Dockerfile** was not adequate in associating the app build with Mongo. The app ends up failing upon initial launch due to failing to bind with Mongo.
 
 To dockerize our MERN app for running locally, we need to create two files: **Dockerfile** and **docker-compose.yml**.
 
-Dockerfile is required if you want to use Docker to containerize your app but docker-compose is optional but useful if you want to fire up a Docker container locally to use Mongodb.
+Dockerfile is required if you want to use Docker to containerize your app but docker-compose is optional but useful if you want to fire up a Docker container locally to use Mongo.
 
-Before when I run the server locally, I'd have to make sure to run `mongod` and `mongo` in the command line to fire up the  mongo daemon and mongo shell.
+Before when I run the server locally, I'd have to make sure to run `mongod` and `mongo` in the command line to fire up the  Mongo daemon and Mongo shell.
 
 But with containerization, I can create an image that includes the app and the mongodb image and driver mapping that the app depends on.
 
@@ -185,7 +188,7 @@ volumes:
   data-volume:
 ```
 
-To run both our app and mongo in the container, we run this command:
+To run both our app and Mongo in the container, we run this command:
 
 ```
 $ docker-compose up
@@ -201,11 +204,23 @@ $ docker-compose up
 
 > Amazon EC2 Container Service (Amazon ECS) is a highly-scalable, high performance container management service that supports Docker containers and allows you to run applications easily on a managed cluster of EC2 instances. The ECS service scheduler places tasks—groups of containers used for your application—onto container instances in the cluster, monitors their performance and health, and restarts failed tasks as needed. ~[AWS Blog](https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/)
 
-I find AWS's docs overwhelming because it always contains more information than necessary and not enough examples. I suggest following [this tutorial from Node University](https://node.university/blog/978472/aws-ecs-containers) which walks you through (with screenshot) an actual example deploying a node app containerized with mongo to ECS. [This Gist](https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832#file-step-by-step-how-to-for-aws-ecs-md) provides step-by-step procedure for creating a ECS cluster, task definition and containers, as well as load balancer.
 
-![https://cloudonaut.io/aws-velocity-containerized-ecs-based-app-ci-cd-pipeline/](/post/images/deployapp/docker-on-aws.png)
+There are four parts to ECS:
 
-## SSH
+1. Repository or Elastic Container Registry (ECR)
+2. Cluster
+3. Task Definition
+4. Service
+
+The Repository is where you store the app image created using docker. You can push updated image of your app to the ECR using the AWS CLI. Alternatively, if you don't want to use ECR to store your image, you could push your image to DockerHub.
+
+A Cluster is where AWS runs containers.
+
+Task Definition is where you tells AWS how to create your containers. Each container has is associated with an image, which is used to start your container and can be mapped to ports and volumes.
+
+A service is essentially a collection of containers that will run on EC2 instances (ECS container instances) and auto scale according to specified rules.
+
+## Step 1: AWS CLI and SSH Keypair
 
 It's a good idea to be able to ssh into your EC2 instance for troubleshooting. Use the AWS CLI to create a new ssh keypair (See docs [for ssh](https://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-keypairs.html) and [connecting to your container instance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance-connect.html)).
 
@@ -224,39 +239,25 @@ $ aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output te
 $ chmod 400 MyKeyPair.pem
 ```
 
-To SSH into your ECS instance, go to the ECS console > select your instance > click connect. You'll see a command like this:
+## Step 2: Create ECS Cluster, Task, and Service
 
-```
-ssh -i "MyKeyPair.pem" ec2-user@ec2-18-386-245-264.compute-1.amazonaws.com
-```
-
-If you try to run the above command, you'll get an error:
-
-> Please login as the user "ec2-user" rather than the user "root".
-
-So we try this instead:
-
-```
-$ ssh -i "MyKeyPair.pem" ec2-user@ec2-18-386-245-264.compute-1.amazonaws.com
-```
-
-And it should work! You can use this to connect to the EC2 instance, which we will create in the next step.
-
-## Create ECS Cluster, Task, and Service
+You could get started with AWS ECS using the [official docs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html). I suggest following [this tutorial from Node University](https://node.university/blog/978472/aws-ecs-containers) which walks you through (with screenshot) an actual example deploying a node app containerized with Mongo to ECS. [This video](https://www.youtube.com/watch?v=zp7gUCgyS34) walks you through how to use the Amazon ECS console to create repository, a task definition, and a cluster. [This Gist](https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832#file-step-by-step-how-to-for-aws-ecs-md) provides step-by-step procedure for creating a ECS cluster, task definition and containers, as well as load balancer.
 
 In short, we need to take the following steps:
 
 1. Create ECS Container Registry.
 2. Create a repository under Amazon ECS. This is where you push your docker images using the aws cli.
-3. Create new task definition, which includes port mapping and your two containers (node app and mongodb).
-4. Create a Cluster. A Cluster is where AWS runs containers. I use EC2 instance type m4.large.
+3. Create new task definition, which includes port mapping and your two containers (node app and Mongo).
+4. Create a Cluster (specify the ssh keypair you created in the previous step). I use EC2 instance type m4.large. When prompt, create a new VPC.
 5. Create a Service.
 
-For all these steps, you can use Amazon's console and AWS CLI.
+Amazon Virtual Private Cloud (VPC) provisions a logically isolated section of AWS where you can launch AWS resources in a virtual network that you define. When you create a cluster you should create a new VPC.
 
--  Note: There's an open source cli called [coldbrew](https://github.com/coldbrewcloud/coldbrew-cli) that you can download from Github which automates your Docker container deployment process. I couldn't figure out how the configuration file suppose to look if I wanted to fire up the app container with mongo. Also, Coldbrew seem to have a lot of "magic" that when my deployed app failed to launch, I couldn't figure out how to troubleshoot.
+A EC2 instance is automatically created by ECS and associated with the VPC. Write the VPC ID down. You are going to need to use it a lot later when creating EFS, Security group, and load balancer.
 
-We use the Docker CLI to build our image:
+Note, for all these steps, you can use Amazon's console and AWS CLI. There's an open source cli called [coldbrew](https://github.com/coldbrewcloud/coldbrew-cli) that you can download from Github which automates your Docker container deployment process. I couldn't figure out how the configuration file suppose to look if I wanted to fire up the app container with Mongo. Also, Coldbrew seem to have a lot of "magic" that when my deployed app failed to launch, I couldn't figure out how to troubleshoot.
+
+Once you created the ECR and repository, use the Docker CLI to build our image:
 
 ```
 $ docker build -t <image-name> .
@@ -276,30 +277,50 @@ For example:
 Before you push, make sure to to authenticate Docker to an Amazon ECR registry with get-login.
 
 ```
-$ aws ecr get-login
+$ $(aws ecr get-login --no-include-email --region us-east-1)
 ```
 
 For our example, the complete sequence of commands for first and subsequent deploys is:
 
 ```
+$ $(aws ecr get-login --no-include-email --region us-east-1)
 $ docker build -t looseleaf-node .
 $ aws ecr get-login
 $ docker tag looseleaf-node:latest 767822753727.dkr.ecr.us-east-1.amazonaws.com/looseleaf-node:latest
 $ docker push 767822753727.dkr.ecr.us-east-1.amazonaws.com/looseleaf-node:latest
 ```
 
-## Update Your App
-
-To update your application, you may have to update the task definition and then update the service.
-
-http://docs.aws.amazon.com/AmazonECS/latest/developerguide/update-service.html
-
-> If your updated Docker image uses the same tag as what is in the existing task definition for your service (for example, my_image:latest), you do not need to create a new revision of your task definition. You can update the service using the procedure below, keep the current settings for your service, and select Force new deployment. The new tasks launched by the deployment pull the current image/tag combination from your repository when they start. The Force new deployment option is also used when updating a Fargate task to use a more current platform version when you specify LATEST. For example, if you specified LATEST and your running tasks are using the 1.0.0 platform version and you want them to relaunch using a newer platform version.
+![https://cloudonaut.io/aws-velocity-containerized-ecs-based-app-ci-cd-pipeline/](/post/images/deployapp/docker-on-aws.png)
 
 
-# Following Deployment
+To make sure the image is running in our container instance, go to the EC2 console and click on the container instance that was fired up by your ECS.
 
-## Step 1: Add SSL
+Let's ssh into this container instance by going to the ECS console -> select your instance -> click connect. You'll see a command like this:
+
+```
+ssh -i "MyKeyPair.pem" root@ec2-18-386-245-264.compute-1.amazonaws.com
+```
+
+If you try to run the above command, you'll get an error:
+
+> Please login as the user "ec2-user" rather than the user "root".
+
+So we try this instead:
+
+```
+$ cd .ssh
+$ ssh -i "MyKeyPair.pem" ec2-user@ec2-18-386-245-264.compute-1.amazonaws.com
+```
+
+And it should work! You can use this to connect to the EC2 instance.
+
+You will use the following command to check if the container instance is running our docker image:
+
+```
+[ec2-user ~]$ docker ps
+```
+
+## Step 3: Add SSL
 
 The [AWS Tutorial](https://aws.amazon.com/blogs/aws/new-aws-certificate-manager-deploy-ssltls-based-apps-on-aws/) guides you through setting up your [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/).
 
@@ -311,7 +332,7 @@ The AWS Tutorial linked above is actually a little out-dated.
 
 Here are the steps I took:
 
-1. Login to your AWS Console and click to Services > Certificate Manager.
+1. Login to your AWS Console and click to Services -> Certificate Manager.
 2. Get started on Provision Certificates.
 3. Request a Public Certificate.
 4. On the domain names, add your domain name (e.g., `looseleafapp.com` and `*.looseleafapp.com`). Click next.
@@ -323,11 +344,9 @@ Here are the steps I took:
 
 It doesn't take 30 minutes. I refreshed the page and Validation status changed to Success.
 
-## Step 2: Update Your EC2 Instance
+Next, go to the EC2 dashboard. For the container instance, click on the Security Group. Add an inbound rule with Type HTTPS and port 443.
 
-A EC2 instance is automatically created by ECS and associated with the VPC. Go to the EC2 dashboard. For the ECS instance, click on the Security Group. Add an inbound rule with Type HTTPS and port 443.
-
-## Step 3: Create Load Balancer
+## Step 4: Create Load Balancer
 
 > The Network Load Balancer is the best option for managing secure traffic as it provides support for TCP traffic pass through, without decrypting and then re-encrypting the traffic. ~[AWS Compute Blog](https://aws.amazon.com/blogs/compute/maintaining-transport-layer-security-all-the-way-to-your-container-using-the-network-load-balancer-with-amazon-ecs/)
 
@@ -344,9 +363,9 @@ Make sure your load balancer settings are:
 - Listeners: (1) load balancer port HTTPS 443 --> instance port HTTP 80 and (2) load balancer port HTTP 80 --> instance port HTTP --> 80
 - Health Check: Ping Target HTTP:80/<filename> where <filename> is a file that your website serves from the root. For my site, it's index.css.
 
-## Step 4: Link to Domain Name
+## Step 5: Link to Domain Name
 
-Use AWS Route 53 to associate your ECS instance with a domain name.
+Use AWS Route 53 to associate your container instance with a domain name.
 
 I purchased my domain name from Google Domains. I got on chat with the customer service representative from Google Domains who walked me through how to set up route for AWS Route 53 with:
 
@@ -359,17 +378,56 @@ After you've done all that, Create Record, select "Type A-IPv4 address", select 
 
 **Optional:** You may be able to create another Alias for www.yourdomain.com to forward to https://yourdomain.com. I don't know how to do that yet.
 
+# Following Deployment
+
+## Persisting Data
+
+Following [the tutorial from Node University](https://node.university/blog/978472/aws-ecs-containers) helped me get the app up and running but there was a big problem with the setup: whenever the server goes down for whatever reason, all the data is lost.
+
+By default, the Amazon ECS-optimized AMI ships with 30 GiB of total storage. You can modify this value at launch time to increase or decrease the available storage on your container instance. This storage is used for the operating system and for Docker images and metadata.
+
+The docker info command also provides information about how much data space it is using, and how much data space is available.
+
+SSH into your instance and run this command:
+
+```
+[ec2-user ~]$ docker info | grep "Data Space"
+```
+
+Output for a m4.large:
+
+```
+Data Space Used: 3.326GB
+Data Space Total: 23.33GB
+Data Space Available: 20GB
+```
+
+This might seem like a lot storage but this storage is ephemeral, i.e., something that is temporary in nature.
+
+If you run your MongoDB in a container, the data is hosted in the instance's ephemeral disk. This means the data stored in the container is gone the moment your container is deleted or restarted.
+
+Per the [AWS Blog](https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/):
+
+> Using task definitions, you can define the properties of the containers you want to run together and configure containers to store data on the underlying ECS container instance that your task is running on. Because tasks can be restarted on any ECS container instance in the cluster, you need to consider whether the data is temporary or needs to persist.
+
+
+
+## Update Your App
+
+To update your application, you may have to update the task definition and then update the service.
+
+http://docs.aws.amazon.com/AmazonECS/latest/developerguide/update-service.html
+
+> If your updated Docker image uses the same tag as what is in the existing task definition for your service (for example, my_image:latest), you do not need to create a new revision of your task definition. You can update the service using the procedure below, keep the current settings for your service, and select Force new deployment. The new tasks launched by the deployment pull the current image/tag combination from your repository when they start. The Force new deployment option is also used when updating a Fargate task to use a more current platform version when you specify LATEST. For example, if you specified LATEST and your running tasks are using the 1.0.0 platform version and you want them to relaunch using a newer platform version.
+
+
 # Gotchas
 
 ## ECS Container DB Not Persisting
 
-Following [the tutorial from Node University](https://node.university/blog/978472/aws-ecs-containers) helped me get the app up and running but there was a big problem with the setup: whenever the server goes down for whatever reason, all the data is lost. Per the [AWS Blog](https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/)
+> If your container needs access to the original data each time it starts, you require a file system that your containers can connect to regardless of which instance they’re running on. That’s where EFS comes in.
 
-> Using task definitions, you can define the properties of the containers you want to run together and configure containers to store data on the underlying ECS container instance that your task is running on. Because tasks can be restarted on any ECS container instance in the cluster, you need to consider whether the data is temporary or needs to persist. If your container needs access to the original data each time it starts, you require a file system that your containers can connect to regardless of which instance they’re running on. That’s where EFS comes in.
-
-So if you run your MongoDB in a container, the data is hosted in the instance's ephemeral disk. This means the data is going to disappear when your ECS2 instance that hosts your container is restarted.
-
-AWS Elastic File System (EFS) is a storage service that can be used to persist data to disk or share it among multiple containers; for example, when you are running Mongo in a Docker container, capturing application logs, or simply using it as temporary scratch space to process data.
+AWS Elastic File System (EFS) is a storage service that can be used to persist data to disk or share it among multiple containers; for example, when you are running MongoDB in a Docker container, capturing application logs, or simply using it as temporary scratch space to process data.
 
 > EFS allows you to persist data onto a durable shared file system that all of the ECS container instances in the ECS cluster can use.
 
@@ -379,21 +437,31 @@ AWS Elastic File System (EFS) is a storage service that can be used to persist d
 Based on AWS's Docs on [using Amazon EFS File Systems with Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_efs.html#efs-run-task), we need to configure a running container instance to use an Amazon EFS file system:
 
 - Log in to the container instance via SSH.
-- Go to AWS console > EFS. Click on the file system. There's a link on the page that reads "Amazon EC2 mount instructions". Click on that link
-and execute the commands listed.
-
+- Go to AWS console -> EFS. Click on the file system. There's a link on the page that reads "Amazon EC2 mount instructions". Click on that link, then execute the commands listed.
 
 Validate that the file system is mounted correctly with the following command.
 
+
 ```
 $ mount | grep efs
+```
+
+Note, if you make a mistake, use unmount as follows
+
+```
+$ umount /mnt/efs
+```
+
+You can verify that your Amazon EFS file system has been unmounted by running the df command to display the disk usage statistics for the file systems currently mounted on your Linux-based Amazon EC2 instance.
+
+```
+$ df -T
 ```
 
 Make a backup of the /etc/fstab file.
 
 ```
 $ sudo cp /etc/fstab /etc/fstab.bak
-
 ```
 
 Update the /etc/fstab file to automatically mount the file system at boot. Replace `fs-613c8628.efs.us-east-1.amazonaws.com` with your actual file system DNS name.
@@ -408,9 +476,36 @@ Reload the file system table to verify that your mounts are working properly.
 $ sudo mount -a
 ```
 
-**Gotcha: Unable to mount EFS on ECS instance**
+After mounting the file system on the host container instance, we want to create a Task definition to use the Amazon EFS file system. Let's create a volume mount in our ECS task definition that allows our containers to access the file system.
+
+Allow the ECS container instances to connect to the EFS file system via mount targets in your VPC.
+
+EFS can result in [significantly degraded performance](https://gitlab.com/gitlab-org/gitlab-ee/blob/master/doc/administration/high_availability/nfs.md#aws-elastic-file-system)
+> Workloads where many small files are written in a serialized manner, like git,
+are not well-suited for EFS. EBS with an NFS server on top will perform much better.
+
+
+## Unable to mount EFS on ECS instance
 
 According to [this thread on AWS forum](https://forums.aws.amazon.com/thread.jspa?threadID=235344), the problem may lie with the configuration of the mount target’s security group. Use [this guide](https://docs.aws.amazon.com/efs/latest/ug/accessing-fs-create-security-groups.html) for more on how to create security groups so you can use Secure Shell (SSH) to connect to any instances that have mounted Amazon EFS file systems. [This tutorial](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_efs.html#efs-security-group) walks you through how to create a security group for your EFS File System.
+
+What we want is to have two security groups, one for your EC2 instance and another for your EFS file system that connects to your EC2 instance.
+
+For your EFS security group inbound rules, make sure you have this rule:
+
+![](https://docs.aws.amazon.com/efs/latest/ug/images/gs-ec2-resources-120.png)
+
+Where `sg-8b033bee` in the "Source" field of the image above should be the actual security group ID of your EC2 instance.
+
+Make sure both security group's VPC IDs are identical and equal to the VPC ID created when you first created the ECS cluster.
+
+## Unable to SSH into EC2 instance.
+
+For your EC2 security group inbound rules, make sure you have this rule:
+
+![](https://docs.aws.amazon.com/efs/latest/ug/images/gs-ec2-resources-100.png)
+
+As an added security measure, it's a good idea to specify the IP address when you open up port 22 for inbound communications (under inbound rules settings). If you are taking this approach, make sure to whitelist all the IP addresses from all the location where you work (e.g. your office, home, co-working space) as the IP address will be different. Otherwise, the ssh attempt will hang and time out.
 
 ## Image Proliferation
 
@@ -446,6 +541,12 @@ Make sure to run `docker rm` to delete the containers before removing the images
 ## AWS Elastic Beanstalk
 
 Don't use it. Use AWS ECS instead.
+
+## Mongo Atlas
+
+Don't use it. Mongo Atlas free tier can’t execute certain commands like find. Costs too much money 😞
+
+Their tutorial ([part 1](https://www.mongodb.com/blog/post/building-a-nodejs-app-with-mongodb-atlas-and-aws-elastic-container-service-part-1), [part 2](https://www.mongodb.com/blog/post/building-a-nodejs-app-with-mongodb-atlas-and-aws-elastic-container-service-part-2)) is pretty good though.
 
 ## Using Mongo Shell Via Container
 
