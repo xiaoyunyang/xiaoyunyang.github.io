@@ -1,5 +1,5 @@
 ---
-title: "How To Deploy Your Web App To Amazon Web Service"
+title: "A Complete Guide To Deploying Your Web App To Amazon Web Service"
 date: 2018-10-03
 categories:
   - blog
@@ -247,7 +247,7 @@ In short, we need to take the following steps:
 
 1. Create ECS Container Registry.
 2. Create a repository under Amazon ECS. This is where you push your docker images using the aws cli.
-3. Create new task definition, which includes port mapping and your two containers (node app and Mongo).
+3. Create new task definition, which includes port mapping and your two containers (node app and Mongo). See [aws gist](https://github.com/awsdocs/amazon-ecs-developer-guide/blob/master/doc_source/create-task-definition.md) on creating a task definition.
 4. Create a Cluster (specify the ssh keypair you created in the previous step). I use EC2 instance type m4.large. When prompt, create a new VPC.
 5. Create a Service.
 
@@ -410,7 +410,74 @@ Per the [AWS Blog](https://aws.amazon.com/blogs/compute/using-amazon-efs-to-pers
 
 > Using task definitions, you can define the properties of the containers you want to run together and configure containers to store data on the underlying ECS container instance that your task is running on. Because tasks can be restarted on any ECS container instance in the cluster, you need to consider whether the data is temporary or needs to persist.
 
+If your container needs access to the original data each time it starts, you require a file system that your containers can connect to regardless of which instance they’re running on. That’s where **EFS** comes in.
 
+AWS Elastic File System (EFS) is a storage service that can be used to persist data to disk or share it among multiple containers; for example, when you are running MongoDB in a Docker container, capturing application logs, or simply using it as temporary scratch space to process data.
+
+> EFS allows you to persist data onto a durable shared file system that all of the ECS container instances in the ECS cluster can use.
+
+[This Gist](https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832) provides step-by-step tutorial to set up AWS ECS Cluster. The [official tutorial from Amazon](https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/) and [the atomic object tutorial](https://spin.atomicobject.com/2017/05/03/sharing-efs-filesystem-ecs/) have also been helpful.
+
+Basically, I followed [the gist](https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832) to create a KMS Encryption Key, a new EFS filesystem, updated my cluster's CloudFormation template, and updated the Task Definition to create the mapping to the volume mapping:
+
+- volume name: `efs`
+- source path: `/mnt/efs/<yourDatabase>`
+
+Then update the mongo container's mount point to include:
+
+- container path: `/data/db`
+- source volume: `efs`
+
+I also needed to create a new security group for the EFS file system.
+
+Before you try to restarting your instance and run the automated script in the CloudFormation template, it's a good idea to try to ssh into your instance and do make sure you can do everything manually. See the [gotcha section](#ecs-container-db-not-persisting) for more on that.
+
+After you restarts the EC2 instance with the updated task definition, ssh into the instance and make sure the file system volume is mounted and is mapped to the mongo container volume:
+
+Run the following command. If you see a similar output on the last line, that's a good sign.
+
+```
+[ec2-user ~]$ cat /etc/fstab
+#
+LABEL=/     /           ext4    defaults,noatime  1   1
+tmpfs       /dev/shm    tmpfs   defaults        0   0
+devpts      /dev/pts    devpts  gid=5,mode=620  0   0
+sysfs       /sys        sysfs   defaults        0   0
+proc        /proc       proc    defaults        0   0
+<EfsUri>:/ /efs nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0
+```
+
+Then run this command:
+
+```
+[ec2-user ~]$ cd /mnt/efs/<yourDatabase> && ls
+```
+
+The above of the above command should be a bunch of .wt files and some other mongo files.
+
+Next, verify that the volume is mapped correctly to the mongo container's volume:
+
+```
+[ec2-user ~]$ docker ps
+[ec2-user ~]$ docker exec -it <containerID> /bin/bash
+root@mongo:/$ cd data/db
+root@mongo:/data/db$ ls
+```
+
+The output should be the same files you see in the `/mnt/efs/<yourDatabase>` directory.
+
+Try writing to the directory:
+
+```
+root@mongo:/data/db$ echo 'hello' > test
+root@mongo:/data/db$ cat test
+hello
+root@mongo:/data/db$ exit
+[ec2-user ~]$ cd /mnt/efs/<yourDatabase> && cat test
+hello
+```
+
+This proves that the two volumes are syncing.
 
 ## Update Your App
 
@@ -424,15 +491,6 @@ http://docs.aws.amazon.com/AmazonECS/latest/developerguide/update-service.html
 # Gotchas
 
 ## ECS Container DB Not Persisting
-
-> If your container needs access to the original data each time it starts, you require a file system that your containers can connect to regardless of which instance they’re running on. That’s where EFS comes in.
-
-AWS Elastic File System (EFS) is a storage service that can be used to persist data to disk or share it among multiple containers; for example, when you are running MongoDB in a Docker container, capturing application logs, or simply using it as temporary scratch space to process data.
-
-> EFS allows you to persist data onto a durable shared file system that all of the ECS container instances in the ECS cluster can use.
-
-
-[This Gist](https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832) provides step-by-step tutorial to set up AWS ECS Cluster. It'll get you 80% way there.
 
 Based on AWS's Docs on [using Amazon EFS File Systems with Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_efs.html#efs-run-task), we need to configure a running container instance to use an Amazon EFS file system:
 
