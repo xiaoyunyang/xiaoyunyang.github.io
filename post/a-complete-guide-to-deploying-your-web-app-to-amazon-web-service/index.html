@@ -297,9 +297,10 @@ This a comprehensive guide for how to containerize your Mongo/Express/React/Node
 <li><a href="#step-4-create-load-balancer">Step 4: Create Load Balancer</a></li>
 <li><a href="#step-5-link-to-domain-name">Step 5: Link to Domain Name</a></li>
 </ul></li>
-<li><a href="#following-deployment">Following Deployment</a>
+<li><a href="#persisting-data">Persisting Data</a>
 <ul>
-<li><a href="#persisting-data">Persisting Data</a></li>
+<li><a href="#efs-primer">EFS Primer</a></li>
+<li><a href="#set-up-efs-with-your-containers">Set Up EFS With Your Containers</a></li>
 <li><a href="#update-your-app">Update Your App</a></li>
 </ul></li>
 <li><a href="#gotchas">Gotchas</a>
@@ -781,9 +782,7 @@ $ ssh -i &quot;MyKeyPair.pem&quot; ec2-user@ec2-18-386-245-264.compute-1.amazona
 
 <p><strong>Optional:</strong> You may be able to create another Alias for www.yourdomain.com to forward to <a href="https://yourdomain.com" target="_blank">https://yourdomain.com</a>. I don&rsquo;t know how to do that yet.</p>
 
-<h1 id="following-deployment">Following Deployment</h1>
-
-<h2 id="persisting-data">Persisting Data</h2>
+<h1 id="persisting-data">Persisting Data</h1>
 
 <p>Following <a href="https://node.university/blog/978472/aws-ecs-containers" target="_blank">the tutorial from Node University</a> helped me get the app up and running but there was a big problem with the setup: whenever the server goes down for whatever reason, all the data is lost.</p>
 
@@ -821,23 +820,85 @@ Data Space Available: 20GB
 <p>EFS allows you to persist data onto a durable shared file system that all of the ECS container instances in the ECS cluster can use.</p>
 </blockquote>
 
-<p><a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832" target="_blank">This Gist</a> provides step-by-step tutorial to set up AWS ECS Cluster. The <a href="https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/" target="_blank">official tutorial from Amazon</a> and <a href="https://spin.atomicobject.com/2017/05/03/sharing-efs-filesystem-ecs/" target="_blank">the atomic object tutorial</a> have also been helpful.</p>
+<h2 id="efs-primer">EFS Primer</h2>
+
+<p>EFS is one of three main cloud storage solutions offered by AWS and is a relatively new service compared to S3 and EBS. Like S3, EFS grows with your storage needs. You don’t have to provision the storage up front. Like EBS, EFS can be attached to an EC2 instance but EFS can be attached to multiple EC2 instances while EBS can only be attached to one. Amazon provides a <a href="https://aws.amazon.com/efs/when-to-choose-efs/" target="_blank">comparison table</a> for the three services and a <a href="https://aws.amazon.com/what-is-cloud-file-storage/" target="_blank">good summary</a> of the three options and what they are good for:</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+<div class="figure fig-100 center" >
+  
+    <a class="fancybox" href="https://xiaoyunyang.github.io/post/images/deployapp/aws-cloud-storage-options.png" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://xiaoyunyang.github.io/post/images/deployapp/aws-cloud-storage-options.png" >
+  
+    </a>
+  
+  
+</div>
+
+
+<p><a href="https://dzone.com/articles/confused-by-aws-storage-options-s3-ebs-amp-efs-explained" target="_blank">See this article</a> for a discussion on when to use what.</p>
+
+<p>EFS is ideal if your web app is set up as microservices deployed to ECS in Docker containers. EFS is a fully managed file storage solution that can provide persistent shared access to data that all containers in a cluster can use. <a href="https://convox.com/blog/efs/" target="_blank">EFS is container friendly</a>. If you need a network filesystem solution that can allow multiple EC2 instances to access the same data at the same time, use EFS.</p>
+
+<p>What we want to do is to have containers that gets access to the original data each time it starts. The original data comes from EFS.</p>
+
+<p><img src="https://xiaoyunyang.github.io/post/images/deployapp/efs-ebs-instancestore.png" alt="image attribution  https://cloudonaut.io/sharing-data-volumes-between-machines-efs/" /></p>
+
+<p>Image source: <a href="https://cloudonaut.io/sharing-data-volumes-between-machines-efs/" target="_blank">cloudonaut</a>, originally from <a href="https://www.manning.com/books/amazon-web-services-in-action-second-edition" target="_blank">Amazon Web Services in Action, Second Edition</a>.</p>
+
+<p>It&rsquo;s worth noting some important constraints of EFS:</p>
+
+<ul>
+<li>Only available for Linux EC2. Fargate or Windows EC2 not supported.</li>
+<li>The EC2 Instance must be in the same subnet as the EFS Mount Target.</li>
+</ul>
+
+<h2 id="set-up-efs-with-your-containers">Set Up EFS With Your Containers</h2>
+
+<p><a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832" target="_blank">This Gist</a> provides step-by-step tutorial to set up AWS ECS with EFS. Note, there&rsquo;s an error in the gist&rsquo;s tutorial in the task volume mapping. See below for the correct mapping.</p>
+
+<p>Other resources include:
+- <a href="https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/" target="_blank">Official tutorial from Amazon</a>
+- <a href="https://spin.atomicobject.com/2017/05/03/sharing-efs-filesystem-ecs/" target="_blank">Atomic Object tutorial</a>
+- <a href="https://www.youtube.com/watch?v=M9CP42BsB6c" target="_blank">Knowledge India Video</a>
+- <a href="https://cloudonaut.io/sharing-data-volumes-between-machines-efs/" target="_blank">Cloudonaut article</a>
+- <a href="https://www.veritas.com/content/support/en_US/doc/NB_CC_EFS_HA_AWS" target="_blank">Veritas Tutorial</a> (with pictures)</p>
 
 <p>Basically, I followed <a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832" target="_blank">the gist</a> to create a KMS Encryption Key, a new EFS filesystem, updated my cluster&rsquo;s CloudFormation template, and updated the Task Definition to create the mapping to the volume mapping:</p>
 
 <ul>
 <li>volume name: <code>efs</code></li>
-<li>source path: <code>/mnt/efs/&lt;yourDatabase&gt;</code></li>
+<li>source path: <code>/efs/&lt;yourDatabase&gt;</code></li>
 </ul>
 
-<p>Then update the mongo container&rsquo;s mount point to include:</p>
+<p>Then in the ECS task definition, update the mongo container&rsquo;s mount point to include:</p>
 
 <ul>
 <li>container path: <code>/data/db</code></li>
 <li>source volume: <code>efs</code></li>
 </ul>
 
-<p>I also needed to create a new security group for the EFS file system.</p>
+<p>The two volume mapping is needed because the file system is mounted on the host instance, which we want the container to access.</p>
+
+<p>You also need to create a new security group for the EFS file system to control traffic to the mount targets.</p>
 
 <p>Before you try to restarting your instance and run the automated script in the CloudFormation template, it&rsquo;s a good idea to try to ssh into your instance and do make sure you can do everything manually. See the <a href="#ecs-container-db-not-persisting">gotcha section</a> for more on that.</p>
 
@@ -857,7 +918,7 @@ proc        /proc       proc    defaults        0   0
 
 <p>Then run this command:</p>
 
-<pre><code>[ec2-user ~]$ cd /mnt/efs/&lt;yourDatabase&gt; &amp;&amp; ls
+<pre><code>[ec2-user ~]$ cd /efs/&lt;yourDatabase&gt; &amp;&amp; ls
 </code></pre>
 
 <p>The above of the above command should be a bunch of .wt files and some other mongo files.</p>
@@ -870,19 +931,42 @@ root@mongo:/$ cd data/db
 root@mongo:/data/db$ ls
 </code></pre>
 
-<p>The output should be the same files you see in the <code>/mnt/efs/&lt;yourDatabase&gt;</code> directory.</p>
+<p>The output should be the same files you see in the <code>/efs/&lt;yourDatabase&gt;</code> directory.</p>
 
 <p>Try writing to the directory:</p>
 
-<pre><code>root@mongo:/data/db$ echo 'hello' &gt; test
+<pre><code>root@mongo:/data/db$ echo 'hello' &gt;&gt; test
 root@mongo:/data/db$ cat test
 hello
 root@mongo:/data/db$ exit
-[ec2-user ~]$ cd /mnt/efs/&lt;yourDatabase&gt; &amp;&amp; cat test
+[ec2-user ~]$ cd /efs/&lt;yourDatabase&gt; &amp;&amp; cat test
 hello
 </code></pre>
 
 <p>This proves that the two volumes are syncing.</p>
+
+<p>To verify the mount status of the Amazon EFS File System on host volume:</p>
+
+<pre><code>[ec2-user ~]$ df -T
+Filesystem     Type              1K-blocks    Used          Available Use% Mounted on
+/dev/xvda1     ext4                8123812 1949800            6073764  25% /
+devtmpfs       devtmpfs            4078468      56            4078412   1% /dev
+tmpfs          tmpfs               4089312       0            4089312   0% /dev/shm
+efs-dns        nfs4       9007199254740992       0   9007199254740992   0% /efs
+</code></pre>
+
+<p>Where <code>efs-dns</code> has the following form:</p>
+
+<pre><code>file-system-id.efs.aws-region.amazonaws.com:/
+</code></pre>
+
+<p>If you see <code>efs-dns</code> in the output, that shows the file system is properly mounted.</p>
+
+<p>Alternatively, you can check mount status using the following commands:</p>
+
+<pre><code>[ec2-user ~]$ df -h | egrep '^Filesystem|efs’
+[ec2-user ~]$ mount | grep efs
+</code></pre>
 
 <h2 id="update-your-app">Update Your App</h2>
 
@@ -912,7 +996,7 @@ hello
 
 <p>Note, if you make a mistake, use unmount as follows</p>
 
-<pre><code>$ umount /mnt/efs
+<pre><code>$ umount /efs
 </code></pre>
 
 <p>You can verify that your Amazon EFS file system has been unmounted by running the df command to display the disk usage statistics for the file systems currently mounted on your Linux-based Amazon EC2 instance.</p>
@@ -944,6 +1028,20 @@ hello
 are not well-suited for EFS. EBS with an NFS server on top will perform much better.</p>
 
 <h2 id="unable-to-mount-efs-on-ecs-instance">Unable to mount EFS on ECS instance</h2>
+
+<p><strong>Symptom:</strong> running the mount commands hangs, times out, and display the following error:</p>
+
+<pre><code>mount.nfs4: Connection reset by peer
+Failed to initialize TLS tunnel
+</code></pre>
+
+<p><strong>Root Causes:</strong></p>
+
+<ul>
+<li>Security group is not set up correctly.</li>
+</ul>
+
+<p><strong>Remedy:</strong></p>
 
 <p>According to <a href="https://forums.aws.amazon.com/thread.jspa?threadID=235344" target="_blank">this thread on AWS forum</a>, the problem may lie with the configuration of the mount target’s security group. Use <a href="https://docs.aws.amazon.com/efs/latest/ug/accessing-fs-create-security-groups.html" target="_blank">this guide</a> for more on how to create security groups so you can use Secure Shell (SSH) to connect to any instances that have mounted Amazon EFS file systems. <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_efs.html#efs-security-group" target="_blank">This tutorial</a> walks you through how to create a security group for your EFS File System.</p>
 
@@ -1042,6 +1140,16 @@ mongod    19557 xiaoyun   35u  IPv4 0x6b9c9aebadd5c3e3      0t0  TCP localhost:2
 mongod    19557 xiaoyun   37u  IPv4 0x6b9c9aebe97b1123      0t0  TCP localhost:27017-&gt;localhost:56389 (ESTABLISHED)
 mongo     19569 xiaoyun    7u  IPv4 0x6b9c9aebdde83e63      0t0  TCP localhost:56370-&gt;localhost:27017 (ESTABLISHED)
 $ kill 19557
+</code></pre>
+
+<p>you could also use the following command to see that EBS drive is provisioned with the EC2 instance.</p>
+
+<pre><code>[ec2-user ~]$ df -h
+</code></pre>
+
+<p>You can use the following command to check the AWS EBS volume’s listing on the instance:</p>
+
+<pre><code>[ec2-user ~]$ lsblk                     
 </code></pre>
               
             </div>
