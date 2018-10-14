@@ -448,19 +448,27 @@ Other resources include:
 - [Cloudonaut article](https://cloudonaut.io/sharing-data-volumes-between-machines-efs/)
 - [Veritas Tutorial](https://www.veritas.com/content/support/en_US/doc/NB_CC_EFS_HA_AWS) (with pictures)
 
-Basically, I followed [the gist](https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832) to create a KMS Encryption Key, a new EFS filesystem, updated my cluster's CloudFormation template, and updated the Task Definition to create the mapping to the volume mapping:
+Basically, I followed [the gist](https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832) in combination with [this aws Compute blog post](https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/) and [this AWS official doc for ECS+EFS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_efs.html#efs-add-content) to:
 
-- volume name: `efs`
-- source path: `/efs/<yourDatabase>`
-
-Then in the ECS task definition, update the mongo container's mount point to include:
-
-- container path: `/data/db`
-- source volume: `efs`
-
-The two volume mapping is needed because the file system is mounted on the host instance, which we want the container to access.
-
-You also need to create a new security group for the EFS file system to control traffic to the mount targets.
+1. Create a KMS Encryption Key.
+2. Create a security group for the EFS filesystem that allows 2049 inbound with the source being the EC2's security group.
+    ![](https://docs.aws.amazon.com/efs/latest/ug/images/gs-ec2-resources-120.png)
+    name the security group EFS-access-for-sg-dc025fa2. Replace "sg-dc025fa2" with the security group id of your EC2 instance.
+3. Create a new EFS filesystem.
+    - Enable encryption
+    - Use the VPC ID of your ECS cluster.
+    - Use the security group ID created in the previous step for the mount target security group.
+4. update ECS cluster's CloudFormation template [per the gist instruction](https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832#update-your-cloud-formation-template).
+5. Updated the Task Definition:
+    - Create the mapping to the volume mapping:
+      - volume name: `efs`
+      - source path: `/efs/<yourDatabase>`
+    - Update the mongo container's mount point to include:
+      - container path: `/data/db`
+      - source volume: `efs`
+    - The two volume mapping is needed because we want the container to access the file system is mounted on the host instance in.
+6. Update service in ECS to use the updated Task Definition.
+7. Scale instances down to 0, then to 1 again. This terminates the existing EC2 instance and then spins up a new EC2 instance using the new Task Definition and CloudFormation script. EFS mounting should be automatically done by the start script in CloudFormation. The Task Definition volumes mapping ensures the EFS mount target is hooked up to the mongo container.
 
 Before you try to restarting your instance and run the automated script in the CloudFormation template, it's a good idea to try to ssh into your instance and do make sure you can do everything manually. See the [gotcha section](#ecs-container-db-not-persisting) for more on that.
 
@@ -485,7 +493,7 @@ Then run this command:
 [ec2-user ~]$ cd /efs/<yourDatabase> && ls
 ```
 
-The above of the above command should be a bunch of .wt files and some other mongo files.
+The output of the above of the above command should be a bunch of .wt files and some other mongo files.
 
 Next, verify that the volume is mapped correctly to the mongo container's volume:
 
@@ -598,6 +606,7 @@ After mounting the file system on the host container instance, we want to create
 Allow the ECS container instances to connect to the EFS file system via mount targets in your VPC.
 
 EFS can result in [significantly degraded performance](https://gitlab.com/gitlab-org/gitlab-ee/blob/master/doc/administration/high_availability/nfs.md#aws-elastic-file-system)
+
 > Workloads where many small files are written in a serialized manner, like git,
 are not well-suited for EFS. EBS with an NFS server on top will perform much better.
 
