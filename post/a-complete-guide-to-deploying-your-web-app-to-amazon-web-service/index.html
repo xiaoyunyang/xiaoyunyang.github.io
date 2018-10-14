@@ -882,23 +882,41 @@ Data Space Available: 20GB
 - <a href="https://cloudonaut.io/sharing-data-volumes-between-machines-efs/" target="_blank">Cloudonaut article</a>
 - <a href="https://www.veritas.com/content/support/en_US/doc/NB_CC_EFS_HA_AWS" target="_blank">Veritas Tutorial</a> (with pictures)</p>
 
-<p>Basically, I followed <a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832" target="_blank">the gist</a> to create a KMS Encryption Key, a new EFS filesystem, updated my cluster&rsquo;s CloudFormation template, and updated the Task Definition to create the mapping to the volume mapping:</p>
+<p>Basically, I followed <a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832" target="_blank">the gist</a> in combination with <a href="https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/" target="_blank">this aws Compute blog post</a> and <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_efs.html#efs-add-content" target="_blank">this AWS official doc for ECS+EFS</a> to:</p>
+
+<ol>
+<li>Create a KMS Encryption Key.</li>
+<li>Create a security group for the EFS filesystem that allows 2049 inbound with the source being the EC2&rsquo;s security group.
+<img src="https://docs.aws.amazon.com/efs/latest/ug/images/gs-ec2-resources-120.png" alt="" />
+name the security group EFS-access-for-sg-dc025fa2. Replace &ldquo;sg-dc025fa2&rdquo; with the security group id of your EC2 instance.</li>
+<li>Create a new EFS filesystem.
+
+<ul>
+<li>Enable encryption</li>
+<li>Use the VPC ID of your ECS cluster.</li>
+<li>Use the security group ID created in the previous step for the mount target security group.</li>
+</ul></li>
+<li>update ECS cluster&rsquo;s CloudFormation template <a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832#update-your-cloud-formation-template" target="_blank">per the gist instruction</a>.</li>
+<li>Updated the Task Definition:
+
+<ul>
+<li>Create the mapping to the volume mapping:
 
 <ul>
 <li>volume name: <code>efs</code></li>
 <li>source path: <code>/efs/&lt;yourDatabase&gt;</code></li>
-</ul>
-
-<p>Then in the ECS task definition, update the mongo container&rsquo;s mount point to include:</p>
+</ul></li>
+<li>Update the mongo container&rsquo;s mount point to include:
 
 <ul>
 <li>container path: <code>/data/db</code></li>
 <li>source volume: <code>efs</code></li>
-</ul>
-
-<p>The two volume mapping is needed because the file system is mounted on the host instance, which we want the container to access.</p>
-
-<p>You also need to create a new security group for the EFS file system to control traffic to the mount targets.</p>
+</ul></li>
+<li>The two volume mapping is needed because we want the container to access the file system is mounted on the host instance in.</li>
+</ul></li>
+<li>Update service in ECS to use the updated Task Definition.</li>
+<li>Scale instances down to 0, then to 1 again. This terminates the existing EC2 instance and then spins up a new EC2 instance using the new Task Definition and CloudFormation script. EFS mounting should be automatically done by the start script in CloudFormation. The Task Definition volumes mapping ensures the EFS mount target is hooked up to the mongo container.</li>
+</ol>
 
 <p>Before you try to restarting your instance and run the automated script in the CloudFormation template, it&rsquo;s a good idea to try to ssh into your instance and do make sure you can do everything manually. See the <a href="#ecs-container-db-not-persisting">gotcha section</a> for more on that.</p>
 
@@ -921,7 +939,7 @@ proc        /proc       proc    defaults        0   0
 <pre><code>[ec2-user ~]$ cd /efs/&lt;yourDatabase&gt; &amp;&amp; ls
 </code></pre>
 
-<p>The above of the above command should be a bunch of .wt files and some other mongo files.</p>
+<p>The output of the above of the above command should be a bunch of .wt files and some other mongo files.</p>
 
 <p>Next, verify that the volume is mapped correctly to the mongo container&rsquo;s volume:</p>
 
@@ -1023,9 +1041,12 @@ efs-dns        nfs4       9007199254740992       0   9007199254740992   0% /efs
 
 <p>Allow the ECS container instances to connect to the EFS file system via mount targets in your VPC.</p>
 
-<p>EFS can result in <a href="https://gitlab.com/gitlab-org/gitlab-ee/blob/master/doc/administration/high_availability/nfs.md#aws-elastic-file-system" target="_blank">significantly degraded performance</a>
-&gt; Workloads where many small files are written in a serialized manner, like git,
+<p>EFS can result in <a href="https://gitlab.com/gitlab-org/gitlab-ee/blob/master/doc/administration/high_availability/nfs.md#aws-elastic-file-system" target="_blank">significantly degraded performance</a></p>
+
+<blockquote>
+<p>Workloads where many small files are written in a serialized manner, like git,
 are not well-suited for EFS. EBS with an NFS server on top will perform much better.</p>
+</blockquote>
 
 <h2 id="unable-to-mount-efs-on-ecs-instance">Unable to mount EFS on ECS instance</h2>
 
