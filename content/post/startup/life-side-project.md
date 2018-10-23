@@ -1,5 +1,5 @@
 ---
-title: "Don't Quit Your Job To Be An Entrepreneur. Bootstrap."
+title: "Don't Quit Your Job To Be An Entrepreneur"
 date: 2018-07-30
 categories:
   - blog

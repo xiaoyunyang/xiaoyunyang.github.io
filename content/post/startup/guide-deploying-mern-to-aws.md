@@ -290,6 +290,15 @@ $ docker tag looseleaf-node:latest 767822753727.dkr.ecr.us-east-1.amazonaws.com/
 $ docker push 767822753727.dkr.ecr.us-east-1.amazonaws.com/looseleaf-node:latest
 ```
 
+You could put all this script in a shell script and automate the whole process of deployment.
+
+```
+$ touch deploy.sh
+$ # put all the scripts into deploy.sh
+$ chmod +x deploy.sh
+$ ./deploy.sh # run this everytime you want to deploy
+```
+
 ![https://cloudonaut.io/aws-velocity-containerized-ecs-based-app-ci-cd-pipeline/](/post/images/deployapp/docker-on-aws.png)
 
 
@@ -423,7 +432,7 @@ thumbnail="/post/images/deployapp/aws-cloud-storage-options.png">}}
 
 [See this article](https://dzone.com/articles/confused-by-aws-storage-options-s3-ebs-amp-efs-explained) for a discussion on when to use what.
 
-EFS is ideal if your web app is set up as microservices deployed to ECS in Docker containers. EFS is a fully managed file storage solution that can provide persistent shared access to data that all containers in a cluster can use. [EFS is container friendly](https://convox.com/blog/efs/). If you need a network filesystem solution that can allow multiple EC2 instances to access the same data at the same time, use EFS.
+In general, EFS is ideal if your web app is set up as microservices deployed to ECS in Docker containers. EFS is a fully managed file storage solution that can provide persistent shared access to data that all containers in a cluster can use. [EFS is container friendly](https://convox.com/blog/efs/). If you need a network filesystem solution that can allow multiple EC2 instances to access the same data at the same time, use EFS.
 
 What we want to do is to have containers that gets access to the original data each time it starts. The original data comes from EFS.
 
@@ -548,12 +557,29 @@ Alternatively, you can check mount status using the following commands:
 
 ## Update Your App
 
-To update your application, you may have to update the task definition and then update the service.
+To update your application, you may have to update the task definition and then update
 
-http://docs.aws.amazon.com/AmazonECS/latest/developerguide/update-service.html
+**How to update ECS container to update service task to reflect latest image in ECR:**
 
-> If your updated Docker image uses the same tag as what is in the existing task definition for your service (for example, my_image:latest), you do not need to create a new revision of your task definition. You can update the service using the procedure below, keep the current settings for your service, and select Force new deployment. The new tasks launched by the deployment pull the current image/tag combination from your repository when they start. The Force new deployment option is also used when updating a Fargate task to use a more current platform version when you specify LATEST. For example, if you specified LATEST and your running tasks are using the 1.0.0 platform version and you want them to relaunch using a newer platform version.
+[AWS recommends](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/update-service.html) registering a new task definition and updating the service to use the new task definition. The easiest way to do this is to:
 
+1. Use the deploy script discussed earlier in this guide to deploy an updated image to the ECR
+2. Navigate to Task Definitions, select the latest task, choose create new revision
+3. Update Service to use the latest task revision.
+4. Scale up your cluster to 2*n instances. You will see that a new running task is created to use the latest revision.
+5. Wait for new the service to be restarted
+6. Scale down your cluster to n instances.
+
+**If you need to change your instance type:**
+
+1. Click on the Stack corresponding to your ECS-Cluster.
+2. Click "Update Stack"
+3. Use current template, Next
+4. change EcsInstanceType to your preferred [instance type](https://aws.amazon.com/ec2/instance-types/)
+5. Next, Next, Update
+6. Scale up your cluster to 2*n instances
+7. Wait for the n new instances of the new type being created
+8. Scale down your cluster to n
 
 # Gotchas
 
