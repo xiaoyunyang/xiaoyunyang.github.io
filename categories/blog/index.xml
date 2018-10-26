@@ -8,10 +8,51 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cribsheet for JavaScript Coding Interview</title>
+      <link>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</link>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</guid>
+      <description>&lt;p&gt;The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how thte candidate go about solving a problem, or the architecture design interview, which assesses how thte candidate&amp;rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Can you code?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>What Happens Under the Hood When you Visit a Website</title>
+      <link>https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/</link>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/</guid>
+      <description>&lt;p&gt;This post is inspired by my recent experience interviewing for a developer role. During few of the the initial phone screens, I was asked the question:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Tell me what happens under the hood when you visit a website.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Best Practices For State Management With React And Redux</title>
+      <link>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</guid>
+      <description>&lt;p&gt;In this post, I&amp;rsquo;ll share some best practices, tips, and practical examples for managing states and data in a frontend applications. Although the examples are targeted at frontend developers working with React and Redux, the best practices discussion are applicable for frontend developers working with any framework.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>A Complete Guide To Deploying Your Web App To Amazon Web Service</title>

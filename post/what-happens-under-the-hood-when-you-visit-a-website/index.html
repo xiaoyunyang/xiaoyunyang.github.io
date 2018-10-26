@@ -1,0 +1,1480 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.46 with theme Tranquilpeak 0.4.3-BETA">
+    <title>What Happens Under the Hood When you Visit a Website</title>
+    <meta name="author" content="Xiaoyun Yang">
+    <meta name="keywords" content="JavaScript, React, Redux, Best Practices, Web Design, Web Development, Redux, React.js">
+
+    <link rel="icon" href="https://xiaoyunyang.github.io/favicon-96x96.png">
+    
+
+    
+    <meta name="description" content="This post is inspired by my recent experience interviewing for a developer role. During few of the the initial phone screens, I was asked the question:
+
+
+Tell me what happens under the hood when you visit a website.
+
+
+">
+    <meta property="og:description" content="This post is inspired by my recent experience interviewing for a developer role. During few of the the initial phone screens, I was asked the question:
+
+
+Tell me what happens under the hood when you visit a website.
+
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="What Happens Under the Hood When you Visit a Website">
+    <meta property="og:url" content="https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/">
+    <meta property="og:site_name" content="Xiaoyun Yang">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Xiaoyun Yang">
+    <meta name="twitter:description" content="This post is inspired by my recent experience interviewing for a developer role. During few of the the initial phone screens, I was asked the question:
+
+
+Tell me what happens under the hood when you visit a website.
+
+
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/company-culture-plant.png">
+    
+    
+    
+
+    
+      <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://xiaoyunyang.github.io/css/custom.css">
+      
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiaoyunyang.github.io/">Xiaoyun Yang</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiaoyunyang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiaoyunyang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
+        
+          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/projects">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-code"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/blog">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
+      
+      <span class="sidebar-button-desc">Medium</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">Linkedin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
+      
+      <span class="sidebar-button-desc">AngelList</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+     <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
+     
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Email Me</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      What Happens Under the Hood When you Visit a Website
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-10-25T00:00:00Z">
+        
+  October 25, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoyunyang.github.io/categories/blog">blog</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>This post is inspired by my recent experience interviewing for a developer role. During few of the the initial phone screens, I was asked the question:</p>
+
+<blockquote>
+<p>Tell me what happens under the hood when you visit a website.</p>
+</blockquote>
+
+<p></p>
+
+<p>What the interviewers were looking for is a discussion on the HTTP protocol, how server responds to requests and ensure authenticated communications between client and server. Some even asked to describe how web domains are translated to public IP addresses by DNS. I provided my response based on my experience working on applications in the past 5 years. But I don&rsquo;t feel I provided the best response I could have. It has been more than 5 years when I learned web fundamentals from a university course. Based on my attempt to answer the interview question, I&rsquo;ve identified clear gaps in my understanding about how all of the technologies behind the internet come together.</p>
+
+<p>This post is designed to help beginners and experienced web developers alike in gaining a comprehensive and deep understanding of how the web works and how web technologies work together. If you are learning this for the first time, preparing for a job interview, or trying to refresh your memory or update your knowledge, read on!</p>
+
+<p>several companies We are diving into web fundamentals in this post. We will cover HTTP protocol, get a more in depth understanding.</p>
+
+<p>This is an introduction of concepts and technology behind modern web applications. Modern web applications are built on stacks of open source libraries and frameworks. You can visit <a href="https://stackshare.io/airbnb/airbnb" target="_blank">stackshare.io</a> to see the stacks used by tech companies such as Airbnb.</p>
+
+<h1 id="the-fundamentals">The Fundamentals</h1>
+
+<h2 id="internet-technology">Internet Technology</h2>
+
+<p>The Internet is quintessentially networked computers. Computers used to be standalone machines, primarily used by researchers at universities to support local computations. In the 1970s, the US Army funded a project to provide the capability to network computers. ARPANET was born. ARPANET parlayed into serveral other initiatives that eventually resulted in what we all know today as the Internet.</p>
+
+<p>At a physical level, computers talk to each other by leveraging existing telecommunication system infrastruture to send signals from one end point to another end point. Phone companies expanded their roles to become Internet Service Providers (ISP). Big ISPs owns the main infrastructure to support internet access to a region of the world. We will not go into ISP traffic throttling or telecommunications policies but that&rsquo;s an interesting topic reserved for another blog post. But we will keep in mind the physical limitations of the &ldquo;wires as a service&rdquo; and important considerations for the regionality of machines we use for hosting when we later discuss network latency.</p>
+
+<h2 id="layers">Layers</h2>
+
+<p>Layers are abstractions of the technology under the hood to make communications over the internet possible. There are four layers:</p>
+
+<ul>
+<li>Application Layer</li>
+<li>HTTP</li>
+<li>TCP/IP</li>
+<li>Hardware layer</li>
+</ul>
+
+<p>Since this post is tailored for web developers, we will not go into a lot of details about TCP/IP or the hardware layer. These are topics that hardware engineers and network engineers are concerned with but thanks to abstraction, we web developers don&rsquo;t have to be concerned about how our data travels through copper wires and can treat these layers as black boxes. But for our appreciation, here&rsquo;s a brief aside discussion on the TCP/IP and Hardware layer with a fun analogy:</p>
+
+<p>Suppose you are sending a long message to your pen pal by mail. You can send the long message in a</p>
+
+<p>If you want to audit the University of Michigan <a href="https://www.coursera.org/learn/internet-history" target="_blank">Coursera course</a> taught by Charles Severance, I highly recommend it.</p>
+
+<h2 id="application-layer-in-depth">Application Layer in depth</h2>
+
+<p>This section is divided into two parts. One part deals with the things you got to know when developing a localhost website. The second part deals with the things you encounter when you get around to deploying the website to the cloud, e,g, Amazon Web Service.</p>
+
+<h3 id="part-1">Part 1</h3>
+
+<p>_<strong>Session</strong></p>
+
+<h3 id="part-2">Part 2</h3>
+
+<h3 id="session">Session</h3>
+
+<h3 id="request">Request</h3>
+
+<p>Request Header</p>
+
+<h3 id="response">Response</h3>
+
+<p>Response Header</p>
+
+<p>The Application &lt;-&gt; HTTP layer is used to deliver images, files, videos, and other kinds of data from the server to the client (e.g., browser). The browser</p>
+
+<p>The client is not always a browser. You can use curl to see what is returned when you send a HTTP request. There are APIs that allow web applications to request data from each other and for mobile applications to request and send data to a server application hosted in the cloud. The most popular api is the REST API.</p>
+
+<h3 id="ssl">SSL</h3>
+
+<h3 id="csrf">CSRF</h3>
+
+<h3 id="request-response-headers">Request/Response Headers</h3>
+
+<ul>
+<li>eTag</li>
+<li>Status code</li>
+<li>CSRF concern?</li>
+<li>XSS</li>
+</ul>
+
+<p><strong>What about GraphQL?</strong></p>
+
+<p>Used a lot for mobile applications. It is not a competitor to REST but rather an enhancement.</p>
+
+<h1 id="application-of-web-fundamental">Application of Web Fundamental</h1>
+
+<p>Now we know how the web works, how do we apply this knowledge to build a web applications? What tools, frameworks and libraries can we leverage to create a fast, reliable, and secure web application?</p>
+
+<p>adding csrf tags to forms</p>
+
+<p>How Github does it, here&rsquo;s the DOM from Github settings page:</p>
+
+<p><img src="https://xiaoyunyang.github.io/post/images/webdev/csrf-tag-example.png" alt="" /></p>
+
+<h2 id="how-to-ensure-response-comes-from-a-valid-source">How to ensure response comes from a valid source?</h2>
+
+<ul>
+<li><p>CSRF concern mitigated by injecting a special field in the form like a one time hash that</p></li>
+
+<li><p>Tabnabbing concern mitigated by using <code>rel=&quot;noopener noreferrer&quot;</code> in anchors containing `target=&rdquo;_blank&rdquo;. This post demonstrates the danger of tabnabbing <a href="https://mathiasbynens.github.io/rel-noopener/" target="_blank">https://mathiasbynens.github.io/rel-noopener/</a></p></li>
+</ul>
+
+<p>For more, read <a href="https://github.com/asciidoctor/asciidoctor/issues/2071" target="_blank">this</a> and <a href="https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/" target="_blank">this</a></p>
+
+<blockquote>
+<p>The page we&rsquo;re linking to gains partial access to the linking page via the window.opener object.</p>
+</blockquote>
+
+<h1 id="understanding-web-technology">Understanding Web Technology</h1>
+
+<h2 id="front-end">Front End</h2>
+
+<p>In the early days of the Internet, everyone writes their websites in HTML. The Document Object Model (DOM) is a programming API for HTML. The object model itself closely resembles the structure of the documents it models. For instance:</p>
+
+<pre><code>&lt;p&gt;A List:&lt;/p&gt;
+&lt;ul&gt;A List
+  &lt;li&gt;One&lt;/li&gt;
+  &lt;li&gt;Two&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>gives you</p>
+
+<p><p>A List:</p><ul><li>One</li><li>Two</li></ul></p>
+
+<p>When you visit a website built in the 1990s, your browser (e.g., Chrome, Firefox, Safari) makes a request to the server of the website to download all files it needs to display the webpage. For instance, the HTML file tells your browser how to create a DOM. The Cascading Style Sheets (CSS) file tells your browser how to apply styles, such as text color and font, to the DOM.</p>
+
+<p>With CSS, we are able to style multiple elements simultaneously. CSS is <a href="https://medium.com/@Heydon/css-a-new-kind-of-javascript-fcf730d33ce7" target="_blank">a new kind of JavaScript</a>.</p>
+
+<p>Go ahead and open <a href="https://www.w3.org/TR/WD-DOM/introduction.html" target="_blank">https://www.w3.org/TR/WD-DOM/introduction.html</a> with Chrome and press <code>Cmd + Shift + C</code> to inspect the DOM.  Press <code>Cmd + s</code> to save the webpage to your computer and click the <code>.html</code> file stored on your computer to see that the same webpage is displayed.</p>
+
+<p>Static webpages are undesirable from a user perspective as well as from a web developer perspective. Users cannot interact much with a static website other than viewing the content. The owner of the website has to modify the html file to change the content of page.</p>
+
+<p>Javascript frameworks provide a way for the client (i.e., the browser) to manipulate the DOM. The client may interact with DOM in different ways (e.g., collapsing and filtering a list). Javascript frameworks also handle the interface between the DOM and server. There are <a href="https://hackernoon.com/5-best-javascript-frameworks-in-2017-7a63b3870282" target="_blank">many javascript frameworks</a> out there but none is more powerful than <a href="https://reactjs.org/docs/thinking-in-react.html" target="_blank">React</a>.</p>
+
+<h3 id="react">React</h3>
+
+<blockquote>
+<p>React is a declarative, efficient, and flexible JavaScript library for building user interfaces.</p>
+</blockquote>
+
+<p><strong><a href="https://reactjs.org/tutorial/tutorial.html" target="_blank"><code>React</code></a></strong> is a Javascript library, built and maintained by Facebook. It was developed by <a href="https://twitter.com/jordwalke" target="_blank">Jordan Walke</a>, a software engineer at Facebook. It was open-sourced and announced to the developer community in May 2013. Since then, it has undergone tremendous growth and adoption in the developer community. React is currently on version 16 (See the <a href="https://reactjs.org/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes" target="_blank">Migration log</a> to appreciate the pace of growth in popularity and capability of React).</p>
+
+<p>React gives the developer full control of the DOM and covers the rendering of initial state and updating the state to reflect changes based on user or server input.</p>
+
+<p><a href="https://auth0.com/blog/reactjs-authentication-tutorial/" target="_blank">Good Introduction to React from Auth0</a></p>
+
+<blockquote>
+<p>React lets you create custom and reusable HTML elements. React provides some methods that are triggered at various points from creating a component up until the component is destroyed. This is called the Component&rsquo;s Lifecycle. You can declare methods to hook into the component&rsquo;s lifecycle to control the behavior of components in your app. Some examples of these lifecycle hooks are <code>componentDidMount()</code>, <code>componentWillMount()</code>, <code>componentWillUnmount()</code>, <code>shouldComponentUpdate()</code>, <code>componentWillUpdate()</code> and more. Read more about the lifecycle API <a href="http://www.react.express/lifecycle_api" target="_blank">here</a></p>
+</blockquote>
+
+<p>What is a <code>prop</code>?</p>
+
+<blockquote>
+<p>Props is the short form for properties. Properties are attributes of a component. In fact, props are how components talk to each other. A tag in HTML such as <code>&lt;img&gt;</code> has an attribute, a.k.a prop called src that points to the location of an image.</p>
+</blockquote>
+
+<p>In React, application data flows unidirectionally via the state and props objects, as opposed to the <a href="https://www.themarketingtechnologist.co/introduction-to-data-binding-in-angular-2-versus-angular-1/" target="_blank">data binding</a> of libraries like <a href="https://angular.io/" target="_blank">Angular</a> (another popular Javascript framework for building web apps). This means that, in a multi-component hierachy, a common parent component should manage the state and pass it down the chain via the <code>prop</code>.</p>
+
+<ul>
+<li><p><a href="https://reactjs.org/docs/thinking-in-react.html" target="_blank">Thinking in React</a></p>
+
+<blockquote>
+<p>Since you’re often displaying a JSON data model to a user, you’ll find that if your model was built correctly, your UI (and therefore your component structure) will map nicely. That’s because UI and data models tend to adhere to the same information architecture, which means the work of separating your UI into components is often trivial.</p>
+</blockquote></li>
+</ul>
+
+<p>For example, when you first click on the link to visit <a href="https://www.khanacademy.org/" target="_blank">KhanAcademy</a>&rsquo;s home page &ndash; a webpage built on React &ndash; your browser makes a request to the KhanAcademy&rsquo;s server to load the React code. The browser executes the React code, which creates React components. Each React component generates the part of the DOM it is responsible for by making another (asynchronous) request to the webpage&rsquo;s server or another server&rsquo;s API (more on that later) to grab the data (typically JSON) it needs to generates the appropriate information that needs to be displayed on the webpage.  For subsequent updates to the webpage, the React component repeats the steps to load JSON from the server or API and updates the information on the webpage.</p>
+
+<p><a href="http://matthiasnehlsen.com/blog/2014/01/05/play-framework-and-facebooks-react-library/" target="_blank">matthias nehlsen&rsquo;s blog</a>:</p>
+
+<blockquote>
+<ul>
+<li>Components can have state if necessary.</li>
+<li>React prefers immutable props over mutable state wherever possible, making state changes much easier to reason about.</li>
+<li>Each component knows how to render itself.</li>
+<li>Components can have other components as children. They can pass their own state or props to these as immutable props.</li>
+<li>The entire DOM is rendered into a (fast) virtual DOM with every change made. Changes can either come from mutated state or from parent elements as immutable props.</li>
+<li>This virtual DOM is then diffed against a representation of the current DOM, with the actual DOM only being manipulated where new and old versions differ.</li>
+<li>Data coming from business logic outside will not be touched; React can work withimmutable data thoughout.</li>
+<li>Hierarchical components, props, state, handlers. That’s pretty much it, no more rather unintuitive concepts to understand.</li>
+</ul>
+</blockquote>
+
+<h3 id="redux">Redux</h3>
+
+<h2 id="building-an-api">Building an API</h2>
+
+<h3 id="restful-api">RESTful API</h3>
+
+<blockquote>
+<p>The RESTful API provides a way for the frontend app to talk to a server.</p>
+</blockquote>
+
+<p><strong>Why we need a RESTful API?</strong></p>
+
+<p>The motivation for a RESTful API is to promote separation of concerns between the frontend application (the client) and the backend application (the server). REST, which stands for Representational State Transfer) provides an communications interface between the client and the server so that the client does not need to be concerned with data storage, which remains internal to the server, and the server does not need to be concerned with the display and user manipulation of the DOM, which remains internal to the client.</p>
+
+<p>Separation of concerns improves portability of both the client code and server code. To support this goal, we need a way for the client to talk to server. The most common communications between a client and a server are the <code>GET</code> and <code>PUT</code>. The client asks the server for information via a HTTP <code>GET</code> requests and displays a DOM to the user based on that information. The client also gives the server information based on user input via a HTTP <code>PUT</code>. The information that&rsquo;s passed back and forth is in a format called JSON, which looks something like this: <a href="https://api.github.com/users/xiaoyunyang/repos" target="_blank">https://api.github.com/users/xiaoyunyang/repos</a></p>
+
+<p>While we (people) can view the JSON via clicking on the link and opening it up in the browser, the frontend app can view this data via making the following HTTP request:</p>
+
+<pre><code>GET https://api.github.com/users/xiaoyunyang/repos
+</code></pre>
+
+<p>which can be generalized as follows:</p>
+
+<pre><code>&lt;HTTP Verb&gt; &lt;Endpoint&gt;
+</code></pre>
+
+<p><strong>Endpoint</strong> is the address (i.e., a URL) of the service. We will discuss HTTP in the section below.</p>
+
+<p>The above example is supported by the <a href="https://developer.github.com/v3/repos/#list-your-repositories" target="_blank">Github API</a>. Many websites that collect a lot of data from their users provide an API that allows web developers to access that data. Some good APIs include:</p>
+
+<ul>
+<li><a href="https://developer.twitter.com/en/docs/tweets/post-and-engage/overview" target="_blank">Twitter API</a> - Grab tweets (useful for news websites)</li>
+<li><a href="https://developer.github.com/v3/repos/#list-your-repositories" target="_blank">Github API</a> - Grab repo information (useful if you are making an app to compare the popularity of open source libraries in real time)</li>
+<li><a href="https://developers.facebook.com/docs/graph-api/" target="_blank">Facebook Graph API</a> - Get user profile info or business info</li>
+<li><a href="https://www.yelp.com/developers/documentation/v3/business_search" target="_blank">Yelp Fusion API</a> - Find Information about businesses</li>
+</ul>
+
+<p>The above example demonstrates the another usefulness of REST API as it allows you to build frontend applications that can talk to not just its own server, but other servers that provides public access to their data via a REST API.</p>
+
+<p><strong>What is HTTP?</strong></p>
+
+<p><a href="https://www.wikiwand.com/en/Hypertext_Transfer_Protocol" target="_blank">HTTP</a> stands for Hypertext Transport Protocol. It was invented for the Web to retrieve HTML, images, documents etc. The basic concept of HTTP is (1) establish a connection, (2) request a document, (3) retrieve the document, and (4) close the connection. Let&rsquo;s see HTTP in action. In your terminal, type:</p>
+
+<pre><code>$ telnet www.rigaut.com 80
+</code></pre>
+
+<p>Port 80 is the non-encrypted HTTP port. If you see the following, the connection went through:</p>
+
+<pre><code>Trying 80.248.208.218...
+Connected to www.rigaut.com.
+Escape character is '^]'.
+</code></pre>
+
+<p>Then type:</p>
+
+<pre><code>GET /benoit/CERN/about/
+</code></pre>
+
+<p>get the following response:</p>
+
+<pre><code>&lt;html&gt;
+...
+&lt;/html&gt;
+Connection closed by foreign host.
+</code></pre>
+
+<p>That&rsquo;s essentially what your browser does when you visit <a href="http://www.rigaut.com/benoit/CERN/about/" target="_blank">http://www.rigaut.com/benoit/CERN/about</a>. Your browser gets back a bunch of HTML and it will render a DOM based on the HTML and displays the webpage to you. A browser is a software application that makes HTTP requests, processes the HTTP response (e.g., HTML), and display that to you.</p>
+
+<p><strong>HTTP Requests</strong></p>
+
+<p>As stated above, REST is based on HTTP. We need to have a way to respond to a request with a message when the response is success or has an error.</p>
+
+<p>These are all the <a href="http://www.restapitutorial.com/lessons/httpmethods.html" target="_blank">HTTP requests</a>, their corresponding operation, and response in HTTP status codes:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">HTTP Verb</th>
+<th align="center">CRUD Operation</th>
+<th align="left">Response (status Codes)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center"><code>POST</code></td>
+<td align="center">Create</td>
+<td align="left">201, 404, 409</td>
+</tr>
+
+<tr>
+<td align="center"><code>GET</code></td>
+<td align="center">Read</td>
+<td align="left">200, 304, 404</td>
+</tr>
+
+<tr>
+<td align="center"><code>PUT</code></td>
+<td align="center">Update/Replace/Create</td>
+<td align="left">200, 201, 204, 404, 405</td>
+</tr>
+
+<tr>
+<td align="center"><code>PATCH</code></td>
+<td align="center">Update/Modify</td>
+<td align="left">200, 204, 404, 405</td>
+</tr>
+
+<tr>
+<td align="center"><code>DELETE</code></td>
+<td align="center">Delete</td>
+<td align="left">200, 204, 404, 405</td>
+</tr>
+</tbody>
+</table>
+
+<p>These are the typical <a href="https://www.wikiwand.com/en/List_of_HTTP_status_codes" target="_blank">HTTP status codes</a>, their definition, and an easy way to remember the ranges per <a href="https://twitter.com/stevelosh/status/372740571749572610" target="_blank">the tweet from @stevelosh</a>:</p>
+
+<p><strong>The 200 range</strong>
+&gt; Here you go</p>
+
+<ul>
+<li><code>200</code>= OK
+
+<ul>
+<li>The <code>GET</code> request has succeeded and content was retrieved.</li>
+</ul></li>
+<li><code>201</code> = Created
+
+<ul>
+<li>This status is provided as response to a successful <code>POST</code> (or if using<code>PUT</code> for create) request along with a location header with a link to the newly-created resource.</li>
+</ul></li>
+<li><code>204</code> = No content
+
+<ul>
+<li>A response to a <code>PUT</code> or <code>PATCH</code> request upon successful update if not returning any content in the body. In the case of <code>DELETE</code>, you return <code>204</code> after a successful delete operation.</li>
+</ul></li>
+</ul>
+
+<p><strong>The 300 range</strong>
+&gt; Go away</p>
+
+<ul>
+<li><code>301</code>= Moved Permanently
+
+<ul>
+<li>The requested resource has been assigned a new permanent URI and any future references to this resource should use one of the returned URIs.</li>
+</ul></li>
+<li><code>303</code> = See Other
+
+<ul>
+<li>Resource is already created and you want to redirect to a new page.</li>
+</ul></li>
+<li><code>304</code> = A successful response to <code>GET</code>. Resource is still fetched for the browser, but as opposed to <code>200</code> where a new thing is fetched, a <code>304</code> status means the resource for current fetch request matches that of a previous fetch request so there is no need to retransmit the resource since the client still has a previously-downloaded copy.</li>
+</ul>
+
+<p><strong>The 400 range</strong>
+&gt; You messed up</p>
+
+<ul>
+<li><code>400</code>= Bad Request
+
+<ul>
+<li>The request could not be understood by the server due to malformed syntax. The client should not repeat the request without modifications.</li>
+</ul></li>
+<li><code>401</code>= Unauthorized
+
+<ul>
+<li>The request requires user authentication.</li>
+</ul></li>
+<li><code>403</code> = Forbidden
+
+<ul>
+<li>Even logged in user has no permission to do something. For example, if logged in user can access some parts of the static files but not others.</li>
+</ul></li>
+<li><code>404</code>= Not Found
+
+<ul>
+<li>For example, a <code>GET</code> request on something that cannot be fetched because there is no code matched to the URI. a <code>DELETE</code> request on something with an ID not found or invalid.</li>
+</ul></li>
+<li><code>405</code> = Method Not Allowed
+
+<ul>
+<li>For example, a <code>GET</code> request on a form that requires data to be presented via <code>POST</code>, or a <code>PUT</code> request on a read-only resource.</li>
+</ul></li>
+<li><code>409</code> = Conflict
+
+<ul>
+<li>A response to a failed <code>POST</code> request (e.g., cannot create user because user already exists).</li>
+</ul></li>
+</ul>
+
+<p><strong>The 500 range</strong>
+&gt; I messed up</p>
+
+<ul>
+<li><code>500</code> = Internal Server Error
+
+<ul>
+<li>In an express app, the 500 error is associated with a requesting a file that does not exist. For example, if you are using <code>res.sendFile</code> to send an nonexisting file.</li>
+<li>Unlike the rest of the status codes where you want to be as descriptive as possible, it’s often better to be vague and say “Internal Server Error”; that way hackers can’t know where the weaknesses in your system lie.</li>
+</ul></li>
+<li><code>503</code>= Service Unavilable</li>
+</ul>
+
+<p>See more <a href="https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-http-error-codes" target="_blank">from the DigitalOcean Tutorial</a></p>
+
+<h3 id="graphql">GraphQL</h3>
+
+<p><a href="https://blog.pusher.com/rest-versus-graphql/" target="_blank">REST vs GraphQL</a></p>
+
+<blockquote>
+<p>GraphQL is a declarative data fetching specification and query language for APIs. It was created by Facebook back in 2012 to power their mobile applications. It is meant to provide a common interface between the client and the server for data fetching and manipulations. GraphQL was open sourced by Facebook in 2015.</p>
+
+<p>REST and GraphQL can both be operated over HTTP, though GraphQL is protocol agnostic.</p>
+</blockquote>
+
+<p>In 2016 <a href="https://developer.github.com/v4/guides/intro-to-graphql/" target="_blank">Github migrated its API from REST to GraphQL</a></p>
+
+<p><a href="https://dev-blog.apollodata.com/graphql-vs-rest-5d425123e34b" target="_blank">Apollo&rsquo;s Article</a> on two ways to send data over HTTP states:</p>
+
+<blockquote>
+<p>GraphQL is presented as a revolutionary new way to think about APIs. Instead of working with rigid server-defined endpoints, you can send queries to get exactly the data you’re looking for in one request.</p>
+</blockquote>
+
+<p>With REST:</p>
+
+<pre><code>GET /books/1
+{
+  &quot;title&quot;: &quot;Black Hole Blues&quot;,
+  &quot;author&quot;: { 
+    &quot;firstName&quot;: &quot;Janna&quot;,
+    &quot;lastName&quot;: &quot;Levin&quot;
+  }
+  // ... more fields here
+}
+</code></pre>
+
+<p>With GraphQL:</p>
+
+<pre><code>GET /graphql?query={ book(id: &quot;1&quot;) { title, author { firstName } } }
+{
+  &quot;title&quot;: &quot;Black Hole Blues&quot;,
+  &quot;author&quot;: {
+    &quot;firstName&quot;: &quot;Janna&quot;,
+  }
+}
+</code></pre>
+
+<blockquote>
+<p>The core idea of REST is the resource. Each resource is identified by a URL, and you retrieve that resource by sending a GET request to that URL. You will likely get a JSON response, since that’s what most APIs are using these days.
+We can see that the URL with a GraphQL query specifies the resource we’re asking for and also which fields we care about. Also, rather than the server author deciding for us that the related author resource needs to be included, the consumer of the API decides.</p>
+</blockquote>
+
+<p><a href="https://hackernoon.com/an-introduction-to-graphql-2c3f7d8fb4e0" target="_blank">An Introduction to GraphQL</a></p>
+
+<h2 id="backend">Backend</h2>
+
+<p>Modern web apps are built on sophisticated frontend frameworks like React that handles all the UI logic, even routing (<code>react-router</code>). While <a href="https://www.wikiwand.com/en/Comparison_of_web_frameworks" target="_blank">any backend</a> will do the job and developers choose backend frameworks based on their language of choice (e.g., ruby&rsquo;s Ruby on Rails, python&rsquo;s Django, scala&rsquo;s Play, Haskell&rsquo;s Yesod etc.), a poor performing backend can really hurt your webapp&rsquo;s performance and scalability. We need to keep <a href="https://www.quora.com/Would-you-choose-Node-js-Express-js-or-Play-framework-Java-for-a-new-web-app-project-Why" target="_blank">three main things to consider</a> when choosing a backend framework:</p>
+
+<ul>
+<li><strong>Performance:</strong> For backend, that means being stateless, asynchronous, and supporting non-blocking I/O. We throw out Ruby on Rails for its performance issues.</li>
+<li><strong>Flexibility:</strong> Ability to make extendable modules and add-ons to help you make anything you need for a server, such as authentication.<br /></li>
+<li><strong>Community:</strong>  IMO the most important for a startup founding or freelancer doing a lot with little/no support from a big team. A popularity of a framework contributes directly to developer productivity and framework extensibility. This is especially important for a minimal and unopinionated framework that is flexible, such as Express. We want the ability to add third-party modules to extend the capability of Express and get help from the community for a specific problem we have. There&rsquo;s a healthy Node.js ecosystem so you have a myriad of open source third party modules, tutorials, and an extensive knowledge repository online to help you.</li>
+</ul>
+
+<p>There are <a href="https://gearheart.io/blog/7-best-frameworks-for-web-development-in-2017/" target="_blank">many backend frameworks</a> out there but we will be using Express, which runs in the Node.js runtime environment.</p>
+
+<h3 id="runtime-environment">Runtime Environment</h3>
+
+<p><strong>Node.js</strong>, or simply Node is a JavaScript runtime environment to execute JavaScript code server-side. This is the same concept as the Java Virtual Machine (JVM), which is a runtime environment for Java and languages in the Java family (e.g., Scala, Clojure, Groovy, Kotlin). Node was released in 2009 and is based on <a href="https://www.wikiwand.com/en/Chrome_V8" target="_blank">Google Chrome&rsquo;s powerful JavaScript engine, V8</a>.</p>
+
+<p>A benefit of Node compared to other frameworks (like Ruby) is Node&rsquo;s ability to handle requests <strong>asynchronously</strong>. A browser might request something from your server. The server begins responding to this request and another request comes in. Let’s say the first request requires the server to talk to an external database and the second request does not. The server can ask the external database about the first request, and while that external database is working on responding to the first request, the server can work on responding to the second request. Your server isn’t doing two things at once, but when someone else is working on something, you’re not held up waiting.</p>
+
+<h3 id="framework">Framework</h3>
+
+<p><strong>Express.js</strong>, or simply Express, is a framework that runs on top of the Node&rsquo;s web server to simplify the development of a Node app. Node provides a bevy of low-level features you’d need to build an application. But like browser-based JavaScript, its low-level offerings can be verbose and difficult to use. Express is philosophically similar to jQuery, which cuts down boilerplate code by simplifying the APIs of the browser and adding helpful new features.</p>
+
+<p>Express augments Node by abstracting away the low level request handling, partitioning request handling to smaller, more modular parts that can be implemented by third party libraries (e.g., <code>morgan</code> for logging all requests and <code>passport</code> for authenticating users). Without express, you have to manage one monolithic request handler function with verbose Node.js APIs. With express, you can write multiple small request handler functions that are made more pleasant by Express and its easier APIs.</p>
+
+<p>Most of your Express code involves writing request handler functions, and Express adds a number of conveniences when writing these.</p>
+
+<p>Express does not provide a lot of out-of-box features as compared to bigger (and more opinionated) frameworks such as Play; however Express is not too opinionated how you build your application so you get a lot of flexibility to make architectural decisions for your app. Although you get less out-of-the-box features with Express, there&rsquo;s a rich set of third-party modules (called middleware) to implement the various functions in your Express app.</p>
+
+<p>Hunting for the right modules and making design decisions can be a time consuming process. Downselecting from an overwhelming number of choices seems to be the theme of the JavaScript world. To make it easier, here are the best modules to implement the important functions of a server built in Express:</p>
+
+<ul>
+<li>Logging Requests - use <a href="https://www.npmjs.com/package/morgan-2" target="_blank"><code>morgan</code></a></li>
+<li>Authentication - use <a href="http://www.passportjs.org/" target="_blank"><code>passport</code></a>, <a href="https://github.com/nodemailer/nodemailer" target="_blank"><code>nodemailer</code></a></li>
+<li>Talk to the database - use <a href="http://mongoosejs.com/" target="_blank"><code>mongoose</code></a> for mongoDB or <a href="http://knexjs.org/" target="_blank"><code>knex</code></a> for SQL databases such as postgresQL. See <a href="https://npmcompare.com/compare/bookshelf,knex,objection,orm,sequelize" target="_blank">more options</a> for working with SQL database.</li>
+<li>Password treatment - use <a href="https://www.npmjs.com/package/bcrypt-nodejs" target="_blank"><code>bcrypt-nodejs</code></a>, <a href="https://nodejs.org/api/crypto.html" target="_blank"><code>crypto</code></a></li>
+<li>Session management - use <a href="https://github.com/expressjs/session" target="_blank"><code>express-session</code></a> or <code>cookie-parser</code></li>
+<li>Environmental (make your app more configurable) - use <a href="https://github.com/motdotla/dotenv" target="_blank"><code>dotenv</code></a></li>
+</ul>
+
+<h3 id="building-a-restful-backend-server-to-interface-with-react">Building a RESTful Backend Server to Interface With React</h3>
+
+<p>The traditional view of a server built with Node is <a href="https://hackerstribe.com/wp-content/uploads/2016/04/Node.js-Express-in-Action.pdf" target="_blank">this</a>:
+&gt;you write a single JavaScript function for your entire application. This function listens to a web browser’s requests, or the requests from a mobile application consuming your API, or any other client talking to your server. When a request comes in, this function will look at the request and determine how to respond.</p>
+
+<p>Express simplifie the server functionality by taking care of all the boilerplate code you need to listen to requests and responding to requests. But as frontend frameworks like React is becoming more and more sophisticated, we want to delegate all of the user interface responsbility to the client code to display views and perform routing. Implementing view logic (including when to display a certain view) would lead to under-utilization of the frontend capability and pose an obstacle to the separation of concerns between the frontend and the backend. REST API to the rescue! What we want is to implement separate the Express backend separately from the and React Frontend and integrate them via a REST API. Let&rsquo;s compare the interaction between the server and client with the old way without React and the new way with React and a REST API:</p>
+
+<p><strong>Routing:</strong>
+Routing refers to the mapping certain HTTP requests to certain functionality. For example, when visiting the homepage, certain code should be run. For example When a browser sends a <code>GET</code> request for <code>/</code> to your server, the router needs to respond with sending HTML for the home page.</p>
+
+<ul>
+<li>Old way: Server does all the routing. For example, if you visit the homepage (e.g., <code>localhost:3000/</code>) in a web browser, the server responds by sending you HTML. If you send a message to an API endpoint, this function could determine what you want and respond with JSON.</li>
+<li>New way: Client does most of the URI-driven routing (assuming you have routing libraries like <code>react-router</code> installed). The server routes if the request is triggered by an external event (such as logging in via open authentication) in which case server side logic needs to initiate a redirect.</li>
+</ul>
+
+<p><strong>Display Dynamic Content from the DB</strong></p>
+
+<ul>
+<li>Old way: User requests content (via URL pattern or button press) via a HTTP <a href="http://www.restapitutorial.com/lessons/httpmethods.html" target="_blank"><code>GET</code></a>. Server responds to the request and grabs content from the database, renders the HTML, and sends HTML to the browser.</li>
+<li>New way: User requests content. Server responds to the request by grabbing content from the databse same as before but sends the content as JSON to an API e.g., <code>/api/someStuff</code>. A React component that renders itself based on the <code>someStuff</code> JSON (use <code>isomorphic-fetch</code> to get that data) will update itself by updating its state variables and render the DOM to reflect changes to the JSON. This follows from the single source of truth imperative integral to React.</li>
+</ul>
+
+<p><strong>Update Content from the DB</strong></p>
+
+<ul>
+<li>Old way: A new user fills out a signup form for your site and presses the submit button. Server gets the request to <a href="http://www.restapitutorial.com/lessons/httpmethods.html" target="_blank"><code>POST</code></a> new content, which entails updating the <code>Users</code> database to add new user, then redirects the user to a part of the website that only authenticated users can access, e.g., <code>/dashboard/</code> or unlocks the features of website that only users can access (see <a href="https://www.facebook.com/" target="_blank">https://www.facebook.com/</a> before and after you login). Or another way is to use a templating engine such as <code>ejs</code> to dynamically create HTML and have the server plug dynamic content directly into the corresponding <code>ejs</code> file to be rendered.</li>
+<li>New way: Everything is the same as the old way except for big one difference: instead of having the server switch on what feature to unlock, the client code decides what to unlock based on the authentication status provided by the server. This is essentially a session JSON that is shared globally with the React component and is updated by the server and the client (if the user presses the log out button). We want to use <code>redux</code> to keep track of the session object because that provides one source of truth for all our React components as well as the server.</li>
+</ul>
+
+<p><strong>Session</strong>
+Because HTTP is stateless, in order to associate a request to any other request, you need a way to store user data between HTTP requests. Cookies let the browser store your session for a certain  period of time so you can be kept logged in before the cookie expires even if you closes the website. The server needs to check whether the browser has any cookies, which the server can use to &ldquo;log in the user on his/her behalf&rdquo;. Cookies expire when a specified time elapses or if the user logs out of your site.</p>
+
+<p>The most common external resources you’ll deal with in Express are</p>
+
+<ul>
+<li>Anything involving the filesystem—Like reading and writing files from your hard drive</li>
+
+<li><p>Anything involving a network—Like receiving requests, sending responses, or sending your own requests over the internet</p>
+
+<h3 id="authentication">Authentication</h3></li>
+</ul>
+
+<p><strong>Authentication vs. Authorization</strong>
+Per <a href="https://stackoverflow.com/questions/36490904/whats-the-difference-between-passport-and-oauth" target="_blank">This Stackoverflow Response</a>:
+Passport is authentication middleware. OAuth is authorization middleware.
+Passport will allow you to authenticate the user before allowing access to your API. It does not (directly, it&rsquo;s possible) allow to check if a user is allowed to perform an action after authentication.</p>
+
+<blockquote>
+<p>Authentication is the process of ascertaining that somebody really is who he claims to be.</p>
+
+<p>Authorization refers to rules that determine who is allowed to do what. E.g. Bob may be authorized to create and delete databases, while Bobbette is only authorized to read.</p>
+</blockquote>
+
+<p><strong>Open Authentication (OAuth)</strong></p>
+
+<p>OAuth was developed by Twitter and Ma.gnolia. It is a standard for the delegation of (restricted) rights.</p>
+
+<ol>
+<li>OAuth - Why Open Authentication? Per <a href="https://scotch.io/tutorials/the-easiest-way-to-add-authentication-to-any-app" target="_blank">scotch.io</a>, there are a few key reasons for this, including:
+&gt;</li>
+<li>A shifting identity landscape where we are now logging in with social providers like Google, Facebook, Twitter, and others</li>
+<li>A desire for tighter security through features like multi-factor authentication, password-less login, and single sign-on</li>
+<li>A new approach for application architecture that makes it more difficult to implement authentication</li>
+</ol>
+
+<p>Authentication is your username + password. Authorization is what you&rsquo;re allowed to do.</p>
+
+<p><strong>HTTP requests from mobile web applications</strong>
+Your server can send an eTag as part of the response to your client&rsquo;s HTTP request. The eTag is a hash digest calculated over the content sent by the server. The client can keep a copy of the eTag and next time it asks the server for an update, it can send the eTag with the HTTP request. The server can make a comparison of the eTag in the request, with the eTag calculated over the content it wants to send. If the eTags match, then the server sends a 304 status code, which notifies the client that nothing has changed since the last time the request was made so the client can use what it has stored in its persistent data store on the client side and does not need to download the data again. The eTag is a useful tool for communications between a mobile web application that requires a lot of data from the server because the mobile web app has limited data plan and downloading a lot of data drains the battery.</p>
+
+<h2 id="database">Database</h2>
+
+<p><strong>Why Database?</strong></p>
+
+<ul>
+<li>We want our data to live on after our server goes down (either because we manually stop it or it crashes)</li>
+<li>When we have multiple servers and one set of data that they both need to use and update</li>
+<li>A database is essentially a file management system. It gives us a way to structure our data, query our data, etc</li>
+</ul>
+
+<p><strong>SQL versus NoSQL</strong></p>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=eM7hzKwvTq8" target="_blank">This Video</a>** compares SQL with NoSql.</li>
+<li>SQL databases are also called relational databases. Data is stored like spreadsheets. There are columns and rows. You need to define the columns when you first create the database. Each new entry is a new row and needs to conform to the schema. You use SQL protocol to interact with the database.</li>
+<li>NoSQL, also known as non-relational database, are not generally structured like a spreadsheet. The protocol you use to query a NoSQL database can be anything from a RESTful HTTP request (like couchdb), a JSON-like protocol (such as the BSON of MongoDB), or a SQL-like protocol (such as Cassandra&rsquo;s CQL)</li>
+</ul>
+
+<p><a href="https://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis?" target="_blank">Kristof Kovacs</a> put together a very good summary of all the different kinds of NoSQL databases and what they are good for:</p>
+
+<ul>
+<li>MongoDB: for building a regular app that could benefit from a flexible schema for your database (such as building a website for a startup)</li>
+<li>Redis: for building real-time stuff (such as stock prices, real-time communication, leaderboards)</li>
+<li>Cassandra: for big data. It lets you use SQL-like queries, which can allow data scientists to port over their existing SQL skills.</li>
+<li>HBase: for needing to store a gigantic table (e.g., to do matrix multiplication on or something). For example, a search engine like Google. This is based on Google&rsquo;s BigTable, with support for Map/reduce with Hadoop. Alternative are Accumulo, Hypertable.
+
+<ul>
+<li>Note:  If you are building a social network, don&rsquo;t be tempted to use BigTable to store graph. It&rsquo;s not efficient and you could have a very sparse table. Use a graph database, such as</li>
+</ul></li>
+</ul>
+
+<h2 id="stack">Stack</h2>
+
+<p><strong>MERN Stack</strong></p>
+
+<p><img src="https://webassets.mongodb.com/_com_assets/cms/MERN_stack-y11tmdeja3.png" alt="" /></p>
+
+<p><a href="https://www.mongodb.com/blog/post/the-modern-application-stack-part-1-introducing-the-mean-stack" target="_blank">Source</a></p>
+
+<h2 id="tools">Tools</h2>
+
+<p><strong>Node Package Manager (NPM)</strong>
+Every Node project sits in a folder, and at the root of every Node project there’s a file called <code>package.json</code>, which is a pretty simple JSON file that defines project metadata like the name of the project, its version, and its authors. It also defines the project’s dependencies.</p>
+
+<p><a href="http://www.react.express/npm" target="_blank">react express</a>
+&gt;<code>npm</code> uses a file named <code>package.json</code> to record which packages your app depends on. This package.json file should live in the top level directory of your React project.</p>
+
+<blockquote>
+<p>To add a package.json to a project, run <code>npm init</code></p>
+
+<p>When you type <code>npm install</code> npm automatically downloads all dependencies into a folder called <code>node_modules</code>. This folder will live alongside your package.json.</p>
+</blockquote>
+
+<p><strong>Webpack</strong></p>
+
+<p><a href="http://www.react.express/webpack" target="_blank">react express</a>
+&gt;Webpack bundles your client-side code (JavaScript, css, etc) into a single JavaScript file. Webpack is highly configurable with plugins, allowing you to bundle nearly any kind of asset imaginable.</p>
+
+<p><strong>Git / Github</strong>
+<a href="https://github.com/xiaoyunyang/xiaoyunyang.github.io/blob/master/assets/md/GitTutorial.md" target="_blank">See My Tutorial</a></p>
+
+<h2 id="good-resources">Good Resources</h2>
+
+<p><strong>Web Technology 101:</strong></p>
+
+<ul>
+<li><a href="http://chimera.labs.oreilly.com/books/1230000000345/ch03.html" target="_blank">Web Technology Fundamentals</a></li>
+<li><a href="https://github.com/kamranahmedse/developer-roadmap" target="_blank">Frontend Backend DevOps Roadmap</a></li>
+</ul>
+
+<p><strong>Web App Design Guides</strong></p>
+
+<p><strong>Frontend</strong></p>
+
+<ul>
+<li><a href="http://www.react.express" target="_blank">React.Express Tutorial</a> - Learn about React, Redux, ES6, Babel, Webpack</li>
+<li><a href="https://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/" target="_blank">React-Redux Connect Explained</a></li>
+<li><a href="http://www.google.com/design/spec/material-design/introduction.html" target="_blank">Material Design</a> - Best practice for UX and UI</li>
+<li><a href="https://frontendmasters.com/books/front-end-handbook/2017/" target="_blank">Frontend Handbook</a></li>
+</ul>
+
+<p><strong>Backend</strong></p>
+
+<ul>
+<li><a href="https://hackerstribe.com/wp-content/uploads/2016/04/Node.js-Express-in-Action.pdf" target="_blank">Manning Express In Action</a></li>
+<li><a href="https://github.com/EvanHahn/Express.js-in-Action-code" target="_blank">Express In Action Code</a></li>
+<li><a href="https://crypt.codemancers.com/posts/2017-06-03-reactjs-server-side-rendering-with-router-v4-and-redux/" target="_blank">How to Integrate React Router v4 with Server Router</a></li>
+</ul>
+
+<p><strong>REST API</strong></p>
+
+<ul>
+<li><a href="http://www.restapitutorial.com/" target="_blank">REST API tutorial</a></li>
+</ul>
+
+<h2 id="todo">TODO</h2>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Integrate <a href="https://www.reddit.com/r/LearnFree/comments/6p2p4a/list_of_best_online_resources_to_learn/" target="_blank">resources from here</a> to this document.</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Add self-directed learning guide section to this document.</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Go through the <a href="https://github.com/sindresorhus/awesome" target="_blank">Awesome List</a></label></li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/react/">React</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/node/">Node</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/web-dev/">Web Dev</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/frontend/">Frontend</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/" data-tooltip="Cribsheet for JavaScript Coding Interview">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/" data-tooltip="Best Practices For State Management With React And Redux">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/";  
+this.page.identifier = "What Happens Under the Hood When you Visit a Website"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://http-xiaoyunyang-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Xiaoyun Yang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/" data-tooltip="Cribsheet for JavaScript Coding Interview">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/" data-tooltip="Best Practices For State Management With React And Redux">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fwhat-happens-under-the-hood-when-you-visit-a-website%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fwhat-happens-under-the-hood-when-you-visit-a-website%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fwhat-happens-under-the-hood-when-you-visit-a-website%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Xiaoyun Yang</h4>
+    
+      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Washington DC
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/">
+                <h3 class="media-heading">Cribsheet for JavaScript Coding Interview</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how thte candidate go about solving a problem, or the architecture design interview, which assesses how thte candidate&rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:</p>
+
+<blockquote>
+<p>Can you code?</p>
+</blockquote>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/">
+                <h3 class="media-heading">What Happens Under the Hood When you Visit a Website</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This post is inspired by my recent experience interviewing for a developer role. During few of the the initial phone screens, I was asked the question:</p>
+
+<blockquote>
+<p>Tell me what happens under the hood when you visit a website.</p>
+</blockquote>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/">
+                <h3 class="media-heading">Best Practices For State Management With React And Redux</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>In this post, I&rsquo;ll share some best practices, tips, and practical examples for managing states and data in a frontend applications. Although the examples are targeted at frontend developers working with React and Redux, the best practices discussion are applicable for frontend developers working with any framework.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/a-complete-guide-to-deploying-your-web-app-to-amazon-web-service/">
+                <h3 class="media-heading">A Complete Guide To Deploying Your Web App To Amazon Web Service</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p><img src="https://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png" alt="" /></p>
+
+<p>This a comprehensive guide for how to containerize your Mongo/Express/React/Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/">
+                <h3 class="media-heading">Web Developer Playbook: Rich Text Editor</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>In this article, I will show you add a rich text editor based on <a href="https://draftjs.org/" target="_blank">Draft.js</a> to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
+<img src="https://xiaoyunyang.github.io/post/images/projects/draftjs.png" alt="draftjs" /></p>
+
+<p>Let&rsquo;s get started!</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/dont-quit-your-job-to-be-an-entrepreneur/">
+                <h3 class="media-heading">Don&#39;t Quit Your Job To Be An Entrepreneur</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>People have different reasons to want to quit their 9-5 to pursue entrepreneurship full time. I was drawn to the opportunity to take something from idea to product and being able to “be my own boss”. We all want the lifestyle of a successful entrepreneur but you don’t need to have your own VC funded startup to build a great product.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/web-developer-playbook-slug/">
+                <h3 class="media-heading">Web Developer Playbook: Slug</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p><img src="https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png" alt="" />
+This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/getting-started-with-career-pivot-with-looseleaf/">
+                <h3 class="media-heading">Getting Started With Career Pivot With LooseLeaf</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This documents the market research I&rsquo;ve completed for my startup, <a href="https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">LooseLeaf</a>. This is a long and exhaustive market research. There&rsquo;s a <a href="https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/#pre-submittal-feedback-optional">TL;DR version of the value proposition</a>.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/">
+                <h3 class="media-heading">Data Structure with JavaScript Object: Linked List</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/">
+                <h3 class="media-heading">Algos to Practice Whiteboarding for The Coding Interview</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&rsquo;m drawing these problems from <a href="https://leetcode.com/" target="_blank">LeetCode</a> and <a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;psc=1&amp;refRID=2E72V7DJM4CV4DNTBTKD" target="_blank">Cracking the Coding Interview</a>. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         32 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://xiaoyunyang.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/xiaoyunyang.github.io\/post\/what-happens-under-the-hood-when-you-visit-a-website\/';
+          
+            this.page.identifier = '\/post\/what-happens-under-the-hood-when-you-visit-a-website\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'http-xiaoyunyang-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
