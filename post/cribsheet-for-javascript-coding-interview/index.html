@@ -302,6 +302,8 @@ Can you code?
 <ul>
 <li><a href="#regex">Regex</a></li>
 </ul></li>
+<li><a href="#string-manipulation">String manipulation</a></li>
+<li><a href="#get-characters-from-string">Get Characters from String</a></li>
 <li><a href="#working-with-arrays">Working with Arrays</a>
 <ul>
 <li><a href="#add-things-to-an-array-and-combine-arrays">Add things to an array and combine arrays</a></li>
@@ -312,6 +314,8 @@ Can you code?
 <li><a href="#size-of-js-object">Size of JS Object</a></li>
 <li><a href="#merging-two-js-objects">Merging two JS objects</a></li>
 </ul></li>
+<li><a href="#add-and-remove-things-from-object">Add and remove things from object</a></li>
+<li><a href="#conversion-between-data-types">Conversion Between Data Types</a></li>
 <li><a href="#shortcuts">Shortcuts</a></li>
 </ul>
 </nav>
@@ -412,7 +416,92 @@ matchApple.test('apples'); //&gt; false
 matchApple.test('Apple'); //&gt; false
 </code></pre>
 
+<p>The caret (<code>^</code>) and the dollar sign (<code>$</code>) signal &ldquo;match from the beginning&rdquo; and &ldquo;match until the end&rdquo;, respectively.</p>
+
 <p>As illustrated with the above example, regex is case sensitive.</p>
+
+<p>If you want to match a sequence of characters regardless of whether the letters are upper case or lower case, you could convert every letter in the string to lowercase, then do the pattern matching:</p>
+
+<pre><code class="language-javascript">const str = 'Apple'.toLowerCase();
+matchApple.test(str); //&gt; true
+</code></pre>
+
+<h1 id="string-manipulation">String manipulation</h1>
+
+<p>Suppose we have a string containing alphanumeric characters sprinkled with some illegal characters, in particular, angle brackets, forward slash, backward slash, and quote. We want to remove the illegal characters and retain just the letters. How would we go about this string manipulation?</p>
+
+<p>Using regex:</p>
+
+<pre><code class="language-javascript">const dirtyStr = &quot;&lt;script&gt;window.location=\&quot;http://evil.com\&quot;&lt;/script&gt;&quot;;
+const matchIllegals = /&lt;|&gt;|\\|\/|&quot;/g;
+const cleanStr = dirtyStr.replace(matchIllegals, &quot;&quot;);
+console.log(cleanStr); //&gt; scriptwindow.location=http:evil.comscript
+</code></pre>
+
+<p>We are using the JavaScript built-in function for string, i.e., <code>replace</code>, to replace every angle bracket, slash, and quote in the string with empty string, effectively removing them from the string.</p>
+
+<h1 id="get-characters-from-string">Get Characters from String</h1>
+
+<p>Get One Character</p>
+
+<ul>
+<li><code>str.chartAt(i)</code> - get a character at a index <code>i</code> from <code>str</code>.</li>
+</ul>
+
+<pre><code class="language-javascript">let str = 'hello'
+str.charAt(0) //&gt; 'h'
+str.charAt(str.length-1) //&gt; 'o'
+str.charAt(str.length) //&gt; ''
+</code></pre>
+
+<p>What happens if you do the following?</p>
+
+<pre><code class="language-javascript">str.charAt(str.length) //&gt; ''
+</code></pre>
+
+<p>It returns an empty string! You don&rsquo;t get any help like the index out of bounds error that people who work with a statically typed language with a compiler like Java would be familiar with. This could be a really nasty bug. A similar thing happens with arrays when you access an index out of bound array element:  <code>arr[arr.length]</code> gives you <code>undefined</code>.</p>
+
+<p>Getting Multiple Characters (Substrings)</p>
+
+<p>Say we have &ldquo;hello world&rdquo; as our string but we only want &ldquo;world&rdquo;. What do we do? Slice recursively. &ldquo;hello&rdquo; plus space is 6 characters.</p>
+
+<pre><code class="language-javascript">&quot;hello world&quot;.slice(6) //&gt; &quot;world&quot;
+</code></pre>
+
+<p>Using <code>slice</code> works because a string is really just an array of characters.</p>
+
+<p>A more general function for obtaining the substring is appropriately called <code>substring</code> and it takes two arguments: where to start (inclusive) and where to stop (exclusive). Here&rsquo;s how you use substring:</p>
+
+<pre><code class="language-javascript">'hello'.substring(0, 2); //&gt; 'he'
+</code></pre>
+
+<p>However, using <code>slice</code> and <code>substring</code> for extracting the sub-string requires knowing exactly where is the starting index is. Usually, the substring we want to extract are delimeted by a space or a special character such as a slash. Suppose we have the following problem:</p>
+
+<blockquote>
+<p>Get the username from the Medium url for user profile.</p>
+</blockquote>
+
+<p>Usually, webpages for user profile pages on social networking websites have the following form:</p>
+
+<pre><code>https://&lt;domainName&gt;/&lt;route&gt;/&lt;username&gt;
+</code></pre>
+
+<p>What we want is the username at the end. <code>domainName</code> and <code>route</code> could be arbirarily long. So we can&rsquo;t use <code>slice</code> to solve our problem.</p>
+
+<pre><code class="language-javascript">const getUsername = url =&gt; {
+  return url.split('/').pop().slice(1);
+};
+
+getUsername('https://medium.com/@xiaoyunyang') //&gt; xiaoyunyang
+</code></pre>
+
+<p><code>getUsername</code> function has a one-liner solution but there are few things going on:</p>
+
+<ol>
+<li><code>split('/')</code> splits the url string into an array of substrings using teh &ldquo;/&rdquo; delimiter. The output of the <code>split('/')</code> operated on our example url becomes <code>[ 'https:', '', 'medium.com', '@xiaoyunyang' ]</code>, which gets piped into the next operation <code>pop()</code></li>
+<li><code>pop()</code> is a built-in function for arrays we will discuss later. What it does is it returns the last element of the array and in the process, mutating the original array. <code>pop()</code> could get us in hot water (we will discuss later in the arrays section) because it&rsquo;s mutating the original array but in this case, it&rsquo;s ok because the array we got from <code>split</code> is an intermediate throw-away datastructure that we are only using for deriving the final result. The <code>pop()</code> operatin gives us <code>@xiaoyunyang</code>, which we pipe into the next operation.</li>
+<li><code>slice(1)</code>, as discussed above, returns the substring starting from index 1 until the end of the array. This effectively chops off the <code>@</code> and gives us <code>xiaoyunyang</code>, which is the username.</li>
+</ol>
 
 <h1 id="working-with-arrays">Working with Arrays</h1>
 
@@ -536,7 +625,39 @@ console.log(lessThanThree); //&gt; [0, 1] ... not [0, 1, 2] as we expect
 
 <h1 id="working-with-objects">Working with Objects</h1>
 
+<p>JavaSCript Objects are used to store key-value pairs and can nest other objects as deep as you want. In JavaScript, arrays are actually objects where the keys are numbers. I can make an array using an object notation:</p>
+
+<pre><code class="language-javascript">const arr1 = {
+    0: 0,
+    1: 1,
+    2: 2
+}
+const arr2 = [0, 1, 2];
+</code></pre>
+
+<p>How I access the elements are indistinguishable:</p>
+
+<pre><code class="language-javascript">arr1[1] //&gt; 1
+arr2[1] //&gt; 1
+</code></pre>
+
+<p>This is how I remember the rules for accessing the value of an object using the key - it looks just like the way you access the element of an array at a given index!</p>
+
+<pre><code class="language-javascript">const basket = {
+    apple: 1,
+    pear: 2
+}
+const numApple = basket['apple']; //&gt; 1
+const numPear = basket['pear']; //&gt; 2
+</code></pre>
+
 <h2 id="size-of-js-object">Size of JS Object</h2>
+
+<ul>
+<li><code>Object.keys(dict).length</code> gives you the number of entries in the object called <code>dict</code>, short for dictionary.</li>
+</ul>
+
+<p>Example:</p>
 
 <pre><code class="language-javascript">let basket = {}
 Object.keys(basket).length; // 0
@@ -546,12 +667,109 @@ Object.keys(basket).length; // 1
 
 <h2 id="merging-two-js-objects">Merging two JS objects</h2>
 
+<ul>
+<li>Use spread operator</li>
+</ul>
+
 <p>There&rsquo;s a more verbose way of doing it but we are using ES6&rsquo;s spread operator here:</p>
 
 <pre><code class="language-javascript">const foo = {a: 'a', b: 'b'}
 const bar = {c: 'c', d: 'd'}
 const foobar = {...foo, ...bar} //&gt; {a: &quot;a&quot;, b: &quot;b&quot;, c: &quot;c&quot;, d: &quot;d&quot;}
 </code></pre>
+
+<p>you can also use the spread operator to make a deep copy of the object.</p>
+
+<pre><code class="language-javascript">const foobarCpy = {...foobar} //&gt; {a: &quot;a&quot;, b: &quot;b&quot;, c: &quot;c&quot;, d: &quot;d&quot;}
+</code></pre>
+
+<p>Consistent with the tip above for preferring <code>slice</code> over <code>splice</code> for array operations, we want to err on the side of immutability. We want to make deep copies of things before we start changing things in arrays and objects to avoid nasty bugs and side effects. Assigning objects to another variable does not make a copy of the object, rather, it creates a new reference to the original object:</p>
+
+<pre><code class="language-javascript">const basket = {
+    apple: 1,
+    pear: 2
+}
+
+basket2 = basket;
+basketCpy = {...basket}
+console.log(basket === basket2) //&gt; true
+console.log(basket === basketCpy) //&gt; false
+</code></pre>
+
+<h1 id="add-and-remove-things-from-object">Add and remove things from object</h1>
+
+<pre><code class="language-javascript">const addToDict = (dict, newKey, newVal) =&gt; {
+  if (dict[newKey]) return dict;
+  const newDict = {...dict};
+  newDict[newKey] = newVal;
+  return newDict;
+};
+</code></pre>
+
+<pre><code class="language-javascript">const deleteFromDict = (dict, newKey, newVal) =&gt; {
+  if (!dict[key]) return dict;
+  const newDict = {...dict};
+  newDict[key] = newVal;
+  return newDict;
+};
+</code></pre>
+
+<h1 id="conversion-between-data-types">Conversion Between Data Types</h1>
+
+
+ 
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+<div class="figure fig-75 center" >
+  
+    <a class="fancybox" href="https://xiaoyunyang.github.io/post/images/programming/data-type-conversion.png" title="Conversion Between Different Data Types" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://xiaoyunyang.github.io/post/images/programming/data-type-conversion.png"  alt="Conversion Between Different Data Types">
+  
+    </a>
+  
+   
+    <span class="caption">Conversion Between Different Data Types</span>
+  
+</div>
+
+  <div style="clear:both;"></div>
+
+
+<p>We can use functions to transform between these data types as depicted in the graph above.</p>
 
 <h1 id="shortcuts">Shortcuts</h1>
 
