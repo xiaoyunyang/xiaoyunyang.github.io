@@ -6,6 +6,7 @@ categories:
 tags:
   - JavaScript
   - Guide
+  - Programming
 thumbnailImagePosition: top
 thumbnailImage: /post/images/jsDev.png
 ---
@@ -25,23 +26,23 @@ JavaScript is one of the most popular and versatile languages today. You can bui
 
 ## Constructing
 
-### Add things to an array
+### Add things to an array (mutable)
 
-* `array.push()` adds an item to the end of the array
-* `array.unshift()` adds an item to the beginning of the array.
+* `array.push(elem)` - adds `elem` to the end of `array`.
+* `array.unshift(elem)` - adds `elem` to the beginning of `array`.
 
 ```javascript
-// since the array will be mutated,
-// use 'let' rather than 'const'
-let mutatingAdd = ['a', 'b', 'c', 'd', 'e'];
+const mutatingAdd = [1, 2, 3];
 
-mutatingAdd.push('f'); // ['a', 'b', 'c', 'd', 'e', 'f']
-mutatingAdd.unshift('z'); // ['z', 'b', 'c', 'd', 'e' 'f']
+mutatingAdd.push(4); //> [1, 2, 3, 4]
+mutatingAdd.unshift(0); //> [0, 1, 2, 3, 4]
+
+console.log(mutatingArr); //> [0, 1, 2, 3, 4]
 ```
 
 ### Add things to an array (immutable)
 
-Use `Array.prototype.concat` to add things to the front or bad of an array without mutating the original array.
+* `array.concat` - add things to the head or tail of an array without mutating the original array.
 
 ```javascript
 const arr1 = [1, 2];
@@ -222,14 +223,13 @@ let first = arr.slice(0,1) //> [1]
 let rest = arr.slice(1) //> [2,3,4]
 ```
 
-### Swapping
+### Swapping Hack
 
-```javaacript
+```javascript
 let a = 'world', b = 'hello'
 [a, b] = [b, a]
-console.log(a) // -> hello
-console.log(b) // -> world
-// Yes, it's magic
+console.log(a) //> hello
+console.log(b) //> world
 ```
 
 This ES6 hack was [courtesy of Tal Bereznitskey](https://medium.com/dailyjs/7-hacks-for-es6-developers-4e24ff425d0b).
@@ -350,7 +350,6 @@ flat(data) // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 [1,3,2].sort((a,b) => b > a) //> [3, 2, 1]
 ```
 
-
 Find Smallest Number:
 
 ```javascript
@@ -423,12 +422,11 @@ getStuffNotBad(150, true, true)
 ```javascript
 // Better
 const getStuffAwesome = ({ id, name, force, verbose }) => {
-  ...do stuff
+  // ...do stuff
 }
 // Somewhere else in the codebase... I ❤ JS!!!
 getStuffAwesome({ id: 150, force: true, verbose: true })
 ```
-
 
 ## Alternative to doing a loop
 
@@ -440,6 +438,7 @@ arr.map(d => /* your function */)
 ## Math Functions
 
 ### Max
+
 ```javascript
 Math.max(1,2) //> 2
 ```
@@ -666,7 +665,6 @@ It returns an empty string! You don't get any help like the index out of bounds 
 {{< alert warning >}}
 JavaScript, being a scripting language with a dynamic typed system, lacks a compiler that provides error checking support like throwing index out of bounds error. This is why we need to use a [linter](https://github.com/airbnb/javascript) on vanilla JavaScript or write code in TypeScript that provides a compiler and static type-checking.
 {{< /alert >}}
-
 
 ## Getting Substrings
 

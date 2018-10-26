@@ -1,6 +1,6 @@
 ---
-title: "Tech Stack Behind Modern Web Applications and How to Take Advantage of Them"
-date: 2018-10-24
+title: "What Happens Under the Hood When you Visit a Website"
+date: 2018-10-25
 categories:
   - blog
 tags:
@@ -23,9 +23,105 @@ thumbnailImage: /post/images/company-culture-plant.png
 
 ---
 
-This is an introduction of concepts and technology behind modern web applications. Modern web applications are built on stacks of open source libraries and frameworks. You can visit [stackshare.io](https://stackshare.io/airbnb/airbnb) to see the stacks used by tech companies such as Airbnb.
+This post is inspired by my recent experience interviewing for a developer role. During few of the the initial phone screens, I was asked the question:
+
+> Tell me what happens under the hood when you visit a website.
 
 <!--more-->
+
+What the interviewers were looking for is a discussion on the HTTP protocol, how server responds to requests and ensure authenticated communications between client and server. Some even asked to describe how web domains are translated to public IP addresses by DNS. I provided my response based on my experience working on applications in the past 5 years. But I don't feel I provided the best response I could have. It has been more than 5 years when I learned web fundamentals from a university course. Based on my attempt to answer the interview question, I've identified clear gaps in my understanding about how all of the technologies behind the internet come together.
+
+This post is designed to help beginners and experienced web developers alike in gaining a comprehensive and deep understanding of how the web works and how web technologies work together. If you are learning this for the first time, preparing for a job interview, or trying to refresh your memory or update your knowledge, read on!
+
+several companies We are diving into web fundamentals in this post. We will cover HTTP protocol, get a more in depth understanding.
+
+This is an introduction of concepts and technology behind modern web applications. Modern web applications are built on stacks of open source libraries and frameworks. You can visit [stackshare.io](https://stackshare.io/airbnb/airbnb) to see the stacks used by tech companies such as Airbnb.
+
+# The Fundamentals
+
+## Internet Technology
+
+The Internet is quintessentially networked computers. Computers used to be standalone machines, primarily used by researchers at universities to support local computations. In the 1970s, the US Army funded a project to provide the capability to network computers. ARPANET was born. ARPANET parlayed into serveral other initiatives that eventually resulted in what we all know today as the Internet.
+
+At a physical level, computers talk to each other by leveraging existing telecommunication system infrastruture to send signals from one end point to another end point. Phone companies expanded their roles to become Internet Service Providers (ISP). Big ISPs owns the main infrastructure to support internet access to a region of the world. We will not go into ISP traffic throttling or telecommunications policies but that's an interesting topic reserved for another blog post. But we will keep in mind the physical limitations of the "wires as a service" and important considerations for the regionality of machines we use for hosting when we later discuss network latency.
+
+## Layers
+
+Layers are abstractions of the technology under the hood to make communications over the internet possible. There are four layers:
+
+* Application Layer
+* HTTP
+* TCP/IP
+* Hardware layer
+
+Since this post is tailored for web developers, we will not go into a lot of details about TCP/IP or the hardware layer. These are topics that hardware engineers and network engineers are concerned with but thanks to abstraction, we web developers don't have to be concerned about how our data travels through copper wires and can treat these layers as black boxes. But for our appreciation, here's a brief aside discussion on the TCP/IP and Hardware layer with a fun analogy:
+
+Suppose you are sending a long message to your pen pal by mail. You can send the long message in a 
+
+If you want to audit the University of Michigan [Coursera course](https://www.coursera.org/learn/internet-history) taught by Charles Severance, I highly recommend it.
+
+## Application Layer in depth
+
+This section is divided into two parts. One part deals with the things you got to know when developing a localhost website. The second part deals with the things you encounter when you get around to deploying the website to the cloud, e,g, Amazon Web Service.
+
+### Part 1
+
+___Session__
+
+
+### Part 2
+
+
+### Session
+
+### Request
+
+Request Header
+
+
+
+### Response
+
+Response Header
+
+The Application <-> HTTP layer is used to deliver images, files, videos, and other kinds of data from the server to the client (e.g., browser). The browser
+
+The client is not always a browser. You can use curl to see what is returned when you send a HTTP request. There are APIs that allow web applications to request data from each other and for mobile applications to request and send data to a server application hosted in the cloud. The most popular api is the REST API.
+
+### SSL
+
+### CSRF
+
+### Request/Response Headers
+
+* eTag
+* Status code
+* CSRF concern?
+* XSS
+
+**What about GraphQL?**
+
+Used a lot for mobile applications. It is not a competitor to REST but rather an enhancement.
+
+# Application of Web Fundamental
+
+Now we know how the web works, how do we apply this knowledge to build a web applications? What tools, frameworks and libraries can we leverage to create a fast, reliable, and secure web application?
+
+adding csrf tags to forms
+
+How Github does it, here's the DOM from Github settings page:
+
+![](/post/images/webdev/csrf-tag-example.png)
+
+## How to ensure response comes from a valid source?
+
+* CSRF concern mitigated by injecting a special field in the form like a one time hash that
+
+* Tabnabbing concern mitigated by using `rel="noopener noreferrer"` in anchors containing `target="_blank". This post demonstrates the danger of tabnabbing https://mathiasbynens.github.io/rel-noopener/
+
+For more, read [this](https://github.com/asciidoctor/asciidoctor/issues/2071) and [this](https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/)
+
+> The page we're linking to gains partial access to the linking page via the window.opener object.
 
 # Understanding Web Technology
 
