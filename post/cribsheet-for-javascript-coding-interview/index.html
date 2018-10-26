@@ -301,9 +301,9 @@ Can you code?
 <li><a href="#working-with-strings">Working with Strings</a>
 <ul>
 <li><a href="#regex">Regex</a></li>
-</ul></li>
 <li><a href="#string-manipulation">String manipulation</a></li>
 <li><a href="#get-characters-from-string">Get Characters from String</a></li>
+</ul></li>
 <li><a href="#working-with-arrays">Working with Arrays</a>
 <ul>
 <li><a href="#add-things-to-an-array-and-combine-arrays">Add things to an array and combine arrays</a></li>
@@ -313,8 +313,8 @@ Can you code?
 <ul>
 <li><a href="#size-of-js-object">Size of JS Object</a></li>
 <li><a href="#merging-two-js-objects">Merging two JS objects</a></li>
-</ul></li>
 <li><a href="#add-and-remove-things-from-object">Add and remove things from object</a></li>
+</ul></li>
 <li><a href="#conversion-between-data-types">Conversion Between Data Types</a></li>
 <li><a href="#shortcuts">Shortcuts</a></li>
 </ul>
@@ -426,7 +426,7 @@ matchApple.test('Apple'); //&gt; false
 matchApple.test(str); //&gt; true
 </code></pre>
 
-<h1 id="string-manipulation">String manipulation</h1>
+<h2 id="string-manipulation">String manipulation</h2>
 
 <p>Suppose we have a string containing alphanumeric characters sprinkled with some illegal characters, in particular, angle brackets, forward slash, backward slash, and quote. We want to remove the illegal characters and retain just the letters. How would we go about this string manipulation?</p>
 
@@ -440,7 +440,7 @@ console.log(cleanStr); //&gt; scriptwindow.location=http:evil.comscript
 
 <p>We are using the JavaScript built-in function for string, i.e., <code>replace</code>, to replace every angle bracket, slash, and quote in the string with empty string, effectively removing them from the string.</p>
 
-<h1 id="get-characters-from-string">Get Characters from String</h1>
+<h2 id="get-characters-from-string">Get Characters from String</h2>
 
 <p>Get One Character</p>
 
@@ -696,7 +696,7 @@ console.log(basket === basket2) //&gt; true
 console.log(basket === basketCpy) //&gt; false
 </code></pre>
 
-<h1 id="add-and-remove-things-from-object">Add and remove things from object</h1>
+<h2 id="add-and-remove-things-from-object">Add and remove things from object</h2>
 
 <pre><code class="language-javascript">const addToDict = (dict, newKey, newVal) =&gt; {
   if (dict[newKey]) return dict;
