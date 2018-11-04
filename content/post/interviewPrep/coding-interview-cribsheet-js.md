@@ -446,7 +446,175 @@ thumbnail="/post/images/programming/data-type-conversion.png" title="Conversion 
 
 We can use functions to transform between these data types as depicted in the graph above.
 
+# Data Structures
+
+## Linked List
+
+Basic operations are `appendToHead`, `appendToTail`.
+Linked List provides O(1) appendToHead operations but O(N) look up.
+
+```javascript
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+```
+
+```javascript
+ListNode.prototype.appendToTail = function(val) {
+  let curr = this
+  while(curr) {
+    if(!curr.next) {
+      curr.next = new ListNode(val)
+      return this
+    }
+    curr = curr.next
+  }
+  return this
+}
+```
+
+```javascript
+ListNode.prototype.appendToHead = function(val) {
+  let head = new ListNode(val)
+  head.next = this
+  return head
+}
+```
+
+## Stack
+
+Basic operations are:
+
+* `push(item)` - adds item to top of stack -  O(1)
+* `pop()` - remove the top item from the stack - O(1)
+* `peek()` - returns top of the stack - O(1)
+* `isEmpty()` - returns true if stack is empty - O(1)
+
+We can use JavaScript's array object as a stack.
+
+For example:
+
+```javascript
+const browserHistory = []
+const clickLink = link => {
+  browserHistory.push(link)
+}
+const clickBackBtn = () => {
+  browserHistory.pop()
+}
+clickLink('facebook.com')
+console.log(browserHistory) //> [ 'facebook.com' ]
+clickLink('medium.com')
+console.log(browserHistory) //> [ 'facebook.com', 'medium.com' ]
+clickBackBtn()
+console.log(browserHistory) //> [ 'facebook.com' ]
+clickLink('youtube.com')
+console.log(browserHistory) //> [ 'facebook.com', 'youtube.com' ]
+```
+
+Problem to be solved using a stack is Palindrome
+
+```javascript
+// palindrome (odd number): racecar, dad
+// palindrom (even number): abba
+// ignore space?
+function isPalindrome(str) {
+  let seen = [] //> stack
+
+  // construct stack
+  for(let i=0; i<str.length; i++) {
+    let curr = str.charAt(i)
+    seen.push(curr)
+  }
+  let revStr = ''
+  
+  // construct reverse string
+  while(seen.length > 0) {
+    revStr += seen.pop()
+
+    //optimization
+    if(revStr!==str.substring(0,revStr.length)) {
+      return false
+    }
+  }
+
+  return str === revStr
+}
+```
+
+## Queue
+
+* `add(item)` - add an item to the end of the list - O(1)
+* `remove()` - remove the first item in the list - O(1)
+* `peek()` - return the front of the queue
+* `isEmpty()` - return true if the queue is empty
+
+How to implement a Queue in JavaScript (See [repl](https://repl.it/@xiaoyunyang/Queue))
+
+```javascript
+function DoublyNode(val) {
+  this.val = val;
+  this.prev = null
+  this.next = null
+}
+function Queue() {
+  this.front = null
+  this.back = null
+
+  this.add = item => {
+    let newNode = new DoublyNode(item)
+    if(!this.front) {
+      this.front = newNode
+      this.back = newNode
+      return
+    }
+    this.back.next = newNode
+    newNode.prev = this.back
+    this.back = newNode
+  }
+  this.printForward = () => {
+    let vals = []
+    let n = this.front
+    while(n) {
+      vals.push(n.val)
+      n = n.next
+    }
+    return vals
+  }
+  this.printBackward = () => {
+    let vals = []
+    let n = this.back
+    while(n) {
+      vals.push(n.val)
+      n = n.prev
+    }
+    return vals
+  }
+  this.remove = () => {
+    // remove from the front and return the removed node's val
+    if(!this.front) return null
+    let firstNode = this.front
+    this.front = this.front.next
+    this.front.prev = null
+    firstNode.next = null
+    return firstNode.val
+  }
+
+  this.peek = () => {
+    if(!this.front) return null
+    return this.front.val
+  }
+}
+```
+
 # Shortcuts
+
+Initialize Array
+
+```javascript
+let arr = Array(10)
+```
 
 Find Max:
 
