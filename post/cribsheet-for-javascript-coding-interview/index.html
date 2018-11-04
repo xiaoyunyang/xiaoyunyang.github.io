@@ -308,17 +308,21 @@ Can you code?
 <ul>
 <li><a href="#add-things-to-an-array-and-combine-arrays">Add things to an array and combine arrays</a></li>
 <li><a href="#extract-and-remove-things-from-an-array">Extract and remove things from an array</a></li>
+<li><a href="#sorting-things-in-array">Sorting things in Array</a></li>
 </ul></li>
 <li><a href="#working-with-objects">Working with Objects</a>
 <ul>
 <li><a href="#size-of-js-object">Size of JS Object</a></li>
 <li><a href="#merging-two-js-objects">Merging two JS objects</a></li>
 <li><a href="#add-and-remove-things-from-object">Add and remove things from object</a></li>
+<li><a href="#compare-two-objects">Compare two objects</a></li>
 </ul></li>
 <li><a href="#conversion-between-data-types">Conversion Between Data Types</a></li>
 <li><a href="#shortcuts">Shortcuts</a></li>
 </ul>
 </nav>
+
+<p>For more extensive cheatsheet, check out <a href="https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/" target="_blank">Let&rsquo;s Get Productive With JavaScript</a></p>
 
 <h1 id="working-with-strings">Working with Strings</h1>
 
@@ -425,6 +429,12 @@ matchApple.test('Apple'); //&gt; false
 <pre><code class="language-javascript">const str = 'Apple'.toLowerCase();
 matchApple.test(str); //&gt; true
 </code></pre>
+
+<p>Other useful regex patterns:</p>
+
+<ul>
+<li>whitespace: <code>/^\s$/</code></li>
+</ul>
 
 <h2 id="string-manipulation">String manipulation</h2>
 
@@ -623,6 +633,41 @@ console.log(lessThanThree); //&gt; [0, 1] ... not [0, 1, 2] as we expect
 
 <p>Therefore, when you are trying to quickly solve a programming problem correctly, be absolutely disciplined about using immutable functions like <code>slice</code> and ES6 destructuring so you&rsquo;re not spending 10 minutes of your 30 minute coding challenge time debugging this bug.</p>
 
+<h2 id="sorting-things-in-array">Sorting things in Array</h2>
+
+<p>Numbers</p>
+
+<pre><code class="language-javascript">const nums = [3,2,7,1,2,0]
+
+nums.sort((a,b) =&gt; {
+  return a-b
+})
+
+console.log(nums) //&gt; [ 0, 1, 2, 2, 3, 7 ]
+
+nums.sort((a,b) =&gt; {
+  return b-a
+})
+
+console.log(nums) //&gt; [ 7, 3, 2, 2, 1, 0 ]
+</code></pre>
+
+<p>It&rsquo;s important note that the <code>sort</code> function mutates the original array.</p>
+
+<p>If you don&rsquo;t pass in a function, <code>sort</code> will by default give you the mutated array in ascending order.</p>
+
+<pre><code class="language-javascript">const letters = ['c', 'r', 'a', 'b', 'a', 't']
+letters.sort()
+letters //&gt; [ 'a', 'a', 'b', 'c', 'r', 't' ]
+</code></pre>
+
+<p>However, if you want to get the letters in descending order, we need to use <code>string.prototype.localeCompare</code>.</p>
+
+<pre><code class="language-javascript">const letters = ['c', 'r', 'a', 'b', 'a', 't']
+letters.sort((a,b) =&gt; {return b.localeCompare(a)})
+letters //&gt; [ 't', 'r', 'c', 'b', 'a', 'a' ]
+</code></pre>
+
 <h1 id="working-with-objects">Working with Objects</h1>
 
 <p>JavaSCript Objects are used to store key-value pairs and can nest other objects as deep as you want. In JavaScript, arrays are actually objects where the keys are numbers. I can make an array using an object notation:</p>
@@ -712,6 +757,24 @@ console.log(basket === basketCpy) //&gt; false
   newDict[key] = newVal;
   return newDict;
 };
+</code></pre>
+
+<h2 id="compare-two-objects">Compare two objects</h2>
+
+<p>What if you have two dictionaries and you want to see if they are equal?</p>
+
+<pre><code class="language-javascript">let dict1 = {}
+dict1[&quot;a&quot;] = 1
+dict1[&quot;b&quot;] = 2
+
+let dict2 = {}
+dict2[&quot;a&quot;] = 1
+dict2[&quot;b&quot;] = 2
+
+JSON.stringify(dict1) === JSON.stringify(dict2) //&gt; true
+
+dict1[&quot;a&quot;] = 2
+JSON.stringify(dict1) === JSON.stringify(dict2) //&gt; false
 </code></pre>
 
 <h1 id="conversion-between-data-types">Conversion Between Data Types</h1>
