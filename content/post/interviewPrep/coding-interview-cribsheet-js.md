@@ -25,6 +25,8 @@ For coding challenges, there's always a time limit. The faster you can solve a p
 
 <!-- toc -->
 
+For more extensive cheatsheet, check out [Let's Get Productive With JavaScript](https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/)
+
 # Working with Strings
 
 ## Regex
@@ -78,7 +80,11 @@ const str = 'Apple'.toLowerCase();
 matchApple.test(str); //> true
 ```
 
-# String manipulation
+Other useful regex patterns:
+
+* whitespace: `/^\s$/`
+
+## String manipulation
 
 Suppose we have a string containing alphanumeric characters sprinkled with some illegal characters, in particular, angle brackets, forward slash, backward slash, and quote. We want to remove the illegal characters and retain just the letters. How would we go about this string manipulation?
 
@@ -93,7 +99,7 @@ console.log(cleanStr); //> scriptwindow.location=http:evil.comscript
 
 We are using the JavaScript built-in function for string, i.e., `replace`, to replace every angle bracket, slash, and quote in the string with empty string, effectively removing them from the string.
 
-# Get Characters from String
+## Get Characters from String
 
 Get One Character
 
@@ -280,6 +286,44 @@ console.log(lessThanThree); //> [0, 1] ... not [0, 1, 2] as we expect
 
 Therefore, when you are trying to quickly solve a programming problem correctly, be absolutely disciplined about using immutable functions like `slice` and ES6 destructuring so you're not spending 10 minutes of your 30 minute coding challenge time debugging this bug.
 
+## Sorting things in Array
+
+Numbers
+
+```javascript
+const nums = [3,2,7,1,2,0]
+
+nums.sort((a,b) => {
+  return a-b
+})
+
+console.log(nums) //> [ 0, 1, 2, 2, 3, 7 ]
+
+nums.sort((a,b) => {
+  return b-a
+})
+
+console.log(nums) //> [ 7, 3, 2, 2, 1, 0 ]
+```
+
+It's important note that the `sort` function mutates the original array.
+
+If you don't pass in a function, `sort` will by default give you the mutated array in ascending order.
+
+```javascript
+const letters = ['c', 'r', 'a', 'b', 'a', 't']
+letters.sort()
+letters //> [ 'a', 'a', 'b', 'c', 'r', 't' ]
+```
+
+However, if you want to get the letters in descending order, we need to use `string.prototype.localeCompare`.
+
+```javascript
+const letters = ['c', 'r', 'a', 'b', 'a', 't']
+letters.sort((a,b) => {return b.localeCompare(a)})
+letters //> [ 't', 'r', 'c', 'b', 'a', 'a' ]
+```
+
 # Working with Objects
 
 JavaSCript Objects are used to store key-value pairs and can nest other objects as deep as you want. In JavaScript, arrays are actually objects where the keys are numbers. I can make an array using an object notation:
@@ -356,7 +400,7 @@ console.log(basket === basket2) //> true
 console.log(basket === basketCpy) //> false
 ```
 
-# Add and remove things from object
+## Add and remove things from object
 
 ```javascript
 const addToDict = (dict, newKey, newVal) => {
@@ -374,6 +418,25 @@ const deleteFromDict = (dict, newKey, newVal) => {
   newDict[key] = newVal;
   return newDict;
 };
+```
+
+## Compare two objects
+
+What if you have two dictionaries and you want to see if they are equal?
+
+```javascript
+let dict1 = {}
+dict1["a"] = 1
+dict1["b"] = 2
+
+let dict2 = {}
+dict2["a"] = 1
+dict2["b"] = 2
+
+JSON.stringify(dict1) === JSON.stringify(dict2) //> true
+
+dict1["a"] = 2
+JSON.stringify(dict1) === JSON.stringify(dict2) //> false
 ```
 
 # Conversion Between Data Types

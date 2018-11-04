@@ -1,6 +1,6 @@
 ---
 title: "Best Practices For State Management With React And Redux"
-date: 2018-10-24
+date: 2018-11-28
 categories:
   - blog
 tags:
