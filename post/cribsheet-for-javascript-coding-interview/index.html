@@ -318,6 +318,12 @@ Can you code?
 <li><a href="#compare-two-objects">Compare two objects</a></li>
 </ul></li>
 <li><a href="#conversion-between-data-types">Conversion Between Data Types</a></li>
+<li><a href="#data-structures">Data Structures</a>
+<ul>
+<li><a href="#linked-list">Linked List</a></li>
+<li><a href="#stack">Stack</a></li>
+<li><a href="#queue">Queue</a></li>
+</ul></li>
 <li><a href="#shortcuts">Shortcuts</a></li>
 </ul>
 </nav>
@@ -834,7 +840,172 @@ JSON.stringify(dict1) === JSON.stringify(dict2) //&gt; false
 
 <p>We can use functions to transform between these data types as depicted in the graph above.</p>
 
+<h1 id="data-structures">Data Structures</h1>
+
+<h2 id="linked-list">Linked List</h2>
+
+<p>Basic operations are <code>appendToHead</code>, <code>appendToTail</code>.
+Linked List provides O(1) appendToHead operations but O(N) look up.</p>
+
+<pre><code class="language-javascript">function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+</code></pre>
+
+<pre><code class="language-javascript">ListNode.prototype.appendToTail = function(val) {
+  let curr = this
+  while(curr) {
+    if(!curr.next) {
+      curr.next = new ListNode(val)
+      return this
+    }
+    curr = curr.next
+  }
+  return this
+}
+</code></pre>
+
+<pre><code class="language-javascript">ListNode.prototype.appendToHead = function(val) {
+  let head = new ListNode(val)
+  head.next = this
+  return head
+}
+</code></pre>
+
+<h2 id="stack">Stack</h2>
+
+<p>Basic operations are:</p>
+
+<ul>
+<li><code>push(item)</code> - adds item to top of stack -  O(1)</li>
+<li><code>pop()</code> - remove the top item from the stack - O(1)</li>
+<li><code>peek()</code> - returns top of the stack - O(1)</li>
+<li><code>isEmpty()</code> - returns true if stack is empty - O(1)</li>
+</ul>
+
+<p>We can use JavaScript&rsquo;s array object as a stack.</p>
+
+<p>For example:</p>
+
+<pre><code class="language-javascript">const browserHistory = []
+const clickLink = link =&gt; {
+  browserHistory.push(link)
+}
+const clickBackBtn = () =&gt; {
+  browserHistory.pop()
+}
+clickLink('facebook.com')
+console.log(browserHistory) //&gt; [ 'facebook.com' ]
+clickLink('medium.com')
+console.log(browserHistory) //&gt; [ 'facebook.com', 'medium.com' ]
+clickBackBtn()
+console.log(browserHistory) //&gt; [ 'facebook.com' ]
+clickLink('youtube.com')
+console.log(browserHistory) //&gt; [ 'facebook.com', 'youtube.com' ]
+</code></pre>
+
+<p>Problem to be solved using a stack is Palindrome</p>
+
+<pre><code class="language-javascript">// palindrome (odd number): racecar, dad
+// palindrom (even number): abba
+// ignore space?
+function isPalindrome(str) {
+  let seen = [] //&gt; stack
+
+  // construct stack
+  for(let i=0; i&lt;str.length; i++) {
+    let curr = str.charAt(i)
+    seen.push(curr)
+  }
+  let revStr = ''
+  
+  // construct reverse string
+  while(seen.length &gt; 0) {
+    revStr += seen.pop()
+
+    //optimization
+    if(revStr!==str.substring(0,revStr.length)) {
+      return false
+    }
+  }
+
+  return str === revStr
+}
+</code></pre>
+
+<h2 id="queue">Queue</h2>
+
+<ul>
+<li><code>add(item)</code> - add an item to the end of the list - O(1)</li>
+<li><code>remove()</code> - remove the first item in the list - O(1)</li>
+<li><code>peek()</code> - return the front of the queue</li>
+<li><code>isEmpty()</code> - return true if the queue is empty</li>
+</ul>
+
+<p>How to implement a Queue in JavaScript (See <a href="https://repl.it/@xiaoyunyang/Queue" target="_blank">repl</a>)</p>
+
+<pre><code class="language-javascript">function DoublyNode(val) {
+  this.val = val;
+  this.prev = null
+  this.next = null
+}
+function Queue() {
+  this.front = null
+  this.back = null
+
+  this.add = item =&gt; {
+    let newNode = new DoublyNode(item)
+    if(!this.front) {
+      this.front = newNode
+      this.back = newNode
+      return
+    }
+    this.back.next = newNode
+    newNode.prev = this.back
+    this.back = newNode
+  }
+  this.printForward = () =&gt; {
+    let vals = []
+    let n = this.front
+    while(n) {
+      vals.push(n.val)
+      n = n.next
+    }
+    return vals
+  }
+  this.printBackward = () =&gt; {
+    let vals = []
+    let n = this.back
+    while(n) {
+      vals.push(n.val)
+      n = n.prev
+    }
+    return vals
+  }
+  this.remove = () =&gt; {
+    // remove from the front and return the removed node's val
+    if(!this.front) return null
+    let firstNode = this.front
+    this.front = this.front.next
+    this.front.prev = null
+    firstNode.next = null
+    return firstNode.val
+  }
+
+  this.peek = () =&gt; {
+    if(!this.front) return null
+    return this.front.val
+  }
+}
+</code></pre>
+
 <h1 id="shortcuts">Shortcuts</h1>
+
+<p>Initialize Array</p>
+
+<pre><code class="language-javascript">let arr = Array(10)
+</code></pre>
 
 <p>Find Max:</p>
 
