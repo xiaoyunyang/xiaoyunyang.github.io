@@ -8,10 +8,58 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>From Military To Tech Entrepreneur:  How I made the Leap</title>
+      <link>https://xiaoyunyang.github.io/post/from-military-to-tech-entrepreneur--how-i-made-the-leap/</link>
+      <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/from-military-to-tech-entrepreneur--how-i-made-the-leap/</guid>
+      <description>&lt;p&gt;I commissioned to serve in the US Navy when I received my university degrees. The service commitment is 5 years. I signed the contract when I was a sophomore in college. I didn&amp;rsquo;t know that I wanted to be a tech entrepreneur or wanted to work in the high tech industry when I was in college. It was not until a year after I commissioned that I realized that I prefer a job in innovation and allows me to be creative and indulge in hands-on problem solving. I&amp;rsquo;ve spent the last 5 years exploring my interests and working on closing skills gaps that would preclude me from a smooth transition to a job I would enjoy doing. I did this while still serving in the military.  Here&amp;rsquo;s my journey.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Best Practices For State Management With React And Redux</title>
+      <link>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</link>
+      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</guid>
+      <description>&lt;p&gt;In this post, I&amp;rsquo;ll share some best practices, tips, and practical examples for managing states and data in a frontend applications. Although the examples are targeted at frontend developers working with React and Redux, the best practices discussion are applicable for frontend developers working with any framework.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>What Happens Under the Hood When you Visit a Website</title>
+      <link>https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/</link>
+      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/</guid>
+      <description>&lt;p&gt;This post is inspired by my recent experience interviewing for a developer role. During few of the the initial phone screens, I was asked the question:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Tell me what happens under the hood when you visit a website.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JavaScript Antipatterns to Avoid</title>
+      <link>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</link>
+      <pubDate>Fri, 23 Nov 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</guid>
+      <description>&lt;p&gt;Sourcemaking provides a great discussions on all the anti-patterns.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Cribsheet for JavaScript Coding Interview</title>
