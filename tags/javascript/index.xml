@@ -8,47 +8,10 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Wed, 28 Nov 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Best Practices For State Management With React And Redux</title>
-      <link>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</link>
-      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</guid>
-      <description>&lt;p&gt;In this post, I&amp;rsquo;ll share some best practices, tips, and practical examples for managing states and data in a frontend applications. Although the examples are targeted at frontend developers working with React and Redux, the best practices discussion are applicable for frontend developers working with any framework.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>What Happens Under the Hood When you Visit a Website</title>
-      <link>https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/</link>
-      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/</guid>
-      <description>&lt;p&gt;This post is inspired by my recent experience interviewing for a developer role. During few of the the initial phone screens, I was asked the question:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Tell me what happens under the hood when you visit a website.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>JavaScript Antipatterns to Avoid</title>
-      <link>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</link>
-      <pubDate>Fri, 23 Nov 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</guid>
-      <description>&lt;p&gt;Sourcemaking provides a great discussions on all the anti-patterns.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Cribsheet for JavaScript Coding Interview</title>

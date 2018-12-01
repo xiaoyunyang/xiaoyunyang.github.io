@@ -3,26 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://xiaoyunyang.github.io/post/from-military-to-tech-entrepreneur--how-i-made-the-leap/</loc>
-    <lastmod>2018-11-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</loc>
-    <lastmod>2018-11-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/</loc>
-    <lastmod>2018-11-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</loc>
-    <lastmod>2018-11-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
   </url>
@@ -178,19 +158,19 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/categories/blog/</loc>
-    <lastmod>2018-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/career/</loc>
-    <lastmod>2018-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/categories/</loc>
-    <lastmod>2018-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -212,12 +192,6 @@
   </url>
   
   <url>
-    <loc>https://xiaoyunyang.github.io/tags/frontend/</loc>
-    <lastmod>2018-11-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://xiaoyunyang.github.io/tags/fundraising/</loc>
     <lastmod>2018-05-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -231,19 +205,19 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/guide/</loc>
-    <lastmod>2018-11-23T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/javascript/</loc>
-    <lastmod>2018-11-28T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/life/</loc>
-    <lastmod>2018-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -255,7 +229,7 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/node/</loc>
-    <lastmod>2018-11-28T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -267,7 +241,7 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/post/</loc>
-    <lastmod>2018-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -291,7 +265,7 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/react/</loc>
-    <lastmod>2018-11-28T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -309,7 +283,7 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/software-design/</loc>
-    <lastmod>2018-11-23T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -320,7 +294,7 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/</loc>
-    <lastmod>2018-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -341,14 +315,8 @@
   </url>
   
   <url>
-    <loc>https://xiaoyunyang.github.io/tags/web-dev/</loc>
-    <lastmod>2018-11-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://xiaoyunyang.github.io/</loc>
-    <lastmod>2018-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
