@@ -528,7 +528,7 @@ function isPalindrome(str) {
     seen.push(curr)
   }
   let revStr = ''
-  
+
   // construct reverse string
   while(seen.length > 0) {
     revStr += seen.pop()
@@ -573,30 +573,36 @@ function Queue() {
     newNode.prev = this.back
     this.back = newNode
   }
-  this.printForward = () => {
-    let vals = []
+    this.printForward = () => {
+    let vals = ''
     let n = this.front
     while(n) {
-      vals.push(n.val)
+      vals += `${n.val} -> `
       n = n.next
     }
-    return vals
+    return `${vals}null`
   }
   this.printBackward = () => {
-    let vals = []
+    let vals = ''
     let n = this.back
     while(n) {
-      vals.push(n.val)
+      vals = ` <- ${n.val}`.concat(vals)
       n = n.prev
     }
-    return vals
+    return `null${vals}`
   }
   this.remove = () => {
     // remove from the front and return the removed node's val
     if(!this.front) return null
     let firstNode = this.front
     this.front = this.front.next
-    this.front.prev = null
+    // edge case: if this.front.next is null, the next line of
+    // code will fail because can't dereference null pointer
+    if(this.front) {
+      this.front.prev = null
+    } else {
+      this.back = null
+    }
     firstNode.next = null
     return firstNode.val
   }
@@ -635,6 +641,6 @@ console.log(b) //> world
 Generating a sequence
 
 ```javascript
-const indices = Array.from(Array(10).keys()) 
+const indices = Array.from(Array(10).keys())
 console.log(indices); //> (10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
