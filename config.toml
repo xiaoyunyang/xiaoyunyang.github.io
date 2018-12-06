@@ -153,7 +153,7 @@ canonifyurls = true
   # If false it will flat categories.
   hierarchicalCategories = true
 
-  description = "Xiaoyun Yang - Software Engineer, Hacker, Entrepreneur."
+  description = "Xiaoyun Yang - Software Engineer, Indie Hacker, Entrepreneur."
 
   # Customization
   # Define the behavior of the sidebar

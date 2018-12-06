@@ -7,11 +7,13 @@ tags:
   - Life
   - Career
 ---
+
 I commissioned to serve in the US Navy when I received my university degrees. The service commitment is 5 years. I signed the contract when I was a sophomore in college. I didn't know that I wanted to be a tech entrepreneur or wanted to work in the high tech industry when I was in college. It was not until a year after I commissioned that I realized that I prefer a job in innovation and allows me to be creative and indulge in hands-on problem solving. I've spent the last 5 years exploring my interests and working on closing skills gaps that would preclude me from a smooth transition to a job I would enjoy doing. I did this while still serving in the military.  Here's my journey.
 
 <!--more-->
 
 # Prepare Early
+
 > Dream jobs are not found. Dream jobs are made.
 
 ## Identify Skills and Experience Gap
@@ -27,7 +29,6 @@ Identify Civilian opportunities
 **Write a Resume for the Job**
 
 Tailor it to the job. Jobs have job descriptions with key words. When you submit a resume, a keywords match algorithm will be used to determine how much your resume overlaps with the job description.
-
 
 # Risk Mitigation
 
@@ -55,7 +56,7 @@ Renting vs. Buying
 If you are staying at your job for 5 years and planning to move after your commitment ends, it doesn't make financial sense to buy a house or a condo. You can't predict the market.
 * Own Car vs. Public Transit: Car payment, insurance, fuel, unexpected expense. Fancier car, more insurance payment and chance of auto theft. Paying $2,500 a month for rent may appear high cost, but consider how much money that's saving you to be at a metro-accessible and walking distance to everything and what the alternative is going to cost you: renting at a faraway place that requires 3 hours of commute to and back from work on the worst traffic days, paying taxes on your condo, condo fees, and uncertainties of whether you'd be able to sell it or rent it out.
 
-**Maximize savings**
+**Maximize Savings**
 
 59% if Americans can't cover $500 unexpected expense with savings. The rule of thumb is to have in your emergency funds account to cover 6-12 months of cost of living. I have 12 months of cost of living in your savings account. Here's what I did to have more than $80,000 in my savings account:
 
@@ -63,7 +64,6 @@ If you are staying at your job for 5 years and planning to move after your commi
 * Forgo life insurance.
 * Living without a car.
 * Living comfortably but no over-spending. I'm guilty of going to restaurant a bit too much, but it made financial sense. This is why: It takes time to cook. I want to eat healthy and cooking from fresh ingredients means sacrificing time after work cooking and cleaning instead of making progress on my projects each night. I used to eat ramen noodles everyday. I wasn't getting the proper nutrients to function.
-
 
 **Hope for the best, Prepare for the worst.**
 
@@ -94,3 +94,4 @@ Teamwork, communication, leadership. It requires effort to translate military sk
 * CNN money [cost of living calculator](http://money.cnn.com/calculator/pf/cost-of-living/)
 * American Corporate Partners offers [free mentorship](https://www.acp-usa.org/mentoring-program/program-overview). [Apply as a veteran](https://www.acp-usa.org/mentoring-program/veteran-application).
 * GlassDoor, Salary.com, salaryexperts.com
+* [Software Engineer vs. We Developer](http://blog.thefirehoseproject.com/posts/software-engineer-vs-web-developer/)

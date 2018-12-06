@@ -644,3 +644,33 @@ Generating a sequence
 const indices = Array.from(Array(10).keys())
 console.log(indices); //> (10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
+
+Use Splice to insert into array
+
+Suppose we want to insert a new element into a sorted array.
+
+```javascript
+function insertIntoSorted(newItem, sortedItems) {
+  let arr = sortedItems
+  for(let i in arr) {
+    let curr = arr[i]
+    if(newItem<curr) {
+      arr.splice(i, 0, newItem)
+      return arr
+    }
+  }
+  arr.push(newItem)
+
+  return arr
+}
+
+let arr = [1,2,5,9]
+arr = insertIntoSorted(10, arr)
+console.log(arr) //> [ 1, 2, 5, 9, 10 ]
+
+arr = insertIntoSorted(4, arr)
+console.log(arr) //> [ 1, 2, 4, 5, 9, 10 ]
+
+arr = insertIntoSorted(0, arr)
+console.log(arr) //> [ 0, 1, 2, 4, 5, 9, 10 ]
+```
