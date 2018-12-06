@@ -1032,6 +1032,35 @@ console.log(b) //&gt; world
 <pre><code class="language-javascript">const indices = Array.from(Array(10).keys())
 console.log(indices); //&gt; (10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
+
+<p>Use Splice to insert into array</p>
+
+<p>Suppose we want to insert a new element into a sorted array.</p>
+
+<pre><code class="language-javascript">function insertIntoSorted(newItem, sortedItems) {
+  let arr = sortedItems
+  for(let i in arr) {
+    let curr = arr[i]
+    if(newItem&lt;curr) {
+      arr.splice(i, 0, newItem)
+      return arr
+    }
+  }
+  arr.push(newItem)
+
+  return arr
+}
+
+let arr = [1,2,5,9]
+arr = insertIntoSorted(10, arr)
+console.log(arr) //&gt; [ 1, 2, 5, 9, 10 ]
+
+arr = insertIntoSorted(4, arr)
+console.log(arr) //&gt; [ 1, 2, 4, 5, 9, 10 ]
+
+arr = insertIntoSorted(0, arr)
+console.log(arr) //&gt; [ 0, 1, 2, 4, 5, 9, 10 ]
+</code></pre>
               
             </div>
           </div>
