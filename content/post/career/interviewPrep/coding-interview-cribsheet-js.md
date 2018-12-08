@@ -13,7 +13,7 @@ thumbnailImage: /post/images/programming/coding-interview.png
 
 The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how thte candidate go about solving a problem, or the architecture design interview, which assesses how thte candidate's experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:
 
-> Can you code?
+> Can you be productive with JavaScript?
 
 <!--more-->
 
@@ -616,20 +616,20 @@ function Queue() {
 
 # Shortcuts
 
-Initialize Array
+## Initialize Array
 
 ```javascript
 let arr = Array(10)
 ```
 
-Find Max:
+## Find Max:
 
 ```javascript
 const arr = [1, 2, 3]
 Math.max(...arr)
 ```
 
-Swapping
+## Swapping
 
 ```javascript
 let a = 'world', b = 'hello'
@@ -638,14 +638,14 @@ console.log(a) //> hello
 console.log(b) //> world
 ```
 
-Generating a sequence
+## Generating a sequence
 
 ```javascript
 const indices = Array.from(Array(10).keys())
 console.log(indices); //> (10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-Use Splice to insert into array
+## Use Splice to insert into array
 
 Suppose we want to insert a new element into a sorted array.
 
@@ -674,3 +674,46 @@ console.log(arr) //> [ 1, 2, 4, 5, 9, 10 ]
 arr = insertIntoSorted(0, arr)
 console.log(arr) //> [ 0, 1, 2, 4, 5, 9, 10 ]
 ```
+
+## Optional Parameter
+
+ES6 shortcut
+
+```javascript
+function foo(fruit='apple') {
+  let toPrint = fruit
+  console.log('word:', toPrint)
+}
+```
+
+As opposed to the old way of doing it using ternary operator:
+
+```javascript
+function foo(fruit) {
+  let toPrint = fruit ? fruit : 'apple'
+  console.log('word:', toPrint)
+}
+```
+
+## Quickly convert string to number
+
+prepend `+` to the string is a shorthand for converting the string to a number.
+
+```javascript
+let [a,b,c] = [+'1', +'1.5', +'foo']
+a //> 1
+b //> 1.5
+c //> NaN
+```
+
+# Study material for JS interviews:
+
+- [What is a Closure?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36#.ecfskj935)
+- [What is the Difference Between Class and Prototypal Inheritance?](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9#.h96dymht1)
+- [What is a Pure Function?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-pure-function-d1c076bec976#.4256pjcfq)
+- [What is Function Composition?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-function-composition-20dfb109a1a0#.i84zm53fb)
+- [What is Functional Programming?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0#.jddz30xy3)
+- [Functional Programming Pattern in React and Redux](https://medium.com/@agm1984/an-overview-of-functional-programming-in-javascript-and-react-part-one-10d75b509e9e) - unidirectional data flow and immutability (same input, same output every time. no side effects).
+- [What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261#.aa7ubggsy)
+- [Soft Skills](https://medium.com/javascript-scene/master-the-javascript-interview-soft-skills-a8a5fb02c466)
+- [Common Data Structures](https://medium.freecodecamp.org/10-common-data-structures-explained-with-videos-exercises-aaff6c06fb2b)

@@ -48,7 +48,6 @@ Like anything that's flexible, there are the wrong ways of doing something and t
 # React State Store vs. Redux Store
 
 
-
 Feel free to skip this section if you are familiar with or have worked with React and Redux.
 
 # Best Practices
@@ -63,6 +62,8 @@ A frontend application generally consumes an API (i.e., getting the JSON data fr
 
 A React component can use the data or pass the data to its children. This means that, in a multi-component hierachy, a common parent component should manage the state and pass it down to its children components via the prop.
 
+The first time I used Redux was when building a React Native 
+
 ## #3 Use Component Store for Animated Components
 
 Practial example is status alerts.
@@ -71,6 +72,8 @@ Practial example is status alerts.
 
 React Router
 
-## #4 The Magic of ComponentWillReceiveProps
+## #5 The Magic of ComponentWillReceiveProps
 
-When your frontend application has multiple data 
+When your frontend application has multiple data
+
+## #6 ComponentDidMount vs. ComponentWillMount
