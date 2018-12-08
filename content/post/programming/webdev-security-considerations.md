@@ -148,7 +148,7 @@ From  [the W3 Spec for `<a>` tag](https://www.w3schools.com/tags/att_a_rel.asp):
 - `noopener` tells the browser not to not send `window.opener` context from the originator of the link click.
 - `noreferrer` tells the browser to not send an HTTP referer header if the user follows the hyperlink.
 
-*Pro-tip* Use lint. In fact, I first learn about the error from [a lint error](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md) about the danger of using `target="_blank"` in anchor without adding the `rel="noopener noreferrer"` attribute. It's a good idea to use lint to support your development which does a lot to help you write secure, clean, and maintainable code. Popular editors like VSCode and Atom have lint support.
+*Pro-tip* Use lint. In fact, I first learned about reverse tabnabbing from [a lint error](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md) about the danger of using `target="_blank"` in anchor without adding the `rel="noopener noreferrer"` attribute. It's always a good idea to use lint to support your development which does a lot to help you write secure, clean, and maintainable code. Popular editors like VSCode and Atom have lint support.
 
 # Cross-site Request Forgery (CSRF)
 
@@ -174,7 +174,7 @@ There are few things your web app to protect your users from being tricked into 
 
 *1. Expiring Sessions*
 
-Your app can log its users out automatically after a period of inactivity. This technique is employed by many ban web aps.
+Your app can log its users out automatically after a period of inactivity. This technique is employed by many online banking web apps.
 
 The hacker cannot perform a CSRF attack without getting me to do something while I'm an authenticated user. If I'm not logged in to your site, then your app will not accept my post requests.
 
@@ -182,14 +182,13 @@ The hacker cannot perform a CSRF attack without getting me to do something while
 
 The idea is we want to embed a randomly generated, un-guessable token in the form which the user uses to make the post request. When the user makes a post request using the form, the token is transmitted with the data as `X-CSRF-Token` in the request header.
 
-Each time the server sends the form form to the user's browser, a different token is transmitted with the form. The server remembers what that token is and when it receives a post request, it checks to make sure the token in the request matches what it has on record.
+Each time the server sends the form form to the user's browser, a different token is sent with the form to the browser. The server remembers what that token is and when it receives a post request, it checks to make sure the token in the request matches what it has on record.
 
 A real life example of a CSRF token is the form from AngelList's profile edit form:
 
 ![](/post/images/webdev/csrf-token-alist.png)
 
-*3. CSP*
-
+*3. CSP Header*
 
 To guard against a CSRF attack resulting from clickjacking and iframe, we can use the CSP to set a policy for `child-src ‘self’`, indicating that the site must only be iframed by a page that shares the same origin, and no other.
 
@@ -201,7 +200,7 @@ If you use a lot of open source software in your application, these dependencies
 
 **Defense in depth**
 
-*1. Subscribe to vulnerability warnings*
+*1. Subscribe to security vulnerability warnings*
 
 If you keep your code on Github, Github will show a warning about a repo that contains a dependency that has a security vulnerability.
 
@@ -213,20 +212,20 @@ If you use NPM, you can also use the following commands to find out which npm mo
 $ npm outdated
 ```
 
-If you choose, you may update all the outdated modules with
+If you choose, you may update all the outdated modules with:
 
 ```
 $ npm update
 ```
 
-or selectively update using either one
+or selectively update using either one of the lines below:
 
 ```
 $ npm install --save <package-name>@latest
 $ npm update <package-name>
 ```
 
-or to a specific version
+or to a specific version:
 
 ```
 $ npm install --save <package-name>@<version-number>
@@ -238,7 +237,7 @@ If you want to find out which packages are introducing security vulnerabilities,
 $ npm audit
 ```
 
-Running the above command will show you some packages which you may not recognize or use. These are usually dependencies to the packages which you use.
+Running the above command will show you some packages which you may not recognize. These are usually dependencies to the packages which you have listed in `package.json`.
 
 The CLI will urge you to use `npm audit fix` to fix the vulnerabilities but if you want to dig a bit deeper as to why you have these packages in the first place, and where they are used, use the following command:
 
