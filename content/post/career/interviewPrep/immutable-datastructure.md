@@ -42,8 +42,14 @@ Here's an implementation of the Queue as an *mutable* data structure.
 function QueueMutable() {
   let arr = [] // private variable
 
-  this.enqueue = val => arr.push(val)
-  this.dequeue = () => arr.shift()
+  this.enqueue = val => {
+    arr.push(val)
+    return this
+  }
+  this.dequeue = () => {
+    let head = arr.shift()
+    return [head, this]
+  }
   this.isEmpty = () => arr.length === 0
   this.getData = () => arr
 }
@@ -75,28 +81,52 @@ Try out these Queue implementations [in repl](https://repl.it/@xiaoyunyang/queue
 
 # Pros and Cons
 
-One advantage of working with an immutable data structure is chaining.
-
-For instance, we can do something like the following with an immutable data structure:
+Consider this example:
 
 ```javascript
-qIm = qIm.enqueue(1).enqueue(2).enqueue(3).dequeue()[1]
-qIm.getData() //> [2,3]
+let qIm = new QueueImmutable()
+qIm.enqueue(1)
+console.log(qIm.getData()) //> A
+qIm.enqueue(2)
+qIm.enqueue(3)
+console.log(qIm.getData()) //> B
+
+let qM = new QueueMutable()
+qM.enqueue(1)
+console.log(qIm.getData()) //> C
+qM.enqueue(2)
+qM.enqueue(3)
+console.log(qIm.getData()) //> D
+
 ```
 
-On the other hand, the non-functional FakeQueue implementation requires the following lines to do the exact thing.
+`qIm.getData()` always returns `[]` at lines A and B because qIm hasn't changed. On the other hand, each time we call `qM.getData()`, we get different results: The call on line C returns `[1]` and the call on line D returns `[1,2,3]`.
+
+Why is it an advantage to return the same results for the same input? Better predicability, maintability, and less buggy code.
+
+There's a concept in functional programming called referential transparency forces the invariant that everything a function does is represented by the value that it returns.
+
+Immutable data structures provides referential transparency which makes it easier to reason about our program locally.
+
+Another way to think about it is that every time we execute a pure (referentially transparent) function with the same input, we get the same output. Pure functions do not depend on context (e.g., when you execute function in your overall program) and may be reasoned about locally. On the other hand, functions which are not referentially transparent produce results which are context-dependent, require more global reasoning, are harder to refactor, and are more likely to introduce nasty bugs due to side effects.
+
+An obvious disadvantage with using an immutable data structure is you are creating a new data structure every time you want to make a change.
+
+At first glance, both Queue implementations seem to have identical behavior and can be used to construct a queue with almost identical syntax using chaining:
 
 ```javascript
 let qM = new QueueMutable()
-let qIm = new QueueImmutable()
-qM.enqueue(1)
-qM.enqueue(2)
-qM.enqueue(3)
-qM.dequeue()
-qM.getData() //> [2, 3]
+qM.enqueue(1).enqueue(2).enqueue(3).dequeue()[1]
+console.log(qM.getData()) //> [2,3]
+
+let qIM = new QueueImmutable()
+qIm = qIm.enqueue(1).enqueue(2).enqueue(3).dequeue()[1]
+console.log(qIm.getData()) //> [2,3]
 ```
 
-An obvious disadvantage with using an immutable data structure is you are creating a new data structure every time you want to make a change.
+Notice we don't need to reassign `qM` to point to a new data structure since the original data structure is modified in place via `enqueue` and `dequeue`.
+
+However, for the immutable Queue, four new Queues are created each time we call `enqueue` and `dequeue` and we needed to update the `qIm` to point to the final Queue containing 2 and 3 which was created by the `dequeue` function.
 
 # When to use immutable data structure
 
