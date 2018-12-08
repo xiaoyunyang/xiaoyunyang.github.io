@@ -34,7 +34,7 @@ The definition of a queue:
 
 ![queue](/post/images/algo/queue.png)
 
-{{< alert info >}} Note, I'm using an array to represent the Queue for simplicity. That's not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. [A correct implementation of a queue](https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js) is uses a [DoublyNode](https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Node/DoublyNode.js) and two pointers for head and tail of the Queue.{{< /alert >}}
+{{< alert info >}} Note, I'm using an array to represent the Queue for simplicity. That's not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. [A correct implementation of a queue](https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js) uses a [DoublyNode](https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Node/DoublyNode.js) and two pointers for head and tail of the Queue.{{< /alert >}}
 
 Here's an implementation of the Queue as an *mutable* data structure.
 
@@ -130,7 +130,7 @@ However, for the immutable Queue, a new Queue is created each time we call `enqu
 
 # When to use immutable data structure
 
-In concurrent programming, functional programming and immutable data structures are used to ensure correctness when multiple parts of the program use shared resource. The shared resource is encoded in an immutable data structure.
+In concurrent programs, functional programming and immutable data structures are used to ensure correctness when multiple parts of the program use shared resource. The shared resource is encoded in an immutable data structure.
 
 Modern client side applications often have multiple components (e.g., parts of the DOM or screens of a single page application) access and making changes to the same shared state. React and redux provides a powerful framework for building rich client side applications which rely on heavily on functional programming techniques. For instance, redux provides an an abstraction for managing shared data by leveraging immutable data structure and a collection of functions called reducers and actions to provide a "single source of truth" to multiple React components.
 
