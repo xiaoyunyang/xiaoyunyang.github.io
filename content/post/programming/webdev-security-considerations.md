@@ -77,16 +77,23 @@ I use [`validator`](https://github.com/chriso/validator.js/).
 
 ```javascript
 import validator from ‘validator’;
-
-app.get('/test/search', (req, res) => {
-  const userAgent = validator.escape(req.query.q) || '';
-  res.render('test', { userAgent });
-});
+let q = '<script>alert("you are hacked")</script>'
+let sanitizedQ = validator.escape(q)
 ```
 
-which makes `<script>alert("you are hacked")` into: 
+which makes `<script>alert("you are hacked")</script>` into: 
 
->&amp;lt;script&amp;gt;alert(&amp;quot;you are hacked&amp;quot;)&amp;lt;&amp;#x2F;script&amp;gt
+>&lt;script&gt;alert(&quot;you are hacked&quot;)&lt;&#x2F;script&gt;
+
+Try out validator in [the runkit playground](https://runkit.com/xiaoyunyang/validator-example)
+
+Or use curl to interact with the endpoint:
+
+```
+$ curl -L https://xiaoyunyang.runkit.io/validator-example/branches/master
+```
+
+[endpoint](https://validator-example-mn9pycmmqarl.runkit.sh/)
 
 # SQL Injection
 
