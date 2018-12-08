@@ -22,7 +22,7 @@
     <meta name="generator" content="Hugo 0.46 with theme Tranquilpeak 0.4.3-BETA">
     <title>When To Use Immutable Data Structures</title>
     <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="JavaScript, Best Practices, Interview Prep, Functional Programming">
+    <meta name="keywords" content="JavaScript, Best Practices, Interview Prep, Functional Programming, Data Structure, Queue">
 
     <link rel="icon" href="https://xiaoyunyang.github.io/favicon-96x96.png">
     
@@ -301,7 +301,7 @@ When do you use immutable (functional) data structures and when do you use mutab
 <p><img src="https://xiaoyunyang.github.io/post/images/algo/queue.png" alt="queue" /></p>
 
 <div class="alert info ">
-  <p>Note, I&rsquo;m using an array to represent the Queue for simplicity. That&rsquo;s not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js" target="_blank">A correct implementation of a queue</a> is a uses a DoublyNode and two pointers for head and tail of the queue.</p>
+  <p>Note, I&rsquo;m using an array to represent the Queue for simplicity. That&rsquo;s not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js" target="_blank">A correct implementation of a queue</a> is a uses a DoublyNode and two pointers for head and tail of the Queue.</p>
 </div>
 
 <p>Here&rsquo;s an implementation of the Queue as an <em>mutable</em> data structure.</p>
@@ -372,7 +372,7 @@ qM.getData() //&gt; [2, 3]
 
 <p>When concurrency and resource sharing are not involved and you are concerned with making your program run as fast as possible, you are better off using mutable data structures. Using an immutable data structure is expensive because it&rsquo;s creating a new modified version of a data structure every time you want to make a change.</p>
 
-<p>In game programming, memory allocation is usually the slowest thing (resource pools are popular in game programming). In games you not only want each frame to process quickly but also for speed to be consistent. The usual symptom of a garbage collector bottleneck is that the game intermittently freezes but runs normally in between.</p>
+<p>In game programming, memory allocation is usually the slowest thing (resource pools are popular in game programming). In games you not only want each frame to process quickly but also for speed to be consistent. The usual symptom of a garbage collector bottleneck is that the game intermittently freezes but runs normally in between. In that case, you don&rsquo;t want to continuously allocate memory for the new data structure; rather you want to update the existing data structure in place.</p>
               
             </div>
           </div>
@@ -386,7 +386,7 @@ qM.getData() //&gt; [2, 3]
                     
   <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/guide/">Guide</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/best-practice/">Best Practice</a>
 
   <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/programming/">Programming</a>
 
@@ -847,7 +847,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         32 posts found
+         31 posts found
       </p>
     </div>
   </div>

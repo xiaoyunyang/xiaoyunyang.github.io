@@ -29,17 +29,6 @@
     </item>
     
     <item>
-      <title>Security Considerations for Web Applications and Best Practices</title>
-      <link>https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/</link>
-      <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/</guid>
-      <description>&lt;p&gt;This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Cribsheet for JavaScript Coding Interview</title>
       <link>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
@@ -50,20 +39,6 @@
 &lt;blockquote&gt;
 &lt;p&gt;Can you be productive with JavaScript?&lt;/p&gt;
 &lt;/blockquote&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Web Developer Playbook: Rich Text Editor</title>
-      <link>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</link>
-      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</guid>
-      <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34; target=&#34;_blank&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s get started!&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
@@ -97,11 +72,11 @@ This post is part of the Web Developer Playbook series, which are created to pro
     </item>
     
     <item>
-      <title>Serverless Web App For Work</title>
-      <link>https://xiaoyunyang.github.io/post/serverless-web-app-for-work/</link>
+      <title>Single Page Application For Work</title>
+      <link>https://xiaoyunyang.github.io/post/single-page-application-for-work/</link>
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/serverless-web-app-for-work/</guid>
+      <guid>https://xiaoyunyang.github.io/post/single-page-application-for-work/</guid>
       <description>&lt;p&gt;When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -126,41 +101,12 @@ This post is part of the Web Developer Playbook series, which are created to pro
     </item>
     
     <item>
-      <title>A Career Transition Guide For Overachievers</title>
-      <link>https://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</link>
-      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</guid>
-      <description>&lt;p&gt;Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&amp;rsquo;t have all the qualifications.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Algorithms for Web Developers</title>
       <link>https://xiaoyunyang.github.io/post/algorithms-for-web-developers/</link>
       <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/algorithms-for-web-developers/</guid>
       <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&amp;rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&amp;rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Building A React Native Travel App</title>
-      <link>https://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</link>
-      <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</guid>
-      <description>&lt;p&gt;When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Building an Isomorphic Webapp</title>
-      <link>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</link>
-      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

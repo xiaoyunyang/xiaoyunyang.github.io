@@ -53,7 +53,7 @@
   </url>
   
   <url>
-    <loc>https://xiaoyunyang.github.io/post/serverless-web-app-for-work/</loc>
+    <loc>https://xiaoyunyang.github.io/post/single-page-application-for-work/</loc>
     <lastmod>2018-05-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -167,6 +167,18 @@
   </url>
   
   <url>
+    <loc>https://xiaoyunyang.github.io/tags/backend/</loc>
+    <lastmod>2018-07-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/best-practice/</loc>
+    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://xiaoyunyang.github.io/categories/blog/</loc>
     <lastmod>2018-12-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -203,13 +215,7 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/frontend/</loc>
-    <lastmod>2018-12-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/fundraising/</loc>
-    <lastmod>2018-05-05T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -221,7 +227,7 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/guide/</loc>
-    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -281,7 +287,7 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/react/</loc>
-    <lastmod>2018-12-06T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -299,7 +305,7 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/software-design/</loc>
-    <lastmod>2018-04-28T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -310,23 +316,13 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/</loc>
-    <lastmod>2018-05-22T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</loc>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/ux/</loc>
     <lastmod>2018-08-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/web-app/</loc>
-    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

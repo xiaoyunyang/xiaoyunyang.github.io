@@ -14,11 +14,11 @@
     
     
     <item>
-      <title>Serverless Web App For Work</title>
-      <link>https://xiaoyunyang.github.io/post/serverless-web-app-for-work/</link>
+      <title>Single Page Application For Work</title>
+      <link>https://xiaoyunyang.github.io/post/single-page-application-for-work/</link>
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/serverless-web-app-for-work/</guid>
+      <guid>https://xiaoyunyang.github.io/post/single-page-application-for-work/</guid>
       <description>&lt;p&gt;When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>

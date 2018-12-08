@@ -283,8 +283,8 @@
 <li><a href="#setting-it-all-up-from-scratch">Setting it all up from scratch</a></li>
 <li><a href="#basics">Basics</a>
 <ul>
-<li><a href="#git-tutorial-for-usera">Git Tutorial For userA</a></li>
-<li><a href="#git-tutorial-for-userc">Git Tutorial For userC</a></li>
+<li><a href="#forking">Forking</a></li>
+<li><a href="#branching">Branching</a></li>
 </ul></li>
 <li><a href="#other-useful-commands">Other Useful Commands</a>
 <ul>
@@ -308,6 +308,10 @@
 
 <h1 id="basics">Basics</h1>
 
+<h2 id="forking">Forking</h2>
+
+<p>Forking is used when you contribute to a open source repository.</p>
+
 <p><em>Assume:</em></p>
 
 <ul>
@@ -322,29 +326,7 @@
 <li>userC wants to fork the <code>ProjectName</code> repo from userB.</li>
 </ul>
 
-<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#setting-it-all-up-from-scratch">Setting it all up from scratch</a></li>
-<li><a href="#basics">Basics</a>
-<ul>
-<li><a href="#git-tutorial-for-usera">Git Tutorial For userA</a></li>
-<li><a href="#git-tutorial-for-userc">Git Tutorial For userC</a></li>
-</ul></li>
-<li><a href="#other-useful-commands">Other Useful Commands</a>
-<ul>
-<li><a href="#revert-to-previous-version-of-code">Revert to previous version of code</a></li>
-<li><a href="#switching-between-branches">Switching between branches</a></li>
-<li><a href="#git-won-t-let-me-commit">Git won&rsquo;t let me commit</a></li>
-<li><a href="#gitignore">gitignore</a></li>
-</ul></li>
-<li><a href="#advanced-topics">Advanced Topics</a>
-<ul>
-<li><a href="#submodules">Submodules</a></li>
-</ul></li>
-</ul>
-</nav>
-
-<h2 id="git-tutorial-for-usera">Git Tutorial For userA</h2>
+<p><strong>Git Tutorial For userA</strong></p>
 
 <p>Go to https://<span></span>github.com/<code>userA</code>/ and click the &ldquo;New&rdquo; button. Name the new repo <code>project-name</code>.</p>
 
@@ -416,7 +398,7 @@ $ git push origin master
 <p>$<code>git pull origin master</code></p></li>
 </ol>
 
-<h2 id="git-tutorial-for-userc">Git Tutorial For userC</h2>
+<p><strong>Git Tutorial For userC</strong></p>
 
 <p>Go to https://<span></span>github.com/<code>userB</code>/<code>project-name</code> and click the &ldquo;Fork&rdquo; button.</p>
 
@@ -471,6 +453,12 @@ $ git push origin master
 
 <p><code>$ git pull upstream master</code></p></li>
 </ol>
+
+<h2 id="branching">Branching</h2>
+
+<p>When we develop software on a team of developers, everyone would work to commit changes to a development branch. Every new feature added would correspond to a ticket in Jira&rsquo;s backlog. When you work on each ticket, you create a feature branch from the development branch and then you would submit a pull request to the development branch with the Jira ticket number in the commit message.</p>
+
+<p>To illustrate how branching works, check out this <a href="https://github.com/xiaoyunyang/toy-repo" target="_blank">toy repo</a></p>
 
 <h1 id="other-useful-commands">Other Useful Commands</h1>
 
@@ -1077,7 +1065,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         32 posts found
+         31 posts found
       </p>
     </div>
   </div>

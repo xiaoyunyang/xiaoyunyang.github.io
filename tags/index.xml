@@ -8,10 +8,28 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Tue, 22 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Backend</title>
+      <link>https://xiaoyunyang.github.io/tags/backend/</link>
+      <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/tags/backend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Best Practice</title>
+      <link>https://xiaoyunyang.github.io/tags/best-practice/</link>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/tags/best-practice/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Career</title>
@@ -43,18 +61,9 @@
     <item>
       <title>Frontend</title>
       <link>https://xiaoyunyang.github.io/tags/frontend/</link>
-      <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/tags/frontend/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Fundraising</title>
-      <link>https://xiaoyunyang.github.io/tags/fundraising/</link>
-      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/tags/fundraising/</guid>
       <description></description>
     </item>
     
@@ -70,7 +79,7 @@
     <item>
       <title>Guide</title>
       <link>https://xiaoyunyang.github.io/tags/guide/</link>
-      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/tags/guide/</guid>
       <description></description>
@@ -142,7 +151,7 @@
     <item>
       <title>React</title>
       <link>https://xiaoyunyang.github.io/tags/react/</link>
-      <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/tags/react/</guid>
       <description></description>
@@ -169,7 +178,7 @@
     <item>
       <title>Software Design</title>
       <link>https://xiaoyunyang.github.io/tags/software-design/</link>
-      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/tags/software-design/</guid>
       <description></description>
@@ -181,15 +190,6 @@
       <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/tags/ux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web App</title>
-      <link>https://xiaoyunyang.github.io/tags/web-app/</link>
-      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/tags/web-app/</guid>
       <description></description>
     </item>
     
