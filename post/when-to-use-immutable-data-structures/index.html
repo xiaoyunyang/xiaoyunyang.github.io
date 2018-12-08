@@ -309,8 +309,14 @@ When do you use immutable (functional) data structures and when do you use mutab
 <pre><code class="language-javascript">function QueueMutable() {
   let arr = [] // private variable
 
-  this.enqueue = val =&gt; arr.push(val)
-  this.dequeue = () =&gt; arr.shift()
+  this.enqueue = val =&gt; {
+    arr.push(val)
+    return this
+  }
+  this.dequeue = () =&gt; {
+    let head = arr.shift()
+    return [head, this]
+  }
   this.isEmpty = () =&gt; arr.length === 0
   this.getData = () =&gt; arr
 }
@@ -341,26 +347,50 @@ When do you use immutable (functional) data structures and when do you use mutab
 
 <h1 id="pros-and-cons">Pros and Cons</h1>
 
-<p>One advantage of working with an immutable data structure is chaining.</p>
+<p>Consider this example:</p>
 
-<p>For instance, we can do something like the following with an immutable data structure:</p>
+<pre><code class="language-javascript">let qIm = new QueueImmutable()
+qIm.enqueue(1)
+console.log(qIm.getData()) //&gt; A
+qIm.enqueue(2)
+qIm.enqueue(3)
+console.log(qIm.getData()) //&gt; B
 
-<pre><code class="language-javascript">qIm = qIm.enqueue(1).enqueue(2).enqueue(3).dequeue()[1]
-qIm.getData() //&gt; [2,3]
-</code></pre>
-
-<p>On the other hand, the non-functional FakeQueue implementation requires the following lines to do the exact thing.</p>
-
-<pre><code class="language-javascript">let qM = new QueueMutable()
-let qIm = new QueueImmutable()
+let qM = new QueueMutable()
 qM.enqueue(1)
+console.log(qIm.getData()) //&gt; C
 qM.enqueue(2)
 qM.enqueue(3)
-qM.dequeue()
-qM.getData() //&gt; [2, 3]
+console.log(qIm.getData()) //&gt; D
+
 </code></pre>
 
+<p><code>qIm.getData()</code> always returns <code>[]</code> at lines A and B because qIm hasn&rsquo;t changed. On the other hand, each time we call <code>qM.getData()</code>, we get different results: The call on line C returns <code>[1]</code> and the call on line D returns <code>[1,2,3]</code>.</p>
+
+<p>Why is it an advantage to return the same results for the same input? Better predicability, maintability, and less buggy code.</p>
+
+<p>There&rsquo;s a concept in functional programming called referential transparency forces the invariant that everything a function does is represented by the value that it returns.</p>
+
+<p>Immutable data structures provides referential transparency which makes it easier to reason about our program locally.</p>
+
+<p>Another way to think about it is that every time we execute a pure (referentially transparent) function with the same input, we get the same output. Pure functions do not depend on context (e.g., when you execute function in your overall program) and may be reasoned about locally. On the other hand, functions which are not referentially transparent produce results which are context-dependent, require more global reasoning, are harder to refactor, and are more likely to introduce nasty bugs due to side effects.</p>
+
 <p>An obvious disadvantage with using an immutable data structure is you are creating a new data structure every time you want to make a change.</p>
+
+<p>At first glance, both Queue implementations seem to have identical behavior and can be used to construct a queue with almost identical syntax using chaining:</p>
+
+<pre><code class="language-javascript">let qM = new QueueMutable()
+qM.enqueue(1).enqueue(2).enqueue(3).dequeue()[1]
+console.log(qM.getData()) //&gt; [2,3]
+
+let qIM = new QueueImmutable()
+qIm = qIm.enqueue(1).enqueue(2).enqueue(3).dequeue()[1]
+console.log(qIm.getData()) //&gt; [2,3]
+</code></pre>
+
+<p>Notice we don&rsquo;t need to reassign <code>qM</code> to point to a new data structure since the original data structure is modified in place via <code>enqueue</code> and <code>dequeue</code>.</p>
+
+<p>However, for the immutable Queue, four new Queues are created each time we call <code>enqueue</code> and <code>dequeue</code> and we needed to update the <code>qIm</code> to point to the final Queue containing 2 and 3 which was created by the <code>dequeue</code> function.</p>
 
 <h1 id="when-to-use-immutable-data-structure">When to use immutable data structure</h1>
 
