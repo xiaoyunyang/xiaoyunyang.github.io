@@ -404,7 +404,7 @@ app.get('/test/search', (req, res) =&gt; {
 <li><code>noreferrer</code> tells the browser to not send an HTTP referer header if the user follows the hyperlink.</li>
 </ul>
 
-<p><em>Pro-tip</em> Use lint. In fact, I first learn about the error from <a href="https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md" target="_blank">a lint error</a> about the danger of using <code>target=&quot;_blank&quot;</code> in anchor without adding the <code>rel=&quot;noopener noreferrer&quot;</code> attribute. It&rsquo;s a good idea to use lint to support your development which does a lot to help you write secure, clean, and maintainable code. Popular editors like VSCode and Atom have lint support.</p>
+<p><em>Pro-tip</em> Use lint. In fact, I first learned about reverse tabnabbing from <a href="https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md" target="_blank">a lint error</a> about the danger of using <code>target=&quot;_blank&quot;</code> in anchor without adding the <code>rel=&quot;noopener noreferrer&quot;</code> attribute. It&rsquo;s always a good idea to use lint to support your development which does a lot to help you write secure, clean, and maintainable code. Popular editors like VSCode and Atom have lint support.</p>
 
 <h1 id="cross-site-request-forgery-csrf">Cross-site Request Forgery (CSRF)</h1>
 
@@ -430,7 +430,7 @@ app.get('/test/search', (req, res) =&gt; {
 
 <p><em>1. Expiring Sessions</em></p>
 
-<p>Your app can log its users out automatically after a period of inactivity. This technique is employed by many ban web aps.</p>
+<p>Your app can log its users out automatically after a period of inactivity. This technique is employed by many online banking web apps.</p>
 
 <p>The hacker cannot perform a CSRF attack without getting me to do something while I&rsquo;m an authenticated user. If I&rsquo;m not logged in to your site, then your app will not accept my post requests.</p>
 
@@ -438,13 +438,13 @@ app.get('/test/search', (req, res) =&gt; {
 
 <p>The idea is we want to embed a randomly generated, un-guessable token in the form which the user uses to make the post request. When the user makes a post request using the form, the token is transmitted with the data as <code>X-CSRF-Token</code> in the request header.</p>
 
-<p>Each time the server sends the form form to the user&rsquo;s browser, a different token is transmitted with the form. The server remembers what that token is and when it receives a post request, it checks to make sure the token in the request matches what it has on record.</p>
+<p>Each time the server sends the form form to the user&rsquo;s browser, a different token is sent with the form to the browser. The server remembers what that token is and when it receives a post request, it checks to make sure the token in the request matches what it has on record.</p>
 
 <p>A real life example of a CSRF token is the form from AngelList&rsquo;s profile edit form:</p>
 
 <p><img src="https://xiaoyunyang.github.io/post/images/webdev/csrf-token-alist.png" alt="" /></p>
 
-<p><em>3. CSP</em></p>
+<p><em>3. CSP Header</em></p>
 
 <p>To guard against a CSRF attack resulting from clickjacking and iframe, we can use the CSP to set a policy for <code>child-src ‘self’</code>, indicating that the site must only be iframed by a page that shares the same origin, and no other.</p>
 
@@ -456,7 +456,7 @@ app.get('/test/search', (req, res) =&gt; {
 
 <p><strong>Defense in depth</strong></p>
 
-<p><em>1. Subscribe to vulnerability warnings</em></p>
+<p><em>1. Subscribe to security vulnerability warnings</em></p>
 
 <p>If you keep your code on Github, Github will show a warning about a repo that contains a dependency that has a security vulnerability.</p>
 
@@ -467,18 +467,18 @@ app.get('/test/search', (req, res) =&gt; {
 <pre><code>$ npm outdated
 </code></pre>
 
-<p>If you choose, you may update all the outdated modules with</p>
+<p>If you choose, you may update all the outdated modules with:</p>
 
 <pre><code>$ npm update
 </code></pre>
 
-<p>or selectively update using either one</p>
+<p>or selectively update using either one of the lines below:</p>
 
 <pre><code>$ npm install --save &lt;package-name&gt;@latest
 $ npm update &lt;package-name&gt;
 </code></pre>
 
-<p>or to a specific version</p>
+<p>or to a specific version:</p>
 
 <pre><code>$ npm install --save &lt;package-name&gt;@&lt;version-number&gt;
 </code></pre>
@@ -488,7 +488,7 @@ $ npm update &lt;package-name&gt;
 <pre><code>$ npm audit
 </code></pre>
 
-<p>Running the above command will show you some packages which you may not recognize or use. These are usually dependencies to the packages which you use.</p>
+<p>Running the above command will show you some packages which you may not recognize. These are usually dependencies to the packages which you have listed in <code>package.json</code>.</p>
 
 <p>The CLI will urge you to use <code>npm audit fix</code> to fix the vulnerabilities but if you want to dig a bit deeper as to why you have these packages in the first place, and where they are used, use the following command:</p>
 
