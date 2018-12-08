@@ -8,10 +8,25 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 07 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>When To Use Immutable Data Structures</title>
+      <link>https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/</link>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/</guid>
+      <description>&lt;p&gt;Suppose you are asked this question during a technical interview:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;When do you use immutable (functional) data structures and when do you use mutable data structure?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Cribsheet for JavaScript Coding Interview</title>
@@ -22,7 +37,7 @@
       <description>&lt;p&gt;The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how thte candidate go about solving a problem, or the architecture design interview, which assesses how thte candidate&amp;rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Can you code?&lt;/p&gt;
+&lt;p&gt;Can you be productive with JavaScript?&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>

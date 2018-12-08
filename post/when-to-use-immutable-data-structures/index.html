@@ -1,5 +1,9 @@
 
 
+  
+    
+  
+
 
   
 
@@ -16,31 +20,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.46 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Xiaoyun Yang</title>
+    <title>When To Use Immutable Data Structures</title>
     <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="JavaScript, Best Practices, Interview Prep, Functional Programming">
 
     <link rel="icon" href="https://xiaoyunyang.github.io/favicon-96x96.png">
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://xiaoyunyang.github.io/index.xml">
-    
 
     
-    <meta name="description" content="Xiaoyun Yang - Software Engineer, Indie Hacker, Entrepreneur.">
-    <meta property="og:description" content="Xiaoyun Yang - Software Engineer, Indie Hacker, Entrepreneur.">
+    <meta name="description" content="Suppose you are asked this question during a technical interview:
+
+
+When do you use immutable (functional) data structures and when do you use mutable data structure?
+
+
+">
+    <meta property="og:description" content="Suppose you are asked this question during a technical interview:
+
+
+When do you use immutable (functional) data structures and when do you use mutable data structure?
+
+
+">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Xiaoyun Yang">
-    <meta property="og:url" content="https://xiaoyunyang.github.io/">
+    <meta property="og:title" content="When To Use Immutable Data Structures">
+    <meta property="og:url" content="https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="Xiaoyun Yang - Software Engineer, Indie Hacker, Entrepreneur.">
+    <meta name="twitter:description" content="Suppose you are asked this question during a technical interview:
+
+
+When do you use immutable (functional) data structures and when do you use mutable data structure?
+
+
+">
     
     
 
     
     
 
+    
+      <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/algo/data-structures.png">
     
     
     
@@ -73,7 +95,7 @@
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="1">
+      <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="https://xiaoyunyang.github.io/">Xiaoyun Yang</a>
@@ -93,7 +115,7 @@
   
 </header>
 
-      <nav id="sidebar" data-behavior="1">
+      <nav id="sidebar" data-behavior="4">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -223,36 +245,25 @@
 
       
 
-      <div id="main" data-behavior="1"
+      <div id="main" data-behavior="4"
         class="
                hasCoverMetaIn
                ">
-        <section class="postShorten-group main-content-wrap">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
           
           
-            
+            <div class="post-header main-content-wrap text-left">
   
-    
+    <h1 class="post-title" itemprop="headline">
+      When To Use Immutable Data Structures
+    </h1>
   
-
-
   
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/getting-started-with-career-pivot-with-looseleaf/">
-          Getting Started With Career Pivot With LooseLeaf
-        </a>
-      </h1>
-      
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-05-22T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-12-07T00:00:00Z">
         
-  May 22, 2018
+  December 7, 2018
 
       </time>
     
@@ -267,398 +278,217 @@
 
   </div>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>This documents the market research I&rsquo;ve completed for my startup, <a href="https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">LooseLeaf</a>. This is a long and exhaustive market research. There&rsquo;s a <a href="https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/#pre-submittal-feedback-optional">TL;DR version of the value proposition</a>.</p>
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Suppose you are asked this question during a technical interview:</p>
+
+<blockquote>
+<p>When do you use immutable (functional) data structures and when do you use mutable data structure?</p>
+</blockquote>
 
 <p></p>
-      <p>
-        <a href="https://xiaoyunyang.github.io/post/getting-started-with-career-pivot-with-looseleaf/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="https://xiaoyunyang.github.io/post/getting-started-with-career-pivot-with-looseleaf/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://xiaoyunyang.github.io/post/images/career-pivot.png"/>
-      </div>
-    </a>
-  
-</article>
 
-          
+<p>To answer this question, let&rsquo;s go over some basics first.</p>
+
+<h1 id="mutable-vs-immutable-data-structure">Mutable vs. Immutable Data structure</h1>
+
+<p>To illustrate the differences between mutable and immutable data structure, we are going to implement the queue using an array.</p>
+
+<p>The definition of a queue:</p>
+
+<p><img src="https://xiaoyunyang.github.io/post/images/algo/queue.png" alt="queue" /></p>
+
+<div class="alert info ">
+  <p>Note, I&rsquo;m using an array to represent the Queue for simplicity. That&rsquo;s not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js" target="_blank">A correct implementation of a queue</a> is a uses a DoublyNode and two pointers for head and tail of the queue.</p>
+</div>
+
+<p>Here&rsquo;s an implementation of the Queue as an <em>mutable</em> data structure.</p>
+
+<pre><code class="language-javascript">function QueueMutable() {
+  let arr = [] // private variable
+
+  this.enqueue = val =&gt; arr.push(val)
+  this.dequeue = () =&gt; arr.shift()
+  this.isEmpty = () =&gt; arr.length === 0
+  this.getData = () =&gt; arr
+}
+</code></pre>
+
+<p>Here&rsquo;s an implementation of the Queue as a <em>immutable</em> data structure.</p>
+
+<pre><code class="language-javascript">function QueueImmutable(dataIn = []) { // data is an optional parameter
+  let data = dataIn // private variable
+
+  this.enqueue = item =&gt; {
+    let newData = data.concat([item]) // concat returns a new arr
+    return new QueueImmutable(newData)
+  }
+  
+  this.dequeue = () =&gt; {
+    let [head, ...rest] = data
+    return [head, new QueueImmutable(rest)]
+  }
+  this.getData = () =&gt; data
+  this.isEmpty = () =&gt; data.length === 0
+}
+</code></pre>
+
+<p>One key difference you may have noticed is that the immutable Queue does not mutate the original queue. <code>enqueue</code> and <code>dequeue</code> functions returns a new queue data structure.</p>
+
+<p>Try out these Queue implementations <a href="https://repl.it/@xiaoyunyang/queue" target="_blank">in repl</a>.</p>
+
+<h1 id="pros-and-cons">Pros and Cons</h1>
+
+<p>One advantage of working with an immutable data structure is chaining.</p>
+
+<p>For instance, we can do something like the following with an immutable data structure:</p>
+
+<pre><code class="language-javascript">qIm = qIm.enqueue(1).enqueue(2).enqueue(3).dequeue()[1]
+qIm.getData() //&gt; [2,3]
+</code></pre>
+
+<p>On the other hand, the non-functional FakeQueue implementation requires the following lines to do the exact thing.</p>
+
+<pre><code class="language-javascript">let qM = new QueueMutable()
+let qIm = new QueueImmutable()
+qM.enqueue(1)
+qM.enqueue(2)
+qM.enqueue(3)
+qM.dequeue()
+qM.getData() //&gt; [2, 3]
+</code></pre>
+
+<p>An obvious disadvantage with using an immutable data structure is you are creating a new data structure every time you want to make a change.</p>
+
+<h1 id="when-to-use-immutable-data-structure">When to use immutable data structure</h1>
+
+<p>In concurrent programming, functional programming and immutable data structures are used to ensure correctness when multiple parts of the program use shared resource. The shared resource is encoded in an immutable data structure.</p>
+
+<p>Modern client side applications often have multiple components (e.g., parts of the DOM or screens of a single page application) access and making changes to the same shared state. React and redux provides a powerful framework for building rich client side applications which rely on heavily on functional programming techniques. For instance, redux provides an an abstraction for managing shared data by leveraging immutable data structure and a collection of functions called reducers and actions to provide a &ldquo;single source of truth&rdquo; to multiple React components.</p>
+
+<h1 id="when-to-use-mutable-data-structure">When to use mutable data structure</h1>
+
+<p>When concurrency and resource sharing are not involved and you are concerned with making your program run as fast as possible, you are better off using mutable data structures. Using an immutable data structure is expensive because it&rsquo;s creating a new modified version of a data structure every time you want to make a change.</p>
+
+<p>In game programming, memory allocation is usually the slowest thing (resource pools are popular in game programming). In games you not only want each frame to process quickly but also for speed to be consistent. The usual symptom of a garbage collector bottleneck is that the game intermittently freezes but runs normally in between.</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
             
-  
-    
-  
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
 
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/guide/">Guide</a>
 
-  
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/programming/">Programming</a>
 
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/">
-          Data Structure with JavaScript Object: Linked List
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2018-05-16T00:00:00Z">
-        
-  May 16, 2018
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="https://xiaoyunyang.github.io/categories/blog">blog</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.</p>
-      <p>
-        <a href="https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://xiaoyunyang.github.io/post/images/algo/linked-list.png"/>
-      </div>
-    </a>
-  
-</article>
-
-          
+                  </div>
+                
+              
             
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/">
-          Algos to Practice Whiteboarding for The Coding Interview
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2018-05-13T00:00:00Z">
-        
-  May 13, 2018
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="https://xiaoyunyang.github.io/categories/blog">blog</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&rsquo;m drawing these problems from <a href="https://leetcode.com/" target="_blank">LeetCode</a> and <a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;psc=1&amp;refRID=2E72V7DJM4CV4DNTBTKD" target="_blank">Cracking the Coding Interview</a>. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.</p>
-      <p>
-        <a href="https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://xiaoyunyang.github.io/post/images/algo/algo-logo.png"/>
-      </div>
-    </a>
-  
-</article>
-
-          
             
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/serverless-web-app-for-work/">
-          Serverless Web App For Work
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2018-05-09T00:00:00Z">
-        
-  May 9, 2018
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="https://xiaoyunyang.github.io/categories/projects">projects</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.</p>
-
-<p></p>
-      <p>
-        <a href="https://xiaoyunyang.github.io/post/serverless-web-app-for-work/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="https://xiaoyunyang.github.io/post/serverless-web-app-for-work/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://xiaoyunyang.github.io/post/images/react.png"/>
-      </div>
-    </a>
-  
-</article>
-
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
           
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/">
-          The Coding Interview: What to Expect
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2018-05-07T00:00:00Z">
-        
-  May 7, 2018
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="https://xiaoyunyang.github.io/categories/blog">blog</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>Being great at coding interviews doesn&rsquo;t necessarily make you a great developer and being a great developer doesn&rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.</p>
-
-<p></p>
-      <p>
-        <a href="https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://xiaoyunyang.github.io/post/images/CTCI.png"/>
-      </div>
-    </a>
-  
-</article>
-
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/" data-tooltip="Security Considerations for Web Applications and Best Practices">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
           
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/">
-          So You Wanna Be A Gopher Eh?
-        </a>
-      </h1>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
       
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2018-05-06T00:00:00Z">
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
         
-  May 6, 2018
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="https://xiaoyunyang.github.io/categories/blog">blog</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>Go is becoming pretty mainstream. Every job posting I&rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. Here&rsquo;s a guide to help you hit the ground running with Go.</p>
-
-<p></p>
-      <p>
-        <a href="https://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="https://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://xiaoyunyang.github.io/post/images/go/gopher.png"/>
-      </div>
-    </a>
-  
-</article>
-
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/">
-          Getting Started With Startup Seed Funding
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2018-05-05T00:00:00Z">
-        
-  May 5, 2018
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="https://xiaoyunyang.github.io/categories/blog">blog</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>This documents my journey applying to the National Science Foundation (NSF) Seed Fund for my startup, <a href="https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">LooseLeaf</a>.</p>
-
-<p></p>
-      <p>
-        <a href="https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://xiaoyunyang.github.io/post/images/money.png"/>
-      </div>
-    </a>
-  
-</article>
-
-          
-          
-  <div class="pagination-bar">
-    <ul class="pagination">
-      
-        
-          <li class="pagination-prev">
-            <a class="btn btn--default btn--small" href="https://xiaoyunyang.github.io/">
-              <i class="fa fa-angle-left text-base icon-mr"></i>
-              <span>NEWER POSTS</span>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
+              <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
         
-          <li class="pagination-next">
-            <a class="btn btn--default btn--small" href="https://xiaoyunyang.github.io/page/3/">
-              <span>OLDER POSTS</span>
-              <i class="fa fa-angle-right text-base icon-ml"></i>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
+              <i class="fa fa-google-plus"></i>
             </a>
           </li>
         
       
-      <li class="pagination-number">page 2 of 5</li>
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
     </ul>
   </div>
 
 
-        </section>
+            
+              
+                <div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/";  
+this.page.identifier = "When To Use Immutable Data Structures"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://http-xiaoyunyang-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+              
+            
+          </div>
+        </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
     &copy; 2018 Xiaoyun Yang. All Rights Reserved
@@ -666,6 +496,102 @@
 </footer>
 
       </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/" data-tooltip="Security Considerations for Web Applications and Best Practices">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fwhen-to-use-immutable-data-structures%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fwhen-to-use-immutable-data-structures%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fwhen-to-use-immutable-data-structures%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
     </div>
     
     <div id="about">
@@ -958,8 +884,35 @@ $(document).ready(function() {
 </script>
 
 
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/xiaoyunyang.github.io\/post\/when-to-use-immutable-data-structures\/';
+          
+            this.page.identifier = '\/post\/when-to-use-immutable-data-structures\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'http-xiaoyunyang-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
 
 
     
   </body>
 </html>
+
