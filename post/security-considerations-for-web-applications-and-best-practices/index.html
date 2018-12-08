@@ -333,18 +333,24 @@ So make sure you sanitize your input!</p>
 <p>I use <a href="https://github.com/chriso/validator.js/" target="_blank"><code>validator</code></a>.</p>
 
 <pre><code class="language-javascript">import validator from ‘validator’;
-
-app.get('/test/search', (req, res) =&gt; {
-  const userAgent = validator.escape(req.query.q) || '';
-  res.render('test', { userAgent });
-});
+let q = '&lt;script&gt;alert(&quot;you are hacked&quot;)&lt;/script&gt;'
+let sanitizedQ = validator.escape(q)
 </code></pre>
 
-<p>which makes <code>&lt;script&gt;alert(&quot;you are hacked&quot;)</code> into:</p>
+<p>which makes <code>&lt;script&gt;alert(&quot;you are hacked&quot;)&lt;/script&gt;</code> into:</p>
 
 <blockquote>
-<p>&amp;lt;script&amp;gt;alert(&amp;quot;you are hacked&amp;quot;)&amp;lt;&amp;#x2F;script&amp;gt</p>
+<p>&lt;script&gt;alert(&quot;you are hacked&quot;)&lt;&#x2F;script&gt;</p>
 </blockquote>
+
+<p>Try out validator in <a href="https://runkit.com/xiaoyunyang/validator-example" target="_blank">the runkit playground</a></p>
+
+<p>Or use curl to interact with the endpoint:</p>
+
+<pre><code>$ curl -L https://xiaoyunyang.runkit.io/validator-example/branches/master
+</code></pre>
+
+<p><a href="https://validator-example-mn9pycmmqarl.runkit.sh/" target="_blank">endpoint</a></p>
 
 <h1 id="sql-injection">SQL Injection</h1>
 
