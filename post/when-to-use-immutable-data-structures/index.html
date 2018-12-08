@@ -301,7 +301,7 @@ When do you use immutable (functional) data structures and when do you use mutab
 <p><img src="https://xiaoyunyang.github.io/post/images/algo/queue.png" alt="queue" /></p>
 
 <div class="alert info ">
-  <p>Note, I&rsquo;m using an array to represent the Queue for simplicity. That&rsquo;s not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js" target="_blank">A correct implementation of a queue</a> is uses a <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Node/DoublyNode.js" target="_blank">DoublyNode</a> and two pointers for head and tail of the Queue.</p>
+  <p>Note, I&rsquo;m using an array to represent the Queue for simplicity. That&rsquo;s not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js" target="_blank">A correct implementation of a queue</a> uses a <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Node/DoublyNode.js" target="_blank">DoublyNode</a> and two pointers for head and tail of the Queue.</p>
 </div>
 
 <p>Here&rsquo;s an implementation of the Queue as an <em>mutable</em> data structure.</p>
@@ -394,7 +394,7 @@ console.log(qIm.getData()) //&gt; [2,3]
 
 <h1 id="when-to-use-immutable-data-structure">When to use immutable data structure</h1>
 
-<p>In concurrent programming, functional programming and immutable data structures are used to ensure correctness when multiple parts of the program use shared resource. The shared resource is encoded in an immutable data structure.</p>
+<p>In concurrent programs, functional programming and immutable data structures are used to ensure correctness when multiple parts of the program use shared resource. The shared resource is encoded in an immutable data structure.</p>
 
 <p>Modern client side applications often have multiple components (e.g., parts of the DOM or screens of a single page application) access and making changes to the same shared state. React and redux provides a powerful framework for building rich client side applications which rely on heavily on functional programming techniques. For instance, redux provides an an abstraction for managing shared data by leveraging immutable data structure and a collection of functions called reducers and actions to provide a &ldquo;single source of truth&rdquo; to multiple React components.</p>
 
