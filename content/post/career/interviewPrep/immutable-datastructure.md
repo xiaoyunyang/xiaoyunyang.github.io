@@ -34,7 +34,7 @@ The definition of a queue:
 
 ![queue](/post/images/algo/queue.png)
 
-{{< alert info >}} Note, I'm using an array to represent the Queue for simplicity. That's not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. [A correct implementation of a queue](https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js) is a uses a DoublyNode and two pointers for head and tail of the Queue.{{< /alert >}}
+{{< alert info >}} Note, I'm using an array to represent the Queue for simplicity. That's not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. [A correct implementation of a queue](https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js) is uses a [DoublyNode](https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Node/DoublyNode.js) and two pointers for head and tail of the Queue.{{< /alert >}}
 
 Here's an implementation of the Queue as an *mutable* data structure.
 
@@ -100,7 +100,7 @@ console.log(qIm.getData()) //> D
 
 ```
 
-`qIm.getData()` always returns `[]` at lines A and B because qIm hasn't changed. On the other hand, each time we call `qM.getData()`, we get different results: The call on line C returns `[1]` and the call on line D returns `[1,2,3]`.
+`qIm.getData()` always returns `[]` at lines A and B because `qIm` hasn't changed. On the other hand, each time we call `qM.getData()`, we get different results: The call on line C returns `[1]` and the call on line D returns `[1,2,3]`.
 
 Why is it an advantage to return the same results for the same input? Better predicability, maintability, and less buggy code.
 
@@ -126,7 +126,7 @@ console.log(qIm.getData()) //> [2,3]
 
 Notice we don't need to reassign `qM` to point to a new data structure since the original data structure is modified in place via `enqueue` and `dequeue`.
 
-However, for the immutable Queue, four new Queues are created each time we call `enqueue` and `dequeue` and we needed to update the `qIm` to point to the final Queue containing 2 and 3 which was created by the `dequeue` function.
+However, for the immutable Queue, a new Queue is created each time we call `enqueue` and `dequeue`, so that's four new Queues total to support the four Queue operations. Also we needed to update the `qIm` to point to the final Queue containing 2 and 3 which was created by the `dequeue` function.
 
 # When to use immutable data structure
 
