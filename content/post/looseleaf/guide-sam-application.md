@@ -4,7 +4,6 @@ date: 2018-05-04
 categories:
   - blog
 tags:
-  - Fundraising
   - Entrepreneurship
   - Guide
 keywords:

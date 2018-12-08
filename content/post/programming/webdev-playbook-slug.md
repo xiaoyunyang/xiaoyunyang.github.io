@@ -5,9 +5,12 @@ categories:
   - blog
 tags:
   - JavaScript
-  - Guide
-  - Web App
+  - Web Dev
+  - Backend
   - Node
+  - Best Practice
+  - Guide
+  - Software Design
 keywords:
   - Software Design
   - web development

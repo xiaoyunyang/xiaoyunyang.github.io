@@ -26,6 +26,10 @@ This is a tutorial for Unix and Git newbies.
 
 # Basics
 
+## Forking
+
+Forking is used when you contribute to a open source repository.
+
 *Assume:*
 
 * userA, userB, and userC all setup their computers with a Github account.
@@ -36,9 +40,8 @@ This is a tutorial for Unix and Git newbies.
 * userB wants to fork the `ProjectName` repo from usernameB.
 * userC wants to fork the `ProjectName` repo from userB.
 
-<!-- toc -->
+**Git Tutorial For userA**
 
-## Git Tutorial For userA
 Go to https://<span></span>github.com/`userA`/ and click the "New" button. Name the new repo `project-name`.
 
 1. On your computer, go to terminal and `cd` into the directory you want to host the local repo, then do:
@@ -46,12 +49,14 @@ Go to https://<span></span>github.com/`userA`/ and click the "New" button. Name 
 	```
 	$ git clone https://github.com/userA/project-name.git
 	```
+
 2. Check that you have remote:
 
 	```
 	$ git remote
 	origin
 	```
+	
 3. Open the project in finder and in atom to edit the content of the folder.
 
 	```
@@ -110,8 +115,8 @@ In the Terminal, do the following:
 
 	$`git pull origin master`
 
+**Git Tutorial For userC**
 
-## Git Tutorial For userC
 Go to https://<span></span>github.com/`userB`/`project-name` and click the "Fork" button.
 
 In the Terminal, do the following:
@@ -166,6 +171,11 @@ In the Terminal, do the following:
 
 	`$ git pull upstream master`
 
+## Branching
+
+When we develop software on a team of developers, everyone would work to commit changes to a development branch. Every new feature added would correspond to a ticket in Jira's backlog. When you work on each ticket, you create a feature branch from the development branch and then you would submit a pull request to the development branch with the Jira ticket number in the commit message.
+
+To illustrate how branching works, check out this [toy repo](https://github.com/xiaoyunyang/toy-repo)
 
 # Other Useful Commands
 Some useful things you can do when things go haywire or just to get the most usefulness out of git:

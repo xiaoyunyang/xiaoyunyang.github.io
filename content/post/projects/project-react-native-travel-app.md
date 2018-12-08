@@ -5,7 +5,6 @@ categories:
   - projects
 tags:
   - Mobile App
-  - JavaScript
   - Open Source
   - React Native
 thumbnailImagePosition: left

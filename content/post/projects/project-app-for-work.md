@@ -1,10 +1,11 @@
 ---
-title: "Serverless Web App For Work"
+title: "Single Page Application For Work"
 date: 2018-05-09
 categories:
   - projects
 tags:
-  - Web App
+  - Web Dev
+  - Frontend
   - Open Source
   - JavaScript
   - UX

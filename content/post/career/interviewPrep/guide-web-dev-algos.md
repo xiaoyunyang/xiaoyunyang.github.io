@@ -5,7 +5,7 @@ categories:
   - blog
 tags:
   - JavaScript
-  - Guide
+  - Programming
 keywords:
   - computer science
   - algorithms

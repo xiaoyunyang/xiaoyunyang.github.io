@@ -4,14 +4,12 @@ date: 2018-12-06
 categories:
   - blog
 tags:
-  - JavaScript
-  - React
   - Node
   - Web Dev
-  - Frontend
+  - Best Practice
 keywords:
   - JavaScript
-  - Best Practices
+  - Best Practice
   - Web Development
   - Web Security
   - XSS

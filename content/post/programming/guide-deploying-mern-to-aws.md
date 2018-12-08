@@ -5,7 +5,8 @@ categories:
   - blog
 tags:
   - DevOps
-  - Web App
+  - Guide
+  - Web Dev
 keywords:
   - AWS
   - Docker

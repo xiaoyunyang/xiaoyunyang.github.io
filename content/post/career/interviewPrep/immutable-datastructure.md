@@ -5,13 +5,15 @@ categories:
   - blog
 tags:
   - JavaScript
-  - Guide
+  - Best Practice
   - Programming
 keywords:
   - JavaScript
   - Best Practices
   - Interview Prep
   - Functional Programming
+  - Data Structure
+  - Queue
 thumbnailImagePosition: left
 thumbnailImage: /post/images/algo/data-structures.png
 ---
@@ -32,7 +34,7 @@ The definition of a queue:
 
 ![queue](/post/images/algo/queue.png)
 
-{{< alert info >}} Note, I'm using an array to represent the Queue for simplicity. That's not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. [A correct implementation of a queue](https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js) is a uses a DoublyNode and two pointers for head and tail of the queue.{{< /alert >}}
+{{< alert info >}} Note, I'm using an array to represent the Queue for simplicity. That's not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. [A correct implementation of a queue](https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js) is a uses a DoublyNode and two pointers for head and tail of the Queue.{{< /alert >}}
 
 Here's an implementation of the Queue as an *mutable* data structure.
 
@@ -106,4 +108,4 @@ Modern client side applications often have multiple components (e.g., parts of t
 
 When concurrency and resource sharing are not involved and you are concerned with making your program run as fast as possible, you are better off using mutable data structures. Using an immutable data structure is expensive because it's creating a new modified version of a data structure every time you want to make a change.
 
-In game programming, memory allocation is usually the slowest thing (resource pools are popular in game programming). In games you not only want each frame to process quickly but also for speed to be consistent. The usual symptom of a garbage collector bottleneck is that the game intermittently freezes but runs normally in between.
+In game programming, memory allocation is usually the slowest thing (resource pools are popular in game programming). In games you not only want each frame to process quickly but also for speed to be consistent. The usual symptom of a garbage collector bottleneck is that the game intermittently freezes but runs normally in between. In that case, you don't want to continuously allocate memory for the new data structure; rather you want to update the existing data structure in place.

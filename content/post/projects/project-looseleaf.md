@@ -4,7 +4,9 @@ date: 2018-04-12
 categories:
   - projects
 tags:
-  - Web App
+  - Web Dev
+  - Frontend
+  - Backend
   - Entrepreneurship
   - React
   - Node

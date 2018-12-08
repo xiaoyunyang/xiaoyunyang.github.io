@@ -4,9 +4,8 @@ date: 2018-08-14
 categories:
   - blog
 tags:
-  - JavaScript
   - Guide
-  - Web App
+  - Frontend
   - UX
   - React
 keywords:

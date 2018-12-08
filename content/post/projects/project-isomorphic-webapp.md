@@ -4,11 +4,13 @@ date: 2018-03-08
 categories:
   - projects
 tags:
-  - JavaScript
-  - Web App
+  - Web Dev
+  - Frontend
+  - Backend
   - Open Source
   - React
   - Node
+  - Software Design
 thumbnailImagePosition: left
 thumbnailImage: /post/images/theFuture.png
 ---
