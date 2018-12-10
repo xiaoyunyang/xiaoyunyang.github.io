@@ -706,6 +706,78 @@ b //> 1.5
 c //> NaN
 ```
 
+# Tips for writing Good JS Code
+
+## Tip #1: Use let and const instead of var
+
+- Use `const` for unchanging values.
+- Use `let` for changing values.
+
+`var` is scoped to the function while `let` is scoped to the [block](https://edgecoders.com/function-scopes-and-block-scopes-in-javascript-25bbd7f293d7). `let` also [prevents re-declaration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Description) of variables in the same scope.
+
+Here's an example to understand the differences between `let` and  `var`. ([try it out in repl](https://repl.it/@xiaoyunyang/let-v-var))
+
+{{< codeblock "let-v-var.js" >}}
+function foo() {
+  let res = ''
+  let j = 10
+
+  for(let i=0; i<j; i++) {
+    // uncommenting ... the following line causes error
+    // var j = 5
+    res += `${j}, `
+    j -= 1
+  }
+  res += `${j}`
+  console.log(`foo: ${res}`)
+}
+
+function bar() {
+  let res = ''
+  let j = 10
+
+  for(let i=0; i<j; i++) {
+    let j = 5
+    res += `${j}, `
+    j -= 1
+  }
+  res += `${j}`
+  console.log(`bar: ${res}`)
+}
+
+function baz() {
+  let res = ''
+  var j = 10
+
+  for(let i=0; i<j; i++) {
+    var j = 5
+    res += `${j}, `
+    j -= 1
+  }
+  res += `${j}`
+  console.log(`baz: ${res}`)
+}
+{{< /codeblock >}}
+
+What do we expect logged to console when we run `foo()`, `bar()` and `baz()`? 
+
+```
+foo: 10, 9, 8, 7, 6, 5
+bar: 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 10
+baz: 5, 5, 5, 5, 4
+```
+
+Let's discuss what's happening in each function to fully appreciate the nuances between `var` and `let`.
+
+**foo:**<br/>
+Line 7 is commented out because it causes the "duplicate declaration" error because `var` is scoped to the `foo` function and on line 3, `j` is already declared and scoped to `foo` using the `let` keyword. Variables declared using `let` is protected from re-decalaration in the same scope. What happens if we declare `j` on Line 3 using `var` and declare `j` on Line 7 using `let`? The result is going to be same as `bar`. Why?
+
+**bar:**<br/> 
+The `j` in the condition of the for-loop on line 19 is the same `j` that's declared on line 17. The `j` that is being concatenated to `res` on line 21 is the same `j` that is declared on line 20. Line 20 does not cause the "duplicate decalaration" error because the `let` keyword is used so a new variable is created which is scoped ot the for-loop. When accessing `j` on line 21, the one that is closest to the current scope is used. Therefore, `bar` prints out 10 "5"s, followed by one "10" at the end. The fact that `j` is "10" before the function returns confirms that the `j` declared on line 17 is never changed and and that a new `j` is created on line 20.
+
+**baz:**<br/>
+Both the `j`s declared on line 30 and 33 are scoped to the `baz` function. We can re-declare `j` on line 33 because `j` is originally declared on line 30 and `var` doesn't have re-declaration protection. The two `j`s are the same. On line 33, `j` is reassigned as 5. So what is value of `j` on Line 32 which is being compared with `i`? The first time the for-loop is run, it's 10. The subsequent runs, it's 5. Therefore, the result of `bar` is four 5's, followed by a 4.
+
 # Study material for JS interviews:
 
 - [What is a Closure?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36#.ecfskj935)
@@ -717,3 +789,7 @@ c //> NaN
 - [What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261#.aa7ubggsy)
 - [Soft Skills](https://medium.com/javascript-scene/master-the-javascript-interview-soft-skills-a8a5fb02c466)
 - [Common Data Structures](https://medium.freecodecamp.org/10-common-data-structures-explained-with-videos-exercises-aaff6c06fb2b)
+- Google's Livebook on [Site Reliability Engineering](https://landing.google.com/sre/sre-book/toc/index.html)
+- [How to refactor code to be more testable](https://hackernoon.com/how-to-refactor-unwieldy-untestable-code-4a73d75cb80a)
+- Steve Armstrong's [article about ES6](https://tech.smartling.com/wake-up-tomorrow-and-start-using-es6-universal-language-f8380442816e)
+- [Let's get productive with JavaScript](https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/)

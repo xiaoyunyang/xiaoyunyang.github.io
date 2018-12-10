@@ -31,7 +31,7 @@ This article discusses some pitfalls and techniques for securiing your JavaScrip
 
 Browser executes malicious JavaScript code upon loading a web page which displays user-generated content.
 
-XSS could be very harmful to your site's users because malicious code is executed in their browsers when they load your site. The malicious code not only could modify your page's DOM or window location (e.g., via executing `window.location = "www.evil.com`), but can also could steal your users' information or perform actions on their behalf.
+XSS could be very harmful to your site's users because malicious code is executed in their browsers when they load your site. The malicious code not only could modify your page's DOM or window location (e.g., via executing `window.location = "www.evil.com`), but also could steal your users' information or perform actions on their behalf.
 
 **Cause**
 
