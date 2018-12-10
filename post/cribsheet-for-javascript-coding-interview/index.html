@@ -334,6 +334,10 @@ Can you be productive with JavaScript?
 <li><a href="#optional-parameter">Optional Parameter</a></li>
 <li><a href="#quickly-convert-string-to-number">Quickly convert string to number</a></li>
 </ul></li>
+<li><a href="#tips-for-writing-good-js-code">Tips for writing Good JS Code</a>
+<ul>
+<li><a href="#tip-1-use-let-and-const-instead-of-var">Tip #1: Use let and const instead of var</a></li>
+</ul></li>
 <li><a href="#study-material-for-js-interviews">Study material for JS interviews:</a></li>
 </ul>
 </nav>
@@ -1100,6 +1104,104 @@ b //&gt; 1.5
 c //&gt; NaN
 </code></pre>
 
+<h1 id="tips-for-writing-good-js-code">Tips for writing Good JS Code</h1>
+
+<h2 id="tip-1-use-let-and-const-instead-of-var">Tip #1: Use let and const instead of var</h2>
+
+<ul>
+<li>Use <code>const</code> for unchanging values.</li>
+<li>Use <code>let</code> for changing values.</li>
+</ul>
+
+<p><code>var</code> is scoped to the function while <code>let</code> is scoped to the <a href="https://edgecoders.com/function-scopes-and-block-scopes-in-javascript-25bbd7f293d7" target="_blank">block</a>. <code>let</code> also <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Description" target="_blank">prevents re-declaration</a> of variables in the same scope.</p>
+
+<p>Here&rsquo;s an example to understand the differences between <code>let</code> and  <code>var</code>. (<a href="https://repl.it/@xiaoyunyang/let-v-var" target="_blank">try it out in repl</a>)</p>
+
+
+  
+    
+  
+  
+  
+  
+
+
+<figure class="highlight  language-">
+  <figcaption>
+    
+      <span>let-v-var.js</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-"><code class="">function foo() {
+  let res = &#39;&#39;
+  let j = 10
+
+  for(let i=0; i&lt;j; i&#43;&#43;) {
+    // uncommenting ... the following line causes error
+    // var j = 5
+    res &#43;= `${j}, `
+    j -= 1
+  }
+  res &#43;= `${j}`
+  console.log(`foo: ${res}`)
+}
+
+function bar() {
+  let res = &#39;&#39;
+  let j = 10
+
+  for(let i=0; i&lt;j; i&#43;&#43;) {
+    let j = 5
+    res &#43;= `${j}, `
+    j -= 1
+  }
+  res &#43;= `${j}`
+  console.log(`bar: ${res}`)
+}
+
+function baz() {
+  let res = &#39;&#39;
+  var j = 10
+
+  for(let i=0; i&lt;j; i&#43;&#43;) {
+    var j = 5
+    res &#43;= `${j}, `
+    j -= 1
+  }
+  res &#43;= `${j}`
+  console.log(`baz: ${res}`)
+}</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+
+<p>What do we expect logged to console when we run <code>foo()</code>, <code>bar()</code> and <code>baz()</code>?</p>
+
+<pre><code>foo: 10, 9, 8, 7, 6, 5
+bar: 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 10
+baz: 5, 5, 5, 5, 4
+</code></pre>
+
+<p>Let&rsquo;s discuss what&rsquo;s happening in each function to fully appreciate the nuances between <code>var</code> and <code>let</code>.</p>
+
+<p><strong>foo:</strong><br/>
+Line 7 is commented out because it causes the &ldquo;duplicate declaration&rdquo; error because <code>var</code> is scoped to the <code>foo</code> function and on line 3, <code>j</code> is already declared and scoped to <code>foo</code> using the <code>let</code> keyword. Variables declared using <code>let</code> is protected from re-decalaration in the same scope. What happens if we declare <code>j</code> on Line 3 using <code>var</code> and declare <code>j</code> on Line 7 using <code>let</code>? The result is going to be same as <code>bar</code>. Why?</p>
+
+<p><strong>bar:</strong><br/>
+The <code>j</code> in the condition of the for-loop on line 19 is the same <code>j</code> that&rsquo;s declared on line 17. The <code>j</code> that is being concatenated to <code>res</code> on line 21 is the same <code>j</code> that is declared on line 20. Line 20 does not cause the &ldquo;duplicate decalaration&rdquo; error because the <code>let</code> keyword is used so a new variable is created which is scoped ot the for-loop. When accessing <code>j</code> on line 21, the one that is closest to the current scope is used. Therefore, <code>bar</code> prints out 10 &ldquo;5&rdquo;s, followed by one &ldquo;10&rdquo; at the end. The fact that <code>j</code> is &ldquo;10&rdquo; before the function returns confirms that the <code>j</code> declared on line 17 is never changed and and that a new <code>j</code> is created on line 20.</p>
+
+<p><strong>baz:</strong><br/>
+Both the <code>j</code>s declared on line 30 and 33 are scoped to the <code>baz</code> function. We can re-declare <code>j</code> on line 33 because <code>j</code> is originally declared on line 30 and <code>var</code> doesn&rsquo;t have re-declaration protection. The two <code>j</code>s are the same. On line 33, <code>j</code> is reassigned as 5. So what is value of <code>j</code> on Line 32 which is being compared with <code>i</code>? The first time the for-loop is run, it&rsquo;s 10. The subsequent runs, it&rsquo;s 5. Therefore, the result of <code>bar</code> is four 5&rsquo;s, followed by a 4.</p>
+
 <h1 id="study-material-for-js-interviews">Study material for JS interviews:</h1>
 
 <ul>
@@ -1112,6 +1214,10 @@ c //&gt; NaN
 <li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261#.aa7ubggsy" target="_blank">What is a Promise?</a></li>
 <li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-soft-skills-a8a5fb02c466" target="_blank">Soft Skills</a></li>
 <li><a href="https://medium.freecodecamp.org/10-common-data-structures-explained-with-videos-exercises-aaff6c06fb2b" target="_blank">Common Data Structures</a></li>
+<li>Google&rsquo;s Livebook on <a href="https://landing.google.com/sre/sre-book/toc/index.html" target="_blank">Site Reliability Engineering</a></li>
+<li><a href="https://hackernoon.com/how-to-refactor-unwieldy-untestable-code-4a73d75cb80a" target="_blank">How to refactor code to be more testable</a></li>
+<li>Steve Armstrong&rsquo;s <a href="https://tech.smartling.com/wake-up-tomorrow-and-start-using-es6-universal-language-f8380442816e" target="_blank">article about ES6</a></li>
+<li><a href="https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/" target="_blank">Let&rsquo;s get productive with JavaScript</a></li>
 </ul>
               
             </div>
