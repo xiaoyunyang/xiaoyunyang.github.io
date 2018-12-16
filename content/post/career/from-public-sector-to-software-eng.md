@@ -1,6 +1,6 @@
 ---
-title: "From Military To Tech Entrepreneur:  How I made the Leap"
-date: 2018-12-30
+title: "From Public Sector To Senior Software Engineer:  How I made the Transition"
+date: 2018-12-16
 categories:
   - blog
 tags:
@@ -8,90 +8,147 @@ tags:
   - Career
 ---
 
-I commissioned to serve in the US Navy when I received my university degrees. The service commitment is 5 years. I signed the contract when I was a sophomore in college. I didn't know that I wanted to be a tech entrepreneur or wanted to work in the high tech industry when I was in college. It was not until a year after I commissioned that I realized that I prefer a job in innovation and allows me to be creative and indulge in hands-on problem solving. I've spent the last 5 years exploring my interests and working on closing skills gaps that would preclude me from a smooth transition to a job I would enjoy doing. I did this while still serving in the military.  Here's my journey.
+I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.
 
 <!--more-->
+<!--toc-->
 
-# Prepare Early
+# 1. Ask for What You Want At Your Current Workplace
+
+Because I got the ROTC scholarship to pay for college, I knew I was going to work in the public sector. Working in the public sector has some downsides. Specially, you don't get as much exposure to in-demand skills that are valued by the private sector. Some public sector positions are more similar to a career in the private sector than others. For the Navy, that's [Naval Reactors]( https://fas.org/man/dod-101/sys/ship/eng/appndx-c.htm).
+
+I received a Navy ROTC scholarship which came with the obligation to serve active duty in the Navy as an officer for five years after graduating. There were a few service communities to join and most of them entail going on deployment on a ship.
+
+There's an exclusive program called Naval Reactors which is run by a four star Admiral and joinly funded and operated by the Department of Defense and Department of Energy. Working at Naval Reactors means:
+
+1. You don't have to go on deployment and have nights and weekends off to work on side projects and learn up-to-date skills to support a career change,
+2. You make technical decisions and can work on a variety of engineering problems and learn skills which are transferable to the private sector.
+
+During my senior year when we put in our preference for what job in the Navy we want, I wanted to join Naval Reactors. The only problem was my GPA wasn't good enough.
+
+Naval Reactors only invite midshipmen graduating with the best grades in an engineering major for an interview. You cannot have anything less than a B in any engineering class. Typically, people who get selected for an Naval Reactors interview have a 3.8 GPA at the time of the interview. I had barely a 3.5 GPA (due to mostly fluff classes I took) and some C's in my engineering classes.
+
+So I wasn't good enough to pass the pre-screening for Naval Reactors. How did I end up getting hired? **I asked.**
+
+I wasn't good enough to get an invite for Naval Reactors but I was good enough to get an invite to interview for a Nuclear officer position on an aircraft carrier. This position is also something that requires pre-screening and coming to Naval Reactors for technical and Admiral interviews but bar for the pre-screening is lower and the interviews are easier (two technical interviews instead of three and questions are easier).
+
+I accepted the invitation to interview for the aircraft carrier nuclear officer position but **I asked** my ROTC commanding officer that I'm really hoping to get into Naval Reactors. He told me that my grades weren't high enough but he could put a note in the interview package of my desire to work at Naval Reactors.
+
+I did my two technical interviews (physics and math whiteboarding) and waited for my turn to interview with the Admiral. The Admiral looked at my transcript and then the notes that I was getting my masters degree at the time of the interview and my interest to work at Naval Reactors. He asked me what projects I was working on for my masters degree. I was taking four masters level engineering classes at the time (my last semester of college) and I gave him the one minute breakdown of each project. He was very impressed, then asked whether I'd like to have a position as instructor at the Naval Power School in Charleston, NC.
+
+The position offered a way out of going on deployment but did not meet my other goal of having a role that lets me learn skills valued by the private sector. So **I asked** the four Admiral if I could have a job at Naval Reactors. He sent me to my third technical interview and I did well in that and I got the job.
+
+When I started my Naval Reactors career, I was put in a department which focused on mechanical engineering problem. Although fluid dynamics, structural mechanics, and material science are interesting, the things I was getting good at had little to do with software engineering. After almost two years of working there, **I asked** to be transferred to a different section which focused on instructumetation and control and lets me work on software engineering problems. 
+
+Here's the moral of the story: If you don't like what you are doing, you can ask for a career change without leaving your current work place. Most companies, even the US Navy support internal mobility and want to give you the best job so you'd stay. Employee turnover is expensive.
+
+# 2. Prepare Early. Build Your Brand
+
+If you don't work at a software company and you don't write code at your job, how do you convince other people that you are an experienced software engineer?
+
+My strategy was to start my own software company, LooseLeaf. It gives me the motivation to code every day and the credibility to call myself a software engineer.
 
 > Dream jobs are not found. Dream jobs are made.
 
-## Identify Skills and Experience Gap
+# 3. Start Conversation with Recruiters Early
 
-I've always been a believer of setting realistic expectations for yourself. This means recognizing that it is a false belief that working hard at your day job is enough to make you competitive in the labor market.
+There are two types of recruiters: Those who work for the companies that are hiring and those who work at independent agencies like JobSpring and Workbridge whose mission is to find qualified candidates and get them interviews with companies.
 
+Work with the second type of recruiters and start conversations with them as soon as you can. Let them help you prepare and get hired. They collect a big commission if they help you get a job offer and you accept the job offer. How much they get paid is a percentage of your annual salary so it's in their interest to get you get as much money as possible. Many of these recruiters found me on LinkedIn. I started conversations with them two years before the end of my five year military commitment, explained my situation and asked them for feedback on how competitve I am in the job market and what I can work on to be even more competitive.
 
-**Identify Skills Gaps**
+# 4. Questions You Should Be Able to Answer Before the First Interview
 
-Examine Military Experience
-Identify Civilian opportunities
+Below are a collection of actual questions asked during phone interview and my actual response. A lot of these questions were standard questions that are always asked. Thanks to A-list, JobSpring, and Workbridge, I've interviewed with 30 or so companies. I did not provide the most optimal response for my first few interviews but as I got more experience interviewing, I learned how to give the best response to every question to get the "wow" response from the interviewers 95% of the time and impress them enough to get you to the next interview. A lot of these questions were asked by almost all the companies I talked to. I'm sharing these questions and the best response I give which awed the interviewer.
 
-**Write a Resume for the Job**
+## What's your strongest coding language?
 
-Tailor it to the job. Jobs have job descriptions with key words. When you submit a resume, a keywords match algorithm will be used to determine how much your resume overlaps with the job description.
+The company asks you this question (1) to see if you are a technical fit for their stack and (2) to conduct the technical interview in. You need to pick a language that you know really well and can write clean code and solve algorithm problems with.
 
-# Risk Mitigation
+If you are learning how to code, pick JavaScript to get really good at. Almost all companies need someone who knows JavaScript because it's ubiquitous. JavaScript is not only the language of the web used to build client side and server side ([Node.js](https://nodejs.org/en/)) applications, but also can now be used to build cross-platform desktop apps ([Electron](https://electronjs.org/)), mobile apps in React Native ([Thanks Facebook](https://opensource.fb.com/)!). JavaScript is a dynamically typed interpreted language, which is a lot easier to do interview in than something like C or Java. Also, JavaScript comes with built-in higher order functions and lets you write imperative code if you want to. If you need to pick a language to get really good at, pick JavaScript.
 
-**Pay down your Debt**
+**Pro-tip:** If you are looking to use JavaScript for your coding interview, You can easily implement any data structure you want from scratch using JavaScript's object and solve any type of classical algorithm problem.
 
-When I graduated, I had about $25,000 of student loan debt.  I made it my priority to go debt free.
+## Tell me about you.
 
-Sometimes getting yourself into debt is necessary but staying in debt is detrimental for the following reasons:
+If you are interviewing to join a Buddhist monastery, you may want to show some humility and tell them how much you don't know and want to learn and be enlightened. For any other job interviews - BRAG.
 
-* Stress
-* No financial freedom
-* Cannot take risks like starting a business or take time off from working to pursue more education or training.
-$1.4 Trillion student loan
-76% Americans, regardless of income, live paycheck-to-paycheck. Debt, bills, and cost of living add up.
+Bragging is the most optimal response to this question. Companies who ask you this question want you to tell them how impressive you are. you may They brag too about themselves. A large percentage of companies who reached out to me on A-List name drop quite a lot in the invitation to interview. The most extreme example was:
 
-**Life Choices**
+> We just raised a Series A from Founders Fund and our engineering team includes Amazon, LinkedIn, and Palantir alums.
 
-Renting vs. Buying
+Another way to think about it is it's not bragging. It's marketing. You have 5 minutes to convince someone why you are awesome. Tell them how prestigious your previous position was. Tell them your most impressive accomplishments. For example, I got really positive reaction from my interviewer when I told them:
 
-* A lot of people I know purchased condos using their VA loan. At one time early in my Naval Reactors career, I was seriously looking at buying a condo. After some weeks of looking, I came to the following conclusion:
+- I went to CMU (well respected by the high tech community) and got a masters degree along with my undergraduate degree in 4.5 years.
+- I completed all of the Scala courses on Coursera on my own in order to learn functional programming and level up your coding skills. I got perfect scores on all programming assignments which you submitted to the autograder (shows how Gritty you are and committed to learning).
+- I have over 500 followers on Medium because of my programming articles and over 2K claps for one of my post about object oriented programming in JavaScript.
+- I built a complicated iOS game in Objective-C in 2 months while working at a full time job which got hundreds of thousands of downloads even though prior to starting the project, I never built an iOS application or worked with Objective-C before.
+- I built and deployed an entire production-grade web application by myself, including front-end, back-end, and DevOps. I used only latest and greatest in my stack. I built three prototypes and presented these prototypes at startup conferences and startup hackathons to get feedback on the product I was building and understand what problem to solve.
 
-  * I can't afford to buy a place that
-  * I don't want to get into any more debt unless I have no other choice
+When I started interviewing with companies, I would tell companies that I worked at Naval Reactors but it was just something I started doing as part of my military service. Beause it was a 9-5 job, I had evenings and weekends to work on my side projects. The interviewers were impressed that I took the initiative and dedicated my free time in the last 5 years working on side projects which had nothing to do with my day job. But they were that impressed with Naval Reactors.
 
-If you are staying at your job for 5 years and planning to move after your commitment ends, it doesn't make financial sense to buy a house or a condo. You can't predict the market.
-* Own Car vs. Public Transit: Car payment, insurance, fuel, unexpected expense. Fancier car, more insurance payment and chance of auto theft. Paying $2,500 a month for rent may appear high cost, but consider how much money that's saving you to be at a metro-accessible and walking distance to everything and what the alternative is going to cost you: renting at a faraway place that requires 3 hours of commute to and back from work on the worst traffic days, paying taxes on your condo, condo fees, and uncertainties of whether you'd be able to sell it or rent it out.
+It was a missed opportunity to gloss over Naval Reactors. Even though it had litte to do with the roles I was interviewing for, I could have used the *exclusivity* of Naval Reactors to implicitly brag about how smart I am.
 
-**Maximize Savings**
+After realizing that, I started telling the interviewers that Naval Reactors is *very selective* and they only invite the best graduating engineering students with top GPAs from universities all over the country for the interviews. They only have two or three open positions each year and to get the job offer, you have to do well on three technical interviews, followed by an interview with a four star Admiral. After I said that, every interviewer's response was a clear "Wow".
 
-59% if Americans can't cover $500 unexpected expense with savings. The rule of thumb is to have in your emergency funds account to cover 6-12 months of cost of living. I have 12 months of cost of living in your savings account. Here's what I did to have more than $80,000 in my savings account:
+## If you could create a position for yourself at [insert company name], what would it be? 
 
-* I did not buy a condo.
-* Forgo life insurance.
-* Living without a car.
-* Living comfortably but no over-spending. I'm guilty of going to restaurant a bit too much, but it made financial sense. This is why: It takes time to cook. I want to eat healthy and cooking from fresh ingredients means sacrificing time after work cooking and cleaning instead of making progress on my projects each night. I used to eat ramen noodles everyday. I wasn't getting the proper nutrients to function.
+A variation of this question is **What do you want in your next role?**
 
-**Hope for the best, Prepare for the worst.**
+The response depends on which company you are interviewing with. Read the company's website and the job posting before you start interviewing.
 
-# Figure Out What You're Good At
+- Google asked me this question and my response was:
 
-> Get paid to excel at what you are good at.
+    > I want my time to be split between working on a big project like Gmail and working on a side project that could be the next Gmail. The big project helps me get exposure to a big codebase, work with the brightest at Google and become a better software engineer, while the side project lets me be creative and take lots of risks working with cutting edge technologies and create something transformative.
+- In response to a very early stage startup:
 
-# Maximize Luck
+    > I want a role that gives me start-to-finish ownership of the engineering side while gives me the chance to be more than an engineer. I'd like to contribute to the business development, product design, hiring, and marketing for the company as well. I'd like a role that lets me wear many hats and experience what it's like building a big company.
+    
+- In response to a medium size startup with a very product-centric mission:
 
-> Maximize your luck surface area.
+    > I envision my day to be spent collaborating with other engineers and designers, figuring out how to build a great user experience for our customers.
 
-Practice
+    You get the idea.
 
-[To find work you love, don't follow your passion](https://www.youtube.com/watch?v=MKlx1DLa9EA)
+## How many hours a day do you spend coding? Why are you passionate about coding?
 
-# Conclusion
+- Google asked me this. My response for the first question was:
 
-Increase Your Net Worth and earning potential.
-Take responsibility for your transition. Be proactive. Losing your identity - your purpose - is hard.
+    > I have a co-working space membership. After I get off work, I go to the gym, then I go to the coworking space from 7pm until 10 or 11pm to work on my side projects. Sometimes if I'm solving an interesting problem, I keep coding until 3am. 
+    
+    For the followup question, my response was:
+    
+    > It's empowering. If you see a problem, you can come up with the solution on you own with just your computer You don't need anyone's permission or getting a loan from the bank to start coding and solving the problem that you care about and the solution you come up with generally has very high social impact. For example, I volunteer for this non-profit in DC whose mission is to connect the homeless population in the DC metro area with services. The DC government provide unlimited free SMS to homeless people. The non-profit provide software solutions to let homeless people receive SMS about services around them (for example, free food giveaways, job fairs). Everyone has seen and interacted with a homeless person once in their life. I could give a few dollars to a single homeless person, which is not a scalable solution to help homeless people, or I can spend my time building a microservice for this non-profit, which helps countless homeless people and also gives me a testbed for a new technology like AWS Lambda which I've wanted to try out.
 
-Teamwork, communication, leadership. It requires effort to translate military skills to adapt to the private sector. You are not average.
+## What kind of problem do you enjoy solving?
 
-# Resources
+5. Tell me what you've been doing at your last job and why you are looking for a change now?
 
-* Researching Your Market Value to negotiate compensation [LearnHowToBecome.org](https://www.learnhowtobecome.org/computer-programmer/)
-* TripleByte [Software Engineer Salary](https://triplebyte.com/software-engineer-salary) by experience.
-* BureauOfLaborStatistics gives you [salary by state](https://www.bls.gov/oes/current/map_changer.htm)
-* CNN money [cost of living calculator](http://money.cnn.com/calculator/pf/cost-of-living/)
-* American Corporate Partners offers [free mentorship](https://www.acp-usa.org/mentoring-program/program-overview). [Apply as a veteran](https://www.acp-usa.org/mentoring-program/veteran-application).
-* GlassDoor, Salary.com, salaryexperts.com
-* [Software Engineer vs. We Developer](http://blog.thefirehoseproject.com/posts/software-engineer-vs-web-developer/)
+- Good Response: I'm done with my military obligation. Want to pursue my passion in software engineering.
+- Good Response: I've worked at a bigger company. I enjoy working there but I'd like to join a smaller company that's more fast paced, takes more risks, and focus on developing cutting edge technology with high social impact.
+- Bad Response: I'd like a higher paying job. I don't like my boss/coworker. I don't enjoy what I was working on.
+
+6. What do you look for in your next role?
+
+Google asked me questions 1-3.
+
+If you are interviewing at a web technology company, sometimes they will ask:
+
+> Tell me what happens when you visit a website.
+
+With the follow up questions
+
+## Do you have any questions for me?
+
+Take the opportunity to ask as many questions you can to understand what problem the company is solving and *why* they are solving this problem.
+
+Companies are not hiring someone to get the job done. They are hiring someone to join their team, to build a company together. They want someone who can get along with the rest of the team and show a strong interest for the company's mission. They want someone with whom they can have a conversation with and can work well with others. 
+
+> To be interesting, you have to be interested.
+
+I'll give you this example which reinforces this point:
+
+There was one company that was really excited about me and was willing to move very fast and fast track me in their interview process after the initial phone call. I talked to the CTO during the 30 minute initial phone call. The phone call was set up to have him talk 10 minutes about what the company does have me spend 10 minutes about me. Before the interview, I had very little knowledge of the industry for which the company is creating a software solution for. As he was explaining what the company does, I continued to ask questions about the industry and for clarifications on why the existing process is broken and what this company is doing to make the process better.
+
+**Pro-tip:** Don't feel bad about interrupting to ask a thoughtful question. It's a good idea to prepend it with "I'm sorry for interrupting but I'm really interested in learning more about ..."
+
+For every question I asked, he responded with "That's a very good question". We ended up spending all 30 minutes talking about the company. Occassionally, I would comment by citing an analogous problem I encountered at my last job or in my personal life to relate to the problem that they are solving. The CTO spent most of that time talking. We ran out of time to talk about me but he was so impressed by my thoughful questions that he wanted to set up the final round on-site the next day in the evening (have his engineers stay after hours) to accomodate my schedule. The most amazing thing was that the company did not advertise any open positions online. Their AngelList profile says they are not currently hiring.
