@@ -68,13 +68,31 @@ In addition, there were social consequences. I kindly declined most of the invit
 
 What I learned from this experience is that we all have 24 hours a day. If you do one thing, that means you can't do other things. It's up to you how you spend that time and decide what's more important. I could have spent my evenings relaxing and get a good night sleep and show up early to work to please my manager, but that means I lose 30 hours per week of time on practicing my skills and working on my relevant work experience.
 
-# 4. Start Conversation with Recruiters Early
+# 4. Get into a habit of coding
+
+I find two methods very useful in getting me into a habit of coding every day. Two things that really helped me:
+
+**Co-working Space**
+
+Read my [other article](/post/why-i-pay-to-work-at-a-co-working-space/) about why it's worth the investment to pay for a membership to a co-working space.
+
+**100DaysOfCode**
+
+The official rule for 100DaysOfCode is to code for at least 1 hour every day for the next 100 days and publish an update to social media. I do a variation of 100DaysOfCode which I call 100DaysOfCommit. The rule is I need to commit at least once to a repo hosted on Github every day for 100 days so my Github contribution chart shows mostly green.
+
+This is what my Github contribution chart looks like the day before my first day of work as a senior frontend engineer at Smartling (my first job after Naval Reactors)
+
+![](/post/images/life/github-profile-2018-12-17.png)
+
+The Github contribution chart is great for accountability and signaling to recruiters and companies who are hiring that you are serious developer.
+
+# 5. Start Conversation with Recruiters Early
 
 There are two types of recruiters: Those who work for the companies that are hiring and those who work at independent agencies like JobSpring and Workbridge whose mission is to find qualified candidates and get them interviews with companies.
 
 Work with the second type of recruiters and start conversations with them as soon as you can. Let them help you prepare and get hired. They collect a big commission if they help you get a job offer and you accept the job offer. How much they get paid is a percentage of your annual salary so it's in their interest to get you get as much money as possible. Many of these recruiters found me on LinkedIn. I started conversations with them two years before the end of my five year military commitment, explained my situation and asked them for feedback on how competitive I am in the job market and what I can work on to be even more competitive.
 
-# 5. Questions You Should Be Able to Answer Before the First Interview
+# 6. Questions You Should Be Able to Answer Before the First Interview
 
 Below are a collection of actual questions asked during phone interview and my actual response. A lot of these questions were standard questions that are always asked. Thanks to A-list, JobSpring, and Workbridge, I've interviewed with 30 or so companies. I did not provide the most optimal response for my first few interviews but as I got more experience interviewing, I learned how to give the best response to every question to get the "wow" response from the interviewers 95% of the time and impress them enough to get you to the next interview. A lot of these questions were asked by almost all the companies I talked to. I'm sharing these questions and the best response I give which awed the interviewer.
 
@@ -131,7 +149,7 @@ The response depends on which company you are interviewing with. Read the compan
 
 - Google asked me this. My response for the first question was:
 
-    > I have a co-working space membership. After I get off work, I go to the gym, then I go to the coworking space from 7pm until 10 or 11pm to work on my side projects. Sometimes if I'm solving an interesting problem, I keep coding until 3am. 
+    > I have a co-working space membership. After I get off work, I go to the gym, then I go to the co-working space from 7pm until 10 or 11pm to work on my side projects. Sometimes if I'm solving an interesting problem, I keep coding until 3am. 
     
     For the followup question, my response was:
     
@@ -146,6 +164,27 @@ The response depends on which company you are interviewing with. Read the compan
 - Bad Response: I'd like a higher paying job. I don't like my boss/coworker. I don't enjoy what I was working on.
 
 ## What do you look for in your next role?
+
+- Join a company that invests in potential rather than credential
+- Build reliable, scalable systems
+- Work with coworkers who are passionate about their craft and are tech visionaries
+- Social impact
+- more hands on, infrastructure, architectural design, building infrastructure for hyper growth. Scaling.
+-  Problem is so interesting and important that you have a lot of fun and feel a lot of purpose in the thing you work on.
+- Building a great product for people who are not tech. Consumer product
+- work on a new product. Not something that is just a repackaging of something that exists. To use Peter Thiel’s terminology, I want to work on the zero-to-one products.
+- Another important factor is team. Team dynamic, good relationship with coworkers and ability / flexibility to do more than the job description is important. I want to be a team member, not another dev. Team really affects day-to-day happiness.
+- A third important factor is outreach. Working in a company that cares more than its own profit margin, pleasing its customers and/or investors. Community outreach, hosting meetup events, open sourcing are all things that make a company worth more to the world than its stated value prop. I want to be part of companies that commit to collaborating and having a presence with the broader programming communities. I believe it improves employee happiness, attracts outside talent (great for recruiting), and improves the company brand.
+- I’m not religious about specific domain, languages, or framework. I’m driven to make the world more compassionate, innovative, and sustainable.
+- being challenged every day, pushed to the limit but having a lot of fun. Learning new things everyday, including different and better ways to think about a problem
+- Everyday, doing things I’ve not done before. Surrounded by peers and mentors who push me and support me to maintain healthy stress and avoid burnout
+- learning a lot. Being asked “can we do better”, not being told how exactly to do things better but encouraged to   work on my own solutions by applying creativity
+- Having an engineering culture of devil’s in the details, applying engineering rigor in everything we do, not taking shortcuts, treating problem solving not as application of boilerplate or following a cookbook
+- take idea to reality in quick sprints and being able to test your hypothesis
+- Humility and no shame in being wrong but treating mistakes as a learning opportunity rather than a failure. Not being dismissive about dissenting opinions. Welcoming dissenting opinions. 
+- Company leaders are transparent about what the goals are and sharing company news and strategic visions frequently to help the engineers calibrate their problem solving and prioritize appropriately to align with the overall vision
+- follow through. Young companies have a lot of new initiatives occurring simultaneously. Need to let people know rationale for prioritization
+- having a company of teams working in sync, going in the same direction
 
 ## Open ended technical question.
 
