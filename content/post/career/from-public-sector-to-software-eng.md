@@ -15,11 +15,11 @@ I joined the US Navy after graduating from college. The service commitment is 5 
 
 # 1. Ask for What You Want At Your Current Workplace
 
-Because I got the ROTC scholarship to pay for college, I knew I was going to work in the public sector. Working in the public sector has some downsides. Specially, you don't get as much exposure to in-demand skills that are valued by the private sector. Some public sector positions are more similar to a career in the private sector than others. For the Navy, that's [Naval Reactors]( https://fas.org/man/dod-101/sys/ship/eng/appndx-c.htm).
+Because I got the ROTC scholarship to pay for college, I knew I was going to work in the public sector. Working in the public sector has some downsides. Specifically, you don't get as much exposure to in-demand skills that are valued by the private sector. Some public sector positions are more similar to a career in the private sector than others. For the Navy, that's [Naval Reactors]( https://fas.org/man/dod-101/sys/ship/eng/appndx-c.htm).
 
 I received a Navy ROTC scholarship which came with the obligation to serve active duty in the Navy as an officer for five years after graduating. There were a few service communities to join and most of them entail going on deployment on a ship.
 
-There's an exclusive program called Naval Reactors which is run by a four star Admiral and joinly funded and operated by the Department of Defense and Department of Energy. Working at Naval Reactors means:
+There's an exclusive program called Naval Reactors which is run by a four star Admiral and jointly funded and operated by the Department of Defense and Department of Energy. Working at Naval Reactors means:
 
 1. You don't have to go on deployment and have nights and weekends off to work on side projects and learn up-to-date skills to support a career change,
 2. You make technical decisions and can work on a variety of engineering problems and learn skills which are transferable to the private sector.
@@ -38,7 +38,7 @@ I did my two technical interviews (physics and math whiteboarding) and waited fo
 
 The position offered a way out of going on deployment but did not meet my other goal of having a role that lets me learn skills valued by the private sector. So **I asked** the four Admiral if I could have a job at Naval Reactors. He sent me to my third technical interview and I did well in that and I got the job.
 
-When I started my Naval Reactors career, I was put in a department which focused on mechanical engineering problem. Although fluid dynamics, structural mechanics, and material science are interesting, the things I was getting good at had little to do with software engineering. After almost two years of working there, **I asked** to be transferred to a different section which focused on instructumetation and control and lets me work on software engineering problems. 
+When I started my Naval Reactors career, I was put in a department which focused on mechanical engineering problems. Although fluid dynamics, structural mechanics, and material science are interesting, the things I was getting good at had little to do with software engineering. After almost two years of working there, **I asked** to be transferred to a different section which focused on instrumentation and control and lets me work on software engineering problems.
 
 Here's the moral of the story: If you don't like what you are doing, you can ask for a career change without leaving your current work place. Most companies, even the US Navy support internal mobility and want to give you the best job so you'd stay. Employee turnover is expensive.
 
@@ -50,13 +50,31 @@ My strategy was to start my own software company, LooseLeaf. It gives me the mot
 
 > Dream jobs are not found. Dream jobs are made.
 
-# 3. Start Conversation with Recruiters Early
+Don’t just do projects. Learn things right. I bought 8 books on Manning on functional programming, web fundamentals, web development design patterns, and JavaScript. I read these books back to back.
+
+Learning from these books made me a better software engineer and reinforced my understanding of the underlying technologies which power my apps to improve the quality of the apps I build.
+
+Additionally, I regularly blog on Medium and my own blog about things I learned building a feature of my apps. Acquiring readers and followers on Medium and having people send emails to me thanking me for inspiring them with my blog posts really helps with motivation and the sense of being a legitimate software developer.
+
+# 3. Work Hard Despite Negative Feedback
+
+It's easy to work hard if you are surrounded by supportive friends, family, and coworkers and you see reward for your hard work. What if that's not the case? What if you get punished for working hard?
+
+To launch LooseLeaf and close my skills gap, I spent almost every evening after work coding until well past midnight. I did that for 4 years. In order to have the energy to do that after a long day of work, I would drink a lot of coffee at night, which has the side effect of keeping me up until 3am. On a regular basis, I showed up late to work. The office policy is to be in the office by 8:30, but I'd regularly show up at 9:30. My manager was not happy and I had many talks in his office about my tardiness.
+
+In my mind, I was not doing anything wrong for showing up an hour late because I was getting my work done at Naval Reactors and was doing a very good job. If there are no meetings scheduled before 9:30, I rather spend the extra hour getting enough sleep so I can feel productive at work the next day. However, coming in late to work and having the talk with my manager still caused a lot of anxiety for me.
+
+In addition, there were social consequences. I kindly declined most of the invitations to socialize with coworkers at happy hour, or house parties with friends and families because I needed the time to spend coding. I turn every federal holiday long weekend into a hackathon.
+
+What I learned from this experience is that we all have 24 hours a day. If you do one thing, that means you can't do other things. It's up to you how you spend that time and decide what's more important. I could have spent my evenings relaxing and get a good night sleep and show up early to work to please my manager, but that means I lose 30 hours per week of time on practicing my skills and working on my relevant work experience.
+
+# 4. Start Conversation with Recruiters Early
 
 There are two types of recruiters: Those who work for the companies that are hiring and those who work at independent agencies like JobSpring and Workbridge whose mission is to find qualified candidates and get them interviews with companies.
 
-Work with the second type of recruiters and start conversations with them as soon as you can. Let them help you prepare and get hired. They collect a big commission if they help you get a job offer and you accept the job offer. How much they get paid is a percentage of your annual salary so it's in their interest to get you get as much money as possible. Many of these recruiters found me on LinkedIn. I started conversations with them two years before the end of my five year military commitment, explained my situation and asked them for feedback on how competitve I am in the job market and what I can work on to be even more competitive.
+Work with the second type of recruiters and start conversations with them as soon as you can. Let them help you prepare and get hired. They collect a big commission if they help you get a job offer and you accept the job offer. How much they get paid is a percentage of your annual salary so it's in their interest to get you get as much money as possible. Many of these recruiters found me on LinkedIn. I started conversations with them two years before the end of my five year military commitment, explained my situation and asked them for feedback on how competitive I am in the job market and what I can work on to be even more competitive.
 
-# 4. Questions You Should Be Able to Answer Before the First Interview
+# 5. Questions You Should Be Able to Answer Before the First Interview
 
 Below are a collection of actual questions asked during phone interview and my actual response. A lot of these questions were standard questions that are always asked. Thanks to A-list, JobSpring, and Workbridge, I've interviewed with 30 or so companies. I did not provide the most optimal response for my first few interviews but as I got more experience interviewing, I learned how to give the best response to every question to get the "wow" response from the interviewers 95% of the time and impress them enough to get you to the next interview. A lot of these questions were asked by almost all the companies I talked to. I'm sharing these questions and the best response I give which awed the interviewer.
 
@@ -84,9 +102,9 @@ Another way to think about it is it's not bragging. It's marketing. You have 5 m
 - I built a complicated iOS game in Objective-C in 2 months while working at a full time job which got hundreds of thousands of downloads even though prior to starting the project, I never built an iOS application or worked with Objective-C before.
 - I built and deployed an entire production-grade web application by myself, including front-end, back-end, and DevOps. I used only latest and greatest in my stack. I built three prototypes and presented these prototypes at startup conferences and startup hackathons to get feedback on the product I was building and understand what problem to solve.
 
-When I started interviewing with companies, I would tell companies that I worked at Naval Reactors but it was just something I started doing as part of my military service. Beause it was a 9-5 job, I had evenings and weekends to work on my side projects. The interviewers were impressed that I took the initiative and dedicated my free time in the last 5 years working on side projects which had nothing to do with my day job. But they were that impressed with Naval Reactors.
+When I started interviewing with companies, I would tell companies that I worked at Naval Reactors but it was just something I started doing as part of my military service. Because it was a 9-5 job, I had evenings and weekends to work on my side projects. The interviewers were impressed that I took the initiative and dedicated my free time in the last 5 years working on side projects which had nothing to do with my day job. But they were that impressed with Naval Reactors.
 
-It was a missed opportunity to gloss over Naval Reactors. Even though it had litte to do with the roles I was interviewing for, I could have used the *exclusivity* of Naval Reactors to implicitly brag about how smart I am.
+It was a missed opportunity to gloss over Naval Reactors. Even though it had little to do with the roles I was interviewing for, I could have used the *exclusivity* of Naval Reactors to implicitly brag about how smart I am.
 
 After realizing that, I started telling the interviewers that Naval Reactors is *very selective* and they only invite the best graduating engineering students with top GPAs from universities all over the country for the interviews. They only have two or three open positions each year and to get the job offer, you have to do well on three technical interviews, followed by an interview with a four star Admiral. After I said that, every interviewer's response was a clear "Wow".
 
@@ -121,15 +139,15 @@ The response depends on which company you are interviewing with. Read the compan
 
 ## What kind of problem do you enjoy solving?
 
-5. Tell me what you've been doing at your last job and why you are looking for a change now?
+## Tell me what you've been doing at your last job and why you are looking for a change now?
 
 - Good Response: I'm done with my military obligation. Want to pursue my passion in software engineering.
 - Good Response: I've worked at a bigger company. I enjoy working there but I'd like to join a smaller company that's more fast paced, takes more risks, and focus on developing cutting edge technology with high social impact.
 - Bad Response: I'd like a higher paying job. I don't like my boss/coworker. I don't enjoy what I was working on.
 
-6. What do you look for in your next role?
+## What do you look for in your next role?
 
-Google asked me questions 1-3.
+## Open ended technical question.
 
 If you are interviewing at a web technology company, sometimes they will ask:
 
@@ -151,4 +169,4 @@ There was one company that was really excited about me and was willing to move v
 
 **Pro-tip:** Don't feel bad about interrupting to ask a thoughtful question. It's a good idea to prepend it with "I'm sorry for interrupting but I'm really interested in learning more about ..."
 
-For every question I asked, he responded with "That's a very good question". We ended up spending all 30 minutes talking about the company. Occassionally, I would comment by citing an analogous problem I encountered at my last job or in my personal life to relate to the problem that they are solving. The CTO spent most of that time talking. We ran out of time to talk about me but he was so impressed by my thoughful questions that he wanted to set up the final round on-site the next day in the evening (have his engineers stay after hours) to accomodate my schedule. The most amazing thing was that the company did not advertise any open positions online. Their AngelList profile says they are not currently hiring.
+For every question I asked, he responded with "That's a very good question". We ended up spending all 30 minutes talking about the company. Occasionally, I would comment by citing an analogous problem I encountered at my last job or in my personal life to relate to the problem that they are solving. The CTO spent most of that time talking. We ran out of time to talk about me but he was so impressed by my thoughtful questions that he wanted to set up the final round on-site the next day in the evening (have his engineers stay after hours) to accommodate my schedule. The most amazing thing was that the company did not advertise any open positions online. Their AngelList profile says they are not currently hiring.
