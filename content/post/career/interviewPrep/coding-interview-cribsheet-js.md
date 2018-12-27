@@ -19,7 +19,7 @@ The coding interviews / coding challenges are designed to assess how productive 
 
 You are usually given the flexibility of choosing the language you are most comfortable with to complete the coding challenge. Thus it's expected you know how to take advantage of all the language specific features and deal with the language specific idiosyncracies (JavaScript has a lot) to solve problems.
 
-These tests are also designed to gauge your knowledge of computer science fundamentals like various datastructures (e.g., arrays, strings, object/dictionaries), logic building blocks (e.g., loops, if-statements, functions), and problem solving patterns (e.g., recursion, pattern matching, higher order functions).
+These tests are also designed to gauge your knowledge of computer science fundamentals like various data structures (e.g., arrays, strings, object/dictionaries), logic building blocks (e.g., loops, if-statements, functions), and problem solving patterns (e.g., recursion, pattern matching, higher order functions).
 
 For coding challenges, there's always a time limit. The faster you can solve a problem correctly, the better. Thus, this post introduces JavaScript features, best practices,  to leverage and common pitfalls to avoid to help you get productive with JavaScript and get the right result quickly.
 
@@ -159,7 +159,7 @@ getUsername('https://medium.com/@xiaoyunyang') //> xiaoyunyang
 `getUsername` function has a one-liner solution but there are few things going on:
 
 1. `split('/')` splits the url string into an array of substrings using teh "/" delimiter. The output of the `split('/')` operated on our example url becomes `[ 'https:', '', 'medium.com', '@xiaoyunyang' ]`, which gets piped into the next operation `pop()`
-2. `pop()` is a built-in function for arrays we will discuss later. What it does is it returns the last element of the array and in the process, mutating the original array. `pop()` could get us in hot water (we will discuss later in the arrays section) because it's mutating the original array but in this case, it's ok because the array we got from `split` is an intermediate throw-away datastructure that we are only using for deriving the final result. The `pop()` operatin gives us `@xiaoyunyang`, which we pipe into the next operation.
+2. `pop()` is a built-in function for arrays we will discuss later. What it does is it returns the last element of the array and in the process, mutating the original array. `pop()` could get us in hot water (we will discuss later in the arrays section) because it's mutating the original array but in this case, it's ok because the array we got from `split` is an intermediate throw-away data structure that we are only using for deriving the final result. The `pop()` operatin gives us `@xiaoyunyang`, which we pipe into the next operation.
 3. `slice(1)`, as discussed above, returns the substring starting from index 1 until the end of the array. This effectively chops off the `@` and gives us `xiaoyunyang`, which is the username.
 
 # Working with Arrays
@@ -704,6 +704,65 @@ let [a,b,c] = [+'1', +'1.5', +'foo']
 a //> 1
 b //> 1.5
 c //> NaN
+```
+
+## Different Loop
+
+Suppose we have the following data we want to loop through
+
+```javascript
+let colors = ['red', 'blue', 'green', 'purple', 'yellow']
+```
+
+We could do a simple for-loop:
+
+```javascript
+for(let i=0; i<colors.length; i++) {
+  console.log(colors[i])
+}
+```
+
+There's a less verbose way of achieving the same thing:
+
+```javascript
+for(let i in colors) {
+  console.log(colors[i])
+}
+```
+
+If we don't are about the index but just the value, we could use `forEach`:
+
+```javascript
+console.log('\nforEach loop:')
+colors.forEach(color => {
+  console.log(color)
+})
+```
+
+For some algorithms, we may need to use the while-loop:
+
+```javascript
+while(colors.length > 0) {
+  let color = colors.shift()
+  console.log(color)
+}
+```
+
+Note, the while-loop operation above mutates the original array!
+
+To loop through an object, we could do the following:
+
+```javascript
+let keycodeMapping = {
+  65: 'a',
+  66: 'b',
+  187: '=',
+  191: '/'
+}
+
+Object.keys(keycodeMapping).forEach(key => {
+  console.log('keycode, value:', key, keycodeMapping[key])
+})
 ```
 
 # Tips for writing Good JS Code
