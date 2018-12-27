@@ -292,7 +292,7 @@ Can you be productive with JavaScript?
 
 <p>You are usually given the flexibility of choosing the language you are most comfortable with to complete the coding challenge. Thus it&rsquo;s expected you know how to take advantage of all the language specific features and deal with the language specific idiosyncracies (JavaScript has a lot) to solve problems.</p>
 
-<p>These tests are also designed to gauge your knowledge of computer science fundamentals like various datastructures (e.g., arrays, strings, object/dictionaries), logic building blocks (e.g., loops, if-statements, functions), and problem solving patterns (e.g., recursion, pattern matching, higher order functions).</p>
+<p>These tests are also designed to gauge your knowledge of computer science fundamentals like various data structures (e.g., arrays, strings, object/dictionaries), logic building blocks (e.g., loops, if-statements, functions), and problem solving patterns (e.g., recursion, pattern matching, higher order functions).</p>
 
 <p>For coding challenges, there&rsquo;s always a time limit. The faster you can solve a problem correctly, the better. Thus, this post introduces JavaScript features, best practices,  to leverage and common pitfalls to avoid to help you get productive with JavaScript and get the right result quickly.</p>
 
@@ -333,6 +333,7 @@ Can you be productive with JavaScript?
 <li><a href="#use-splice-to-insert-into-array">Use Splice to insert into array</a></li>
 <li><a href="#optional-parameter">Optional Parameter</a></li>
 <li><a href="#quickly-convert-string-to-number">Quickly convert string to number</a></li>
+<li><a href="#different-loop">Different Loop</a></li>
 </ul></li>
 <li><a href="#tips-for-writing-good-js-code">Tips for writing Good JS Code</a>
 <ul>
@@ -529,7 +530,7 @@ getUsername('https://medium.com/@xiaoyunyang') //&gt; xiaoyunyang
 
 <ol>
 <li><code>split('/')</code> splits the url string into an array of substrings using teh &ldquo;/&rdquo; delimiter. The output of the <code>split('/')</code> operated on our example url becomes <code>[ 'https:', '', 'medium.com', '@xiaoyunyang' ]</code>, which gets piped into the next operation <code>pop()</code></li>
-<li><code>pop()</code> is a built-in function for arrays we will discuss later. What it does is it returns the last element of the array and in the process, mutating the original array. <code>pop()</code> could get us in hot water (we will discuss later in the arrays section) because it&rsquo;s mutating the original array but in this case, it&rsquo;s ok because the array we got from <code>split</code> is an intermediate throw-away datastructure that we are only using for deriving the final result. The <code>pop()</code> operatin gives us <code>@xiaoyunyang</code>, which we pipe into the next operation.</li>
+<li><code>pop()</code> is a built-in function for arrays we will discuss later. What it does is it returns the last element of the array and in the process, mutating the original array. <code>pop()</code> could get us in hot water (we will discuss later in the arrays section) because it&rsquo;s mutating the original array but in this case, it&rsquo;s ok because the array we got from <code>split</code> is an intermediate throw-away data structure that we are only using for deriving the final result. The <code>pop()</code> operatin gives us <code>@xiaoyunyang</code>, which we pipe into the next operation.</li>
 <li><code>slice(1)</code>, as discussed above, returns the substring starting from index 1 until the end of the array. This effectively chops off the <code>@</code> and gives us <code>xiaoyunyang</code>, which is the username.</li>
 </ol>
 
@@ -1104,6 +1105,60 @@ b //&gt; 1.5
 c //&gt; NaN
 </code></pre>
 
+<h2 id="different-loop">Different Loop</h2>
+
+<p>Suppose we have the following data we want to loop through</p>
+
+<pre><code class="language-javascript">let colors = ['red', 'blue', 'green', 'purple', 'yellow']
+</code></pre>
+
+<p>We could do a simple for-loop:</p>
+
+<pre><code class="language-javascript">for(let i=0; i&lt;colors.length; i++) {
+  console.log(colors[i])
+}
+</code></pre>
+
+<p>There&rsquo;s a less verbose way of achieving the same thing:</p>
+
+<pre><code class="language-javascript">for(let i in colors) {
+  console.log(colors[i])
+}
+</code></pre>
+
+<p>If we don&rsquo;t are about the index but just the value, we could use <code>forEach</code>:</p>
+
+<pre><code class="language-javascript">console.log('\nforEach loop:')
+colors.forEach(color =&gt; {
+  console.log(color)
+})
+</code></pre>
+
+<p>For some algorithms, we may need to use the while-loop:</p>
+
+<pre><code class="language-javascript">while(colors.length &gt; 0) {
+  let color = colors.shift()
+  console.log(color)
+}
+</code></pre>
+
+<p>Note, the while-loop operation above mutates the original array!</p>
+
+<p>To loop through an object, we could do the following:</p>
+
+<pre><code class="language-javascript">let keycodeMapping = {
+  65: 'a',
+  66: 'b',
+  187: '=',
+  191: '/'
+}
+
+Object.keys(keycodeMapping).forEach(key =&gt; {
+  console.log('keycode, value:', key, keycodeMapping[key])
+})
+
+</code></pre>
+
 <h1 id="tips-for-writing-good-js-code">Tips for writing Good JS Code</h1>
 
 <h2 id="tip-1-use-let-and-const-instead-of-var">Tip #1: Use let and const instead of var</h2>
@@ -1491,6 +1546,44 @@ s.setAttribute('data-timestamp', +new Date());
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/">
+                <h3 class="media-heading">The Algorithm for Managing Stress</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &ldquo;top 10 things you can do to &hellip;.&rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
+                <h3 class="media-heading">JavaScript Antipatterns to Avoid</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Sourcemaking provides a great discussions on all the anti-patterns.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer--how-i-made-the-transition/">
                 <h3 class="media-heading">From Public Sector To Senior Software Engineer:  How I made the Transition</h3>
               </a>
@@ -1650,42 +1743,6 @@ This post is part of the Web Developer Playbook series, which are created to pro
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/getting-started-with-career-pivot-with-looseleaf/">
-                <h3 class="media-heading">Getting Started With Career Pivot With LooseLeaf</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  May 5, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>This documents the market research I&rsquo;ve completed for my startup, <a href="https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">LooseLeaf</a>. This is a long and exhaustive market research. There&rsquo;s a <a href="https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/#pre-submittal-feedback-optional">TL;DR version of the value proposition</a>.</p>
-
-<p></p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/">
-                <h3 class="media-heading">Data Structure with JavaScript Object: Linked List</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  May 5, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -1693,7 +1750,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         32 posts found
+         34 posts found
       </p>
     </div>
   </div>
