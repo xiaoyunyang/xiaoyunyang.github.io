@@ -8,32 +8,10 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Wed, 26 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 16 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>The Algorithm for Managing Stress</title>
-      <link>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</link>
-      <pubDate>Wed, 26 Dec 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</guid>
-      <description>&lt;p&gt;What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&amp;rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &amp;ldquo;top 10 things you can do to &amp;hellip;.&amp;rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>JavaScript Antipatterns to Avoid</title>
-      <link>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</link>
-      <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</guid>
-      <description>&lt;p&gt;Sourcemaking provides a great discussions on all the anti-patterns.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>From Public Sector To Senior Software Engineer:  How I made the Transition</title>
@@ -348,6 +326,17 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-formal-education-may-close-doors-to-opportunities/</guid>
       <description>&lt;p&gt;The average completion rate of Online Open Course (MOOC) certification programs is abysmally low. &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2889436&#34; target=&#34;_blank&#34;&gt;A report published in 2016 by researchers at Harvard and MIT&lt;/a&gt; based on 4 years of data indicated an average certification completion rate of just 5.5%. This does not discredit MOOCs to be a good source of quality education content for those looking for good information to improve their understanding for a particular subject; however, the depressing statistics underlines a deeper concern with the ineffectiveness of using a college curriculum to steer people&amp;rsquo;s professional development.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Best Practices For State Management With React And Redux</title>
+      <link>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</link>
+      <pubDate>Fri, 05 Jan 2018 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</guid>
+      <description>&lt;p&gt;In this post, I&amp;rsquo;ll share some best practices, tips, and practical examples for managing states and data in a frontend applications. Although the examples are targeted at frontend developers working with React and Redux, the best practices discussion are applicable for frontend developers working with any framework.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
