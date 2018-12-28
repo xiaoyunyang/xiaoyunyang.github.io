@@ -733,7 +733,6 @@ for(let i in colors) {
 If we don't are about the index but just the value, we could use `forEach`:
 
 ```javascript
-console.log('\nforEach loop:')
 colors.forEach(color => {
   console.log(color)
 })
