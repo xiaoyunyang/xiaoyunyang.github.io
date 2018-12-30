@@ -622,7 +622,7 @@ function Queue() {
 let arr = Array(10)
 ```
 
-## Find Max:
+## Find Max
 
 ```javascript
 const arr = [1, 2, 3]
@@ -835,6 +835,38 @@ The `j` in the condition of the for-loop on line 19 is the same `j` that's decla
 
 **baz:**<br/>
 Both the `j`s declared on line 30 and 33 are scoped to the `baz` function. We can re-declare `j` on line 33 because `j` is originally declared on line 30 and `var` doesn't have re-declaration protection. The two `j`s are the same. On line 33, `j` is reassigned as 5. So what is value of `j` on Line 32 which is being compared with `i`? The first time the for-loop is run, it's 10. The subsequent runs, it's 5. Therefore, the result of `bar` is four 5's, followed by a 4.
+
+## Tip #2 Avoid Side Effects
+
+Suppose we want to sort a shuffled array, then print out the shuffled array and the sorted array. Let's implement the `sortArr` function to accomplish that:
+
+
+```javascript
+function sortArr(arr) {
+  return arr.sort((a,b) => a-b)
+}
+```
+
+When we run the following code, we get an incorrect result when we print out the original array:
+
+```javascript
+const arr = [3,2,4,1]
+const sortedArr = sortArr(arr)
+
+console.log(arr) //> [ 1, 2, 3, 4 ]
+console.log(sortedArr) //> [ 1, 2, 3, 4 ]
+```
+
+`Array.sort` mutates the original array! This is a side effect we'd like to avoid.
+
+To fix this problem, we make a copy of the original array, then sort that copy:
+
+```javascript
+function sortArr(arr) {
+  const arrCpy = [...arr]
+  return arrCpy.sort((a,b) => a-b)
+}
+```
 
 # Study material for JS interviews:
 
