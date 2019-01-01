@@ -318,6 +318,7 @@ Can you be productive with JavaScript?
 <li><a href="#compare-two-objects">Compare two objects</a></li>
 </ul></li>
 <li><a href="#conversion-between-data-types">Conversion Between Data Types</a></li>
+<li><a href="#generating-a-random-number">Generating a Random Number</a></li>
 <li><a href="#data-structures">Data Structures</a>
 <ul>
 <li><a href="#linked-list">Linked List</a></li>
@@ -855,6 +856,22 @@ JSON.stringify(dict1) === JSON.stringify(dict2) //&gt; false
 
 
 <p>We can use functions to transform between these data types as depicted in the graph above.</p>
+
+<h1 id="generating-a-random-number">Generating a Random Number</h1>
+
+<p>The following function returns a random number between min (inclusive) and max (exclusive)</p>
+
+<pre><code class="language-javascript">function getRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
+</code></pre>
+
+<p>If we want to generate a random integer between min (inclusive) and max (exclusive)</p>
+
+<pre><code class="language-javascript">function getRandomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+</code></pre>
 
 <h1 id="data-structures">Data Structures</h1>
 
