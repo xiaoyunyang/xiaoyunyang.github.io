@@ -446,6 +446,24 @@ thumbnail="/post/images/programming/data-type-conversion.png" title="Conversion 
 
 We can use functions to transform between these data types as depicted in the graph above.
 
+# Generating a Random Number
+
+The following function returns a random number between min (inclusive) and max (exclusive)
+
+```javascript
+function getRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
+```
+
+If we want to generate a random integer between min (inclusive) and max (exclusive)
+
+```javascript
+function getRandomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+```
+
 # Data Structures
 
 ## Linked List
