@@ -647,6 +647,23 @@ const arr = [1, 2, 3]
 Math.max(...arr)
 ```
 
+There's a few gotchas associated with `Math.max`. Consider if you have an array in which contains `null` or `undefined`:
+
+```javascript
+console.log(Math.max(...[null, null])) //> 0
+console.log(Math.max(...[null, 1])) //> 1
+console.log(Math.max(...[undefined, undefined])) //> NaN
+console.log(Math.max(...[undefined, null, 1])) //> NaN
+```
+
+Empty elements in the array is the same as `undefined`:
+
+```javascript
+const foo = Array(3)
+foo[0] = 2
+console.log(Math.max(...foo)) //> NaN
+```
+
 ## Swapping
 
 ```javascript
