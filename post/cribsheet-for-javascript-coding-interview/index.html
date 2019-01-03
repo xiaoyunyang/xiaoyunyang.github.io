@@ -1052,6 +1052,21 @@ function Queue() {
 Math.max(...arr)
 </code></pre>
 
+<p>There&rsquo;s a few gotchas associated with <code>Math.max</code>. Consider if you have an array in which contains <code>null</code> or <code>undefined</code>:</p>
+
+<pre><code class="language-javascript">console.log(Math.max(...[null, null])) //&gt; 0
+console.log(Math.max(...[null, 1])) //&gt; 1
+console.log(Math.max(...[undefined, undefined])) //&gt; NaN
+console.log(Math.max(...[undefined, null, 1])) //&gt; NaN
+</code></pre>
+
+<p>Empty elements in the array is the same as <code>undefined</code>:</p>
+
+<pre><code class="language-javascript">const foo = Array(3)
+foo[0] = 2
+console.log(Math.max(...foo)) //&gt; NaN
+</code></pre>
+
 <h2 id="swapping">Swapping</h2>
 
 <pre><code class="language-javascript">let a = 'world', b = 'hello'
@@ -1436,7 +1451,7 @@ s.setAttribute('data-timestamp', +new Date());
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2018 Xiaoyun Yang. All Rights Reserved
+    &copy; 2019 Xiaoyun Yang. All Rights Reserved
   </span>
 </footer>
 
