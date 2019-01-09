@@ -439,6 +439,14 @@ dict1["a"] = 2
 JSON.stringify(dict1) === JSON.stringify(dict2) //> false
 ```
 
+## Making A Deep Copy of Object
+
+```javascript
+const makeDeepCopy = obj => {
+  return JSON.parse(JSON.stringify(obj))
+}
+```
+
 # Conversion Between Data Types
 
 {{< image classes="fancybox fig-75 center clear" src="/post/images/programming/data-type-conversion.png"
