@@ -8,21 +8,10 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Sat, 05 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/tags/software-design/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>JavaScript Antipatterns to Avoid</title>
-      <link>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</link>
-      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</guid>
-      <description>&lt;p&gt;Sourcemaking provides a great discussions on all the anti-patterns.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Web Developer Playbook: Slug</title>
