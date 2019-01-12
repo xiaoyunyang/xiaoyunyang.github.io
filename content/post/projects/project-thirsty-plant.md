@@ -7,7 +7,7 @@ tags:
   - Open Source
   - Hardware
 thumbnailImagePosition: left
-thumbnailImage: https://images2.imgbox.com/56/7e/Wn038aAw_o.jpg
+thumbnailImage: https://images2.imgbox.com/3b/f0/2Ket1SaB_o.jpg
 ---
 
 I love indoor plants but I'm bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can't use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let's call it ThirstyPlant.
@@ -134,7 +134,37 @@ Putting everything together:
 
 ![ThirstyPlant plant waterer electronics](https://images2.imgbox.com/d7/8c/1ng9SWCo_o.jpg)
 
-[Integration Test for moisture sensor and motor controller](https://youtu.be/IpDobGmHPro):
+The code
+
+```c
+#include <AFMotor.h>
+
+AF_DCMotor motor(1, MOTOR12_1KHZ); // create motor #1, 1KHz pwm
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Motor test!");
+  
+  motor.setSpeed(200);     // set the speed to 200/255
+
+}
+
+void loop() {
+  int sensorValue = analogRead(A0);
+  float voltage= sensorValue * (5.0 / 1023.0);
+  float threshold = 1.2;
+  if(voltage < threshold) {
+    Serial.println("water me");
+    motor.run(FORWARD);      // turn it on going forward
+    delay(1000);
+    motor.run(RELEASE);
+  } else {
+    motor.run(RELEASE);
+  }
+}
+```
+
+Integration Test for moisture sensor and motor controller [Demo](https://youtu.be/IpDobGmHPro):
 
 {{< youtube IpDobGmHPro >}}
 
