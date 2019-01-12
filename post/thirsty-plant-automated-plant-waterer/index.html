@@ -28,15 +28,21 @@
     
 
     
-    <meta name="description" content="">
-    <meta property="og:description" content="">
+    <meta name="description" content="I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.
+
+">
+    <meta property="og:description" content="I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.
+
+">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Thirsty Plant: Automated Plant Waterer">
     <meta property="og:url" content="https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/">
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:description" content="I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.
+
+">
     
     
 
@@ -44,7 +50,7 @@
     
 
     
-      <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/react.png">
+      <meta property="og:image" content="https://images2.imgbox.com/56/7e/Wn038aAw_o.jpg">
     
     
     
@@ -264,13 +270,11 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p></p>
+              <p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p>
 
-<h1 id="motivation">Motivation</h1>
+<p></p>
 
-<p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p>
-
-<!--more-->
+<p><img src="https://images2.imgbox.com/56/7e/Wn038aAw_o.jpg" alt="plants" /></p>
 
 <h1 id="concept-design">Concept Design</h1>
 
@@ -283,8 +287,6 @@
 <h1 id="electronics">Electronics</h1>
 
 <p>We got a few parts from a hobby store in NY called Tinkersphere.</p>
-
-<p><img src="https://images2.imgbox.com/90/ab/Fh0IcmQ6_o.jpg" alt="Parts" /></p>
 
 <p>Parts list:</p>
 
@@ -301,23 +303,21 @@
 
 <p><img src="https://images2.imgbox.com/5b/9d/1EkBbEJF_o.jpg" alt="Parts" /></p>
 
-<h2 id="moisture-sensor-arduino">Moisture Sensor + Arduino</h2>
+<h2 id="arduino-moisture-sensor">Arduino + Moisture Sensor</h2>
 
 <p>The moisture sensor consists of a PCB with a transistor, an LED, and about a dozen exposed parallel traces. The traces are connected in two groups such that there is no direct connection between any adjacent pair of traces. Normally this means that current cannot flow between the two groups of traces, but in the presence of moisture an electrical contact is formed. As more water accumulates, the resistance of the circuit decreases, and the voltage on the Signal pin of the sensor increases. This voltage is directly compatible with the analog input pins of an Arduino, and can be read with the <code>analogRead()</code> function.</p>
 
-<p><img src="https://images2.imgbox.com/3b/f0/2Ket1SaB_o.jpg" alt="Moisture sensor and Arduino" /></p>
-
-<p>Read Moisture Level</p>
-
-<p>Read Analog voltage - <a href="https://www.arduino.cc/en/Tutorial/ReadAnalogVoltage" target="_blank">getting started</a></p>
-
-<p>Use jumpers to plug in the moister sensor into Arduino.</p>
+<p>First, we need to use jumpers to plug in the moister sensor into Arduino.</p>
 
 <ul>
 <li>Connect <code>S</code> to A0.</li>
 <li>Connect <code>+</code> to 5V.</li>
 <li>Connect <code>-</code> to Ground.</li>
 </ul>
+
+<p><img src="https://images2.imgbox.com/3b/f0/2Ket1SaB_o.jpg" alt="Moisture sensor and Arduino" /></p>
+
+<p>Next, let&rsquo;s write the code to read moisture level. Follow the <a href="https://www.arduino.cc/en/Tutorial/ReadAnalogVoltage" target="_blank">getting started guide</a>.</p>
 
 <pre><code class="language-c">void setup() {
   Serial.begin(9600);
@@ -334,11 +334,15 @@ void loop() {
 }
 </code></pre>
 
-<p>Open Serial Monitor and see that when the moisture sensor is dry, a &ldquo;water me&rdquo; message is printed out.</p>
+<p>Open Serial Monitor and see that when the moisture sensor is dry, a &ldquo;water me&rdquo; message is printed out!</p>
 
 <h2 id="arduino-motor-controller">Arduino + Motor Controller</h2>
 
-<p><a href="https://learn.adafruit.com/adafruit-motor-shield/using-dc-motors" target="_blank">Getting started</a></p>
+<p>First, we want to mount the motor shield onto the Arduino and plug the DC motor into the screw terminal marked M1 as shown below.</p>
+
+<p><img src="https://images2.imgbox.com/bd/30/wzl4kLYE_o.jpg" alt="motor shield on Arduino" /></p>
+
+<p>Next, we follow the <a href="https://learn.adafruit.com/adafruit-motor-shield/using-dc-motors" target="_blank">getting started</a> to program the Arduino to control the motor.</p>
 
 <pre><code class="language-c">#include &lt;AFMotor.h&gt;
 
@@ -384,11 +388,25 @@ void loop() {
 </div>
 
 
-<p>^ <a href="https://youtu.be/BEQT_EAa0HM" target="_blank">Unit Test for motor controller</a></p>
+<p><a href="https://youtu.be/BEQT_EAa0HM" target="_blank">Unit Test for motor controller</a></p>
 
 <h1 id="arduino-moisture-sensor-motor-controller">Arduino + Moisture Sensor + Motor Controller</h1>
 
-<p><a href="https://youtu.be/IpDobGmHPro" target="_blank">Integration Test for moisture sensor and motor controller</a></p>
+<p>We need to solder the pin headers to the +5, the ground, and the analog pins so the moisture sensor pins can be plugged into those.</p>
+
+<p><img src="https://images2.imgbox.com/da/a8/eg9pleFd_o.jpg" alt="" /></p>
+
+<p>Putting everything together:</p>
+
+<p><img src="https://images2.imgbox.com/d7/8c/1ng9SWCo_o.jpg" alt="ThirstyPlant plant waterer electronics" /></p>
+
+<p><a href="https://youtu.be/IpDobGmHPro" target="_blank">Integration Test for moisture sensor and motor controller</a>:</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/IpDobGmHPro" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
 
 <h1 id="enclosure">Enclosure</h1>
 
@@ -396,11 +414,9 @@ void loop() {
 
 <p>The electronics consist of an Arduino UNO with a motor control shield, a moisture sensor, and a miniature submersible pump. The Arduino continuously uses the moisture sensor to monitor the moisture content of the soil in the planter. Should the moisture content drop below a certain threshold (set by the programmer), the water pump will be activated. Water pump activation continues for at least three seconds before the moisture level is checked again. When the moisture content is once again raised past the defined threshold level, the water pump is switched off.</p>
 
-<h1 id="demo">Demo</h1>
+<p><img src="https://images2.imgbox.com/d4/d2/72V9WENd_o.png" alt="" /></p>
 
-<div class="alert success no-icon ">
-  <p>🌎 <a href="https://xiaoyunyang.github.io/serverless-webapp/apps/avail-viewer.html">Click Here</a> for the live Demo</p>
-</div>
+<p><img src="https://images2.imgbox.com/b1/73/jBGupQ4C_o.png" alt="" /></p>
               
             </div>
           </div>
@@ -679,7 +695,9 @@ s.setAttribute('data-timestamp', +new Date());
                   Jan 1, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p></p></div>
+              <div class="media-content hide-xs font-merryweather"><p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
