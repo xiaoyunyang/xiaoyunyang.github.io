@@ -22,7 +22,7 @@ h2 {
     padding-left: 15px;
   }
   .job-dates {
-    padding-left: 50%;
+    padding-left: 40%;
   }
 }
 /*
@@ -40,7 +40,7 @@ h2 {
     padding-left: 15px;
   }
   .job-dates {
-    padding-left: 50%;
+    padding-left: 40%;
   }
 }
 /*
@@ -51,7 +51,7 @@ h2 {
     display: block !important;
   }
   .job-title {
-    width: 50% !important;
+    width: 70% !important;
     padding-left: 15px;
   }
   .job-dates {
@@ -67,7 +67,7 @@ h2 {
 }
 
 .job-title {
-  width: 20vw;
+  width: 40vw;
   float: left;
   font-style: italic;
 }
@@ -84,5 +84,5 @@ h2 {
 }
 .sidebar-profile-name {
   letter-spacing: .05em;
-/*  font-size: 5em; /* 40px/16=2.5em */ */
+/*  font-size: 5em; /* 40px/16=2.5em */
 }
