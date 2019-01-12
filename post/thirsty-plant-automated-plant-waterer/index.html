@@ -50,7 +50,7 @@
     
 
     
-      <meta property="og:image" content="https://images2.imgbox.com/56/7e/Wn038aAw_o.jpg">
+      <meta property="og:image" content="https://images2.imgbox.com/3b/f0/2Ket1SaB_o.jpg">
     
     
     
@@ -400,7 +400,36 @@ void loop() {
 
 <p><img src="https://images2.imgbox.com/d7/8c/1ng9SWCo_o.jpg" alt="ThirstyPlant plant waterer electronics" /></p>
 
-<p><a href="https://youtu.be/IpDobGmHPro" target="_blank">Integration Test for moisture sensor and motor controller</a>:</p>
+<p>The code</p>
+
+<pre><code class="language-c">#include &lt;AFMotor.h&gt;
+
+AF_DCMotor motor(1, MOTOR12_1KHZ); // create motor #1, 1KHz pwm
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println(&quot;Motor test!&quot;);
+  
+  motor.setSpeed(200);     // set the speed to 200/255
+
+}
+
+void loop() {
+  int sensorValue = analogRead(A0);
+  float voltage= sensorValue * (5.0 / 1023.0);
+  float threshold = 1.2;
+  if(voltage &lt; threshold) {
+    Serial.println(&quot;water me&quot;);
+    motor.run(FORWARD);      // turn it on going forward
+    delay(1000);
+    motor.run(RELEASE);
+  } else {
+    motor.run(RELEASE);
+  }
+}
+</code></pre>
+
+<p>Integration Test for moisture sensor and motor controller <a href="https://youtu.be/IpDobGmHPro" target="_blank">Demo</a>:</p>
 
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
