@@ -10,6 +10,9 @@ tags:
 
 I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.
 
+{{< image classes="fancybox fig-70" src="https://images2.imgbox.com/26/21/MQB5dNYd_o.png"
+thumbnail="https://images2.imgbox.com/26/21/MQB5dNYd_o.png" title="My KeyValues filter">}}
+
 <!--more-->
 <!--toc-->
 

@@ -14,13 +14,15 @@ showSocial:     false
 
 #### Hello!
 
-I'm a software engineer and tech entrepreneur. I'm excited by opportunities that let me develop elegant solutions for obvious problems where there are no obvious solutions. I believe in automating wherever possible, and leveraging existing technology to quickly bootstrap solutions. My mantra is trial and error, which I apply to both building a startup as well as living a fulfilling life.
+I'm a software engineer and tech entrepreneur living in New York. I have a full time job at a startup and bootstrapping my own startup. In my spare time I like to contribute to open source software and blog.
 
-I live in Washington DC. I have a full time job and a side hustle. I'm a government employee by day, tech entrepreneur by night. I'd like to make my side hustle my main hustle. In my spare time I like to read programming books and write articles about programming on Medium.
+I'm excited by opportunities that let me develop elegant solutions for obvious problems where there are no obvious solutions. I believe in automating wherever possible, and leveraging existing technology to quickly bootstrap solutions. My mantra is trial and error, which I apply to both building a startup as well as living a fulfilling life.
 
 Here are some details about me:
 
 ## Work Experience
+
+* I work at a software company called Smartling.
 * I'm a founder of a startup called LooseLeaf, which is a web app that disrupts the higher education industry. [Read more](http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/) about what I've done so far.
 * I helped a friend create the first mobile apps for NumberShapes that teaches little kids essential math skills and number sense. [Read more](http://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/) about what I did at NumberShapes.
 * I've worked at Naval Reactors as a product manager since graduating college in 2013. While working at Naval Reactors, I was also an active duty Navy officer.
@@ -28,6 +30,20 @@ Here are some details about me:
 * I enjoy technical writing, especially [blogging about programming topics](/categories/blog/) that I'm still learning. I enjoy the process of putting complicated things in simple terms, drawing analogies and illustrating the concept with clarifying examples. Best of all, I think trying to explain what you think you know could lead you to discover knowledge gaps, which motivates more learning.
 
 {{< alert info >}} See **[My Resume](https://drive.google.com/file/d/0B_uByl2mOTJIVTM3ZWRYRVpIcWs/view)** for my skills and experience or see below for a summary of my employment history. {{< /alert >}}
+
+**Smartling**
+<div class="resume-header">
+  <div class="job-title">Senior Frontend Engineer</div>
+  <div class="job-dates">Dec 2018 - </div>
+</div>
+
+* Develop new single page applications using React + Redux, Node.js, and ES2017.
+* Develop components within a highly scalable component architecture.
+* Peer code reviews.
+* Design and implement functional tests.
+* Collaborate with product and backend service teams.
+* Test Driven Development.
+* Continuous Deployment - multiple times daily.
 
 **LooseLeaf**
 <div class="resume-header">
@@ -78,11 +94,19 @@ Here are some details about me:
 * *Side Project:* Created, popularized, and maintained a knowledge repository for the company's Intranet and an user friendly interface for the knowledge repository.
 
 ## Education
+
 * I studied Electrical and Computer Engineering at Carnegie Mellon University.
 * I got a B.S. and a M.S in 4.5 years through an integrated bachelors and masters program.
 
 ## My Super Power
+
 My super power is my extreme attention to details without losing sight of the big picture and I always challenge my assumptions and continuously critique everything I do to make adjustments as necessary. I recognize the importance of details in affecting the final outcome, as accumulation of small mistakes leads to failure. Being result-driven, I'm dedicated to working out these details even if they are not so glorious or interesting. My ability to prioritize helps me work strategically and smartly applying resources.
+
+# What I value
+
+My [KeyValues](https://www.keyvalues.com/) filters
+
+![KeyValues](https://images2.imgbox.com/26/21/MQB5dNYd_o.png)
 
 ## Trivia
 * I have the honor of serving 5 years of active duty in the military at Naval Reactors. I commissioned in 2013 through the Navy Reserved Officer Training Corp (ROTC).

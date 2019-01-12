@@ -36,7 +36,7 @@ canonifyurls = true
   name = "Xiaoyun Yang"
   bio = "Software Engineer. Entrepreneur."
   job = "Software Engineer"
-  location = "Washington DC"
+  location = "New York"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
   # gravatarEmail = "xiaoyun@looseleafapp.com"
   # Your profile picture
