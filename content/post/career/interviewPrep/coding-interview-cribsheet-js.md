@@ -11,13 +11,13 @@ thumbnailImagePosition: left
 thumbnailImage: /post/images/programming/coding-interview.png
 ---
 
-The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how thte candidate go about solving a problem, or the architecture design interview, which assesses how thte candidate's experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:
+The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate's experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:
 
 > Can you be productive with JavaScript?
 
 <!--more-->
 
-You are usually given the flexibility of choosing the language you are most comfortable with to complete the coding challenge. Thus it's expected you know how to take advantage of all the language specific features and deal with the language specific idiosyncracies (JavaScript has a lot) to solve problems.
+You are usually given the flexibility of choosing the language you are most comfortable with to complete the coding challenge. Thus it's expected you know how to take advantage of all the language specific features and deal with the language specific idiosyncrasies (JavaScript has a lot) to solve problems.
 
 These tests are also designed to gauge your knowledge of computer science fundamentals like various data structures (e.g., arrays, strings, object/dictionaries), logic building blocks (e.g., loops, if-statements, functions), and problem solving patterns (e.g., recursion, pattern matching, higher order functions).
 
@@ -31,7 +31,7 @@ For more extensive cheatsheet, check out [Let's Get Productive With JavaScript](
 
 ## Regex
 
-In a nutshell, regular expression, or Regex for short, are patterns you specify to test a string. There are whole books written about Regexes. We are going to focus on the most likely problem we're going to need to solve with regex during a coding challenge:
+In a nutshell, regular expression, or regex for short, are patterns you specify to test a string. There are whole books written about regexes. We are going to focus on the most likely problem we're going to need to solve with regex during a coding challenge:
 
 > Does the string contain this pattern? If so, how many times does this pattern appear? Where does it appear?
 
@@ -43,9 +43,9 @@ We can assume we only want to test for websites with the .com and .org top level
 
 Input and expected output:
 
-* "google.com" -> true
-* "www.icann.org" -> true
-* "google.foobar" -> false
+* "google.com" → true
+* "www.icann.org" → true
+* "google.foobar" → false
 
 ```javascript
 const isStrUrl = str => {
@@ -54,7 +54,9 @@ const isStrUrl = str => {
 };
 ```
 
-The `matchTld` is the regex that specifies that we are looking for a string that ends with `.com` or `.org`. The `\.` escapes the The `$` at the end of the regex means:
+
+The `matchTld` is the regex that specifies that we are looking for a string that ends with `.com` or `.org`. The `\.` escapes the dot (`.`). The `$` at the end of the regex means this pattern should appear at the end of the string. In summary:
+
 
 {{< image classes="fancybox fig-75 center clear" src="/post/images/programming/regex-url.png"
 thumbnail="/post/images/programming/regex-url.png" title="Regex URL">}}
@@ -80,7 +82,7 @@ const str = 'Apple'.toLowerCase();
 matchApple.test(str); //> true
 ```
 
-Other useful regex patterns:
+Other useful regexes include:
 
 * whitespace: `/^\s$/`
 
@@ -101,9 +103,7 @@ We are using the JavaScript built-in function for string, i.e., `replace`, to re
 
 ## Get Characters from String
 
-Get One Character
-
-* `str.chartAt(i)` - get a character at a index `i` from `str`.
+`str.chartAt(i)` gives us the character at a index `i` from `str`.
 
 ```javascript
 let str = 'hello'
@@ -112,7 +112,7 @@ str.charAt(str.length-1) //> 'o'
 str.charAt(str.length) //> ''
 ```
 
-What happens if you do the following?
+What happens if we do the following?
 
 ```javascript
 str.charAt(str.length) //> ''
@@ -136,7 +136,7 @@ A more general function for obtaining the substring is appropriately called `sub
 'hello'.substring(0, 2); //> 'he'
 ```
 
-However, using `slice` and `substring` for extracting the sub-string requires knowing exactly where is the starting index is. Usually, the substring we want to extract are delimeted by a space or a special character such as a slash. Suppose we have the following problem:
+However, using `slice` and `substring` for extracting the sub-string requires knowing exactly where is the starting index is. Usually, the substring we want to extract are delimited by a space or a special character such as a slash. Suppose we have the following problem:
 
 > Get the username from the Medium url for user profile.
 
@@ -146,7 +146,7 @@ Usually, webpages for user profile pages on social networking websites have the 
 https://<domainName>/<route>/<username>
 ```
 
-What we want is the username at the end. `domainName` and `route` could be arbirarily long. So we can't use `slice` to solve our problem.
+What we want is the username at the end. Since `domainName` and `route` could be arbitrarily long, we can't use `slice` to solve our problem. What we can do is this:
 
 ```javascript
 const getUsername = url => {
@@ -158,8 +158,8 @@ getUsername('https://medium.com/@xiaoyunyang') //> xiaoyunyang
 
 `getUsername` function has a one-liner solution but there are few things going on:
 
-1. `split('/')` splits the url string into an array of substrings using teh "/" delimiter. The output of the `split('/')` operated on our example url becomes `[ 'https:', '', 'medium.com', '@xiaoyunyang' ]`, which gets piped into the next operation `pop()`
-2. `pop()` is a built-in function for arrays we will discuss later. What it does is it returns the last element of the array and in the process, mutating the original array. `pop()` could get us in hot water (we will discuss later in the arrays section) because it's mutating the original array but in this case, it's ok because the array we got from `split` is an intermediate throw-away data structure that we are only using for deriving the final result. The `pop()` operatin gives us `@xiaoyunyang`, which we pipe into the next operation.
+1. `split('/')` splits the url string into an array of substrings using the slash (`/`) as delimiter. The output of the `split('/')` operated on our example url becomes `[ 'https:', '', 'medium.com', '@xiaoyunyang' ]`, which gets piped into the next operation `pop()`.
+2. `pop()` is a built-in function for arrays we will discuss later. What it does is it returns the last element of the array and in the process, mutating the original array. `pop()` could get us in hot water (we will discuss later in the arrays section) because it's mutating the original array but in this case, it's okay because the array we got from `split` is an intermediate throw-away data structure that we are only using for deriving the final result. The `pop()` operation gives us `@xiaoyunyang`, which we pipe into the next operation.
 3. `slice(1)`, as discussed above, returns the substring starting from index 1 until the end of the array. This effectively chops off the `@` and gives us `xiaoyunyang`, which is the username.
 
 # Working with Arrays
@@ -170,8 +170,8 @@ When we work with arrays in JavaScript, we have a whole suite of built-in functi
 
 Mutable
 
-* `array.push(elem)` - adds `elem` to the end of `array`.
-* `array.unshift(elem)` - adds `elem` to the beginning of `array`.
+* `array.push(elem)` - adds `elem` to the end of `array`
+* `array.unshift(elem)` - adds `elem` to the beginning of `array`
 
 Example:
 
@@ -200,7 +200,7 @@ const arr2 = [3, 4];
 
 const arr3 = arr1.concat(arr2); //> [1, 2, 3, 4]
 const arr4 = arr0.concat(arr3); //> [0, 1, 2]
-const arr5 = arr0.concat(arr1, arr2)
+const arr5 = arr0.concat(arr1, arr2) //> [0, 1, 2, 3, 4]
 ```
 
 Example with spread operator
@@ -222,7 +222,7 @@ We can access elements in the array using the index. This pattern is commonly us
 
 A common thing we need to do with arrays is to remove the last thing in the array. Since the goal is to mutate the original array, one convenient function helps us do exactly that:
 
-* `array.splice(-1)` - return the tail of `array` as an array. mutates `array`.
+`array.splice(-1)` - return the tail of `array` as an array and mutates `array`
 
 Example:
 
@@ -233,7 +233,7 @@ console.log(tailArr) //> [2]
 console.log(arr) //> [0, 1]
 ```
 
-One gotcha with using `splice` in this way is `arr.splice(-1)` returns the tail element of `arr` wrapped in an array. If you just want `elem`, then you can use ES6 destructuring:
+One gotcha with using `splice` in this way is `arr.splice(-1)` returns the tail element of `arr` wrapped in an array. If you just want `elem`, you can use ES6 destructuring:
 
 ```javascript
 const [tail] = tailArr;
@@ -288,25 +288,33 @@ Therefore, when you are trying to quickly solve a programming problem correctly,
 
 ## Sorting things in Array
 
-Numbers
+Suppose we have the following numbers we would like to sort:
 
 ```javascript
-const nums = [3,2,7,1,2,0]
-
-nums.sort((a,b) => {
-  return a-b
-})
-
-console.log(nums) //> [ 0, 1, 2, 2, 3, 7 ]
-
-nums.sort((a,b) => {
-  return b-a
-})
-
-console.log(nums) //> [ 7, 3, 2, 2, 1, 0 ]
+const nums = [3, 2, 7, 1, 2, 0];
 ```
 
-It's important note that the `sort` function mutates the original array.
+Sort in ascending order:
+
+```javascript
+nums.sort((a,b) => {
+  return a-b
+});
+
+console.log(nums) //> [ 0, 1, 2, 2, 3, 7 ]
+```
+
+Sort in descending order:
+
+```javascript
+nums.sort((a,b) => {
+  return b-a
+});
+
+console.log(nums); //> [ 7, 3, 2, 2, 1, 0 ]
+```
+
+It's important note that the `sort` function mutates the original array!
 
 If you don't pass in a function, `sort` will by default give you the mutated array in ascending order.
 
@@ -316,7 +324,7 @@ letters.sort()
 letters //> [ 'a', 'a', 'b', 'c', 'r', 't' ]
 ```
 
-However, if you want to get the letters in descending order, we need to use `string.prototype.localeCompare`.
+Another useful function is `String.prototype.localeCompare`.
 
 ```javascript
 const letters = ['c', 'r', 'a', 'b', 'a', 't']
@@ -326,7 +334,7 @@ letters //> [ 't', 'r', 'c', 'b', 'a', 'a' ]
 
 # Working with Objects
 
-JavaSCript Objects are used to store key-value pairs and can nest other objects as deep as you want. In JavaScript, arrays are actually objects where the keys are numbers. I can make an array using an object notation:
+JavaScript Objects are used to store key-value pairs and can nest other objects as deep as you want. In JavaScript, arrays are actually objects where the keys are numbers. I can make an array using an object notation:
 
 ```javascript
 const arr1 = {
@@ -337,7 +345,7 @@ const arr1 = {
 const arr2 = [0, 1, 2];
 ```
 
-How I access the elements are indistinguishable:
+The syntax  I use to access the elements from the object and array are indistinguishable:
 
 ```javascript
 arr1[1] //> 1
@@ -348,27 +356,27 @@ This is how I remember the rules for accessing the value of an object using the 
 
 ```javascript
 const basket = {
-    apple: 1,
-    pear: 2
+    'apple': 1,
+    'pear': 2
 }
 const numApple = basket['apple']; //> 1
 const numPear = basket['pear']; //> 2
 ```
 
-## Size of JS Object
+## Size of object
 
-* `Object.keys(dict).length` gives you the number of entries in the object called `dict`, short for dictionary.
+* `Object.keys(dict).length` gives you the number of entries in the object called `dict` (short for dictionary).
 
 Example:
 
 ```javascript
-let basket = {}
+let basket = {};
 Object.keys(basket).length; // 0
 basket = {apple: 2}
 Object.keys(basket).length; // 1
 ```
 
-## Merging two JS objects
+## Merging two objects
 
 * Use spread operator
 
@@ -395,12 +403,14 @@ const basket = {
 }
 
 basket2 = basket;
-basketCpy = {...basket}
-console.log(basket === basket2) //> true
-console.log(basket === basketCpy) //> false
+basketCpy = {...basket};
+console.log(basket === basket2); //> true
+console.log(basket === basketCpy); //> false
 ```
 
 ## Add and remove things from object
+
+Add to object (functional way):
 
 ```javascript
 const addToDict = (dict, newKey, newVal) => {
@@ -411,6 +421,8 @@ const addToDict = (dict, newKey, newVal) => {
 };
 ```
 
+Delete from object (functional way):
+
 ```javascript
 const deleteFromDict = (dict, newKey, newVal) => {
   if (!dict[key]) return dict;
@@ -420,26 +432,37 @@ const deleteFromDict = (dict, newKey, newVal) => {
 };
 ```
 
-## Compare two objects
-
-What if you have two dictionaries and you want to see if they are equal?
+Sometimes for performance reasons, it's desirable to add/delete from object by mutating the object:
 
 ```javascript
-let dict1 = {}
-dict1["a"] = 1
-dict1["b"] = 2
+const foobar = {'foo': 'foo', 'bar': 'bar'};
+delete foobar['bar'];
+foobar['baz'] = 'baz';
+console.log(foobar); //> { foo: 'foo', baz: 'baz' }
+```
 
-let dict2 = {}
-dict2["a"] = 1
-dict2["b"] = 2
+## Compare two objects
 
-JSON.stringify(dict1) === JSON.stringify(dict2) //> true
+What if you have two dictionaries and you want to see if they are equal? The trick is to use `JSON.stringify`.
 
-dict1["a"] = 2
-JSON.stringify(dict1) === JSON.stringify(dict2) //> false
+```javascript
+let dict1 = {};
+dict1['a'] = 1;
+dict1['b'] = 2;
+
+let dict2 = {};
+dict2['a'] = 1;
+dict2["b"] = 2;
+
+JSON.stringify(dict1) === JSON.stringify(dict2); //> true
+
+dict1['a'] = 2;
+JSON.stringify(dict1) === JSON.stringify(dict2); //> false
 ```
 
 ## Making A Deep Copy of Object
+
+Once again the trick is to use `JSON.stringify` along with `JSON.parse`.
 
 ```javascript
 const makeDeepCopy = obj => {
@@ -449,14 +472,14 @@ const makeDeepCopy = obj => {
 
 # Conversion Between Data Types
 
+We can use functions to transform between these data types as depicted in the graph below:
+
 {{< image classes="fancybox fig-75 center clear" src="/post/images/programming/data-type-conversion.png"
 thumbnail="/post/images/programming/data-type-conversion.png" title="Conversion Between Different Data Types">}}
 
-We can use functions to transform between these data types as depicted in the graph above.
-
 # Generating a Random Number
 
-The following function returns a random number between min (inclusive) and max (exclusive)
+The following function returns a random number between min (inclusive) and max (exclusive):
 
 ```javascript
 function getRandomNumber(min, max) {
@@ -464,7 +487,7 @@ function getRandomNumber(min, max) {
 }
 ```
 
-If we want to generate a random integer between min (inclusive) and max (exclusive)
+If we want to generate a random integer between min (inclusive) and max (exclusive):
 
 ```javascript
 function getRandomInteger(min, max) {
@@ -645,7 +668,8 @@ function Queue() {
 ## Initialize Array
 
 ```javascript
-let arr = Array(10)
+let arr = Array(10);
+console.log(arr); //> [ <10 empty items> ]
 ```
 
 ## Find Max
@@ -658,10 +682,10 @@ Math.max(...arr)
 There's a few gotchas associated with `Math.max`. Consider if you have an array in which contains `null` or `undefined`:
 
 ```javascript
-console.log(Math.max(...[null, null])) //> 0
-console.log(Math.max(...[null, 1])) //> 1
-console.log(Math.max(...[undefined, undefined])) //> NaN
-console.log(Math.max(...[undefined, null, 1])) //> NaN
+console.log(Math.max(...[null, null])); //> 0
+console.log(Math.max(...[null, 1])); //> 1
+console.log(Math.max(...[undefined, undefined])); //> NaN
+console.log(Math.max(...[undefined, null, 1])); //> NaN
 ```
 
 Empty elements in the array is the same as `undefined`:
@@ -675,38 +699,43 @@ console.log(Math.max(...foo)) //> NaN
 ## Swapping
 
 ```javascript
-let a = 'world', b = 'hello'
-[a, b] = [b, a]
-console.log(a) //> hello
-console.log(b) //> world
+let a = 'hello';
+let b = 'world'
+[a, b] = [b, a];
+console.log(a) //> 'world'
+console.log(b) //> 'hello'
 ```
 
 ## Generating a sequence
 
 ```javascript
-const indices = Array.from(Array(10).keys())
+const indices = Array.from(Array(10).keys());
 console.log(indices); //> (10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
 ## Use Splice to insert into array
 
-Suppose we want to insert a new element into a sorted array.
+Let's write a function that insert a new element into a sorted array. splice is very handy in this situation.
 
 ```javascript
 function insertIntoSorted(newItem, sortedItems) {
   let arr = sortedItems
   for(let i in arr) {
-    let curr = arr[i]
+    let curr = arr[i];
     if(newItem<curr) {
-      arr.splice(i, 0, newItem)
-      return arr
+      arr.splice(i, 0, newItem);
+      return arr;
     }
   }
-  arr.push(newItem)
+  arr.push(newItem);
 
-  return arr
+  return arr;
 }
+```
 
+In action:
+
+```javascript
 let arr = [1,2,5,9]
 arr = insertIntoSorted(10, arr)
 console.log(arr) //> [ 1, 2, 5, 9, 10 ]
@@ -720,7 +749,7 @@ console.log(arr) //> [ 0, 1, 2, 4, 5, 9, 10 ]
 
 ## Optional Parameter
 
-ES6 shortcut
+ES6 shortcut using default value:
 
 ```javascript
 function foo(fruit='apple') {
@@ -740,21 +769,21 @@ function foo(fruit) {
 
 ## Quickly convert string to number
 
-prepend `+` to the string is a shorthand for converting the string to a number.
+Prepending `+` to the string is a shorthand for converting the string to a number.
 
 ```javascript
-let [a,b,c] = [+'1', +'1.5', +'foo']
-a //> 1
-b //> 1.5
-c //> NaN
+const [a,b,c] = [+'1', +'1.5', +'foo'];
+console.log(a); //> 1
+console.log(b); //> 1.5
+console.log(c); //> NaN
 ```
 
-## Different Loop
+## Different kinds of loop
 
-Suppose we have the following data we want to loop through
+Suppose we have the following data we want to loop through:
 
 ```javascript
-let colors = ['red', 'blue', 'green', 'purple', 'yellow']
+let colors = ['red', 'blue', 'green', 'purple', 'yellow'];
 ```
 
 We could do a simple for-loop:
@@ -769,7 +798,7 @@ There's a less verbose way of achieving the same thing:
 
 ```javascript
 for(let i in colors) {
-  console.log(colors[i])
+  console.log(colors[i]);
 }
 ```
 
@@ -778,15 +807,15 @@ If we don't are about the index but just the value, we could use `forEach`:
 ```javascript
 colors.forEach(color => {
   console.log(color)
-})
+});
 ```
 
 For some algorithms, we may need to use the while-loop:
 
 ```javascript
 while(colors.length > 0) {
-  let color = colors.shift()
-  console.log(color)
+  let color = colors.shift();
+  console.log(color);
 }
 ```
 
@@ -800,11 +829,11 @@ let keycodeMapping = {
   66: 'b',
   187: '=',
   191: '/'
-}
+};
 
 Object.keys(keycodeMapping).forEach(key => {
-  console.log('keycode, value:', key, keycodeMapping[key])
-})
+  console.log('keycode, value:', key, keycodeMapping[key]);
+});
 ```
 
 # Tips for writing Good JS Code
@@ -922,7 +951,7 @@ function sortArr(arr) {
 - [What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261#.aa7ubggsy)
 - [Soft Skills](https://medium.com/javascript-scene/master-the-javascript-interview-soft-skills-a8a5fb02c466)
 - [Common Data Structures](https://medium.freecodecamp.org/10-common-data-structures-explained-with-videos-exercises-aaff6c06fb2b)
-- Google's Livebook on [Site Reliability Engineering](https://landing.google.com/sre/sre-book/toc/index.html)
+- Google's Livebook: [Site Reliability Engineering](https://landing.google.com/sre/sre-book/toc/index.html)
 - [How to refactor code to be more testable](https://hackernoon.com/how-to-refactor-unwieldy-untestable-code-4a73d75cb80a)
 - Steve Armstrong's [article about ES6](https://tech.smartling.com/wake-up-tomorrow-and-start-using-es6-universal-language-f8380442816e)
 - [Let's get productive with JavaScript](https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/)
