@@ -576,7 +576,7 @@ To update your application, you may have to update the task definition and then 
 
 **If you need to change your instance type:**
 
-1. Click on the Stack corresponding to your ECS-Cluster.
+1. Go to CloudFormation. click on the Stack corresponding to your ECS-Cluster.
 2. Click "Update Stack"
 3. Use current template, Next
 4. Change `EcsInstanceType` to your preferred [instance type](https://aws.amazon.com/ec2/instance-types/)
