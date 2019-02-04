@@ -19,9 +19,7 @@
       <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/</guid>
-      <description>&lt;p&gt;I love indoor plants but I&amp;rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&amp;rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&amp;rsquo;s call it ThirstyPlant.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;I love indoor plants but I&amp;rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&amp;rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&amp;rsquo;s call it ThirstyPlant.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -30,9 +28,7 @@
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/single-page-application-for-work/</guid>
-      <description>&lt;p&gt;When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -50,9 +46,7 @@
       <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -61,9 +55,7 @@
       <pubDate>Sun, 12 Mar 2017 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</guid>
-      <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34; target=&#34;_blank&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34; target=&#34;_blank&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;</description>
     </item>
     
   </channel>

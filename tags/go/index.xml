@@ -8,20 +8,18 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Sun, 06 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>So You Wanna Be A Gopher Eh?</title>
-      <link>https://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/</link>
-      <pubDate>Sun, 06 May 2018 00:00:00 +0000</pubDate>
+      <title>Get Started With Go</title>
+      <link>https://xiaoyunyang.github.io/post/get-started-with-go/</link>
+      <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/post/so-you-wanna-be-a-gopher-eh/</guid>
-      <description>&lt;p&gt;Go is becoming pretty mainstream. Every job posting I&amp;rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. Here&amp;rsquo;s a guide to help you hit the ground running with Go.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xiaoyunyang.github.io/post/get-started-with-go/</guid>
+      <description>&lt;p&gt;Go is becoming pretty mainstream. Every job posting I&amp;rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -47,9 +47,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -58,9 +56,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</guid>
-      <description>&lt;p&gt;Functional Programming is more than just a buzzword these days. It&amp;rsquo;s super useful and makes you rethink everything you&amp;rsquo;ve learned about software.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Functional Programming is more than just a buzzword these days. It&amp;rsquo;s super useful and makes you rethink everything you&amp;rsquo;ve learned about software.&lt;/p&gt;</description>
     </item>
     
   </channel>

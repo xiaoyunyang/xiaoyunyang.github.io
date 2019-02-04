@@ -29,9 +29,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34; target=&#34;_blank&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34; target=&#34;_blank&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -40,9 +38,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -23,9 +23,7 @@
 
 &lt;blockquote&gt;
 &lt;p&gt;When do you use immutable (functional) data structures and when do you use mutable data structure?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;/blockquote&gt;</description>
     </item>
     
     <item>
@@ -34,9 +32,7 @@
       <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/</guid>
-      <description>&lt;p&gt;This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.&lt;/p&gt;</description>
     </item>
     
     <item>

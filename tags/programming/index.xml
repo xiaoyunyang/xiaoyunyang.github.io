@@ -23,9 +23,7 @@
 
 &lt;blockquote&gt;
 &lt;p&gt;When do you use immutable (functional) data structures and when do you use mutable data structure?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;/blockquote&gt;</description>
     </item>
     
     <item>
@@ -38,9 +36,7 @@
 
 &lt;blockquote&gt;
 &lt;p&gt;Can you be productive with JavaScript?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;/blockquote&gt;</description>
     </item>
     
     <item>
@@ -67,9 +63,7 @@
       <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</guid>
-      <description>&lt;p&gt;Being great at coding interviews doesn&amp;rsquo;t necessarily make you a great developer and being a great developer doesn&amp;rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Being great at coding interviews doesn&amp;rsquo;t necessarily make you a great developer and being a great developer doesn&amp;rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -87,9 +81,7 @@
       <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/algorithms-for-web-developers/</guid>
-      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&amp;rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&amp;rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&amp;rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&amp;rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -98,9 +90,7 @@
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</guid>
-      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&amp;rsquo;s console (hit &lt;code&gt;Cmd&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt; if you are using Chrome and Mac) and start typing.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&amp;rsquo;s console (hit &lt;code&gt;Cmd&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt; if you are using Chrome and Mac) and start typing.&lt;/p&gt;</description>
     </item>
     
   </channel>
