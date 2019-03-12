@@ -28,15 +28,21 @@
     
 
     
-    <meta name="description" content="I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.">
-    <meta property="og:description" content="I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.">
+    <meta name="description" content="by Xiaoyun Yang and Clyde Shaffer
+
+I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.">
+    <meta property="og:description" content="by Xiaoyun Yang and Clyde Shaffer
+
+I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Thirsty Plant: Automated Plant Waterer">
     <meta property="og:url" content="https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/">
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.">
+    <meta name="twitter:description" content="by Xiaoyun Yang and Clyde Shaffer
+
+I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.">
     
     
 
@@ -264,7 +270,26 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p>
+              <p><em>by <a href="https://github.com/xiaoyunyang" target="_blank">Xiaoyun Yang</a> and <a href="https://github.com/clydeshaffer" target="_blank">Clyde Shaffer</a></em></p>
+
+<p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p>
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#concept-design">Concept Design</a></li>
+<li><a href="#electronics">Electronics</a>
+<ul>
+<li><a href="#arduino-moisture-sensor">Arduino + Moisture Sensor</a></li>
+<li><a href="#arduino-motor-controller">Arduino + Motor Controller</a></li>
+<li><a href="#arduino-moisture-sensor-motor-controller">Arduino + Moisture Sensor + Motor Controller</a></li>
+</ul></li>
+<li><a href="#enclosure">Enclosure</a></li>
+<li><a href="#prototyping-in-prototypic-environment">Prototyping in Prototypic Environment</a>
+<ul>
+<li><a href="#parameter-testing">Parameter Testing</a></li>
+</ul></li>
+</ul>
+</nav>
 
 <p><img src="https://images2.imgbox.com/56/7e/Wn038aAw_o.jpg" alt="plants" /></p>
 
@@ -382,7 +407,7 @@ void loop() {
 
 <p><a href="https://youtu.be/BEQT_EAa0HM" target="_blank">Unit Test for motor controller</a></p>
 
-<h1 id="arduino-moisture-sensor-motor-controller">Arduino + Moisture Sensor + Motor Controller</h1>
+<h2 id="arduino-moisture-sensor-motor-controller">Arduino + Moisture Sensor + Motor Controller</h2>
 
 <p>We need to solder the pin headers to the +5, the ground, and the analog pins so the moisture sensor pins can be plugged into those.</p>
 
@@ -431,13 +456,61 @@ void loop() {
 
 <h1 id="enclosure">Enclosure</h1>
 
-<p>The enclosure houses both the Arduino and the reservoir for the water in two compartments, entirely sealed from one another save for a small passage allowing a wire to pass through to control the water pump. (Which will be protected by silicone sealing adhesive.) The enclosure is designed to be unobtrusive, so it takes the shape of a squat white cylinder with rounded edges. The planter sits on top of the enclosure, and any excess water that falls out of the bottom of the planter is caught by the funnel and returns to the reservoir. This also allows for convenient replenishing of the water reservoir by simply pouring water on top of the device. The main body of the enclosure will be 3D printed, with a laser cut acrylic grating on top. (edited)</p>
+<p>The enclosure houses both the Arduino and the reservoir for the water in two compartments, entirely sealed from one another save for a small passage allowing a wire to pass through to control the water pump. (Which will be protected by silicone sealing adhesive.) The enclosure is designed to be unobtrusive, so it takes the shape of a squat white cylinder with rounded edges. The planter sits on top of the enclosure, and any excess water that falls out of the bottom of the planter is caught by the funnel and returns to the reservoir. This also allows for convenient replenishing of the water reservoir by simply pouring water on top of the device. The main body of the enclosure will be 3D printed, with a laser cut acrylic grating on top.</p>
 
 <p>The electronics consist of an Arduino UNO with a motor control shield, a moisture sensor, and a miniature submersible pump. The Arduino continuously uses the moisture sensor to monitor the moisture content of the soil in the planter. Should the moisture content drop below a certain threshold (set by the programmer), the water pump will be activated. Water pump activation continues for at least three seconds before the moisture level is checked again. When the moisture content is once again raised past the defined threshold level, the water pump is switched off.</p>
 
 <p><img src="https://images2.imgbox.com/d4/d2/72V9WENd_o.png" alt="" /></p>
 
 <p><img src="https://images2.imgbox.com/b1/73/jBGupQ4C_o.png" alt="" /></p>
+
+<h1 id="prototyping-in-prototypic-environment">Prototyping in Prototypic Environment</h1>
+
+<h2 id="parameter-testing">Parameter Testing</h2>
+
+<p>Using real soil, we want to determine the rate of change in soil moisture after water has been poured. The rate of change is related to the rate of diffusion.</p>
+
+<p>For our first experiment, we start with bone dry soil which produces a reading of 0 on the moisture sensor. Water is poured into the soil approximately an inch from the sensor.</p>
+
+<p><img src="https://images2.imgbox.com/3b/b2/LfsJOR4N_o.png" alt="" /></p>
+
+<p>We programmed the Arduino with the 100/ms sampling rate.</p>
+
+<pre><code class="language-c">void setup() {
+  Serial.begin(9600);
+  Serial.println(&quot;Hello!&quot;);
+  pinMode(A0, INPUT);
+}
+
+void loop() {
+  Serial.println(analogRead(A0));
+  Serial.print(&quot; &quot;);
+  delay(100);
+}
+</code></pre>
+
+<p>The Arduino is connected to a serial port on the computer. The following line of bash code dumps the output of the serial port into a file.</p>
+
+<pre><code>$ cat  /dev/cu.usbmodem1411 &gt; moisturelog1.csv
+</code></pre>
+
+<p>30 minutes worth of data is collected. The data in the csv file is then plotted.</p>
+
+<p><img src="https://images2.imgbox.com/7d/86/ybjw72Sy_o.png" alt="" /></p>
+
+<p>Note:</p>
+
+<ul>
+<li>Y-axis is the sensor output (The sensor reading can go from 0 to 1023)* X-axis represent time from 0 to 30 minutes (with a sampling rate of 100/ms).</li>
+<li>Before the first pour, the sensor was reading 0 (bone dry soil). The first pour was about an inch from the sensor. The second pour was about half an inch from the sensor.</li>
+</ul>
+
+<p>Clyde&rsquo;s note:</p>
+
+<ul>
+<li>To record this data, the Arduino was programmed to output the value of analog pin 0 to the serial port, ten times each second. On the connected laptop, the serial port file /dev/cu.usbmodem1411 was piped to a new CSV file. Then water was poured into the planter twice, because the first pour was a little too far from the sensor. The data was collected for roughly 30 minutes, then imported to Google Sheets to render a plot.</li>
+<li>The sensor readings from analogRead on the Arduino return a number between 0 - 1023. The two spikes (reaching 696 and 742) at the beginning of the recording correspond to the two pours at the beginning of the experiment. Curiously, the second pour is followed by a slow increase in sensor reading followed by an even slower decline. The decline portion begins at 694 and reaches 638 at the end of recording, about a half hour later. At time of writing, our guess at an explanation for this data shape is that following the second pour the water content of the soil diffuses and more moisture contacts the sensor. Afterward, gravity pulls the water down and away from the sensor, slowly decreasing the reading. Later experiments will need to use more controlled pours as well as introduce a second sensor (such as water flow rate) to correlate moisture change and pour times, and put these hypotheses to the test.</li>
+</ul>
               
             </div>
           </div>
@@ -517,7 +590,7 @@ void loop() {
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -620,7 +693,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -733,7 +806,9 @@ s.setAttribute('data-timestamp', +new Date());
                   Jan 1, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p></div>
+              <div class="media-content hide-xs font-merryweather"><p><em>by <a href="https://github.com/xiaoyunyang" target="_blank">Xiaoyun Yang</a> and <a href="https://github.com/clydeshaffer" target="_blank">Clyde Shaffer</a></em></p>
+
+<p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
