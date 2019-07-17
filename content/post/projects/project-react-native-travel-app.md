@@ -4,9 +4,9 @@ date: 2018-03-30
 categories:
   - projects
 tags:
-  - MobileApp
-  - JavaScript
+  - Mobile App
   - Open Source
+  - React Native
 thumbnailImagePosition: left
 thumbnailImage: /post/images/projects/japan-app-icon.png
 ---
@@ -20,8 +20,6 @@ When I was planning my trip to Japan with some friends, I thought why not to use
 * Access to your list of planned activities
 * An integrated to-do-list and a map for the area
 * A quick lookup on the stuff you researched, including travel destination articles and translations for words from the local language to English
-
-
 
 I made this app in ReactNative. ReactNative is a game changer.
 

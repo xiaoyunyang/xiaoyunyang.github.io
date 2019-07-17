@@ -4,8 +4,12 @@ date: 2018-04-12
 categories:
   - projects
 tags:
-  - WebApp
-  - Startup
+  - Web Dev
+  - Frontend
+  - Backend
+  - Entrepreneurship
+  - React
+  - Node
 thumbnailImagePosition: left
 thumbnailImage: /post/images/looseleaf/logo.png
 ---

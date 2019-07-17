@@ -4,8 +4,13 @@ date: 2015-08-12
 categories:
   - projects
 tags:
-  - MobileApp
-  - Startup
+  - Mobile App
+  - Entrepreneurship
+keywords:
+  - edtech
+  - mobile app
+  - Entrepreneurship
+  - NumberShapes
 thumbnailImagePosition: left
 thumbnailImage: /post/images/projects/numbershapes/logo.png
 ---

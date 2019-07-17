@@ -12,11 +12,11 @@
 # For developpers, if you modify this theme, put your images in `source/images` folder and
 # use grunt task `build` to synchronize assets
 
-baseURL = "http://xiaoyunyang.github.io/"
+baseURL = "https://xiaoyunyang.github.io/"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
 title = "Xiaoyun Yang"
-theme = "hugo-tranquilpeak-theme"
+theme = "tranquilpeak"
 disqusShortname = "http-xiaoyunyang-github-io"
 # googleAnalytics = "UA-123-45"
 paginate = 7
@@ -36,12 +36,12 @@ canonifyurls = true
   name = "Xiaoyun Yang"
   bio = "Software Engineer. Entrepreneur."
   job = "Software Engineer"
-  location = "Washington DC"
+  location = "New York"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
   # gravatarEmail = "xiaoyun@looseleafapp.com"
   # Your profile picture
   # Overwritten by your gravatar image if `author.gravatarEmail` is filled
-  picture = "https://avatars3.githubusercontent.com/u/5825343?s=400&u=57ea29978721c8be7b830ce02f304e67f82cf34f&v=4"
+  picture = "images/xyang.png"
   # Your Twitter username without the @. E.g : thibaudlepretre
   # twitter = "thibaudlepretre"
   # Your google plus profile id. E.g : +ThibaudLepretre or 114625208755123718311
@@ -153,7 +153,7 @@ canonifyurls = true
   # If false it will flat categories.
   hierarchicalCategories = true
 
-  description = "Hugo tranquilpeak theme demo"
+  description = "Xiaoyun Yang - Software Engineer, Indie Hacker, Entrepreneur."
 
   # Customization
   # Define the behavior of the sidebar
