@@ -19,9 +19,10 @@ var TopNav = React.createClass({
           <li>
             <div className="user-view">
               <div className="background">
-                <img src="../assets/images/table3.png"/>
+                <img src="../assets/images/hustle.png"/>
                </div>
-               <img className="circle" src="https://avatars3.githubusercontent.com/u/5825343?s=460&v=4"/>
+               <img className="circle" src="http://xiaoyunyang.github.io/images/xyang.png"/>
+                <a href="#!name"><span class="white-text name">Xiaoyun Yang</span></a>
                <div className="row">
                  <div className="col l2 m2 s2">
                    <a href="https://github.com/xiaoyunyang"><i className="fab fa-github fa-lg"></i></a>
@@ -33,15 +34,16 @@ var TopNav = React.createClass({
                    <a href="https://medium.com/@xiaoyunyang"><i className="fab fa-medium fa-lg"></i></a>
                  </div>
                  <div className="col l2 m2 s2">
+                   <a href="https://angel.co/xiaoyunyang"><i className="fab fa-angellist fa-lg"></i></a>
+                 </div>
+                 <div className="col l2 m2 s2">
                    <a href="mailto:xiaoyun@looseleafapp.com"><i className="fa fa-envelope fa-lg"></i></a>
                  </div>
               </div>
             </div>
           </li>
           <li><a href="https://drive.google.com/file/d/0B_uByl2mOTJIVTM3ZWRYRVpIcWs/view">Resume</a></li>
-          <li><a href="http://xiaoyunyang.github.io/#work">Work</a></li>
-          <li><a href="http://xiaoyunyang.github.io/#writing">Writing</a></li>
-          <li><a href="http://xiaoyunyang.github.io/consulting/global-dev-corp/feedback-for-website.html">Consulting</a></li>
+          <li><a href="http://xiaoyunyang.github.io/about/">About</a></li>
           <li><div className="divider"></div></li>
           <li><a className="subheader">Apps</a></li>
           <li><a className="waves-effect" href="./100days.html">100 Days Calculator</a></li>

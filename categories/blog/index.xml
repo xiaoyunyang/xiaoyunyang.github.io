@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on Xiaoyun Yang</title>
+    <title>blog on Xiaoyun Yang</title>
     <link>https://xiaoyunyang.github.io/categories/blog/</link>
-    <description>Recent content in Blog on Xiaoyun Yang</description>
+    <description>Recent content in blog on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Sun, 03 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Algorithm for Managing Stress</title>
+      <link>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</link>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</guid>
+      <description>&lt;p&gt;What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&amp;rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &amp;ldquo;top 10 things you can do to &amp;hellip;.&amp;rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Get Started With Go</title>
