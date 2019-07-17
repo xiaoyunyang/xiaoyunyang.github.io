@@ -1,6 +1,6 @@
 ---
 title: "The Algorithm for Managing Stress"
-date: 2019-04-25
+date: 2019-07-16
 categories:
   - blog
 tags:
@@ -99,8 +99,6 @@ A lot of the times, it's not how completing a todo will lead to us accomplishing
 
 ## Step 2c: Sort the todos based on deadline
 
-Now we need to
-
 I calculate consequence as the `benefit - cost`. If the consequence of failure is positive, it's a win-win situation because the worst thing that could happen to you is a good thing.
 
 The time you spend completing the action is always a cost (unless you are paying someone else to do it for you, in which case money becomes a cost instead of time). The longer something takes up your time, the more negative the consequence of failure becomes; however, `benefit - cost` can still be a positive number if the benefit outweighs the cost. For example,
@@ -117,8 +115,16 @@ So that could quickly proliferate. So you need a way to prioritize what to work 
 
 Do the sorting of tasks into a prioritized list ahead of the time of execution so you don’t have to think about what to work on next. You just do it.
 
-Scheduling theory
+```js
+// TODO: Scheduling theory
+```
 
-Search-Sort tradeoff
+```js
+// TODO: Search-Sort tradeoff
+```
 
 # Step 3:
+
+```js
+// TODO: Add this section
+```

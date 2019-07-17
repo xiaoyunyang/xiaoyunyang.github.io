@@ -1,6 +1,6 @@
 ---
 title: "Effective Unit Testing With Jest And Enzyme"
-date: 2019-03-13
+date: 2019-08-13
 draft: true
 categories:
   - blog

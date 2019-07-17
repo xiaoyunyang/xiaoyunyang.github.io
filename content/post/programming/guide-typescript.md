@@ -1,6 +1,6 @@
 ---
 title: "Intro to TypeScript and Cheatsheet for TypeScript"
-date: 2019-03-16
+date: 2019-09-16
 categories:
   - blog
 tags:
