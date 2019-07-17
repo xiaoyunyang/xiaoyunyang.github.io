@@ -10,10 +10,13 @@ thumbnailImagePosition: left
 thumbnailImage: https://images2.imgbox.com/3b/f0/2Ket1SaB_o.jpg
 ---
 
+_by [Xiaoyun Yang](https://github.com/xiaoyunyang) and [Clyde Shaffer](https://github.com/clydeshaffer)_
+
 I love indoor plants but I'm bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can't use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let's call it ThirstyPlant.
 
 <!--more-->
 
+<!--toc-->
 ![plants](https://images2.imgbox.com/56/7e/Wn038aAw_o.jpg)
 
 # Concept Design
@@ -124,7 +127,7 @@ This is the result:
 
 [Unit Test for motor controller](https://youtu.be/BEQT_EAa0HM)
 
-# Arduino + Moisture Sensor + Motor Controller
+## Arduino + Moisture Sensor + Motor Controller
 
 We need to solder the pin headers to the +5, the ground, and the analog pins so the moisture sensor pins can be plugged into those.
 
@@ -170,7 +173,7 @@ Integration Test for moisture sensor and motor controller [Demo](https://youtu.b
 
 # Enclosure
 
-The enclosure houses both the Arduino and the reservoir for the water in two compartments, entirely sealed from one another save for a small passage allowing a wire to pass through to control the water pump. (Which will be protected by silicone sealing adhesive.) The enclosure is designed to be unobtrusive, so it takes the shape of a squat white cylinder with rounded edges. The planter sits on top of the enclosure, and any excess water that falls out of the bottom of the planter is caught by the funnel and returns to the reservoir. This also allows for convenient replenishing of the water reservoir by simply pouring water on top of the device. The main body of the enclosure will be 3D printed, with a laser cut acrylic grating on top. (edited) 
+The enclosure houses both the Arduino and the reservoir for the water in two compartments, entirely sealed from one another save for a small passage allowing a wire to pass through to control the water pump. (Which will be protected by silicone sealing adhesive.) The enclosure is designed to be unobtrusive, so it takes the shape of a squat white cylinder with rounded edges. The planter sits on top of the enclosure, and any excess water that falls out of the bottom of the planter is caught by the funnel and returns to the reservoir. This also allows for convenient replenishing of the water reservoir by simply pouring water on top of the device. The main body of the enclosure will be 3D printed, with a laser cut acrylic grating on top.
 
 The electronics consist of an Arduino UNO with a motor control shield, a moisture sensor, and a miniature submersible pump. The Arduino continuously uses the moisture sensor to monitor the moisture content of the soil in the planter. Should the moisture content drop below a certain threshold (set by the programmer), the water pump will be activated. Water pump activation continues for at least three seconds before the moisture level is checked again. When the moisture content is once again raised past the defined threshold level, the water pump is switched off.
 
@@ -178,3 +181,48 @@ The electronics consist of an Arduino UNO with a motor control shield, a moistur
 
 ![](https://images2.imgbox.com/b1/73/jBGupQ4C_o.png)
 
+# Prototyping in Prototypic Environment
+
+## Parameter Testing
+
+Using real soil, we want to determine the rate of change in soil moisture after water has been poured. The rate of change is related to the rate of diffusion.
+
+For our first experiment, we start with bone dry soil which produces a reading of 0 on the moisture sensor. Water is poured into the soil approximately an inch from the sensor.
+
+![](https://images2.imgbox.com/3b/b2/LfsJOR4N_o.png)
+
+We programmed the Arduino with the 100/ms sampling rate.
+
+```c
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Hello!");
+  pinMode(A0, INPUT);
+}
+
+void loop() {
+  Serial.println(analogRead(A0));
+  Serial.print(" ");
+  delay(100);
+}
+```
+
+The Arduino is connected to a serial port on the computer. The following line of bash code dumps the output of the serial port into a file.
+
+```
+$ cat  /dev/cu.usbmodem1411 > moisturelog1.csv
+```
+
+30 minutes worth of data is collected. The data in the csv file is then plotted.
+
+![](https://images2.imgbox.com/7d/86/ybjw72Sy_o.png)
+
+Note:
+
+- Y-axis is the sensor output (The sensor reading can go from 0 to 1023)* X-axis represent time from 0 to 30 minutes (with a sampling rate of 100/ms).
+- Before the first pour, the sensor was reading 0 (bone dry soil). The first pour was about an inch from the sensor. The second pour was about half an inch from the sensor.
+
+Clyde's note:
+
+- To record this data, the Arduino was programmed to output the value of analog pin 0 to the serial port, ten times each second. On the connected laptop, the serial port file /dev/cu.usbmodem1411 was piped to a new CSV file. Then water was poured into the planter twice, because the first pour was a little too far from the sensor. The data was collected for roughly 30 minutes, then imported to Google Sheets to render a plot.
+- The sensor readings from analogRead on the Arduino return a number between 0 - 1023. The two spikes (reaching 696 and 742) at the beginning of the recording correspond to the two pours at the beginning of the experiment. Curiously, the second pour is followed by a slow increase in sensor reading followed by an even slower decline. The decline portion begins at 694 and reaches 638 at the end of recording, about a half hour later. At time of writing, our guess at an explanation for this data shape is that following the second pour the water content of the soil diffuses and more moisture contacts the sensor. Afterward, gravity pulls the water down and away from the sensor, slowly decreasing the reading. Later experiments will need to use more controlled pours as well as introduce a second sensor (such as water flow rate) to correlate moisture change and pour times, and put these hypotheses to the test.
