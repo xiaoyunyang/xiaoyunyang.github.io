@@ -390,7 +390,17 @@ import { Type1, Type2 } from ./dir/to/path
 - Union: `string | null | undefined`
 - Unreachable: `never`
 
-#### Type of functions
+We can also use literals as types. For example:
+
+```javascript
+type One = 1
+const one: One = 1
+const two: One = 2 // <- error
+```
+
+#### Typing Functions
+
+In TypeScript, there are [three ways](https://mariusschulz.com/blog/typing-functions-in-typescript#function-type-literals) to type a function.
 
 ```javascript
 // Flow
@@ -398,7 +408,9 @@ type Date = {
   toString: () => string,
   setTime: (time: number) => number
 }
+```
 
+```javascript
 // TypeScript
 interface Date {
   toString(): string;
@@ -406,7 +418,7 @@ interface Date {
 }
 ```
 
-#### Typing an Object
+#### Typing Objects
 
 In flow, we use `type`.
 
@@ -430,7 +442,7 @@ In addition to the type in `?type`, maybe types can also be `null` or `void`.
 
 In TypeScript, explicit typing is preferred.
 
-```ts
+```javascript
 // Flow
 function acceptsMaybeString(value: string | null) {
   // ...
@@ -467,7 +479,7 @@ The casting for `user2AsUser` fails with the following error from flow:
 
 > Cannot cast `user2` to `User` because property `email` is missing in object literal but exists in `User`
 
-```typescript
+```javascript
 // TypeScript
 
 interface User {
@@ -545,6 +557,8 @@ interface User {
 
 #### Generics
 
+Types can be parameterized. In TypeScript, we can create a generic type with a type parameters, which is represented by an arbitary letter like `T`, in angle brackets.
+
 In Flow
 
 ```javascript
@@ -556,18 +570,44 @@ type MyList = {
 
 In TypeScript
 
-```typescript
+```javascript
 class List<T> {
   filter: T[] => T[];
   head: T[] => T;
 }
+
+type NumberList = List<number>
+type StringList = List<string>
+```
+
+A class can extend other classes as demonstrated in this more complex example.
+
+```javascript
+class GenericIcfOrChunk<T> {
+    readonly type: T;
+    chunks?: Chunk[];
+    text?: string | null;
+}
+
+export class Chunk extends GenericIcfOrChunk<number> {
+    id?: number;
+    group?: number;
+}
+
+class GenericIcf<I> extends GenericIcfOrChunk<IcfType> {
+    id: I;
+    group: number;
+}
+
+export type IcfDoc = GenericIcf<0>
+export type IcfSegment = GenericIcf<number>
 ```
 
 For more on Generics in TypeScript: https://www.typescriptlang.org/docs/handbook/generics.html
 
 #### Type extension
 
-```typescript
+```javascript
 interface Entry {
     name: string;
     id: string;
@@ -595,7 +635,7 @@ There's no analog of enum in Flow. Enum in TypeScript allow us to make a collect
 
 Combining two enums
 
-```typescript
+```javascript
 enum Mammal {
   DOG = "DOG",
   HORSE = "HORSE",
@@ -627,7 +667,7 @@ https://github.com/Microsoft/TypeScript/issues/17592
 
 Use union type
 
-```typescript
+```javascript
 const enum BasicEvents {
   Start = "Start",
   Finish = "Finish"
@@ -644,7 +684,7 @@ let e: Events = AdvEvents.Pause;
 
 ##### Check for membership
 
-```typescript
+```javascript
 const animals: AnimalT[] = [“DOG”, “ANT”, “HUMAN”, “BEE”]
 const mammals: Mammal[] = animals.filter(animal => animal in Mammal)
 console.log(mammals) //> [“DOG”, “HUMAN"] 
@@ -654,7 +694,7 @@ Note the difference between Animal and AnimalT!
 
 ##### Dictionary typing using enum
 
-```typescript
+```javascript
 enum Var {
     X = "x",
     Y = "y",
@@ -677,7 +717,7 @@ type Dict = { [var in VarType]: string }
 
 #### Exclude
 
-```ts
+```javascript
 interface Animal {
     LION = "LION",
     PIG = "PIG",
@@ -692,7 +732,7 @@ type DomesticatedMammals = {
 
 #### Using enums in `Map`
 
-```typescript
+```javascript
 enum One {
   A = "A",
   B = "B",
@@ -723,7 +763,7 @@ TypeScript sometimes does not recognize Tuple Types. Solution: explicit casting 
 
 Example
 
-```ts
+```javascript
 type Interval = [number, number]
 
 const getMaxAndMin = (interval: Interval) => ({
@@ -743,7 +783,7 @@ TypeScript complains:
   
 Solution:
 
-```ts
+```javascript
 const interval: Interval = [0, 3];
 
 getMaxAndMin(interval);
@@ -751,13 +791,13 @@ getMaxAndMin(interval);
 
 Or
 
-```ts
+```javascript
 getMaxAndMin([0,3]);
 ```
 
 #### Enzyme Mount
 
-```ts
+```javascript
 class  MyButton extends React.Component {
     constructor() {
         this.handleClickBound = handleClick.bind(this);
@@ -773,7 +813,7 @@ class  MyButton extends React.Component {
 }
 ```
 
-```ts
+```javascript
 const button = mount(<MyButton />);
 const buttonInstance = button.instance();
 buttonInstance.handleClick()
@@ -783,7 +823,7 @@ buttonInstance.handleClick()
 
 Solution:
 
-```ts
+```javascript
 const button = mount<MyButton>(<MyButton />);
 ```
 
@@ -796,7 +836,7 @@ const button = mount<MyButton>(<MyButton />);
 ```
 // Jenkinsfile
 stage('Type Check') {
-    sh 'yarn tsc'
+    sh 'yarn type-check'
 }
 ```
 
