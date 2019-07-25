@@ -4,7 +4,7 @@
     {{ $page := . }}
     {{ if .Params.categories }}
       {{ $categories := (apply .Params.categories "urlize" ".") }}
-      {{ range $index,$value := $categories }}
+      {{ range $index,$value := .Params.categories }}
         {{ if gt $index ($.Scratch.Get "max-level") }}
           {{ $.Scratch.Set "max-level" $index }}
         {{ end }}
@@ -23,7 +23,7 @@
           {{ $.Scratch.Set $name $node }}
           {{ $.Scratch.SetInMap $level $path $node }}
         {{ end }}
-        {{ $.Scratch.SetInMap (printf "%s" (delimit (first (add $index 1) $categories) "/")) $page.UniqueID $page }}
+        {{ $.Scratch.SetInMap (printf "%s" (delimit (first (add $index 1) $categories) "/")) $page.File.UniqueID $page }}
         {{ $.Scratch.Set "parent" $path }}
       {{ end }}
       {{ $.Scratch.Set "parent" nil }}

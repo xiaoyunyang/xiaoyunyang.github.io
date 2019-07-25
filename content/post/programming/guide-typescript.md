@@ -373,7 +373,9 @@ This is helpful if you are migrating from Flow to TypeScript: [typescript-vs-flo
 // Flow
 import type { Type1, Type2 } from ./dir/to/path
 import { type Type3 } from ./dir/to/path
+```
 
+```ts
 // Typescript
 import { Type1, Type2 } from ./dir/to/path
 ```
@@ -392,7 +394,7 @@ import { Type1, Type2 } from ./dir/to/path
 
 We can also use literals as types. For example:
 
-```javascript
+```ts
 type One = 1
 const one: One = 1
 const two: One = 2 // <- error
@@ -410,7 +412,7 @@ type Date = {
 }
 ```
 
-```javascript
+```ts
 // TypeScript
 interface Date {
   toString(): string;
@@ -442,8 +444,8 @@ In addition to the type in `?type`, maybe types can also be `null` or `void`.
 
 In TypeScript, explicit typing is preferred.
 
-```javascript
-// Flow
+```ts
+// TypeScript
 function acceptsMaybeString(value: string | null) {
   // ...
 }
@@ -472,14 +474,15 @@ const user2 = {
 
 const userAsUser: User = ((user: User): User);
 const user2AsUser: User = ((user2: User): User); // Fails
-
 ```
 
 The casting for `user2AsUser` fails with the following error from flow:
 
 > Cannot cast `user2` to `User` because property `email` is missing in object literal but exists in `User`
 
-```javascript
+In TypeScript, we can do something like this:
+
+```ts
 // TypeScript
 
 interface User {
@@ -505,7 +508,9 @@ In Typescript, use the “readonly” keyword https://mariusschulz.com/blog/read
 ```javascript
 // Flow
 function getUser (): { name: string, age: number }
+```
 
+```typescript
 // TypeScript
 // Note the semicolon
 function getUser (): { name: string; age: number }
@@ -527,7 +532,7 @@ function getUser (): User
 
 TypeScript has [interface](https://www.typescriptlang.org/docs/handbook/interfaces.html)
 
-```javascript
+```ts
 // TypeScript
 interface User {
   name: string;
@@ -546,7 +551,9 @@ type User = {
   age: number,
   location?: string
 }
+```
 
+```ts
 // TypeScript
 interface User {
   name: string;
@@ -557,7 +564,7 @@ interface User {
 
 #### Generics
 
-Types can be parameterized. In TypeScript, we can create a generic type with a type parameters, which is represented by an arbitary letter like `T`, in angle brackets.
+Types can be parameterized. In TypeScript, we can create a generic type with type parameters, which are represented by an arbitary letter like `T`, in angle brackets.
 
 In Flow
 
@@ -570,8 +577,8 @@ type MyList = {
 
 In TypeScript
 
-```javascript
-class List<T> {
+```ts
+interface List<T> {
   filter: T[] => T[];
   head: T[] => T;
 }
@@ -580,34 +587,9 @@ type NumberList = List<number>
 type StringList = List<string>
 ```
 
-A class can extend other classes as demonstrated in this more complex example.
+An interface can extend other interfaces as demonstrated in these more complex example.
 
-```javascript
-class GenericIcfOrChunk<T> {
-    readonly type: T;
-    chunks?: Chunk[];
-    text?: string | null;
-}
-
-export class Chunk extends GenericIcfOrChunk<number> {
-    id?: number;
-    group?: number;
-}
-
-class GenericIcf<I> extends GenericIcfOrChunk<IcfType> {
-    id: I;
-    group: number;
-}
-
-export type IcfDoc = GenericIcf<0>
-export type IcfSegment = GenericIcf<number>
-```
-
-For more on Generics in TypeScript: https://www.typescriptlang.org/docs/handbook/generics.html
-
-#### Type extension
-
-```javascript
+```ts
 interface Entry {
     name: string;
     id: string;
@@ -623,19 +605,52 @@ const stuff: EntryWithData<number> = {
 }
 ```
 
+```ts
+interface GenericIcfOrChunk<T> {
+    readonly type: T;
+    chunks?: Chunk[];
+    text?: string | null;
+}
+
+interface Chunk extends GenericIcfOrChunk<number> {
+    id?: number;
+    group?: number;
+}
+
+interface GenericIcf<I> extends GenericIcfOrChunk<IcfType> {
+    id: I;
+    group: number;
+}
+
+export type IcfDoc = GenericIcf<0>
+export type IcfSegment = GenericIcf<number>
+```
+
+For more on Generics in TypeScript See the [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/generics.html)
+
+But this begs the question: what's the difference between `interface` and `class`?
+
+#### Class
+
+In object oriented programming, a class is a blueprint with properties and methods from which we can create objects. An interface is a collection of properties and methods.
+
+In that sense, class and interface are the same. TypeScript allows us to type with classes. If we were to change the `interface` keyword to `class` in the examples in the Generics section, the code would still work. So why do we need `class` and when do we use it?
+
+In short, `class` gives us more capability than `interface` such as designating properties as `private` or `public` and adding a constructor. [This blog post](https://ultimatecourses.com/blog/classes-vs-interfaces-in-typescript) and [the official docs](https://www.typescriptlang.org/docs/handbook/classes.html) provide some use cases of `class`. The class in TypeScript look almost identical to the JavaScript class in ES6. This is reasonable since TypeScript is a superset of JavaScript.
+
 #### Array Types
 
 In flow, we use `Array<ObjectType>`
 
-In TypeScript, we use `ObjectType[]`
+In TypeScript, we use `ObjectType[]`, which is a shorthand for `Array<ObjectType>`. `Array` is a generic type in TypeScript.
 
 #### Enum
 
-There's no analog of enum in Flow. Enum in TypeScript allow us to make a collection of constants as types. Some examples
+This section only deals with TypeScript since Flow does not support enum. Enum in TypeScript allow us to make a collection of constants as types. Some examples
 
 Combining two enums
 
-```javascript
+```ts
 enum Mammal {
   DOG = "DOG",
   HORSE = "HORSE",
@@ -667,7 +682,7 @@ https://github.com/Microsoft/TypeScript/issues/17592
 
 Use union type
 
-```javascript
+```ts
 const enum BasicEvents {
   Start = "Start",
   Finish = "Finish"
@@ -684,17 +699,17 @@ let e: Events = AdvEvents.Pause;
 
 ##### Check for membership
 
-```javascript
+```ts
 const animals: AnimalT[] = [“DOG”, “ANT”, “HUMAN”, “BEE”]
 const mammals: Mammal[] = animals.filter(animal => animal in Mammal)
-console.log(mammals) //> [“DOG”, “HUMAN"] 
+console.log(mammals) //> [“DOG”, “HUMAN"]
 ```
 
 Note the difference between Animal and AnimalT!
 
 ##### Dictionary typing using enum
 
-```javascript
+```ts
 enum Var {
     X = "x",
     Y = "y",
@@ -706,6 +721,8 @@ type Dict = { [var in Var]: string };
 This is a lot simpler than Flow. In Flow, we had to do something like this:
 
 ```javascript
+// Flow
+
 const Vars = {
   X: "x",
   Y: "y"
@@ -717,7 +734,7 @@ type Dict = { [var in VarType]: string }
 
 #### Exclude
 
-```javascript
+```ts
 interface Animal {
     LION = "LION",
     PIG = "PIG",
@@ -732,7 +749,7 @@ type DomesticatedMammals = {
 
 #### Using enums in `Map`
 
-```javascript
+```ts
 enum One {
   A = "A",
   B = "B",
@@ -753,7 +770,7 @@ const map = new Map<string, One | Two>([
 
 #### Shape
 
-`$Shape<SomeObjectType>` in Flow is analogous to creating Generics or other types to extend in typescript.
+`$Shape<SomeObjectType>` in Flow has no analog in TypeScript
 
 ### Gotchas
 
@@ -763,7 +780,7 @@ TypeScript sometimes does not recognize Tuple Types. Solution: explicit casting 
 
 Example
 
-```javascript
+```ts
 type Interval = [number, number]
 
 const getMaxAndMin = (interval: Interval) => ({
@@ -778,12 +795,11 @@ getMaxAndMin(interval);
 
 TypeScript complains:
 
-> Argument of type 'number[]' is not assignable to parameter of type '[number, number]'.
-  Type 'number[]' is missing the following properties from type '[number, number]'
+> Argument of type 'number[]' is not assignable to parameter of type '[number, number]'. Type 'number[]' is missing the following properties from type '[number, number]'
   
 Solution:
 
-```javascript
+```ts
 const interval: Interval = [0, 3];
 
 getMaxAndMin(interval);
@@ -791,14 +807,14 @@ getMaxAndMin(interval);
 
 Or
 
-```javascript
+```ts
 getMaxAndMin([0,3]);
 ```
 
 #### Enzyme Mount
 
-```javascript
-class  MyButton extends React.Component {
+```ts
+class MyButton extends React.Component {
     constructor() {
         this.handleClickBound = handleClick.bind(this);
     }
@@ -813,7 +829,7 @@ class  MyButton extends React.Component {
 }
 ```
 
-```javascript
+```ts
 const button = mount(<MyButton />);
 const buttonInstance = button.instance();
 buttonInstance.handleClick()
@@ -823,7 +839,7 @@ buttonInstance.handleClick()
 
 Solution:
 
-```javascript
+```ts
 const button = mount<MyButton>(<MyButton />);
 ```
 
@@ -856,7 +872,7 @@ Create a `.storybook` directory at the root of your project
 
 ```
 mkdir .storybook
-touch .storybook/config.js .storybook/addons.js .storybook/webpack.config.js 
+touch .storybook/config.js .storybook/addons.js .storybook/webpack.config.js
 ```
 
 ## Phase 4 Regression Testing
@@ -882,3 +898,4 @@ TypeScript Learning Resources
 - [So Many Useful TypeScript Tips!](https://codeburst.io/five-tips-i-wish-i-knew-when-i-started-with-typescript-c9e8609029db)
 - [Type Assertion](https://www.tutorialsteacher.com/typescript/type-assertion)
 - [TypeScript Cheatsheet from devhint](https://devhints.io/typescript)
+- [Class vs Interface in TypeScript](https://ultimatecourses.com/blog/classes-vs-interfaces-in-typescript)

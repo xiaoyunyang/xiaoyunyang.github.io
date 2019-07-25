@@ -1,33 +1,33 @@
 ## GLOBAL ##
 - id: "global.home"
-  translation: "Home"
+  translation: "Strona domowa"
 
 - id: "global.categories"
-  translation: "Kategorien"
-
-- id: "global.category"
   translation: "Kategorie"
 
+- id: "global.category"
+  translation: "Kategoria"
+
 - id: "global.tags"
-  translation: "Tags"
+  translation: "Tagi"
 
 - id: "global.tag"
   translation: "Tag"
 
 - id: "global.archives"
-  translation: "Archiv"
+  translation: "Archiwum"
 
 - id: "global.search"
-  translation: "Suche"
+  translation: "Wyszukiwanie"
 
 - id: "global.about"
-  translation: "Über"
+  translation: "O mnie"
 
 - id: "global.author_picture"
-  translation: "Bild des Autors"
+  translation: "Zdjęcie autora"
 
 - id: "global.share_on"
-  translation: "Auf %s teilen"
+  translation: "Udostępnij na %s"
 
 - id: "global.mail"
   translation: "Mail"
@@ -36,122 +36,122 @@
   translation: "RSS"
 
 - id: "global.search_category"
-  translation: "Suche Kategorie"
+  translation: "Szukaj kategorię"
 
 - id: "global.search_tag"
-  translation: "Suche Tag"
+  translation: "Szukaj tag"
 
 - id: "global.search_date"
-  translation: "Suche Datum (YYYY/MM/DD)"
+  translation: "Szukaj datę (YYYY/MM/DD)"
 
 ## GLOBAL.POST_FOUND ##
 - id: "global.posts_found.zero"
-  translation: "kein Beitrag gefunden"
+  translation: "nie znaleziono wpisów"
 
 - id: "global.posts_found.one"
-  translation: "1 Beitrag gefunden"
+  translation: "znaleziono jeden wpis"
 
 - id: "global.posts_found.other"
-  translation: "{n} Einträge gefunden"
+  translation: "liczba znalezionych wpisów: {n}"
 
 ## GLOBAL.CATEGORIES_FOUND ##
 - id: "global.categories_found.zero"
-  translation: "keine Kategorie gefunden"
+  translation: "nie znaleziono kategorii"
 
 - id: "global.categories_found.one"
-  translation: "1 Kategorie gefunden"
+  translation: "znaleziono jedną kategorię"
 
 - id: "global.categories_found.other"
-  translation: "{n} Kategorien gefunden"
+  translation: "liczba znalezionych kategorii: {n}"
 
 ## GLOBAL.TAGS_FOUND ##
 - id: "global.tags_found.zero"
-  translation: "kein Tag gefunden"
+  translation: "nie znaleziono tagów"
 
 - id: "global.tags_found.one"
-  translation: "1 Tag gefunden"
+  translation: "znaleziono jeden tag"
 
 - id: "global.tags_found.other"
-  translation: "{n} Tags gefunden"
+  translation: "liczba znalezionych tagów: {n}"
 
 ## PAGINATION ##
 - id: "pagination.page"
-  translation: "Seite {{ .Paginator.PageNumber }}"
+  translation: "strona {{ .Paginator.PageNumber }}"
 
 - id: "pagination.of"
-  translation: "von {{ .Paginator.TotalPages }}"
+  translation: "z {{ .Paginator.TotalPages }}"
 
 - id: "pagination.newer_posts"
-  translation: "NEUERE BEITRÄGE"
+  translation: "NOWSZE WPISY"
 
 - id: "pagination.older_posts"
-  translation: "ÄLTERE BEITRÄGE"
+  translation: "STARSZE WPISY"
 
 - id: "pagination.previous"
-  translation: "VORHERIGE"
+  translation: "POPRZEDNIA"
 
 - id: "pagination.next"
-  translation: "NÄCHSTE"
+  translation: "NASTĘPNA"
 
 ## POST ##
 - id: "post.no_title"
-  translation: "kein Titel"
+  translation: "brak tytułu"
 
 - id: "post.categorized_in"
-  translation: "in"
+  translation: "w"
 
 - id: "post.tagged_in"
-  translation: "GETAGGT IN"
+  translation: "OTAGOWANO JAKO"
 
 - id: "post.toc"
-  translation: "Inhaltsverzeichnis"
+  translation: "Spis treści"
 
 - id: "post.read_more"
-  translation: "Weiterlesen"
+  translation: "Kontynuuj czytanie"
 
 - id: "post.go_to_website"
-  translation: "Zur Website"
+  translation: "Idź na stronę"
 
 - id: "post.comment_and_share"
-  translation: "kommentieren und teilen"
+  translation: "Skomentuj i Udostępnij"
 
 ## FOOTER ##
 - id: "footer.all_rights_reserved"
-  translation: "Alle Rechte vorbehalten"
+  translation: "Wszystkie prawa zastrzeżone"
 
 ## DATE ##
 - id: "date.month.january"
-  translation: "Januar"
+  translation: "Styczeń"
 
 - id: "date.month.february"
-  translation: "Februar"
+  translation: "Luty"
 
 - id: "date.month.march"
-  translation: "März"
+  translation: "Marzec"
 
 - id: "date.month.april"
-  translation: "April"
+  translation: "Kwiecień"
 
 - id: "date.month.may"
-  translation: "Mai"
+  translation: "Maj"
 
 - id: "date.month.june"
-  translation: "Juni"
+  translation: "Czerwiec"
 
 - id: "date.month.july"
-  translation: "Juli"
+  translation: "Lipiec"
 
 - id: "date.month.august"
-  translation: "August"
+  translation: "Sierpień"
 
 - id: "date.month.september"
-  translation: "September"
+  translation: "Wrzesień"
 
 - id: "date.month.october"
-  translation: "Oktober"
+  translation: "Październik"
 
 - id: "date.month.november"
-  translation: "November"
+  translation: "Listopad"
 
 - id: "date.month.december"
-  translation: "Dezember"
+  translation: "Grudzień"
