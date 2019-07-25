@@ -293,8 +293,8 @@ This post is a WIP.">
 <ul>
 <li><a href="#importing-types">Importing types</a></li>
 <li><a href="#basic-types-in-typesscript">Basic Types in TypesScript</a></li>
-<li><a href="#type-of-functions">Type of functions</a></li>
-<li><a href="#typing-an-object">Typing an Object</a></li>
+<li><a href="#typing-functions">Typing Functions</a></li>
+<li><a href="#typing-objects">Typing Objects</a></li>
 <li><a href="#maybe-types">Maybe Types</a></li>
 <li><a href="#casting">Casting</a></li>
 <li><a href="#readonly-property">Readonly property</a></li>
@@ -697,22 +697,32 @@ import { Type1, Type2 } from ./dir/to/path
 <li>Unreachable: <code>never</code></li>
 </ul>
 
-<h4 id="type-of-functions">Type of functions</h4>
+<p>We can also use literals as types. For example:</p>
+
+<pre><code class="language-javascript">type One = 1
+const one: One = 1
+const two: One = 2 // &lt;- error
+</code></pre>
+
+<h4 id="typing-functions">Typing Functions</h4>
+
+<p>In TypeScript, there are <a href="https://mariusschulz.com/blog/typing-functions-in-typescript#function-type-literals" target="_blank">three ways</a> to type a function.</p>
 
 <pre><code class="language-javascript">// Flow
 type Date = {
   toString: () =&gt; string,
   setTime: (time: number) =&gt; number
 }
+</code></pre>
 
-// TypeScript
+<pre><code class="language-javascript">// TypeScript
 interface Date {
   toString(): string;
   setTime(time: number): number;
 }
 </code></pre>
 
-<h4 id="typing-an-object">Typing an Object</h4>
+<h4 id="typing-objects">Typing Objects</h4>
 
 <p>In flow, we use <code>type</code>.</p>
 
@@ -737,7 +747,7 @@ function acceptsMaybeString(value: ?string) {
 
 <p>In TypeScript, explicit typing is preferred.</p>
 
-<pre><code class="language-ts">// Flow
+<pre><code class="language-javascript">// Flow
 function acceptsMaybeString(value: string | null) {
   // ...
 }
@@ -774,7 +784,7 @@ const user2AsUser: User = ((user2: User): User); // Fails
 <p>Cannot cast <code>user2</code> to <code>User</code> because property <code>email</code> is missing in object literal but exists in <code>User</code></p>
 </blockquote>
 
-<pre><code class="language-typescript">// TypeScript
+<pre><code class="language-javascript">// TypeScript
 
 interface User {
   firstName: string;
@@ -847,6 +857,8 @@ interface User {
 
 <h4 id="generics">Generics</h4>
 
+<p>Types can be parameterized. In TypeScript, we can create a generic type with a type parameters, which is represented by an arbitary letter like <code>T</code>, in angle brackets.</p>
+
 <p>In Flow</p>
 
 <pre><code class="language-javascript">type MyList = {
@@ -857,17 +869,42 @@ interface User {
 
 <p>In TypeScript</p>
 
-<pre><code class="language-typescript">class List&lt;T&gt; {
+<pre><code class="language-javascript">class List&lt;T&gt; {
   filter: T[] =&gt; T[];
   head: T[] =&gt; T;
 }
+
+type NumberList = List&lt;number&gt;
+type StringList = List&lt;string&gt;
+</code></pre>
+
+<p>A class can extend other classes as demonstrated in this more complex example.</p>
+
+<pre><code class="language-javascript">class GenericIcfOrChunk&lt;T&gt; {
+    readonly type: T;
+    chunks?: Chunk[];
+    text?: string | null;
+}
+
+export class Chunk extends GenericIcfOrChunk&lt;number&gt; {
+    id?: number;
+    group?: number;
+}
+
+class GenericIcf&lt;I&gt; extends GenericIcfOrChunk&lt;IcfType&gt; {
+    id: I;
+    group: number;
+}
+
+export type IcfDoc = GenericIcf&lt;0&gt;
+export type IcfSegment = GenericIcf&lt;number&gt;
 </code></pre>
 
 <p>For more on Generics in TypeScript: <a href="https://www.typescriptlang.org/docs/handbook/generics.html" target="_blank">https://www.typescriptlang.org/docs/handbook/generics.html</a></p>
 
 <h4 id="type-extension">Type extension</h4>
 
-<pre><code class="language-typescript">interface Entry {
+<pre><code class="language-javascript">interface Entry {
     name: string;
     id: string;
 }
@@ -894,7 +931,7 @@ const stuff: EntryWithData&lt;number&gt; = {
 
 <p>Combining two enums</p>
 
-<pre><code class="language-typescript">enum Mammal {
+<pre><code class="language-javascript">enum Mammal {
   DOG = &quot;DOG&quot;,
   HORSE = &quot;HORSE&quot;,
   HUMAN = &quot;HUMAN&quot;
@@ -927,7 +964,7 @@ type AnimalT = Mammal &amp; Insect
 
 <p>Use union type</p>
 
-<pre><code class="language-typescript">const enum BasicEvents {
+<pre><code class="language-javascript">const enum BasicEvents {
   Start = &quot;Start&quot;,
   Finish = &quot;Finish&quot;
 }
@@ -943,7 +980,7 @@ let e: Events = AdvEvents.Pause;
 
 <h5 id="check-for-membership">Check for membership</h5>
 
-<pre><code class="language-typescript">const animals: AnimalT[] = [“DOG”, “ANT”, “HUMAN”, “BEE”]
+<pre><code class="language-javascript">const animals: AnimalT[] = [“DOG”, “ANT”, “HUMAN”, “BEE”]
 const mammals: Mammal[] = animals.filter(animal =&gt; animal in Mammal)
 console.log(mammals) //&gt; [“DOG”, “HUMAN&quot;] 
 </code></pre>
@@ -952,7 +989,7 @@ console.log(mammals) //&gt; [“DOG”, “HUMAN&quot;]
 
 <h5 id="dictionary-typing-using-enum">Dictionary typing using enum</h5>
 
-<pre><code class="language-typescript">enum Var {
+<pre><code class="language-javascript">enum Var {
     X = &quot;x&quot;,
     Y = &quot;y&quot;,
 }
@@ -973,7 +1010,7 @@ type Dict = { [var in VarType]: string }
 
 <h4 id="exclude">Exclude</h4>
 
-<pre><code class="language-ts">interface Animal {
+<pre><code class="language-javascript">interface Animal {
     LION = &quot;LION&quot;,
     PIG = &quot;PIG&quot;,
     COW = &quot;COW&quot;,
@@ -987,7 +1024,7 @@ type DomesticatedMammals = {
 
 <h4 id="using-enums-in-map">Using enums in <code>Map</code></h4>
 
-<pre><code class="language-typescript">enum One {
+<pre><code class="language-javascript">enum One {
   A = &quot;A&quot;,
   B = &quot;B&quot;,
   C = &quot;C&quot;
@@ -1017,7 +1054,7 @@ const map = new Map&lt;string, One | Two&gt;([
 
 <p>Example</p>
 
-<pre><code class="language-ts">type Interval = [number, number]
+<pre><code class="language-javascript">type Interval = [number, number]
 
 const getMaxAndMin = (interval: Interval) =&gt; ({
     min: interval[0],
@@ -1038,19 +1075,19 @@ getMaxAndMin(interval);
 
 <p>Solution:</p>
 
-<pre><code class="language-ts">const interval: Interval = [0, 3];
+<pre><code class="language-javascript">const interval: Interval = [0, 3];
 
 getMaxAndMin(interval);
 </code></pre>
 
 <p>Or</p>
 
-<pre><code class="language-ts">getMaxAndMin([0,3]);
+<pre><code class="language-javascript">getMaxAndMin([0,3]);
 </code></pre>
 
 <h4 id="enzyme-mount">Enzyme Mount</h4>
 
-<pre><code class="language-ts">class  MyButton extends React.Component {
+<pre><code class="language-javascript">class  MyButton extends React.Component {
     constructor() {
         this.handleClickBound = handleClick.bind(this);
     }
@@ -1065,7 +1102,7 @@ getMaxAndMin(interval);
 }
 </code></pre>
 
-<pre><code class="language-ts">const button = mount(&lt;MyButton /&gt;);
+<pre><code class="language-javascript">const button = mount(&lt;MyButton /&gt;);
 const buttonInstance = button.instance();
 buttonInstance.handleClick()
 </code></pre>
@@ -1076,7 +1113,7 @@ buttonInstance.handleClick()
 
 <p>Solution:</p>
 
-<pre><code class="language-ts">const button = mount&lt;MyButton&gt;(&lt;MyButton /&gt;);
+<pre><code class="language-javascript">const button = mount&lt;MyButton&gt;(&lt;MyButton /&gt;);
 </code></pre>
 
 <h3 id="optional">Optional</h3>
@@ -1088,7 +1125,7 @@ buttonInstance.handleClick()
 
 <pre><code>// Jenkinsfile
 stage('Type Check') {
-sh 'yarn tsc'
+sh 'yarn type-check'
 }
 </code></pre></li>
 </ul>
