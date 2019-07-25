@@ -1,0 +1,1700 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.55.6 with theme Tranquilpeak 0.4.3-BETA">
+    <title>A Guide For Migrating Your Project to TypeScript</title>
+    <meta name="author" content="Xiaoyun Yang">
+    <meta name="keywords" content="programming, web development, typescript, javascript, guide, best practice">
+
+    <link rel="icon" href="https://xiaoyunyang.github.io/favicon-96x96.png">
+    
+
+    
+    <meta name="description" content="Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.
+
+This post is a WIP.">
+    <meta property="og:description" content="Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.
+
+This post is a WIP.">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="A Guide For Migrating Your Project to TypeScript">
+    <meta property="og:url" content="https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
+    <meta property="og:site_name" content="Xiaoyun Yang">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Xiaoyun Yang">
+    <meta name="twitter:description" content="Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.
+
+This post is a WIP.">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/typescript.png">
+    
+    
+    
+
+    
+      <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://xiaoyunyang.github.io/css/custom.css">
+      
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiaoyunyang.github.io/">Xiaoyun Yang</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiaoyunyang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiaoyunyang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
+        
+          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/projects">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-code"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/blog">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
+      
+      <span class="sidebar-button-desc">Medium</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">Linkedin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
+      
+      <span class="sidebar-button-desc">AngelList</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+     
+     <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
+     
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Email Me</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      A Guide For Migrating Your Project to TypeScript
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-07-24T00:00:00Z">
+        
+  July 24, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoyunyang.github.io/categories/blog">blog</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.</p>
+
+<p>This post is a WIP.</p>
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#migrating-project-to-typescript">Migrating Project to TypeScript</a>
+<ul>
+<li><a href="#phase-1-configure-project-to-use-typescript">Phase 1: Configure Project to use TypeScript</a>
+<ul>
+<li><a href="#update-loader">Update Loader</a></li>
+<li><a href="#add-packages">Add packages</a></li>
+<li><a href="#set-up-lint">Set up Lint</a></li>
+<li><a href="#typescript-vscode-integration">TypeScript VSCode Integration</a></li>
+</ul></li>
+<li><a href="#phase-2-typescriptify-flow-project">Phase 2 TypeScriptify Flow Project</a>
+<ul>
+<li><a href="#update-files">Update files</a></li>
+<li><a href="#update-all-the-files">Update All The Files</a>
+<ul>
+<li><a href="#importing-types">Importing types</a></li>
+<li><a href="#basic-types-in-typesscript">Basic Types in TypesScript</a></li>
+<li><a href="#type-of-functions">Type of functions</a></li>
+<li><a href="#typing-an-object">Typing an Object</a></li>
+<li><a href="#maybe-types">Maybe Types</a></li>
+<li><a href="#casting">Casting</a></li>
+<li><a href="#readonly-property">Readonly property</a></li>
+<li><a href="#inline">Inline</a></li>
+<li><a href="#explicit">Explicit</a></li>
+<li><a href="#optional-type">Optional Type</a></li>
+<li><a href="#generics">Generics</a></li>
+<li><a href="#type-extension">Type extension</a></li>
+<li><a href="#array-types">Array Types</a></li>
+<li><a href="#enum">Enum</a>
+<ul>
+<li><a href="#extending-string-based-enums">Extending String Based Enums</a></li>
+<li><a href="#check-for-membership">Check for membership</a></li>
+<li><a href="#dictionary-typing-using-enum">Dictionary typing using enum</a></li>
+</ul></li>
+<li><a href="#exclude">Exclude</a></li>
+<li><a href="#using-enums-in-map">Using enums in <code>Map</code></a></li>
+<li><a href="#shape">Shape</a></li>
+</ul></li>
+<li><a href="#gotchas">Gotchas</a>
+<ul>
+<li><a href="#tuple-types">Tuple Types</a></li>
+<li><a href="#enzyme-mount">Enzyme Mount</a></li>
+</ul></li>
+<li><a href="#optional">Optional</a>
+<ul>
+<li><a href="#ci-cd">CI/CD</a></li>
+<li><a href="#storybook">Storybook</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#phase-4-regression-testing">Phase 4 Regression Testing</a></li>
+</ul></li>
+<li><a href="#typescript-learning-resource">TypeScript Learning Resource</a></li>
+</ul>
+</nav>
+
+<h1 id="motivation">Motivation</h1>
+
+<p>Why use TypeScript?</p>
+
+<ul>
+<li>TypeScript adds static typing for JavaScript, a dynamically typed and interpreted language. This significantly improves the maintainability and quality of the code.</li>
+<li>TypeScript has powerful integration with VS Code, which is the defacto editor for JavaScript application and is also created and maintained by Microsoft.</li>
+<li>TypeScript is backed by a big company - Microsoft.</li>
+<li>TypeScript is more popular than its competitors, e.g., Flow. According to the StackOverflow Survey 2019, TypeScript is the third most loved language, <a href="https://insights.stackoverflow.com/survey/2019" target="_blank">see insights from stackoverflow&rsquo;s 2019 survey</a></li>
+<li>TypeScript transpiles into to JavaScript because it&rsquo;s a superset of JavaScript.</li>
+</ul>
+
+<h1 id="migrating-project-to-typescript">Migrating Project to TypeScript</h1>
+
+<p>Assuming the project used Flow.</p>
+
+<h2 id="phase-1-configure-project-to-use-typescript">Phase 1: Configure Project to use TypeScript</h2>
+
+<h3 id="update-loader">Update Loader</h3>
+
+<p><strong>Option 1</strong> - Delete .babelrc and babel dependencies</p>
+
+<p>Why? TypeScript now supports transpiling JavaScript.</p>
+
+<pre><code>yarn remove eslint-loader
+yarn remove babel-loader
+yarn add --dev awesome-typescript-loader source-map-loader typings-for-css-modules-loader
+</code></pre>
+
+<p><strong>Option 2</strong> - Update babel loader</p>
+
+<p>If you have a project that needs to support both JS and TS, update babel</p>
+
+<pre><code>rm .babelrc
+touch babel.config.js
+</code></pre>
+
+<pre><code class="language-js">// babel.config.js
+
+module.exports = function babelConfig (api) {
+    api.cache(true);
+    return {
+        presets: [
+            &quot;@smartling/babel-preset-smartling&quot;,
+            &quot;@babel/preset-typescript&quot;
+        ],
+        plugins: [
+            &quot;@babel/plugin-transform-modules-commonjs&quot;
+        ],
+        env: {
+            test: {
+                plugins: [&quot;@babel/plugin-transform-modules-commonjs&quot;]
+            }
+        }
+    };
+};
+
+</code></pre>
+
+<p>Update Webpack Config to use new loader</p>
+
+<p>Assuming we went with <code>babel-loader</code>:</p>
+
+<pre><code class="language-javascript">/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require(&quot;path&quot;);
+const MiniCssExtractPlugin = require(&quot;mini-css-extract-plugin&quot;);
+const webpack = require(&quot;webpack&quot;);
+
+const isDevelopmentMode = process.env.NODE_ENV === &quot;development&quot;;
+
+module.exports = {
+    bail: !isDevelopmentMode,
+    cache: true,
+    devtool: isDevelopmentMode ? &quot;eval-source-map&quot; : false,
+    mode: isDevelopmentMode ? &quot;development&quot; : &quot;production&quot;,
+    module: {
+        rules: [
+            {
+                test: /\.(t|j)sx?$/,
+                exclude: /node_modules/,
+                loader: &quot;eslint-loader&quot;,
+                enforce: &quot;pre&quot;
+            },
+            {
+                test: /\.(t|j)sx?$/,
+                exclude: /node_modules/,
+                loader: &quot;babel-loader&quot;,
+                query: {
+                    cacheDirectory: true
+                }
+            },
+            {
+                test: /\.(woff2?|ttf|eot|svg)(\?[\s\S]+)?$/,
+                loader: &quot;url-loader&quot;,
+                options: {
+                    name: &quot;[name]-[hash].[ext]&quot;
+                }
+            }
+        ]
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            &quot;process.env.NODE_ENV&quot;: JSON.stringify(process.env.NODE_ENV)
+        }),
+        new MiniCssExtractPlugin({ filename: &quot;editor.css&quot;, allChunks: true })
+    ],
+    resolve: {
+        extensions: [&quot;.js&quot;, &quot;.jsx&quot;, &quot;.ts&quot;, &quot;.tsx&quot;, &quot;.d.ts&quot;, &quot;.scss&quot;, &quot;.json&quot;, &quot;.css&quot;],
+        modules: [
+            path.resolve(__dirname, &quot;../src&quot;),
+            path.resolve(__dirname, &quot;../node_modules&quot;)
+        ]
+    }
+};
+</code></pre>
+
+<p>After updating the webpack config, build the project (or run webpack) to generate the .d.ts files for your css / sass / pcss. This will ensure that these modules can be imported into your TypeScript project.</p>
+
+<p>For more on TypeScript + WebPack + Sass</p>
+
+<ul>
+<li><a href="https://stackoverflow.com/a/55993985/4399522" target="_blank">https://stackoverflow.com/a/55993985/4399522</a></li>
+<li><a href="https://medium.com/@chris_72272/migrating-to-typescript-write-a-declaration-file-for-a-third-party-npm-module-b1f75808ed2" target="_blank">https://medium.com/@chris_72272/migrating-to-typescript-write-a-declaration-file-for-a-third-party-npm-module-b1f75808ed2</a></li>
+<li><a href="https://medium.com/@sapegin/css-modules-with-typescript-and-webpack-6b221ebe5f10" target="_blank">https://medium.com/@sapegin/css-modules-with-typescript-and-webpack-6b221ebe5f10</a> &lt;== This one should work. Need to add typings-for-css-module</li>
+<li><a href="https://www.npmjs.com/package/typings-for-scss-modules-loader" target="_blank">https://www.npmjs.com/package/typings-for-scss-modules-loader</a></li>
+<li><a href="https://medium.com/@kvendrik/generating-typings-for-your-css-modules-in-webpack-2beb3739b342" target="_blank">https://medium.com/@kvendrik/generating-typings-for-your-css-modules-in-webpack-2beb3739b342</a></li>
+<li><a href="https://stackoverflow.com/questions/45411909/loading-sass-modules-with-typescript-in-webpack-2" target="_blank">https://stackoverflow.com/questions/45411909/loading-sass-modules-with-typescript-in-webpack-2</a></li>
+</ul>
+
+<h3 id="add-packages">Add packages</h3>
+
+<pre><code>yarn add --dev typescript @types/react @types/react-dom @types/jest @types/enzyme @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-typescript
+</code></pre>
+
+<p>Add the TS version of all your library code</p>
+
+<pre><code>yarn add @types/deep-freeze --dev
+yarn add @types/chai --dev
+yarn add @types/classnames
+</code></pre>
+
+<p>etc etc</p>
+
+<p><strong>Optional:</strong> Add type-check script in <code>package.json</code></p>
+
+<pre><code class="language-javascript">scripts: {
+ &quot;type-check&quot;: &quot;tsc&quot;
+}
+</code></pre>
+
+<h3 id="set-up-lint">Set up Lint</h3>
+
+<p>Add <code>tsconfig.json</code>:</p>
+
+<pre><code class="language-javascript">{
+   &quot;compilerOptions&quot;: {
+       // Target latest version of ECMAScript.
+       &quot;target&quot;: &quot;esnext&quot;,
+
+       // Search under node_modules for non-relative imports.
+       &quot;moduleResolution&quot;: &quot;node&quot;,
+
+       // Process &amp; infer types from .js files.
+       &quot;allowJs&quot;: true,
+
+       // Don't emit; allow Babel to transform files.
+       &quot;noEmit&quot;: true,
+
+       // Enable strictest settings like strictNullChecks &amp; noImplicitAny.
+       &quot;strict&quot;: false,
+
+       // Disallow features that require cross-file information for emit.
+       &quot;isolatedModules&quot;: true,
+
+       // Import non-ES modules as default imports.
+       &quot;esModuleInterop&quot;: true,
+
+       &quot;jsx&quot;: &quot;react&quot;,
+
+       &quot;module&quot;: &quot;esNext&quot;
+
+   },
+   &quot;include&quot;: [
+       &quot;src/**/*.ts&quot;,
+       &quot;src/**/*.tsx&quot;
+   ],
+   &quot;exclude&quot;: [
+       &quot;src/**/*.js&quot;
+   ]
+}
+</code></pre>
+
+<p>Update <code>eslintrc.js</code></p>
+
+<pre><code class="language-javascript">//eslintrc.js
+module.exports = {
+    extends: [
+        &quot;plugin:@typescript-eslint/recommended&quot;,
+        &quot;eslint:recommended&quot;,
+        &quot;@smartling/eslint-config-smartling&quot;
+    ],
+    parser: &quot;@typescript-eslint/parser&quot;,
+    plugins: [&quot;import&quot;, &quot;@typescript-eslint&quot;],
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true
+        },
+        sourceType: &quot;module&quot;,
+        useJSXTextNode: true,
+        project: &quot;./tsconfig.json&quot;
+    },
+    rules: {
+        &quot;@typescript-eslint/explicit-function-return-type&quot;: &quot;off&quot;,
+        &quot;@typescript-eslint/explicit-member-accessibility&quot;: &quot;off&quot;,
+        &quot;@typescript-eslint/member-delimiter-style&quot;: [2],
+        &quot;import/extensions&quot;: [1, &quot;never&quot;, { ts: &quot;never&quot;, &quot;json&quot;: &quot;always&quot; }],
+        &quot;react/jsx-indent&quot;: [0],
+        &quot;react/jsx-indent-props&quot;: [0],
+        &quot;indent&quot;: [0]
+    },
+    overrides: [
+        {
+            files: [&quot;**/*.ts&quot;, &quot;**/*.tsx&quot;],
+            rules: {
+                &quot;semi&quot;: 1,
+                &quot;no-unused-vars&quot;: [&quot;off&quot;],
+                &quot;quote-props&quot;: [&quot;error&quot;, &quot;as-needed&quot;]
+            }
+        }
+    ],
+    settings: {
+        &quot;import/resolver&quot;: {
+            node: {
+                extensions: [&quot;.js&quot;, &quot;.jsx&quot;, &quot;.ts&quot;, &quot;.tsx&quot;]
+            },
+            &quot;eslint-import-resolver-typescript&quot;: true
+        },
+        &quot;import/parsers&quot;: {
+            &quot;@typescript-eslint/parser&quot;: [&quot;.ts&quot;, &quot;.tsx&quot;]
+        },
+        react: {
+            version: &quot;detect&quot;
+        }
+    },
+    env: {
+        jest: true,
+        browser: true
+    }
+};
+</code></pre>
+
+<p>I suggest excluding <code>plugin:@typescript-eslint/recommended</code> for a big project at first to facilitate an incremental migration.</p>
+
+<h3 id="typescript-vscode-integration">TypeScript VSCode Integration</h3>
+
+<p>Open VSCode setting (See more about setting up TSLint at <a href="http://artsy.github.io/blog/2019/01/29/from-tslint-to-eslint/" target="_blank">http://artsy.github.io/blog/2019/01/29/from-tslint-to-eslint/</a> and <a href="https://dev.to/dorshinar/linting-your-reacttypescript-project-with-eslint-and-prettier-8hb" target="_blank">https://dev.to/dorshinar/linting-your-reacttypescript-project-with-eslint-and-prettier-8hb</a>)</p>
+
+<pre><code class="language-javascript">{
+    &quot;eslint.autoFixOnSave&quot;: true,
+    &quot;javascript.validate.enable&quot;: false,
+    &quot;editor.minimap.enabled&quot;: false,
+    &quot;git.enableSmartCommit&quot;: true,
+    &quot;window.zoomLevel&quot;: 1,
+    &quot;workbench.activityBar.visible&quot;: true,
+    &quot;javascript.updateImportsOnFileMove.enabled&quot;: &quot;always&quot;,
+    &quot;typescript.implementationsCodeLens.enabled&quot;: true,
+    &quot;editor.formatOnSave&quot;: true,
+    &quot;eslint.validate&quot;: [
+        {
+            &quot;language&quot;: &quot;javascript&quot;,
+            &quot;autoFix&quot;: true
+        },
+        {
+            &quot;language&quot;: &quot;javascriptreact&quot;,
+            &quot;autoFix&quot;: true
+        },
+        {
+            &quot;language&quot;: &quot;typescript&quot;,
+            &quot;autoFix&quot;: true
+        },
+        {
+            &quot;language&quot;: &quot;typescriptreact&quot;,
+            &quot;autoFix&quot;: true
+        }
+    ]
+}
+</code></pre>
+
+<h2 id="phase-2-typescriptify-flow-project">Phase 2 TypeScriptify Flow Project</h2>
+
+<h3 id="update-files">Update files</h3>
+
+<ol>
+<li><p>Delete Flow-related files. This include, but are not limited to:</p>
+
+<ul>
+<li><code>flow-typed</code> folder</li>
+<li>flowconfig</li>
+<li><code>flow-typed</code> in eslintignore</li>
+</ul></li>
+
+<li><p>Delete all instances of <code>// @flow</code> and update import. Also, delete all instances of <code>// $FlowFixMe</code></p></li>
+
+<li><p>Change all <code>.js</code> -&gt; <code>.ts</code> or <code>.tsx</code>. I wrote a Bash script</p>
+
+<pre><code>sudo touch migrate.sh
+vim migrate.sh
+</code></pre></li>
+</ol>
+
+<pre><code class="language-bash">#!/bin/bash
+
+cd $1
+
+for f in `find . -type f -name '*.js'`;
+do
+  mv -- &quot;$f&quot; &quot;${f%.js}.ts&quot;
+done
+</code></pre>
+
+<p>Then provide the directory that you want to migrate as first argument of and execute the script.</p>
+
+<pre><code>chmod +x migrate.sh
+./migrate.sh ~/tinext-editor/src
+</code></pre>
+
+<h3 id="update-all-the-files">Update All The Files</h3>
+
+<p>Check out:</p>
+
+<ul>
+<li>FreeCodeCamp&rsquo;s <a href="https://www.freecodecamp.org/news/effective-use-of-typescript-with-react-3a1389b6072a/" target="_blank">Best Practices using Typescript with React</a></li>
+<li><a href="https://github.com/piotrwitek/react-redux-typescript-guide" target="_blank">react-redux-typescript guide</a></li>
+</ul>
+
+<p>When in doubt, try things out in <a href="http://www.typescriptlang.org/play/" target="_blank">TypeScript Playground</a> or <a href="https://repl.it/" target="_blank">repl</a></p>
+
+<p>This is helpful if you are migrating from Flow to TypeScript: <a href="https://github.com/niieani/typescript-vs-flowtype" target="_blank">typescript-vs-flowtype</a></p>
+
+<h4 id="importing-types">Importing types</h4>
+
+<pre><code class="language-javascript">// Flow
+import type { Type1, Type2 } from ./dir/to/path
+import { type Type3 } from ./dir/to/path
+
+// Typescript
+import { Type1, Type2 } from ./dir/to/path
+</code></pre>
+
+<h4 id="basic-types-in-typesscript">Basic Types in TypesScript</h4>
+
+<ul>
+<li><code>any</code></li>
+<li><code>void</code></li>
+<li>Primitives: <code>boolean</code>, <code>number</code>, <code>string</code>, <code>null</code>, <code>undefined</code></li>
+<li>Array
+
+<ul>
+<li><code>string[]</code></li>
+<li><code>Array&lt;string&gt;</code> (Generic. More on that later)</li>
+</ul></li>
+<li>Tuple: <code>[string, number]</code></li>
+<li>Union: <code>string | null | undefined</code></li>
+<li>Unreachable: <code>never</code></li>
+</ul>
+
+<h4 id="type-of-functions">Type of functions</h4>
+
+<pre><code class="language-javascript">// Flow
+type Date = {
+  toString: () =&gt; string,
+  setTime: (time: number) =&gt; number
+}
+
+// TypeScript
+interface Date {
+  toString(): string;
+  setTime(time: number): number;
+}
+</code></pre>
+
+<h4 id="typing-an-object">Typing an Object</h4>
+
+<p>In flow, we use <code>type</code>.</p>
+
+<p>In TypeScript, use <code>interface</code>. Interface types offer more capabilities they are generally preferred to type aliases. For instance:</p>
+
+<ul>
+<li>An interface can be named in an extends or implements clause, but a type alias for an object type literal cannot.</li>
+<li>An interface can have multiple merged declarations, but a type alias for an object type literal cannot.</li>
+</ul>
+
+<h4 id="maybe-types">Maybe Types</h4>
+
+<p>Flow has <a href="https://flow.org/en/docs/types/primitives/#toc-maybe-types" target="_blank">Maybe Types</a></p>
+
+<pre><code class="language-javascript">// Flow
+function acceptsMaybeString(value: ?string) {
+  // ...
+}
+</code></pre>
+
+<p>In addition to the type in <code>?type</code>, maybe types can also be <code>null</code> or <code>void</code>.</p>
+
+<p>In TypeScript, explicit typing is preferred.</p>
+
+<pre><code class="language-ts">// Flow
+function acceptsMaybeString(value: string | null) {
+  // ...
+}
+</code></pre>
+
+<h4 id="casting">Casting</h4>
+
+<pre><code class="language-javascript">// Flow
+
+type User = {
+    firstName: string,
+    lastName: string,
+    email: string
+}
+const user = {
+    firstName: &quot;Jane&quot;,
+    lastname: &quot;Doe&quot;,
+    email: &quot;example@example.com&quot;,
+    paidUser: true
+};
+const user2 = {
+    firstName: &quot;Jane&quot;,
+    lastname: &quot;Doe&quot;
+};
+
+const userAsUser: User = ((user: User): User);
+const user2AsUser: User = ((user2: User): User); // Fails
+
+</code></pre>
+
+<p>The casting for <code>user2AsUser</code> fails with the following error from flow:</p>
+
+<blockquote>
+<p>Cannot cast <code>user2</code> to <code>User</code> because property <code>email</code> is missing in object literal but exists in <code>User</code></p>
+</blockquote>
+
+<pre><code class="language-typescript">// TypeScript
+
+interface User {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+const user: User = {
+    firstName: &quot;Jane&quot;,
+    lastName: &quot;Jane Doe&quot;,
+} as any as User;
+</code></pre>
+
+<h4 id="readonly-property">Readonly property</h4>
+
+<p>In flow, Plus sign in front of property Means it’s read-only <a href="https://stackoverflow.com/questions/46338710/flow-type-what-does-the-symbol-mean-in-front-a-property" target="_blank">https://stackoverflow.com/questions/46338710/flow-type-what-does-the-symbol-mean-in-front-a-property</a></p>
+
+<p>In Typescript, use the “readonly” keyword <a href="https://mariusschulz.com/blog/read-only-properties-in-typescript" target="_blank">https://mariusschulz.com/blog/read-only-properties-in-typescript</a></p>
+
+<h4 id="inline">Inline</h4>
+
+<pre><code class="language-javascript">// Flow
+function getUser (): { name: string, age: number }
+
+// TypeScript
+// Note the semicolon
+function getUser (): { name: string; age: number }
+</code></pre>
+
+<h4 id="explicit">Explicit</h4>
+
+<p>Flow has <a href="https://flow.org/en/docs/types/aliases/" target="_blank">type alias</a></p>
+
+<pre><code class="language-javascript">// Flow
+type User = {
+  name: string,
+  age: number
+}
+
+function getUser (): User
+</code></pre>
+
+<p>TypeScript has <a href="https://www.typescriptlang.org/docs/handbook/interfaces.html" target="_blank">interface</a></p>
+
+<pre><code class="language-javascript">// TypeScript
+interface User {
+  name: string;
+  age: number;
+}
+
+function getUser (): User
+</code></pre>
+
+<h4 id="optional-type">Optional Type</h4>
+
+<pre><code class="language-javascript">// Flow
+type User = {
+  name: string,
+  age: number,
+  location?: string
+}
+
+// TypeScript
+interface User {
+  name: string;
+  age: number;
+  location?: string;
+}
+</code></pre>
+
+<h4 id="generics">Generics</h4>
+
+<p>In Flow</p>
+
+<pre><code class="language-javascript">type MyList = {
+  filter: Array&lt;*&gt; =&gt; Array&lt;*&gt;,
+  head: Array&lt;*&gt; =&gt; *
+}
+</code></pre>
+
+<p>In TypeScript</p>
+
+<pre><code class="language-typescript">class List&lt;T&gt; {
+  filter: T[] =&gt; T[];
+  head: T[] =&gt; T;
+}
+</code></pre>
+
+<p>For more on Generics in TypeScript: <a href="https://www.typescriptlang.org/docs/handbook/generics.html" target="_blank">https://www.typescriptlang.org/docs/handbook/generics.html</a></p>
+
+<h4 id="type-extension">Type extension</h4>
+
+<pre><code class="language-typescript">interface Entry {
+    name: string;
+    id: string;
+}
+
+interface EntryWithData&lt;T&gt; extends Entry {
+    data?: T[];
+    lastUpdated?: Date;
+}
+
+const stuff: EntryWithData&lt;number&gt; = {
+    data: [1,2,3] // TS error: name and id are required for EntryWithData
+}
+</code></pre>
+
+<h4 id="array-types">Array Types</h4>
+
+<p>In flow, we use <code>Array&lt;ObjectType&gt;</code></p>
+
+<p>In TypeScript, we use <code>ObjectType[]</code></p>
+
+<h4 id="enum">Enum</h4>
+
+<p>There&rsquo;s no analog of enum in Flow. Enum in TypeScript allow us to make a collection of constants as types. Some examples</p>
+
+<p>Combining two enums</p>
+
+<pre><code class="language-typescript">enum Mammal {
+  DOG = &quot;DOG&quot;,
+  HORSE = &quot;HORSE&quot;,
+  HUMAN = &quot;HUMAN&quot;
+}
+enum Insect {
+  ANT = &quot;ANT&quot;,
+  BEE = &quot;BEE&quot;,
+  FLY = &quot;FLY&quot;
+}
+
+const Animal = {
+  ...Mammal,
+  ...Insect
+}
+
+type AnimalT = Mammal &amp; Insect
+</code></pre>
+
+<p>The <a href="https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/4x252001(v=vs.71)" target="_blank">naming convention for enums</a></p>
+
+<blockquote>
+<p>Use a singular name for most Enum types, but use a plural name for Enum types that are bit fields.</p>
+</blockquote>
+
+<p>See Steve Faulkner&rsquo;s <a href="https://speakerdeck.com/southpolesteve/shipping-typescript-to-npm?slide=50" target="_blank">deck about best practice for TypeScript</a></p>
+
+<h5 id="extending-string-based-enums">Extending String Based Enums</h5>
+
+<p><a href="https://github.com/Microsoft/TypeScript/issues/17592" target="_blank">https://github.com/Microsoft/TypeScript/issues/17592</a></p>
+
+<p>Use union type</p>
+
+<pre><code class="language-typescript">const enum BasicEvents {
+  Start = &quot;Start&quot;,
+  Finish = &quot;Finish&quot;
+}
+const enum AdvEvents {
+  Pause = &quot;Pause&quot;,
+  Resume = &quot;Resume&quot;
+}
+
+type Events = BasicEvents | AdvEvents;
+
+let e: Events = AdvEvents.Pause;
+</code></pre>
+
+<h5 id="check-for-membership">Check for membership</h5>
+
+<pre><code class="language-typescript">const animals: AnimalT[] = [“DOG”, “ANT”, “HUMAN”, “BEE”]
+const mammals: Mammal[] = animals.filter(animal =&gt; animal in Mammal)
+console.log(mammals) //&gt; [“DOG”, “HUMAN&quot;] 
+</code></pre>
+
+<p>Note the difference between Animal and AnimalT!</p>
+
+<h5 id="dictionary-typing-using-enum">Dictionary typing using enum</h5>
+
+<pre><code class="language-typescript">enum Var {
+    X = &quot;x&quot;,
+    Y = &quot;y&quot;,
+}
+
+type Dict = { [var in Var]: string };
+</code></pre>
+
+<p>This is a lot simpler than Flow. In Flow, we had to do something like this:</p>
+
+<pre><code class="language-javascript">const Vars = {
+  X: &quot;x&quot;,
+  Y: &quot;y&quot;
+}
+
+type VarType = $Keys&lt;typeof Vars&gt;
+type Dict = { [var in VarType]: string }
+</code></pre>
+
+<h4 id="exclude">Exclude</h4>
+
+<pre><code class="language-ts">interface Animal {
+    LION = &quot;LION&quot;,
+    PIG = &quot;PIG&quot;,
+    COW = &quot;COW&quot;,
+    ANT = &quot;ANT&quot;
+}
+
+type DomesticatedMammals = {
+    [animal in Exclude&lt;Animal, Animal.ANT&gt;]: boolean
+}
+</code></pre>
+
+<h4 id="using-enums-in-map">Using enums in <code>Map</code></h4>
+
+<pre><code class="language-typescript">enum One {
+  A = &quot;A&quot;,
+  B = &quot;B&quot;,
+  C = &quot;C&quot;
+}
+
+enum Two {
+  D = &quot;D&quot;,
+  E = &quot;E&quot;,
+  F = &quot;F&quot;
+}
+
+const map = new Map&lt;string, One | Two&gt;([
+    [&quot;a&quot;, One.A],
+    [&quot;d&quot;, Two.D]
+])
+</code></pre>
+
+<h4 id="shape">Shape</h4>
+
+<p><code>$Shape&lt;SomeObjectType&gt;</code> in Flow is analogous to creating Generics or other types to extend in typescript.</p>
+
+<h3 id="gotchas">Gotchas</h3>
+
+<h4 id="tuple-types">Tuple Types</h4>
+
+<p>TypeScript sometimes does not recognize Tuple Types. Solution: explicit casting or typing when declaring new var</p>
+
+<p>Example</p>
+
+<pre><code class="language-ts">type Interval = [number, number]
+
+const getMaxAndMin = (interval: Interval) =&gt; ({
+    min: interval[0],
+    max: interval[1]
+});
+
+const interval = [0, 3];
+
+getMaxAndMin(interval);
+</code></pre>
+
+<p>TypeScript complains:</p>
+
+<blockquote>
+<p>Argument of type &lsquo;number[]&rsquo; is not assignable to parameter of type &lsquo;[number, number]&lsquo;.
+  Type &lsquo;number[]&rsquo; is missing the following properties from type &lsquo;[number, number]&rsquo;</p>
+</blockquote>
+
+<p>Solution:</p>
+
+<pre><code class="language-ts">const interval: Interval = [0, 3];
+
+getMaxAndMin(interval);
+</code></pre>
+
+<p>Or</p>
+
+<pre><code class="language-ts">getMaxAndMin([0,3]);
+</code></pre>
+
+<h4 id="enzyme-mount">Enzyme Mount</h4>
+
+<pre><code class="language-ts">class  MyButton extends React.Component {
+    constructor() {
+        this.handleClickBound = handleClick.bind(this);
+    }
+    handleClick() {
+        console.log(&quot;do something&quot;);
+    }
+    render() {
+        return (
+            &lt;button onClick={handleClickBound}&gt;Click Me&lt;/button&gt;
+        )
+    }
+}
+</code></pre>
+
+<pre><code class="language-ts">const button = mount(&lt;MyButton /&gt;);
+const buttonInstance = button.instance();
+buttonInstance.handleClick()
+</code></pre>
+
+<blockquote>
+<p>Property &lsquo;handleClick&rsquo; does not exist on type &lsquo;Component&lt;{}, {}, any&gt;&rsquo;</p>
+</blockquote>
+
+<p>Solution:</p>
+
+<pre><code class="language-ts">const button = mount&lt;MyButton&gt;(&lt;MyButton /&gt;);
+</code></pre>
+
+<h3 id="optional">Optional</h3>
+
+<h4 id="ci-cd">CI/CD</h4>
+
+<ul>
+<li><p>Update your CI/CD pipeline to include type checking as part of the build process. For example</p>
+
+<pre><code>// Jenkinsfile
+stage('Type Check') {
+sh 'yarn tsc'
+}
+</code></pre></li>
+</ul>
+
+<h4 id="storybook">Storybook</h4>
+
+<p>Guides
+- <a href="https://storybook.js.org/docs/configurations/typescript-config/" target="_blank">https://storybook.js.org/docs/configurations/typescript-config/</a>
+- <a href="https://dev.to/swyx/quick-guide-to-setup-your-react--typescript-storybook-design-system-1c51" target="_blank">https://dev.to/swyx/quick-guide-to-setup-your-react--typescript-storybook-design-system-1c51</a> with <a href="https://github.com/sw-yx/react-typescript-storybook-starter" target="_blank">sample project</a></p>
+
+<p>Add all the dependencies</p>
+
+<pre><code>yarn add -D @storybook/react @storybook/addon-info @storybook/addon-jest @storybook/addon-knobs @storybook/addon-options @storybook/addons @storybook/react storybook-addon-jsx @types/react babel-core typescript awesome-typescript-loader react-docgen-typescript-webpack-plugin jest @types/jest ts-jest
+</code></pre>
+
+<p>Create a <code>.storybook</code> directory at the root of your project</p>
+
+<pre><code>mkdir .storybook
+touch .storybook/config.js .storybook/addons.js .storybook/webpack.config.js 
+</code></pre>
+
+<h2 id="phase-4-regression-testing">Phase 4 Regression Testing</h2>
+
+<ul>
+<li>Re-run unit tests to make sure they all pass</li>
+<li>Integration testing - if the project is a library, make sure you can build it and integrate it into a project that&rsquo;s not TypeScript.</li>
+</ul>
+
+<h1 id="typescript-learning-resource">TypeScript Learning Resource</h1>
+
+<p>TypeScript Learning Resources</p>
+
+<ul>
+<li><a href="https://medium.com/@sapegin/css-modules-with-typescript-and-webpack-6b221ebe5f10" target="_blank">Tutorial for setting up loader for css module</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/interfaces.html" target="_blank">TypeScript Handbook</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html" target="_blank">Do&rsquo;s and Don&rsquo;ts</a></li>
+<li><a href="https://basarat.gitbooks.io/typescript/docs/types/type-assertion.html" target="_blank">TypeScript Deep Dive</a></li>
+<li><a href="http://artsy.github.io/blog/2019/01/29/from-tslint-to-eslint/" target="_blank">Typescript VS Code Integration</a></li>
+<li><a href="https://mariusschulz.com/blog/typing-destructured-object-parameters-in-typescript" target="_blank">TypeScript function</a></li>
+<li><a href="https://medium.freecodecamp.org/effective-use-of-typescript-with-react-3a1389b6072a" target="_blank">TypeScript and React best practice</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html" target="_blank">Advanced Types</a></li>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/blob/master/.eslintrc.json" target="_blank">TypeScript Eslint Config</a></li>
+<li><a href="https://basarat.gitbooks.io/typescript/docs/const.html" target="_blank">TypeScript Docs</a></li>
+<li><a href="https://medium.com/@OlegVaraksin/narrow-interfaces-in-typescript-5dadbce7b463" target="_blank">Narrow Interfaces TypeScript</a></li>
+<li><a href="https://codeburst.io/five-tips-i-wish-i-knew-when-i-started-with-typescript-c9e8609029db" target="_blank">So Many Useful TypeScript Tips!</a></li>
+<li><a href="https://www.tutorialsteacher.com/typescript/type-assertion" target="_blank">Type Assertion</a></li>
+<li><a href="https://devhints.io/typescript" target="_blank">TypeScript Cheatsheet from devhint</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/typescript/">TypeScript</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/guide/">Guide</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/software-design/">Software Design</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/" data-tooltip="The Algorithm for Managing Stress">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/";  
+this.page.identifier = "A Guide For Migrating Your Project to TypeScript"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://http-xiaoyunyang-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 Xiaoyun Yang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/" data-tooltip="The Algorithm for Managing Stress">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fa-guide-for-migrating-your-project-to-typescript%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fa-guide-for-migrating-your-project-to-typescript%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fa-guide-for-migrating-your-project-to-typescript%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Xiaoyun Yang</h4>
+    
+      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        New York
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
+                <h3 class="media-heading">A Guide For Migrating Your Project to TypeScript</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.</p>
+
+<p>This post is a WIP.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/">
+                <h3 class="media-heading">The Algorithm for Managing Stress</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &ldquo;top 10 things you can do to &hellip;.&rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/get-started-with-go/">
+                <h3 class="media-heading">Get Started With Go</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Go is becoming pretty mainstream. Every job posting I&rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/">
+                <h3 class="media-heading">Thirsty Plant: Automated Plant Waterer</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p><em>by <a href="https://github.com/xiaoyunyang" target="_blank">Xiaoyun Yang</a> and <a href="https://github.com/clydeshaffer" target="_blank">Clyde Shaffer</a></em></p>
+
+<p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/">
+                <h3 class="media-heading">From Public Sector To Senior Software Engineer:  How I made the Transition</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure fig-70" >
+  
+    <a class="fancybox" href="https://images2.imgbox.com/26/21/MQB5dNYd_o.png" title="My KeyValues filter" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://images2.imgbox.com/26/21/MQB5dNYd_o.png"  alt="My KeyValues filter">
+  
+    </a>
+  
+   
+    <span class="caption">My KeyValues filter</span>
+  
+</div></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
+                <h3 class="media-heading">When To Use Immutable Data Structures</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Suppose you are asked this question during a technical interview:</p>
+
+<blockquote>
+<p>When do you use immutable (functional) data structures and when do you use mutable data structure?</p>
+</blockquote></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/">
+                <h3 class="media-heading">Security Considerations for Web Applications and Best Practices</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/">
+                <h3 class="media-heading">Cribsheet for JavaScript Coding Interview</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:</p>
+
+<blockquote>
+<p>Can you be productive with JavaScript?</p>
+</blockquote></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/a-complete-guide-to-deploying-your-web-app-to-amazon-web-service/">
+                <h3 class="media-heading">A Complete Guide To Deploying Your Web App To Amazon Web Service</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p><img src="https://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png" alt="" /></p>
+
+<p>This a comprehensive guide for how to containerize your Mongo-Express-React-Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/">
+                <h3 class="media-heading">Web Developer Playbook: Rich Text Editor</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>In this article, I will show you add a rich text editor based on <a href="https://draftjs.org/" target="_blank">Draft.js</a> to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
+<img src="https://xiaoyunyang.github.io/post/images/projects/draftjs.png" alt="draftjs" /></p>
+
+<p>Let&rsquo;s get started!</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         36 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://xiaoyunyang.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/xiaoyunyang.github.io\/post\/a-guide-for-migrating-your-project-to-typescript\/';
+          
+            this.page.identifier = '\/post\/a-guide-for-migrating-your-project-to-typescript\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'http-xiaoyunyang-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
