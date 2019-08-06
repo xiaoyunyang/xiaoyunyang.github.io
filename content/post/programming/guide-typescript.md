@@ -626,11 +626,13 @@ export type IcfDoc = GenericIcf<0>
 export type IcfSegment = GenericIcf<number>
 ```
 
-For more on Generics in TypeScript See the [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/generics.html)
+For more on Generics in TypeScript See the [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/generics.html).
 
-But this begs the question: what's the difference between `interface` and `class`?
+TypeScript supports many Generic types like `Record` and `ArrayLike`. See [lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/master/lib/lib.es5.d.ts) for a complete listing.
 
 #### Class
+
+In the previous section, we saw that both `interface` and `class` can be used to create generic types. But this begs the question: what's the difference between `interface` and `class`?
 
 In object oriented programming, a class is a blueprint with properties and methods from which we can create objects. An interface is a collection of properties and methods.
 
