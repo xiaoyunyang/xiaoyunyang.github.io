@@ -149,6 +149,11 @@ code {
     padding:          0 10px;
 }
 
+acronym,
+abbr {
+    border-bottom: 1px dotted $font-color-base;
+}
+
 blockquote {
     border-left: 3px solid map-get($colors, 'base');
     padding:     0 15px;
@@ -186,4 +191,4 @@ blockquote {
         }
     }
 }
-
+    
