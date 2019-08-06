@@ -19,7 +19,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.55.6 with theme Tranquilpeak 0.4.3-BETA">
+    <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.3-BETA">
     <title>A Guide For Migrating Your Project to TypeScript</title>
     <meta name="author" content="Xiaoyun Yang">
     <meta name="keywords" content="programming, web development, typescript, javascript, guide, best practice">
@@ -638,8 +638,7 @@ module.exports = {
 
 <pre><code>sudo touch migrate.sh
 vim migrate.sh
-</code></pre></li>
-</ol>
+</code></pre>
 
 <pre><code class="language-bash">#!/bin/bash
 
@@ -647,9 +646,10 @@ cd $1
 
 for f in `find . -type f -name '*.js'`;
 do
-  mv -- &quot;$f&quot; &quot;${f%.js}.ts&quot;
+mv -- &quot;$f&quot; &quot;${f%.js}.ts&quot;
 done
-</code></pre>
+</code></pre></li>
+</ol>
 
 <p>Then provide the directory that you want to migrate as first argument of and execute the script.</p>
 
@@ -919,11 +919,13 @@ export type IcfDoc = GenericIcf&lt;0&gt;
 export type IcfSegment = GenericIcf&lt;number&gt;
 </code></pre>
 
-<p>For more on Generics in TypeScript See the <a href="https://www.typescriptlang.org/docs/handbook/generics.html" target="_blank">TypeScript handbook</a></p>
+<p>For more on Generics in TypeScript See the <a href="https://www.typescriptlang.org/docs/handbook/generics.html" target="_blank">TypeScript handbook</a>.</p>
 
-<p>But this begs the question: what&rsquo;s the difference between <code>interface</code> and <code>class</code>?</p>
+<p>TypeScript supports many Generic types like <code>Record</code> and <code>ArrayLike</code>. See <a href="https://github.com/microsoft/TypeScript/blob/master/lib/lib.es5.d.ts" target="_blank">lib.es5.d.ts</a> for a complete listing.</p>
 
 <h4 id="class">Class</h4>
+
+<p>In the previous section, we saw that both <code>interface</code> and <code>class</code> can be used to create generic types. But this begs the question: what&rsquo;s the difference between <code>interface</code> and <code>class</code>?</p>
 
 <p>In object oriented programming, a class is a blueprint with properties and methods from which we can create objects. An interface is a collection of properties and methods.</p>
 

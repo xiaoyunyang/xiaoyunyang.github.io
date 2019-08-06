@@ -19,7 +19,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.55.6 with theme Tranquilpeak 0.4.3-BETA">
+    <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.3-BETA">
     <title>Let&#39;s Get Productive With JavaScript</title>
     <meta name="author" content="Xiaoyun Yang">
     <meta name="keywords" content="">
@@ -377,8 +377,8 @@
 
 <ul>
 <li><code>array.push(elem)</code> - adds <code>elem</code> to the end of <code>array</code>.</li>
-<li><code>array.unshift(elem)</code> - adds <code>elem</code> to the beginning of <code>array</code>.</li>
-</ul>
+
+<li><p><code>array.unshift(elem)</code> - adds <code>elem</code> to the beginning of <code>array</code>.</p>
 
 <pre><code class="language-javascript">const mutatingAdd = [1, 2, 3];
 
@@ -386,13 +386,13 @@ mutatingAdd.push(4); //&gt; [1, 2, 3, 4]
 mutatingAdd.unshift(0); //&gt; [0, 1, 2, 3, 4]
 
 console.log(mutatingArr); //&gt; [0, 1, 2, 3, 4]
-</code></pre>
+</code></pre></li>
+</ul>
 
 <h3 id="add-things-to-an-array-immutable">Add things to an array (immutable)</h3>
 
 <ul>
-<li><code>array.concat</code> - add things to the head or tail of an array without mutating the original array.</li>
-</ul>
+<li><p><code>array.concat</code> - add things to the head or tail of an array without mutating the original array.</p>
 
 <pre><code class="language-javascript">const arr1 = [1, 2];
 const arr2 = [3, 4];
@@ -407,7 +407,8 @@ console.log('arr1', arr1); //&gt; [1, 2]
 console.log('arr2', arr2); //&gt; [3, 4]
 console.log('arr3', arr3); //&gt; [1, 2, 3, 4]
 console.log('arr4', arr4); //&gt; [0, 1, 2, 3, 4]
-</code></pre>
+</code></pre></li>
+</ul>
 
 <h3 id="create-an-array-statically">Create an array Statically</h3>
 

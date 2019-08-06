@@ -19,7 +19,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.55.6 with theme Tranquilpeak 0.4.3-BETA">
+    <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.3-BETA">
     <title>Cribsheet for JavaScript Coding Interview</title>
     <meta name="author" content="Xiaoyun Yang">
     <meta name="keywords" content="">
@@ -363,14 +363,15 @@ Can you be productive with JavaScript?
 <ul>
 <li>&ldquo;google.com&rdquo; → true</li>
 <li>&ldquo;www.icann.org&rdquo; → true</li>
-<li>&ldquo;google.foobar&rdquo; → false</li>
-</ul>
+
+<li><p>&ldquo;google.foobar&rdquo; → false</p>
 
 <pre><code class="language-javascript">const isStrUrl = str =&gt; {
-  const matchTld = /(\.com|\.org)$/i
-  return matchTld.test(str);
+const matchTld = /(\.com|\.org)$/i
+return matchTld.test(str);
 };
-</code></pre>
+</code></pre></li>
+</ul>
 
 <p>The <code>matchTld</code> is the regex that specifies that we are looking for a string that ends with <code>.com</code> or <code>.org</code>. The <code>\.</code> escapes the dot (<code>.</code>). The <code>$</code> at the end of the regex means this pattern should appear at the end of the string. In summary:</p>
 

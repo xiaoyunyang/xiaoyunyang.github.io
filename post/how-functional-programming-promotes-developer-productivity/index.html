@@ -19,7 +19,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.55.6 with theme Tranquilpeak 0.4.3-BETA">
+    <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.3-BETA">
     <title>How Functional Programming Promotes Developer Productivity</title>
     <meta name="author" content="Xiaoyun Yang">
     <meta name="keywords" content="">
@@ -373,8 +373,8 @@ Functional ➡ no assignments ➡ no states ➡ no blocking or concurrency issue
 
 <ul>
 <li>Common:  Take an array of <em>stuff</em> and combine them.</li>
-<li>Distinct: The initial value and what the types of data you work on are different.</li>
-</ul>
+
+<li><p>Distinct: The initial value and what the types of data you work on are different.</p>
 
 <pre><code class="language-javascript">//in javascript
 
@@ -392,7 +392,8 @@ for(i=0; i&lt; strs.length; i++) {
 	res = res + strs[i]
 }
 
-</code></pre>
+</code></pre></li>
+</ul>
 
 <p>We want to preserve the distinction and get rid of the boilerplate common code. So we can parameterize the loop action as a function parameter and the initial value as a data parameter in the fold function. Fold is basically a loop. The boilerplate is represented by the following pseudo code:</p>
 
