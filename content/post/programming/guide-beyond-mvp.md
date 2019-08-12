@@ -1,6 +1,6 @@
 ---
 title: "Beyond Minimum Viable Product: A Lesson on Building Production-ready Software"
-date: 2019-08-10
+date: 2019-08-12
 categories:
   - blog
 tags:
@@ -74,7 +74,7 @@ Best practice for accessibility
 - Don’t make spans buttons, use button for buttons. Use the correct HTML markup. That gives you accessibility out of the box. Use correct landmarks (eg, nav, aside, footer)
 - Use Alt Text: Make sure your pencil icon has the correct alt text (alt text fulfills the same promise as what the icon represents). make altText  “edit”
 - Esc key closes the modal
-- Use automated test (1) chrome developer tool (Lighthouse) -Audit - accessibility checkbox, (2) Storybook Accessibility Tab
+- Use automated test (1) chrome developer tool (Lighthouse) -Audit - accessibility checkbox, (2) Storybook Accessibility Tab, (3) accessibility eslint plugin: [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)
 
 # After Deployment
 
