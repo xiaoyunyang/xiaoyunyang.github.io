@@ -1,20 +1,18 @@
 ---
 title: "Effective Unit Testing of React Components With Jest And Enzyme"
 date: 2019-08-11
-draft: true
 categories:
   - blog
 tags:
   - JavaScript
   - Programming
+  - Software Design
 keywords:
   - jest
   - javascript
   - interview prep
-  - algorithms
-  - data structure
-  - learn to code
-  - tree
+  - programming
+  - software design
 thumbnailImagePosition: left
 thumbnailImage: https://images2.imgbox.com/22/c7/WQabWJ4U_o.png
 ---
@@ -262,11 +260,11 @@ describe("submit", () => {
 
 ```
 
+## Shallow vs Mount
+
 ## Dive
 
 When we want to render things inside of a shallowly mounted component, use [`dive()`](https://airbnb.io/enzyme/docs/api/ShallowWrapper/dive.html)
-
-## Shallow vs Mount
 
 ## Update Props
 
