@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Fri, 07 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 11 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Effective Unit Testing of React Components With Jest And Enzyme</title>
+      <link>https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/</link>
+      <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/</guid>
+      <description>&lt;p&gt;The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>When To Use Immutable Data Structures</title>

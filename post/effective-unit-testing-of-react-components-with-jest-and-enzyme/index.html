@@ -20,23 +20,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Creating LooseLeaf: A Platform To Support The Future Of Work</title>
+    <title>Effective Unit Testing of React Components With Jest And Enzyme</title>
     <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="jest, javascript, interview prep, programming, software design">
 
     <link rel="icon" href="https://xiaoyunyang.github.io/favicon-96x96.png">
     
 
     
-    <meta name="description" content="LooseLeaf is a passion project and a startup I&rsquo;ve been building while serving a 5 year commitment in the military. I&rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.">
-    <meta property="og:description" content="LooseLeaf is a passion project and a startup I&rsquo;ve been building while serving a 5 year commitment in the military. I&rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.">
+    <meta name="description" content="The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.">
+    <meta property="og:description" content="The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Creating LooseLeaf: A Platform To Support The Future Of Work">
-    <meta property="og:url" content="https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">
+    <meta property="og:title" content="Effective Unit Testing of React Components With Jest And Enzyme">
+    <meta property="og:url" content="https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/">
     <meta property="og:site_name" content="Xiaoyun Yang">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="LooseLeaf is a passion project and a startup I&rsquo;ve been building while serving a 5 year commitment in the military. I&rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.">
+    <meta name="twitter:description" content="The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.">
     
     
 
@@ -44,7 +44,7 @@
     
 
     
-      <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/looseleaf/logo.png">
+      <meta property="og:image" content="https://images2.imgbox.com/22/c7/WQabWJ4U_o.png">
     
     
     
@@ -237,15 +237,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Creating LooseLeaf: A Platform To Support The Future Of Work
+      Effective Unit Testing of React Components With Jest And Enzyme
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-04-12T00:00:00Z">
+      <time itemprop="datePublished" datetime="2019-08-11T00:00:00Z">
         
-  April 12, 2018
+  August 11, 2019
 
       </time>
     
@@ -254,7 +254,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://xiaoyunyang.github.io/categories/projects">projects</a>
+      <a class="category-link" href="https://xiaoyunyang.github.io/categories/blog">blog</a>
     
   
 
@@ -264,247 +264,399 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p><a href="http://looseleafapp.com" target="_blank">LooseLeaf</a> is a passion project and a startup I&rsquo;ve been building while serving a 5 year commitment in the military. I&rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.</p>
+              <p>The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.</p>
 
-<h1 id="what-is-looseleaf">What is looseleaf</h1>
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#testing-concepts">Testing Concepts</a>
+<ul>
+<li><a href="#test-drive-development">Test Drive Development</a></li>
+<li><a href="#coverage">Coverage</a></li>
+<li><a href="#types-of-tests">Types of Tests</a>
+<ul>
+<li><a href="#blackbox-testing-vs-whitebox-testing">Blackbox testing vs. Whitebox testing</a></li>
+<li><a href="#unit-tests">Unit Tests</a></li>
+<li><a href="#integration-tests">Integration Tests</a></li>
+<li><a href="#end-to-end-testing">End-to-End Testing</a></li>
+<li><a href="#regression-testing">Regression Testing</a></li>
+<li><a href="#automated-vs-manual-testing">Automated vs Manual Testing</a></li>
+<li><a href="#stress-testing">Stress Testing</a></li>
+</ul></li>
+<li><a href="#testing-techniques">Testing Techniques</a>
+<ul>
+<li><a href="#mocking">Mocking</a></li>
+<li><a href="#spying">Spying</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#testing-using-jest-and-enzyme">Testing Using Jest and Enzyme</a>
+<ul>
+<li><a href="#setting-up-a-test">Setting up a test</a></li>
+<li><a href="#find">Find</a></li>
+<li><a href="#childat-vs-at">ChildAt vs At</a></li>
+<li><a href="#testing-events">Testing Events</a></li>
+<li><a href="#shallow-vs-mount">Shallow vs Mount</a></li>
+<li><a href="#dive">Dive</a></li>
+<li><a href="#update-props">Update Props</a>
+<ul>
+<li><a href="#update-state">Update State</a></li>
+</ul></li>
+<li><a href="#debugging">Debugging</a></li>
+<li><a href="#async-await">Async/Await</a></li>
+</ul></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+</nav>
 
-<p>
+<h1 id="testing-concepts">Testing Concepts</h1>
 
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
+<h2 id="test-drive-development">Test Drive Development</h2>
 
-<div class="figure fig-20" >
-  
-    <a class="fancybox" href="https://xiaoyunyang.github.io/post/images/looseleaf/logo-long.png" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://xiaoyunyang.github.io/post/images/looseleaf/logo-long.png" >
-  
-    </a>
-  
-  
-</div>
+<p>Test Driven Development (TDD) is a software development methodology that requires that you write your tests before you write code.</p>
 
-lets you gain relevant work experience as a developer, designer, and writer by helping Non-profits. LooseLeaf is an intersection between an online learning platform and a freelancing platform. I founded LooseLeaf to connect people with opportunities to gain relevant work experience. LooseLeaf is envisioned to disrupt the higher education industry, which is becoming increasingly unaffordable and out of touch with real world needs. LooseLeaf takes advantage of the rising popularity of the sharing economy and creates a space for those eager build skills with those looking to delegate work for their coding, design, or research projects without paying a lot to hire a freelancer or an employee.</p>
+<p>In other words, the code you write is driven by the need to pass the tests, which should come directly from requirements.</p>
 
-<p><strong>One-liner</strong>:  Build Skills by Helping Nonprofits.</p>
+<p>In addition to increaseing confidence that code works as expected, TDD helps us to write better software that’s maintainable by helping to prevent future regression and bugs. Code maintainability is a natural consequence of TDD because code that is written to be testable are generally better designed (more modular), less complex, and better organized.</p>
 
-<h1 id="what-i-ve-done">What I&rsquo;ve Done</h1>
+<h2 id="coverage">Coverage</h2>
 
-<p>I began creating LooseLeaf in July 2015. On top of the software engineering and product development for LooseLeaf, I&rsquo;m also responsible for graphic design and marketing. Recently I exhibited LooseLeaf at LA TechDay, which is the second TechDay since DC TechDay in 2015 during which I presented the product for public feedback.</p>
+<p>In most cases, it&rsquo;s impossible and/or infeasible to acheive 100% test coverage so you need to prioritize your test cases.</p>
 
-<p>Here&rsquo;s the timeline for what I&rsquo;ve accomplished for LooseLeaf. It has been a long process of trial and error. Some lessons learned about software development and the startup process are highlighted:</p>
+<p>Prior to writing tests, we need a good big picture understanding of what the important requirements are. For example, image appear in the right place is not as important as image appearing at all. Functionality is more important than style in most cases.</p>
 
-<h2 id="iteration-1">Iteration 1</h2>
-
-<p><em>June 2015 - January 2016</em></p>
+<p>There are a few things to consider before we start writing tests:</p>
 
 <ul>
-<li>Envisioned LooseLeaf as a place for college students to share notes and tips</li>
-<li>Created a single page application using D3 and React to create a way to navigate related content based on tags</li>
-<li>Got a booth at a startup conference (TechDay) in Washington DC to present the early idea of LooseLeaf. Initial feedback from attendees were they were confused what LooseLeaf is supposed to do and want to see actual examples of how it works. <span class="highlight-text blue">[Lesson Learned]</span></li>
+<li>Knowing how your piece of software fit into the system - mocks, stubs, spy, side effects</li>
+<li>Organization: come up with test cases. First break up what you want to test into categories. Then set up test cases in these categories.</li>
+<li>Practicality: can you test this at all? Give an example of code that’s not testable that has been refactored just so we could test it</li>
 </ul>
 
-<h2 id="iteration-2">Iteration 2</h2>
+<h2 id="types-of-tests">Types of Tests</h2>
+
+<h3 id="blackbox-testing-vs-whitebox-testing">Blackbox testing vs. Whitebox testing</h3>
+
+<p>When we want to test a piece of software we wrote, we want to perform whitebox testing. Whitebox testing assumes knowledge of the innner workings of the code. For a React component, that includes testing:</p>
+
+<ul>
+<li>rendering from props</li>
+<li>event handler is called when button is clicked</li>
+<li>state is updated following an event</li>
+</ul>
+
+<p>Sometimes our piece of software interacts with other pieces of software that we don’t control. Software interacts with each other via passing data to and from each other or calling each other. If our code uses a library or another component, we cannot perform whitebox testing of that component but we can test the interfaces between our component and the other component; for instance, making sure that particular input results in expected output.</p>
+
+<h3 id="unit-tests">Unit Tests</h3>
+
+<p>Unit Tests test one piece of software in isolation. In Unit Testing, we are primarily concerned with answering the question</p>
 
 <blockquote>
-<p>LooseLeaf is a social bookmarking based learning management platform that delivers relevant learning content to learners and also make the careers of professional online content creators more sustainable. The learning content is in the form of bookmarks crowdsourced and curated by subject matter experts and LooseLeaf&rsquo;s recommendation algorithms. Users get data visualizations and recommendations to filter and explore their bookmarks and bookmarks from the community.</p>
+<p>Given some input, do we get correct output?</p>
 </blockquote>
 
-<p><em>January 2016 - October 2016</em></p>
+<p>Unit testing is typically achieved with mocking dependencies and using frameworks like Jest, Mocha, Chai, Jasmine.</p>
+
+<p>The type of code we should unit test includes</p>
 
 <ul>
-<li>Generalized a use case for LooseLeaf as a social bookmarking site for learning content.</li>
-<li>Developed more pages for the single page application powered by React and data from csv files hosted from google drive.</li>
-<li>Developed two interactive data navigation and visualizations (heat-map and donut chart) in D3 that for finding and discovering related links in a collection and summarizing the collection.</li>
-<li>Started developing a Chrome plugin for creating a bookmark of any webpage for LooseLeaf&rsquo;s knowledge database.</li>
-<li>Developed marketing material for presenting LooseLeaf at a TechDay in Los Angeles. Used Adobe Illustrator, free vector graphics available online to create banners, flyers, illustrations on LooseLeaf&rsquo;s site.</li>
-<li>Incorporated LooseLeaf as an LLC in Washington DC</li>
-<li>Presented LooseLeaf at TechDay Los Angeles and received some lukewarm feedback from attendees.</li>
+<li>complex algorithms</li>
+<li>utility functions</li>
+<li>class / react Component</li>
 </ul>
 
-<p>LooseLeaf exhibited at LA TechDay in September 2016.
+<h3 id="integration-tests">Integration Tests</h3>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/fKWuc5rwtlU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+<p>When we make changes to a library, for example, we should perform integration testing locally before publishing the library. This means we want to check that the updated library still works in applications that use the library. Well designed libraries generally have an API that rarely changes, but when it does, that is when integration testing is most important.</p>
 
+<h3 id="end-to-end-testing">End-to-End Testing</h3>
 
+<p>End-to-end (e2e) testing ensures the flow of an application from beginning to finish is as expected and also checks its integration with external interfaces. Frameworks: <a href="https://github.com/GoogleChrome/puppeteer/" target="_blank">Puppeteer</a>, <a href="https://www.seleniumhq.org/" target="_blank">Selenium</a></p>
 
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-      
-    
-  
+<h3 id="regression-testing">Regression Testing</h3>
 
-<div class="figure fig-100 nocaption" >
-  
-    <a class="fancybox" href="https://xiaoyunyang.github.io/post/images/looseleaf/techday.png" title="LooseLeaf at TechDay LA in 2016" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://xiaoyunyang.github.io/post/images/looseleaf/techday.png"  alt="LooseLeaf at TechDay LA in 2016">
-  
-    </a>
-  
-  
-</div>
+<p>Does the new feature break existing features? If you have automated testing set up, this would be done automatically.</p>
 
+<h3 id="automated-vs-manual-testing">Automated vs Manual Testing</h3>
 
+<p>Some features (e.g., looks and feel of UX) may be too qualitative for automated test</p>
 
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-      
-    
-  
+<h3 id="stress-testing">Stress Testing</h3>
 
-<div class="figure fig-50 nocaption" >
-  
-    <a class="fancybox" href="https://xiaoyunyang.github.io/post/images/looseleaf/chrome-plugin.png" title="LooseLeaf&#39;s Chrome Plugin For Saving Webpages to Collection" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://xiaoyunyang.github.io/post/images/looseleaf/chrome-plugin.png" style="height: 450px;" alt="LooseLeaf&#39;s Chrome Plugin For Saving Webpages to Collection">
-  
-    </a>
-  
-  
-</div>
+<p>Stress Testing - analyzing failure condition. Test failure cases. Making sure your software fails safely. For example, what you should get when you remove from an empty heap?</p>
 
+<h2 id="testing-techniques">Testing Techniques</h2>
 
+<h3 id="mocking">Mocking</h3>
 
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-      
-    
-  
-
-<div class="figure fig-50 nocaption" >
-  
-    <a class="fancybox" href="https://xiaoyunyang.github.io/post/images/looseleaf/landing-world.png" title="Original vision of LooseLeaf to be a notebook of useful learning content on the web" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://xiaoyunyang.github.io/post/images/looseleaf/landing-world.png" style="height: 250px;" alt="Original vision of LooseLeaf to be a notebook of useful learning content on the web">
-  
-    </a>
-  
-  
-</div>
-
-
- 
-  
-  
-  
-  
-    
-      
-    
-  
-    
-      
-    
-  
-    
-      
-    
-  
-    
-  
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-      
-    
-  
-
-<div class="figure fig-50 nocaption" >
-  
-    <a class="fancybox" href="https://xiaoyunyang.github.io/post/images/looseleaf/fullstack.png" title="Technology Full Stack for LooseLeaf in early vision" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://xiaoyunyang.github.io/post/images/looseleaf/fullstack.png"  alt="Technology Full Stack for LooseLeaf in early vision">
-  
-    </a>
-  
-  
-</div>
-
-  <div style="clear:both;"></div>
-</p>
-
-<p><em>December 2016 - February 2017</em></p>
-
-<ul>
-<li>Ported the single page application to my day job work computer to try it out as a knowledge management tool and get coworkers to use it. The best we have for our knowledge management system on the classified network are share-point sites and folders on shared drives. Through personally using the tool at work and discussing with coworkers, I realized people are not interested in using a new tool for &ldquo;tribal knowledge&rdquo; management because (1) you either already have a system for organizing content or (2) you are not really that interested in knowledge management for &ldquo;tribal knowledge&rdquo; beyond what was formally required for documentation purposes. <span class="highlight-text blue">[Lesson Learned]</span></li>
-<li>Paused work on LooseLeaf idea development and frontend development due to the realization that the idea for LooseLeaf needs to be revised and frontend design is tightly coupled with the product design, which requires the idea for LooseLeaf to be firmed up.</li>
-<li>Started backend development while frontend development is paused. The server side development originally began with the Play framework, which utilized Scala and can leverage the Java ecosystem.</li>
-</ul>
-
-<p><em>February 2017 - August 2017</em></p>
-
-<ul>
-<li>Decided pause server side development for LooseLeaf to work on a side project building a React Native mobile application. This pause to the server development was partly motivated by the realization that Play and Scala are not popular so there was not that much support from the community with respect to open source projects, Stackoverflow, Github repos, and tutorials. This added frustration and time to the development process. <span class="highlight-text blue">[Lesson Learned]</span></li>
-<li>Development of the React Native application exposed me to the rich JavaScript ecosystem, tools (e.g., webpack), and the expressiveness of ES6.</li>
-</ul>
-
-<h2 id="iteration-3">Iteration 3</h2>
+<p>When we want to test one object, we replace other objects that interface with the object with mocks to simulate their behavior.</p>
 
 <blockquote>
-<p>LooseLeaf lets you gain relevant work experience as a developer, designer, and writer by volunteering for Non-profits.</p>
+<p>Mocks imitate the behavior of other objects the object you want to test interfaces with.</p>
 </blockquote>
 
-<p><em>January 2017 -</em></p>
+<p>A mock of other pieces of software is essentially data that we expect to get as input. For example, if we are writing a component in React to consume content from an API endpoint, we mock the API response by creating a file containing the JSON representing a response we’d expect to get from the endpoint.</p>
 
-<blockquote>
-<p>My startup is called LooseLeaf. It lets people build skills by helping Nonprofits. People can gain relevant work experience as a developer, designer, and writer while volunteering to assist a nonprofit.</p>
-</blockquote>
+<p>We create mocks to support unit tests. For example</p>
+
+<pre><code class="language-javascript">const generateMockUser = (
+  {
+    userName = &quot;janeDoe&quot;,
+    firstName = &quot;Jane&quot;,
+    lastName = &quot;Doe&quot;,
+    email = &quot;janeDoe@example.com&quot;
+  }
+) =&gt; ({ userName, firstName, lastName, email})
+</code></pre>
+
+<p>Every argument in <code>generateMockUser</code> is optional with a default. This provides maximum flexibility for creating a customizable mock.</p>
+
+<h3 id="spying">Spying</h3>
+
+<p>A spy is essentially a mock function. A spy lets you spy on the behavior of a function that your software affects. The other function may be directly or indirectly called by your function. It’s clear what calling a function directly means but what do we mean by indirectly? For example, our function could emit and event and another function somewhere else observes that event and acts upon it.</p>
+
+<p>If our function calls other functions, we want to test that the other functions are called under the right criteria with the right arguments. To do that, we spy on other functions.</p>
+
+<h1 id="testing-using-jest-and-enzyme">Testing Using Jest and Enzyme</h1>
+
+<p>All the examples use Jest and Enzyme</p>
+
+<h2 id="setting-up-a-test">Setting up a test</h2>
+
+<pre><code class="language-javascript">import EditProfileForm from &quot;../feedbackForm&quot;;
+
+// Child components
+import Checkbox from &quot;../checkbox&quot;;
+import EmailInput from &quot;../EmailInput&quot;;
+import TextInput from &quot;../TextInput&quot;;
+
+// Mocks
+import generateMockUser from &quot;./mocks/mockUser&quot;;
+
+const mockUser = generateMockUser({});
+
+describe(&quot;EditProfileForm&quot;, () =&gt; {
+      let props;
+      let form;
+      let submitSpy = jest.fn();
+
+      beforeEach(() =&gt; {
+        submitSpy = jest.fn();
+        props = {
+          ...mockUser,
+          submit: submitSpy
+        }
+        form = shallow(&lt;EditProfileForm {...props} /&gt;);
+      });
+
+      describe(&quot;render&quot;, () =&gt; {
+        test(&quot;renders...&quot;, () =&gt; {
+
+        });
+        test(&quot;renders...&quot;, () =&gt; {
+
+        });
+      });
+      describe(&quot;submit&quot;, () =&gt; {
+
+      });
+});
+
+</code></pre>
+
+<h2 id="find">Find</h2>
+
+<p>For testing that a child component is rendered, import the child component in the test file, then use <code>find()</code>.</p>
+
+<pre><code class="language-javascript">test(&quot;renders emailInput with right props&quot;, () =&gt; {
+  const emailInput = form.find(EmailInput);
+  expect(emailInput).toHaveLength(1);
+  expect(emailInput.props()).toEqual({
+    value: props.email
+  });
+});
+</code></pre>
+
+<p>When multiple instances of the same child components are rendered, use <code>find()</code> to get all the instances as an array, then use <code>at()</code> to select a specific instance at a given index.</p>
+
+<pre><code class="language-javascript">test(&quot;renders the text input with right props&quot;, () =&gt; {
+  const textInputs = form.find(TextInput);
+  expect(textInputs).toHaveLength(3);
+  expect(textInputs.at(0).props()).toEqual({
+    value: props.userName,
+    locked: true
+  });
+  expect(textInputs.at(1).props()).toEqual({
+    value: props.firstName,
+    locked: false
+  });
+  expect(textInputs.at(2).props()).toEqual({
+    value: props.lastName,
+    locked: false
+  });
+});
+</code></pre>
+
+<p>We can also find by class</p>
+
+<pre><code class="language-javascript">const input = manageUsers.find(&quot;.inputClassName&quot;)
+</code></pre>
+
+<h2 id="childat-vs-at">ChildAt vs At</h2>
+
+<p><code>childAt()</code> is for anything inside div</p>
+
+<pre><code class="language-javascript">const Paragraph = (
+  &lt;p&gt;
+    Foo
+    &lt;span&gt;Bar&lt;/span&gt;
+  &lt;p&gt;
+);
+
+</code></pre>
+
+<pre><code class="language-javascript">test(&quot;renders Paragraph name&quot;, () =&gt; {
+  const text = Field.find(&quot;p&quot;).childAt(0).value;
+  expect(text).toEqual(&quot;Foo&quot;);
+});
+</code></pre>
+
+<p><code>at()</code> is for arrays/collections</p>
+
+<pre><code class="language-javascript">test(&quot;renders both edit and delete options&quot;, () =&gt; {
+  const menuItems = editMenu.find(MenuItem);
+  expect(menuItems.length).toBe(2);
+  expect(menuItems.at(0).props().value).toEqual(&quot;edit&quot;);
+  expect(menuItems.at(1).props().value).toEqual(&quot;delete&quot;);
+});
+</code></pre>
+
+<h2 id="testing-events">Testing Events</h2>
+
+<p>Use <code>simulate()</code> to simulate an keyboard event, mouse event, etc. Then use <code>spy</code> to ensure a proper response is fired when the event occurs.</p>
+
+<pre><code class="language-javascript">describe(&quot;submit&quot;, () =&gt; {
+  test(&quot;submit with the right props&quot;, () =&gt; {
+    form.simulate(&quot;click&quot;);
+    expect(submitSpy).toHaveBeenNthCalledWith(1, {
+      email: form.state().email,
+      firstName: form.state().firstName,
+      lastName: form.state().lastName
+    });
+  });
+});
+
+</code></pre>
+
+<h2 id="shallow-vs-mount">Shallow vs Mount</h2>
+
+<h2 id="dive">Dive</h2>
+
+<p>When we want to render things inside of a shallowly mounted component, use <a href="https://airbnb.io/enzyme/docs/api/ShallowWrapper/dive.html" target="_blank"><code>dive()</code></a></p>
+
+<h2 id="update-props">Update Props</h2>
+
+<pre><code class="language-javascript">const wrapper = mount(&lt;Foo /&gt;);
+wrapper.setProp({ name: 'bar' });
+</code></pre>
+
+<p>If you setProp, you need to reselect everything before checking with expect</p>
+
+<pre><code class="language-javascript">// Wrong
+const popupFooter = modalPopup.find(`.${styles.popupFooter}`);
+const confirmationButton = popupFooter.find(Button).at(0);
+
+expect(confirmationButton.prop(&quot;text&quot;)).toBe(&quot;Close&quot;);
+
+modalPopup.setProps({ confirmText: &quot;Done&quot; });
+expect(confirmationButton.prop(&quot;text&quot;)).toBe(&quot;Done&quot;); // this will fail
+</code></pre>
+
+<pre><code class="language-javascript">// Good
+let popupFooter = modalPopup.find(`.${styles.popupFooter}`);
+let confirmationButton = popupFooter.find(Button).at(0);
+
+expect(confirmationButton.prop(&quot;text&quot;)).toBe(&quot;Close&quot;);
+
+modalPopup.setProps({ confirmText: &quot;Done&quot; });
+popupFooter = modalPopup.find(`.${styles.popupFooter}`);
+confirmationButton = popupFooter.find(Button).at(0);
+expect(confirmationButton.prop(&quot;text&quot;)).toBe(&quot;Done&quot;); // this will pass
+</code></pre>
+
+<h3 id="update-state">Update State</h3>
+
+<pre><code class="language-javascript">const wrapper = mount(&lt;Foo /&gt;);
+wrapper.setState({ name: 'bar' });
+</code></pre>
+
+<h2 id="debugging">Debugging</h2>
+
+<p>Use <code>debug()</code></p>
+
+<pre><code class="language-javascript">const form = shallow(&lt;EditProfileForm {...props} /&gt;);
+console.log(form.debug());
+</code></pre>
+
+<h2 id="async-await">Async/Await</h2>
+
+<p>Suppose you want to test a method that changes the state to something, then after 5 seconds, changes to something else. Jest imposes a 5 seconds timeout. If you want to capture that, you can set a new limit for the timeout:</p>
+
+<pre><code class="language-javascript">// Want to test
+
+flashNameChange = async ({ newName }) =&gt; {
+  this.setState({ name: newName, textColor: &quot;red&quot; });
+
+  await delay(FLASH_CHANGE_DURATION);
+
+  this.setState({ textColor: &quot;black&quot; });
+}
+</code></pre>
+
+<pre><code class="language-javascript">// Test
+
+describe(&quot;flashNameChange&quot;, () =&gt; {
+  const newName = &quot;bar&quot;;
+  test(&quot;should set new name and flash text color red&quot;, () =&gt; {
+    wrapper.instance().flashNameChange({ newName });
+    expect(wrapper.instance().state).toEqual({
+      name: newName,
+      textColor: &quot;red&quot;
+     });
+  });
+
+  test(&quot;should set textColor back to blakc after FLASH_CHANGE_DURATION elapsed&quot;, async () =&gt; {
+    await wrapper.instance().flashNameChange({ newName });
+
+    expect(wrapper.instance().state.textColor).toEqual(&quot;black&quot;);
+  }, FLASH_MESSAGE_DURATION * 2);
+});
+
+</code></pre>
+
+<p>See <a href="https://github.com/facebook/jest/issues/5055" target="_blank">this</a> for more information on timeouts.</p>
+
+<h1 id="resources">Resources</h1>
 
 <ul>
-<li>Revised idea for LooseLeaf to be what it is now.</li>
-<li>Started isomorphic application development using full stack JavaScript (React and Node.js) and the latest tech stack in the JavaScript ecosystem.</li>
+<li><a href="https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3" target="_blank">TDD the rightg way</a></li>
+<li><a href="https://medium.com/javascript-scene/what-every-unit-test-needs-f6cd34d9836d" target="_blank">5 questions every unit tests must answer</a></li>
+<li><a href="https://github.com/foundersandcoders/testing-tdd-intro" target="_blank">Testing TDD Intro</a></li>
+<li><a href="https://medium.com/codeclan/mocking-es-and-commonjs-modules-with-jest-mock-37bbb552da43" target="_blank">mocking es and commonjs modules</a></li>
+<li><a href="https://medium.com/@rickhanlonii/understanding-jest-mocks-f0046c68e53c" target="_blank">Understanding Jest mocks</a></li>
+<li><a href="https://medium.com/@deanslamajr/jest-fn-all-the-things-d26f3b929986" target="_blank">Jest fn</a></li>
+<li><a href="https://medium.com/wehkamp-techblog/unit-testing-your-react-application-with-jest-and-enzyme-81c5545cee45" target="_blank">Unit testing your React App With Jest and Enzyme</a></li>
+<li><a href="https://github.com/facebook/jest/issues/1592" target="_blank">jest.fn vs jest.spy</a></li>
+<li><a href="https://codeahoy.com/2016/07/05/unit-integration-and-end-to-end-tests-finding-the-right-balance/" target="_blank">Unit vs Integration vs End-to-End testing</a></li>
+</ul>
+
+<p>Cheatsheets</p>
+
+<ul>
+<li><a href="https://github.com/maurocarrero/sinon-jest-cheatsheet" target="_blank">How to achieve the same thing in Sinon with Jest</a></li>
+<li><a href="https://devhints.io/jest" target="_blank">Jest Cheatsheet</a></li>
+<li><a href="https://devhints.io/enzyme" target="_blank">Enzyme Cheatsheet</a></li>
+<li><a href="https://doc.ebichu.cc/jest/docs/en/expect.html" target="_blank">Jest Docs</a></li>
+<li><a href="https://jestjs.io/docs/en/expect" target="_blank">Jest Expect Docs</a></li>
+<li><a href="https://benmccormick.org/2017/08/15/jest-matchers-1/" target="_blank">Taking Advantage of Jest Matchers</a></li>
 </ul>
               
             </div>
@@ -517,17 +669,11 @@ lets you gain relevant work experience as a developer, designer, and writer by h
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/web-dev/">Web Dev</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/javascript/">JavaScript</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/frontend/">Frontend</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/programming/">Programming</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/backend/">Backend</a>
-
-  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/entrepreneurship/">Entrepreneurship</a>
-
-  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/react/">React</a>
-
-  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/node/">Node</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoyunyang.github.io/tags/software-design/">Software Design</a>
 
                   </div>
                 
@@ -540,7 +686,7 @@ lets you gain relevant work experience as a developer, designer, and writer by h
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/algorithms-for-web-developers/" data-tooltip="Algorithms for Web Developers">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/" data-tooltip="Beyond Minimum Viable Product: A Lesson on Building Production-ready Software">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -548,7 +694,7 @@ lets you gain relevant work experience as a developer, designer, and writer by h
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/" data-tooltip="Everything You Need To Know About Git">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/" data-tooltip="A Guide For Migrating Your Project to TypeScript">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -566,19 +712,19 @@ lets you gain relevant work experience as a developer, designer, and writer by h
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -593,7 +739,7 @@ lets you gain relevant work experience as a developer, designer, and writer by h
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -611,8 +757,8 @@ lets you gain relevant work experience as a developer, designer, and writer by h
 
 
 var disqus_config = function () {
-this.page.url = "https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/";  
-this.page.identifier = "Creating LooseLeaf: A Platform To Support The Future Of Work"; 
+this.page.url = "https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/";  
+this.page.identifier = "Effective Unit Testing of React Components With Jest And Enzyme"; 
 };
 
 (function() { 
@@ -643,7 +789,7 @@ s.setAttribute('data-timestamp', +new Date());
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/algorithms-for-web-developers/" data-tooltip="Algorithms for Web Developers">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/" data-tooltip="Beyond Minimum Viable Product: A Lesson on Building Production-ready Software">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -651,7 +797,7 @@ s.setAttribute('data-timestamp', +new Date());
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/" data-tooltip="Everything You Need To Know About Git">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/" data-tooltip="A Guide For Migrating Your Project to TypeScript">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -669,19 +815,19 @@ s.setAttribute('data-timestamp', +new Date());
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -696,7 +842,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -711,19 +857,19 @@ s.setAttribute('data-timestamp', +new Date());
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fcreating-looseleaf-a-platform-to-support-the-future-of-work%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Feffective-unit-testing-of-react-components-with-jest-and-enzyme%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fcreating-looseleaf-a-platform-to-support-the-future-of-work%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Feffective-unit-testing-of-react-components-with-jest-and-enzyme%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fcreating-looseleaf-a-platform-to-support-the-future-of-work%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Feffective-unit-testing-of-react-components-with-jest-and-enzyme%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -1048,9 +1194,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/xiaoyunyang.github.io\/post\/creating-looseleaf-a-platform-to-support-the-future-of-work\/';
+          this.page.url = 'https:\/\/xiaoyunyang.github.io\/post\/effective-unit-testing-of-react-components-with-jest-and-enzyme\/';
           
-            this.page.identifier = '\/post\/creating-looseleaf-a-platform-to-support-the-future-of-work\/'
+            this.page.identifier = '\/post\/effective-unit-testing-of-react-components-with-jest-and-enzyme\/'
           
         };
         (function() {
