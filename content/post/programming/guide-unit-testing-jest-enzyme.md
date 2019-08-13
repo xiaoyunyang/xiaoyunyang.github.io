@@ -166,7 +166,6 @@ describe("EditProfileForm", () => {
 
       });
 });
-
 ```
 
 ## Find
@@ -210,9 +209,9 @@ We can also find by class
 const input = manageUsers.find(".inputClassName")
 ```
 
-## ChildAt vs At
+## childAt vs at
 
-`childAt()` is for anything inside div
+`childAt(n)` selects the `nth` child of the currently selected node in the DOM.
 
 ```javascript
 const Paragraph = (
@@ -224,6 +223,7 @@ const Paragraph = (
 
 ```
 
+
 ```javascript
 test("renders Paragraph name", () => {
   const text = Field.find("p").childAt(0).value;
@@ -231,7 +231,7 @@ test("renders Paragraph name", () => {
 });
 ```
 
-`at()` is for arrays/collections
+`at(n)` selects the nth element in an arrays/collections
 
 ```javascript
 test("renders both edit and delete options", () => {
@@ -264,47 +264,143 @@ describe("submit", () => {
 
 ## Dive
 
-When we want to render things inside of a shallowly mounted component, use [`dive()`](https://airbnb.io/enzyme/docs/api/ShallowWrapper/dive.html)
+When we want to render things inside of a shallowly mounted component, use [`dive()`](https://airbnb.io/enzyme/docs/api/ShallowWrapper/dive.html).
 
-## Update Props
+For example, if we have the following component:
 
 ```javascript
-const wrapper = mount(<Foo />);
-wrapper.setProp({ name: 'bar' });
+import ContentPage from "./ContentPage";
+import TopNav from "./TopNav";
+import Sidebar from "./Sidebar";
+import MainScreen from "./MainScreen";
+
+export class Layout extends React.PureComponent {
+  render() {
+    return (
+      <ContentPage
+   topNav={TopNav}
+   sidebar={Sidebar}
+   screen={MainScreen}
+   title={"My Awesome App"}
+/>
+    );
+  }
+}
 ```
 
-If you setProp, you need to reselect everything before checking with expect
+We want to write a test for Layout to verify that all the components are rendered.
 
 ```javascript
-// Wrong
-const popupFooter = modalPopup.find(`.${styles.popupFooter}`);
-const confirmationButton = popupFooter.find(Button).at(0);
+// Libraries
+import React from "react";
+import { shallow } from "enzyme";
 
-expect(confirmationButton.prop("text")).toBe("Close");
+// Components
+import Layout from "./Layout";
+import ContentPage from "./ContentPage";
+import TopNav from "./TopNav";
+import Sidebar from "./Sidebar";
+import MainScreen from "./MainScreen";
 
-modalPopup.setProps({ confirmText: "Done" });
-expect(confirmationButton.prop("text")).toBe("Done"); // this will fail
+describe("Layout", () => {
+  let layout;
+  beforeEach(() => {
+    layout = shallow(<Layout />);
+  });
+  test("passes props to ContentPage", () => {
+    expect(layout.prop("title").toBe("My Awesome App");
+  });
+  test("renders all components", () => {
+    expect(layout.find(ContentPage)).toHaveLength(1);
+    expect(layout.dive().find(TopNav)).toHaveLength(1);
+    expect(layout.dive().find(Sidebar)).toHaveLength(1);
+    expect(layout.dive().find(MainScreen)).toHaveLength(1);
+  });
+});
 ```
 
+## State and Props
+
+For this section, we will use the following component:
+
 ```javascript
-// Good
-let popupFooter = modalPopup.find(`.${styles.popupFooter}`);
-let confirmationButton = popupFooter.find(Button).at(0);
+class Foo extends React.PureComponent {
+  constructor(props) {
+    this.state = {
+      title: "foo"
+    }
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.title}</h1>  
+        <p>{this.props.value}</p>
+      </div>
+    );
+  }
+}
+```
 
-expect(confirmationButton.prop("text")).toBe("Close");
+We initialize test as such:
 
-modalPopup.setProps({ confirmText: "Done" });
-popupFooter = modalPopup.find(`.${styles.popupFooter}`);
-confirmationButton = popupFooter.find(Button).at(0);
-expect(confirmationButton.prop("text")).toBe("Done"); // this will pass
+```javascript
+describe("Foo", () => {
+  let props;
+  let foo;
+  beforeEach(() => {
+    props = {
+      value: "Hello World"
+    };
+    foo = mount(<Foo {...props} />);
+  });
+});
+```
+
+### Inspect State
+
+These are all valid ways of inspecting the state of `<Foo />`:
+
+```javascript
+expect(foo.state("title")).toBe("foo");
+expect(foo.state()).toEqual({ name: "foo" });
+expect(foo.state().title).toBe("foo");
 ```
 
 ### Update State
 
 ```javascript
-const wrapper = mount(<Foo />);
-wrapper.setState({ name: 'bar' });
+foo.setState({ name: "bar" });
+const title = foo.find("h1");
+expect(title.text()).toBe("bar");
 ```
+
+After updating state, you need to reselect from the wrapper. This wouldn't work:
+
+```javascript
+const title = foo.find("h1");
+foo.setState({ name: "bar" });
+expect(title.text()).toBe("bar"); // fails. name is still "foo"
+```
+
+### Inspect Props
+
+```javascript
+expect(foo.prop("value")).toBe(props.value);
+expect(foo.props()).toEqual({ value: "Hello World" });
+expect(foo.state().value).toBe(props.value);
+```
+
+### Update Props
+
+```javascript
+expect(foo.find("p").text()).toBe("Hello World");
+foo.setProps({
+  value: "Hello"
+});
+expect(foo.find("p").text()).toBe("Hello");
+```
+
+Same with `setState`, if you setProp, you need to reselect everything before checking with `expect`.
 
 ## Debugging
 
