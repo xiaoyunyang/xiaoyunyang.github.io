@@ -292,13 +292,16 @@
 <ul>
 <li><a href="#setting-up-a-test">Setting up a test</a></li>
 <li><a href="#find">Find</a></li>
-<li><a href="#childat-vs-at">ChildAt vs At</a></li>
+<li><a href="#childat-vs-at">childAt vs at</a></li>
 <li><a href="#testing-events">Testing Events</a></li>
 <li><a href="#shallow-vs-mount">Shallow vs Mount</a></li>
 <li><a href="#dive">Dive</a></li>
-<li><a href="#update-props">Update Props</a>
+<li><a href="#state-and-props">State and Props</a>
 <ul>
+<li><a href="#inspect-state">Inspect State</a></li>
 <li><a href="#update-state">Update State</a></li>
+<li><a href="#inspect-props">Inspect Props</a></li>
+<li><a href="#update-props">Update Props</a></li>
 </ul></li>
 <li><a href="#debugging">Debugging</a></li>
 <li><a href="#async-await">Async/Await</a></li>
@@ -459,7 +462,6 @@ describe(&quot;EditProfileForm&quot;, () =&gt; {
 
       });
 });
-
 </code></pre>
 
 <h2 id="find">Find</h2>
@@ -500,9 +502,9 @@ describe(&quot;EditProfileForm&quot;, () =&gt; {
 <pre><code class="language-javascript">const input = manageUsers.find(&quot;.inputClassName&quot;)
 </code></pre>
 
-<h2 id="childat-vs-at">ChildAt vs At</h2>
+<h2 id="childat-vs-at">childAt vs at</h2>
 
-<p><code>childAt()</code> is for anything inside div</p>
+<p><code>childAt(n)</code> selects the <code>nth</code> child of the currently selected node in the DOM.</p>
 
 <pre><code class="language-javascript">const Paragraph = (
   &lt;p&gt;
@@ -519,7 +521,7 @@ describe(&quot;EditProfileForm&quot;, () =&gt; {
 });
 </code></pre>
 
-<p><code>at()</code> is for arrays/collections</p>
+<p><code>at(n)</code> selects the nth element in an arrays/collections</p>
 
 <pre><code class="language-javascript">test(&quot;renders both edit and delete options&quot;, () =&gt; {
   const menuItems = editMenu.find(MenuItem);
@@ -550,43 +552,134 @@ describe(&quot;EditProfileForm&quot;, () =&gt; {
 
 <h2 id="dive">Dive</h2>
 
-<p>When we want to render things inside of a shallowly mounted component, use <a href="https://airbnb.io/enzyme/docs/api/ShallowWrapper/dive.html" target="_blank"><code>dive()</code></a></p>
+<p>When we want to render things inside of a shallowly mounted component, use <a href="https://airbnb.io/enzyme/docs/api/ShallowWrapper/dive.html" target="_blank"><code>dive()</code></a>.</p>
 
-<h2 id="update-props">Update Props</h2>
+<p>For example, if we have the following component:</p>
 
-<pre><code class="language-javascript">const wrapper = mount(&lt;Foo /&gt;);
-wrapper.setProp({ name: 'bar' });
+<pre><code class="language-javascript">import ContentPage from &quot;./ContentPage&quot;;
+import TopNav from &quot;./TopNav&quot;;
+import Sidebar from &quot;./Sidebar&quot;;
+import MainScreen from &quot;./MainScreen&quot;;
+
+export class Layout extends React.PureComponent {
+  render() {
+    return (
+      &lt;ContentPage
+   topNav={TopNav}
+   sidebar={Sidebar}
+   screen={MainScreen}
+   title={&quot;My Awesome App&quot;}
+/&gt;
+    );
+  }
+}
 </code></pre>
 
-<p>If you setProp, you need to reselect everything before checking with expect</p>
+<p>We want to write a test for Layout to verify that all the components are rendered.</p>
 
-<pre><code class="language-javascript">// Wrong
-const popupFooter = modalPopup.find(`.${styles.popupFooter}`);
-const confirmationButton = popupFooter.find(Button).at(0);
+<pre><code class="language-javascript">// Libraries
+import React from &quot;react&quot;;
+import { shallow } from &quot;enzyme&quot;;
 
-expect(confirmationButton.prop(&quot;text&quot;)).toBe(&quot;Close&quot;);
+// Components
+import Layout from &quot;./Layout&quot;;
+import ContentPage from &quot;./ContentPage&quot;;
+import TopNav from &quot;./TopNav&quot;;
+import Sidebar from &quot;./Sidebar&quot;;
+import MainScreen from &quot;./MainScreen&quot;;
 
-modalPopup.setProps({ confirmText: &quot;Done&quot; });
-expect(confirmationButton.prop(&quot;text&quot;)).toBe(&quot;Done&quot;); // this will fail
+describe(&quot;Layout&quot;, () =&gt; {
+  let layout;
+  beforeEach(() =&gt; {
+    layout = shallow(&lt;Layout /&gt;);
+  });
+  test(&quot;passes props to ContentPage&quot;, () =&gt; {
+    expect(layout.prop(&quot;title&quot;).toBe(&quot;My Awesome App&quot;);
+  });
+  test(&quot;renders all components&quot;, () =&gt; {
+    expect(layout.find(ContentPage)).toHaveLength(1);
+    expect(layout.dive().find(TopNav)).toHaveLength(1);
+    expect(layout.dive().find(Sidebar)).toHaveLength(1);
+    expect(layout.dive().find(MainScreen)).toHaveLength(1);
+  });
+});
 </code></pre>
 
-<pre><code class="language-javascript">// Good
-let popupFooter = modalPopup.find(`.${styles.popupFooter}`);
-let confirmationButton = popupFooter.find(Button).at(0);
+<h2 id="state-and-props">State and Props</h2>
 
-expect(confirmationButton.prop(&quot;text&quot;)).toBe(&quot;Close&quot;);
+<p>For this section, we will use the following component:</p>
 
-modalPopup.setProps({ confirmText: &quot;Done&quot; });
-popupFooter = modalPopup.find(`.${styles.popupFooter}`);
-confirmationButton = popupFooter.find(Button).at(0);
-expect(confirmationButton.prop(&quot;text&quot;)).toBe(&quot;Done&quot;); // this will pass
+<pre><code class="language-javascript">class Foo extends React.PureComponent {
+  constructor(props) {
+    this.state = {
+      title: &quot;foo&quot;
+    }
+  }
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;{this.state.title}&lt;/h1&gt;  
+        &lt;p&gt;{this.props.value}&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+
+<p>We initialize test as such:</p>
+
+<pre><code class="language-javascript">describe(&quot;Foo&quot;, () =&gt; {
+  let props;
+  let foo;
+  beforeEach(() =&gt; {
+    props = {
+      value: &quot;Hello World&quot;
+    };
+    foo = mount(&lt;Foo {...props} /&gt;);
+  });
+});
+</code></pre>
+
+<h3 id="inspect-state">Inspect State</h3>
+
+<p>These are all valid ways of inspecting the state of <code>&lt;Foo /&gt;</code>:</p>
+
+<pre><code class="language-javascript">expect(foo.state(&quot;title&quot;)).toBe(&quot;foo&quot;);
+expect(foo.state()).toEqual({ name: &quot;foo&quot; });
+expect(foo.state().title).toBe(&quot;foo&quot;);
 </code></pre>
 
 <h3 id="update-state">Update State</h3>
 
-<pre><code class="language-javascript">const wrapper = mount(&lt;Foo /&gt;);
-wrapper.setState({ name: 'bar' });
+<pre><code class="language-javascript">foo.setState({ name: &quot;bar&quot; });
+const title = foo.find(&quot;h1&quot;);
+expect(title.text()).toBe(&quot;bar&quot;);
 </code></pre>
+
+<p>After updating state, you need to reselect from the wrapper. This wouldn&rsquo;t work:</p>
+
+<pre><code class="language-javascript">const title = foo.find(&quot;h1&quot;);
+foo.setState({ name: &quot;bar&quot; });
+expect(title.text()).toBe(&quot;bar&quot;); // fails. name is still &quot;foo&quot;
+</code></pre>
+
+<h3 id="inspect-props">Inspect Props</h3>
+
+<pre><code class="language-javascript">expect(foo.prop(&quot;value&quot;)).toBe(props.value);
+expect(foo.props()).toEqual({ value: &quot;Hello World&quot; });
+expect(foo.state().value).toBe(props.value);
+</code></pre>
+
+<h3 id="update-props">Update Props</h3>
+
+<pre><code class="language-javascript">expect(foo.find(&quot;p&quot;).text()).toBe(&quot;Hello World&quot;);
+foo.setProps({
+  value: &quot;Hello&quot;
+});
+expect(foo.find(&quot;p&quot;).text()).toBe(&quot;Hello&quot;);
+</code></pre>
+
+<p>Same with <code>setState</code>, if you setProp, you need to reselect everything before checking with <code>expect</code>.</p>
 
 <h2 id="debugging">Debugging</h2>
 
