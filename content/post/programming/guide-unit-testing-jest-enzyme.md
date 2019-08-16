@@ -13,6 +13,7 @@ keywords:
   - interview prep
   - programming
   - software design
+  - guide
 thumbnailImagePosition: left
 thumbnailImage: https://images2.imgbox.com/22/c7/WQabWJ4U_o.png
 ---

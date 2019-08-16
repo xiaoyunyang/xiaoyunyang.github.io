@@ -26,7 +26,7 @@ This post is a WIP.
 
 # Testing
 
-When to test. How much testing. Breadth and depth of the coverage.
+This section discusses when to test, how much testing, and breadth and depth of the coverage.
 
 - Test Driven Development (TDD)
 - Write Good Unit Tests. How to test? What to test? Link to Jest article
@@ -35,9 +35,15 @@ When to test. How much testing. Breadth and depth of the coverage.
 - Monitoring after deployment to Production
 - CI/CD - triggers typecheck
 
+## When to Write Tests
+
 If it's hard to test, that means you didn't design your software well.
 
-For things in production, ensure thorough test coverage. For greenfield projects, usually you don’t have good picture of what correct looks like, or it’s difficult to verify quantitatively. It's acceptable to iterate on the experimental code without tests at first. But once you are settled on the algorithm and design, you should turn your experimental code into production-ready code with a fews phases of refactoring and tests, depending on the complexity of the code
+For things in production, ensure thorough test coverage. For greenfield projects, usually you don’t have good picture of what correct looks like, or it’s difficult to verify quantitatively. It's acceptable to iterate on the experimental code without tests at first. But once you are settled on the algorithm and design, you should turn your experimental code into production-ready code with a fews phases of refactoring and tests, depending on the complexity of the code.
+
+*Tests hinders rapid prototyping. Once design is locked down, then add tests.*
+
+As discussed in [this post about unit testing](https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/), test driven development (TDD) requires that you write your tests before you write code. For projects that have a lot of uncertainties on design and implementation, we cannot implement true TDD. True TDD is implementable for projects that include extensive functional requirements which drive development. For instance, safety critcal software or software which are development to meet specific contracts have functional requirements and product specification that specify exactly how the software should behave. Tests can be written based on these functional requirements.
 
 Testing checklist
 
