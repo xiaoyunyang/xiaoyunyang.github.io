@@ -425,7 +425,17 @@
 
 <h1 id="testing-using-jest-and-enzyme">Testing Using Jest and Enzyme</h1>
 
-<p>All the examples use Jest and Enzyme</p>
+<p>For unit testing of React components, we are concerned about testing rendering and event handling. In summary, we want to check:</p>
+
+<ol>
+<li>Child component is rendered with the right props.</li>
+<li>Everything is rendered correctly on initial mount.</li>
+<li>Changes to state or props results in the correct changes in what&rsquo;s rendered, as applicable.</li>
+<li>State changes as expected when there&rsquo;s an event or a method call.</li>
+<li>Functions external to the component (e.g, from props) are called with the right arguments when there&rsquo;s an event (e.g., mouse click) or a method call.</li>
+</ol>
+
+<p>Below are some examples of unit testing using Jest and Enzyme.</p>
 
 <h2 id="setting-up-a-test">Setting up a test</h2>
 
@@ -621,10 +631,12 @@ const textInParagraph = paragraph.at(0).childAt(0).text()
     this.setState({ counterValue: newValue })
   }
   render() {
-    return &lt;Counter
-      counterValue={this.state.value}
-      updateValue={this.updateCounterBound}
-    /&gt;
+    return (
+        &lt;Counter
+  counterValue={this.state.value}
+  updateValue={this.updateCounterBound}
+/&gt;
+    );
   }
 }
 </code></pre>
