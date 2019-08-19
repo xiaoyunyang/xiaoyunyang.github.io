@@ -294,6 +294,9 @@
 <li><a href="#find">Find</a></li>
 <li><a href="#childat-vs-at">childAt vs at</a></li>
 <li><a href="#testing-events">Testing Events</a></li>
+<li><a href="#testing-react-component-methods">Testing React component methods</a></li>
+<li><a href="#checking-method-in-props">Checking Method In Props</a></li>
+<li><a href="#spy-on-component-methods">Spy on component methods</a></li>
 <li><a href="#shallow-vs-mount">Shallow vs Mount</a></li>
 <li><a href="#dive">Dive</a></li>
 <li><a href="#state-and-props">State and Props</a>
@@ -387,6 +390,8 @@
 <p>Stress Testing - analyzing failure condition. Test failure cases. Making sure your software fails safely. For example, what you should get when you remove from an empty heap?</p>
 
 <h2 id="testing-techniques">Testing Techniques</h2>
+
+<p>This section goes into some best practice and techniques for testing a React application using Jest and Enzyme. It assumes the reader has some basic familiarity with these testing frameworks.</p>
 
 <h3 id="mocking">Mocking</h3>
 
@@ -499,7 +504,13 @@ describe(&quot;EditProfileForm&quot;, () =&gt; {
 
 <p>We can also find by class</p>
 
-<pre><code class="language-javascript">const input = manageUsers.find(&quot;.inputClassName&quot;)
+<pre><code class="language-javascript">const input = form.find(&quot;.inputClassName&quot;)
+</code></pre>
+
+<p>And by HTML Element</p>
+
+<pre><code class="language-javascript">const paragraph = form.find(&quot;p&quot;)
+const textInParagraph = paragraph.at(0).childAt(0).text()
 </code></pre>
 
 <h2 id="childat-vs-at">childAt vs at</h2>
@@ -512,11 +523,10 @@ describe(&quot;EditProfileForm&quot;, () =&gt; {
     &lt;span&gt;Bar&lt;/span&gt;
   &lt;p&gt;
 );
-
 </code></pre>
 
 <pre><code class="language-javascript">test(&quot;renders Paragraph name&quot;, () =&gt; {
-  const text = Field.find(&quot;p&quot;).childAt(0).value;
+  const text = Field.find(&quot;p&quot;).childAt(0).text();
   expect(text).toEqual(&quot;Foo&quot;);
 });
 </code></pre>
@@ -546,6 +556,116 @@ describe(&quot;EditProfileForm&quot;, () =&gt; {
   });
 });
 
+</code></pre>
+
+<h2 id="testing-react-component-methods">Testing React component methods</h2>
+
+<p>We need to use <code>wrapper.instance()</code> to access the component instance inside the wrapper so we can invoke component methods directly in our tests.</p>
+
+<p>For example, suppose we have this component:</p>
+
+<pre><code class="language-javascript">class Counter extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.incrementValueBound = this.incrementValue.bind(this);
+    this.state({
+      value: this.props.counterValue
+    });
+  }
+  incrementValue() {
+    this.setState(state =&gt; ({
+      value: state.value + 1
+    }));
+    this.props.updateCounter(this.state.value + 1);
+  }
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;p&gt;{this.state.value}&lt;/p&gt;
+        &lt;button onClick={incrementValueBound}&gt;Increment&lt;/button&gt;
+      &lt;div&gt;
+    );
+  }
+}
+</code></pre>
+
+<pre><code class="language-javascript">test(&quot;should increment value when incrementValue is called&quot;, () =&gt; {
+  const props = {
+    counterValue: 0,
+    updateCounter: jest.fn()
+  }
+  const wrapper = shallow(&lt;Counter {...props} /&gt;);
+  expect(wrapper.state(&quot;value&quot;)).toBe(0);
+  wrapper.instance().incrementValue();
+  wrapper.instance().incrementValue();
+  expect(wrapper.state(&quot;value&quot;)).toBe(2);
+  expect(props.updateCounter).toHaveBeenNthCalledWith(1, 2)
+});
+</code></pre>
+
+<h2 id="checking-method-in-props">Checking Method In Props</h2>
+
+<p>Another use of <code>wrapper.instance</code> is in accessing the component method that is passed down to a child component as props.</p>
+
+<p>Suppose we have a <code>App</code> component that uses the <code>Counter</code> component.</p>
+
+<pre><code class="language-javascript">class App extends Reac.PureComponent {
+  constructor(props) {
+    super(props);
+    this.updateCounterBound = this.updateCounter.bind(this);
+    this.state({
+      counterValue: 0
+    });
+  }
+  updateCounter(newValue) {
+    this.setState({ counterValue: newValue })
+  }
+  render() {
+    return &lt;Counter
+      counterValue={this.state.value}
+      updateValue={this.updateCounterBound}
+    /&gt;
+  }
+}
+</code></pre>
+
+<p>Our test for <code>App</code></p>
+
+<pre><code class="language-javascript">test(&quot;renders Counter with right props&quot;, () =&gt; {
+  const app = shallow(&lt;App /&gt;);
+  const counter = app.find(Counter);
+  expect(counter).toHaveLength(1);
+  expect(counter.props()).toEqual({
+    counterValue: app.state(&quot;counterValue&quot;),
+    updateCounter: app.instance().updateCounterBound
+  });
+})
+</code></pre>
+
+<h2 id="spy-on-component-methods">Spy on component methods</h2>
+
+<p>Using the <code>Counter</code> example from before</p>
+
+<pre><code class="language-javascript">describe(&quot;incrementValue&quot;, () =&gt; {
+  let props;
+  let counter;
+  let counterInstance;
+  let incrementValueSpy;
+
+  beforeEach(() =&gt; {
+    const props = {
+      counterValue: 0,
+      updateCounter: jest.fn()
+    }
+    counter = shallow(&lt;Counter {...props} /&gt;);
+    counterInstance = counter.instance();
+    incrementValueSpy = jest.spyOn(counterInstance, &quot;incrementValue&quot;);
+  });
+  test(&quot;should call incrementValue&quot;, () =&gt; {
+    counterInstance.incrementValue();
+    expect(incrementValueSpy).toHaveBeenCalledTimes(1);
+  });
+});
 </code></pre>
 
 <h2 id="shallow-vs-mount">Shallow vs Mount</h2>
@@ -730,7 +850,7 @@ describe(&quot;flashNameChange&quot;, () =&gt; {
 <h1 id="resources">Resources</h1>
 
 <ul>
-<li><a href="https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3" target="_blank">TDD the rightg way</a></li>
+<li><a href="https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3" target="_blank">TDD the right way</a></li>
 <li><a href="https://medium.com/javascript-scene/what-every-unit-test-needs-f6cd34d9836d" target="_blank">5 questions every unit tests must answer</a></li>
 <li><a href="https://github.com/foundersandcoders/testing-tdd-intro" target="_blank">Testing TDD Intro</a></li>
 <li><a href="https://medium.com/codeclan/mocking-es-and-commonjs-modules-with-jest-mock-37bbb552da43" target="_blank">mocking es and commonjs modules</a></li>
@@ -739,6 +859,7 @@ describe(&quot;flashNameChange&quot;, () =&gt; {
 <li><a href="https://medium.com/wehkamp-techblog/unit-testing-your-react-application-with-jest-and-enzyme-81c5545cee45" target="_blank">Unit testing your React App With Jest and Enzyme</a></li>
 <li><a href="https://github.com/facebook/jest/issues/1592" target="_blank">jest.fn vs jest.spy</a></li>
 <li><a href="https://codeahoy.com/2016/07/05/unit-integration-and-end-to-end-tests-finding-the-right-balance/" target="_blank">Unit vs Integration vs End-to-End testing</a></li>
+<li><a href="https://bambielli.com/til/2018-03-04-directly-test-react-component-methods/" target="_blank">Testing component methods directly</a></li>
 </ul>
 
 <p>Cheatsheets</p>
