@@ -93,6 +93,8 @@ Stress Testing - analyzing failure condition. Test failure cases. Making sure yo
 
 ## Testing Techniques
 
+This section goes into some best practice and techniques for testing a React application using Jest and Enzyme. It assumes the reader has some basic familiarity with these testing frameworks.
+
 ### Mocking
 
 When we want to test one object, we replace other objects that interface with the object with mocks to simulate their behavior.
@@ -207,7 +209,14 @@ test("renders the text input with right props", () => {
 We can also find by class
 
 ```javascript
-const input = manageUsers.find(".inputClassName")
+const input = form.find(".inputClassName")
+```
+
+And by HTML Element
+
+```javascript
+const paragraph = form.find("p")
+const textInParagraph = paragraph.at(0).childAt(0).text()
 ```
 
 ## childAt vs at
@@ -221,13 +230,11 @@ const Paragraph = (
     <span>Bar</span>
   <p>
 );
-
 ```
-
 
 ```javascript
 test("renders Paragraph name", () => {
-  const text = Field.find("p").childAt(0).value;
+  const text = Field.find("p").childAt(0).text();
   expect(text).toEqual("Foo");
 });
 ```
@@ -259,6 +266,121 @@ describe("submit", () => {
   });
 });
 
+```
+
+## Testing React component methods
+
+We need to use `wrapper.instance()` to access the component instance inside the wrapper so we can invoke component methods directly in our tests.
+
+For example, suppose we have this component:
+
+```javascript
+class Counter extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.incrementValueBound = this.incrementValue.bind(this);
+    this.state({
+      value: this.props.counterValue
+    });
+  }
+  incrementValue() {
+    this.setState(state => ({
+      value: state.value + 1
+    }));
+    this.props.updateCounter(this.state.value + 1);
+  }
+  render() {
+    return (
+      <div>
+        <p>{this.state.value}</p>
+        <button onClick={incrementValueBound}>Increment</button>
+      <div>
+    );
+  }
+}
+```
+
+```javascript
+test("should increment value when incrementValue is called", () => {
+  const props = {
+    counterValue: 0,
+    updateCounter: jest.fn()
+  }
+  const wrapper = shallow(<Counter {...props} />);
+  expect(wrapper.state("value")).toBe(0);
+  wrapper.instance().incrementValue();
+  wrapper.instance().incrementValue();
+  expect(wrapper.state("value")).toBe(2);
+  expect(props.updateCounter).toHaveBeenNthCalledWith(1, 2)
+});
+```
+
+## Checking Method In Props
+
+Another use of `wrapper.instance` is in accessing the component method that is passed down to a child component as props.
+
+Suppose we have a `App` component that uses the `Counter` component.
+
+```javascript
+class App extends Reac.PureComponent {
+  constructor(props) {
+    super(props);
+    this.updateCounterBound = this.updateCounter.bind(this);
+    this.state({
+      counterValue: 0
+    });
+  }
+  updateCounter(newValue) {
+    this.setState({ counterValue: newValue })
+  }
+  render() {
+    return <Counter
+      counterValue={this.state.value}
+      updateValue={this.updateCounterBound}
+    />
+  }
+}
+```
+
+Our test for `App`
+
+```javascript
+test("renders Counter with right props", () => {
+  const app = shallow(<App />);
+  const counter = app.find(Counter);
+  expect(counter).toHaveLength(1);
+  expect(counter.props()).toEqual({
+    counterValue: app.state("counterValue"),
+    updateCounter: app.instance().updateCounterBound
+  });
+})
+```
+
+## Spy on component methods
+
+Using the `Counter` example from before
+
+```javascript
+describe("incrementValue", () => {
+  let props;
+  let counter;
+  let counterInstance;
+  let incrementValueSpy;
+
+  beforeEach(() => {
+    const props = {
+      counterValue: 0,
+      updateCounter: jest.fn()
+    }
+    counter = shallow(<Counter {...props} />);
+    counterInstance = counter.instance();
+    incrementValueSpy = jest.spyOn(counterInstance, "incrementValue");
+  });
+  test("should call incrementValue", () => {
+    counterInstance.incrementValue();
+    expect(incrementValueSpy).toHaveBeenCalledTimes(1);
+  });
+});
 ```
 
 ## Shallow vs Mount
@@ -454,7 +576,7 @@ See [this](https://github.com/facebook/jest/issues/5055) for more information on
 
 # Resources
 
-- [TDD the rightg way](https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3)
+- [TDD the right way](https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3)
 - [5 questions every unit tests must answer](https://medium.com/javascript-scene/what-every-unit-test-needs-f6cd34d9836d)
 - [Testing TDD Intro](https://github.com/foundersandcoders/testing-tdd-intro)
 - [mocking es and commonjs modules](https://medium.com/codeclan/mocking-es-and-commonjs-modules-with-jest-mock-37bbb552da43)
@@ -463,6 +585,7 @@ See [this](https://github.com/facebook/jest/issues/5055) for more information on
 - [Unit testing your React App With Jest and Enzyme](https://medium.com/wehkamp-techblog/unit-testing-your-react-application-with-jest-and-enzyme-81c5545cee45)
 - [jest.fn vs jest.spy](https://github.com/facebook/jest/issues/1592)
 - [Unit vs Integration vs End-to-End testing](https://codeahoy.com/2016/07/05/unit-integration-and-end-to-end-tests-finding-the-right-balance/)
+- [Testing component methods directly](https://bambielli.com/til/2018-03-04-directly-test-react-component-methods/)
 
 Cheatsheets
 
