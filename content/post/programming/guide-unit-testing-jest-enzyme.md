@@ -126,7 +126,15 @@ If our function calls other functions, we want to test that the other functions 
 
 # Testing Using Jest and Enzyme
 
-All the examples use Jest and Enzyme
+For unit testing of React components, we are concerned about testing rendering and event handling. In summary, we want to check:
+
+1. Child component is rendered with the right props.
+2. Everything is rendered correctly on initial mount.
+3. Changes to state or props results in the correct changes in what's rendered, as applicable.
+4. State changes as expected when there's an event or a method call.
+5. Functions external to the component (e.g, from props) are called with the right arguments when there's an event (e.g., mouse click) or a method call.
+
+Below are some examples of unit testing using Jest and Enzyme.
 
 ## Setting up a test
 
@@ -334,10 +342,12 @@ class App extends Reac.PureComponent {
     this.setState({ counterValue: newValue })
   }
   render() {
-    return <Counter
-      counterValue={this.state.value}
-      updateValue={this.updateCounterBound}
-    />
+    return (
+        <Counter
+  counterValue={this.state.value}
+  updateValue={this.updateCounterBound}
+/>
+    );
   }
 }
 ```

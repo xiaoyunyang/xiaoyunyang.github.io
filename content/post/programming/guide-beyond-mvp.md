@@ -126,7 +126,6 @@ Not refactoring also caries risks of code entropy. Increase tech debt. Codebase 
 
 [Source Making](https://sourcemaking.com/refactoring) provides an excellent discussion on various bad code smells, how to recognize them, and strategies for getting rid of the [bad code smells](https://sourcemaking.com/refactoring). I highly recommend checking out Source Making's website as it provides an extensive list of code smells and refactoring techniques:
 
-
 {{< image classes="fancybox fig-50" src="/post/images/programming/bad-code-smells/couplers.png"
 thumbnail="/post/images/programming/bad-code-smells/couplers.png">}}
 {{< image classes="fancybox fig-50" src="/post/images/programming/bad-code-smells/dispensables.png"
