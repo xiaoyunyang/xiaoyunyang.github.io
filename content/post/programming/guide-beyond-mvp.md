@@ -88,13 +88,33 @@ Best practice for accessibility
 
 # After Deployment
 
-Metric Tracking
+## Feature Toggles
 
-- [New Relic](https://www.newrelic.com/)
+When deploying a new feature to a widely used product, it's a good idea to do a gradual rollout so the new feature will be available to a smaller group of users at first. This approach gives us the ability to iron out bugs and assess the usability of the feature on a smaller group of users before rolling out the feature to the broader user base.
 
-Deployment
+Deploying with feature toggles allows us to minimize the risk of introducing new features. At Smartling, we use [Launch Darkly](https://launchdarkly.com/) for feature flag and toggle management.
 
-- [Launch Darkly](https://launchdarkly.com/) - feature flag and toggle management
+## Metric Tracking
+
+Another risk of adding a new feature to a product is that you don't know if the feature will truly provide the value that you expect. There are also multiple ways to implement a feature to achieve a certain object. Metrics tracking provides a way to gather quantitative data on how the feature is being used (e.g., number of clicks, type of user who uses the feature) to validate the hypothesis that a new feature is adding value.
+
+[New Relic](https://www.newrelic.com/) is an instrumentation tool that integrates with your applications that provides realtime metrics and insight on how your applications are being used.
+
+Metrics tracking can also be used to gather data before deprecating / end support of a rarely used feature.
+
+While New Relic helps you gathers aggregate data on how your product is being used, sometimes you need data on how an individual user uses the data. [FullStory](https://www.fullstory.com) provides the ability to capture a session of how a single user interacts with your product. This is useful for insight but is more widely used for troubleshooting a user reported bug.
+
+## Error Tracking
+
+- [TrackJS](https://trackjs.com) - JavaScript Error Tracking
+- [Opsgenie](https://www.opsgenie.com/) - Integrates with TrackJS and sends a notification to the people on call When error rate increases beyond a certain threshold.
+- Create `emergency` channel on Slack.
+
+## Post-mortems
+
+```
+// TODO: 
+```
 
 # Refactoring
 
@@ -104,7 +124,7 @@ Every refactoring has the potential to break existing functionality. Make sure t
 
 Whenever you are adding a new feature to a component and you find yourself copying-and-pasting a block of code from another component , that’s when you know you should add a method to your utilities class to share this block of code between the components.
 
-Avoid pre-mature pptimization. Avoid writing throwaway code (tests for WIP code) Once your design approach and implementation is firmed up, add tests. Refactoring vs not refactoring. Some considerations:
+Avoid pre-mature optimization. Avoid writing throwaway code (tests for WIP code) Once your design approach and implementation is firmed up, add tests. Refactoring vs not refactoring. Some considerations:
 
 ```
 // TODO: add list of considerations
@@ -114,13 +134,9 @@ Avoid pre-mature pptimization. Avoid writing throwaway code (tests for WIP code)
 
 Specifically time and effort. You need to spend time and effort to reduce tech debt or to implement new features. Also, code reviews are more difficult. Risk of refactoring - Massive refactoring carries the risk of breaking existing functionality but unit tests and regression tests help to reduce that risk.
 
-Cost of not refactoring is higher.
+Cost of not refactoring could potentially be higher. As tech tech accumulates, software becomes harder to extend, understand, and maintain. Adding even the smallest change requires a ton of effort and QA. Cost of testing and QA go up. See [Lesson from 6 software rewrite stories](https://medium.com/@herbcaudill/lessons-from-6-software-rewrite-stories-635e4c8f7c22). Not refactoring also caries risks of code entropy and tech debt increase. Codebase becomes increasingly difficult and unpleasant to work with, which could result in difficulties with retaining and attracting talent to work on the codebase.
 
-Software becomes harder to extend, understand, and maintain. Adding even the smallest change requires a ton of effort and QA. Cost of testing and QA go up. See [Lesson from 6 software rewrite stories](https://medium.com/@herbcaudill/lessons-from-6-software-rewrite-stories-635e4c8f7c22).
-
-Refactoring code makes code more scalable => easier to add new features and make changes later.
-
-Not refactoring also caries risks of code entropy. Increase tech debt. Codebase becomes difficult to work with - cannot retain and attract talent.
+On the other hand, while refactoring code makes code more scalable, easier to extend/maintain, and more pleasant to work with,  it has to balanced with the time and risk of refactoring, especially when you are working on a production-grade software. The rule of thumb is if you are working with a large codebase that often has new features requests, it’s always worth refactoring if it will make it easier and faster to add new features to the codebase on a go-forward basis and make the codebase more maintainable and less buggy. If you think the long term benefit of refactoring outweighs the cost but the refactoring effort is extensive and management has different priorities and/or a “if it’s not broken, don’t fix it” culture, then convince management to let you work on the refactoring / code rewrite in a separate branch as a side project.
 
 ## How to Refactor
 
@@ -151,7 +167,7 @@ My favorite refactoring techniques:
 - Replace Conditionals with a dictionary. State machine: IsLoading....isSelecting...isBrowsing. we can map UI / representation to a state instead of having a lot of nested ternary operators in render
 - Use Monad (e.g., `Promise`, `Maybe`, [Null Object](https://sourcemaking.com/refactoring/introduce-null-object)) avoids callback hell. Avoid callback hell - Make asynchronous behavior synchronous (React Hooks)
 
-```javascript
+```
 // TODO: dictionary example
 ```
 
@@ -293,8 +309,6 @@ New concepts:
 - Story Points
 - Tech Debt
 - Backlog
-
-
 
 Planning
 
