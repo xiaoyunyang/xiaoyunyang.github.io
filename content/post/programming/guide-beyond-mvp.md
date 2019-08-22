@@ -15,9 +15,12 @@ keywords:
   - javascript
   - guide
   - best practice
+thumbnailImage: /post/images/brooklyn-bridge.png
+thumbnailImagePosition: left
+coverImage: /post/images/brooklyn-bridge.png
 ---
 
-What I learned working at a mature startup that's building new things but also has a ton of customers and products in production. Product focused and quality focused. Off-shore team.
+What I learned working at a mature startup that's building new things but also has a ton of customers and products in production.
 
 This post is a WIP.
 
@@ -130,13 +133,17 @@ Avoid pre-mature optimization. Avoid writing throwaway code (tests for WIP code)
 // TODO: add list of considerations
 ```
 
+Having existing unit tests in place to help you understand the impact of your refactoring is very important. Make sure to use good version control. What I like to do is to refactor something small, test, commit, repeat.
+
 ## Cost of Refactoring
 
-Specifically time and effort. You need to spend time and effort to reduce tech debt or to implement new features. Also, code reviews are more difficult. Risk of refactoring - Massive refactoring carries the risk of breaking existing functionality but unit tests and regression tests help to reduce that risk.
+There's cost to refactoring, specifically time and effort. You need to spend time and effort to reduce tech debt or to implement new features. Also, code reviews are more difficult. Risk of refactoring - Massive refactoring carries the risk of breaking existing functionality but unit tests and regression tests help to reduce that risk.
 
 Cost of not refactoring could potentially be higher. As tech tech accumulates, software becomes harder to extend, understand, and maintain. Adding even the smallest change requires a ton of effort and QA. Cost of testing and QA go up. See [Lesson from 6 software rewrite stories](https://medium.com/@herbcaudill/lessons-from-6-software-rewrite-stories-635e4c8f7c22). Not refactoring also caries risks of code entropy and tech debt increase. Codebase becomes increasingly difficult and unpleasant to work with, which could result in difficulties with retaining and attracting talent to work on the codebase.
 
 On the other hand, while refactoring code makes code more scalable, easier to extend/maintain, and more pleasant to work with,  it has to balanced with the time and risk of refactoring, especially when you are working on a production-grade software. The rule of thumb is if you are working with a large codebase that often has new features requests, it’s always worth refactoring if it will make it easier and faster to add new features to the codebase on a go-forward basis and make the codebase more maintainable and less buggy. If you think the long term benefit of refactoring outweighs the cost but the refactoring effort is extensive and management has different priorities and/or a “if it’s not broken, don’t fix it” culture, then convince management to let you work on the refactoring / code rewrite in a separate branch as a side project.
+
+I don't think refactoring should always be pursued for a product that’s rarely used or rarely updated.
 
 ## How to Refactor
 
@@ -191,11 +198,17 @@ Avoid boilerplate by
 
 ## Documentation
 
+Close source vs Open source. Turnover. Knowledge Transfer.
+
 ### README
 
 Make sure to have README.md for every repo. Make sure to include information like how to set the project up for local development.
 
 ### UML
+
+```
+// TODO: Add example UML from react-process-flowchart
+```
 
 ### Self Documenting Code
 
@@ -225,6 +238,8 @@ DesignOps
 [Storybook](https://storybook.js.org/) lets you create a catalog of UI components.
 
 ## Use Open Source vs Roll Your Own
+
+![use open source library vs building your own](/post/images/programming/open-source-meme.png)
 
 When you need a library, there are two options. You can
 

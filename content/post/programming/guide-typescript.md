@@ -672,7 +672,7 @@ const Animal = {
 type AnimalT = Mammal & Insect
 ```
 
-The [naming convention for enums](https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/4x252001(v=vs.71))
+The [naming convention for enums](https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/4x252001(v=vs.71)) is to:
 
 > Use a singular name for most Enum types, but use a plural name for Enum types that are bit fields.
 
@@ -702,6 +702,13 @@ let e: Events = AdvEvents.Pause;
 ##### Check for membership
 
 ```ts
+export const isMammal = (animal: Animal): animal is Animal =>
+    Object.values(Mammal).includes(animal);
+```
+
+### Subset of Enum
+
+```ts
 const animals: AnimalT[] = [“DOG”, “ANT”, “HUMAN”, “BEE”]
 const mammals: Mammal[] = animals.filter(animal => animal in Mammal)
 console.log(mammals) //> [“DOG”, “HUMAN"]
@@ -709,7 +716,32 @@ console.log(mammals) //> [“DOG”, “HUMAN"]
 
 Note the difference between Animal and AnimalT!
 
-##### Dictionary typing using enum
+#### Type Assertion
+
+Consider the case when you have a union type that could be one of the two interfaces.
+
+```ts
+interface A { a: string }
+interface B { b: string }
+type AorB = A | B
+```
+
+We create the following objects:
+
+```ts
+const a: AorB = { a: "a" }
+const b: AorB = { b: "b" }
+```
+
+If we want to access the property `a` from `a`, sometimes we need to assert type like so:
+
+```ts
+if ((<A>AorB).a)
+```
+
+See [Type guards and type assertions](http://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-type-assertions) section of [Advanced Types](http://www.typescriptlang.org/docs/handbook/advanced-types.html).
+
+#### Dictionary typing using enum
 
 ```ts
 enum Var {

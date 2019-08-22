@@ -19,6 +19,14 @@ To test out what it looks like in production, run the following script to build 
 hugo
 ```
 
+### Draft
+
+To make a post draft, addthe following to front matter:
+
+```
+draft: true
+```
+
 ### Deploying
 
 Run the [deploy.sh](/deploy.sh) script to build the static website in `public/` directory and commit/push the contents of the `public/` directory to master.
@@ -42,6 +50,7 @@ Run the [deploy.sh](/deploy.sh) script to build the static website in `public/` 
 
 
 ### Docs Shortcut
+
 * [Customizing Themes](https://gohugo.io/themes/customizing/)
 * [Permalink](https://gohugo.io/content-management/urls/#permalinks) - configures how your url appears
 
