@@ -308,8 +308,12 @@ This post is a WIP.">
 <ul>
 <li><a href="#extending-string-based-enums">Extending String Based Enums</a></li>
 <li><a href="#check-for-membership">Check for membership</a></li>
-<li><a href="#dictionary-typing-using-enum">Dictionary typing using enum</a></li>
 </ul></li>
+</ul></li>
+<li><a href="#subset-of-enum">Subset of Enum</a>
+<ul>
+<li><a href="#type-assertion">Type Assertion</a></li>
+<li><a href="#dictionary-typing-using-enum">Dictionary typing using enum</a></li>
 <li><a href="#exclude">Exclude</a></li>
 <li><a href="#using-enums-in-map">Using enums in <code>Map</code></a></li>
 <li><a href="#shape">Shape</a></li>
@@ -964,7 +968,7 @@ const Animal = {
 type AnimalT = Mammal &amp; Insect
 </code></pre>
 
-<p>The <a href="https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/4x252001(v=vs.71)" target="_blank">naming convention for enums</a></p>
+<p>The <a href="https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/4x252001(v=vs.71)" target="_blank">naming convention for enums</a> is to:</p>
 
 <blockquote>
 <p>Use a singular name for most Enum types, but use a plural name for Enum types that are bit fields.</p>
@@ -994,6 +998,12 @@ let e: Events = AdvEvents.Pause;
 
 <h5 id="check-for-membership">Check for membership</h5>
 
+<pre><code class="language-ts">export const isMammal = (animal: Animal): animal is Animal =&gt;
+    Object.values(Mammal).includes(animal);
+</code></pre>
+
+<h3 id="subset-of-enum">Subset of Enum</h3>
+
 <pre><code class="language-ts">const animals: AnimalT[] = [“DOG”, “ANT”, “HUMAN”, “BEE”]
 const mammals: Mammal[] = animals.filter(animal =&gt; animal in Mammal)
 console.log(mammals) //&gt; [“DOG”, “HUMAN&quot;]
@@ -1001,7 +1011,29 @@ console.log(mammals) //&gt; [“DOG”, “HUMAN&quot;]
 
 <p>Note the difference between Animal and AnimalT!</p>
 
-<h5 id="dictionary-typing-using-enum">Dictionary typing using enum</h5>
+<h4 id="type-assertion">Type Assertion</h4>
+
+<p>Consider the case when you have a union type that could be one of the two interfaces.</p>
+
+<pre><code class="language-ts">interface A { a: string }
+interface B { b: string }
+type AorB = A | B
+</code></pre>
+
+<p>We create the following objects:</p>
+
+<pre><code class="language-ts">const a: AorB = { a: &quot;a&quot; }
+const b: AorB = { b: &quot;b&quot; }
+</code></pre>
+
+<p>If we want to access the property <code>a</code> from <code>a</code>, sometimes we need to assert type like so:</p>
+
+<pre><code class="language-ts">if ((&lt;A&gt;AorB).a)
+</code></pre>
+
+<p>See <a href="http://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-type-assertions" target="_blank">Type guards and type assertions</a> section of <a href="http://www.typescriptlang.org/docs/handbook/advanced-types.html" target="_blank">Advanced Types</a>.</p>
+
+<h4 id="dictionary-typing-using-enum">Dictionary typing using enum</h4>
 
 <pre><code class="language-ts">enum Var {
     X = &quot;x&quot;,
@@ -1472,7 +1504,7 @@ s.setAttribute('data-timestamp', +new Date());
                   Aug 8, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>What I learned working at a mature startup that&rsquo;s building new things but also has a ton of customers and products in production. Product focused and quality focused. Off-shore team.</p>
+              <div class="media-content hide-xs font-merryweather"><p>What I learned working at a mature startup that&rsquo;s building new things but also has a ton of customers and products in production.</p>
 
 <p>This post is a WIP.</p></div>
             </div>
