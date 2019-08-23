@@ -94,6 +94,19 @@ export { default as messages } from "./messages";
 
 # Design
 
+## Interface
+
+```ts
+<WorkflowVisContainer
+    togglePopup={togglePopup}
+    flashStepChange={flashStepChange}
+    workflowUid={workflow.workflowUid}
+    workflowSteps={workflow.workflowSteps}
+    editMode={this.state.editMode}
+    highlightedSteps={this.highlightedSteps}
+/>
+```
+
 ## colEntries
 
 Array where each entry is a workflowStep

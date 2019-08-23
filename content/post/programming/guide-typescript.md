@@ -356,7 +356,7 @@ chmod +x migrate.sh
 ./migrate.sh ~/tinext-editor/src
 ```
 
-### Update All The Files
+### Update Plain JS Code to TypeScript
 
 Check out:
 
@@ -706,7 +706,7 @@ export const isMammal = (animal: Animal): animal is Animal =>
     Object.values(Mammal).includes(animal);
 ```
 
-### Subset of Enum
+##### Subset of Enum
 
 ```ts
 const animals: AnimalT[] = [“DOG”, “ANT”, “HUMAN”, “BEE”]
@@ -716,7 +716,7 @@ console.log(mammals) //> [“DOG”, “HUMAN"]
 
 Note the difference between Animal and AnimalT!
 
-#### Type Assertion
+##### Type Assertion
 
 Consider the case when you have a union type that could be one of the two interfaces.
 
@@ -741,7 +741,7 @@ if ((<A>AorB).a)
 
 See [Type guards and type assertions](http://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-type-assertions) section of [Advanced Types](http://www.typescriptlang.org/docs/handbook/advanced-types.html).
 
-#### Dictionary typing using enum
+##### Dictionary typing using enum
 
 ```ts
 enum Var {
@@ -909,7 +909,7 @@ mkdir .storybook
 touch .storybook/config.js .storybook/addons.js .storybook/webpack.config.js
 ```
 
-## Phase 4 Regression Testing
+## Phase 3 Regression Testing
 
 - Re-run unit tests to make sure they all pass
 - Integration testing - if the project is a library, make sure you can build it and integrate it into a project that's not TypeScript.

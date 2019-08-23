@@ -273,7 +273,44 @@ describe("submit", () => {
     });
   });
 });
+```
 
+## Testing A Collection
+
+Use `each()`. For example, if we have a function `increment`
+
+```javascript
+const increment = (val) => {
+  const parsedInt = parseInt(val, 10);
+  if (Number.isNaN(parsedInt)) return undefined;
+  return parsedInt + 1;
+};
+```
+
+```javascript
+test.each([
+    [-1, 0],
+    [0, 1],
+    [1, 2],
+    [1.5, 2]
+    ["2", 3],
+    ["foo", undefined],
+    [null, undefined]
+])("increment %s", (val, expectedRes) => {
+    expect(increment(val)).toBe(expectedRes);
+});
+```
+
+This will be printed out in console:
+
+```
+✓ increment -1
+✓ increment 0 (1ms)
+✓ increment 1
+✓ increment 1.5
+✓ increment 2
+✓ increment foo
+✓ increment null (1ms)
 ```
 
 ## Testing React component methods

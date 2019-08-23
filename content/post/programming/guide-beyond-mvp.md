@@ -315,7 +315,7 @@ Use this PR Template. Simply add `pull-request-template.md` to the root of your 
 
 ```
 
-## Agile
+## Agile and Jira
 
 New concepts:
 
@@ -324,6 +324,8 @@ New concepts:
 - Story Points
 - Tech Debt
 - Backlog
+- Epic
+- Estimates
 
 Planning
 
