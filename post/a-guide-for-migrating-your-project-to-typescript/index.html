@@ -289,7 +289,7 @@ This post is a WIP.">
 <li><a href="#phase-2-typescriptify-flow-project">Phase 2 TypeScriptify Flow Project</a>
 <ul>
 <li><a href="#update-files">Update files</a></li>
-<li><a href="#update-all-the-files">Update All The Files</a>
+<li><a href="#update-plain-js-code-to-typescript">Update Plain JS Code to TypeScript</a>
 <ul>
 <li><a href="#importing-types">Importing types</a></li>
 <li><a href="#basic-types-in-typesscript">Basic Types in TypesScript</a></li>
@@ -308,12 +308,10 @@ This post is a WIP.">
 <ul>
 <li><a href="#extending-string-based-enums">Extending String Based Enums</a></li>
 <li><a href="#check-for-membership">Check for membership</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#subset-of-enum">Subset of Enum</a>
-<ul>
+<li><a href="#subset-of-enum">Subset of Enum</a></li>
 <li><a href="#type-assertion">Type Assertion</a></li>
 <li><a href="#dictionary-typing-using-enum">Dictionary typing using enum</a></li>
+</ul></li>
 <li><a href="#exclude">Exclude</a></li>
 <li><a href="#using-enums-in-map">Using enums in <code>Map</code></a></li>
 <li><a href="#shape">Shape</a></li>
@@ -329,7 +327,7 @@ This post is a WIP.">
 <li><a href="#storybook">Storybook</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#phase-4-regression-testing">Phase 4 Regression Testing</a></li>
+<li><a href="#phase-3-regression-testing">Phase 3 Regression Testing</a></li>
 </ul></li>
 <li><a href="#typescript-learning-resource">TypeScript Learning Resource</a></li>
 </ul>
@@ -661,7 +659,7 @@ done
 ./migrate.sh ~/tinext-editor/src
 </code></pre>
 
-<h3 id="update-all-the-files">Update All The Files</h3>
+<h3 id="update-plain-js-code-to-typescript">Update Plain JS Code to TypeScript</h3>
 
 <p>Check out:</p>
 
@@ -1002,7 +1000,7 @@ let e: Events = AdvEvents.Pause;
     Object.values(Mammal).includes(animal);
 </code></pre>
 
-<h3 id="subset-of-enum">Subset of Enum</h3>
+<h5 id="subset-of-enum">Subset of Enum</h5>
 
 <pre><code class="language-ts">const animals: AnimalT[] = [“DOG”, “ANT”, “HUMAN”, “BEE”]
 const mammals: Mammal[] = animals.filter(animal =&gt; animal in Mammal)
@@ -1011,7 +1009,7 @@ console.log(mammals) //&gt; [“DOG”, “HUMAN&quot;]
 
 <p>Note the difference between Animal and AnimalT!</p>
 
-<h4 id="type-assertion">Type Assertion</h4>
+<h5 id="type-assertion">Type Assertion</h5>
 
 <p>Consider the case when you have a union type that could be one of the two interfaces.</p>
 
@@ -1033,7 +1031,7 @@ const b: AorB = { b: &quot;b&quot; }
 
 <p>See <a href="http://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-type-assertions" target="_blank">Type guards and type assertions</a> section of <a href="http://www.typescriptlang.org/docs/handbook/advanced-types.html" target="_blank">Advanced Types</a>.</p>
 
-<h4 id="dictionary-typing-using-enum">Dictionary typing using enum</h4>
+<h5 id="dictionary-typing-using-enum">Dictionary typing using enum</h5>
 
 <pre><code class="language-ts">enum Var {
     X = &quot;x&quot;,
@@ -1194,7 +1192,7 @@ sh 'yarn type-check'
 touch .storybook/config.js .storybook/addons.js .storybook/webpack.config.js
 </code></pre>
 
-<h2 id="phase-4-regression-testing">Phase 4 Regression Testing</h2>
+<h2 id="phase-3-regression-testing">Phase 3 Regression Testing</h2>
 
 <ul>
 <li>Re-run unit tests to make sure they all pass</li>

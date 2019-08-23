@@ -294,6 +294,7 @@
 <li><a href="#find">Find</a></li>
 <li><a href="#childat-vs-at">childAt vs at</a></li>
 <li><a href="#testing-events">Testing Events</a></li>
+<li><a href="#testing-a-collection">Testing A Collection</a></li>
 <li><a href="#testing-react-component-methods">Testing React component methods</a></li>
 <li><a href="#checking-method-in-props">Checking Method In Props</a></li>
 <li><a href="#spy-on-component-methods">Spy on component methods</a></li>
@@ -565,7 +566,41 @@ const textInParagraph = paragraph.at(0).childAt(0).text()
     });
   });
 });
+</code></pre>
 
+<h2 id="testing-a-collection">Testing A Collection</h2>
+
+<p>Use <code>each()</code>. For example, if we have a function <code>increment</code></p>
+
+<pre><code class="language-javascript">const increment = (val) =&gt; {
+  const parsedInt = parseInt(val, 10);
+  if (Number.isNaN(parsedInt)) return undefined;
+  return parsedInt + 1;
+};
+</code></pre>
+
+<pre><code class="language-javascript">test.each([
+    [-1, 0],
+    [0, 1],
+    [1, 2],
+    [1.5, 2]
+    [&quot;2&quot;, 3],
+    [&quot;foo&quot;, undefined],
+    [null, undefined]
+])(&quot;increment %s&quot;, (val, expectedRes) =&gt; {
+    expect(increment(val)).toBe(expectedRes);
+});
+</code></pre>
+
+<p>This will be printed out in console:</p>
+
+<pre><code>✓ increment -1
+✓ increment 0 (1ms)
+✓ increment 1
+✓ increment 1.5
+✓ increment 2
+✓ increment foo
+✓ increment null (1ms)
 </code></pre>
 
 <h2 id="testing-react-component-methods">Testing React component methods</h2>
