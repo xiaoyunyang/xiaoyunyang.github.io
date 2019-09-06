@@ -925,6 +925,15 @@ export type IcfSegment = GenericIcf&lt;number&gt;
 
 <p>TypeScript supports many Generic types like <code>Record</code> and <code>ArrayLike</code>. See <a href="https://github.com/microsoft/TypeScript/blob/master/lib/lib.es5.d.ts" target="_blank">lib.es5.d.ts</a> for a complete listing.</p>
 
+<p>Note, in Flow, here&rsquo;s how you extend a type:</p>
+
+<pre><code class="language-js">type PremiumUser {
+    ...User,
+    annualPlan: boolean,
+    monthlyPlan: boolean
+}
+</code></pre>
+
 <h4 id="class">Class</h4>
 
 <p>In the previous section, we saw that both <code>interface</code> and <code>class</code> can be used to create generic types. But this begs the question: what&rsquo;s the difference between <code>interface</code> and <code>class</code>?</p>
@@ -943,7 +952,18 @@ export type IcfSegment = GenericIcf&lt;number&gt;
 
 <h4 id="enum">Enum</h4>
 
-<p>This section only deals with TypeScript since Flow does not support enum. Enum in TypeScript allow us to make a collection of constants as types. Some examples</p>
+<p>This section only deals with TypeScript since Flow does not support enum, rather, to get the same result as enum in Flow, you have to do something like this:</p>
+
+<pre><code class="language-js">FilterTypes = {
+    ALL: &quot;ALL&quot;,
+    COMPLETED: &quot;COMPLETED&quot;,
+    UNASSIGNED: &quot;UNASSIGNED&quot;
+}
+
+const currentFilter: $Keys&lt;typeof FilterTypes&gt; = FilterTypes.ALL
+</code></pre>
+
+<p>Enum in TypeScript allow us to make a collection of constants as types. Some examples:</p>
 
 <p>Combining two enums</p>
 
@@ -1494,6 +1514,44 @@ s.setAttribute('data-timestamp', +new Date());
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/">
+                <h3 class="media-heading">What Happens Under the Hood When you Visit a Website</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This post is inspired by my recent experience interviewing for a developer role. During few of the the initial phone screens, I was asked the question:</p>
+
+<blockquote>
+<p>Tell me what happens under the hood when you visit a website.</p>
+</blockquote></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
+                <h3 class="media-heading">JavaScript Antipatterns to Avoid</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Sourcemaking provides a great discussions on all the anti-patterns.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/">
                 <h3 class="media-heading">Beyond Minimum Viable Product: A Lesson on Building Production-ready Software</h3>
               </a>
@@ -1664,44 +1722,6 @@ s.setAttribute('data-timestamp', +new Date());
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/">
-                <h3 class="media-heading">Security Considerations for Web Applications and Best Practices</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/">
-                <h3 class="media-heading">Cribsheet for JavaScript Coding Interview</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Oct 10, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:</p>
-
-<blockquote>
-<p>Can you be productive with JavaScript?</p>
-</blockquote></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -1709,7 +1729,7 @@ s.setAttribute('data-timestamp', +new Date());
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         38 posts found
+         40 posts found
       </p>
     </div>
   </div>

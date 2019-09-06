@@ -418,6 +418,8 @@ This post is a WIP.">
 
 <ul>
 <li><a href="https://trackjs.com" target="_blank">TrackJS</a> - JavaScript Error Tracking</li>
+<li>Rollbar</li>
+<li>Splunk</li>
 <li><a href="https://www.opsgenie.com/" target="_blank">Opsgenie</a> - Integrates with TrackJS and sends a notification to the people on call When error rate increases beyond a certain threshold.</li>
 <li>Create <code>emergency</code> channel on Slack.</li>
 </ul>
@@ -429,18 +431,18 @@ This post is a WIP.">
 
 <h1 id="refactoring">Refactoring</h1>
 
-<p>Good software design hides complexity with abstraction.</p>
+<p>Every refactoring has the potential to break existing functionality. Before attempting a refactor, make sure to reduce the the risks of breaking something by</p>
 
-<p>Every refactoring has the potential to break existing functionality. Make sure to write some tests before you start refactoring.</p>
+<ul>
+<li>Writing unit tests - Having existing unit tests in place to help you understand the impact of your refactoring is very important.</li>
+<li>Add static typing to code - it&rsquo;s scary to make changes to untyped code.</li>
+</ul>
 
-<p>Whenever you are adding a new feature to a component and you find yourself copying-and-pasting a block of code from another component , that’s when you know you should add a method to your utilities class to share this block of code between the components.</p>
+<p>Whenever you are adding a new feature to a component and you find yourself copying-and-pasting a block of code from another component, that’s when you know you should add a method to your utilities class to share this block of code between the components. Good software design hides complexity with abstraction.</p>
 
 <p>Avoid pre-mature optimization. Avoid writing throwaway code (tests for WIP code) Once your design approach and implementation is firmed up, add tests. Refactoring vs not refactoring. Some considerations:</p>
 
-<pre><code>// TODO: add list of considerations
-</code></pre>
-
-<p>Having existing unit tests in place to help you understand the impact of your refactoring is very important. Make sure to use good version control. What I like to do is to refactor something small, test, commit, repeat.</p>
+<p>Make sure to use good version control. What I like to do is to refactor something small, test, commit, repeat.</p>
 
 <h2 id="cost-of-refactoring">Cost of Refactoring</h2>
 
@@ -869,7 +871,7 @@ Use Lerna.</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/" data-tooltip="JavaScript Antipatterns to Avoid">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -972,7 +974,7 @@ s.setAttribute('data-timestamp', +new Date());
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/" data-tooltip="JavaScript Antipatterns to Avoid">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -1109,6 +1111,44 @@ s.setAttribute('data-timestamp', +new Date());
       <div class="no-result text-color-light text-center">no post found</div>
       <div class="results">
         
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/what-happens-under-the-hood-when-you-visit-a-website/">
+                <h3 class="media-heading">What Happens Under the Hood When you Visit a Website</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>This post is inspired by my recent experience interviewing for a developer role. During few of the the initial phone screens, I was asked the question:</p>
+
+<blockquote>
+<p>Tell me what happens under the hood when you visit a website.</p>
+</blockquote></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
+                <h3 class="media-heading">JavaScript Antipatterns to Avoid</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Sourcemaking provides a great discussions on all the anti-patterns.</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
         
           <div class="media">
             
@@ -1283,44 +1323,6 @@ s.setAttribute('data-timestamp', +new Date());
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/">
-                <h3 class="media-heading">Security Considerations for Web Applications and Best Practices</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/">
-                <h3 class="media-heading">Cribsheet for JavaScript Coding Interview</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Oct 10, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:</p>
-
-<blockquote>
-<p>Can you be productive with JavaScript?</p>
-</blockquote></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -1328,7 +1330,7 @@ s.setAttribute('data-timestamp', +new Date());
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         38 posts found
+         40 posts found
       </p>
     </div>
   </div>
