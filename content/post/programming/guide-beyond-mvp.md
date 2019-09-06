@@ -110,6 +110,8 @@ While New Relic helps you gathers aggregate data on how your product is being us
 ## Error Tracking
 
 - [TrackJS](https://trackjs.com) - JavaScript Error Tracking
+- Rollbar
+- Splunk
 - [Opsgenie](https://www.opsgenie.com/) - Integrates with TrackJS and sends a notification to the people on call When error rate increases beyond a certain threshold.
 - Create `emergency` channel on Slack.
 
@@ -121,19 +123,16 @@ While New Relic helps you gathers aggregate data on how your product is being us
 
 # Refactoring
 
-Good software design hides complexity with abstraction.
+Every refactoring has the potential to break existing functionality. Before attempting a refactor, make sure to reduce the the risks of breaking something by
 
-Every refactoring has the potential to break existing functionality. Make sure to write some tests before you start refactoring.
+- Writing unit tests - Having existing unit tests in place to help you understand the impact of your refactoring is very important.
+- Add static typing to code - it's scary to make changes to untyped code.
 
-Whenever you are adding a new feature to a component and you find yourself copying-and-pasting a block of code from another component , that’s when you know you should add a method to your utilities class to share this block of code between the components.
+Whenever you are adding a new feature to a component and you find yourself copying-and-pasting a block of code from another component, that’s when you know you should add a method to your utilities class to share this block of code between the components. Good software design hides complexity with abstraction.
 
 Avoid pre-mature optimization. Avoid writing throwaway code (tests for WIP code) Once your design approach and implementation is firmed up, add tests. Refactoring vs not refactoring. Some considerations:
 
-```
-// TODO: add list of considerations
-```
-
-Having existing unit tests in place to help you understand the impact of your refactoring is very important. Make sure to use good version control. What I like to do is to refactor something small, test, commit, repeat.
+Make sure to use good version control. What I like to do is to refactor something small, test, commit, repeat.
 
 ## Cost of Refactoring
 

@@ -630,6 +630,16 @@ For more on Generics in TypeScript See the [TypeScript handbook](https://www.typ
 
 TypeScript supports many Generic types like `Record` and `ArrayLike`. See [lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/master/lib/lib.es5.d.ts) for a complete listing.
 
+Note, in Flow, here's how you extend a type:
+
+```js
+type PremiumUser {
+    ...User,
+    annualPlan: boolean,
+    monthlyPlan: boolean
+}
+```
+
 #### Class
 
 In the previous section, we saw that both `interface` and `class` can be used to create generic types. But this begs the question: what's the difference between `interface` and `class`?
@@ -648,7 +658,19 @@ In TypeScript, we use `ObjectType[]`, which is a shorthand for `Array<ObjectType
 
 #### Enum
 
-This section only deals with TypeScript since Flow does not support enum. Enum in TypeScript allow us to make a collection of constants as types. Some examples
+This section only deals with TypeScript since Flow does not support enum, rather, to get the same result as enum in Flow, you have to do something like this:
+
+```js
+FilterTypes = {
+    ALL: "ALL",
+    COMPLETED: "COMPLETED",
+    UNASSIGNED: "UNASSIGNED"
+}
+
+const currentFilter: $Keys<typeof FilterTypes> = FilterTypes.ALL
+```
+
+Enum in TypeScript allow us to make a collection of constants as types. Some examples:
 
 Combining two enums
 

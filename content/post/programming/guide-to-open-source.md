@@ -25,7 +25,24 @@ This post is a WIP.
 <!--more-->
 <!--toc-->
 
+# Specific Techniques
+
+## Theming
+
+Default override
+
+## Dependency Injection
+
+Similar to the Angular pattern
+
+## Mono Repo
+
 # Road to Open Sourcing
+
+## Need Milestones
+
+{{< image classes="fancybox fig-100 clear" src="/post/images/react-process-flowchart/epic-task.png"
+thumbnail="/post/images/react-process-flowchart/epic-task.png">}}
 
 Hardest part is to decouple library logic with application logic.
 
