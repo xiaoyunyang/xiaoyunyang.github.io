@@ -3,65 +3,60 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://xiaoyunyang.github.io/categories/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/guide/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/javascript/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/software-design/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/categories/blog/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+    <loc>https://xiaoyunyang.github.io/categories/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/guide/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/javascript/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/post/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/software-design/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://xiaoyunyang.github.io/tags/typescript/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/categories/blog/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
