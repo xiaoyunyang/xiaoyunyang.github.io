@@ -314,6 +314,8 @@ Use this PR Template. Simply add `pull-request-template.md` to the root of your 
 
 ```
 
+In the Notable Changes section, make sure to reference specific lines of code (the most important ones) and/or files, in addition to describing what the changes are about and the high level design. This saves a lot of time for the reviewer and improves the experience of the review process.
+
 ## Agile and Jira
 
 New concepts:

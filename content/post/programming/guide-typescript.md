@@ -640,6 +640,16 @@ type PremiumUser {
 }
 ```
 
+There is a [gotcha](https://github.com/flowtype/flow-bin/issues/93) with combining types like this in flow. Using object spread to combine types makes the combined types optional. Using `$Exact` when spreading properties solves that problem.
+
+```js
+type PremiumUser {
+    ...$Exact<User>,
+    annualPlan: boolean,
+    monthlyPlan: boolean
+}
+```
+
 #### Class
 
 In the previous section, we saw that both `interface` and `class` can be used to create generic types. But this begs the question: what's the difference between `interface` and `class`?
