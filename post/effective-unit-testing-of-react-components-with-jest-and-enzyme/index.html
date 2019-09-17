@@ -309,6 +309,7 @@
 </ul></li>
 <li><a href="#debugging">Debugging</a></li>
 <li><a href="#async-await">Async/Await</a></li>
+<li><a href="#document-and-element-with-timeout">Document and Element With Timeout</a></li>
 </ul></li>
 <li><a href="#resources">Resources</a></li>
 </ul>
@@ -654,7 +655,7 @@ const textInParagraph = paragraph.at(0).childAt(0).text()
 
 <p>Suppose we have a <code>App</code> component that uses the <code>Counter</code> component.</p>
 
-<pre><code class="language-javascript">class App extends Reac.PureComponent {
+<pre><code class="language-javascript">class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.updateCounterBound = this.updateCounter.bind(this);
@@ -883,7 +884,7 @@ describe(&quot;flashNameChange&quot;, () =&gt; {
      });
   });
 
-  test(&quot;should set textColor back to blakc after FLASH_CHANGE_DURATION elapsed&quot;, async () =&gt; {
+  test(&quot;should set textColor back to black after FLASH_CHANGE_DURATION elapsed&quot;, async () =&gt; {
     await wrapper.instance().flashNameChange({ newName });
 
     expect(wrapper.instance().state.textColor).toEqual(&quot;black&quot;);
@@ -893,6 +894,152 @@ describe(&quot;flashNameChange&quot;, () =&gt; {
 </code></pre>
 
 <p>See <a href="https://github.com/facebook/jest/issues/5055" target="_blank">this</a> for more information on timeouts.</p>
+
+<h2 id="document-and-element-with-timeout">Document and Element With Timeout</h2>
+
+<p>Let&rsquo;s walk through a difficult example testing a component which have a lot of UI effects. Suppose you have a component that scrolls into view on an element upon initial mount.</p>
+
+<pre><code class="language-js">const FLASH_DURATION = 3000; // 3 seconds
+const delay = (ms: number) =&gt; new Promise&lt;any&gt;(res =&gt; setTimeout(res, ms));
+
+const validElementIds = [
+  &quot;section1&quot;, &quot;section2&quot;, &quot;section3&quot;
+];
+
+class Page extends React.PureComponent {
+  componentIsMounted = false; // Needed to prevent memory leak
+  constructor(props) {
+    super(props);
+    this.state = {
+      highlightSection: false
+    }
+  }
+  componentDidMount() {
+    this.componentIsMounted = true;
+    const { scrollTo } = this.props;
+
+    if (!scrollTo) return;
+
+    const elementId = scrollTo;
+    const element = document.getElementById(elementId);
+
+    if (!element) return;
+
+    this.scrollToElement(element);
+  }
+  componentWillUnmount() {
+    this.componentIsMounted = false;
+  }
+  async scrollToElement(element: HTMLElement) {
+    element.scrollIntoView({ behavior: &quot;smooth&quot;, block: &quot;center&quot; });
+
+    if (!this.componentIsMounted) return;
+
+    this.setState({
+      highlightSection: true
+    });
+
+    await delay(FLASH_DURATION);
+
+    if (!this.componentIsMounted) return;
+
+    this.setState({
+        highlightSection: false
+    });
+  }
+  render() {
+    const { scrollTo } = this.props;
+    const { highlightSection } = this.state;
+    const sectionClassName = validElementIds.map(elementId =&gt;
+      (elementId === scrollTo &amp;&amp; highlightSection) ? styles.highlightedSection : &quot;&quot;
+    );
+    return (
+      &lt;div&gt;
+        { validElementIds.map((id, i) =&gt;
+            &lt;p key={id} id={id} className={sectionClassName[i]}&gt;)
+        }
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+
+<p>There is a few thing about this component that makes it harder to test:</p>
+
+<ol>
+<li><code>scrollTo</code></li>
+<li>element selection.</li>
+<li>Setting state based on a timer.</li>
+</ol>
+
+<p>Let&rsquo;s write a test for this component.</p>
+
+<p>To address the <code>document.getElementById() returns null</code> error, we follow the advice from <a href="https://stackoverflow.com/questions/43694975/jest-enzyme-using-mount-document-getelementbyid-returns-null-on-componen" target="_blank">here</a> to mount with <code>attachTo</code> param.</p>
+
+<p>To address the <code>cannot scrollIntoView of null</code> error, we follow the advice from <a href="https://stackoverflow.com/questions/51527362/testing-scrollintoview-jest?rq=1" target="_blank">here</a> to manually include a <code>scrollIntoView</code> spy in <code>window.HTMLElement.prototype</code>.</p>
+
+<pre><code class="language-js">describe(&quot;Page component&quot;, () =&gt; {
+  let page;
+  beforeEach(() =&gt; {
+    const div = document.createElement(&quot;div&quot;);
+    window.domNode = div;
+    document.body.appendChild(div);
+    scrollIntoViewSpy = jest.fn();
+    window.HTMLElement.prototype.scrollIntoView = scrollIntoViewSpy;
+
+    page = mount(
+      &lt;Page scrollTo={validElementIds[0]}&gt;,
+      { attachTo: window.domNode }
+    )
+  });
+});
+</code></pre>
+
+<p>Then we can add the following tests to verify that when provided with a valid <code>elementId</code>, our component scrolls to that element and highlights it upon mount.</p>
+
+<pre><code class="language-js">describe(&quot;Scroll to and highlight Section based on scrollTo&quot;, () =&gt; {
+  test.each(
+    [[undefined], [&quot;invalid sectionId&quot;]]
+  )(&quot;scrolls to and highlights section when scrollTo = %s&quot;, (elementId) =&gt; {
+      page = mount(
+          &lt;Page scrollTo={elementId} /&gt;,
+          { attachTo: window.domNode }
+      );
+      expect(page.state().highlightSection).toBe(false);
+      expect(scrollIntoViewSpy).toHaveBeenCalledTimes(0);
+  });
+  test.each(
+    validElementIds
+  )(&quot;scrolls to and highlights section when scrollTo = %s&quot;, (elementId) =&gt; {
+      page = mount(
+          &lt;Page scrollTo={elementId} /&gt;,
+          { attachTo: window.domNode }
+      );
+      expect(page.state().highlightSection).toBe(true);
+      expect(scrollIntoViewSpy).toHaveBeenCalledTimes(1);
+      const element = page.find(`#${elementId}`);
+      expect(element.hasClass(&quot;highlightedSection&quot;)).toBe(true);
+  });
+});
+</code></pre>
+
+<p>Finally, we also want to test that the highlight is removed after a specified duration.</p>
+
+<pre><code class="language-js">test(&quot;should set highlightSection to false after flash duration elapses after mount&quot;, async () =&gt; {
+    const elementId = validElementIds[0];
+
+    page = mount(
+        &lt;Page scrollTo={elementId} /&gt;,
+        { attachTo: window.domNode }
+    );
+
+    await page.instance().scrollToElement(
+        document.getElementById(elementId)
+    );
+
+    expect(userPreferencesForm.state().highlightSection).toBe(false);
+}, FLASH_DURATION * 2);
+</code></pre>
 
 <h1 id="resources">Resources</h1>
 

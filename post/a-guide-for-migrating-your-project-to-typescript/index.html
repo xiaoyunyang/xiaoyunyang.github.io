@@ -934,6 +934,15 @@ export type IcfSegment = GenericIcf&lt;number&gt;
 }
 </code></pre>
 
+<p>There is a <a href="https://github.com/flowtype/flow-bin/issues/93" target="_blank">gotcha</a> with combining types like this in flow. Using object spread to combine types makes the combined types optional. Using <code>$Exact</code> when spreading properties solves that problem.</p>
+
+<pre><code class="language-js">type PremiumUser {
+    ...$Exact&lt;User&gt;,
+    annualPlan: boolean,
+    monthlyPlan: boolean
+}
+</code></pre>
+
 <h4 id="class">Class</h4>
 
 <p>In the previous section, we saw that both <code>interface</code> and <code>class</code> can be used to create generic types. But this begs the question: what&rsquo;s the difference between <code>interface</code> and <code>class</code>?</p>
