@@ -1,5 +1,5 @@
 ---
-title: "A Guide to Open Source"
+title: "A Guide to Open Sourcing"
 date: 2019-08-21
 draft: true
 categories:

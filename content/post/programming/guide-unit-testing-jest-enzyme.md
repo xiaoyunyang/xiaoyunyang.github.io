@@ -403,6 +403,10 @@ test("renders Counter with right props", () => {
 })
 ```
 
+What about checking for higher order functions?
+
+In general, you should not compare functions directly. Instead, you should compare the values that they return. If two functions perform the same calculation, you can check that they both return the same value for the same input.
+
 ## Spy on component methods
 
 Using the `Counter` example from before
@@ -429,6 +433,22 @@ describe("incrementValue", () => {
   });
 });
 ```
+
+You can also check for the argument that a mock function is called with:
+
+```javascript
+expect(setValueSpy).toHaveBeenNthCalledWith(1, { newVal: 2 });
+```
+
+If you want to independently check the arguments in the jest mock function:
+
+```javascript
+const [arg1, arg2] = addSpy.mock.calls[0];
+expect(arg1).toEqual(expectedArg1);
+expect(arg2).toEqual(expectedArg2);
+```
+
+`addSpy.mock.calls[0]` provides the arguments for the first request while `addSpy.mock.calls[1]` provides the arguments for the second request.
 
 ## Shallow vs Mount
 
@@ -572,10 +592,6 @@ expect(foo.find("p").text()).toBe("Hello");
 
 Same with `setState`, if you setProp, you need to reselect everything before checking with `expect`.
 
-
-
-
-
 ## Debugging
 
 Use `debug()`
@@ -624,6 +640,15 @@ describe("flashNameChange", () => {
 ```
 
 See [this](https://github.com/facebook/jest/issues/5055) for more information on timeouts.
+
+
+## Spying on Async Functions
+
+```javascript
+makeRequestSpy = jest.spyOn(ApiRequestUtils, "makeRequest").mockImplementation(
+  () => Promise.resolve({ code: "SUCCESS", data: {  } })
+);
+```
 
 ## Document and Element With Timeout
 
