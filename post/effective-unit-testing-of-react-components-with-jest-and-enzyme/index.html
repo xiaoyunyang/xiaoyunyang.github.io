@@ -309,6 +309,7 @@
 </ul></li>
 <li><a href="#debugging">Debugging</a></li>
 <li><a href="#async-await">Async/Await</a></li>
+<li><a href="#spying-on-async-functions">Spying on Async Functions</a></li>
 <li><a href="#document-and-element-with-timeout">Document and Element With Timeout</a></li>
 </ul></li>
 <li><a href="#resources">Resources</a></li>
@@ -690,6 +691,10 @@ const textInParagraph = paragraph.at(0).childAt(0).text()
 })
 </code></pre>
 
+<p>What about checking for higher order functions?</p>
+
+<p>In general, you should not compare functions directly. Instead, you should compare the values that they return. If two functions perform the same calculation, you can check that they both return the same value for the same input.</p>
+
 <h2 id="spy-on-component-methods">Spy on component methods</h2>
 
 <p>Using the <code>Counter</code> example from before</p>
@@ -715,6 +720,20 @@ const textInParagraph = paragraph.at(0).childAt(0).text()
   });
 });
 </code></pre>
+
+<p>You can also check for the argument that a mock function is called with:</p>
+
+<pre><code class="language-javascript">expect(setValueSpy).toHaveBeenNthCalledWith(1, { newVal: 2 });
+</code></pre>
+
+<p>If you want to independently check the arguments in the jest mock function:</p>
+
+<pre><code class="language-javascript">const [arg1, arg2] = addSpy.mock.calls[0];
+expect(arg1).toEqual(expectedArg1);
+expect(arg2).toEqual(expectedArg2);
+</code></pre>
+
+<p><code>addSpy.mock.calls[0]</code> provides the arguments for the first request while <code>addSpy.mock.calls[1]</code> provides the arguments for the second request.</p>
 
 <h2 id="shallow-vs-mount">Shallow vs Mount</h2>
 
@@ -894,6 +913,13 @@ describe(&quot;flashNameChange&quot;, () =&gt; {
 </code></pre>
 
 <p>See <a href="https://github.com/facebook/jest/issues/5055" target="_blank">this</a> for more information on timeouts.</p>
+
+<h2 id="spying-on-async-functions">Spying on Async Functions</h2>
+
+<pre><code class="language-javascript">makeRequestSpy = jest.spyOn(ApiRequestUtils, &quot;makeRequest&quot;).mockImplementation(
+  () =&gt; Promise.resolve({ code: &quot;SUCCESS&quot;, data: {  } })
+);
+</code></pre>
 
 <h2 id="document-and-element-with-timeout">Document and Element With Timeout</h2>
 
