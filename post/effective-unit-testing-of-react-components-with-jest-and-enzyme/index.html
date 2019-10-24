@@ -294,6 +294,7 @@
 <li><a href="#find">Find</a></li>
 <li><a href="#childat-vs-at">childAt vs at</a></li>
 <li><a href="#testing-events">Testing Events</a></li>
+<li><a href="#testing-callback">Testing Callback</a></li>
 <li><a href="#testing-a-collection">Testing A Collection</a></li>
 <li><a href="#testing-react-component-methods">Testing React component methods</a></li>
 <li><a href="#checking-method-in-props">Checking Method In Props</a></li>
@@ -570,6 +571,23 @@ const textInParagraph = paragraph.at(0).childAt(0).text()
 });
 </code></pre>
 
+<h2 id="testing-callback">Testing Callback</h2>
+
+<p><code>fetch()</code> allows you to make network requests and is a built-in JavaScript function. <code>fetch()</code> uses <code>Promise</code>. If you need to test code that is executed after the response is received, the best approach is to mock <code>fetch</code> implementation as follows:</p>
+
+<pre><code class="language-javascript">global.fetch = jest.fn().mockImplementation(() =&gt; {
+  const p = new Promise((resolve) =&gt; {
+    resolve({
+      status: 200,
+      json: () =&gt; p
+    });
+  });
+  return p;
+});
+</code></pre>
+
+<p>Add this code to <code>beforeEach</code>.</p>
+
 <h2 id="testing-a-collection">Testing A Collection</h2>
 
 <p>Use <code>each()</code>. For example, if we have a function <code>increment</code></p>
@@ -720,6 +738,8 @@ const textInParagraph = paragraph.at(0).childAt(0).text()
   });
 });
 </code></pre>
+
+<p>We use <code>jest.fn()</code> to create a <a href="https://jestjs.io/docs/en/mock-functions" target="_blank">Jest mock function</a>.</p>
 
 <p>You can also check for the argument that a mock function is called with:</p>
 
@@ -1091,6 +1111,7 @@ class Page extends React.PureComponent {
 <li><a href="https://doc.ebichu.cc/jest/docs/en/expect.html" target="_blank">Jest Docs</a></li>
 <li><a href="https://jestjs.io/docs/en/expect" target="_blank">Jest Expect Docs</a></li>
 <li><a href="https://benmccormick.org/2017/08/15/jest-matchers-1/" target="_blank">Taking Advantage of Jest Matchers</a></li>
+<li><a href="https://medium.com/@deanslamajr/jest-fn-all-the-things-d26f3b929986" target="_blank">Mocking Function using jest.fn</a></li>
 </ul>
               
             </div>
