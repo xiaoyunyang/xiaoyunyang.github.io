@@ -275,6 +275,24 @@ describe("submit", () => {
 });
 ```
 
+## Testing Callback
+
+`fetch()` allows you to make network requests and is a built-in JavaScript function. `fetch()` uses `Promise`. If you need to test code that is executed after the response is received, the best approach is to mock `fetch` implementation as follows:
+
+```javascript
+global.fetch = jest.fn().mockImplementation(() => {
+  const p = new Promise((resolve) => {
+    resolve({
+      status: 200,
+      json: () => p
+    });
+  });
+  return p;
+});
+```
+
+Add this code to `beforeEach`.
+
 ## Testing A Collection
 
 Use `each()`. For example, if we have a function `increment`
@@ -433,6 +451,8 @@ describe("incrementValue", () => {
   });
 });
 ```
+
+We use `jest.fn()` to create a [Jest mock function](https://jestjs.io/docs/en/mock-functions).
 
 You can also check for the argument that a mock function is called with:
 
@@ -820,3 +840,4 @@ Cheatsheets
 - [Jest Docs](https://doc.ebichu.cc/jest/docs/en/expect.html)
 - [Jest Expect Docs](https://jestjs.io/docs/en/expect)
 - [Taking Advantage of Jest Matchers](https://benmccormick.org/2017/08/15/jest-matchers-1/)
+- [Mocking Function using jest.fn](https://medium.com/@deanslamajr/jest-fn-all-the-things-d26f3b929986)
