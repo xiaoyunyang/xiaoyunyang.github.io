@@ -924,22 +924,118 @@ stage('Type Check') {
 
 #### Storybook
 
-Guides
+Easy set up
+
+1. Add Storybook for React
+
+    ```bash
+    npx -p @storybook/cli sb init --type react
+    ```
+
+    This create a `.storybook` directory at the root of your project. Alternatively, you can do everything manually. 
+
+    Add all the dependencies
+
+    ```bash
+    yarn add -d @babel/core @storybook/addon-actions @storybook/addon-links @storybook/addons @storybook/react babel-loader
+    ```
+
+    ```bash
+    yarn add -D @storybook/react @storybook/addon-info @storybook/addon-jest @storybook/addon-knobs @storybook/addon-options @storybook/addons @storybook/react storybook-addon-jsx @types/react babel-core typescript awesome-typescript-loader react-docgen-typescript-webpack-plugin jest @types/jest ts-jest
+    ```
+
+    Create the files and folders
+
+    ```bash
+    mkdir .storybook
+    touch .storybook/config.js .storybook/addons.js .storybook/webpack.config.js
+    ```
+
+2. Add add-ons for Storybook
+
+    ```bash
+    yarn add -D @storybook/addon-storysource @storybook/addon-knobs storybook-addon-jsx
+    ```
+
+3. Add the dependencies for typescript loader:
+
+    ```bash
+    yarn add awesome-typescript-loader @storybook/addon-info react-docgen-typescript-loader
+    ```
+
+4. In `tsconfig.json`, make sure `compilerOptions` has the following attribute:
+
+    ```js
+    "jsx": "react"
+    ```
+
+    And make sure `rootDir` includes `stories`:
+
+    ```js
+    "rootDirs": [
+        "src", "stories"
+    ],
+    ```
+
+5. Update `.storybook/config.js`:
+
+    ```js
+    import { configure } from '@storybook/react';
+    import { setAddon, addDecorator } from '@storybook/react';
+    import JSXAddon from 'storybook-addon-jsx';
+    import { withKnobs, select } from '@storybook/addon-knobs/react';
+
+
+    addDecorator(withKnobs);
+    setAddon(JSXAddon);
+
+    // automatically import all files ending in *.stories.js
+    const req = require.context('../stories', true, /.stories.(t|j)sx?$/);
+
+    function loadStories() {
+    req.keys().forEach(filename => req(filename));
+    }
+
+    configure(loadStories, module);
+    ```
+
+6. Add `.storybook/webpack.config.js`:
+
+    ```js
+    module.exports = ({ config }) => {
+        config.module.rules.push({
+            test: /\.stories\.jsx?$/,
+            use: [
+            {
+                loader: require.resolve('@storybook/addon-storysource/loader')
+            },
+            ],
+        });
+        config.module.rules.push({
+            test: /\.stories\.tsx?$/,
+            use: [
+            {
+                loader: require.resolve('awesome-typescript-loader'),
+            },
+            // Optional
+            {
+                loader: require.resolve('react-docgen-typescript-loader'),
+            }
+            ],
+        });
+        config.resolve.extensions.push('.ts', '.tsx');
+        return config;
+    };
+    ```
+
+    This configuration gives us the ability to load both js and ts stories.
+
+Guides and Resources
+
 - https://storybook.js.org/docs/configurations/typescript-config/
 - https://dev.to/swyx/quick-guide-to-setup-your-react--typescript-storybook-design-system-1c51 with [sample project](https://github.com/sw-yx/react-typescript-storybook-starter)
-
-Add all the dependencies
-
-```
-yarn add -D @storybook/react @storybook/addon-info @storybook/addon-jest @storybook/addon-knobs @storybook/addon-options @storybook/addons @storybook/react storybook-addon-jsx @types/react babel-core typescript awesome-typescript-loader react-docgen-typescript-webpack-plugin jest @types/jest ts-jest
-```
-
-Create a `.storybook` directory at the root of your project
-
-```
-mkdir .storybook
-touch .storybook/config.js .storybook/addons.js .storybook/webpack.config.js
-```
+- [Quick guide to storybook TS setup](https://dev.to/swyx/quick-guide-to-setup-your-react--typescript-storybook-design-system-1c51)
+- https://github.com/storybookjs/storybook/issues/4739
 
 ## Phase 3 Regression Testing
 

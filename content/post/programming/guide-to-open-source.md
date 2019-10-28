@@ -48,6 +48,11 @@ Hardest part is to decouple library logic with application logic.
 
 This could take many steps. I did it in phases:
 
+## Process
+
+1. Bootstrap in CRA
+2. Migrate to Storybook
+
 ## Phase 1
 
 Remove proprietary information
