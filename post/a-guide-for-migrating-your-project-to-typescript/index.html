@@ -1206,20 +1206,112 @@ sh 'yarn type-check'
 
 <h4 id="storybook">Storybook</h4>
 
-<p>Guides
-- <a href="https://storybook.js.org/docs/configurations/typescript-config/" target="_blank">https://storybook.js.org/docs/configurations/typescript-config/</a>
-- <a href="https://dev.to/swyx/quick-guide-to-setup-your-react--typescript-storybook-design-system-1c51" target="_blank">https://dev.to/swyx/quick-guide-to-setup-your-react--typescript-storybook-design-system-1c51</a> with <a href="https://github.com/sw-yx/react-typescript-storybook-starter" target="_blank">sample project</a></p>
+<p>Easy set up</p>
+
+<ol>
+<li><p>Add Storybook for React</p>
+
+<pre><code class="language-bash">npx -p @storybook/cli sb init --type react
+</code></pre>
+
+<p>This create a <code>.storybook</code> directory at the root of your project. Alternatively, you can do everything manually.</p>
 
 <p>Add all the dependencies</p>
 
-<pre><code>yarn add -D @storybook/react @storybook/addon-info @storybook/addon-jest @storybook/addon-knobs @storybook/addon-options @storybook/addons @storybook/react storybook-addon-jsx @types/react babel-core typescript awesome-typescript-loader react-docgen-typescript-webpack-plugin jest @types/jest ts-jest
+<pre><code class="language-bash">yarn add -d @babel/core @storybook/addon-actions @storybook/addon-links @storybook/addons @storybook/react babel-loader
 </code></pre>
 
-<p>Create a <code>.storybook</code> directory at the root of your project</p>
+<pre><code class="language-bash">yarn add -D @storybook/react @storybook/addon-info @storybook/addon-jest @storybook/addon-knobs @storybook/addon-options @storybook/addons @storybook/react storybook-addon-jsx @types/react babel-core typescript awesome-typescript-loader react-docgen-typescript-webpack-plugin jest @types/jest ts-jest
+</code></pre>
 
-<pre><code>mkdir .storybook
+<p>Create the files and folders</p>
+
+<pre><code class="language-bash">mkdir .storybook
 touch .storybook/config.js .storybook/addons.js .storybook/webpack.config.js
+</code></pre></li>
+
+<li><p>Add add-ons for Storybook</p>
+
+<pre><code class="language-bash">yarn add -D @storybook/addon-storysource @storybook/addon-knobs storybook-addon-jsx
+</code></pre></li>
+
+<li><p>Add the dependencies for typescript loader:</p>
+
+<pre><code class="language-bash">yarn add awesome-typescript-loader @storybook/addon-info react-docgen-typescript-loader
+</code></pre></li>
+
+<li><p>In <code>tsconfig.json</code>, make sure <code>compilerOptions</code> has the following attribute:</p>
+
+<pre><code class="language-js">&quot;jsx&quot;: &quot;react&quot;
 </code></pre>
+
+<p>And make sure <code>rootDir</code> includes <code>stories</code>:</p>
+
+<pre><code class="language-js">&quot;rootDirs&quot;: [
+    &quot;src&quot;, &quot;stories&quot;
+],
+</code></pre></li>
+
+<li><p>Update <code>.storybook/config.js</code>:</p>
+
+<pre><code class="language-js">import { configure } from '@storybook/react';
+import { setAddon, addDecorator } from '@storybook/react';
+import JSXAddon from 'storybook-addon-jsx';
+import { withKnobs, select } from '@storybook/addon-knobs/react';
+
+
+addDecorator(withKnobs);
+setAddon(JSXAddon);
+
+// automatically import all files ending in *.stories.js
+const req = require.context('../stories', true, /.stories.(t|j)sx?$/);
+
+function loadStories() {
+req.keys().forEach(filename =&gt; req(filename));
+}
+
+configure(loadStories, module);
+</code></pre></li>
+
+<li><p>Add <code>.storybook/webpack.config.js</code>:</p>
+
+<pre><code class="language-js">module.exports = ({ config }) =&gt; {
+    config.module.rules.push({
+        test: /\.stories\.jsx?$/,
+        use: [
+        {
+            loader: require.resolve('@storybook/addon-storysource/loader')
+        },
+        ],
+    });
+    config.module.rules.push({
+        test: /\.stories\.tsx?$/,
+        use: [
+        {
+            loader: require.resolve('awesome-typescript-loader'),
+        },
+        // Optional
+        {
+            loader: require.resolve('react-docgen-typescript-loader'),
+        }
+        ],
+    });
+    config.resolve.extensions.push('.ts', '.tsx');
+    return config;
+};
+</code></pre>
+
+<p>This configuration gives us the ability to load both js and ts stories.</p></li>
+</ol>
+
+<p>Guides and Resources</p>
+
+<ul>
+<li><a href="https://storybook.js.org/docs/configurations/typescript-config/" target="_blank">https://storybook.js.org/docs/configurations/typescript-config/</a></li>
+<li><a href="https://dev.to/swyx/quick-guide-to-setup-your-react--typescript-storybook-design-system-1c51" target="_blank">https://dev.to/swyx/quick-guide-to-setup-your-react--typescript-storybook-design-system-1c51</a> with <a href="https://github.com/sw-yx/react-typescript-storybook-starter" target="_blank">sample project</a></li>
+<li><a href="https://dev.to/swyx/quick-guide-to-setup-your-react--typescript-storybook-design-system-1c51" target="_blank">Quick guide to storybook TS setup</a></li>
+<li><a href="https://github.com/storybookjs/storybook/issues/4739" target="_blank">https://github.com/storybookjs/storybook/issues/4739</a></li>
+</ul>
 
 <h2 id="phase-3-regression-testing">Phase 3 Regression Testing</h2>
 
