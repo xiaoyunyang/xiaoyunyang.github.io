@@ -357,7 +357,7 @@ This post is a WIP.">
 
 <p>Why? TypeScript now supports transpiling JavaScript.</p>
 
-<pre><code>yarn remove eslint-loader
+<pre><code class="language-bash">yarn remove eslint-loader
 yarn remove babel-loader
 yarn add --dev awesome-typescript-loader source-map-loader typings-for-css-modules-loader
 </code></pre>
@@ -464,12 +464,12 @@ module.exports = {
 
 <h3 id="add-packages">Add packages</h3>
 
-<pre><code>yarn add --dev typescript @types/react @types/react-dom @types/jest @types/enzyme @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-typescript
+<pre><code class="language-bash">yarn add --dev typescript @types/react @types/react-dom @types/jest @types/enzyme @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-typescript
 </code></pre>
 
 <p>Add the TS version of all your library code</p>
 
-<pre><code>yarn add @types/deep-freeze --dev
+<pre><code class="language-bash">yarn add @types/deep-freeze --dev
 yarn add @types/chai --dev
 yarn add @types/classnames
 </code></pre>
@@ -588,7 +588,7 @@ module.exports = {
 
 <h3 id="typescript-vscode-integration">TypeScript VSCode Integration</h3>
 
-<p>Open VSCode setting (See more about setting up TSLint at <a href="http://artsy.github.io/blog/2019/01/29/from-tslint-to-eslint/" target="_blank">http://artsy.github.io/blog/2019/01/29/from-tslint-to-eslint/</a> and <a href="https://dev.to/dorshinar/linting-your-reacttypescript-project-with-eslint-and-prettier-8hb" target="_blank">https://dev.to/dorshinar/linting-your-reacttypescript-project-with-eslint-and-prettier-8hb</a>)</p>
+<p>Open VSCode setting (See more about setting up TSLint <a href="http://artsy.github.io/blog/2019/01/29/from-tslint-to-eslint/" target="_blank">here</a> and <a href="https://dev.to/dorshinar/linting-your-reacttypescript-project-with-eslint-and-prettier-8hb" target="_blank">here</a>)</p>
 
 <pre><code class="language-javascript">{
     &quot;eslint.autoFixOnSave&quot;: true,
@@ -638,7 +638,7 @@ module.exports = {
 
 <li><p>Change all <code>.js</code> -&gt; <code>.ts</code> or <code>.tsx</code>. I wrote a Bash script</p>
 
-<pre><code>sudo touch migrate.sh
+<pre><code class="language-bash">sudo touch migrate.sh
 vim migrate.sh
 </code></pre>
 
@@ -648,16 +648,25 @@ cd $1
 
 for f in `find . -type f -name '*.js'`;
 do
-mv -- &quot;$f&quot; &quot;${f%.js}.ts&quot;
+git mv -- &quot;$f&quot; &quot;${f%.js}.ts&quot;
+done
+
+for f in `find . -type f -name '*.jsx'`;
+do
+git mv -- &quot;$f&quot; &quot;${f%.js}.tsx&quot;
 done
 </code></pre></li>
 </ol>
 
 <p>Then provide the directory that you want to migrate as first argument of and execute the script.</p>
 
-<pre><code>chmod +x migrate.sh
+<pre><code class="language-bash">chmod +x migrate.sh
 ./migrate.sh ~/tinext-editor/src
 </code></pre>
+
+<p>⚠️ But be careful about this approach if you want to keep history of the file in git. If you simply delete the old file with a copy of the file with a different file name, all the commit history related to this file will be lost. See <a href="http://thisbythem.com/blog/preserving-history-when-renaming-files-in-git/" target="_blank">this</a> and <a href="https://joshpress.net/changing-file-names-git-repository-without-loosing-file-history/" target="_blank">this</a> for more on preserving history when renaming files in git. This happens somtimes when you are renaming a file and changing a substantial amount of the file in one commit. Basically you have to <a href="https://coderwall.com/p/_csouq/renaming-and-changing-files-in-git-without-losing-history" target="_blank">trick git into recognizing</a> file is renamed and not treat it as a delete-file / create-file case by commiting immediately after changing the name of the file, then commiting a second time after changing the contents of the file.</p>
+
+<p>When you are committing a lot of files at once, git gets confused about the file renaming and thinks that the js files were deleted and the ts files are new. This can make PR review very challenging. It might be worth renaming the ts files back to js files for the PR, then revert them back to ts.</p>
 
 <h3 id="update-plain-js-code-to-typescript">Update Plain JS Code to TypeScript</h3>
 
@@ -671,6 +680,8 @@ done
 <p>When in doubt, try things out in <a href="http://www.typescriptlang.org/play/" target="_blank">TypeScript Playground</a> or <a href="https://repl.it/" target="_blank">repl</a></p>
 
 <p>This is helpful if you are migrating from Flow to TypeScript: <a href="https://github.com/niieani/typescript-vs-flowtype" target="_blank">typescript-vs-flowtype</a></p>
+
+<p>Once the project is configured to use TypeScript, there will be a ton of type errors that need to be resolved. This could be a daunting task for one person and could take many weeks, which is a huge problem for an active codebase to which many changes are constantly made while the migration is happening. Depending on the size and complexity of the project you want to migrate, it might be a good idea to conduct a hackathon with peer programming so multiple people can dedicate their time resolving all the errors together and get it done in a short period of time. The <a href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack" target="_blank">Live Share</a> VS Code extension is a useful tool for peer programming.</p>
 
 <h4 id="importing-types">Importing types</h4>
 
@@ -993,6 +1004,10 @@ const Animal = {
 }
 
 type AnimalT = Mammal &amp; Insect
+
+type animalCounts = { [key in ValueOf&lt;typeof AnimalT&gt;]: number }
+
+
 </code></pre>
 
 <p>The <a href="https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/4x252001(v=vs.71)" target="_blank">naming convention for enums</a> is to:</p>
@@ -1119,7 +1134,7 @@ const map = new Map&lt;string, One | Two&gt;([
 
 <h4 id="shape">Shape</h4>
 
-<p><code>$Shape&lt;SomeObjectType&gt;</code> in Flow has no analog in TypeScript</p>
+<p><code>$Shape&lt;SomeObjectType&gt;</code> in Flow has an analog in TypeScript: <code>Partial&lt;SomeObjectType&gt;</code>.</p>
 
 <h3 id="gotchas">Gotchas</h3>
 
@@ -1232,7 +1247,7 @@ touch .storybook/config.js .storybook/addons.js .storybook/webpack.config.js
 
 <li><p>Add add-ons for Storybook</p>
 
-<pre><code class="language-bash">yarn add -D @storybook/addon-storysource @storybook/addon-knobs storybook-addon-jsx
+<pre><code class="language-bash">yarn add -D @storybook/addon-storysource @storybook/addon-knobs storybook-addon-jsx @storybook/addon-a11y
 </code></pre></li>
 
 <li><p>Add the dependencies for typescript loader:</p>
