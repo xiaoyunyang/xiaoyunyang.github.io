@@ -48,7 +48,7 @@ __Option 1__ - Delete .babelrc and babel dependencies
 
 Why? TypeScript now supports transpiling JavaScript.
 
-```
+```bash
 yarn remove eslint-loader
 yarn remove babel-loader
 yarn add --dev awesome-typescript-loader source-map-loader typings-for-css-modules-loader
@@ -144,7 +144,7 @@ module.exports = {
 };
 ```
 
-After updating the webpack config, build the project (or run webpack) to generate the .d.ts files for your css / sass / pcss. This will ensure that these modules can be imported into your TypeScript project. 
+After updating the webpack config, build the project (or run webpack) to generate the .d.ts files for your css / sass / pcss. This will ensure that these modules can be imported into your TypeScript project.
 
 For more on TypeScript + WebPack + Sass
 
@@ -157,13 +157,13 @@ For more on TypeScript + WebPack + Sass
 
 ### Add packages
 
-```
+```bash
 yarn add --dev typescript @types/react @types/react-dom @types/jest @types/enzyme @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-typescript
 ```
 
 Add the TS version of all your library code
 
-```
+```bash
 yarn add @types/deep-freeze --dev
 yarn add @types/chai --dev
 yarn add @types/classnames
@@ -284,10 +284,9 @@ module.exports = {
 
 I suggest excluding `plugin:@typescript-eslint/recommended` for a big project at first to facilitate an incremental migration.
 
-
 ### TypeScript VSCode Integration
 
-Open VSCode setting (See more about setting up TSLint at http://artsy.github.io/blog/2019/01/29/from-tslint-to-eslint/ and https://dev.to/dorshinar/linting-your-reacttypescript-project-with-eslint-and-prettier-8hb)
+Open VSCode setting (See more about setting up TSLint [here](http://artsy.github.io/blog/2019/01/29/from-tslint-to-eslint/) and [here](https://dev.to/dorshinar/linting-your-reacttypescript-project-with-eslint-and-prettier-8hb))
 
 ```javascript
 {
@@ -323,6 +322,7 @@ Open VSCode setting (See more about setting up TSLint at http://artsy.github.io/
 
 ## Phase 2 TypeScriptify Flow Project
 
+
 ### Update files
 
 1. Delete Flow-related files. This include, but are not limited to:
@@ -334,7 +334,7 @@ Open VSCode setting (See more about setting up TSLint at http://artsy.github.io/
 
 3. Change all `.js` -> `.ts` or `.tsx`. I wrote a Bash script
 
-```
+```bash
 sudo touch migrate.sh
 vim migrate.sh
 ```
@@ -346,15 +346,25 @@ cd $1
 
 for f in `find . -type f -name '*.js'`;
 do
-  mv -- "$f" "${f%.js}.ts"
+  git mv -- "$f" "${f%.js}.ts"
+done
+
+for f in `find . -type f -name '*.jsx'`;
+do
+  git mv -- "$f" "${f%.js}.tsx"
 done
 ```
 
 Then provide the directory that you want to migrate as first argument of and execute the script.
-```
+
+```bash
 chmod +x migrate.sh
 ./migrate.sh ~/tinext-editor/src
 ```
+
+⚠️ But be careful about this approach if you want to keep history of the file in git. If you simply delete the old file with a copy of the file with a different file name, all the commit history related to this file will be lost. See [this](http://thisbythem.com/blog/preserving-history-when-renaming-files-in-git/) and [this](https://joshpress.net/changing-file-names-git-repository-without-loosing-file-history/) for more on preserving history when renaming files in git. This happens somtimes when you are renaming a file and changing a substantial amount of the file in one commit. Basically you have to [trick git into recognizing](https://coderwall.com/p/_csouq/renaming-and-changing-files-in-git-without-losing-history) file is renamed and not treat it as a delete-file / create-file case by commiting immediately after changing the name of the file, then commiting a second time after changing the contents of the file.
+
+When you are committing a lot of files at once, git gets confused about the file renaming and thinks that the js files were deleted and the ts files are new. This can make PR review very challenging. It might be worth renaming the ts files back to js files for the PR, then revert them back to ts.
 
 ### Update Plain JS Code to TypeScript
 
@@ -366,6 +376,8 @@ Check out:
 When in doubt, try things out in [TypeScript Playground](http://www.typescriptlang.org/play/) or [repl](https://repl.it/)
 
 This is helpful if you are migrating from Flow to TypeScript: [typescript-vs-flowtype](https://github.com/niieani/typescript-vs-flowtype)
+
+Once the project is configured to use TypeScript, there will be a ton of type errors that need to be resolved. This could be a daunting task for one person and could take many weeks, which is a huge problem for an active codebase to which many changes are constantly made while the migration is happening. Depending on the size and complexity of the project you want to migrate, it might be a good idea to conduct a hackathon with peer programming so multiple people can dedicate their time resolving all the errors together and get it done in a short period of time. The [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack) VS Code extension is a useful tool for peer programming.
 
 #### Importing types
 
@@ -702,6 +714,10 @@ const Animal = {
 }
 
 type AnimalT = Mammal & Insect
+
+type animalCounts = { [key in ValueOf<typeof AnimalT>]: number }
+
+
 ```
 
 The [naming convention for enums](https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/4x252001(v=vs.71)) is to:
@@ -836,7 +852,7 @@ const map = new Map<string, One | Two>([
 
 #### Shape
 
-`$Shape<SomeObjectType>` in Flow has no analog in TypeScript
+`$Shape<SomeObjectType>` in Flow has an analog in TypeScript: `Partial<SomeObjectType>`.
 
 ### Gotchas
 
@@ -954,7 +970,7 @@ Easy set up
 2. Add add-ons for Storybook
 
     ```bash
-    yarn add -D @storybook/addon-storysource @storybook/addon-knobs storybook-addon-jsx
+    yarn add -D @storybook/addon-storysource @storybook/addon-knobs storybook-addon-jsx @storybook/addon-a11y
     ```
 
 3. Add the dependencies for typescript loader:

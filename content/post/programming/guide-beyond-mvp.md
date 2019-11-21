@@ -110,7 +110,7 @@ While New Relic helps you gathers aggregate data on how your product is being us
 ## Error Tracking
 
 - [TrackJS](https://trackjs.com) - JavaScript Error Tracking
-- Rollbar
+- Rollbar; also see [this tool](https://gyazo.com/d79a78381c101d683849a54e6e10b5fe) which supports creation of sourcemap
 - Splunk
 - [Opsgenie](https://www.opsgenie.com/) - Integrates with TrackJS and sends a notification to the people on call When error rate increases beyond a certain threshold.
 - Create `emergency` channel on Slack.
