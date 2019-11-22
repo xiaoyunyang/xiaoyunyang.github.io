@@ -123,6 +123,9 @@ While New Relic helps you gathers aggregate data on how your product is being us
 
 # Refactoring
 
+<img alt="Refactoring meme" style="width: 300px; margin-left: auto; margin-right: auto;" src="/post/images/refactoring-meme.png"/>
+
+
 Every refactoring has the potential to break existing functionality. Before attempting a refactor, make sure to reduce the the risks of breaking something by
 
 - Writing unit tests - Having existing unit tests in place to help you understand the impact of your refactoring is very important.

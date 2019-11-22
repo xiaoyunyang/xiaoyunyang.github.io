@@ -1,6 +1,6 @@
 ---
 title: "Data Structure with JavaScript Object: Tree"
-date: 2019-11-22
+date: 2019-12-22
 draft: true
 categories:
   - blog
