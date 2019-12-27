@@ -306,7 +306,7 @@ This post is a WIP.">
 <li><a href="#array-types">Array Types</a></li>
 <li><a href="#enum">Enum</a>
 <ul>
-<li><a href="#extending-string-based-enums">Extending String Based Enums</a></li>
+<li><a href="#merging-enums">Merging Enums</a></li>
 <li><a href="#check-for-membership">Check for membership</a></li>
 <li><a href="#subset-of-enum">Subset of Enum</a></li>
 <li><a href="#type-assertion">Type Assertion</a></li>
@@ -985,6 +985,8 @@ const currentFilter: $Keys&lt;typeof FilterTypes&gt; = FilterTypes.ALL
 
 <p>Enum in TypeScript allow us to make a collection of constants as types. Some examples:</p>
 
+<h5 id="merging-enums">Merging Enums</h5>
+
 <p>Combining two enums</p>
 
 <pre><code class="language-ts">enum Mammal {
@@ -1003,12 +1005,12 @@ const Animal = {
   ...Insect
 }
 
-type AnimalT = Mammal &amp; Insect
+type Animal = Mammal | Insect
 
 type animalCounts = { [key in ValueOf&lt;typeof AnimalT&gt;]: number }
-
-
 </code></pre>
+
+<p>💡 ProTip: you can use the same name for the type and a value of merged enum</p>
 
 <p>The <a href="https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/4x252001(v=vs.71)" target="_blank">naming convention for enums</a> is to:</p>
 
@@ -1018,11 +1020,9 @@ type animalCounts = { [key in ValueOf&lt;typeof AnimalT&gt;]: number }
 
 <p>See Steve Faulkner&rsquo;s <a href="https://speakerdeck.com/southpolesteve/shipping-typescript-to-npm?slide=50" target="_blank">deck about best practice for TypeScript</a></p>
 
-<h5 id="extending-string-based-enums">Extending String Based Enums</h5>
+<p>Also see: <a href="https://github.com/Microsoft/TypeScript/issues/17592" target="_blank">https://github.com/Microsoft/TypeScript/issues/17592</a></p>
 
-<p><a href="https://github.com/Microsoft/TypeScript/issues/17592" target="_blank">https://github.com/Microsoft/TypeScript/issues/17592</a></p>
-
-<p>Use union type</p>
+<p>Here&rsquo;s another Example:</p>
 
 <pre><code class="language-ts">const enum BasicEvents {
   Start = &quot;Start&quot;,
@@ -1100,7 +1100,7 @@ type Dict = { [var in VarType]: string }
 
 <h4 id="exclude">Exclude</h4>
 
-<pre><code class="language-ts">interface Animal {
+<pre><code class="language-ts">enum Animal {
     LION = &quot;LION&quot;,
     PIG = &quot;PIG&quot;,
     COW = &quot;COW&quot;,
