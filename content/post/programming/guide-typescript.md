@@ -694,6 +694,8 @@ const currentFilter: $Keys<typeof FilterTypes> = FilterTypes.ALL
 
 Enum in TypeScript allow us to make a collection of constants as types. Some examples:
 
+##### Merging Enums
+
 Combining two enums
 
 ```ts
@@ -713,12 +715,13 @@ const Animal = {
   ...Insect
 }
 
-type AnimalT = Mammal & Insect
+type Animal = Mammal | Insect
 
 type animalCounts = { [key in ValueOf<typeof AnimalT>]: number }
-
-
 ```
+
+💡 ProTip: you can use the same name for the type and a value of merged enum
+
 
 The [naming convention for enums](https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/4x252001(v=vs.71)) is to:
 
@@ -726,11 +729,9 @@ The [naming convention for enums](https://docs.microsoft.com/en-us/previous-vers
 
 See Steve Faulkner's [deck about best practice for TypeScript](https://speakerdeck.com/southpolesteve/shipping-typescript-to-npm?slide=50)
 
-##### Extending String Based Enums
+Also see: https://github.com/Microsoft/TypeScript/issues/17592
 
-https://github.com/Microsoft/TypeScript/issues/17592
-
-Use union type
+Here's another Example:
 
 ```ts
 const enum BasicEvents {
@@ -817,7 +818,7 @@ type Dict = { [var in VarType]: string }
 #### Exclude
 
 ```ts
-interface Animal {
+enum Animal {
     LION = "LION",
     PIG = "PIG",
     COW = "COW",
