@@ -342,7 +342,58 @@ I&rsquo;m excited by opportunities that let me develop elegant solutions for obv
 <p>My super power is my extreme attention to details without losing sight of the big picture and I always challenge my assumptions and continuously critique everything I do to make adjustments as necessary. I recognize the importance of details in affecting the final outcome, as accumulation of small mistakes leads to failure. Being result-driven, I&rsquo;m dedicated to working out these details even if they are not so glorious or interesting. My ability to prioritize helps me work strategically and smartly applying resources.</p>
 <h1 id="what-i-value">What I value</h1>
 <p>My <a href="https://www.keyvalues.com/">KeyValues</a> filters</p>
-<p><img src="https://images2.imgbox.com/26/21/MQB5dNYd_o.png" alt="KeyValues"></p>
+
+ 
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+<div class="figure fig-100 center" >
+  
+    <a class="fancybox" href="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7bda3ee4-a0e3-4dc1-b894-00dbcafa9212/Screenshot_2020-05-09_23.09.46.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200525%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20200525T045300Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=fb0f8710d9b48692482c948a4b7812e1785048a6da59f14d650327bde0661379&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%3D%22Screenshot_2020-05-09_23.09.46.png%22" title="Xiaoyun&#39;s KeyValues" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7bda3ee4-a0e3-4dc1-b894-00dbcafa9212/Screenshot_2020-05-09_23.09.46.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200525%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20200525T045300Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=fb0f8710d9b48692482c948a4b7812e1785048a6da59f14d650327bde0661379&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%3D%22Screenshot_2020-05-09_23.09.46.png%22"  alt="Xiaoyun&#39;s KeyValues">
+  
+    </a>
+  
+   
+    <span class="caption">Xiaoyun&#39;s KeyValues</span>
+  
+</div>
+
+  <div style="clear:both;"></div>
+
 <h2 id="trivia">Trivia</h2>
 <ul>
 <li>I have the honor of serving 5 years of active duty in the military at Naval Reactors. I commissioned in 2013 through the Navy Reserved Officer Training Corp (ROTC).</li>
@@ -351,9 +402,146 @@ I&rsquo;m excited by opportunities that let me develop elegant solutions for obv
 <li>I&rsquo;m an immigrant. I moved to the US from China in 2002. I became a citizen in 2003.</li>
 <li>I&rsquo;ve always lived in cities. The cities in which I&rsquo;ve lived include Shanghai, New York, Pittsburgh, and Washington DC.</li>
 <li>When I was a college student, I spent a summer abroad studying German at the Goethe Institut in Bonn, Germany. During my stay, I traveled and couchsurfed alone all over Germany and Western Europe. It was a transformative experience. I learned so much about myself and gained a lot of confidence based on my experience being out of my comfort zone.</li>
-<li>I love traveling and enjoy <a href="https://www.couchsurfing.com/people/xiaoyun.yang.7">couchsurfing</a>. The best cities I&rsquo;ve visited are Berlin, Brussels, Copenhagen, Vienna, Edinburgh, Oslo, and Tokyo.</li>
+<li>I love traveling and enjoy <a href="https://www.couchsurfing.com/people/xiaoyun.yang.7">couchsurfing</a>. The best cities I&rsquo;ve visited are Berlin, Brussels, Copenhagen, Vienna, Edinburgh, Oslo, and Tokyo. All the countries I visited:</li>
 </ul>
-<p><strong>PS</strong>:  If you are wondering how I built this website, I&rsquo;m using <a href="https://gohugo.io/">Hugo</a> for the static site generator engine and the beautiful <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">tranquilpeak</a> theme. I&rsquo;m <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">hosting it from github</a>. I wrote a <a href="https://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/">blog post</a> about this.</p>
+<p>
+
+<script src="https://www.amcharts.com/lib/3/ammap.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/worldHigh.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/themes/dark.js" type="text/javascript"></script>
+<div id="mapdiv" style="width: 1000px; height: 450px;"></div>
+<div style="width: 1000px; font-size: 70%; padding: 5px 0; text-align: center; background-color: #ffffff; margin-top: 1px; color: #e5e5dc;"><a href="https://www.amcharts.com/visited_countries/" style="color: #e5e5dc;">Create your own visited countries map</a> or check out the <a href="https://www.amcharts.com/" style="color: #e5e5dc;">JavaScript Charts</a>.</div>
+<script type="text/javascript">
+var map = AmCharts.makeChart("mapdiv",{
+type: "map",
+theme: "dark",
+projection: "mercator",
+panEventsEnabled : false,
+backgroundColor : "#ffffff",
+backgroundAlpha : 1,
+zoomControl: {
+zoomControlEnabled : true
+},
+dataProvider : {
+map : "worldHigh",
+getAreasFromMap : true,
+areas :
+[
+	{
+		"id": "AT",
+		"showAsSelected": true
+	},
+	{
+		"id": "BE",
+		"showAsSelected": true
+	},
+	{
+		"id": "CZ",
+		"showAsSelected": true
+	},
+	{
+		"id": "DK",
+		"showAsSelected": true
+	},
+	{
+		"id": "FR",
+		"showAsSelected": true
+	},
+	{
+		"id": "DE",
+		"showAsSelected": true
+	},
+	{
+		"id": "IS",
+		"showAsSelected": true
+	},
+	{
+		"id": "IT",
+		"showAsSelected": true
+	},
+	{
+		"id": "LI",
+		"showAsSelected": true
+	},
+	{
+		"id": "LU",
+		"showAsSelected": true
+	},
+	{
+		"id": "NL",
+		"showAsSelected": true
+	},
+	{
+		"id": "NO",
+		"showAsSelected": true
+	},
+	{
+		"id": "PT",
+		"showAsSelected": true
+	},
+	{
+		"id": "ES",
+		"showAsSelected": true
+	},
+	{
+		"id": "SE",
+		"showAsSelected": true
+	},
+	{
+		"id": "CH",
+		"showAsSelected": true
+	},
+	{
+		"id": "UA",
+		"showAsSelected": true
+	},
+	{
+		"id": "GB",
+		"showAsSelected": true
+	},
+	{
+		"id": "VA",
+		"showAsSelected": true
+	},
+	{
+		"id": "CA",
+		"showAsSelected": true
+	},
+	{
+		"id": "US",
+		"showAsSelected": true
+	},
+	{
+		"id": "PE",
+		"showAsSelected": true
+	},
+	{
+		"id": "MA",
+		"showAsSelected": true
+	},
+	{
+		"id": "CN",
+		"showAsSelected": true
+	},
+	{
+		"id": "JP",
+		"showAsSelected": true
+	}
+]
+},
+areasSettings : {
+autoZoom : true,
+color : "#e5e5dc",
+colorSolid : "#79a7d3",
+selectedColor : "#79a7d3",
+outlineColor : "#666666",
+rollOverColor : "#c6d7eb",
+rollOverOutlineColor : "#000000"
+}
+});
+</script>
+
+<strong>PS</strong>:  If you are wondering how I built this website, I&rsquo;m using <a href="https://gohugo.io/">Hugo</a> for the static site generator engine and the beautiful <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">tranquilpeak</a> theme. I&rsquo;m <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">hosting it from github</a>. I wrote a <a href="https://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/">blog post</a> about this.</p>
 
               
             </div>
