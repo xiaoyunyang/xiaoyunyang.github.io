@@ -1,59 +1,75 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.3-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Xiaoyun Yang">
+<meta name="keywords" content="computer science, algorithms, data structure, web development">
+<meta name="description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.">
+
+
+<meta property="og:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithms for Web Developers">
+<meta name="twitter:title" content="Algorithms for Web Developers">
+<meta property="og:url" content="https://xiaoyunyang.github.io/post/algorithms-for-web-developers/">
+<meta property="twitter:url" content="https://xiaoyunyang.github.io/post/algorithms-for-web-developers/">
+<meta property="og:site_name" content="Xiaoyun Yang">
+<meta property="og:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.">
+<meta name="twitter:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2018-04-16T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2018-04-16T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="blog">
+    
+  
+  
+    
+      <meta property="article:tag" content="JavaScript">
+    
+      <meta property="article:tag" content="Programming">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/algorithms-xkcd.png">
+  <meta property="twitter:image" content="https://xiaoyunyang.github.io/post/images/algorithms-xkcd.png">
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+  <meta property="twitter:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+
+
     <title>Algorithms for Web Developers</title>
-    <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="computer science, algorithms, data structure, web development">
 
     <link rel="icon" href="https://xiaoyunyang.github.io/favicon-96x96.png">
     
 
     
-    <meta name="description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.">
-    <meta property="og:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="Algorithms for Web Developers">
-    <meta property="og:url" content="https://xiaoyunyang.github.io/post/algorithms-for-web-developers/">
-    <meta property="og:site_name" content="Xiaoyun Yang">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.">
-    
-    
 
-    
-    
-
-    
-      <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/algorithms-xkcd.png">
-    
-    
-    
-
-    
-      <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
-    
-
-    
+    <link rel="canonical" href="https://xiaoyunyang.github.io/post/algorithms-for-web-developers/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -61,7 +77,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
       
@@ -113,7 +129,7 @@
     <ul class="sidebar-buttons">
       
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/">
     
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
@@ -123,7 +139,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/projects">
     
       <i class="sidebar-button-icon fa fa-lg fa-code"></i>
@@ -133,7 +149,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/blog">
     
       <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
@@ -143,7 +159,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/tags">
     
       <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
@@ -153,7 +169,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/about">
     
       <i class="sidebar-button-icon fa fa-lg fa-user"></i>
@@ -167,7 +183,7 @@
     <ul class="sidebar-buttons">
       
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-github"></i>
@@ -177,7 +193,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
@@ -187,7 +203,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
@@ -197,7 +213,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
@@ -207,9 +223,9 @@
   </li>
 
   <li class="sidebar-button">
-     
-     <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
-     
+    
+      <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" target="_blank" rel="noopener">
+    
       <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
       
       <span class="sidebar-button-desc">Email Me</span>
@@ -265,457 +281,325 @@
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.</p>
-
 <div class="alert info ">
   <p>This is a Live Document. I will be updating it periodically.</p>
 </div>
-
-<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#string-algorithms">String Algorithms</a>
-<ul>
-<li><a href="#reverse-strings">Reverse Strings</a></li>
-<li><a href="#palindrome">Palindrome</a>
-<ul>
-<li><a href="#naive-algorithm">Naive Algorithm</a></li>
-<li><a href="#more-efficient-algorithm">More Efficient Algorithm</a></li>
-<li><a href="#unit-test">Unit Test</a></li>
-</ul></li>
-<li><a href="#match-two-strings">Match Two Strings</a>
-<ul>
-<li><a href="#the-algorithm">The Algorithm</a></li>
-</ul></li>
-<li><a href="#capitalize-letters-in-a-sentence">Capitalize Letters In A Sentence</a>
-<ul>
-<li><a href="#the-algorithm-1">The Algorithm</a></li>
-<li><a href="#unit-test-1">Unit Test</a></li>
-</ul></li>
-<li><a href="#match-parentheses-in-a-string">Match parentheses in a string</a>
-<ul>
-<li><a href="#the-algorithm-2">The Algorithm</a></li>
-<li><a href="#unit-test-2">Unit Test</a></li>
-</ul></li>
-<li><a href="#url-string-transform">URL String transform</a>
-<ul>
-<li><a href="#option-1-use-array-map-then-array-join">Option 1 - use Array.map, then Array.join</a></li>
-<li><a href="#option-2-use-array-reduce">Option 2 - use Array.reduce</a></li>
-<li><a href="#option-3-es6">Option 3 - ES6</a></li>
-<li><a href="#unit-test-3">Unit Test</a></li>
-</ul></li>
-<li><a href="#html-string-transform">HTML String Transform</a></li>
-</ul></li>
-<li><a href="#array-algorithms">Array Algorithms</a>
-<ul>
-<li><a href="#flatmap">Flatmap</a></li>
-</ul></li>
-<li><a href="#resources">Resources</a></li>
-</ul>
-</nav>
-
+<!-- raw HTML omitted -->
 <h1 id="string-algorithms">String Algorithms</h1>
-
 <h2 id="reverse-strings">Reverse Strings</h2>
-
-<pre><code class="language-javascript">// takes a string and returns the reverse of that string
-function reverse(s) {
-  return s.split('').reduce((res, d) =&gt;
-    d + res, ''
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// takes a string and returns the reverse of that string
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reverse</span>(<span style="color:#a6e22e">s</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">d</span>) =&gt;
+    <span style="color:#a6e22e">d</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">res</span>, <span style="color:#e6db74">&#39;&#39;</span>
   );
 }
-</code></pre>
-
-<h2 id="palindrome">Palindrome</h2>
-
+</code></pre></div><h2 id="palindrome">Palindrome</h2>
 <p>Given string <code>s</code>, returns <code>true</code> if <code>s</code> is a palindrome, false otherwise.
 Example:</p>
-
 <ul>
 <li><code>isPalindrome('aba')</code> returns <code>true</code>.</li>
 <li><code>isPalindrome('abb')</code> returns <code>false</code>.</li>
 <li><code>isPalindrome('abba')</code> returns <code>true</code>.</li>
 </ul>
-
-<p>Try out the solution: <a href="https://repl.it/@xiaoyunyang/palindrome" target="_blank">https://repl.it/@xiaoyunyang/palindrome</a></p>
-
+<p>Try out the solution: <a href="https://repl.it/@xiaoyunyang/palindrome">https://repl.it/@xiaoyunyang/palindrome</a></p>
 <h3 id="naive-algorithm">Naive Algorithm</h3>
-
 <p>The simple way to determine if the string is a palindrome is by comparing the original string with the reverse of the string and see if they are equal.</p>
-
-<pre><code class="language-javascript">function isPalindrome(s) {
-  if (typeof s !== 'string') return false;
-  return s === reverse(s);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">isPalindrome</span>(<span style="color:#a6e22e">s</span>) {
+  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;string&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">reverse</span>(<span style="color:#a6e22e">s</span>);
 }
-</code></pre>
-
-<p>However, this may not be the most efficient since the computational complexity is always O(N) regardless of whether the string is a palindrome or not. We want an efficient algorithm such that we can return immediately if the head and tail of the string don&rsquo;t match.</p>
-
+</code></pre></div><p>However, this may not be the most efficient since the computational complexity is always O(N) regardless of whether the string is a palindrome or not. We want an efficient algorithm such that we can return immediately if the head and tail of the string don&rsquo;t match.</p>
 <h3 id="more-efficient-algorithm">More Efficient Algorithm</h3>
-
 <p>A more efficient algorithm is this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">isPalindrome2</span>(<span style="color:#a6e22e">s</span>) {
+  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;string&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">first</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>)
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">last</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
 
-<pre><code class="language-javascript">function isPalindrome2(s) {
-  if (typeof s !== 'string') return false;
-  let first = s.slice(0,1)
-  let last = s.slice(-1)
+  <span style="color:#75715e">// not a palindrome
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">first</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">last</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+  <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">first</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
 
-  // not a palindrome
-  if(first !== last) return false
-  if(first === '') return true
-
-  return isPalindrome2(s.slice(1, -1))
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">isPalindrome2</span>(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))
 }
-</code></pre>
-
-<h3 id="unit-test">Unit Test</h3>
-
-<pre><code class="language-javascript">let testCases = [
-  {test: 'hello', shouldBe: false},
-  {test: 42, shouldBe: false},
-  {test: null, shouldBe: false},
-  {test: undefined, shouldBe: false},
-  {test: 'aba', shouldBe: true},
-  {test: 'abba', shouldBe: true},
-  {test: 'a bba', shouldBe: false},
-  {test: 'a bb a', shouldBe: true},
-  {test: 'ab ba', shouldBe: true},
-  {test: '', shouldBe: true},
+</code></pre></div><h3 id="unit-test">Unit Test</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">testCases</span> <span style="color:#f92672">=</span> [
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;hello&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">42</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;aba&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;abba&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a bba&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a bb a&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ab ba&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},
 ];
-let fun = (str) =&gt; isPalindrome2(str);
-const test = (testCases, fun) =&gt; {
-  testCases.map(t =&gt; {
-    const shouldBe = t.shouldBe;
-    const is = fun(t.test);
-    const res = (shouldBe === is) ? 'passed' : 'failed';
-    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
-    console.log(`${res} ${moreInfo}`);
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">fun</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">str</span>) =&gt; <span style="color:#a6e22e">isPalindrome2</span>(<span style="color:#a6e22e">str</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">test</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">testCases</span>, <span style="color:#a6e22e">fun</span>) =&gt; {
+  <span style="color:#a6e22e">testCases</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">t</span> =&gt; {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shouldBe</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">shouldBe</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">is</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">test</span>);
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">shouldBe</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">is</span>) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;passed&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;failed&#39;</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">moreInfo</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">res</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;failed&#39;</span>) <span style="color:#f92672">?</span> <span style="color:#e6db74">`testing </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">test</span><span style="color:#e6db74">}</span><span style="color:#e6db74">. Should be </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">shouldBe</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> but got </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">is</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">res</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">moreInfo</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
   })
 }
-test(testCases, fun)
-</code></pre>
-
-<h2 id="match-two-strings">Match Two Strings</h2>
-
+<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">testCases</span>, <span style="color:#a6e22e">fun</span>)
+</code></pre></div><h2 id="match-two-strings">Match Two Strings</h2>
 <p>Create a function that takes two strings and returns true if the first argument ends with the 2nd argument; otherwise return false .
 Example:</p>
-
 <ul>
 <li>&ldquo;abc&rdquo;, &ldquo;d&rdquo; ➞ false</li>
 <li>&ldquo;samurai&rdquo;, &ldquo;zi&rdquo; ➞ false</li>
 <li>&ldquo;feminine&rdquo;, &ldquo;nine&rdquo; ➞ true</li>
 <li>&ldquo;convention&rdquo;, &ldquo;tio&rdquo; ➞ false</li>
 </ul>
-
 <h3 id="the-algorithm">The Algorithm</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">checkEnding</span>(<span style="color:#a6e22e">str1</span>, <span style="color:#a6e22e">str2</span>) {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">str1Rev</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">str1</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">reverse</span>().<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&#39;</span>)
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">str2Rev</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">str2</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">reverse</span>().<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&#39;</span>)
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">regex</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RegExp(<span style="color:#a6e22e">str2Rev</span>, <span style="color:#e6db74">&#39;i&#39;</span>)
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">match</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">str1Rev</span>.<span style="color:#a6e22e">match</span>(<span style="color:#a6e22e">regex</span>)
 
-<pre><code class="language-javascript">function checkEnding(str1, str2) {
-  let str1Rev = str1.split('').reverse().join('')
-  let str2Rev = str2.split('').reverse().join('')
-  let regex = new RegExp(str2Rev, 'i')
-  let match = str1Rev.match(regex)
-
-  if (!match) return false
-  return match.index === 0
+  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">match</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">match</span>.<span style="color:#a6e22e">index</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>
 }
-</code></pre>
-
-<p>Try out the solution: <a href="https://repl.it/@xiaoyunyang/checkEnding" target="_blank">https://repl.it/@xiaoyunyang/checkEnding</a></p>
-
+</code></pre></div><p>Try out the solution: <a href="https://repl.it/@xiaoyunyang/checkEnding">https://repl.it/@xiaoyunyang/checkEnding</a></p>
 <h2 id="capitalize-letters-in-a-sentence">Capitalize Letters In A Sentence</h2>
-
 <h3 id="the-algorithm-1">The Algorithm</h3>
-
 <p>Using reduce vice a map and join gives you a slight performance boost.</p>
-
-<p>When your phrase is really long, you should care about performance also. Doing a <code>map</code> then <code>join</code> is going to be slower than doing a <code>reduce</code> based on <a href="https://jsperf.com/test-map-join-vs-reduce" target="_blank">this benchmark</a>.</p>
-
-<pre><code class="language-javascript">const capitalize = (word) =&gt; {
-  const rest = word.slice(1);
-  const firstLtr = word.charAt(0);
-  return firstLtr.toUpperCase() + rest.toLowerCase();
+<p>When your phrase is really long, you should care about performance also. Doing a <code>map</code> then <code>join</code> is going to be slower than doing a <code>reduce</code> based on <a href="https://jsperf.com/test-map-join-vs-reduce">this benchmark</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">capitalize</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">word</span>) =&gt; {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rest</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">word</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">1</span>);
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">firstLtr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">word</span>.<span style="color:#a6e22e">charAt</span>(<span style="color:#ae81ff">0</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">firstLtr</span>.<span style="color:#a6e22e">toUpperCase</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">rest</span>.<span style="color:#a6e22e">toLowerCase</span>();
 }
-const titleCase = (phrase) =&gt; {
-  if(!phrase) return phrase;
-  [first, ...rest] = phrase.split(' ');
-  return rest.reduce((res,a) =&gt;  res +' ' + capitalize(a),
-                                            capitalize(first))
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">titleCase</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">phrase</span>) =&gt; {
+  <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">phrase</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">phrase</span>;
+  [<span style="color:#a6e22e">first</span>, ...<span style="color:#a6e22e">rest</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">phrase</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39; &#39;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">rest</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">res</span>,<span style="color:#a6e22e">a</span>) =&gt;  <span style="color:#a6e22e">res</span> <span style="color:#f92672">+</span><span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">capitalize</span>(<span style="color:#a6e22e">a</span>),
+                                            <span style="color:#a6e22e">capitalize</span>(<span style="color:#a6e22e">first</span>))
 }
-</code></pre>
-
-<h3 id="unit-test-1">Unit Test</h3>
-
+</code></pre></div><h3 id="unit-test-1">Unit Test</h3>
 <p>I wrote a helper assert function and some test cases. This is by no means an exhaustive test.</p>
-
-<pre><code class="language-javascript">const assert = (fun, input, expected) =&gt; {
- return fun(input) === expected ?
-  'passed' :
-  `failed on input=${input}. expected ${expected}, but got ${fun(input)}`;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">assert</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">fun</span>, <span style="color:#a6e22e">input</span>, <span style="color:#a6e22e">expected</span>) =&gt; {
+ <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">input</span>) <span style="color:#f92672">===</span> <span style="color:#a6e22e">expected</span> <span style="color:#f92672">?</span>
+  <span style="color:#e6db74">&#39;passed&#39;</span> <span style="color:#f92672">:</span>
+  <span style="color:#e6db74">`failed on input=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">input</span><span style="color:#e6db74">}</span><span style="color:#e6db74">. expected </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">expected</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, but got </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">input</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
 }
-</code></pre>
-
-<p>Test cases:</p>
-
-<pre><code class="language-javascript">let testCases = [
- {input: &quot;I’m a little tea pot&quot;, expected: &quot;I’m A Little Tea Pot&quot;},
- {input: &quot;sHoRt AnD sToUt&quot;, expected: &quot;Short And Stout&quot;},
- {input: &quot;sHoRt AnD sToUt&quot;, expected: &quot;Short And Stout&quot;},
- {input: &quot;HERE IS MY HANDLE HERE IS MY SPOUT&quot;, expected: &quot;Here Is My Handle Here Is My Spout&quot;},
- {input: &quot;&quot;, expected: &quot;&quot;},
- {input: undefined, expected: undefined},
+</code></pre></div><p>Test cases:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">testCases</span> <span style="color:#f92672">=</span> [
+ {<span style="color:#a6e22e">input</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;I’m a little tea pot&#34;</span>, <span style="color:#a6e22e">expected</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;I’m A Little Tea Pot&#34;</span>},
+ {<span style="color:#a6e22e">input</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sHoRt AnD sToUt&#34;</span>, <span style="color:#a6e22e">expected</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Short And Stout&#34;</span>},
+ {<span style="color:#a6e22e">input</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sHoRt AnD sToUt&#34;</span>, <span style="color:#a6e22e">expected</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Short And Stout&#34;</span>},
+ {<span style="color:#a6e22e">input</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;HERE IS MY HANDLE HERE IS MY SPOUT&#34;</span>, <span style="color:#a6e22e">expected</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Here Is My Handle Here Is My Spout&#34;</span>},
+ {<span style="color:#a6e22e">input</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#a6e22e">expected</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>},
+ {<span style="color:#a6e22e">input</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>, <span style="color:#a6e22e">expected</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>},
  ]
-</code></pre>
-
-<p>Doing this test, you should get all tests passed:</p>
-
-<pre><code class="language-javascript">let testResult = testCases.map(d =&gt; assert(titleCase, d.input, d.expected))
-testResult.filter(d =&gt; d!=='passed').length === 0 ? 'passed all tests' :
-                                                    'failed at least one test'
-</code></pre>
-
-<h2 id="match-parentheses-in-a-string">Match parentheses in a string</h2>
-
-<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/MatchParentheses" target="_blank">repl.it</a></p>
-
+</code></pre></div><p>Doing this test, you should get all tests passed:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">testResult</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">testCases</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">assert</span>(<span style="color:#a6e22e">titleCase</span>, <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">input</span>, <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">expected</span>))
+<span style="color:#a6e22e">testResult</span>.<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span><span style="color:#f92672">!==</span><span style="color:#e6db74">&#39;passed&#39;</span>).<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;passed all tests&#39;</span> <span style="color:#f92672">:</span>
+                                                    <span style="color:#e6db74">&#39;failed at least one test&#39;</span>
+</code></pre></div><h2 id="match-parentheses-in-a-string">Match parentheses in a string</h2>
+<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/MatchParentheses">repl.it</a></p>
 <h3 id="the-algorithm-2">The Algorithm</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">isBalanced</span>(<span style="color:#a6e22e">str</span>, <span style="color:#a6e22e">openCnt</span>) {
+  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;string&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">openCnt</span> <span style="color:#f92672">&lt;</span>  <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">openCnt</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>;
 
-<pre><code class="language-javascript">function isBalanced(str, openCnt) {
-  if (typeof str !== 'string') return false;
-  if (openCnt &lt;  0) return false;
-  if (str.length === 0) return openCnt === 0;
-
-  const fst = str[0];
-  const rst = str.slice(1);
-  return isBalanced(rst, newOpenCnt(fst, openCnt));
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fst</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">str</span>[<span style="color:#ae81ff">0</span>];
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rst</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">1</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">isBalanced</span>(<span style="color:#a6e22e">rst</span>, <span style="color:#a6e22e">newOpenCnt</span>(<span style="color:#a6e22e">fst</span>, <span style="color:#a6e22e">openCnt</span>));
 }
-const newOpenCnt = (c, openCnt) =&gt; {
-  if(c === '(') return openCnt + 1;
-  if(c === ')') return openCnt - 1;
-  return openCnt;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newOpenCnt</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">openCnt</span>) =&gt; {
+  <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;(&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">openCnt</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;)&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">openCnt</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">openCnt</span>;
 }
 
-</code></pre>
-
-<h3 id="unit-test-2">Unit Test</h3>
-
+</code></pre></div><h3 id="unit-test-2">Unit Test</h3>
 <p>It is necessary to extensively unit test your code.</p>
-
-<pre><code class="language-javascript">let testCases = [
-  {test: '(', shouldBe: false},
-  {test: '())', shouldBe: false},
-  {test: null, shouldBe: false},
-  {test: undefined, shouldBe: false},
-  {test: 22, shouldBe: false},
-  {test: ')(', shouldBe: false},
-  {test: '', shouldBe: true},
-  {test: '()', shouldBe: true},
-  {test: '()()', shouldBe: true},
-  {test: '(())', shouldBe: true},
-  {test: 'hi', shouldBe: true},
-  {test: '(hi)', shouldBe: true},
-  {test: '(((())(())',shouldBe: false}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">testCases</span> <span style="color:#f92672">=</span> [
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;(&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;())&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;)(&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;()&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;()()&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;(())&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;hi&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;(hi)&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;(((())(())&#39;</span>,<span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>}
 ];
-let fun = (str) =&gt; isBalanced(str, 0);
-const test = (testCases, fun) =&gt; {
-  testCases.map(t =&gt; {
-    const shouldBe = t.shouldBe;
-    const is = fun(t.test);
-    const res = (shouldBe === is) ? 'passed' : 'failed';
-    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
-    console.log(`${res} ${moreInfo}`);
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">fun</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">str</span>) =&gt; <span style="color:#a6e22e">isBalanced</span>(<span style="color:#a6e22e">str</span>, <span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">test</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">testCases</span>, <span style="color:#a6e22e">fun</span>) =&gt; {
+  <span style="color:#a6e22e">testCases</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">t</span> =&gt; {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shouldBe</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">shouldBe</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">is</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">test</span>);
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">shouldBe</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">is</span>) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;passed&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;failed&#39;</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">moreInfo</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">res</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;failed&#39;</span>) <span style="color:#f92672">?</span> <span style="color:#e6db74">`testing </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">test</span><span style="color:#e6db74">}</span><span style="color:#e6db74">. Should be </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">shouldBe</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> but got </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">is</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">res</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">moreInfo</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
   })
 }
-test(testCases, fun)
-</code></pre>
-
-<h2 id="url-string-transform">URL String transform</h2>
-
-<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/urlStringTransform" target="_blank">repl.it</a></p>
-
-<p>Given an article title for a blog, create a url string of all lower case words joined by &lsquo;-&rsquo;.</p>
-
-<h3 id="option-1-use-array-map-then-array-join">Option 1 - use Array.map, then Array.join</h3>
-
-<pre><code class="language-javascript">function createURL(title) {
-  if(typeof title !== 'string') return ''
-  return title.split(' ')
-              .map(word =&gt; word.toLowerCase())
-              .join('-');
+<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">testCases</span>, <span style="color:#a6e22e">fun</span>)
+</code></pre></div><h2 id="url-string-transform">URL String transform</h2>
+<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/urlStringTransform">repl.it</a></p>
+<p>Given an article title for a blog, create a url string of all lower case words joined by &lsquo;-'.</p>
+<h3 id="option-1---use-arraymap-then-arrayjoin">Option 1 - use Array.map, then Array.join</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createURL</span>(<span style="color:#a6e22e">title</span>) {
+  <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;string&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span>
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">title</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39; &#39;</span>)
+              .<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">word</span> =&gt; <span style="color:#a6e22e">word</span>.<span style="color:#a6e22e">toLowerCase</span>())
+              .<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;-&#39;</span>);
 }
-</code></pre>
+</code></pre></div><p>The disadvantage of this approach is it&rsquo;s <a href="https://stackoverflow.com/questions/22614237/javascript-runtime-complexity-of-array-functions">slow</a>. map is O(N). join is O(N) we can do better.</p>
+<h3 id="option-2---use-arrayreduce">Option 2 - use Array.reduce</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createURL2</span>(<span style="color:#a6e22e">title</span>) {
+  <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;string&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span>
 
-<p>The disadvantage of this approach is it&rsquo;s <a href="https://stackoverflow.com/questions/22614237/javascript-runtime-complexity-of-array-functions" target="_blank">slow</a>. map is O(N). join is O(N) we can do better.</p>
-
-<h3 id="option-2-use-array-reduce">Option 2 - use Array.reduce</h3>
-
-<pre><code class="language-javascript">function createURL2(title) {
-  if(typeof title !== 'string') return ''
-
-  return title.split(' ')
-              .reduce((res, word) =&gt;  
-                res + '-' + word.toLowerCase(),
-                '')
-              .slice(1)
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">title</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39; &#39;</span>)
+              .<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">word</span>) =&gt;  
+                <span style="color:#a6e22e">res</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">word</span>.<span style="color:#a6e22e">toLowerCase</span>(),
+                <span style="color:#e6db74">&#39;&#39;</span>)
+              .<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">1</span>)
 }
-</code></pre>
+</code></pre></div><p>Question for the reader: why <code>.slice(1)</code> at the end?</p>
+<h3 id="option-3---es6">Option 3 - ES6</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createURL3</span>(<span style="color:#a6e22e">title</span>) {
+  <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;string&#39;</span>) <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span>
 
-<p>Question for the reader: why <code>.slice(1)</code> at the end?</p>
+  <span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">first</span>, ...<span style="color:#a6e22e">rest</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">title</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39; &#39;</span>)
 
-<h3 id="option-3-es6">Option 3 - ES6</h3>
-
-<pre><code class="language-javascript">function createURL3(title) {
-  if(typeof title !== 'string') return ''
-
-  let [first, ...rest] = title.split(' ')
-
-  return rest.reduce((res, word) =&gt;
-              res + '-' + word.toLowerCase(),
-              first.toLowerCase())
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">rest</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">word</span>) =&gt;
+              <span style="color:#a6e22e">res</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">word</span>.<span style="color:#a6e22e">toLowerCase</span>(),
+              <span style="color:#a6e22e">first</span>.<span style="color:#a6e22e">toLowerCase</span>())
 }
-</code></pre>
-
-<h3 id="unit-test-3">Unit Test</h3>
-
-<pre><code class="language-javascript">let testCases = [
-  {test: '', shouldBe: ''},
-  {test: 'hello', shouldBe: 'hello'},
-  {test: 'hello world', shouldBe: 'hello-world'},
-  {test: undefined, shouldBe: ''}
+</code></pre></div><h3 id="unit-test-3">Unit Test</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">testCases</span> <span style="color:#f92672">=</span> [
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;hello&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;hello&#39;</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;hello world&#39;</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;hello-world&#39;</span>},
+  {<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>, <span style="color:#a6e22e">shouldBe</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>}
 ];
-let fun = (str) =&gt; createURL3(str);
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">fun</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">str</span>) =&gt; <span style="color:#a6e22e">createURL3</span>(<span style="color:#a6e22e">str</span>);
 
-const test = (testCases, fun) =&gt; {
-  testCases.map(t =&gt; {
-    const shouldBe = t.shouldBe;
-    const is = fun(t.test);
-    const res = (shouldBe === is) ? 'passed' : 'failed';
-    const moreInfo = (res === 'failed') ? `testing ${t.test}. Should be ${shouldBe} but got ${is}` : ''
-    console.log(`${res} ${moreInfo}`);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">test</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">testCases</span>, <span style="color:#a6e22e">fun</span>) =&gt; {
+  <span style="color:#a6e22e">testCases</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">t</span> =&gt; {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shouldBe</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">shouldBe</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">is</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">test</span>);
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">shouldBe</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">is</span>) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;passed&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;failed&#39;</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">moreInfo</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">res</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;failed&#39;</span>) <span style="color:#f92672">?</span> <span style="color:#e6db74">`testing </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">test</span><span style="color:#e6db74">}</span><span style="color:#e6db74">. Should be </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">shouldBe</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> but got </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">is</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">res</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">moreInfo</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
   })
 }
-test(testCases, fun)
-</code></pre>
+<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">testCases</span>, <span style="color:#a6e22e">fun</span>)
+</code></pre></div><h2 id="html-string-transform">HTML String Transform</h2>
+<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/strReplace">repl.it</a></p>
+<p>Symbols used in HTML document consist of special character sets, including <code>&amp;lt;</code> for &amp; and <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_13.html">some others</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// &amp;lt; =&gt; &#39;&lt;&#39;&#39;
+</span><span style="color:#75715e">// &amp;gt; =&gt; &#39;&gt;&#39;
+</span><span style="color:#75715e">// &amp;quot; =&gt; &#39;&#39;\&#34;&#39;
+</span><span style="color:#75715e"></span>
 
-<h2 id="html-string-transform">HTML String Transform</h2>
-
-<p>Try out the solution in <a href="https://repl.it/@xiaoyunyang/strReplace" target="_blank">repl.it</a></p>
-
-<p>Symbols used in HTML document consist of special character sets, including <code>&amp;lt;</code> for &amp; and <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_13.html" target="_blank">some others</a>.</p>
-
-<pre><code class="language-javascript">// &amp;lt; =&gt; '&lt;''
-// &amp;gt; =&gt; '&gt;'
-// &amp;quot; =&gt; ''\&quot;'
-
-
-// Takes a string and encodes the characters as HTML characters
-function encodeV1(char) {
-  switch (char) {
-    case '&lt;': return '&amp;lt;'
-    case '&gt;': return '&amp;gt;'
-    case '\&quot;': return '&amp;quot;'
+<span style="color:#75715e">// Takes a string and encodes the characters as HTML characters
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">encodeV1</span>(<span style="color:#66d9ef">char</span>) {
+  <span style="color:#66d9ef">switch</span> (<span style="color:#66d9ef">char</span>) {
+    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;&lt;&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&amp;lt;&#39;</span>
+    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;&gt;&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&amp;gt;&#39;</span>
+    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;\&#34;&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&amp;quot;&#39;</span>
   }
-  return char
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">char</span>
 }
 
-let s = &quot;1 &gt; 0 and 1 &lt; 12, \&quot;hello\&quot;&quot;
-let encode = encodeV1
-s.split('').map(char =&gt; encode(char)).join('')
-//&gt; '1 &amp;gt; 0, 1 &amp;lt; 12, 1 &amp;gt;= 1. &amp;quot;hello&amp;quot;''
-</code></pre>
-
-<p>This works but the <code>encode</code> function is hard-coded with simples. If we want to write a <code>decode</code> function that makes the string transformation in reverse, that would require writing out all those mappings again, requiring us to refactor code. It would be desirable to have a single source of truth that dictates all available encoding. Let&rsquo;s make a data structure called <code>dict</code> that provides the collection of tuples for encoding and decoding our characters and HTML special characters.</p>
-
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1 &gt; 0 and 1 &lt; 12, \&#34;hello\&#34;&#34;</span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">encode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">encodeV1</span>
+<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">char</span> =&gt; <span style="color:#a6e22e">encode</span>(<span style="color:#66d9ef">char</span>)).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&#39;</span>)
+<span style="color:#75715e">//&gt; &#39;1 &amp;gt; 0, 1 &amp;lt; 12, 1 &amp;gt;= 1. &amp;quot;hello&amp;quot;&#39;&#39;
+</span></code></pre></div><p>This works but the <code>encode</code> function is hard-coded with simples. If we want to write a <code>decode</code> function that makes the string transformation in reverse, that would require writing out all those mappings again, requiring us to refactor code. It would be desirable to have a single source of truth that dictates all available encoding. Let&rsquo;s make a data structure called <code>dict</code> that provides the collection of tuples for encoding and decoding our characters and HTML special characters.</p>
 <p>Some refactoring is necessary:</p>
-
-<pre><code class="language-javascript">const dict = [
-  {char: '&lt;', code: '&amp;lt;'},
-  {char: '&gt;', code: '&amp;gt;'},
-  {char: '\&quot;', code: '&amp;quot;'},  
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dict</span> <span style="color:#f92672">=</span> [
+  {<span style="color:#66d9ef">char</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&lt;&#39;</span>, <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&amp;lt;&#39;</span>},
+  {<span style="color:#66d9ef">char</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&gt;&#39;</span>, <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&amp;gt;&#39;</span>},
+  {<span style="color:#66d9ef">char</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;\&#34;&#39;</span>, <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&amp;quot;&#39;</span>},  
 ]
 
-// Build a switch based on array
-function encodeV2(dict) {
-  return char =&gt; {
-    let res = char
-    for(let i=0; i&lt;dict.length; i++) {
-      if(dict[i].char === char) {
-        res = dict[i].code
-        break
+<span style="color:#75715e">// Build a switch based on array
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">encodeV2</span>(<span style="color:#a6e22e">dict</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">char</span> =&gt; {
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">char</span>
+    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">dict</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+      <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">dict</span>[<span style="color:#a6e22e">i</span>].<span style="color:#66d9ef">char</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">char</span>) {
+        <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">dict</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">code</span>
+        <span style="color:#66d9ef">break</span>
       }  
     }
-    return res
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
   }
 }
 
-// This is so we don't have to change our interface encode(c) below
-encode = encodeV2(dict)
-s.split('').map(c =&gt; encode(c)).join('')
-//&gt; '1 &amp;gt; 0, 1 &amp;lt; 12, 1 &amp;gt;= 1. &amp;quot;hello&amp;quot;''
-</code></pre>
-
-<p>Let&rsquo;s also write <code>decode</code> to use <code>dict</code>. Previously for <code>encode</code>, we are able to partition the string into an array of characters for processing. However for <code>decode</code>, this step is not so straight forward since our code e.g., <code>&amp;gt;</code> consists of multiple character. So what do we do?</p>
-
+<span style="color:#75715e">// This is so we don&#39;t have to change our interface encode(c) below
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">encode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">encodeV2</span>(<span style="color:#a6e22e">dict</span>)
+<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">c</span> =&gt; <span style="color:#a6e22e">encode</span>(<span style="color:#a6e22e">c</span>)).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&#39;</span>)
+<span style="color:#75715e">//&gt; &#39;1 &amp;gt; 0, 1 &amp;lt; 12, 1 &amp;gt;= 1. &amp;quot;hello&amp;quot;&#39;&#39;
+</span></code></pre></div><p>Let&rsquo;s also write <code>decode</code> to use <code>dict</code>. Previously for <code>encode</code>, we are able to partition the string into an array of characters for processing. However for <code>decode</code>, this step is not so straight forward since our code e.g., <code>&amp;gt;</code> consists of multiple character. So what do we do?</p>
 <p>Let&rsquo;s write a helper function that handles partitioning of the string to arrays of regular characters or</p>
-
-<pre><code class="language-javascript">function decodeV2(dict) {
-  return code =&gt; {
-    let res = code
-    for(let i=0; i&lt;dict.length; i++) {
-      if(dict[i].code === code) {
-        res = dict[i].char
-        break
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">decodeV2</span>(<span style="color:#a6e22e">dict</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">code</span> =&gt; {
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">code</span>
+    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">dict</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+      <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">dict</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">code</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">code</span>) {
+        <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">dict</span>[<span style="color:#a6e22e">i</span>].<span style="color:#66d9ef">char</span>
+        <span style="color:#66d9ef">break</span>
       }  
     }
-    return res
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
   }
 }
-const matchHTMLChar = new RegExp(/&amp;(lt|gt|quot);/, 'g')
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">matchHTMLChar</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RegExp(<span style="color:#e6db74">/&amp;(lt|gt|quot);/</span>, <span style="color:#e6db74">&#39;g&#39;</span>)
 
-let encoded = s.split('').map(char =&gt; encode(char)).join('')
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">encoded</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">char</span> =&gt; <span style="color:#a6e22e">encode</span>(<span style="color:#66d9ef">char</span>)).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&#39;</span>)
 
-let decode = decodeV2(dict)
-let decoded = encoded.replace(matchHTMLChar, decode)
-s === decoded //&gt; true
-</code></pre>
-
-<p>Can we make the solution more general? Yes, in the following ways:
-1. notice the <code>decode</code> and <code>encode</code> functions have basically the same functional structure. That is, they both run a loop to update the result based on value from the array of objects. We can generalize it further and abstract away that boilerplate.
-2. The pattern we are matching in the <code>matchHTMLChar</code> RegExp is hardcoded. We should make that dependent on  <code>dict</code>.</p>
-
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">decode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decodeV2</span>(<span style="color:#a6e22e">dict</span>)
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">decoded</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">encoded</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#a6e22e">matchHTMLChar</span>, <span style="color:#a6e22e">decode</span>)
+<span style="color:#a6e22e">s</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">decoded</span> <span style="color:#75715e">//&gt; true
+</span></code></pre></div><p>Can we make the solution more general? Yes, in the following ways:</p>
+<ol>
+<li>notice the <code>decode</code> and <code>encode</code> functions have basically the same functional structure. That is, they both run a loop to update the result based on value from the array of objects. We can generalize it further and abstract away that boilerplate.</li>
+<li>The pattern we are matching in the <code>matchHTMLChar</code> RegExp is hardcoded. We should make that dependent on  <code>dict</code>.</li>
+</ol>
 <p>I&rsquo;ll leave these two problems to you as an exercise.</p>
-
 <div class="alert info ">
   <p>Note: Abstraction is vital in helping us to cope with the complexity of large systems. One of the tenets of functional programming, a <strong>problem solving framework</strong>, is the principle of abstraction. Some parts of your code are boilerplate. Some parts of your code are unique. The goal of abstraction is to capture that boilerplate stuff in a higher order function.</p>
 </div>
-
 <h1 id="array-algorithms">Array Algorithms</h1>
-
 <h2 id="flatmap">Flatmap</h2>
-
 <p>Write a function that converts &ldquo;hello&rdquo; to &ldquo;h.e.l.l.o.&rdquo; There are two parts to this: <code>flat</code> and <code>map</code>.</p>
-
-<pre><code class="language-javascript">const arr = &quot;hello&quot;.split(&quot;&quot;) //&gt; [&quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;]
-
-const matrix = arr.map(s =&gt; [s, &quot;.&quot;])
-// [Array(2), Array(2), Array(2), Array(2), Array(2)]
-// 0: (2) [&quot;h&quot;, &quot;.&quot;]
-// 1: (2) [&quot;e&quot;, &quot;.&quot;]
-// 2: (2) [&quot;l&quot;, &quot;.&quot;]
-// 3: (2) [&quot;l&quot;, &quot;.&quot;]
-// 4: (2) [&quot;o&quot;, &quot;.&quot;]
-
-const flat = (data) =&gt; data.reduce((res, d) =&gt; {
-  return res.concat(d);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;&#34;</span>) <span style="color:#75715e">//&gt; [&#34;h&#34;, &#34;e&#34;, &#34;l&#34;, &#34;l&#34;, &#34;o&#34;]
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">matrix</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">s</span> =&gt; [<span style="color:#a6e22e">s</span>, <span style="color:#e6db74">&#34;.&#34;</span>])
+<span style="color:#75715e">// [Array(2), Array(2), Array(2), Array(2), Array(2)]
+</span><span style="color:#75715e">// 0: (2) [&#34;h&#34;, &#34;.&#34;]
+</span><span style="color:#75715e">// 1: (2) [&#34;e&#34;, &#34;.&#34;]
+</span><span style="color:#75715e">// 2: (2) [&#34;l&#34;, &#34;.&#34;]
+</span><span style="color:#75715e">// 3: (2) [&#34;l&#34;, &#34;.&#34;]
+</span><span style="color:#75715e">// 4: (2) [&#34;o&#34;, &#34;.&#34;]
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">flat</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">data</span>) =&gt; <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">d</span>) =&gt; {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">concat</span>(<span style="color:#a6e22e">d</span>);
 }, []);
 
 
-flat(matrix) //&gt; [&quot;h&quot;, &quot;.&quot;, &quot;e&quot;, &quot;.&quot;, &quot;l&quot;, &quot;.&quot;, &quot;l&quot;, &quot;.&quot;, &quot;o&quot;, &quot;.&quot;]
-
-flat(matrix).join(&quot;&quot;) //&gt; &quot;h.e.l.l.o.&quot;
-</code></pre>
-
-<h1 id="resources">Resources</h1>
-
+<span style="color:#a6e22e">flat</span>(<span style="color:#a6e22e">matrix</span>) <span style="color:#75715e">//&gt; [&#34;h&#34;, &#34;.&#34;, &#34;e&#34;, &#34;.&#34;, &#34;l&#34;, &#34;.&#34;, &#34;l&#34;, &#34;.&#34;, &#34;o&#34;, &#34;.&#34;]
+</span><span style="color:#75715e"></span>
+<span style="color:#a6e22e">flat</span>(<span style="color:#a6e22e">matrix</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;&#34;</span>) <span style="color:#75715e">//&gt; &#34;h.e.l.l.o.&#34;
+</span></code></pre></div><h1 id="resources">Resources</h1>
 <ul>
-<li><a href="https://medium.freecodecamp.org/how-to-think-like-a-programmer-lessons-in-problem-solving-d1d8bf1de7d2" target="_blank">How to think like a programmer</a></li>
+<li><a href="https://medium.freecodecamp.org/how-to-think-like-a-programmer-lessons-in-problem-solving-d1d8bf1de7d2">How to think like a programmer</a></li>
 </ul>
               
             </div>
@@ -736,8 +620,8 @@ flat(matrix).join(&quot;&quot;) //&gt; &quot;h.e.l.l.o.&quot;
                 
               
             
-            
-  <div class="post-actions-wrap">
+            <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -796,14 +680,14 @@ flat(matrix).join(&quot;&quot;) //&gt; &quot;h.e.l.l.o.&quot;
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+          <a class="post-action-btn btn btn--default" href="#">
         
           <i class="fa fa-list"></i>
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
             
               
@@ -833,14 +717,14 @@ s.setAttribute('data-timestamp', +new Date());
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 Xiaoyun Yang. All Rights Reserved
+    &copy; 2020 Xiaoyun Yang. All Rights Reserved
   </span>
 </footer>
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
-        
-  <div class="post-actions-wrap">
+        <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -899,14 +783,14 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+          <a class="post-action-btn btn btn--default" href="#">
         
           <i class="fa fa-list"></i>
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
       </div>
       <div id="share-options-bar" class="share-options-bar" data-behavior="4">
@@ -965,252 +849,14 @@ s.setAttribute('data-timestamp', +new Date());
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/">
-                <h3 class="media-heading">Beyond Minimum Viable Product: A Lesson on Building Production-ready Software</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Aug 8, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>What I learned working at a mature startup that&rsquo;s building new things but also has a ton of customers and products in production.</p>
+    
 
-<p>This post is a WIP.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/">
-                <h3 class="media-heading">Effective Unit Testing of React Components With Jest And Enzyme</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Aug 8, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
-                <h3 class="media-heading">A Guide For Migrating Your Project to TypeScript</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.</p>
-
-<p>This post is a WIP.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/">
-                <h3 class="media-heading">The Algorithm for Managing Stress</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &ldquo;top 10 things you can do to &hellip;.&rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/get-started-with-go/">
-                <h3 class="media-heading">Get Started With Go</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Feb 2, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Go is becoming pretty mainstream. Every job posting I&rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/">
-                <h3 class="media-heading">Thirsty Plant: Automated Plant Waterer</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p><em>by <a href="https://github.com/xiaoyunyang" target="_blank">Xiaoyun Yang</a> and <a href="https://github.com/clydeshaffer" target="_blank">Clyde Shaffer</a></em></p>
-
-<p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/">
-                <h3 class="media-heading">From Public Sector To Senior Software Engineer:  How I made the Transition</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.</p>
-
-
-
- 
-  
-  
-  
-  
     
   
     
       
+      <div id="cover" style="background-image:url('https://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
     
-  
-
-<div class="figure fig-70" >
-  
-    <a class="fancybox" href="https://images2.imgbox.com/26/21/MQB5dNYd_o.png" title="My KeyValues filter" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://images2.imgbox.com/26/21/MQB5dNYd_o.png"  alt="My KeyValues filter">
-  
-    </a>
-  
-   
-    <span class="caption">My KeyValues filter</span>
-  
-</div></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
-                <h3 class="media-heading">When To Use Immutable Data Structures</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Suppose you are asked this question during a technical interview:</p>
-
-<blockquote>
-<p>When do you use immutable (functional) data structures and when do you use mutable data structure?</p>
-</blockquote></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/">
-                <h3 class="media-heading">Security Considerations for Web Applications and Best Practices</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/">
-                <h3 class="media-heading">Cribsheet for JavaScript Coding Interview</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Oct 10, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:</p>
-
-<blockquote>
-<p>Can you be productive with JavaScript?</p>
-</blockquote></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         38 posts found
-      </p>
-    </div>
-  </div>
-</div>
-    
-  
-    
-    <div id="cover" style="background-image:url('https://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
   
 
 
@@ -1222,7 +868,7 @@ s.setAttribute('data-timestamp', +new Date());
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="https://xiaoyunyang.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+<script src="https://xiaoyunyang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
   
@@ -1233,6 +879,20 @@ s.setAttribute('data-timestamp', +new Date());
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
   
 
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
 
 <script>
 $(document).ready(function() {
@@ -1272,6 +932,7 @@ $(document).ready(function() {
       </script>
     
   
+
 
 
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -8,57 +8,48 @@
   </url>
   
   <url>
+    <loc>https://xiaoyunyang.github.io/categories/blog/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xiaoyunyang.github.io/categories/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/guide/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/javascript/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/post/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/software-design/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/typescript/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/categories/blog/</loc>
-    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -69,7 +60,6 @@
   <url>
     <loc>https://xiaoyunyang.github.io/tags/programming/</loc>
     <lastmod>2019-08-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -80,13 +70,11 @@
   <url>
     <loc>https://xiaoyunyang.github.io/tags/life/</loc>
     <lastmod>2019-07-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/productivity/</loc>
     <lastmod>2019-07-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -102,19 +90,21 @@
   <url>
     <loc>https://xiaoyunyang.github.io/tags/go/</loc>
     <lastmod>2019-02-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/hardware/</loc>
     <lastmod>2019-01-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/open-source/</loc>
     <lastmod>2019-01-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/categories/projects/</loc>
+    <lastmod>2019-01-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -123,15 +113,8 @@
   </url>
   
   <url>
-    <loc>https://xiaoyunyang.github.io/categories/projects/</loc>
-    <lastmod>2019-01-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://xiaoyunyang.github.io/tags/career/</loc>
     <lastmod>2018-12-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -142,7 +125,6 @@
   <url>
     <loc>https://xiaoyunyang.github.io/tags/best-practice/</loc>
     <lastmod>2018-12-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -153,7 +135,6 @@
   <url>
     <loc>https://xiaoyunyang.github.io/tags/node/</loc>
     <lastmod>2018-12-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -164,7 +145,6 @@
   <url>
     <loc>https://xiaoyunyang.github.io/tags/web-dev/</loc>
     <lastmod>2018-12-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -180,25 +160,21 @@
   <url>
     <loc>https://xiaoyunyang.github.io/tags/devops/</loc>
     <lastmod>2018-10-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/frontend/</loc>
     <lastmod>2018-08-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/react/</loc>
     <lastmod>2018-08-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/ux/</loc>
     <lastmod>2018-08-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -214,13 +190,11 @@
   <url>
     <loc>https://xiaoyunyang.github.io/tags/entrepreneurship/</loc>
     <lastmod>2018-07-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/backend/</loc>
     <lastmod>2018-07-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -316,13 +290,11 @@
   <url>
     <loc>https://xiaoyunyang.github.io/tags/mobile-app/</loc>
     <lastmod>2018-03-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/react-native/</loc>
     <lastmod>2018-03-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -353,7 +325,6 @@
   <url>
     <loc>https://xiaoyunyang.github.io/tags/scala/</loc>
     <lastmod>2017-12-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -372,17 +343,14 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/archives/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/categories/category/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/categories/subcategory/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>

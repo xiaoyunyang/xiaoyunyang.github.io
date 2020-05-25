@@ -1,60 +1,86 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.3-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Xiaoyun Yang">
+<meta name="keywords" content="Software Design, web development, JavaScript, Slug, SEO">
+<meta name="description" content="
+This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.">
+
+
+<meta property="og:description" content="
+This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web Developer Playbook: Slug">
+<meta name="twitter:title" content="Web Developer Playbook: Slug">
+<meta property="og:url" content="https://xiaoyunyang.github.io/post/web-developer-playbook-slug/">
+<meta property="twitter:url" content="https://xiaoyunyang.github.io/post/web-developer-playbook-slug/">
+<meta property="og:site_name" content="Xiaoyun Yang">
+<meta property="og:description" content="
+This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.">
+<meta name="twitter:description" content="
+This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2018-07-14T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2018-07-14T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="blog">
+    
+  
+  
+    
+      <meta property="article:tag" content="JavaScript">
+    
+      <meta property="article:tag" content="Web Dev">
+    
+      <meta property="article:tag" content="Backend">
+    
+      <meta property="article:tag" content="Node">
+    
+      <meta property="article:tag" content="Best Practice">
+    
+      <meta property="article:tag" content="Guide">
+    
+      <meta property="article:tag" content="Software Design">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+  <meta property="twitter:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+
+
     <title>Web Developer Playbook: Slug</title>
-    <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="Software Design, web development, JavaScript, Slug, SEO">
 
     <link rel="icon" href="https://xiaoyunyang.github.io/favicon-96x96.png">
     
 
     
-    <meta name="description" content="
-This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.">
-    <meta property="og:description" content="
-This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="Web Developer Playbook: Slug">
-    <meta property="og:url" content="https://xiaoyunyang.github.io/post/web-developer-playbook-slug/">
-    <meta property="og:site_name" content="Xiaoyun Yang">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="
-This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.">
-    
-    
 
-    
-    
-
-    
-    
-    
-
-    
-      <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
-    
-
-    
+    <link rel="canonical" href="https://xiaoyunyang.github.io/post/web-developer-playbook-slug/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -62,7 +88,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
       
@@ -114,7 +140,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
     <ul class="sidebar-buttons">
       
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/">
     
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
@@ -124,7 +150,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/projects">
     
       <i class="sidebar-button-icon fa fa-lg fa-code"></i>
@@ -134,7 +160,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/blog">
     
       <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
@@ -144,7 +170,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/tags">
     
       <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
@@ -154,7 +180,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/about">
     
       <i class="sidebar-button-icon fa fa-lg fa-user"></i>
@@ -168,7 +194,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
     <ul class="sidebar-buttons">
       
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-github"></i>
@@ -178,7 +204,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
@@ -188,7 +214,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
@@ -198,7 +224,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
@@ -208,9 +234,9 @@ This post is part of the Web Developer Playbook series, which are created to pro
   </li>
 
   <li class="sidebar-button">
-     
-     <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
-     
+    
+      <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" target="_blank" rel="noopener">
+    
       <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
       
       <span class="sidebar-button-desc">Email Me</span>
@@ -265,179 +291,129 @@ This post is part of the Web Developer Playbook series, which are created to pro
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p><img src="https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png" alt="" />
+              <p><img src="https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png" alt="">
 This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.</p>
-
 <div class="alert info ">
-  <p>This article was also <a href="https://medium.com/dailyjs/web-developer-playbook-slug-a6dcbe06c284" target="_blank">published on Medium</a> under DailyJS.</p>
+  <p>This article was also <a href="https://medium.com/dailyjs/web-developer-playbook-slug-a6dcbe06c284">published on Medium</a> under DailyJS.</p>
 </div>
-
 <h2 id="what-is-a-slug">What is a Slug?</h2>
-
-<p>A slug is the last part of the url containing a unique string which identifies the resource being served by the web service. In that sense, a slug is a unique identifier for the resource. For example, the slug for this article, which has the url of <a href="http://xiaoyunyang.github.io//web-developer-playbook-slug" target="_blank">http://xiaoyunyang.github.io//web-developer-playbook-slug</a> is: <code>web-developer-playbook-slug</code>.</p>
-
+<p>A slug is the last part of the url containing a unique string which identifies the resource being served by the web service. In that sense, a slug is a unique identifier for the resource. For example, the slug for this article, which has the url of <a href="http://xiaoyunyang.github.io//web-developer-playbook-slug">http://xiaoyunyang.github.io//web-developer-playbook-slug</a> is: <code>web-developer-playbook-slug</code>.</p>
 <p>Some websites are designed to have slugs contain actual words of the title of the resource being services. For instance:</p>
-
 <ul>
 <li>Medium
-
 <ul>
-<li>URL:  <a href="https://medium.com/@xiaoyunyang/how-to-do-object-oriented-programming-the-right-way-1339c1a25286" target="_blank">https://medium.com/@xiaoyunyang/how-to-do-object-oriented-programming-the-right-way-1339c1a25286</a></li>
+<li>URL:  <a href="https://medium.com/@xiaoyunyang/how-to-do-object-oriented-programming-the-right-way-1339c1a25286">https://medium.com/@xiaoyunyang/how-to-do-object-oriented-programming-the-right-way-1339c1a25286</a></li>
 <li>Slug: <code>how-to-do-object-oriented-programming-the-right-way-1339c1a25286</code></li>
-</ul></li>
-<li>Blog of the famous movie critic Roger Ebert
-
-<ul>
-<li>URL: <a href="https://www.rogerebert.com/reviews/great-movie-mulholland-dr-2001" target="_blank">https://www.rogerebert.com/reviews/great-movie-mulholland-dr-2001</a></li>
-<li>Slug: <code>great-movie-mulholland-dr-2001</code></li>
-</ul></li>
-<li>Yelp:
-
-<ul>
-<li>URL: <a href="https://www.yelp.com/biz/old-ebbitt-grill-washington" target="_blank">https://www.yelp.com/biz/old-ebbitt-grill-washington</a></li>
-<li>Slug: <code>old-ebbitt-grill-washington</code></li>
-</ul></li>
-<li>Crunchyroll:
-
-<ul>
-<li>URL: <a href="http://www.crunchyroll.com/food-wars-shokugeki-no-soma/episode-1-challenging-the-elite-ten-749165" target="_blank">http://www.crunchyroll.com/food-wars-shokugeki-no-soma/episode-1-challenging-the-elite-ten-749165</a></li>
-<li>Slug: <code>episode-1-challenging-the-elite-ten-749165</code></li>
-</ul></li>
-<li>Repl.it
-
-<ul>
-<li>URL: <a href="https://repl.it/@xiaoyunyang/slugify" target="_blank">https://repl.it/@xiaoyunyang/slugify</a></li>
-<li>Slug: <code>slugify</code></li>
-</ul></li>
 </ul>
-
+</li>
+<li>Blog of the famous movie critic Roger Ebert
+<ul>
+<li>URL: <a href="https://www.rogerebert.com/reviews/great-movie-mulholland-dr-2001">https://www.rogerebert.com/reviews/great-movie-mulholland-dr-2001</a></li>
+<li>Slug: <code>great-movie-mulholland-dr-2001</code></li>
+</ul>
+</li>
+<li>Yelp:
+<ul>
+<li>URL: <a href="https://www.yelp.com/biz/old-ebbitt-grill-washington">https://www.yelp.com/biz/old-ebbitt-grill-washington</a></li>
+<li>Slug: <code>old-ebbitt-grill-washington</code></li>
+</ul>
+</li>
+<li>Crunchyroll:
+<ul>
+<li>URL: <a href="http://www.crunchyroll.com/food-wars-shokugeki-no-soma/episode-1-challenging-the-elite-ten-749165">http://www.crunchyroll.com/food-wars-shokugeki-no-soma/episode-1-challenging-the-elite-ten-749165</a></li>
+<li>Slug: <code>episode-1-challenging-the-elite-ten-749165</code></li>
+</ul>
+</li>
+<li>Repl.it
+<ul>
+<li>URL: <a href="https://repl.it/@xiaoyunyang/slugify">https://repl.it/@xiaoyunyang/slugify</a></li>
+<li>Slug: <code>slugify</code></li>
+</ul>
+</li>
+</ul>
 <p>Other websites are designed to have slugs that contain seemingly random string of characters. For instance:</p>
-
 <ul>
 <li>Codepen:
-
 <ul>
-<li>URL: <a href="https://codepen.io/stefanjudis/full/gkHwJ" target="_blank">https://codepen.io/stefanjudis/full/gkHwJ</a></li>
+<li>URL: <a href="https://codepen.io/stefanjudis/full/gkHwJ">https://codepen.io/stefanjudis/full/gkHwJ</a></li>
 <li>Slug: <code>gkHwJ</code></li>
-</ul></li>
-<li>Youtube
-
-<ul>
-<li><a href="https://www.youtube.com/watch?v=fCn8zs912OE" target="_blank">https://www.youtube.com/watch?v=fCn8zs912OE</a></li>
-<li>Slug: <code>watch?v=fCn8zs912OE</code></li>
-</ul></li>
 </ul>
-
+</li>
+<li>Youtube
+<ul>
+<li><a href="https://www.youtube.com/watch?v=fCn8zs912OE">https://www.youtube.com/watch?v=fCn8zs912OE</a></li>
+<li>Slug: <code>watch?v=fCn8zs912OE</code></li>
+</ul>
+</li>
+</ul>
 <p>When a resource is requested, the client sends a slug to the server&rsquo;s API to look up the resource from the database and return a JSON containing everything the client needs to be able to display the resource.</p>
-
 <blockquote>
 <p>A slug is a unique identifier for the resource.</p>
 </blockquote>
-
 <p>Underline unique.</p>
-
-<p>The basis for embedding title in the slug is Search Engine Optimization (SEO) and UX. Per <a href="https://support.google.com/webmasters/answer/7451184?hl=en" target="_blank">Google&rsquo;s SEO Guide</a>.</p>
-
+<p>The basis for embedding title in the slug is Search Engine Optimization (SEO) and UX. Per <a href="https://support.google.com/webmasters/answer/7451184?hl=en">Google&rsquo;s SEO Guide</a>.</p>
 <blockquote>
 <p>Creating descriptive categories and filenames for the documents on your website not only helps you keep your site better organized, it can create easier, &ldquo;friendlier&rdquo; URLs for those that want to link to your content. Visitors may be intimidated by extremely long and cryptic URLs that contain few recognizable words.</p>
 </blockquote>
-
 <p>DO
-<img src="https://xiaoyunyang.github.io/post/images/webdev-manual-url-good.png" alt="" /></p>
-
+<img src="https://xiaoyunyang.github.io/post/images/webdev-manual-url-good.png" alt=""></p>
 <p>DON&rsquo;T
-<img src="https://xiaoyunyang.github.io/post/images/webdev-manual-url-bad.png" alt="" /></p>
-
+<img src="https://xiaoyunyang.github.io/post/images/webdev-manual-url-bad.png" alt=""></p>
 <h1 id="slugifying-the-title">Slugifying The Title</h1>
-
 <p>Now we know why having a url containing title of our resource is useful, let&rsquo;s walk through how to create a url with slugified title.</p>
+<p>The URL is case sensitive, so the best practice for embedding a title of the resource into the url is to have all lowercase letters joined by a dash (kebab case). We can create a function called <code>slugify</code> (courtesy of <a href="https://medium.com/gatemill/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1">Matt Hagemann&rsquo;s Medium post</a>), which creates a kebab case, url friendly version of the title string:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">slugify</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">string</span>) =&gt; {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;àáäâãåèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;&#39;</span>
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;aaaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------&#39;</span>
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RegExp(<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;|&#39;</span>), <span style="color:#e6db74">&#39;g&#39;</span>)
 
-<p>The URL is case sensitive, so the best practice for embedding a title of the resource into the url is to have all lowercase letters joined by a dash (kebab case). We can create a function called <code>slugify</code> (courtesy of <a href="https://medium.com/gatemill/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1" target="_blank">Matt Hagemann&rsquo;s Medium post</a>), which creates a kebab case, url friendly version of the title string:</p>
-
-<pre><code class="language-javascript">const slugify = (string) =&gt; {
-  const a = 'àáäâãåèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
-  const b = 'aaaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
-  const p = new RegExp(a.split('').join('|'), 'g')
-
-  return string.toString().toLowerCase()
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(p, c =&gt; b.charAt(a.indexOf(c))) // Replace special characters in a with b
-    .replace(/&amp;/g, '-and-') // Replace &amp; with ‘and’
-    .replace(/[^\w-]+/g, '') // Remove all non-word characters such as spaces or tabs
-    .replace(/--+/g, '-') // Replace multiple — with single -
-    .replace(/^-+/, '') // Trim — from start of text
-    .replace(/-+$/, ''); // Trim — from end of text
-}
-</code></pre>
-
-<p>This turns the following string:</p>
-
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">string</span>.<span style="color:#a6e22e">toString</span>().<span style="color:#a6e22e">toLowerCase</span>()
+    .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\s+/g</span>, <span style="color:#e6db74">&#39;-&#39;</span>) <span style="color:#75715e">// Replace spaces with -
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">replace</span>(<span style="color:#a6e22e">p</span>, <span style="color:#a6e22e">c</span> =&gt; <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">charAt</span>(<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">c</span>))) <span style="color:#75715e">// Replace special characters in a with b
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/&amp;/g</span>, <span style="color:#e6db74">&#39;-and-&#39;</span>) <span style="color:#75715e">// Replace &amp; with ‘and’
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/[^\w-]+/g</span>, <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#75715e">// Remove all non-word characters such as spaces or tabs
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/--+/g</span>, <span style="color:#e6db74">&#39;-&#39;</span>) <span style="color:#75715e">// Replace multiple — with single -
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/^-+/</span>, <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#75715e">// Trim — from start of text
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/-+$/</span>, <span style="color:#e6db74">&#39;&#39;</span>); <span style="color:#75715e">// Trim — from end of text
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p>This turns the following string:</p>
 <p><code>I'm a &lt;/little&gt; Tea---Pot Short &amp; Stout ♥</code></p>
-
 <p>into:</p>
-
 <p><code>im-a-little-tea-pot-short-and-stout</code></p>
-
 <p>A potential issue with using just the title to create the slug is there could be multiple resources with the same title. We can solve this problem by appending some additional information to distinguish resources with the same title, For Roger Ebert&rsquo;s movie blog, that&rsquo;s the year in which the movie was released. For Yelp&rsquo;s restaurant page, that&rsquo;s the city of the restaurant. For Medium, that&rsquo;s some pseudo-random characters.</p>
-
 <p>For cases where there&rsquo;s less predictability in the name of the title, lots of options exist to create a pseudo-random character for the slug, which we will refer to hereafter as the <code>fingerprint</code>.</p>
-
-<p>Matt Hagemann <a href="https://medium.com/@matthagemann/very-welcome-and-great-question-6945bebfe233" target="_blank">recommended</a> <a href="https://github.com/dylang/shortid" target="_blank"><code>shortid</code></a>. It&rsquo;s an excellent choice. But I ended up going with <a href="https://github.com/ericelliott/cuid" target="_blank"><code>cuid</code></a> created by Eric Elliot.</p>
-
+<p>Matt Hagemann <a href="https://medium.com/@matthagemann/very-welcome-and-great-question-6945bebfe233">recommended</a> <a href="https://github.com/dylang/shortid"><code>shortid</code></a>. It&rsquo;s an excellent choice. But I ended up going with <a href="https://github.com/ericelliott/cuid"><code>cuid</code></a> created by Eric Elliot.</p>
 <p>To finish our example with creating the unique slug with a slugified title, we are going to create a new function:</p>
-
-<pre><code class="language-javascript">const urlSlug = (title, fingerprint) =&gt; {
-  return `${slugify(title)}-${fingerprint}`;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">urlSlug</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">title</span>, <span style="color:#a6e22e">fingerprint</span>) =&gt; {
+  <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">slugify</span>(<span style="color:#a6e22e">title</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">fingerprint</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
 }
-</code></pre>
-
-<p>We call the <code>urlSlug</code> function as follows:</p>
-
-<pre><code class="language-javascript">const cuid = require('cuid');
-const slug = urlSlug(title, cuid.slug());
-</code></pre>
-
-<p>If your title is <code>I'm a &lt;/little&gt; Tea---Pot Short &amp; Stout ♥</code>, It will give you a <code>slug</code> like this:</p>
-
+</code></pre></div><p>We call the <code>urlSlug</code> function as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cuid</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;cuid&#39;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">slug</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">urlSlug</span>(<span style="color:#a6e22e">title</span>, <span style="color:#a6e22e">cuid</span>.<span style="color:#a6e22e">slug</span>());
+</code></pre></div><p>If your title is <code>I'm a &lt;/little&gt; Tea---Pot Short &amp; Stout ♥</code>, It will give you a <code>slug</code> like this:</p>
 <p><code>im-a-little-tea-pot-short-and-stout-w40n25k</code></p>
-
 <p>And that&rsquo;s it!</p>
-
 <h1 id="using-the-slug">Using the Slug</h1>
-
 <p>Finally, how do we integrate the slug into our overall web service and what does the interaction between the client application and server application look like?</p>
-
-<p>Suppose the user is creating a new item for sale on an e-commerce website (let&rsquo;s call it <em>www.mytrashyourtreasure.com</em>, which I&rsquo;m surprised is not a real site!) using a form. The client application manages the form and collecting data from the user input for submittal to the server.</p>
-
+<p>Suppose the user is creating a new item for sale on an e-commerce website (let&rsquo;s call it <em><a href="http://www.mytrashyourtreasure.com">www.mytrashyourtreasure.com</a></em>, which I&rsquo;m surprised is not a real site!) using a form. The client application manages the form and collecting data from the user input for submittal to the server.</p>
 <p>When the user presses the &ldquo;Submit&rdquo; button, the client application will send all the form data to the server application by making an HTTP POST request.</p>
-
 <p>The server needs to do a few things:</p>
-
 <ol>
 <li>Verify that the form data contains a non-empty <code>title</code> field. If the <code>title</code> is empty, send an error status back to the client, along with a message that &ldquo;the title cannot be empty”. The client can then figure out how to display an error message to the user to fix the problem.</li>
 <li>Create a new item object in compliance with the database Item model with the information from the form (don&rsquo;t forget to sanitize all the strings). One of the fields need to be the slug created from the <code>title</code> field.</li>
 <li>Send the &ldquo;200 OK&rdquo; status to the client, along with the slug.</li>
 </ol>
-
 <p>When client gets the slug, it can redirect the page to the page that displays the item with the following line of code:</p>
-
-<pre><code class="language-javascript">window.location = `/${res.data}`;
-</code></pre>
-
-<p>Where <code>res.data</code> contains the slug. Assume the slug we&rsquo;ve created is <code>cat-paper-clips-set-of-3-w40n25k</code>.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.<span style="color:#a6e22e">location</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">data</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</code></pre></div><p>Where <code>res.data</code> contains the slug. Assume the slug we&rsquo;ve created is <code>cat-paper-clips-set-of-3-w40n25k</code>.</p>
 <p>Setting <code>window.location</code> to <code>/cat-paper-clips-set-of-3-w40n25k</code> redirects the browser to go to  <code>https://mytrashyourtreasure.com/cat-paper-clips-set-of-3-w40n25k</code>. This is no different than putting that url in your browser directly and pressing the enter key or clicking the link from an email.</p>
-
 <p>So what needs to happen when we visit <code>https://mytrashyourtreasure.com/cat-paper-clips-set-of-3-w40n25k</code>?</p>
-
 <p>A couple of things will be done by the client and the server in order to load the page for this new item for sale that the user just created:</p>
-
 <ol>
 <li>The client sends an HTTP GET request to the server API to get data on this item as such: <code>GET /api/item/at-paper-clips-set-of-3-w40n25k</code></li>
 <li>The server will use slug as the key for lookup in the database of items. When it finds it, it will send the JSON for this item back to the client.</li>
 <li>The client takes the JSON to render the page for this item.</li>
 </ol>
-
 <p>Because every item has a unique slug, there is no ambiguity in which item is being requested. The client is guaranteed to get back the JSON for just one item.</p>
               
             </div>
@@ -468,8 +444,8 @@ const slug = urlSlug(title, cuid.slug());
                 
               
             
-            
-  <div class="post-actions-wrap">
+            <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -534,8 +510,8 @@ const slug = urlSlug(title, cuid.slug());
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
             
               
@@ -565,14 +541,14 @@ s.setAttribute('data-timestamp', +new Date());
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 Xiaoyun Yang. All Rights Reserved
+    &copy; 2020 Xiaoyun Yang. All Rights Reserved
   </span>
 </footer>
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
-        
-  <div class="post-actions-wrap">
+        <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -637,8 +613,8 @@ s.setAttribute('data-timestamp', +new Date());
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
       </div>
       <div id="share-options-bar" class="share-options-bar" data-behavior="4">
@@ -697,252 +673,14 @@ s.setAttribute('data-timestamp', +new Date());
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/">
-                <h3 class="media-heading">Beyond Minimum Viable Product: A Lesson on Building Production-ready Software</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Aug 8, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>What I learned working at a mature startup that&rsquo;s building new things but also has a ton of customers and products in production.</p>
+    
 
-<p>This post is a WIP.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/">
-                <h3 class="media-heading">Effective Unit Testing of React Components With Jest And Enzyme</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Aug 8, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
-                <h3 class="media-heading">A Guide For Migrating Your Project to TypeScript</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.</p>
-
-<p>This post is a WIP.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/">
-                <h3 class="media-heading">The Algorithm for Managing Stress</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &ldquo;top 10 things you can do to &hellip;.&rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/get-started-with-go/">
-                <h3 class="media-heading">Get Started With Go</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Feb 2, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Go is becoming pretty mainstream. Every job posting I&rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/">
-                <h3 class="media-heading">Thirsty Plant: Automated Plant Waterer</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p><em>by <a href="https://github.com/xiaoyunyang" target="_blank">Xiaoyun Yang</a> and <a href="https://github.com/clydeshaffer" target="_blank">Clyde Shaffer</a></em></p>
-
-<p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/">
-                <h3 class="media-heading">From Public Sector To Senior Software Engineer:  How I made the Transition</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.</p>
-
-
-
- 
-  
-  
-  
-  
     
   
     
       
+      <div id="cover" style="background-image:url('https://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
     
-  
-
-<div class="figure fig-70" >
-  
-    <a class="fancybox" href="https://images2.imgbox.com/26/21/MQB5dNYd_o.png" title="My KeyValues filter" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://images2.imgbox.com/26/21/MQB5dNYd_o.png"  alt="My KeyValues filter">
-  
-    </a>
-  
-   
-    <span class="caption">My KeyValues filter</span>
-  
-</div></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
-                <h3 class="media-heading">When To Use Immutable Data Structures</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Suppose you are asked this question during a technical interview:</p>
-
-<blockquote>
-<p>When do you use immutable (functional) data structures and when do you use mutable data structure?</p>
-</blockquote></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/">
-                <h3 class="media-heading">Security Considerations for Web Applications and Best Practices</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/">
-                <h3 class="media-heading">Cribsheet for JavaScript Coding Interview</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Oct 10, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:</p>
-
-<blockquote>
-<p>Can you be productive with JavaScript?</p>
-</blockquote></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         38 posts found
-      </p>
-    </div>
-  </div>
-</div>
-    
-  
-    
-    <div id="cover" style="background-image:url('https://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
   
 
 
@@ -954,7 +692,7 @@ s.setAttribute('data-timestamp', +new Date());
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="https://xiaoyunyang.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+<script src="https://xiaoyunyang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
   
@@ -965,6 +703,20 @@ s.setAttribute('data-timestamp', +new Date());
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
   
 
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
 
 <script>
 $(document).ready(function() {
@@ -1004,6 +756,7 @@ $(document).ready(function() {
       </script>
     
   
+
 
 
 

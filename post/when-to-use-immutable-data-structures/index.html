@@ -1,71 +1,89 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.3-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Xiaoyun Yang">
+<meta name="keywords" content="JavaScript, Best Practices, Interview Prep, Functional Programming, Data Structure, Queue">
+<meta name="description" content="Suppose you are asked this question during a technical interview:
+
+When do you use immutable (functional) data structures and when do you use mutable data structure?
+">
+
+
+<meta property="og:description" content="Suppose you are asked this question during a technical interview:
+
+When do you use immutable (functional) data structures and when do you use mutable data structure?
+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="When To Use Immutable Data Structures">
+<meta name="twitter:title" content="When To Use Immutable Data Structures">
+<meta property="og:url" content="https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
+<meta property="twitter:url" content="https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
+<meta property="og:site_name" content="Xiaoyun Yang">
+<meta property="og:description" content="Suppose you are asked this question during a technical interview:
+
+When do you use immutable (functional) data structures and when do you use mutable data structure?
+">
+<meta name="twitter:description" content="Suppose you are asked this question during a technical interview:
+
+When do you use immutable (functional) data structures and when do you use mutable data structure?
+">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2018-12-07T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2018-12-07T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="blog">
+    
+  
+  
+    
+      <meta property="article:tag" content="JavaScript">
+    
+      <meta property="article:tag" content="Best Practice">
+    
+      <meta property="article:tag" content="Programming">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/algo/data-structures.png">
+  <meta property="twitter:image" content="https://xiaoyunyang.github.io/post/images/algo/data-structures.png">
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+  <meta property="twitter:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+
+
     <title>When To Use Immutable Data Structures</title>
-    <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="JavaScript, Best Practices, Interview Prep, Functional Programming, Data Structure, Queue">
 
     <link rel="icon" href="https://xiaoyunyang.github.io/favicon-96x96.png">
     
 
     
-    <meta name="description" content="Suppose you are asked this question during a technical interview:
 
-
-When do you use immutable (functional) data structures and when do you use mutable data structure?
-">
-    <meta property="og:description" content="Suppose you are asked this question during a technical interview:
-
-
-When do you use immutable (functional) data structures and when do you use mutable data structure?
-">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="When To Use Immutable Data Structures">
-    <meta property="og:url" content="https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
-    <meta property="og:site_name" content="Xiaoyun Yang">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="Suppose you are asked this question during a technical interview:
-
-
-When do you use immutable (functional) data structures and when do you use mutable data structure?
-">
-    
-    
-
-    
-    
-
-    
-      <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/algo/data-structures.png">
-    
-    
-    
-
-    
-      <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
-    
-
-    
+    <link rel="canonical" href="https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -73,7 +91,7 @@ When do you use immutable (functional) data structures and when do you use mutab
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
       
@@ -125,7 +143,7 @@ When do you use immutable (functional) data structures and when do you use mutab
     <ul class="sidebar-buttons">
       
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/">
     
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
@@ -135,7 +153,7 @@ When do you use immutable (functional) data structures and when do you use mutab
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/projects">
     
       <i class="sidebar-button-icon fa fa-lg fa-code"></i>
@@ -145,7 +163,7 @@ When do you use immutable (functional) data structures and when do you use mutab
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/blog">
     
       <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
@@ -155,7 +173,7 @@ When do you use immutable (functional) data structures and when do you use mutab
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/tags">
     
       <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
@@ -165,7 +183,7 @@ When do you use immutable (functional) data structures and when do you use mutab
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/about">
     
       <i class="sidebar-button-icon fa fa-lg fa-user"></i>
@@ -179,7 +197,7 @@ When do you use immutable (functional) data structures and when do you use mutab
     <ul class="sidebar-buttons">
       
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-github"></i>
@@ -189,7 +207,7 @@ When do you use immutable (functional) data structures and when do you use mutab
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
@@ -199,7 +217,7 @@ When do you use immutable (functional) data structures and when do you use mutab
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
@@ -209,7 +227,7 @@ When do you use immutable (functional) data structures and when do you use mutab
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
@@ -219,9 +237,9 @@ When do you use immutable (functional) data structures and when do you use mutab
   </li>
 
   <li class="sidebar-button">
-     
-     <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
-     
+    
+      <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" target="_blank" rel="noopener">
+    
       <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
       
       <span class="sidebar-button-desc">Email Me</span>
@@ -277,123 +295,87 @@ When do you use immutable (functional) data structures and when do you use mutab
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Suppose you are asked this question during a technical interview:</p>
-
 <blockquote>
 <p>When do you use immutable (functional) data structures and when do you use mutable data structure?</p>
 </blockquote>
-
 <p>To answer this question, let&rsquo;s go over some basics first.</p>
-
 <h1 id="mutable-vs-immutable-data-structure">Mutable vs. Immutable Data structure</h1>
-
 <p>To illustrate the differences between mutable and immutable data structure, we are going to implement the queue using an array.</p>
-
 <p>The definition of a queue:</p>
-
-<p><img src="https://xiaoyunyang.github.io/post/images/algo/queue.png" alt="queue" /></p>
-
+<p><img src="https://xiaoyunyang.github.io/post/images/algo/queue.png" alt="queue"></p>
 <div class="alert info ">
-  <p>Note, I&rsquo;m using an array to represent the Queue for simplicity. That&rsquo;s not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js" target="_blank">A correct implementation of a queue</a> uses a <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Node/DoublyNode.js" target="_blank">DoublyNode</a> and two pointers for head and tail of the Queue.</p>
+  <p>Note, I&rsquo;m using an array to represent the Queue for simplicity. That&rsquo;s not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js">A correct implementation of a queue</a> uses a <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Node/DoublyNode.js">DoublyNode</a> and two pointers for head and tail of the Queue.</p>
 </div>
-
 <p>Here&rsquo;s an implementation of the Queue as an <em>mutable</em> data structure.</p>
-
-<pre><code class="language-javascript">function QueueMutable() {
-  let arr = [] // private variable
-
-  this.enqueue = val =&gt; {
-    arr.push(val)
-    return this
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">QueueMutable</span>() {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [] <span style="color:#75715e">// private variable
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">enqueue</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span> =&gt; {
+    <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">val</span>)
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>
   }
-  this.dequeue = () =&gt; {
-    let head = arr.shift()
-    return [head, this]
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dequeue</span> <span style="color:#f92672">=</span> () =&gt; {
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">head</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">shift</span>()
+    <span style="color:#66d9ef">return</span> [<span style="color:#a6e22e">head</span>, <span style="color:#66d9ef">this</span>]
   }
-  this.isEmpty = () =&gt; arr.length === 0
-  this.getData = () =&gt; arr
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isEmpty</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getData</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#a6e22e">arr</span>
 }
-</code></pre>
-
-<p>Here&rsquo;s an implementation of the Queue as a <em>immutable</em> data structure.</p>
-
-<pre><code class="language-javascript">function QueueImmutable(dataIn = []) { // data is an optional parameter
-  let data = dataIn // private variable
-
-  this.enqueue = item =&gt; {
-    let newData = data.concat([item]) // concat returns a new arr
-    return new QueueImmutable(newData)
+</code></pre></div><p>Here&rsquo;s an implementation of the Queue as a <em>immutable</em> data structure.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">QueueImmutable</span>(<span style="color:#a6e22e">dataIn</span> <span style="color:#f92672">=</span> []) { <span style="color:#75715e">// data is an optional parameter
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">dataIn</span> <span style="color:#75715e">// private variable
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">enqueue</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span> =&gt; {
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">newData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">concat</span>([<span style="color:#a6e22e">item</span>]) <span style="color:#75715e">// concat returns a new arr
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueImmutable</span>(<span style="color:#a6e22e">newData</span>)
   }
   
-  this.dequeue = () =&gt; {
-    let [head, ...rest] = data
-    return [head, new QueueImmutable(rest)]
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dequeue</span> <span style="color:#f92672">=</span> () =&gt; {
+    <span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">head</span>, ...<span style="color:#a6e22e">rest</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>
+    <span style="color:#66d9ef">return</span> [<span style="color:#a6e22e">head</span>, <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueImmutable</span>(<span style="color:#a6e22e">rest</span>)]
   }
-  this.getData = () =&gt; data
-  this.isEmpty = () =&gt; data.length === 0
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getData</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#a6e22e">data</span>
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isEmpty</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>
 }
-</code></pre>
-
-<p>One key difference you may have noticed is that the immutable Queue does not mutate the original queue. <code>enqueue</code> and <code>dequeue</code> functions returns a new queue data structure.</p>
-
-<p>Try out these Queue implementations <a href="https://repl.it/@xiaoyunyang/queue" target="_blank">in repl</a>.</p>
-
+</code></pre></div><p>One key difference you may have noticed is that the immutable Queue does not mutate the original queue. <code>enqueue</code> and <code>dequeue</code> functions returns a new queue data structure.</p>
+<p>Try out these Queue implementations <a href="https://repl.it/@xiaoyunyang/queue">in repl</a>.</p>
 <h1 id="pros-and-cons">Pros and Cons</h1>
-
 <p>Consider this example:</p>
-
-<pre><code class="language-javascript">let qIm = new QueueImmutable()
-qIm.enqueue(1)
-console.log(qIm.getData()) //&gt; A
-qIm.enqueue(2)
-qIm.enqueue(3)
-console.log(qIm.getData()) //&gt; B
-
-let qM = new QueueMutable()
-qM.enqueue(1)
-console.log(qIm.getData()) //&gt; C
-qM.enqueue(2)
-qM.enqueue(3)
-console.log(qIm.getData()) //&gt; D
-
-</code></pre>
-
-<p><code>qIm.getData()</code> always returns <code>[]</code> at lines A and B because <code>qIm</code> hasn&rsquo;t changed. On the other hand, each time we call <code>qM.getData()</code>, we get different results: The call on line C returns <code>[1]</code> and the call on line D returns <code>[1,2,3]</code>.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">qIm</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueImmutable</span>()
+<span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">1</span>)
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">getData</span>()) <span style="color:#75715e">//&gt; A
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">2</span>)
+<span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">3</span>)
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">getData</span>()) <span style="color:#75715e">//&gt; B
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">qM</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueMutable</span>()
+<span style="color:#a6e22e">qM</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">1</span>)
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">getData</span>()) <span style="color:#75715e">//&gt; C
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">qM</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">2</span>)
+<span style="color:#a6e22e">qM</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">3</span>)
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">getData</span>()) <span style="color:#75715e">//&gt; D
+</span><span style="color:#75715e"></span>
+</code></pre></div><p><code>qIm.getData()</code> always returns <code>[]</code> at lines A and B because <code>qIm</code> hasn&rsquo;t changed. On the other hand, each time we call <code>qM.getData()</code>, we get different results: The call on line C returns <code>[1]</code> and the call on line D returns <code>[1,2,3]</code>.</p>
 <p>Why is it an advantage to return the same results for the same input? Better predicability, maintability, and less buggy code.</p>
-
 <p>There&rsquo;s a concept in functional programming called referential transparency forces the invariant that everything a function does is represented by the value that it returns.</p>
-
 <p>Immutable data structures provides referential transparency which makes it easier to reason about our program locally.</p>
-
 <p>Another way to think about it is that every time we execute a pure (referentially transparent) function with the same input, we get the same output. Pure functions do not depend on context (e.g., when you execute function in your overall program) and may be reasoned about locally. On the other hand, functions which are not referentially transparent produce results which are context-dependent, require more global reasoning, are harder to refactor, and are more likely to introduce nasty bugs due to side effects.</p>
-
 <p>An obvious disadvantage with using an immutable data structure is you are creating a new data structure every time you want to make a change.</p>
-
 <p>At first glance, both Queue implementations seem to have identical behavior and can be used to construct a queue with almost identical syntax using chaining:</p>
-
-<pre><code class="language-javascript">let qM = new QueueMutable()
-qM.enqueue(1).enqueue(2).enqueue(3).dequeue()[1]
-console.log(qM.getData()) //&gt; [2,3]
-
-let qIM = new QueueImmutable()
-qIm = qIm.enqueue(1).enqueue(2).enqueue(3).dequeue()[1]
-console.log(qIm.getData()) //&gt; [2,3]
-</code></pre>
-
-<p>Notice we don&rsquo;t need to reassign <code>qM</code> to point to a new data structure since the original data structure is modified in place via <code>enqueue</code> and <code>dequeue</code>.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">qM</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueMutable</span>()
+<span style="color:#a6e22e">qM</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">2</span>).<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">3</span>).<span style="color:#a6e22e">dequeue</span>()[<span style="color:#ae81ff">1</span>]
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">qM</span>.<span style="color:#a6e22e">getData</span>()) <span style="color:#75715e">//&gt; [2,3]
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">qIM</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueImmutable</span>()
+<span style="color:#a6e22e">qIm</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">2</span>).<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">3</span>).<span style="color:#a6e22e">dequeue</span>()[<span style="color:#ae81ff">1</span>]
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">getData</span>()) <span style="color:#75715e">//&gt; [2,3]
+</span></code></pre></div><p>Notice we don&rsquo;t need to reassign <code>qM</code> to point to a new data structure since the original data structure is modified in place via <code>enqueue</code> and <code>dequeue</code>.</p>
 <p>However, for the immutable Queue, a new Queue is created each time we call <code>enqueue</code> and <code>dequeue</code>, so that&rsquo;s four new Queues total to support the four Queue operations. Also we needed to update the <code>qIm</code> to point to the final Queue containing 2 and 3 which was created by the <code>dequeue</code> function.</p>
-
 <h1 id="when-to-use-immutable-data-structure">When to use immutable data structure</h1>
-
 <p>In concurrent programs, functional programming and immutable data structures are used to ensure correctness when multiple parts of the program use shared resource. The shared resource is encoded in an immutable data structure.</p>
-
 <p>Modern client side applications often have multiple components (e.g., parts of the DOM or screens of a single page application) access and making changes to the same shared state. React and redux provides a powerful framework for building rich client side applications which rely on heavily on functional programming techniques. For instance, redux provides an an abstraction for managing shared data by leveraging immutable data structure and a collection of functions called reducers and actions to provide a &ldquo;single source of truth&rdquo; to multiple React components.</p>
-
 <h1 id="when-to-use-mutable-data-structure">When to use mutable data structure</h1>
-
 <p>When concurrency and resource sharing are not involved and you are concerned with making your program run as fast as possible, you are better off using mutable data structures. Using an immutable data structure is expensive because it&rsquo;s creating a new modified version of a data structure every time you want to make a change.</p>
-
 <p>In game programming, memory allocation is usually the slowest thing (resource pools are popular in game programming). In games you not only want each frame to process quickly but also for speed to be consistent. The usual symptom of a garbage collector bottleneck is that the game intermittently freezes but runs normally in between. In that case, you don&rsquo;t want to continuously allocate memory for the new data structure; rather you want to update the existing data structure in place.</p>
               
             </div>
@@ -416,8 +398,8 @@ console.log(qIm.getData()) //&gt; [2,3]
                 
               
             
-            
-  <div class="post-actions-wrap">
+            <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -482,8 +464,8 @@ console.log(qIm.getData()) //&gt; [2,3]
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
             
               
@@ -513,14 +495,14 @@ s.setAttribute('data-timestamp', +new Date());
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 Xiaoyun Yang. All Rights Reserved
+    &copy; 2020 Xiaoyun Yang. All Rights Reserved
   </span>
 </footer>
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
-        
-  <div class="post-actions-wrap">
+        <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -585,8 +567,8 @@ s.setAttribute('data-timestamp', +new Date());
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
       </div>
       <div id="share-options-bar" class="share-options-bar" data-behavior="4">
@@ -645,252 +627,14 @@ s.setAttribute('data-timestamp', +new Date());
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/">
-                <h3 class="media-heading">Beyond Minimum Viable Product: A Lesson on Building Production-ready Software</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Aug 8, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>What I learned working at a mature startup that&rsquo;s building new things but also has a ton of customers and products in production.</p>
+    
 
-<p>This post is a WIP.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/">
-                <h3 class="media-heading">Effective Unit Testing of React Components With Jest And Enzyme</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Aug 8, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
-                <h3 class="media-heading">A Guide For Migrating Your Project to TypeScript</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.</p>
-
-<p>This post is a WIP.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/">
-                <h3 class="media-heading">The Algorithm for Managing Stress</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &ldquo;top 10 things you can do to &hellip;.&rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/get-started-with-go/">
-                <h3 class="media-heading">Get Started With Go</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Feb 2, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Go is becoming pretty mainstream. Every job posting I&rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/">
-                <h3 class="media-heading">Thirsty Plant: Automated Plant Waterer</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p><em>by <a href="https://github.com/xiaoyunyang" target="_blank">Xiaoyun Yang</a> and <a href="https://github.com/clydeshaffer" target="_blank">Clyde Shaffer</a></em></p>
-
-<p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/">
-                <h3 class="media-heading">From Public Sector To Senior Software Engineer:  How I made the Transition</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.</p>
-
-
-
- 
-  
-  
-  
-  
     
   
     
       
+      <div id="cover" style="background-image:url('https://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
     
-  
-
-<div class="figure fig-70" >
-  
-    <a class="fancybox" href="https://images2.imgbox.com/26/21/MQB5dNYd_o.png" title="My KeyValues filter" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://images2.imgbox.com/26/21/MQB5dNYd_o.png"  alt="My KeyValues filter">
-  
-    </a>
-  
-   
-    <span class="caption">My KeyValues filter</span>
-  
-</div></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
-                <h3 class="media-heading">When To Use Immutable Data Structures</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Suppose you are asked this question during a technical interview:</p>
-
-<blockquote>
-<p>When do you use immutable (functional) data structures and when do you use mutable data structure?</p>
-</blockquote></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/">
-                <h3 class="media-heading">Security Considerations for Web Applications and Best Practices</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/">
-                <h3 class="media-heading">Cribsheet for JavaScript Coding Interview</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Oct 10, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:</p>
-
-<blockquote>
-<p>Can you be productive with JavaScript?</p>
-</blockquote></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         38 posts found
-      </p>
-    </div>
-  </div>
-</div>
-    
-  
-    
-    <div id="cover" style="background-image:url('https://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
   
 
 
@@ -902,7 +646,7 @@ s.setAttribute('data-timestamp', +new Date());
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="https://xiaoyunyang.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+<script src="https://xiaoyunyang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
   
@@ -913,6 +657,20 @@ s.setAttribute('data-timestamp', +new Date());
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
   
 
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
 
 <script>
 $(document).ready(function() {
@@ -952,6 +710,7 @@ $(document).ready(function() {
       </script>
     
   
+
 
 
 

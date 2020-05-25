@@ -1,59 +1,77 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.3-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Xiaoyun Yang">
+<meta name="keywords" content="JavaScript, Best Practice, Web Development, Web Security, XSS, CSRF">
+<meta name="description" content="This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.">
+
+
+<meta property="og:description" content="This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Security Considerations for Web Applications and Best Practices">
+<meta name="twitter:title" content="Security Considerations for Web Applications and Best Practices">
+<meta property="og:url" content="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/">
+<meta property="twitter:url" content="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/">
+<meta property="og:site_name" content="Xiaoyun Yang">
+<meta property="og:description" content="This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.">
+<meta name="twitter:description" content="This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2018-12-06T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2018-12-06T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="blog">
+    
+  
+  
+    
+      <meta property="article:tag" content="Node">
+    
+      <meta property="article:tag" content="Web Dev">
+    
+      <meta property="article:tag" content="Best Practice">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/webdev/web-security.png">
+  <meta property="twitter:image" content="https://xiaoyunyang.github.io/post/images/webdev/web-security.png">
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+  <meta property="twitter:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+
+
     <title>Security Considerations for Web Applications and Best Practices</title>
-    <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="JavaScript, Best Practice, Web Development, Web Security, XSS, CSRF">
 
     <link rel="icon" href="https://xiaoyunyang.github.io/favicon-96x96.png">
     
 
     
-    <meta name="description" content="This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.">
-    <meta property="og:description" content="This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="Security Considerations for Web Applications and Best Practices">
-    <meta property="og:url" content="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/">
-    <meta property="og:site_name" content="Xiaoyun Yang">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.">
-    
-    
 
-    
-    
-
-    
-      <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/webdev/web-security.png">
-    
-    
-    
-
-    
-      <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
-    
-
-    
+    <link rel="canonical" href="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -61,7 +79,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
       
@@ -113,7 +131,7 @@
     <ul class="sidebar-buttons">
       
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/">
     
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
@@ -123,7 +141,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/projects">
     
       <i class="sidebar-button-icon fa fa-lg fa-code"></i>
@@ -133,7 +151,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/blog">
     
       <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
@@ -143,7 +161,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/tags">
     
       <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
@@ -153,7 +171,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/about">
     
       <i class="sidebar-button-icon fa fa-lg fa-user"></i>
@@ -167,7 +185,7 @@
     <ul class="sidebar-buttons">
       
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-github"></i>
@@ -177,7 +195,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
@@ -187,7 +205,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
@@ -197,7 +215,7 @@
   </li>
 
   <li class="sidebar-button">
-     
+    
       <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
@@ -207,9 +225,9 @@
   </li>
 
   <li class="sidebar-button">
-     
-     <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
-     
+    
+      <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" target="_blank" rel="noopener">
+    
       <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
       
       <span class="sidebar-button-desc">Email Me</span>
@@ -265,239 +283,120 @@
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.</p>
-
-<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#cross-site-scripting-xss">Cross Site Scripting (XSS)</a></li>
-<li><a href="#sql-injection">SQL Injection</a></li>
-<li><a href="#reverse-tabnabbing">Reverse Tabnabbing</a></li>
-<li><a href="#cross-site-request-forgery-csrf">Cross-site Request Forgery (CSRF)</a></li>
-<li><a href="#working-with-open-source-software">Working With Open Source Software</a></li>
-<li><a href="#more-reading">More Reading</a></li>
-</ul>
-</nav>
-
+<!-- raw HTML omitted -->
 <h1 id="cross-site-scripting-xss">Cross Site Scripting (XSS)</h1>
-
 <p><strong>Symptom</strong></p>
-
 <p>Browser executes malicious JavaScript code upon loading a web page which displays user-generated content.</p>
-
 <p>XSS could be very harmful to your site&rsquo;s users because malicious code is executed in their browsers when they load your site. The malicious code not only could modify your page&rsquo;s DOM or window location (e.g., via executing <code>window.location = &quot;www.evil.com</code>), but also could steal your users&rsquo; information or perform actions on their behalf.</p>
-
 <p><strong>Cause</strong></p>
-
 <p>Malicious user of your website put some malicious code into a form. The client/server does not sanitize user input and processes the malicious code (e.g., an inline script like <code>&lt;script&gt;alert('you're hacked')&lt;/script&gt;</code>) as if it were data. The malicious code is then stored in your web app&rsquo;s server and served to other users of your site as data.</p>
-
-<p>Upon page load, the malicious code is executed, which could make your web app inoperable and harm your users when the malicious code is run in their browsers. There are three types of XSS attacks: <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)#Stored_and_Reflected_XSS_Attacks" target="_blank">stored, reflected</a>, and <a href="https://www.owasp.org/index.php/DOM_Based_XSS" target="_blank">DOM based</a>.</p>
-
+<p>Upon page load, the malicious code is executed, which could make your web app inoperable and harm your users when the malicious code is run in their browsers. There are three types of XSS attacks: <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)#Stored_and_Reflected_XSS_Attacks">stored, reflected</a>, and <a href="https://www.owasp.org/index.php/DOM_Based_XSS">DOM based</a>.</p>
 <p><strong>Defense</strong></p>
-
 <p>There are some simple things we can do to protect our web app against XSS:</p>
-
 <p><em>1. Enable web browser&rsquo;s XSS protection.</em></p>
-
 <p>You also want this to your app&rsquo;s response header:</p>
-
 <pre><code>X-XSS-Protection 1; mode=block
-</code></pre>
-
-<p>We can use a npm package called <a href="https://github.com/helmetjs/helmet" target="_blank"><code>helmet</code></a> to add the xssFilter to request.</p>
-
-<pre><code class="language-javascript">import helmet from ‘helmet’;
-app.use(helmet.xssFilter());
-</code></pre>
-
-<p>But Firefox does not protect you from xss with this in the header.
+</code></pre><p>We can use a npm package called <a href="https://github.com/helmetjs/helmet"><code>helmet</code></a> to add the xssFilter to request.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">helmet</span> <span style="color:#a6e22e">from</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">helmet</span><span style="color:#960050;background-color:#1e0010">’</span>;
+<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">helmet</span>.<span style="color:#a6e22e">xssFilter</span>());
+</code></pre></div><p>But Firefox does not protect you from xss with this in the header.
 So make sure you sanitize your input!</p>
-
 <p><em>2. Set Content Security Policy (CSP) Header.</em></p>
-
 <p>CSP is a security feature that web browsers offer which allows the web app to tell web browsers what should and should not be executed when rendering the website. For example, this is a basic CSP that forbids execution of inline script</p>
-
 <pre><code>Content-Security-Policy: default-src 'self';
-</code></pre>
-
-<p><em>3. Sanitize user inputs.</em></p>
-
-<p>We can validate user input on the client side or server side. On the client side, we can display a warning message to the user that special characters such as angle brackets are not allowed and prevent the user from submitting the form to the server when there are invalid characters. On the server side, we can sanitizing user inputs ensures we don&rsquo;t allow malicious user generated content to be stored in persistent storage on your server. Sanitization means replacing angle brackets, slashes, and other characters with their <a href="https://www.freeformatter.com/html-entities.html" target="_blank">html entities</a> equivalent. For example, <code>&lt;</code> becomes <code>&amp;lt;</code>,  <code>/</code> becomes <code>&amp;#47;</code>, and <code>&gt;</code> becomes <code>&amp;gt;</code>. This is generally achieved using regular expressions but there are open source libraries to use for input validation and sanitization.</p>
-
-<p>I use <a href="https://github.com/chriso/validator.js/" target="_blank"><code>validator</code></a>.</p>
-
-<pre><code class="language-javascript">import validator from ‘validator’;
-let q = '&lt;script&gt;alert(&quot;you are hacked&quot;)&lt;/script&gt;'
-let sanitizedQ = validator.escape(q)
-</code></pre>
-
-<p>which makes <code>&lt;script&gt;alert(&quot;you are hacked&quot;)&lt;/script&gt;</code> into:</p>
-
+</code></pre><p><em>3. Sanitize user inputs.</em></p>
+<p>We can validate user input on the client side or server side. On the client side, we can display a warning message to the user that special characters such as angle brackets are not allowed and prevent the user from submitting the form to the server when there are invalid characters. On the server side, we can sanitizing user inputs ensures we don&rsquo;t allow malicious user generated content to be stored in persistent storage on your server. Sanitization means replacing angle brackets, slashes, and other characters with their <a href="https://www.freeformatter.com/html-entities.html">html entities</a> equivalent. For example, <code>&lt;</code> becomes <code>&amp;lt;</code>,  <code>/</code> becomes <code>&amp;#47;</code>, and <code>&gt;</code> becomes <code>&amp;gt;</code>. This is generally achieved using regular expressions but there are open source libraries to use for input validation and sanitization.</p>
+<p>I use <a href="https://github.com/chriso/validator.js/"><code>validator</code></a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">validator</span> <span style="color:#a6e22e">from</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">validator</span><span style="color:#960050;background-color:#1e0010">’</span>;
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">q</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&lt;script&gt;alert(&#34;you are hacked&#34;)&lt;/script&gt;&#39;</span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sanitizedQ</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">validator</span>.<span style="color:#a6e22e">escape</span>(<span style="color:#a6e22e">q</span>)
+</code></pre></div><p>which makes <code>&lt;script&gt;alert(&quot;you are hacked&quot;)&lt;/script&gt;</code> into:</p>
 <blockquote>
-<p>&lt;script&gt;alert(&quot;you are hacked&quot;)&lt;&#x2F;script&gt;</p>
+<p>&lt;script&gt;alert(&quot;you are hacked&quot;)&lt;/script&gt;</p>
 </blockquote>
-
-<p>Try out validator in <a href="https://runkit.com/xiaoyunyang/validator-example" target="_blank">the runkit playground</a></p>
-
+<p>Try out validator in <a href="https://runkit.com/xiaoyunyang/validator-example">the runkit playground</a></p>
 <p>Or use curl to interact with the endpoint:</p>
-
 <pre><code>$ curl -L https://xiaoyunyang.runkit.io/validator-example/branches/master
-</code></pre>
-
-<p><a href="https://validator-example-mn9pycmmqarl.runkit.sh/" target="_blank">endpoint</a></p>
-
+</code></pre><p><a href="https://validator-example-mn9pycmmqarl.runkit.sh/">endpoint</a></p>
 <h1 id="sql-injection">SQL Injection</h1>
-
 <p><strong>Symptom</strong></p>
-
 <p>There&rsquo;s a famous XKCD that illustrates the danger of XSS that illustrates the first case.</p>
-
-<p><img src="https://xiaoyunyang.github.io/post/images/webdev/xkcd-xss.png" alt="https://xkcd.com/327/" /></p>
-
+<p><img src="https://xiaoyunyang.github.io/post/images/webdev/xkcd-xss.png" alt="https://xkcd.com/327/"></p>
 <p><strong>Cause</strong></p>
-
 <p>SQL injection is like XSS except the malicious is code is SQL commands vice JavaScript wrapped in <code>&lt;script&gt;</code> tags and executed by the server on the SQL database vice the browser.</p>
-
 <p><strong>Defense</strong></p>
-
 <p>Sanize all user input!</p>
-
 <h1 id="reverse-tabnabbing">Reverse Tabnabbing</h1>
-
 <p><strong>Symptom</strong></p>
-
 <p>After clicking an embedded link on a web page to open a new web page in a different tab, the originating web page changes (e.g., redirects to a different page).</p>
-
 <p>This hack is called <em>Reverse Tabnabbing</em>.</p>
-
-<p>Mathias Bynens provides a <a href="https://mathiasbynens.github.io/rel-noopener/#hax" target="_blank">really great example</a> of reverse tabnabbing.</p>
-
+<p>Mathias Bynens provides a <a href="https://mathiasbynens.github.io/rel-noopener/#hax">really great example</a> of reverse tabnabbing.</p>
 <p><strong>Cause</strong></p>
-
 <p>Web pages have a ton of links which open to another webpage from a different origin. Sometimes, these result in opening the page in another tab. This behavior is implemented in HTML using the anchor tag.</p>
-
 <p>Suppose our <em>index.html</em> has the following line:</p>
-
-<pre><code class="language-html">&lt;a target=&quot;_blank&quot; href=&quot;http://example.com/malicious.html&quot;&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.com/malicious.html&#34;</span>&gt;
   Example site
-&lt;/a&gt;
-</code></pre>
-
-<p>When that link is clicked, <code>malicious.html</code> opens in a new tab and has access to the <code>window</code> object of <code>index.html</code> through the <code>window.opener</code>.</p>
-
+&lt;/<span style="color:#f92672">a</span>&gt;
+</code></pre></div><p>When that link is clicked, <code>malicious.html</code> opens in a new tab and has access to the <code>window</code> object of <code>index.html</code> through the <code>window.opener</code>.</p>
 <p>Even if <code>malicious.html</code> is from a different origin than <code>index.html</code>, <code>malicious.html</code> has access to <code>window.opener.location</code>, which can be used to automatically redirect originating webpage to a malicious website.</p>
-
 <p><strong>Defense</strong></p>
-
 <p>You should always use <code>rel=noopener noreferrer</code> whenever you use <code>target=&quot;_blank&quot;</code>, especially if you want to open a link from a different origin in a separate tab.</p>
-
-<pre><code class="language-html">&lt;a target=&quot;_blank&quot; href=&quot;http://example.com/malicious.html&quot; rel='noopener noreferrer'&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.com/malicious.html&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;noopener noreferrer&#39;</span>&gt;
   Example site
-&lt;/a&gt;
-</code></pre>
-
-<p>From  <a href="https://www.w3schools.com/tags/att_a_rel.asp" target="_blank">the W3 Spec for <code>&lt;a&gt;</code> tag</a>:</p>
-
+&lt;/<span style="color:#f92672">a</span>&gt;
+</code></pre></div><p>From  <a href="https://www.w3schools.com/tags/att_a_rel.asp">the W3 Spec for <code>&lt;a&gt;</code> tag</a>:</p>
 <ul>
 <li>The <code>rel</code> attribute specifies the relationship between the current document and the linked document.</li>
 <li><code>noopener</code> tells the browser not to not send <code>window.opener</code> context from the originator of the link click.</li>
 <li><code>noreferrer</code> tells the browser to not send an HTTP referer header if the user follows the hyperlink.</li>
 </ul>
-
-<p><em>Pro-tip</em> Use lint. In fact, I first learned about reverse tabnabbing from <a href="https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md" target="_blank">a lint error</a> about the danger of using <code>target=&quot;_blank&quot;</code> in anchor without adding the <code>rel=&quot;noopener noreferrer&quot;</code> attribute. It&rsquo;s always a good idea to use lint to support your development which does a lot to help you write secure, clean, and maintainable code. Popular editors like VSCode and Atom have lint support.</p>
-
+<p><em>Pro-tip</em> Use lint. In fact, I first learned about reverse tabnabbing from <a href="https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md">a lint error</a> about the danger of using <code>target=&quot;_blank&quot;</code> in anchor without adding the <code>rel=&quot;noopener noreferrer&quot;</code> attribute. It&rsquo;s always a good idea to use lint to support your development which does a lot to help you write secure, clean, and maintainable code. Popular editors like VSCode and Atom have lint support.</p>
 <h1 id="cross-site-request-forgery-csrf">Cross-site Request Forgery (CSRF)</h1>
-
 <p><strong>Symptom</strong></p>
-
 <p>A user of your site is tricked into making a post request and your app accepts that request and performs some actions which the user does not want such as transferring money from their bank account to a hacker&rsquo;s account, deleting their user account, or changing their username.</p>
-
 <p><strong>Cause</strong></p>
-
 <p>Many web apps are designed to accept post requests from authenticated users to perform some important actions such as transferring money.</p>
-
 <p>To verify that the request is coming from the actual user, your app would need to check for a session id that is transmitted in the request header. Session id is stored in a cookie, which is essentially a small piece of text stored on a user&rsquo;s computer by their browser.</p>
-
 <p>Checking the user&rsquo;s session id is a good start but not enough.</p>
-
 <p>Suppose I&rsquo;m a user of your web app. A hacker doesn&rsquo;t know my cookie and can&rsquo;t guess it but she can trick me into sending a post request to your app by making me fill out a fake form or the real form embedded in an iframe (with some CSS tricks) that submits a post request to your app without my knowledge. The second technique is known as <em>clickjacking and iframe</em> attack.</p>
-
 <p>Because I&rsquo;m the one making the request, I have the correct session id stored in my cookie. Thus, if your app only checks for session id to authenticate the origin of the request, it&rsquo;s going to accept the post request.</p>
-
 <p><strong>Defense</strong></p>
-
 <p>There are few things your web app to protect your users from being tricked into sending post requests.</p>
-
 <p><em>1. Expiring Sessions</em></p>
-
 <p>Your app can log its users out automatically after a period of inactivity. This technique is employed by many online banking web apps.</p>
-
 <p>The hacker cannot perform a CSRF attack without getting me to do something while I&rsquo;m an authenticated user. If I&rsquo;m not logged in to your site, then your app will not accept my post requests.</p>
-
 <p><em>2. Token validation</em></p>
-
 <p>The idea is we want to embed a randomly generated, un-guessable token in the form which the user uses to make the post request. When the user makes a post request using the form, the token is transmitted with the data as <code>X-CSRF-Token</code> in the request header.</p>
-
 <p>Each time the server sends the form form to the user&rsquo;s browser, a different token is sent with the form to the browser. The server remembers what that token is and when it receives a post request, it checks to make sure the token in the request matches what it has on record.</p>
-
 <p>A real life example of a CSRF token is the form from AngelList&rsquo;s profile edit form:</p>
-
-<p><img src="https://xiaoyunyang.github.io/post/images/webdev/csrf-token-alist.png" alt="" /></p>
-
+<p><img src="https://xiaoyunyang.github.io/post/images/webdev/csrf-token-alist.png" alt=""></p>
 <p><em>3. CSP Header</em></p>
-
 <p>To guard against a CSRF attack resulting from clickjacking and iframe, we can use the CSP to set a policy for <code>child-src ‘self’</code>, indicating that the site must only be iframed by a page that shares the same origin, and no other.</p>
-
 <p>Setting the HTTP header <code>X-FRAME-OPTIONS</code> has the same effect as the CSP policy in its protection against clickhacking.</p>
-
 <h1 id="working-with-open-source-software">Working With Open Source Software</h1>
-
 <p>If you use a lot of open source software in your application, these dependencies do come with vulnerabilities you may not be aware of. Fortunately, the open source community of popular npm modules are active in identifying security vulnerabilities.</p>
-
 <p><strong>Defense in depth</strong></p>
-
 <p><em>1. Subscribe to security vulnerability warnings</em></p>
-
 <p>If you keep your code on Github, Github will show a warning about a repo that contains a dependency that has a security vulnerability.</p>
-
 <p><em>2. Keeping your dependencies up to date</em></p>
-
 <p>If you use NPM, you can also use the following commands to find out which npm modules are outdated.</p>
-
 <pre><code>$ npm outdated
-</code></pre>
-
-<p>If you choose, you may update all the outdated modules with:</p>
-
+</code></pre><p>If you choose, you may update all the outdated modules with:</p>
 <pre><code>$ npm update
-</code></pre>
-
-<p>or selectively update using either one of the lines below:</p>
-
+</code></pre><p>or selectively update using either one of the lines below:</p>
 <pre><code>$ npm install --save &lt;package-name&gt;@latest
 $ npm update &lt;package-name&gt;
-</code></pre>
-
-<p>or to a specific version:</p>
-
+</code></pre><p>or to a specific version:</p>
 <pre><code>$ npm install --save &lt;package-name&gt;@&lt;version-number&gt;
-</code></pre>
-
-<p>If you want to find out which packages are introducing security vulnerabilities, use the following line:</p>
-
+</code></pre><p>If you want to find out which packages are introducing security vulnerabilities, use the following line:</p>
 <pre><code>$ npm audit
-</code></pre>
-
-<p>Running the above command will show you some packages which you may not recognize. These are usually dependencies to the packages which you have listed in <code>package.json</code>.</p>
-
+</code></pre><p>Running the above command will show you some packages which you may not recognize. These are usually dependencies to the packages which you have listed in <code>package.json</code>.</p>
 <p>The CLI will urge you to use <code>npm audit fix</code> to fix the vulnerabilities but if you want to dig a bit deeper as to why you have these packages in the first place, and where they are used, use the following command:</p>
-
 <pre><code>$ yarn why &lt;package-name&gt;
-</code></pre>
-
-<h1 id="more-reading">More Reading</h1>
-
+</code></pre><h1 id="more-reading">More Reading</h1>
 <ul>
-<li><a href="https://medium.com/@dhtmlx/security-of-javascript-applications-1c95cd2ce533" target="_blank">Security of JavaScript Applications</a></li>
-<li><a href="https://www.manning.com/books/securing-devops" target="_blank">Securing DevOps</a></li>
+<li><a href="https://medium.com/@dhtmlx/security-of-javascript-applications-1c95cd2ce533">Security of JavaScript Applications</a></li>
+<li><a href="https://www.manning.com/books/securing-devops">Securing DevOps</a></li>
 </ul>
               
             </div>
@@ -520,8 +419,8 @@ $ npm update &lt;package-name&gt;
                 
               
             
-            
-  <div class="post-actions-wrap">
+            <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -580,14 +479,14 @@ $ npm update &lt;package-name&gt;
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+          <a class="post-action-btn btn btn--default" href="#">
         
           <i class="fa fa-list"></i>
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
             
               
@@ -617,14 +516,14 @@ s.setAttribute('data-timestamp', +new Date());
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 Xiaoyun Yang. All Rights Reserved
+    &copy; 2020 Xiaoyun Yang. All Rights Reserved
   </span>
 </footer>
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
-        
-  <div class="post-actions-wrap">
+        <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -683,14 +582,14 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+          <a class="post-action-btn btn btn--default" href="#">
         
           <i class="fa fa-list"></i>
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
       </div>
       <div id="share-options-bar" class="share-options-bar" data-behavior="4">
@@ -749,252 +648,14 @@ s.setAttribute('data-timestamp', +new Date());
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/">
-                <h3 class="media-heading">Beyond Minimum Viable Product: A Lesson on Building Production-ready Software</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Aug 8, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>What I learned working at a mature startup that&rsquo;s building new things but also has a ton of customers and products in production.</p>
+    
 
-<p>This post is a WIP.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/">
-                <h3 class="media-heading">Effective Unit Testing of React Components With Jest And Enzyme</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Aug 8, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
-                <h3 class="media-heading">A Guide For Migrating Your Project to TypeScript</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.</p>
-
-<p>This post is a WIP.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/">
-                <h3 class="media-heading">The Algorithm for Managing Stress</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &ldquo;top 10 things you can do to &hellip;.&rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/get-started-with-go/">
-                <h3 class="media-heading">Get Started With Go</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Feb 2, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Go is becoming pretty mainstream. Every job posting I&rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/">
-                <h3 class="media-heading">Thirsty Plant: Automated Plant Waterer</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p><em>by <a href="https://github.com/xiaoyunyang" target="_blank">Xiaoyun Yang</a> and <a href="https://github.com/clydeshaffer" target="_blank">Clyde Shaffer</a></em></p>
-
-<p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/">
-                <h3 class="media-heading">From Public Sector To Senior Software Engineer:  How I made the Transition</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.</p>
-
-
-
- 
-  
-  
-  
-  
     
   
     
       
+      <div id="cover" style="background-image:url('https://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
     
-  
-
-<div class="figure fig-70" >
-  
-    <a class="fancybox" href="https://images2.imgbox.com/26/21/MQB5dNYd_o.png" title="My KeyValues filter" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://images2.imgbox.com/26/21/MQB5dNYd_o.png"  alt="My KeyValues filter">
-  
-    </a>
-  
-   
-    <span class="caption">My KeyValues filter</span>
-  
-</div></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
-                <h3 class="media-heading">When To Use Immutable Data Structures</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Suppose you are asked this question during a technical interview:</p>
-
-<blockquote>
-<p>When do you use immutable (functional) data structures and when do you use mutable data structure?</p>
-</blockquote></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/">
-                <h3 class="media-heading">Security Considerations for Web Applications and Best Practices</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/">
-                <h3 class="media-heading">Cribsheet for JavaScript Coding Interview</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Oct 10, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:</p>
-
-<blockquote>
-<p>Can you be productive with JavaScript?</p>
-</blockquote></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         38 posts found
-      </p>
-    </div>
-  </div>
-</div>
-    
-  
-    
-    <div id="cover" style="background-image:url('https://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
   
 
 
@@ -1006,7 +667,7 @@ s.setAttribute('data-timestamp', +new Date());
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="https://xiaoyunyang.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+<script src="https://xiaoyunyang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
   
@@ -1017,6 +678,20 @@ s.setAttribute('data-timestamp', +new Date());
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
   
 
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
 
 <script>
 $(document).ready(function() {
@@ -1056,6 +731,7 @@ $(document).ready(function() {
       </script>
     
   
+
 
 
 

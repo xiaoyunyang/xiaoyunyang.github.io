@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Entrepreneurship on Xiaoyun Yang</title>
@@ -55,7 +55,7 @@
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34; target=&#34;_blank&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -64,7 +64,7 @@
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/is-employee-loyalty-important/</guid>
-      <description>&lt;p&gt;High-value employees are a major assets for a strong company. Losing a high contributing team member could leave a void and impact the team&amp;rsquo;s morale and workflow. Investors are also concerned by high turnover rates, especially amongst the senior executives. Groupon had trouble retaining their senior executives, which contributed to &lt;a href=&#34;https://www.youtube.com/watch?v=zeNQE3VBRnQ&#34; target=&#34;_blank&#34;&gt;an 85% drop in their value&lt;/a&gt; a year after going public. It&amp;rsquo;s clear we want to &lt;strong&gt;retain&lt;/strong&gt; high-valued employees, but is &lt;strong&gt;employee loyalty&lt;/strong&gt; the way to achieve retention?&lt;/p&gt;</description>
+      <description>&lt;p&gt;High-value employees are a major assets for a strong company. Losing a high contributing team member could leave a void and impact the team&amp;rsquo;s morale and workflow. Investors are also concerned by high turnover rates, especially amongst the senior executives. Groupon had trouble retaining their senior executives, which contributed to &lt;a href=&#34;https://www.youtube.com/watch?v=zeNQE3VBRnQ&#34;&gt;an 85% drop in their value&lt;/a&gt; a year after going public. It&amp;rsquo;s clear we want to &lt;strong&gt;retain&lt;/strong&gt; high-valued employees, but is &lt;strong&gt;employee loyalty&lt;/strong&gt; the way to achieve retention?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -73,7 +73,7 @@
       <pubDate>Wed, 12 Aug 2015 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://number-shapes.com&#34; target=&#34;_blank&#34;&gt;NumberShapes&lt;/a&gt; is a collection of mobile apps that make numbers come alive through numerical visualizations and interactions. In 2014, I worked on the software development for the first few apps, which are iOS matching games that help young learners with familiarization of addition, subtraction, multiplication and other math facts.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://number-shapes.com&#34;&gt;NumberShapes&lt;/a&gt; is a collection of mobile apps that make numbers come alive through numerical visualizations and interactions. In 2014, I worked on the software development for the first few apps, which are iOS matching games that help young learners with familiarization of addition, subtraction, multiplication and other math facts.&lt;/p&gt;</description>
     </item>
     
   </channel>

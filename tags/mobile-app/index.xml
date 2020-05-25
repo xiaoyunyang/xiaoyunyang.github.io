@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mobile App on Xiaoyun Yang</title>
@@ -28,7 +28,7 @@
       <pubDate>Wed, 12 Aug 2015 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://number-shapes.com&#34; target=&#34;_blank&#34;&gt;NumberShapes&lt;/a&gt; is a collection of mobile apps that make numbers come alive through numerical visualizations and interactions. In 2014, I worked on the software development for the first few apps, which are iOS matching games that help young learners with familiarization of addition, subtraction, multiplication and other math facts.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://number-shapes.com&#34;&gt;NumberShapes&lt;/a&gt; is a collection of mobile apps that make numbers come alive through numerical visualizations and interactions. In 2014, I worked on the software development for the first few apps, which are iOS matching games that help young learners with familiarization of addition, subtraction, multiplication and other math facts.&lt;/p&gt;</description>
     </item>
     
   </channel>
