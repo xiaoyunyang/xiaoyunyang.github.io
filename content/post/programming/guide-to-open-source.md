@@ -1,6 +1,6 @@
 ---
 title: "A Guide to Open Sourcing"
-date: 2019-08-21
+date: 2020-08-21
 draft: true
 categories:
   - project
