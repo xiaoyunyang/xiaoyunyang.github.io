@@ -1,5 +1,11 @@
 # Personal Website
 
+This is the source code of the website. There are essentially three repos in this folder:
+
+- `public/` - contains the Hugo build which is hosted at the master branch of the repo.
+- sourcecode branch - contains all the code for building `public`
+- `themes/hugo-tranquilpeak-theme/` - contains a clone of the [hugo-tranquilpeak-theme](https://github.com/kakawait/hugo-tranquilpeak-theme) repo.
+
 ## Quick Start
 
 ### How to set up the project
@@ -33,6 +39,13 @@ Run the [deploy.sh](/deploy.sh) script to build the static website in `public/` 
 
 ```bash
 ./deploy.sh 'optional commit message'
+```
+
+### Update Theme
+
+```bash
+cd themes/hugo-tranquilpeak-theme
+git pull origin master
 ```
 
 ## Static Site Generator:
