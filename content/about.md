@@ -115,7 +115,7 @@ My [KeyValues](https://www.keyvalues.com/) filters
 * I'm an immigrant. I moved to the US from China in 2002. I became a citizen in 2003.
 * I've always lived in cities. The cities in which I've lived include Shanghai, New York, Pittsburgh, and Washington DC.
 * When I was a college student, I spent a summer abroad studying German at the Goethe Institut in Bonn, Germany. During my stay, I traveled and couchsurfed alone all over Germany and Western Europe. It was a transformative experience. I learned so much about myself and gained a lot of confidence based on my experience being out of my comfort zone.
-* I love traveling and enjoy [couchsurfing](https://www.couchsurfing.com/people/xiaoyun.yang.7). The best cities I've visited are Berlin, Brussels, Copenhagen, Vienna, Edinburgh, Oslo, and Tokyo. All the countries I visited:
+* I love traveling and enjoy [couchsurfing](https://www.couchsurfing.com/people/xiaoyunyang). The best cities I've visited are Berlin, Brussels, Copenhagen, Vienna, Edinburgh, Oslo, and Tokyo. All the countries I visited:
 
 {{< rawhtml >}}
 <script src="https://www.amcharts.com/lib/3/ammap.js" type="text/javascript"></script>
