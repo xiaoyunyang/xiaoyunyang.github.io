@@ -106,7 +106,7 @@ My super power is my extreme attention to details without losing sight of the bi
 
 My [KeyValues](https://www.keyvalues.com/) filters
 
-![KeyValues](https://images2.imgbox.com/26/21/MQB5dNYd_o.png)
+{{< image classes="fancybox fig-100 center clear" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7bda3ee4-a0e3-4dc1-b894-00dbcafa9212/Screenshot_2020-05-09_23.09.46.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200525%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200525T045300Z&X-Amz-Expires=86400&X-Amz-Signature=fb0f8710d9b48692482c948a4b7812e1785048a6da59f14d650327bde0661379&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screenshot_2020-05-09_23.09.46.png%22" title="Xiaoyun's KeyValues">}}
 
 ## Trivia
 * I have the honor of serving 5 years of active duty in the military at Naval Reactors. I commissioned in 2013 through the Navy Reserved Officer Training Corp (ROTC).
@@ -115,6 +115,142 @@ My [KeyValues](https://www.keyvalues.com/) filters
 * I'm an immigrant. I moved to the US from China in 2002. I became a citizen in 2003.
 * I've always lived in cities. The cities in which I've lived include Shanghai, New York, Pittsburgh, and Washington DC.
 * When I was a college student, I spent a summer abroad studying German at the Goethe Institut in Bonn, Germany. During my stay, I traveled and couchsurfed alone all over Germany and Western Europe. It was a transformative experience. I learned so much about myself and gained a lot of confidence based on my experience being out of my comfort zone.
-* I love traveling and enjoy [couchsurfing](https://www.couchsurfing.com/people/xiaoyun.yang.7). The best cities I've visited are Berlin, Brussels, Copenhagen, Vienna, Edinburgh, Oslo, and Tokyo.
+* I love traveling and enjoy [couchsurfing](https://www.couchsurfing.com/people/xiaoyun.yang.7). The best cities I've visited are Berlin, Brussels, Copenhagen, Vienna, Edinburgh, Oslo, and Tokyo. All the countries I visited:
 
+{{< rawhtml >}}
+<script src="https://www.amcharts.com/lib/3/ammap.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/worldHigh.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/themes/dark.js" type="text/javascript"></script>
+<div id="mapdiv" style="width: 1000px; height: 450px;"></div>
+<div style="width: 1000px; font-size: 70%; padding: 5px 0; text-align: center; background-color: #ffffff; margin-top: 1px; color: #e5e5dc;"><a href="https://www.amcharts.com/visited_countries/" style="color: #e5e5dc;">Create your own visited countries map</a> or check out the <a href="https://www.amcharts.com/" style="color: #e5e5dc;">JavaScript Charts</a>.</div>
+<script type="text/javascript">
+var map = AmCharts.makeChart("mapdiv",{
+type: "map",
+theme: "dark",
+projection: "mercator",
+panEventsEnabled : false,
+backgroundColor : "#ffffff",
+backgroundAlpha : 1,
+zoomControl: {
+zoomControlEnabled : true
+},
+dataProvider : {
+map : "worldHigh",
+getAreasFromMap : true,
+areas :
+[
+	{
+		"id": "AT",
+		"showAsSelected": true
+	},
+	{
+		"id": "BE",
+		"showAsSelected": true
+	},
+	{
+		"id": "CZ",
+		"showAsSelected": true
+	},
+	{
+		"id": "DK",
+		"showAsSelected": true
+	},
+	{
+		"id": "FR",
+		"showAsSelected": true
+	},
+	{
+		"id": "DE",
+		"showAsSelected": true
+	},
+	{
+		"id": "IS",
+		"showAsSelected": true
+	},
+	{
+		"id": "IT",
+		"showAsSelected": true
+	},
+	{
+		"id": "LI",
+		"showAsSelected": true
+	},
+	{
+		"id": "LU",
+		"showAsSelected": true
+	},
+	{
+		"id": "NL",
+		"showAsSelected": true
+	},
+	{
+		"id": "NO",
+		"showAsSelected": true
+	},
+	{
+		"id": "PT",
+		"showAsSelected": true
+	},
+	{
+		"id": "ES",
+		"showAsSelected": true
+	},
+	{
+		"id": "SE",
+		"showAsSelected": true
+	},
+	{
+		"id": "CH",
+		"showAsSelected": true
+	},
+	{
+		"id": "UA",
+		"showAsSelected": true
+	},
+	{
+		"id": "GB",
+		"showAsSelected": true
+	},
+	{
+		"id": "VA",
+		"showAsSelected": true
+	},
+	{
+		"id": "CA",
+		"showAsSelected": true
+	},
+	{
+		"id": "US",
+		"showAsSelected": true
+	},
+	{
+		"id": "PE",
+		"showAsSelected": true
+	},
+	{
+		"id": "MA",
+		"showAsSelected": true
+	},
+	{
+		"id": "CN",
+		"showAsSelected": true
+	},
+	{
+		"id": "JP",
+		"showAsSelected": true
+	}
+]
+},
+areasSettings : {
+autoZoom : true,
+color : "#e5e5dc",
+colorSolid : "#79a7d3",
+selectedColor : "#79a7d3",
+outlineColor : "#666666",
+rollOverColor : "#c6d7eb",
+rollOverOutlineColor : "#000000"
+}
+});
+</script>
+{{< /rawhtml >}}
 **PS**:  If you are wondering how I built this website, I'm using [Hugo](https://gohugo.io/) for the static site generator engine and the beautiful [tranquilpeak](https://github.com/kakawait/hugo-tranquilpeak-theme) theme. I'm [hosting it from github](https://gohugo.io/hosting-and-deployment/hosting-on-github/). I wrote a [blog post](/post/using-hugo-to-build-a-personal-brand-website/) about this.
