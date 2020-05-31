@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.58.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="jest, javascript, interview prep, programming, software design, guide">
 <meta name="description" content="The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.">
@@ -283,75 +283,175 @@
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.</p>
-<!-- raw HTML omitted -->
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#testing-concepts">Testing Concepts</a>
+<ul>
+<li><a href="#test-drive-development">Test Drive Development</a></li>
+<li><a href="#coverage">Coverage</a></li>
+<li><a href="#types-of-tests">Types of Tests</a>
+<ul>
+<li><a href="#blackbox-testing-vs-whitebox-testing">Blackbox testing vs. Whitebox testing</a></li>
+<li><a href="#unit-tests">Unit Tests</a></li>
+<li><a href="#integration-tests">Integration Tests</a></li>
+<li><a href="#end-to-end-testing">End-to-End Testing</a></li>
+<li><a href="#regression-testing">Regression Testing</a></li>
+<li><a href="#automated-vs-manual-testing">Automated vs Manual Testing</a></li>
+<li><a href="#stress-testing">Stress Testing</a></li>
+</ul></li>
+<li><a href="#testing-techniques">Testing Techniques</a>
+<ul>
+<li><a href="#mocking">Mocking</a></li>
+<li><a href="#spying">Spying</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#testing-using-jest-and-enzyme">Testing Using Jest and Enzyme</a>
+<ul>
+<li><a href="#setting-up-a-test">Setting up a test</a></li>
+<li><a href="#find">Find</a></li>
+<li><a href="#childat-vs-at">childAt vs at</a></li>
+<li><a href="#testing-events">Testing Events</a></li>
+<li><a href="#testing-callback">Testing Callback</a></li>
+<li><a href="#testing-a-collection">Testing A Collection</a></li>
+<li><a href="#testing-react-component-methods">Testing React component methods</a></li>
+<li><a href="#checking-method-in-props">Checking Method In Props</a></li>
+<li><a href="#spy-on-component-methods">Spy on component methods</a></li>
+<li><a href="#shallow-vs-mount">Shallow vs Mount</a></li>
+<li><a href="#dive">Dive</a></li>
+<li><a href="#state-and-props">State and Props</a>
+<ul>
+<li><a href="#inspect-state">Inspect State</a></li>
+<li><a href="#update-state">Update State</a></li>
+<li><a href="#inspect-props">Inspect Props</a></li>
+<li><a href="#update-props">Update Props</a></li>
+</ul></li>
+<li><a href="#debugging">Debugging</a></li>
+<li><a href="#async-await">Async/Await</a></li>
+<li><a href="#spying-on-async-functions">Spying on Async Functions</a></li>
+<li><a href="#document-and-element-with-timeout">Document and Element With Timeout</a></li>
+</ul></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+</nav>
+
+<pre><code class="language-js">alert('Hello World!');
+</code></pre>
+
 <h1 id="testing-concepts">Testing Concepts</h1>
+
 <h2 id="test-drive-development">Test Drive Development</h2>
+
 <p>Test Driven Development (TDD) is a software development methodology that requires that you write your tests before you write code.</p>
+
 <p>In other words, the code you write is driven by the need to pass the tests, which should come directly from requirements.</p>
+
 <p>In addition to increaseing confidence that code works as expected, TDD helps us to write better software that’s maintainable by helping to prevent future regression and bugs. Code maintainability is a natural consequence of TDD because code that is written to be testable are generally better designed (more modular), less complex, and better organized.</p>
+
 <h2 id="coverage">Coverage</h2>
+
 <p>In most cases, it&rsquo;s impossible and/or infeasible to acheive 100% test coverage so you need to prioritize your test cases.</p>
+
 <p>Prior to writing tests, we need a good big picture understanding of what the important requirements are. For example, image appear in the right place is not as important as image appearing at all. Functionality is more important than style in most cases.</p>
+
 <p>There are a few things to consider before we start writing tests:</p>
+
 <ul>
 <li>Knowing how your piece of software fit into the system - mocks, stubs, spy, side effects</li>
 <li>Organization: come up with test cases. First break up what you want to test into categories. Then set up test cases in these categories.</li>
 <li>Practicality: can you test this at all? Give an example of code that’s not testable that has been refactored just so we could test it</li>
 </ul>
+
 <h2 id="types-of-tests">Types of Tests</h2>
+
 <h3 id="blackbox-testing-vs-whitebox-testing">Blackbox testing vs. Whitebox testing</h3>
+
 <p>When we want to test a piece of software we wrote, we want to perform whitebox testing. Whitebox testing assumes knowledge of the innner workings of the code. For a React component, that includes testing:</p>
+
 <ul>
 <li>rendering from props</li>
 <li>event handler is called when button is clicked</li>
 <li>state is updated following an event</li>
 </ul>
+
 <p>Sometimes our piece of software interacts with other pieces of software that we don’t control. Software interacts with each other via passing data to and from each other or calling each other. If our code uses a library or another component, we cannot perform whitebox testing of that component but we can test the interfaces between our component and the other component; for instance, making sure that particular input results in expected output.</p>
+
 <h3 id="unit-tests">Unit Tests</h3>
+
 <p>Unit Tests test one piece of software in isolation. In Unit Testing, we are primarily concerned with answering the question</p>
+
 <blockquote>
 <p>Given some input, do we get correct output?</p>
 </blockquote>
+
 <p>Unit testing is typically achieved with mocking dependencies and using frameworks like Jest, Mocha, Chai, Jasmine.</p>
+
 <p>The type of code we should unit test includes</p>
+
 <ul>
 <li>complex algorithms</li>
 <li>utility functions</li>
 <li>class / react Component</li>
 </ul>
+
 <h3 id="integration-tests">Integration Tests</h3>
+
 <p>When we make changes to a library, for example, we should perform integration testing locally before publishing the library. This means we want to check that the updated library still works in applications that use the library. Well designed libraries generally have an API that rarely changes, but when it does, that is when integration testing is most important.</p>
+
 <h3 id="end-to-end-testing">End-to-End Testing</h3>
-<p>End-to-end (e2e) testing ensures the flow of an application from beginning to finish is as expected and also checks its integration with external interfaces. Frameworks: <a href="https://github.com/GoogleChrome/puppeteer/">Puppeteer</a>, <a href="https://www.seleniumhq.org/">Selenium</a></p>
+
+<p>End-to-end (e2e) testing ensures the flow of an application from beginning to finish is as expected and also checks its integration with external interfaces. Frameworks: <a href="https://github.com/GoogleChrome/puppeteer/" target="_blank">Puppeteer</a>, <a href="https://www.seleniumhq.org/" target="_blank">Selenium</a></p>
+
 <h3 id="regression-testing">Regression Testing</h3>
+
 <p>Does the new feature break existing features? If you have automated testing set up, this would be done automatically.</p>
+
 <h3 id="automated-vs-manual-testing">Automated vs Manual Testing</h3>
+
 <p>Some features (e.g., looks and feel of UX) may be too qualitative for automated test</p>
+
 <h3 id="stress-testing">Stress Testing</h3>
+
 <p>Stress Testing - analyzing failure condition. Test failure cases. Making sure your software fails safely. For example, what you should get when you remove from an empty heap?</p>
+
 <h2 id="testing-techniques">Testing Techniques</h2>
+
 <p>This section goes into some best practice and techniques for testing a React application using Jest and Enzyme. It assumes the reader has some basic familiarity with these testing frameworks.</p>
+
 <h3 id="mocking">Mocking</h3>
+
 <p>When we want to test one object, we replace other objects that interface with the object with mocks to simulate their behavior.</p>
+
 <blockquote>
 <p>Mocks imitate the behavior of other objects the object you want to test interfaces with.</p>
 </blockquote>
+
 <p>A mock of other pieces of software is essentially data that we expect to get as input. For example, if we are writing a component in React to consume content from an API endpoint, we mock the API response by creating a file containing the JSON representing a response we’d expect to get from the endpoint.</p>
+
 <p>We create mocks to support unit tests. For example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">generateMockUser</span> <span style="color:#f92672">=</span> (
+
+<pre><code class="language-javascript">const generateMockUser = (
   {
-    <span style="color:#a6e22e">userName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;janeDoe&#34;</span>,
-    <span style="color:#a6e22e">firstName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Jane&#34;</span>,
-    <span style="color:#a6e22e">lastName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Doe&#34;</span>,
-    <span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;janeDoe@example.com&#34;</span>
+    userName = &quot;janeDoe&quot;,
+    firstName = &quot;Jane&quot;,
+    lastName = &quot;Doe&quot;,
+    email = &quot;janeDoe@example.com&quot;
   }
-) =&gt; ({ <span style="color:#a6e22e">userName</span>, <span style="color:#a6e22e">firstName</span>, <span style="color:#a6e22e">lastName</span>, <span style="color:#a6e22e">email</span>})
-</code></pre></div><p>Every argument in <code>generateMockUser</code> is optional with a default. This provides maximum flexibility for creating a customizable mock.</p>
+) =&gt; ({ userName, firstName, lastName, email})
+</code></pre>
+
+<p>Every argument in <code>generateMockUser</code> is optional with a default. This provides maximum flexibility for creating a customizable mock.</p>
+
 <h3 id="spying">Spying</h3>
+
 <p>A spy is essentially a mock function. A spy lets you spy on the behavior of a function that your software affects. The other function may be directly or indirectly called by your function. It’s clear what calling a function directly means but what do we mean by indirectly? For example, our function could emit and event and another function somewhere else observes that event and acts upon it.</p>
+
 <p>If our function calls other functions, we want to test that the other functions are called under the right criteria with the right arguments. To do that, we spy on other functions.</p>
+
 <h1 id="testing-using-jest-and-enzyme">Testing Using Jest and Enzyme</h1>
+
 <p>For unit testing of React components, we are concerned about testing rendering and event handling. In summary, we want to check:</p>
+
 <ol>
 <li>Child component is rendered with the right props.</li>
 <li>Everything is rendered correctly on initial mount.</li>
@@ -359,139 +459,182 @@
 <li>State changes as expected when there&rsquo;s an event or a method call.</li>
 <li>Functions external to the component (e.g, from props) are called with the right arguments when there&rsquo;s an event (e.g., mouse click) or a method call.</li>
 </ol>
+
 <p>Below are some examples of unit testing using Jest and Enzyme.</p>
+
 <h2 id="setting-up-a-test">Setting up a test</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">EditProfileForm</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../feedbackForm&#34;</span>;
 
-<span style="color:#75715e">// Child components
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Checkbox</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../checkbox&#34;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">EmailInput</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../EmailInput&#34;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TextInput</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../TextInput&#34;</span>;
+<pre><code class="language-javascript">import EditProfileForm from &quot;../feedbackForm&quot;;
 
-<span style="color:#75715e">// Mocks
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">generateMockUser</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./mocks/mockUser&#34;</span>;
+// Child components
+import Checkbox from &quot;../checkbox&quot;;
+import EmailInput from &quot;../EmailInput&quot;;
+import TextInput from &quot;../TextInput&quot;;
 
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mockUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">generateMockUser</span>({});
+// Mocks
+import generateMockUser from &quot;./mocks/mockUser&quot;;
 
-<span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;EditProfileForm&#34;</span>, () =&gt; {
-      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">props</span>;
-      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">form</span>;
-      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">submitSpy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">fn</span>();
+const mockUser = generateMockUser({});
 
-      <span style="color:#a6e22e">beforeEach</span>(() =&gt; {
-        <span style="color:#a6e22e">submitSpy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">fn</span>();
-        <span style="color:#a6e22e">props</span> <span style="color:#f92672">=</span> {
-          ...<span style="color:#a6e22e">mockUser</span>,
-          <span style="color:#a6e22e">submit</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">submitSpy</span>
+describe(&quot;EditProfileForm&quot;, () =&gt; {
+      let props;
+      let form;
+      let submitSpy = jest.fn();
+
+      beforeEach(() =&gt; {
+        submitSpy = jest.fn();
+        props = {
+          ...mockUser,
+          submit: submitSpy
         }
-        <span style="color:#a6e22e">form</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">shallow</span>(<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">EditProfileForm</span> {...<span style="color:#a6e22e">props</span>} <span style="color:#f92672">/&gt;</span>);
+        form = shallow(&lt;EditProfileForm {...props} /&gt;);
       });
 
-      <span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;render&#34;</span>, () =&gt; {
-        <span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;renders...&#34;</span>, () =&gt; {
+      describe(&quot;render&quot;, () =&gt; {
+        test(&quot;renders...&quot;, () =&gt; {
 
         });
-        <span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;renders...&#34;</span>, () =&gt; {
+        test(&quot;renders...&quot;, () =&gt; {
 
         });
       });
-      <span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;submit&#34;</span>, () =&gt; {
+      describe(&quot;submit&quot;, () =&gt; {
 
       });
 });
-</code></pre></div><h2 id="find">Find</h2>
+</code></pre>
+
+<h2 id="find">Find</h2>
+
 <p>For testing that a child component is rendered, import the child component in the test file, then use <code>find()</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;renders emailInput with right props&#34;</span>, () =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">emailInput</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">EmailInput</span>);
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">emailInput</span>).<span style="color:#a6e22e">toHaveLength</span>(<span style="color:#ae81ff">1</span>);
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">emailInput</span>.<span style="color:#a6e22e">props</span>()).<span style="color:#a6e22e">toEqual</span>({
-    <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">email</span>
+
+<pre><code class="language-javascript">test(&quot;renders emailInput with right props&quot;, () =&gt; {
+  const emailInput = form.find(EmailInput);
+  expect(emailInput).toHaveLength(1);
+  expect(emailInput.props()).toEqual({
+    value: props.email
   });
 });
-</code></pre></div><p>When multiple instances of the same child components are rendered, use <code>find()</code> to get all the instances as an array, then use <code>at()</code> to select a specific instance at a given index.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;renders the text input with right props&#34;</span>, () =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">textInputs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">TextInput</span>);
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">textInputs</span>).<span style="color:#a6e22e">toHaveLength</span>(<span style="color:#ae81ff">3</span>);
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">textInputs</span>.<span style="color:#a6e22e">at</span>(<span style="color:#ae81ff">0</span>).<span style="color:#a6e22e">props</span>()).<span style="color:#a6e22e">toEqual</span>({
-    <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">userName</span>,
-    <span style="color:#a6e22e">locked</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</code></pre>
+
+<p>When multiple instances of the same child components are rendered, use <code>find()</code> to get all the instances as an array, then use <code>at()</code> to select a specific instance at a given index.</p>
+
+<pre><code class="language-javascript">test(&quot;renders the text input with right props&quot;, () =&gt; {
+  const textInputs = form.find(TextInput);
+  expect(textInputs).toHaveLength(3);
+  expect(textInputs.at(0).props()).toEqual({
+    value: props.userName,
+    locked: true
   });
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">textInputs</span>.<span style="color:#a6e22e">at</span>(<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">props</span>()).<span style="color:#a6e22e">toEqual</span>({
-    <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">firstName</span>,
-    <span style="color:#a6e22e">locked</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+  expect(textInputs.at(1).props()).toEqual({
+    value: props.firstName,
+    locked: false
   });
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">textInputs</span>.<span style="color:#a6e22e">at</span>(<span style="color:#ae81ff">2</span>).<span style="color:#a6e22e">props</span>()).<span style="color:#a6e22e">toEqual</span>({
-    <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">lastName</span>,
-    <span style="color:#a6e22e">locked</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+  expect(textInputs.at(2).props()).toEqual({
+    value: props.lastName,
+    locked: false
   });
 });
-</code></pre></div><p>We can also find by class</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;.inputClassName&#34;</span>)
-</code></pre></div><p>And by HTML Element</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">paragraph</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;p&#34;</span>)
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">textInParagraph</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">paragraph</span>.<span style="color:#a6e22e">at</span>(<span style="color:#ae81ff">0</span>).<span style="color:#a6e22e">childAt</span>(<span style="color:#ae81ff">0</span>).<span style="color:#a6e22e">text</span>()
-</code></pre></div><h2 id="childat-vs-at">childAt vs at</h2>
+</code></pre>
+
+<p>We can also find by class</p>
+
+<pre><code class="language-javascript">const input = form.find(&quot;.inputClassName&quot;)
+</code></pre>
+
+<p>And by HTML Element</p>
+
+<pre><code class="language-javascript">const paragraph = form.find(&quot;p&quot;)
+const textInParagraph = paragraph.at(0).childAt(0).text()
+</code></pre>
+
+<h2 id="childat-vs-at">childAt vs at</h2>
+
 <p><code>childAt(n)</code> selects the <code>nth</code> child of the currently selected node in the DOM.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Paragraph</span> <span style="color:#f92672">=</span> (
-  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">p</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#a6e22e">Foo</span>
-    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">Bar</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/span&gt;</span>
-  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">p</span><span style="color:#f92672">&gt;</span>
+
+<pre><code class="language-javascript">const Paragraph = (
+  &lt;p&gt;
+    Foo
+    &lt;span&gt;Bar&lt;/span&gt;
+  &lt;p&gt;
 );
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;renders Paragraph name&#34;</span>, () =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Field</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;p&#34;</span>).<span style="color:#a6e22e">childAt</span>(<span style="color:#ae81ff">0</span>).<span style="color:#a6e22e">text</span>();
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">text</span>).<span style="color:#a6e22e">toEqual</span>(<span style="color:#e6db74">&#34;Foo&#34;</span>);
+</code></pre>
+
+<pre><code class="language-javascript">test(&quot;renders Paragraph name&quot;, () =&gt; {
+  const text = Field.find(&quot;p&quot;).childAt(0).text();
+  expect(text).toEqual(&quot;Foo&quot;);
 });
-</code></pre></div><p><code>at(n)</code> selects the nth element in an arrays/collections</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;renders both edit and delete options&#34;</span>, () =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">menuItems</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">editMenu</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">MenuItem</span>);
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">menuItems</span>.<span style="color:#a6e22e">length</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#ae81ff">2</span>);
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">menuItems</span>.<span style="color:#a6e22e">at</span>(<span style="color:#ae81ff">0</span>).<span style="color:#a6e22e">props</span>().<span style="color:#a6e22e">value</span>).<span style="color:#a6e22e">toEqual</span>(<span style="color:#e6db74">&#34;edit&#34;</span>);
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">menuItems</span>.<span style="color:#a6e22e">at</span>(<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">props</span>().<span style="color:#a6e22e">value</span>).<span style="color:#a6e22e">toEqual</span>(<span style="color:#e6db74">&#34;delete&#34;</span>);
+</code></pre>
+
+<p><code>at(n)</code> selects the nth element in an arrays/collections</p>
+
+<pre><code class="language-javascript">test(&quot;renders both edit and delete options&quot;, () =&gt; {
+  const menuItems = editMenu.find(MenuItem);
+  expect(menuItems.length).toBe(2);
+  expect(menuItems.at(0).props().value).toEqual(&quot;edit&quot;);
+  expect(menuItems.at(1).props().value).toEqual(&quot;delete&quot;);
 });
-</code></pre></div><h2 id="testing-events">Testing Events</h2>
+</code></pre>
+
+<h2 id="testing-events">Testing Events</h2>
+
 <p>Use <code>simulate()</code> to simulate an keyboard event, mouse event, etc. Then use <code>spy</code> to ensure a proper response is fired when the event occurs.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;submit&#34;</span>, () =&gt; {
-  <span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;submit with the right props&#34;</span>, () =&gt; {
-    <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">simulate</span>(<span style="color:#e6db74">&#34;click&#34;</span>);
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">submitSpy</span>).<span style="color:#a6e22e">toHaveBeenNthCalledWith</span>(<span style="color:#ae81ff">1</span>, {
-      <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">state</span>().<span style="color:#a6e22e">email</span>,
-      <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">state</span>().<span style="color:#a6e22e">firstName</span>,
-      <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">state</span>().<span style="color:#a6e22e">lastName</span>
+
+<pre><code class="language-javascript">describe(&quot;submit&quot;, () =&gt; {
+  test(&quot;submit with the right props&quot;, () =&gt; {
+    form.simulate(&quot;click&quot;);
+    expect(submitSpy).toHaveBeenNthCalledWith(1, {
+      email: form.state().email,
+      firstName: form.state().firstName,
+      lastName: form.state().lastName
     });
   });
 });
-</code></pre></div><h2 id="testing-callback">Testing Callback</h2>
+</code></pre>
+
+<h2 id="testing-callback">Testing Callback</h2>
+
 <p><code>fetch()</code> allows you to make network requests and is a built-in JavaScript function. <code>fetch()</code> uses <code>Promise</code>. If you need to test code that is executed after the response is received, the best approach is to mock <code>fetch</code> implementation as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">global</span>.<span style="color:#a6e22e">fetch</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">fn</span>().<span style="color:#a6e22e">mockImplementation</span>(() =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>) =&gt; {
-    <span style="color:#a6e22e">resolve</span>({
-      <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">200</span>,
-      <span style="color:#a6e22e">json</span><span style="color:#f92672">:</span> () =&gt; <span style="color:#a6e22e">p</span>
+
+<pre><code class="language-javascript">global.fetch = jest.fn().mockImplementation(() =&gt; {
+  const p = new Promise((resolve) =&gt; {
+    resolve({
+      status: 200,
+      json: () =&gt; p
     });
   });
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">p</span>;
+  return p;
 });
-</code></pre></div><p>Add this code to <code>beforeEach</code>.</p>
+</code></pre>
+
+<p>Add this code to <code>beforeEach</code>.</p>
+
 <h2 id="testing-a-collection">Testing A Collection</h2>
+
 <p>Use <code>each()</code>. For example, if we have a function <code>increment</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">increment</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">val</span>) =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">parsedInt</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">val</span>, <span style="color:#ae81ff">10</span>);
-  <span style="color:#66d9ef">if</span> (Number.isNaN(<span style="color:#a6e22e">parsedInt</span>)) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">undefined</span>;
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">parsedInt</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+
+<pre><code class="language-javascript">const increment = (val) =&gt; {
+  const parsedInt = parseInt(val, 10);
+  if (Number.isNaN(parsedInt)) return undefined;
+  return parsedInt + 1;
 };
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">each</span>([
-    [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>],
-    [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>],
-    [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>],
-    [<span style="color:#ae81ff">1.5</span>, <span style="color:#ae81ff">2</span>]
-    [<span style="color:#e6db74">&#34;2&#34;</span>, <span style="color:#ae81ff">3</span>],
-    [<span style="color:#e6db74">&#34;foo&#34;</span>, <span style="color:#66d9ef">undefined</span>],
-    [<span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">undefined</span>]
-])(<span style="color:#e6db74">&#34;increment %s&#34;</span>, (<span style="color:#a6e22e">val</span>, <span style="color:#a6e22e">expectedRes</span>) =&gt; {
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">increment</span>(<span style="color:#a6e22e">val</span>)).<span style="color:#a6e22e">toBe</span>(<span style="color:#a6e22e">expectedRes</span>);
+</code></pre>
+
+<pre><code class="language-javascript">test.each([
+    [-1, 0],
+    [0, 1],
+    [1, 2],
+    [1.5, 2]
+    [&quot;2&quot;, 3],
+    [&quot;foo&quot;, undefined],
+    [null, undefined]
+])(&quot;increment %s&quot;, (val, expectedRes) =&gt; {
+    expect(increment(val)).toBe(expectedRes);
 });
-</code></pre></div><p>This will be printed out in console:</p>
+</code></pre>
+
+<p>This will be printed out in console:</p>
+
 <pre><code>✓ increment -1
 ✓ increment 0 (1ms)
 ✓ increment 1
@@ -499,399 +642,497 @@
 ✓ increment 2
 ✓ increment foo
 ✓ increment null (1ms)
-</code></pre><h2 id="testing-react-component-methods">Testing React component methods</h2>
+</code></pre>
+
+<h2 id="testing-react-component-methods">Testing React component methods</h2>
+
 <p>We need to use <code>wrapper.instance()</code> to access the component instance inside the wrapper so we can invoke component methods directly in our tests.</p>
+
 <p>For example, suppose we have this component:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Counter</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">PureComponent</span> {
-  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">props</span>) {
-    <span style="color:#66d9ef">super</span>(<span style="color:#a6e22e">props</span>);
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">incrementValueBound</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">incrementValue</span>.<span style="color:#a6e22e">bind</span>(<span style="color:#66d9ef">this</span>);
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>({
-      <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">counterValue</span>
+
+<pre><code class="language-javascript">class Counter extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.incrementValueBound = this.incrementValue.bind(this);
+    this.state({
+      value: this.props.counterValue
     });
   }
-  <span style="color:#a6e22e">incrementValue</span>() {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>(<span style="color:#a6e22e">state</span> =&gt; ({
-      <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+  incrementValue() {
+    this.setState(state =&gt; ({
+      value: state.value + 1
     }));
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">updateCounter</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+    this.props.updateCounter(this.state.value + 1);
   }
-  <span style="color:#a6e22e">render</span>() {
-    <span style="color:#66d9ef">return</span> (
-      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span><span style="color:#f92672">&gt;</span>
-        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">p</span><span style="color:#f92672">&gt;</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">value</span>}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/p&gt;</span>
-        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">incrementValueBound</span>}<span style="color:#f92672">&gt;</span><span style="color:#a6e22e">Increment</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/button&gt;</span>
-      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span><span style="color:#f92672">&gt;</span>
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;p&gt;{this.state.value}&lt;/p&gt;
+        &lt;button onClick={incrementValueBound}&gt;Increment&lt;/button&gt;
+      &lt;div&gt;
     );
   }
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;should increment value when incrementValue is called&#34;</span>, () =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">props</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">counterValue</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
-    <span style="color:#a6e22e">updateCounter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">fn</span>()
+</code></pre>
+
+<pre><code class="language-javascript">test(&quot;should increment value when incrementValue is called&quot;, () =&gt; {
+  const props = {
+    counterValue: 0,
+    updateCounter: jest.fn()
   }
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">wrapper</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">shallow</span>(<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Counter</span> {...<span style="color:#a6e22e">props</span>} <span style="color:#f92672">/&gt;</span>);
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">wrapper</span>.<span style="color:#a6e22e">state</span>(<span style="color:#e6db74">&#34;value&#34;</span>)).<span style="color:#a6e22e">toBe</span>(<span style="color:#ae81ff">0</span>);
-  <span style="color:#a6e22e">wrapper</span>.<span style="color:#a6e22e">instance</span>().<span style="color:#a6e22e">incrementValue</span>();
-  <span style="color:#a6e22e">wrapper</span>.<span style="color:#a6e22e">instance</span>().<span style="color:#a6e22e">incrementValue</span>();
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">wrapper</span>.<span style="color:#a6e22e">state</span>(<span style="color:#e6db74">&#34;value&#34;</span>)).<span style="color:#a6e22e">toBe</span>(<span style="color:#ae81ff">2</span>);
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">updateCounter</span>).<span style="color:#a6e22e">toHaveBeenNthCalledWith</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)
+  const wrapper = shallow(&lt;Counter {...props} /&gt;);
+  expect(wrapper.state(&quot;value&quot;)).toBe(0);
+  wrapper.instance().incrementValue();
+  wrapper.instance().incrementValue();
+  expect(wrapper.state(&quot;value&quot;)).toBe(2);
+  expect(props.updateCounter).toHaveBeenNthCalledWith(1, 2)
 });
-</code></pre></div><h2 id="checking-method-in-props">Checking Method In Props</h2>
+</code></pre>
+
+<h2 id="checking-method-in-props">Checking Method In Props</h2>
+
 <p>Another use of <code>wrapper.instance</code> is in accessing the component method that is passed down to a child component as props.</p>
+
 <p>Suppose we have a <code>App</code> component that uses the <code>Counter</code> component.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">App</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">PureComponent</span> {
-  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">props</span>) {
-    <span style="color:#66d9ef">super</span>(<span style="color:#a6e22e">props</span>);
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">updateCounterBound</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">updateCounter</span>.<span style="color:#a6e22e">bind</span>(<span style="color:#66d9ef">this</span>);
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>({
-      <span style="color:#a6e22e">counterValue</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+
+<pre><code class="language-javascript">class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.updateCounterBound = this.updateCounter.bind(this);
+    this.state({
+      counterValue: 0
     });
   }
-  <span style="color:#a6e22e">updateCounter</span>(<span style="color:#a6e22e">newValue</span>) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>({ <span style="color:#a6e22e">counterValue</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">newValue</span> })
+  updateCounter(newValue) {
+    this.setState({ counterValue: newValue })
   }
-  <span style="color:#a6e22e">render</span>() {
-    <span style="color:#66d9ef">return</span> (
-        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Counter</span>
-  <span style="color:#a6e22e">counterValue</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">value</span>}
-  <span style="color:#a6e22e">updateValue</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">updateCounterBound</span>}
-<span style="color:#960050;background-color:#1e0010">/&gt;</span>
+  render() {
+    return (
+        &lt;Counter
+  counterValue={this.state.value}
+  updateValue={this.updateCounterBound}
+/&gt;
     );
   }
 }
-</code></pre></div><p>Our test for <code>App</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;renders Counter with right props&#34;</span>, () =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">shallow</span>(<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">App</span> <span style="color:#f92672">/&gt;</span>);
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">Counter</span>);
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">counter</span>).<span style="color:#a6e22e">toHaveLength</span>(<span style="color:#ae81ff">1</span>);
-  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">counter</span>.<span style="color:#a6e22e">props</span>()).<span style="color:#a6e22e">toEqual</span>({
-    <span style="color:#a6e22e">counterValue</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">state</span>(<span style="color:#e6db74">&#34;counterValue&#34;</span>),
-    <span style="color:#a6e22e">updateCounter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">instance</span>().<span style="color:#a6e22e">updateCounterBound</span>
+</code></pre>
+
+<p>Our test for <code>App</code></p>
+
+<pre><code class="language-javascript">test(&quot;renders Counter with right props&quot;, () =&gt; {
+  const app = shallow(&lt;App /&gt;);
+  const counter = app.find(Counter);
+  expect(counter).toHaveLength(1);
+  expect(counter.props()).toEqual({
+    counterValue: app.state(&quot;counterValue&quot;),
+    updateCounter: app.instance().updateCounterBound
   });
 })
-</code></pre></div><p>What about checking for higher order functions?</p>
+</code></pre>
+
+<p>What about checking for higher order functions?</p>
+
 <p>In general, you should not compare functions directly. Instead, you should compare the values that they return. If two functions perform the same calculation, you can check that they both return the same value for the same input.</p>
+
 <h2 id="spy-on-component-methods">Spy on component methods</h2>
+
 <p>Using the <code>Counter</code> example from before</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;incrementValue&#34;</span>, () =&gt; {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">props</span>;
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">counter</span>;
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">counterInstance</span>;
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">incrementValueSpy</span>;
 
-  <span style="color:#a6e22e">beforeEach</span>(() =&gt; {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">props</span> <span style="color:#f92672">=</span> {
-      <span style="color:#a6e22e">counterValue</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
-      <span style="color:#a6e22e">updateCounter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">fn</span>()
+<pre><code class="language-javascript">describe(&quot;incrementValue&quot;, () =&gt; {
+  let props;
+  let counter;
+  let counterInstance;
+  let incrementValueSpy;
+
+  beforeEach(() =&gt; {
+    const props = {
+      counterValue: 0,
+      updateCounter: jest.fn()
     }
-    <span style="color:#a6e22e">counter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">shallow</span>(<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Counter</span> {...<span style="color:#a6e22e">props</span>} <span style="color:#f92672">/&gt;</span>);
-    <span style="color:#a6e22e">counterInstance</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">counter</span>.<span style="color:#a6e22e">instance</span>();
-    <span style="color:#a6e22e">incrementValueSpy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">spyOn</span>(<span style="color:#a6e22e">counterInstance</span>, <span style="color:#e6db74">&#34;incrementValue&#34;</span>);
+    counter = shallow(&lt;Counter {...props} /&gt;);
+    counterInstance = counter.instance();
+    incrementValueSpy = jest.spyOn(counterInstance, &quot;incrementValue&quot;);
   });
-  <span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;should call incrementValue&#34;</span>, () =&gt; {
-    <span style="color:#a6e22e">counterInstance</span>.<span style="color:#a6e22e">incrementValue</span>();
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">incrementValueSpy</span>).<span style="color:#a6e22e">toHaveBeenCalledTimes</span>(<span style="color:#ae81ff">1</span>);
+  test(&quot;should call incrementValue&quot;, () =&gt; {
+    counterInstance.incrementValue();
+    expect(incrementValueSpy).toHaveBeenCalledTimes(1);
   });
 });
-</code></pre></div><p>We use <code>jest.fn()</code> to create a <a href="https://jestjs.io/docs/en/mock-functions">Jest mock function</a>.</p>
+</code></pre>
+
+<p>We use <code>jest.fn()</code> to create a <a href="https://jestjs.io/docs/en/mock-functions" target="_blank">Jest mock function</a>.</p>
+
 <p>You can also check for the argument that a mock function is called with:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">setValueSpy</span>).<span style="color:#a6e22e">toHaveBeenNthCalledWith</span>(<span style="color:#ae81ff">1</span>, { <span style="color:#a6e22e">newVal</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> });
-</code></pre></div><p>If you want to independently check the arguments in the jest mock function:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">arg1</span>, <span style="color:#a6e22e">arg2</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">addSpy</span>.<span style="color:#a6e22e">mock</span>.<span style="color:#a6e22e">calls</span>[<span style="color:#ae81ff">0</span>];
-<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">arg1</span>).<span style="color:#a6e22e">toEqual</span>(<span style="color:#a6e22e">expectedArg1</span>);
-<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">arg2</span>).<span style="color:#a6e22e">toEqual</span>(<span style="color:#a6e22e">expectedArg2</span>);
-</code></pre></div><p><code>addSpy.mock.calls[0]</code> provides the arguments for the first request while <code>addSpy.mock.calls[1]</code> provides the arguments for the second request.</p>
-<h2 id="shallow-vs-mount">Shallow vs Mount</h2>
-<h2 id="dive">Dive</h2>
-<p>When we want to render things inside of a shallowly mounted component, use <a href="https://airbnb.io/enzyme/docs/api/ShallowWrapper/dive.html"><code>dive()</code></a>.</p>
-<p>For example, if we have the following component:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">ContentPage</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./ContentPage&#34;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TopNav</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./TopNav&#34;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Sidebar</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./Sidebar&#34;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">MainScreen</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./MainScreen&#34;</span>;
 
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Layout</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">PureComponent</span> {
-  <span style="color:#a6e22e">render</span>() {
-    <span style="color:#66d9ef">return</span> (
-      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">ContentPage</span>
-   <span style="color:#a6e22e">topNav</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">TopNav</span>}
-   <span style="color:#a6e22e">sidebar</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">Sidebar</span>}
-   <span style="color:#a6e22e">screen</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">MainScreen</span>}
-   <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;My Awesome App&#34;</span>}
-<span style="color:#960050;background-color:#1e0010">/&gt;</span>
+<pre><code class="language-javascript">expect(setValueSpy).toHaveBeenNthCalledWith(1, { newVal: 2 });
+</code></pre>
+
+<p>If you want to independently check the arguments in the jest mock function:</p>
+
+<pre><code class="language-javascript">const [arg1, arg2] = addSpy.mock.calls[0];
+expect(arg1).toEqual(expectedArg1);
+expect(arg2).toEqual(expectedArg2);
+</code></pre>
+
+<p><code>addSpy.mock.calls[0]</code> provides the arguments for the first request while <code>addSpy.mock.calls[1]</code> provides the arguments for the second request.</p>
+
+<h2 id="shallow-vs-mount">Shallow vs Mount</h2>
+
+<h2 id="dive">Dive</h2>
+
+<p>When we want to render things inside of a shallowly mounted component, use <a href="https://airbnb.io/enzyme/docs/api/ShallowWrapper/dive.html" target="_blank"><code>dive()</code></a>.</p>
+
+<p>For example, if we have the following component:</p>
+
+<pre><code class="language-javascript">import ContentPage from &quot;./ContentPage&quot;;
+import TopNav from &quot;./TopNav&quot;;
+import Sidebar from &quot;./Sidebar&quot;;
+import MainScreen from &quot;./MainScreen&quot;;
+
+export class Layout extends React.PureComponent {
+  render() {
+    return (
+      &lt;ContentPage
+   topNav={TopNav}
+   sidebar={Sidebar}
+   screen={MainScreen}
+   title={&quot;My Awesome App&quot;}
+/&gt;
     );
   }
 }
-</code></pre></div><p>We want to write a test for Layout to verify that all the components are rendered.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Libraries
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">shallow</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;enzyme&#34;</span>;
+</code></pre>
 
-<span style="color:#75715e">// Components
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Layout</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./Layout&#34;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">ContentPage</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./ContentPage&#34;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TopNav</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./TopNav&#34;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Sidebar</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./Sidebar&#34;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">MainScreen</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./MainScreen&#34;</span>;
+<p>We want to write a test for Layout to verify that all the components are rendered.</p>
 
-<span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;Layout&#34;</span>, () =&gt; {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">layout</span>;
-  <span style="color:#a6e22e">beforeEach</span>(() =&gt; {
-    <span style="color:#a6e22e">layout</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">shallow</span>(<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Layout</span> <span style="color:#f92672">/&gt;</span>);
+<pre><code class="language-javascript">// Libraries
+import React from &quot;react&quot;;
+import { shallow } from &quot;enzyme&quot;;
+
+// Components
+import Layout from &quot;./Layout&quot;;
+import ContentPage from &quot;./ContentPage&quot;;
+import TopNav from &quot;./TopNav&quot;;
+import Sidebar from &quot;./Sidebar&quot;;
+import MainScreen from &quot;./MainScreen&quot;;
+
+describe(&quot;Layout&quot;, () =&gt; {
+  let layout;
+  beforeEach(() =&gt; {
+    layout = shallow(&lt;Layout /&gt;);
   });
-  <span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;passes props to ContentPage&#34;</span>, () =&gt; {
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">layout</span>.<span style="color:#a6e22e">prop</span>(<span style="color:#e6db74">&#34;title&#34;</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#e6db74">&#34;My Awesome App&#34;</span>);
+  test(&quot;passes props to ContentPage&quot;, () =&gt; {
+    expect(layout.prop(&quot;title&quot;).toBe(&quot;My Awesome App&quot;);
   });
-  <span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;renders all components&#34;</span>, () =&gt; {
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">layout</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">ContentPage</span>)).<span style="color:#a6e22e">toHaveLength</span>(<span style="color:#ae81ff">1</span>);
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">layout</span>.<span style="color:#a6e22e">dive</span>().<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">TopNav</span>)).<span style="color:#a6e22e">toHaveLength</span>(<span style="color:#ae81ff">1</span>);
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">layout</span>.<span style="color:#a6e22e">dive</span>().<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">Sidebar</span>)).<span style="color:#a6e22e">toHaveLength</span>(<span style="color:#ae81ff">1</span>);
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">layout</span>.<span style="color:#a6e22e">dive</span>().<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">MainScreen</span>)).<span style="color:#a6e22e">toHaveLength</span>(<span style="color:#ae81ff">1</span>);
+  test(&quot;renders all components&quot;, () =&gt; {
+    expect(layout.find(ContentPage)).toHaveLength(1);
+    expect(layout.dive().find(TopNav)).toHaveLength(1);
+    expect(layout.dive().find(Sidebar)).toHaveLength(1);
+    expect(layout.dive().find(MainScreen)).toHaveLength(1);
   });
 });
-</code></pre></div><h2 id="state-and-props">State and Props</h2>
+</code></pre>
+
+<h2 id="state-and-props">State and Props</h2>
+
 <p>For this section, we will use the following component:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">PureComponent</span> {
-  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">props</span>) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> {
-      <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;foo&#34;</span>
+
+<pre><code class="language-javascript">class Foo extends React.PureComponent {
+  constructor(props) {
+    this.state = {
+      title: &quot;foo&quot;
     }
   }
-  <span style="color:#a6e22e">render</span>() {
-    <span style="color:#66d9ef">return</span> (
-      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span><span style="color:#f92672">&gt;</span>
-        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">title</span>}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/h1&gt;  </span>
-        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">p</span><span style="color:#f92672">&gt;</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">value</span>}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/p&gt;</span>
-      <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;{this.state.title}&lt;/h1&gt;  
+        &lt;p&gt;{this.props.value}&lt;/p&gt;
+      &lt;/div&gt;
     );
   }
 }
-</code></pre></div><p>We initialize test as such:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;Foo&#34;</span>, () =&gt; {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">props</span>;
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">foo</span>;
-  <span style="color:#a6e22e">beforeEach</span>(() =&gt; {
-    <span style="color:#a6e22e">props</span> <span style="color:#f92672">=</span> {
-      <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hello World&#34;</span>
+</code></pre>
+
+<p>We initialize test as such:</p>
+
+<pre><code class="language-javascript">describe(&quot;Foo&quot;, () =&gt; {
+  let props;
+  let foo;
+  beforeEach(() =&gt; {
+    props = {
+      value: &quot;Hello World&quot;
     };
-    <span style="color:#a6e22e">foo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mount</span>(<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Foo</span> {...<span style="color:#a6e22e">props</span>} <span style="color:#f92672">/&gt;</span>);
+    foo = mount(&lt;Foo {...props} /&gt;);
   });
 });
-</code></pre></div><h3 id="inspect-state">Inspect State</h3>
+</code></pre>
+
+<h3 id="inspect-state">Inspect State</h3>
+
 <p>These are all valid ways of inspecting the state of <code>&lt;Foo /&gt;</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">state</span>(<span style="color:#e6db74">&#34;title&#34;</span>)).<span style="color:#a6e22e">toBe</span>(<span style="color:#e6db74">&#34;foo&#34;</span>);
-<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">state</span>()).<span style="color:#a6e22e">toEqual</span>({ <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;foo&#34;</span> });
-<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">state</span>().<span style="color:#a6e22e">title</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#e6db74">&#34;foo&#34;</span>);
-</code></pre></div><h3 id="update-state">Update State</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">setState</span>({ <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bar&#34;</span> });
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;h1&#34;</span>);
-<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">title</span>.<span style="color:#a6e22e">text</span>()).<span style="color:#a6e22e">toBe</span>(<span style="color:#e6db74">&#34;bar&#34;</span>);
-</code></pre></div><p>After updating state, you need to reselect from the wrapper. This wouldn&rsquo;t work:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;h1&#34;</span>);
-<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">setState</span>({ <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bar&#34;</span> });
-<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">title</span>.<span style="color:#a6e22e">text</span>()).<span style="color:#a6e22e">toBe</span>(<span style="color:#e6db74">&#34;bar&#34;</span>); <span style="color:#75715e">// fails. name is still &#34;foo&#34;
-</span></code></pre></div><h3 id="inspect-props">Inspect Props</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">prop</span>(<span style="color:#e6db74">&#34;value&#34;</span>)).<span style="color:#a6e22e">toBe</span>(<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">value</span>);
-<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">props</span>()).<span style="color:#a6e22e">toEqual</span>({ <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hello World&#34;</span> });
-<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">state</span>().<span style="color:#a6e22e">value</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">value</span>);
-</code></pre></div><h3 id="update-props">Update Props</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;p&#34;</span>).<span style="color:#a6e22e">text</span>()).<span style="color:#a6e22e">toBe</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>);
-<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">setProps</span>({
-  <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hello&#34;</span>
+
+<pre><code class="language-javascript">expect(foo.state(&quot;title&quot;)).toBe(&quot;foo&quot;);
+expect(foo.state()).toEqual({ name: &quot;foo&quot; });
+expect(foo.state().title).toBe(&quot;foo&quot;);
+</code></pre>
+
+<h3 id="update-state">Update State</h3>
+
+<pre><code class="language-javascript">foo.setState({ name: &quot;bar&quot; });
+const title = foo.find(&quot;h1&quot;);
+expect(title.text()).toBe(&quot;bar&quot;);
+</code></pre>
+
+<p>After updating state, you need to reselect from the wrapper. This wouldn&rsquo;t work:</p>
+
+<pre><code class="language-javascript">const title = foo.find(&quot;h1&quot;);
+foo.setState({ name: &quot;bar&quot; });
+expect(title.text()).toBe(&quot;bar&quot;); // fails. name is still &quot;foo&quot;
+</code></pre>
+
+<h3 id="inspect-props">Inspect Props</h3>
+
+<pre><code class="language-javascript">expect(foo.prop(&quot;value&quot;)).toBe(props.value);
+expect(foo.props()).toEqual({ value: &quot;Hello World&quot; });
+expect(foo.state().value).toBe(props.value);
+</code></pre>
+
+<h3 id="update-props">Update Props</h3>
+
+<pre><code class="language-javascript">expect(foo.find(&quot;p&quot;).text()).toBe(&quot;Hello World&quot;);
+foo.setProps({
+  value: &quot;Hello&quot;
 });
-<span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;p&#34;</span>).<span style="color:#a6e22e">text</span>()).<span style="color:#a6e22e">toBe</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>);
-</code></pre></div><p>Same with <code>setState</code>, if you setProp, you need to reselect everything before checking with <code>expect</code>.</p>
+expect(foo.find(&quot;p&quot;).text()).toBe(&quot;Hello&quot;);
+</code></pre>
+
+<p>Same with <code>setState</code>, if you setProp, you need to reselect everything before checking with <code>expect</code>.</p>
+
 <h2 id="debugging">Debugging</h2>
+
 <p>Use <code>debug()</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">form</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">shallow</span>(<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">EditProfileForm</span> {...<span style="color:#a6e22e">props</span>} <span style="color:#f92672">/&gt;</span>);
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">debug</span>());
-</code></pre></div><h2 id="asyncawait">Async/Await</h2>
+
+<pre><code class="language-javascript">const form = shallow(&lt;EditProfileForm {...props} /&gt;);
+console.log(form.debug());
+</code></pre>
+
+<h2 id="async-await">Async/Await</h2>
+
 <p>Suppose you want to test a method that changes the state to something, then after 5 seconds, changes to something else. Jest imposes a 5 seconds timeout. If you want to capture that, you can set a new limit for the timeout:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Want to test
-</span><span style="color:#75715e"></span>
-<span style="color:#a6e22e">flashNameChange</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">async</span> ({ <span style="color:#a6e22e">newName</span> }) =&gt; {
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>({ <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">newName</span>, <span style="color:#a6e22e">textColor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;red&#34;</span> });
 
-  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">delay</span>(<span style="color:#a6e22e">FLASH_CHANGE_DURATION</span>);
+<pre><code class="language-javascript">// Want to test
 
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>({ <span style="color:#a6e22e">textColor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;black&#34;</span> });
+flashNameChange = async ({ newName }) =&gt; {
+  this.setState({ name: newName, textColor: &quot;red&quot; });
+
+  await delay(FLASH_CHANGE_DURATION);
+
+  this.setState({ textColor: &quot;black&quot; });
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Test
-</span><span style="color:#75715e"></span>
-<span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;flashNameChange&#34;</span>, () =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bar&#34;</span>;
-  <span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;should set new name and flash text color red&#34;</span>, () =&gt; {
-    <span style="color:#a6e22e">wrapper</span>.<span style="color:#a6e22e">instance</span>().<span style="color:#a6e22e">flashNameChange</span>({ <span style="color:#a6e22e">newName</span> });
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">wrapper</span>.<span style="color:#a6e22e">instance</span>().<span style="color:#a6e22e">state</span>).<span style="color:#a6e22e">toEqual</span>({
-      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">newName</span>,
-      <span style="color:#a6e22e">textColor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;red&#34;</span>
+</code></pre>
+
+<pre><code class="language-javascript">// Test
+
+describe(&quot;flashNameChange&quot;, () =&gt; {
+  const newName = &quot;bar&quot;;
+  test(&quot;should set new name and flash text color red&quot;, () =&gt; {
+    wrapper.instance().flashNameChange({ newName });
+    expect(wrapper.instance().state).toEqual({
+      name: newName,
+      textColor: &quot;red&quot;
      });
   });
 
-  <span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;should set textColor back to black after FLASH_CHANGE_DURATION elapsed&#34;</span>, <span style="color:#a6e22e">async</span> () =&gt; {
-    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">wrapper</span>.<span style="color:#a6e22e">instance</span>().<span style="color:#a6e22e">flashNameChange</span>({ <span style="color:#a6e22e">newName</span> });
+  test(&quot;should set textColor back to black after FLASH_CHANGE_DURATION elapsed&quot;, async () =&gt; {
+    await wrapper.instance().flashNameChange({ newName });
 
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">wrapper</span>.<span style="color:#a6e22e">instance</span>().<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">textColor</span>).<span style="color:#a6e22e">toEqual</span>(<span style="color:#e6db74">&#34;black&#34;</span>);
-  }, <span style="color:#a6e22e">FLASH_MESSAGE_DURATION</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>);
+    expect(wrapper.instance().state.textColor).toEqual(&quot;black&quot;);
+  }, FLASH_MESSAGE_DURATION * 2);
 });
 
-</code></pre></div><p>See <a href="https://github.com/facebook/jest/issues/5055">this</a> for more information on timeouts.</p>
-<h2 id="spying-on-async-functions">Spying on Async Functions</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">makeRequestSpy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">spyOn</span>(<span style="color:#a6e22e">ApiRequestUtils</span>, <span style="color:#e6db74">&#34;makeRequest&#34;</span>).<span style="color:#a6e22e">mockImplementation</span>(
-  () =&gt; Promise.<span style="color:#a6e22e">resolve</span>({ <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;SUCCESS&#34;</span>, <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {  } })
-);
-</code></pre></div><h2 id="document-and-element-with-timeout">Document and Element With Timeout</h2>
-<p>Let&rsquo;s walk through a difficult example testing a component which have a lot of UI effects. Suppose you have a component that scrolls into view on an element upon initial mount.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">FLASH_DURATION</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3000</span>; <span style="color:#75715e">// 3 seconds
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">delay</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">ms</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>) =&gt; <span style="color:#66d9ef">new</span> Promise<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>(<span style="color:#a6e22e">res</span> =&gt; <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">ms</span>));
+</code></pre>
 
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">validElementIds</span> <span style="color:#f92672">=</span> [
-  <span style="color:#e6db74">&#34;section1&#34;</span>, <span style="color:#e6db74">&#34;section2&#34;</span>, <span style="color:#e6db74">&#34;section3&#34;</span>
+<p>See <a href="https://github.com/facebook/jest/issues/5055" target="_blank">this</a> for more information on timeouts.</p>
+
+<h2 id="spying-on-async-functions">Spying on Async Functions</h2>
+
+<pre><code class="language-javascript">makeRequestSpy = jest.spyOn(ApiRequestUtils, &quot;makeRequest&quot;).mockImplementation(
+  () =&gt; Promise.resolve({ code: &quot;SUCCESS&quot;, data: {  } })
+);
+</code></pre>
+
+<h2 id="document-and-element-with-timeout">Document and Element With Timeout</h2>
+
+<p>Let&rsquo;s walk through a difficult example testing a component which have a lot of UI effects. Suppose you have a component that scrolls into view on an element upon initial mount.</p>
+
+<pre><code class="language-js">const FLASH_DURATION = 3000; // 3 seconds
+const delay = (ms: number) =&gt; new Promise&lt;any&gt;(res =&gt; setTimeout(res, ms));
+
+const validElementIds = [
+  &quot;section1&quot;, &quot;section2&quot;, &quot;section3&quot;
 ];
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Page</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">PureComponent</span> {
-  <span style="color:#a6e22e">componentIsMounted</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>; <span style="color:#75715e">// Needed to prevent memory leak
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">props</span>) {
-    <span style="color:#66d9ef">super</span>(<span style="color:#a6e22e">props</span>);
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> {
-      <span style="color:#a6e22e">highlightSection</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+class Page extends React.PureComponent {
+  componentIsMounted = false; // Needed to prevent memory leak
+  constructor(props) {
+    super(props);
+    this.state = {
+      highlightSection: false
     }
   }
-  <span style="color:#a6e22e">componentDidMount</span>() {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">componentIsMounted</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">scrollTo</span> } <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">props</span>;
+  componentDidMount() {
+    this.componentIsMounted = true;
+    const { scrollTo } = this.props;
 
-    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">scrollTo</span>) <span style="color:#66d9ef">return</span>;
+    if (!scrollTo) return;
 
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">elementId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">scrollTo</span>;
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">element</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#a6e22e">elementId</span>);
+    const elementId = scrollTo;
+    const element = document.getElementById(elementId);
 
-    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">element</span>) <span style="color:#66d9ef">return</span>;
+    if (!element) return;
 
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">scrollToElement</span>(<span style="color:#a6e22e">element</span>);
+    this.scrollToElement(element);
   }
-  <span style="color:#a6e22e">componentWillUnmount</span>() {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">componentIsMounted</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+  componentWillUnmount() {
+    this.componentIsMounted = false;
   }
-  <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">scrollToElement</span>(<span style="color:#a6e22e">element</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">HTMLElement</span>) {
-    <span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">scrollIntoView</span>({ <span style="color:#a6e22e">behavior</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;smooth&#34;</span>, <span style="color:#a6e22e">block</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;center&#34;</span> });
+  async scrollToElement(element: HTMLElement) {
+    element.scrollIntoView({ behavior: &quot;smooth&quot;, block: &quot;center&quot; });
 
-    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">componentIsMounted</span>) <span style="color:#66d9ef">return</span>;
+    if (!this.componentIsMounted) return;
 
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>({
-      <span style="color:#a6e22e">highlightSection</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+    this.setState({
+      highlightSection: true
     });
 
-    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">delay</span>(<span style="color:#a6e22e">FLASH_DURATION</span>);
+    await delay(FLASH_DURATION);
 
-    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">componentIsMounted</span>) <span style="color:#66d9ef">return</span>;
+    if (!this.componentIsMounted) return;
 
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>({
-        <span style="color:#a6e22e">highlightSection</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+    this.setState({
+        highlightSection: false
     });
   }
-  <span style="color:#a6e22e">render</span>() {
-    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">scrollTo</span> } <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">props</span>;
-    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">highlightSection</span> } <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>;
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sectionClassName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">validElementIds</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">elementId</span> =&gt;
-      (<span style="color:#a6e22e">elementId</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">scrollTo</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">highlightSection</span>) <span style="color:#f92672">?</span> <span style="color:#a6e22e">styles</span>.<span style="color:#a6e22e">highlightedSection</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
+  render() {
+    const { scrollTo } = this.props;
+    const { highlightSection } = this.state;
+    const sectionClassName = validElementIds.map(elementId =&gt;
+      (elementId === scrollTo &amp;&amp; highlightSection) ? styles.highlightedSection : &quot;&quot;
     );
-    <span style="color:#66d9ef">return</span> (
-      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span><span style="color:#f92672">&gt;</span>
-        { <span style="color:#a6e22e">validElementIds</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">i</span>) =&gt;
-            <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">p</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">id</span>} <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">id</span>} <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">sectionClassName</span>[<span style="color:#a6e22e">i</span>]}<span style="color:#f92672">&gt;</span>)
+    return (
+      &lt;div&gt;
+        { validElementIds.map((id, i) =&gt;
+            &lt;p key={id} id={id} className={sectionClassName[i]}&gt;)
         }
-      <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+      &lt;/div&gt;
     );
   }
 }
-</code></pre></div><p>There is a few thing about this component that makes it harder to test:</p>
+</code></pre>
+
+<p>There is a few thing about this component that makes it harder to test:</p>
+
 <ol>
 <li><code>scrollTo</code></li>
 <li>element selection.</li>
 <li>Setting state based on a timer.</li>
 </ol>
-<p>Let&rsquo;s write a test for this component.</p>
-<p>To address the <code>document.getElementById() returns null</code> error, we follow the advice from <a href="https://stackoverflow.com/questions/43694975/jest-enzyme-using-mount-document-getelementbyid-returns-null-on-componen">here</a> to mount with <code>attachTo</code> param.</p>
-<p>To address the <code>cannot scrollIntoView of null</code> error, we follow the advice from <a href="https://stackoverflow.com/questions/51527362/testing-scrollintoview-jest?rq=1">here</a> to manually include a <code>scrollIntoView</code> spy in <code>window.HTMLElement.prototype</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;Page component&#34;</span>, () =&gt; {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">page</span>;
-  <span style="color:#a6e22e">beforeEach</span>(() =&gt; {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">div</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;div&#34;</span>);
-    window.<span style="color:#a6e22e">domNode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div</span>;
-    document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">div</span>);
-    <span style="color:#a6e22e">scrollIntoViewSpy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">fn</span>();
-    window.<span style="color:#a6e22e">HTMLElement</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">scrollIntoView</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">scrollIntoViewSpy</span>;
 
-    <span style="color:#a6e22e">page</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mount</span>(
-      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Page</span> <span style="color:#a6e22e">scrollTo</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">validElementIds</span>[<span style="color:#ae81ff">0</span>]}<span style="color:#f92672">&gt;</span>,
-      { <span style="color:#a6e22e">attachTo</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">domNode</span> }
+<p>Let&rsquo;s write a test for this component.</p>
+
+<p>To address the <code>document.getElementById() returns null</code> error, we follow the advice from <a href="https://stackoverflow.com/questions/43694975/jest-enzyme-using-mount-document-getelementbyid-returns-null-on-componen" target="_blank">here</a> to mount with <code>attachTo</code> param.</p>
+
+<p>To address the <code>cannot scrollIntoView of null</code> error, we follow the advice from <a href="https://stackoverflow.com/questions/51527362/testing-scrollintoview-jest?rq=1" target="_blank">here</a> to manually include a <code>scrollIntoView</code> spy in <code>window.HTMLElement.prototype</code>.</p>
+
+<pre><code class="language-js">describe(&quot;Page component&quot;, () =&gt; {
+  let page;
+  beforeEach(() =&gt; {
+    const div = document.createElement(&quot;div&quot;);
+    window.domNode = div;
+    document.body.appendChild(div);
+    scrollIntoViewSpy = jest.fn();
+    window.HTMLElement.prototype.scrollIntoView = scrollIntoViewSpy;
+
+    page = mount(
+      &lt;Page scrollTo={validElementIds[0]}&gt;,
+      { attachTo: window.domNode }
     )
   });
 });
-</code></pre></div><p>Then we can add the following tests to verify that when provided with a valid <code>elementId</code>, our component scrolls to that element and highlights it upon mount.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#34;Scroll to and highlight Section based on scrollTo&#34;</span>, () =&gt; {
-  <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">each</span>(
-    [[<span style="color:#66d9ef">undefined</span>], [<span style="color:#e6db74">&#34;invalid sectionId&#34;</span>]]
-  )(<span style="color:#e6db74">&#34;scrolls to and highlights section when scrollTo = %s&#34;</span>, (<span style="color:#a6e22e">elementId</span>) =&gt; {
-      <span style="color:#a6e22e">page</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mount</span>(
-          <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Page</span> <span style="color:#a6e22e">scrollTo</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">elementId</span>} <span style="color:#f92672">/&gt;</span>,
-          { <span style="color:#a6e22e">attachTo</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">domNode</span> }
+</code></pre>
+
+<p>Then we can add the following tests to verify that when provided with a valid <code>elementId</code>, our component scrolls to that element and highlights it upon mount.</p>
+
+<pre><code class="language-js">describe(&quot;Scroll to and highlight Section based on scrollTo&quot;, () =&gt; {
+  test.each(
+    [[undefined], [&quot;invalid sectionId&quot;]]
+  )(&quot;scrolls to and highlights section when scrollTo = %s&quot;, (elementId) =&gt; {
+      page = mount(
+          &lt;Page scrollTo={elementId} /&gt;,
+          { attachTo: window.domNode }
       );
-      <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">state</span>().<span style="color:#a6e22e">highlightSection</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#66d9ef">false</span>);
-      <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">scrollIntoViewSpy</span>).<span style="color:#a6e22e">toHaveBeenCalledTimes</span>(<span style="color:#ae81ff">0</span>);
+      expect(page.state().highlightSection).toBe(false);
+      expect(scrollIntoViewSpy).toHaveBeenCalledTimes(0);
   });
-  <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">each</span>(
-    <span style="color:#a6e22e">validElementIds</span>
-  )(<span style="color:#e6db74">&#34;scrolls to and highlights section when scrollTo = %s&#34;</span>, (<span style="color:#a6e22e">elementId</span>) =&gt; {
-      <span style="color:#a6e22e">page</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mount</span>(
-          <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Page</span> <span style="color:#a6e22e">scrollTo</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">elementId</span>} <span style="color:#f92672">/&gt;</span>,
-          { <span style="color:#a6e22e">attachTo</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">domNode</span> }
+  test.each(
+    validElementIds
+  )(&quot;scrolls to and highlights section when scrollTo = %s&quot;, (elementId) =&gt; {
+      page = mount(
+          &lt;Page scrollTo={elementId} /&gt;,
+          { attachTo: window.domNode }
       );
-      <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">state</span>().<span style="color:#a6e22e">highlightSection</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#66d9ef">true</span>);
-      <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">scrollIntoViewSpy</span>).<span style="color:#a6e22e">toHaveBeenCalledTimes</span>(<span style="color:#ae81ff">1</span>);
-      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">element</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">`#</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">elementId</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
-      <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">hasClass</span>(<span style="color:#e6db74">&#34;highlightedSection&#34;</span>)).<span style="color:#a6e22e">toBe</span>(<span style="color:#66d9ef">true</span>);
+      expect(page.state().highlightSection).toBe(true);
+      expect(scrollIntoViewSpy).toHaveBeenCalledTimes(1);
+      const element = page.find(`#${elementId}`);
+      expect(element.hasClass(&quot;highlightedSection&quot;)).toBe(true);
   });
 });
-</code></pre></div><p>Finally, we also want to test that the highlight is removed after a specified duration.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;should set highlightSection to false after flash duration elapses after mount&#34;</span>, <span style="color:#a6e22e">async</span> () =&gt; {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">elementId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">validElementIds</span>[<span style="color:#ae81ff">0</span>];
+</code></pre>
 
-    <span style="color:#a6e22e">page</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mount</span>(
-        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Page</span> <span style="color:#a6e22e">scrollTo</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">elementId</span>} <span style="color:#f92672">/&gt;</span>,
-        { <span style="color:#a6e22e">attachTo</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">domNode</span> }
+<p>Finally, we also want to test that the highlight is removed after a specified duration.</p>
+
+<pre><code class="language-js">test(&quot;should set highlightSection to false after flash duration elapses after mount&quot;, async () =&gt; {
+    const elementId = validElementIds[0];
+
+    page = mount(
+        &lt;Page scrollTo={elementId} /&gt;,
+        { attachTo: window.domNode }
     );
 
-    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">instance</span>().<span style="color:#a6e22e">scrollToElement</span>(
-        document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#a6e22e">elementId</span>)
+    await page.instance().scrollToElement(
+        document.getElementById(elementId)
     );
 
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">userPreferencesForm</span>.<span style="color:#a6e22e">state</span>().<span style="color:#a6e22e">highlightSection</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#66d9ef">false</span>);
-}, <span style="color:#a6e22e">FLASH_DURATION</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>);
-</code></pre></div><h1 id="resources">Resources</h1>
+    expect(userPreferencesForm.state().highlightSection).toBe(false);
+}, FLASH_DURATION * 2);
+</code></pre>
+
+<h1 id="resources">Resources</h1>
+
 <ul>
-<li><a href="https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3">TDD the right way</a></li>
-<li><a href="https://medium.com/javascript-scene/what-every-unit-test-needs-f6cd34d9836d">5 questions every unit tests must answer</a></li>
-<li><a href="https://github.com/foundersandcoders/testing-tdd-intro">Testing TDD Intro</a></li>
-<li><a href="https://medium.com/codeclan/mocking-es-and-commonjs-modules-with-jest-mock-37bbb552da43">mocking es and commonjs modules</a></li>
-<li><a href="https://medium.com/@rickhanlonii/understanding-jest-mocks-f0046c68e53c">Understanding Jest mocks</a></li>
-<li><a href="https://medium.com/@deanslamajr/jest-fn-all-the-things-d26f3b929986">Jest fn</a></li>
-<li><a href="https://medium.com/wehkamp-techblog/unit-testing-your-react-application-with-jest-and-enzyme-81c5545cee45">Unit testing your React App With Jest and Enzyme</a></li>
-<li><a href="https://github.com/facebook/jest/issues/1592">jest.fn vs jest.spy</a></li>
-<li><a href="https://codeahoy.com/2016/07/05/unit-integration-and-end-to-end-tests-finding-the-right-balance/">Unit vs Integration vs End-to-End testing</a></li>
-<li><a href="https://bambielli.com/til/2018-03-04-directly-test-react-component-methods/">Testing component methods directly</a></li>
+<li><a href="https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3" target="_blank">TDD the right way</a></li>
+<li><a href="https://medium.com/javascript-scene/what-every-unit-test-needs-f6cd34d9836d" target="_blank">5 questions every unit tests must answer</a></li>
+<li><a href="https://github.com/foundersandcoders/testing-tdd-intro" target="_blank">Testing TDD Intro</a></li>
+<li><a href="https://medium.com/codeclan/mocking-es-and-commonjs-modules-with-jest-mock-37bbb552da43" target="_blank">mocking es and commonjs modules</a></li>
+<li><a href="https://medium.com/@rickhanlonii/understanding-jest-mocks-f0046c68e53c" target="_blank">Understanding Jest mocks</a></li>
+<li><a href="https://medium.com/@deanslamajr/jest-fn-all-the-things-d26f3b929986" target="_blank">Jest fn</a></li>
+<li><a href="https://medium.com/wehkamp-techblog/unit-testing-your-react-application-with-jest-and-enzyme-81c5545cee45" target="_blank">Unit testing your React App With Jest and Enzyme</a></li>
+<li><a href="https://github.com/facebook/jest/issues/1592" target="_blank">jest.fn vs jest.spy</a></li>
+<li><a href="https://codeahoy.com/2016/07/05/unit-integration-and-end-to-end-tests-finding-the-right-balance/" target="_blank">Unit vs Integration vs End-to-End testing</a></li>
+<li><a href="https://bambielli.com/til/2018-03-04-directly-test-react-component-methods/" target="_blank">Testing component methods directly</a></li>
 </ul>
+
 <p>Cheatsheets</p>
+
 <ul>
-<li><a href="https://github.com/maurocarrero/sinon-jest-cheatsheet">How to achieve the same thing in Sinon with Jest</a></li>
-<li><a href="https://devhints.io/jest">Jest Cheatsheet</a></li>
-<li><a href="https://devhints.io/enzyme">Enzyme Cheatsheet</a></li>
-<li><a href="https://doc.ebichu.cc/jest/docs/en/expect.html">Jest Docs</a></li>
-<li><a href="https://jestjs.io/docs/en/expect">Jest Expect Docs</a></li>
-<li><a href="https://benmccormick.org/2017/08/15/jest-matchers-1/">Taking Advantage of Jest Matchers</a></li>
-<li><a href="https://medium.com/@deanslamajr/jest-fn-all-the-things-d26f3b929986">Mocking Function using jest.fn</a></li>
+<li><a href="https://github.com/maurocarrero/sinon-jest-cheatsheet" target="_blank">How to achieve the same thing in Sinon with Jest</a></li>
+<li><a href="https://devhints.io/jest" target="_blank">Jest Cheatsheet</a></li>
+<li><a href="https://devhints.io/enzyme" target="_blank">Enzyme Cheatsheet</a></li>
+<li><a href="https://doc.ebichu.cc/jest/docs/en/expect.html" target="_blank">Jest Docs</a></li>
+<li><a href="https://jestjs.io/docs/en/expect" target="_blank">Jest Expect Docs</a></li>
+<li><a href="https://benmccormick.org/2017/08/15/jest-matchers-1/" target="_blank">Taking Advantage of Jest Matchers</a></li>
+<li><a href="https://medium.com/@deanslamajr/jest-fn-all-the-things-d26f3b929986" target="_blank">Mocking Function using jest.fn</a></li>
 </ul>
               
             </div>
@@ -974,7 +1215,7 @@
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -1077,7 +1318,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>

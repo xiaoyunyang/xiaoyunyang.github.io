@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.58.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="computer science, javascript, interview prep, algorithms, data structure, productivity">
 <meta name="description" content="We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&rsquo;m drawing these problems from LeetCode and Cracking the Coding Interview. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.">
@@ -282,52 +282,83 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&rsquo;m drawing these problems from <a href="https://leetcode.com/">LeetCode</a> and <a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;psc=1&amp;refRID=2E72V7DJM4CV4DNTBTKD">Cracking the Coding Interview</a>. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.</p>
-<!-- raw HTML omitted -->
+              <p>We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&rsquo;m drawing these problems from <a href="https://leetcode.com/" target="_blank">LeetCode</a> and <a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;psc=1&amp;refRID=2E72V7DJM4CV4DNTBTKD" target="_blank">Cracking the Coding Interview</a>. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.</p>
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#leetcode-practice">LeetCode Practice</a></li>
+<li><a href="#quicksort">QuickSort</a>
+<ul>
+<li><a href="#whiteboard">Whiteboard</a></li>
+<li><a href="#the-code">The Code</a></li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#optimization">Optimization</a></li>
+</ul></li>
+<li><a href="#linkedlist-zip">LinkedList Zip</a>
+<ul>
+<li><a href="#whiteboard-1">Whiteboard</a></li>
+<li><a href="#the-code-1">The Code</a></li>
+</ul></li>
+<li><a href="#tricks-and-shortcut">Tricks and Shortcut</a></li>
+<li><a href="#fundamental-knowledge-review">Fundamental Knowledge Review</a>
+<ul>
+<li><a href="#part-i">Part I</a></li>
+<li><a href="#part-ii">Part II</a></li>
+</ul></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+</nav>
+
 <h1 id="leetcode-practice">LeetCode Practice</h1>
+
 <ul>
-<li><a href="https://leetcode.com/problems/multiply-strings/description/">TwoSum</a> - Easy
+<li><a href="https://leetcode.com/problems/multiply-strings/description/" target="_blank">TwoSum</a> - Easy
+
 <ul>
-<li><a href="https://repl.it/@xiaoyunyang/TwoSum">MySolution</a></li>
+<li><a href="https://repl.it/@xiaoyunyang/TwoSum" target="_blank">MySolution</a></li>
 <li>Gotcha: you can easily develop a O(N^2) algorithm with a nested loop but we can develop a single-pass O(N) algorithm by creating a hash map</li>
 <li>Knowledge:  hash map</li>
 <li>Complexity: O(N^2) or O(N)</li>
-</ul>
-</li>
-<li><a href="https://leetcode.com/problems/add-two-numbers/description/">AddTwoNumbers</a> -  Medium
+</ul></li>
+<li><a href="https://leetcode.com/problems/add-two-numbers/description/" target="_blank">AddTwoNumbers</a> -  Medium
+
 <ul>
-<li><a href="https://repl.it/@xiaoyunyang/AddTwoNumbers">MySolution</a></li>
+<li><a href="https://repl.it/@xiaoyunyang/AddTwoNumbers" target="_blank">MySolution</a></li>
 <li>Gotcha: You can add things to the end of the linked list while generating a linked list by creating a hole at the end and keep a <code>tail</code> reference to that hole.</li>
 <li>Knowledge:  Linked List</li>
 <li>Complexity: O(N)</li>
-</ul>
-</li>
-<li><a href="https://leetcode.com/problems/multiply-strings/description/">MultiplyStrings</a> - Medium
+</ul></li>
+<li><a href="https://leetcode.com/problems/multiply-strings/description/" target="_blank">MultiplyStrings</a> - Medium
+
 <ul>
-<li><a href="https://repl.it/@xiaoyunyang/MultiplyStrings">MySolution</a></li>
+<li><a href="https://repl.it/@xiaoyunyang/MultiplyStrings" target="_blank">MySolution</a></li>
 <li>Gotcha: A many-step problem that has a lot of room for error. <em>handle your edge cases!</em> The way to solve this problem is to do grade school multiplication. Don&rsquo;t forget to handle edge condition e.g., one of the two numbers is &ldquo;0&rdquo;, return &ldquo;0&rdquo; right away.</li>
 <li>Knowledge:  arrays and strings, be careful with edge case handling</li>
 <li>Complexity: O(M*N)</li>
-</ul>
-</li>
-<li><a href="https://leetcode.com/problems/path-sum-ii/description/">Path Sum II</a> - Medium
+</ul></li>
+<li><a href="https://leetcode.com/problems/path-sum-ii/description/" target="_blank">Path Sum II</a> - Medium
+
 <ul>
-<li><a href="https://repl.it/@xiaoyunyang/PathSum-II">MySolution</a></li>
+<li><a href="https://repl.it/@xiaoyunyang/PathSum-II" target="_blank">MySolution</a></li>
 <li>Gotcha: <code>node</code> is a leaf if <code>!node.left &amp;&amp; !node.right</code>. Keep a mutable data structure outside of your recursive function to accumulate result.</li>
-<li>Knowledge: Graph, binary search tree, depth first search, recursion</li>
+<li>Knowledge: Graph, binary search tree, depth first search, recursion<br /></li>
 <li>Complexity: O(log N) &hellip; height of the tree if perfectly balanced but could be O(N) if not a balanced tree</li>
+</ul></li>
 </ul>
-</li>
-</ul>
+
 <h1 id="quicksort">QuickSort</h1>
-<p><a href="https://medium.com/basecs/pivoting-to-understand-quicksort-part-1-75178dfb9313">The Quicksort algo in a nutshell</a></p>
-<blockquote>
-<p>The quicksort algorithm is a sorting algorithm that sorts a collection by choosing a pivot point, and partitioning the collection around the pivot, so that elements smaller than the pivot are before it, and elements larger than the pivot are after it.</p>
-</blockquote>
+
+<p><a href="https://medium.com/basecs/pivoting-to-understand-quicksort-part-1-75178dfb9313" target="_blank">The Quicksort algo in a nutshell</a>
+&gt; The quicksort algorithm is a sorting algorithm that sorts a collection by choosing a pivot point, and partitioning the collection around the pivot, so that elements smaller than the pivot are before it, and elements larger than the pivot are after it.</p>
+
 <p>Examples</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">70</span>]
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr2</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">44</span>, <span style="color:#ae81ff">76</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">30</span>]
-</code></pre></div><h2 id="whiteboard">Whiteboard</h2>
+
+<pre><code class="language-javascript">let arr = [10, 80, 30, 90, 40, 50, 70]
+let arr2 = [6, 3, 17, 11, 4, 44, 76, 23, 12, 30]
+</code></pre>
+
+<h2 id="whiteboard">Whiteboard</h2>
+
 <p>
 
  
@@ -399,52 +430,69 @@
 
   <div style="clear:both;"></div>
 </p>
+
 <h2 id="the-code">The Code</h2>
-<p><a href="https://repl.it/@xiaoyunyang/Quicksort">Code on Repl</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">quicksort</span>(<span style="color:#a6e22e">arr</span>) {
-  <span style="color:#75715e">//base case
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">arr</span>
 
-  <span style="color:#75715e">// divide an conquer
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">subArr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">pivot</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">subArr</span>.<span style="color:#a6e22e">pop</span>()
+<p><a href="https://repl.it/@xiaoyunyang/Quicksort" target="_blank">Code on Repl</a></p>
 
-  <span style="color:#75715e">// work at each level is O(N)
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">left</span>, <span style="color:#a6e22e">right</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">subArr</span>.<span style="color:#a6e22e">partition</span>(<span style="color:#a6e22e">e</span> =&gt; <span style="color:#a6e22e">e</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">pivot</span>)
+<pre><code class="language-javascript">function quicksort(arr) {
+  //base case
+  if(arr.length &lt; 2) return arr
 
-  <span style="color:#75715e">//recurse
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">quicksort</span>(<span style="color:#a6e22e">left</span>).<span style="color:#a6e22e">concat</span>(<span style="color:#a6e22e">pivot</span>, <span style="color:#a6e22e">quicksort</span>(<span style="color:#a6e22e">right</span>))
+  // divide an conquer
+  let subArr = arr
+  let pivot = subArr.pop()
+
+  // work at each level is O(N)
+  let [left, right] = subArr.partition(e =&gt; e &lt; pivot)
+
+  //recurse
+  return quicksort(left).concat(pivot, quicksort(right))
 }
 
-<span style="color:#75715e">// Helper Function
-</span><span style="color:#75715e"></span>Array.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">partition</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">fun</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> []
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> []
-  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) { <span style="color:#75715e">//&lt;--- O(N)
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">fun</span>(<span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">i</span>])) {
-      <span style="color:#a6e22e">left</span>.<span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">i</span>])
-    } <span style="color:#66d9ef">else</span> {
-      <span style="color:#a6e22e">right</span>.<span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">i</span>])
+// Helper Function
+Array.prototype.partition = function(fun) {
+  let left = []
+  let right = []
+  for(let i=0; i &lt; this.length; i++) { //&lt;--- O(N)
+    if(fun(this[i])) {
+      left.push(this[i])
+    } else {
+      right.push(this[i])
     }
   }
-  <span style="color:#66d9ef">return</span> [<span style="color:#a6e22e">left</span>, <span style="color:#a6e22e">right</span>]
+  return [left, right]
 }
-</code></pre></div><h2 id="analysis">Analysis</h2>
+</code></pre>
+
+<h2 id="analysis">Analysis</h2>
+
 <p>Work at each level of the tree is O(N) because for each pivot, we have to go through each element in the array and determine if it is less than pivot. In the worst case, we are really unlucky with picking the pivot so instead of distributing work evenly between left and right, we leave all the work to one side. This increases the depth of the tree from logN to N. The expected time complexity is O(N logN), where the first N is how much work we do at each level of the tree and logN is the depth of the tree.</p>
+
 <p><strong>Special Note</strong></p>
+
 <ul>
 <li>In our divide and conquer step, we want to pick <code>Array.pop</code>, which is a mutator function, because that&rsquo;s a O(1) operation and gives us both the pivot and the subArr. We could extract the subArr using <code>arr.slice(0, arr.length-1)</code> but that creates a whole new array, which is O(N) operation. This doesn&rsquo;t affect the big-O complexity as O(2N logN) is O(N logN) since we drop the constant.</li>
 <li>Our quicksort function is not tail recursive. In a compiled language, the compiler will translate the a tail recursive function to a loop so it&rsquo;s more efficient under the hood. In a real recursion, a new stack frame is built for each function call.</li>
 </ul>
+
 <h2 id="optimization">Optimization</h2>
+
 <p>The partition logic we just implemented is not smart. It chooses the last element every time. Ideally, we want to choose the median of the array as our pivot so we can evenly offload work to the left and right subproblems.</p>
+
 <p>Another place we can optimize is in space efficiency. Our basic quicksort have us build new arrays (i.e., <code>left</code> and <code>right</code>). Instead of building new arrays, we want to recursively mutate the original array, swapping the elements around until the array is completely sorted.</p>
+
 <p>There are more efficient quicksort implementations that swaps elements in the array.</p>
-<p>The names for these are the Hoarse partition and Lomuto partition. Hoarse partition is more efficient than the Lomuto partition. See <a href="http://blog.benoitvallon.com/sorting-algorithms-in-javascript/the-quicksort-algorithm/">all the quicksort implementations here</a>.</p>
+
+<p>The names for these are the Hoarse partition and Lomuto partition. Hoarse partition is more efficient than the Lomuto partition. See <a href="http://blog.benoitvallon.com/sorting-algorithms-in-javascript/the-quicksort-algorithm/" target="_blank">all the quicksort implementations here</a>.</p>
+
 <h1 id="linkedlist-zip">LinkedList Zip</h1>
+
 <p>Write a function <code>zip</code> that takes two linked lists and return a
 linked list that is the result of combining the arguments.</p>
+
 <h2 id="whiteboard-1">Whiteboard</h2>
+
 
  
   
@@ -489,61 +537,86 @@ linked list that is the result of combining the arguments.</p>
 
   <div style="clear:both;"></div>
 
+
 <p>An issue with the whiteboarded code is right before the loop ends, l1 and l2 are incremented. However, one of them could be null. Getting <code>next</code> from null will result in an error. We can fix this by using a conditional ternary operator:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">l1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l1</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">l1</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">l1</span>
-<span style="color:#a6e22e">l2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l2</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">l2</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">l2</span>
-</code></pre></div><h2 id="the-code-1">The Code</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#a6e22e">val</span>) {
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">val</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span>;
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+
+<pre><code class="language-javascript">l1 = l1 ? l1.next : l1
+l2 = l2 ? l2.next : l2
+</code></pre>
+
+<h2 id="the-code-1">The Code</h2>
+
+<pre><code class="language-javascript">function ListNode(val) {
+  this.val = val;
+  this.next = null;
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">zip</span>(<span style="color:#a6e22e">l1</span>,<span style="color:#a6e22e">l2</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">l3</span>, <span style="color:#a6e22e">tail</span>, <span style="color:#a6e22e">pred</span>
-  <span style="color:#75715e">// initialize l3
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">l3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#e6db74">&#39;&#39;</span>)
-  <span style="color:#a6e22e">tail</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l3</span>
-  <span style="color:#66d9ef">while</span>(<span style="color:#a6e22e">l1</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">l2</span>) {
-    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">l1</span> <span style="color:#f92672">!==</span> <span style="color:#66d9ef">null</span>) <span style="color:#a6e22e">tail</span>.<span style="color:#a6e22e">val</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">l1</span>.<span style="color:#a6e22e">val</span>
-    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">l2</span> <span style="color:#f92672">!==</span> <span style="color:#66d9ef">null</span>) <span style="color:#a6e22e">tail</span>.<span style="color:#a6e22e">val</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">l2</span>.<span style="color:#a6e22e">val</span>
+</code></pre>
 
-    <span style="color:#a6e22e">tail</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#e6db74">&#39;&#39;</span>)
-    <span style="color:#a6e22e">pred</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tail</span>
-    <span style="color:#a6e22e">tail</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tail</span>.<span style="color:#a6e22e">next</span>
+<pre><code class="language-javascript">function zip(l1,l2) {
+  let l3, tail, pred
+  // initialize l3
+  l3 = new ListNode('')
+  tail = l3
+  while(l1 || l2) {
+    if(l1 !== null) tail.val += l1.val
+    if(l2 !== null) tail.val += l2.val
 
-    <span style="color:#a6e22e">l1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l1</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">l1</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">l1</span>
-    <span style="color:#a6e22e">l2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l2</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">l2</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">l2</span>
+    tail.next = new ListNode('')
+    pred = tail
+    tail = tail.next
+
+    l1 = l1 ? l1.next : l1
+    l2 = l2 ? l2.next : l2
   }
 
-  <span style="color:#a6e22e">pred</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+  pred.next = null
 
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">l3</span>
+  return l3
 }
-</code></pre></div><h1 id="tricks-and-shortcut">Tricks and Shortcut</h1>
+</code></pre>
+
+<h1 id="tricks-and-shortcut">Tricks and Shortcut</h1>
+
 <p>Convert a string representation of a number to a number:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2&#39;</span>
-<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">s</span> <span style="color:#75715e">//&gt;  &#34;string&#34;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#75715e">//&lt;-- Trick
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">n</span> <span style="color:#75715e">//&gt;  &#34;number&#34;
-</span></code></pre></div><p>Declare an Array and Initialize</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pos</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(<span style="color:#ae81ff">5</span>);
-<span style="color:#a6e22e">pos</span>.<span style="color:#a6e22e">fill</span>(<span style="color:#ae81ff">0</span>) <span style="color:#75715e">//&lt;-- Shortcut
-</span></code></pre></div><h1 id="fundamental-knowledge-review">Fundamental Knowledge Review</h1>
-<p>Tim Roughgarden&rsquo;s <a href="http://theory.stanford.edu/~tim/videos.html">Algorithms Algorithms: Design and Analysis</a></p>
+
+<pre><code class="language-javascript">let s = '2'
+typeof s //&gt;  &quot;string&quot;
+let n = s - '0' //&lt;-- Trick
+typeof n //&gt;  &quot;number&quot;
+</code></pre>
+
+<p>Declare an Array and Initialize</p>
+
+<pre><code class="language-javascript">const pos = new Array(5);
+pos.fill(0) //&lt;-- Shortcut
+</code></pre>
+
+<h1 id="fundamental-knowledge-review">Fundamental Knowledge Review</h1>
+
+<p>Tim Roughgarden&rsquo;s <a href="http://theory.stanford.edu/~tim/videos.html" target="_blank">Algorithms Algorithms: Design and Analysis</a></p>
+
 <h2 id="part-i">Part I</h2>
-<p><a href="https://www.youtube.com/playlist?list=PLXFMmlk03Dt7Q0xr1PIAriY5623cKiH7V">YouTube Videos</a></p>
+
+<p><a href="https://www.youtube.com/playlist?list=PLXFMmlk03Dt7Q0xr1PIAriY5623cKiH7V" target="_blank">YouTube Videos</a></p>
+
 <ul>
 <li><strong>Divide and Conquer, Sorting and Searching, and Randomized Algo</strong> - Integer Multiplication, Karatsuba Multiplication, Merge Sort, Big Oh Notation, O(NlogN) Algorithms for Counting Inversions, Strassen&rsquo;s Subcubic Matrix Multiplication Algo, O(NlogN) Closest Pair Algo, Quicksort, Randomized Selection Algo, Deterministic Selection Algo, Graphs and Minimum Cuts, Random Contraction Algo, Counting Minimum Cuts</li>
 <li><strong>Graph Search, Shortest Paths, and Data Structures</strong> - Graph Search, Breadth First Search (BFS), Shortest Paths, Undirected Connectivity, Depth First Search (DFS) (Topological Sort), Structure of the Web, Dijkstra&rsquo;s Shortest Path Algo, Heaps, Balanced Search Trees (BST), Red Black Trees, Rotations, Hash Tables, Pathological Data Sets, Universal Hashing, Bloom Filters</li>
 </ul>
+
 <h2 id="part-ii">Part II</h2>
-<p><a href="https://www.youtube.com/playlist?list=PLXFMmlk03Dt5EMI2s2WQBsLsZl7A5HEK6">YouTube Videos</a></p>
+
+<p><a href="https://www.youtube.com/playlist?list=PLXFMmlk03Dt5EMI2s2WQBsLsZl7A5HEK6" target="_blank">YouTube Videos</a></p>
+
 <ul>
 <li><strong>Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming</strong> - Internet Routing, Sequence, Greedy Algorithms, Optimal Caching, Scheduling, Handling Ties, Prim&rsquo;s Minimum Spanning Tree (MST) Algo, Kruskal&rsquo;s MST Algo, Clustering, Advanced Union-Find: Path Compression The Hopcroft Ullman, Advanced Union-Find: The Ackermann Function, Tarjans Analysis, Huffman Codes, Dynamic Programming, the Knapsack Problem: A Dynamic Programming Algo, Sequence Alignment</li>
 <li><strong>NP-Complete Problems</strong> - Optimal Binary Search Trees, the Bellman-Ford Algo for Single-Source Shortest Paths and optimal substructure, All-pairs Shortest Paths: The Floyd Warshall Algo, NP-Complete: Polynomial Time Solvable, Reduction and Completeness, Local Search Algo: The Max Cut Problem, The 2-SAT Problem, Random Walks on a Line, Analysis of Papadimitriou&rsquo;s, Stable Matching.</li>
 </ul>
+
 <h1 id="resources">Resources</h1>
+
 <ul>
-<li><a href="http://blog.benoitvallon.com/">Ben&rsquo;s Blog</a> - Basic Algos implemented in JavaScript.</li>
+<li><a href="http://blog.benoitvallon.com/" target="_blank">Ben&rsquo;s Blog</a> - Basic Algos implemented in JavaScript.</li>
 </ul>
               
             </div>
@@ -626,7 +699,7 @@ linked list that is the result of combining the arguments.</p>
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -729,7 +802,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>

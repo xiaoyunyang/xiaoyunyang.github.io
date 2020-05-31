@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>UX on Xiaoyun Yang</title>
@@ -19,8 +19,9 @@
       <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</guid>
-      <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34; target=&#34;_blank&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
+&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34; /&gt;&lt;/p&gt;
+
 &lt;p&gt;Let&amp;rsquo;s get started!&lt;/p&gt;</description>
     </item>
     

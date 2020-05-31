@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>projects on Xiaoyun Yang</title>
@@ -19,7 +19,8 @@
       <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/</guid>
-      <description>&lt;p&gt;&lt;em&gt;by &lt;a href=&#34;https://github.com/xiaoyunyang&#34;&gt;Xiaoyun Yang&lt;/a&gt; and &lt;a href=&#34;https://github.com/clydeshaffer&#34;&gt;Clyde Shaffer&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;em&gt;by &lt;a href=&#34;https://github.com/xiaoyunyang&#34; target=&#34;_blank&#34;&gt;Xiaoyun Yang&lt;/a&gt; and &lt;a href=&#34;https://github.com/clydeshaffer&#34; target=&#34;_blank&#34;&gt;Clyde Shaffer&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
 &lt;p&gt;I love indoor plants but I&amp;rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&amp;rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&amp;rsquo;s call it ThirstyPlant.&lt;/p&gt;</description>
     </item>
     
@@ -38,7 +39,7 @@
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34; target=&#34;_blank&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -47,7 +48,7 @@
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s not always clear why we need need a personal website. But here&amp;rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;It&amp;rsquo;s not always clear why we need need a personal website. But here&amp;rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like &lt;a href=&#34;https://gohugo.io/&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -74,7 +75,7 @@
       <pubDate>Sun, 12 Mar 2017 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</guid>
-      <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34; target=&#34;_blank&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -83,7 +84,7 @@
       <pubDate>Wed, 12 Aug 2015 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://number-shapes.com&#34;&gt;NumberShapes&lt;/a&gt; is a collection of mobile apps that make numbers come alive through numerical visualizations and interactions. In 2014, I worked on the software development for the first few apps, which are iOS matching games that help young learners with familiarization of addition, subtraction, multiplication and other math facts.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://number-shapes.com&#34; target=&#34;_blank&#34;&gt;NumberShapes&lt;/a&gt; is a collection of mobile apps that make numbers come alive through numerical visualizations and interactions. In 2014, I worked on the software development for the first few apps, which are iOS matching games that help young learners with familiarization of addition, subtraction, multiplication and other math facts.&lt;/p&gt;</description>
     </item>
     
   </channel>

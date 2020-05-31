@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.58.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="object oriented programming, computer science, javascript, interview prep, prototypal inheritance, classical inheritance, functional composition">
 <meta name="description" content="Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C&#43;&#43;, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.">
@@ -281,78 +281,131 @@
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.</p>
-<div class="alert info ">
-  <p>This article was also <a href="https://medium.com/@xiaoyunyang/how-to-do-object-oriented-programming-the-right-way-1339c1a25286">published on Medium</a>.</p>
+
+<p><div class="alert info ">
+  <p>This article was also <a href="https://medium.com/@xiaoyunyang/how-to-do-object-oriented-programming-the-right-way-1339c1a25286" target="_blank">published on Medium</a>.</p>
 </div>
-<!-- raw HTML omitted -->
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#primer-what-is-an-object">Primer: What is an Object?</a></li>
+<li><a href="#classical-inheritance">Classical Inheritance</a></li>
+<li><a href="#prototypal-inheritance">Prototypal Inheritance</a>
+<ul>
+<li><a href="#classes-vs-prototypes">Classes vs. Prototypes</a></li>
+</ul></li>
+<li><a href="#a-third-way-no-oop">A Third way: No OOP</a>
+<ul>
+<li><a href="#inheritance">Inheritance</a></li>
+<li><a href="#encapsulation">Encapsulation</a></li>
+<li><a href="#polymorphism">Polymorphism</a></li>
+<li><a href="#composition">Composition</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+</nav></p>
+
 <h1 id="primer-what-is-an-object">Primer: What is an Object?</h1>
+
 <p>OOP is concerned with composing objects that manages simple tasks to create complex computer programs. An object consists of private mutable states and functions (called methods) that operate on these mutable states. Objects have a notion of self and reused behavior inherited from a blueprint (classical inheritance) or other objects (prototypal inheritance).</p>
+
 <p>Inheritance is the ability to say that these objects are just like that other set of objects <em>except</em> for these changes. The goal of inheritance is to speed up development by promoting code reuse.</p>
+
 <h1 id="classical-inheritance">Classical Inheritance</h1>
+
 <p>In classical OOP, classes are blueprints for objects. Objects are created or <em>instantiated</em> from classes. There&rsquo;s a constructor that is used to create an instance of the class with custom properties.</p>
+
 <p>Consider the following example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
-  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">firstName</span>, <span style="color:#a6e22e">lastName</span>) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">firstName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">firstName</span>
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lastName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lastName</span>
+
+<pre><code class="language-javascript">class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName
+    this.lastName = lastName
   }
-  <span style="color:#a6e22e">getFullName</span>() {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">firstName</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lastName</span>
+  getFullName() {
+    return this.firstName + ' ' + this.lastName
   }
 }
-</code></pre></div><p>The <code>class</code> keyword from ES6 is used to create the <code>Person</code> class with properties stored in <code>this</code> called <code>firstName</code> and <code>lastName</code>, which are set in the <code>constructor</code> and accessed in the <code>getFullName</code> method.</p>
+</code></pre>
+
+<p>The <code>class</code> keyword from ES6 is used to create the <code>Person</code> class with properties stored in <code>this</code> called <code>firstName</code> and <code>lastName</code>, which are set in the <code>constructor</code> and accessed in the <code>getFullName</code> method.</p>
+
 <p>We instantiate an object called <code>person</code> from the <code>Person</code> class with the <code>new</code> key word as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>(<span style="color:#e6db74">&#39;Dan&#39;</span>, <span style="color:#e6db74">&#39;Abramov&#39;</span>)
-<span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">getFullName</span>() <span style="color:#75715e">//&gt; &#34;Dan Abramov&#34;
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// We can use an accessor function or access directly
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">firstName</span> <span style="color:#75715e">//&gt; &#34;Dan&#34;
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">lastName</span> <span style="color:#75715e">//&gt; &#34;Abramov&#34;
-</span></code></pre></div><p>Objects created using the <code>new</code> keyword are mutable. In other words, changes to a class affect all objects created from that class and all derived classes which <em>extends</em> from the class.</p>
+
+<pre><code class="language-javascript">let person = new Person('Dan', 'Abramov')
+person.getFullName() //&gt; &quot;Dan Abramov&quot;
+
+// We can use an accessor function or access directly
+person.firstName //&gt; &quot;Dan&quot;
+person.lastName //&gt; &quot;Abramov&quot;
+</code></pre>
+
+<p>Objects created using the <code>new</code> keyword are mutable. In other words, changes to a class affect all objects created from that class and all derived classes which <em>extends</em> from the class.</p>
+
 <p>To extend a class, we can create another class. Let&rsquo;s extend the <code>Person</code> class to make a <code>User</code>. A <code>User</code> is a Person with an email and a password.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Person</span> {
-  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">firstName</span>, <span style="color:#a6e22e">lastName</span>, <span style="color:#a6e22e">email</span>, <span style="color:#a6e22e">password</span>) {
-    <span style="color:#66d9ef">super</span>(<span style="color:#a6e22e">firstName</span>, <span style="color:#a6e22e">lastName</span>)
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">email</span>
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">password</span>
+
+<pre><code class="language-javascript">class User extends Person {
+  constructor(firstName, lastName, email, password) {
+    super(firstName, lastName)
+    this.email = email
+    this.password = password
   }
-  <span style="color:#a6e22e">getEmail</span>() {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">email</span>
+  getEmail() {
+    return this.email
   }
-  <span style="color:#a6e22e">getPassword</span>() {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">password</span>
+  getPassword() {
+    return this.password
   }
 }
-</code></pre></div><p>In the code above, we created a <code>User</code> class which <em>extends</em> the capability of the <code>Person</code> class by adding email and password properties and accessor functions. In the <code>App</code> function below, a <code>user</code> object is <em>instantiated</em> from the <code>User</code> class:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App</span>() {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">User</span>(<span style="color:#e6db74">&#39;Dan&#39;</span>, <span style="color:#e6db74">&#39;Abramov&#39;</span>, <span style="color:#e6db74">&#39;dan@abramov.com&#39;</span>, <span style="color:#e6db74">&#39;iLuvES6&#39;</span>)
-  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">getFullName</span>() <span style="color:#75715e">//&gt; &#34;Dan Abramov&#34;
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">getEmail</span>() <span style="color:#75715e">//&gt; &#34;dan@abramov.com&#34;
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">getPassword</span>() <span style="color:#75715e">//&gt; &#34;iLuvES6&#34;
-</span><span style="color:#75715e"></span>
-  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">firstName</span> <span style="color:#75715e">//&gt; &#34;Dan&#34;
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">lastName</span> <span style="color:#75715e">//&gt; &#34;Abramov&#34;
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span> <span style="color:#75715e">//&gt; &#34;dan@abramov.com&#34;
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">password</span> <span style="color:#75715e">//&gt; &#34;iLuvES6&#34;
-</span><span style="color:#75715e"></span>}
-</code></pre></div><p>That seems to work just fine but there&rsquo;s a big design flaw with using the classical inheritance approach: <strong>How the heck do the users of the <code>User</code> class (e.g., <code>App</code>) know <code>User</code> comes with firstName and lastName and there&rsquo;s a function called <code>getFullName</code> that can be used?</strong> Looking at the code for <code>User</code> class does not tell us anything about the data or methods from its super class. We have to dig into the documentation or trace code through the class hierarchy.</p>
-<p>As Dan Abramov <a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4">puts it</a>:</p>
+</code></pre>
+
+<p>In the code above, we created a <code>User</code> class which <em>extends</em> the capability of the <code>Person</code> class by adding email and password properties and accessor functions. In the <code>App</code> function below, a <code>user</code> object is <em>instantiated</em> from the <code>User</code> class:</p>
+
+<pre><code class="language-javascript">function App() {
+  let user = new User('Dan', 'Abramov', 'dan@abramov.com', 'iLuvES6')
+  user.getFullName() //&gt; &quot;Dan Abramov&quot;
+  user.getEmail() //&gt; &quot;dan@abramov.com&quot;
+  user.getPassword() //&gt; &quot;iLuvES6&quot;
+
+  user.firstName //&gt; &quot;Dan&quot;
+  user.lastName //&gt; &quot;Abramov&quot;
+  user.email //&gt; &quot;dan@abramov.com&quot;
+  user.password //&gt; &quot;iLuvES6&quot;
+}
+</code></pre>
+
+<p>That seems to work just fine but there&rsquo;s a big design flaw with using the classical inheritance approach: <strong>How the heck do the users of the <code>User</code> class (e.g., <code>App</code>) know <code>User</code> comes with firstName and lastName and there&rsquo;s a function called <code>getFullName</code> that can be used?</strong> Looking at the code for <code>User</code> class does not tell us anything about the data or methods from its super class. We have to dig into the documentation or trace code through the class hierarchy.</p>
+
+<p>As Dan Abramov <a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank">puts it</a>:</p>
+
 <blockquote>
 <p>The problem with inheritance is that the descendants have too much access to the implementation details of every base class in the hierarchy, and vice versa. When the requirements change, refactoring a class hierarchy is so hard that it turns into a WTF sandwich with traces of outdated requirements.</p>
 </blockquote>
-<p>Classical inheritance is based on establishing relationships through dependencies. The base class (or super class) sets the baseline for the derived classes. Classical inheritance is OK for small and simple applications that don&rsquo;t often change and has no more than one level of inheritance (keeping our inheritance trees shallow to avoid <a href="https://www.wikiwand.com/en/Fragile_base_class">The Fragile Base Class</a> problem) or wildly different use cases. Class-based inheritance can become unmaintainable as the class hierarchy expands.</p>
-<p>Eric Elliot described how classical inheritance can potentially lead to project failure, and in the worst cases, <a href="https://medium.com/javascript-scene/inside-the-dev-team-death-spiral-6a7ea255467b">company failures</a>:</p>
+
+<p>Classical inheritance is based on establishing relationships through dependencies. The base class (or super class) sets the baseline for the derived classes. Classical inheritance is OK for small and simple applications that don&rsquo;t often change and has no more than one level of inheritance (keeping our inheritance trees shallow to avoid <a href="https://www.wikiwand.com/en/Fragile_base_class" target="_blank">The Fragile Base Class</a> problem) or wildly different use cases. Class-based inheritance can become unmaintainable as the class hierarchy expands.</p>
+
+<p>Eric Elliot described how classical inheritance can potentially lead to project failure, and in the worst cases, <a href="https://medium.com/javascript-scene/inside-the-dev-team-death-spiral-6a7ea255467b" target="_blank">company failures</a>:</p>
+
 <blockquote>
 <p>Get enough clients using <code>new</code>, and you can’t back out of the constructor implementation even if you want to, because code you don’t own will break if you try.</p>
 </blockquote>
-<p>When many derived classes with wildly different use cases are created from the same base class, any seemingly benign change to the base class could cause the derived classes to malfunction. At the cost of increased complexity to your code and the entire software creation process, you could try to mitigate side effects by creating a <a href="https://medium.com/the-everyday-developer/creating-an-ioc-container-with-dependency-injection-in-javascript-9db228d34060">dependency injection container</a> to provide an uniform service instantiation interface by abstracting the instantiation details. Is there a better way?</p>
+
+<p>When many derived classes with wildly different use cases are created from the same base class, any seemingly benign change to the base class could cause the derived classes to malfunction. At the cost of increased complexity to your code and the entire software creation process, you could try to mitigate side effects by creating a <a href="https://medium.com/the-everyday-developer/creating-an-ioc-container-with-dependency-injection-in-javascript-9db228d34060" target="_blank">dependency injection container</a> to provide an uniform service instantiation interface by abstracting the instantiation details. Is there a better way?</p>
+
 <h1 id="prototypal-inheritance">Prototypal Inheritance</h1>
+
 <p>Prototypal inheritance does not use classes at all. Instead, objects are created from other objects. We start with a <em>generalized object</em> we called a prototype. We can use the prototype to create other objects by cloning it or extend it with custom features.</p>
-<p>Although in the previous section, we showed how to use the ES6 <code>class</code>, <a href="https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee"><strong>JavaScript classes are not classy</strong></a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">Person</span> <span style="color:#75715e">//&gt; &#34;function&#34;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">User</span> <span style="color:#75715e">//&gt; &#34;function&#34;
-</span></code></pre></div><p>ES6 classes are actually <a href="https://stackoverflow.com/questions/36419713/are-es6-classes-just-syntactic-sugar-for-the-prototypal-pattern-in-javascript/36419728">syntactic sugar</a> of JavaScript&rsquo;s existing prototypal inheritance. Under the hood, creating a class with a <code>new</code> keyword creates a function object with code from the <code>constructor</code>.</p>
+
+<p>Although in the previous section, we showed how to use the ES6 <code>class</code>, <a href="https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee" target="_blank"><strong>JavaScript classes are not classy</strong></a>.</p>
+
+<pre><code class="language-javascript">typeof Person //&gt; &quot;function&quot;
+typeof User //&gt; &quot;function&quot;
+</code></pre>
+
+<p>ES6 classes are actually <a href="https://stackoverflow.com/questions/36419713/are-es6-classes-just-syntactic-sugar-for-the-prototypal-pattern-in-javascript/36419728" target="_blank">syntactic sugar</a> of JavaScript&rsquo;s existing prototypal inheritance. Under the hood, creating a class with a <code>new</code> keyword creates a function object with code from the <code>constructor</code>.</p>
+
 <p>JavaScript is fundamentally a prototype-oriented language.</p>
+
 <blockquote>
   <p>
 The simple types of JavaScript are numbers, strings, booleans (true and false), null, and undefined. All other values are objects.  Numbers, strings, and booleans are object-like in that they have methods, but they are immutable. Objects in JavaScript are mutable keyed collections. In JavaScript, arrays are objects, functions are objects, regular expressions are objects, and, of course, objects are objects.
@@ -364,93 +417,131 @@ The simple types of JavaScript are numbers, strings, booleans (true and false), 
     
   </footer>
 </blockquote>
+
 <p>Let&rsquo;s look at one of these objects that JavaScript gives us for free out-of-the-box: the <code>Array</code>.</p>
-<p>Array instances inherit from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype">Array.prototype</a> which includes many methods which are categorized as accessors (do not modify the original array), mutators (modifies the original array), and iterators (applies the function passed in as an argument onto every element in the array to create a new array).</p>
+
+<p>Array instances inherit from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype" target="_blank">Array.prototype</a> which includes many methods which are categorized as accessors (do not modify the original array), mutators (modifies the original array), and iterators (applies the function passed in as an argument onto every element in the array to create a new array).</p>
+
 <p><strong>Accessors:</strong></p>
+
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes"><code>Array.prototype.includes(e)</code></a> - returns true if element <code>e</code> is included in the array. False otherwise.</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice"><code>Array.prototype.slice(i,j)</code></a> - extract array from index <code>i</code> to index <code>j</code> (exclusive). Return as new array.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank"><code>Array.prototype.includes(e)</code></a> - returns true if element <code>e</code> is included in the array. False otherwise.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" target="_blank"><code>Array.prototype.slice(i,j)</code></a> - extract array from index <code>i</code> to index <code>j</code> (exclusive). Return as new array.</li>
 </ul>
+
 <p><strong>Mutators:</strong></p>
+
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push"><code>Array.prototype.push(e)</code></a> - add <code>e</code> to the tail</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop"><code>Array.prototype.pop(e)</code></a> - remove <code>e</code> from the tail</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice"><code>Array.prototype.splice(i, j)</code></a> - extract array from index <code>i</code> to index <code>j</code> (exclusive). Discard the rest.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push" target="_blank"><code>Array.prototype.push(e)</code></a> - add <code>e</code> to the tail</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" target="_blank"><code>Array.prototype.pop(e)</code></a> - remove <code>e</code> from the tail</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank"><code>Array.prototype.splice(i, j)</code></a> - extract array from index <code>i</code> to index <code>j</code> (exclusive). Discard the rest.</li>
 </ul>
+
 <p>Mutator functions modify the original array. <code>splice</code> gives you the same sub-array as <code>slice</code> but you want to maintain the original array, <code>slice</code> is a better choice.</p>
+
 <p><strong>Iterators:</strong></p>
+
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"><code>Array.prototype.map(f)</code></a> - applies the function <code>f</code> onto every element of the given array to compute the new elements of the resultant array.</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"><code>Array.prototype.filter(f)</code></a> - evaluates every element of the given array against a predicate <code>f</code> and returns it with the resultant array if it passes <code>f</code>.</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach"><code>Array.prototype.forEach(f)</code></a> - applies the function <code>f</code> onto every element of the given array.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank"><code>Array.prototype.map(f)</code></a> - applies the function <code>f</code> onto every element of the given array to compute the new elements of the resultant array.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank"><code>Array.prototype.filter(f)</code></a> - evaluates every element of the given array against a predicate <code>f</code> and returns it with the resultant array if it passes <code>f</code>.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank"><code>Array.prototype.forEach(f)</code></a> - applies the function <code>f</code> onto every element of the given array.</li>
 </ul>
+
 <p><code>map</code> and <code>forEach</code> are similar in that they are doing <em>something</em> to everything to the array but the key difference is <code>map</code> returns an array while <code>forEach</code> is like a void function and returns nothing. Good functional software design practices say we should always write functions that has no side effects, i.e., don&rsquo;t use void functions. <code>forEach</code> doesn&rsquo;t do anything to the original array so <code>map</code> is a better choice if you want to do any data transformation. One potential use case of <code>forEach</code> is printing to console for debugging:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
-<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">e</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">e</span>))
-<span style="color:#a6e22e">arr</span> <span style="color:#75715e">//&gt; [1,2,3]
-</span></code></pre></div><p>Suppose we want to extend the <code>Array</code> prototype by introducing a new method called <code>partition</code>, which divides the array into two arrays based on a predicate. For example [1,2,3,4,5] becomes [[1,2,3], [4,5]] if the predicate is &ldquo;less than or equal to 3&rdquo;. Let&rsquo;s write some code to add <code>partition</code> to the Array prototype:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Array.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">partition</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">pred</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">passed</span> <span style="color:#f92672">=</span> []
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">failed</span> <span style="color:#f92672">=</span> []
-  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
-    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">pred</span>(<span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">i</span>])) {
-      <span style="color:#a6e22e">passed</span>.<span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">i</span>])
-    } <span style="color:#66d9ef">else</span> {
-      <span style="color:#a6e22e">failed</span>.<span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">i</span>])
+
+<pre><code class="language-javascript">let arr = [1,2,3]
+arr.forEach(e =&gt; console.log(e))
+arr //&gt; [1,2,3]
+</code></pre>
+
+<p>Suppose we want to extend the <code>Array</code> prototype by introducing a new method called <code>partition</code>, which divides the array into two arrays based on a predicate. For example [1,2,3,4,5] becomes [[1,2,3], [4,5]] if the predicate is &ldquo;less than or equal to 3&rdquo;. Let&rsquo;s write some code to add <code>partition</code> to the Array prototype:</p>
+
+<pre><code class="language-javascript">Array.prototype.partition = function(pred) {
+  let passed = []
+  let failed = []
+  for(let i=0; i&lt;this.length; i++) {
+    if (pred(this[i])) {
+      passed.push(this[i])
+    } else {
+      failed.push(this[i])
     }
   }
-  <span style="color:#66d9ef">return</span> [ <span style="color:#a6e22e">passed</span>, <span style="color:#a6e22e">failed</span> ]
+  return [ passed, failed ]
 }
-</code></pre></div><p>Now we can use <code>partition</code> on any array:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>].<span style="color:#a6e22e">partition</span>(<span style="color:#a6e22e">e</span> =&gt; <span style="color:#a6e22e">e</span> <span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">3</span>)
-<span style="color:#75715e">//&gt; [[1, 2, 3], [4, 5]]
-</span></code></pre></div><p><code>[1,2,3,4,5]</code> is called a literal. The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Array_literals">Literal</a> is one way to create an object. We can also use <a href="https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91">factory functions</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create</a> to create the same array:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Literal
-</span><span style="color:#75715e"></span>[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>]
+</code></pre>
 
-<span style="color:#75715e">// Factory Function
-</span><span style="color:#75715e"></span>Array(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>)
+<p>Now we can use <code>partition</code> on any array:</p>
 
-<span style="color:#75715e">// Object.create
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(Array.<span style="color:#a6e22e">prototype</span>)
-<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">push</span>(<span style="color:#ae81ff">1</span>)
-<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">push</span>(<span style="color:#ae81ff">2</span>)
-<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">push</span>(<span style="color:#ae81ff">3</span>)
-<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">push</span>(<span style="color:#ae81ff">4</span>)
-<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">push</span>(<span style="color:#ae81ff">5</span>)
-</code></pre></div><p>A factory function is any function that takes a few arguments and returns a new object composed of those arguments. In JavaScript, any function can return an object. When it does so without the <code>new</code> keyword, it’s a factory function. Factory functions have <a href="https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1">always been attractive in JavaScript</a> because they offer the ability to easily produce object instances without diving into the complexities of classes and the <code>new</code> keyword.</p>
+<pre><code class="language-JavaScript">[1,2,3,4,5].partition(e =&gt; e &lt;=3)
+//&gt; [[1, 2, 3], [4, 5]]
+</code></pre>
+
+<p><code>[1,2,3,4,5]</code> is called a literal. The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Array_literals" target="_blank">Literal</a> is one way to create an object. We can also use <a href="https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91" target="_blank">factory functions</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank">Object.create</a> to create the same array:</p>
+
+<pre><code class="language-javascript">// Literal
+[1,2,3,4,5]
+
+// Factory Function
+Array(1,2,3,4,5)
+
+// Object.create
+let arr = Object.create(Array.prototype)
+arr.push(1)
+arr.push(2)
+arr.push(3)
+arr.push(4)
+arr.push(5)
+</code></pre>
+
+<p>A factory function is any function that takes a few arguments and returns a new object composed of those arguments. In JavaScript, any function can return an object. When it does so without the <code>new</code> keyword, it’s a factory function. Factory functions have <a href="https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1" target="_blank">always been attractive in JavaScript</a> because they offer the ability to easily produce object instances without diving into the complexities of classes and the <code>new</code> keyword.</p>
+
 <p>In the code above, we created an object called <code>arr</code> using <code>Object.create</code> and pushed 5 elements into the array. <code>arr</code> comes with all the functions inherited from the <code>Array</code> prototype such as <code>map</code>, <code>pop</code>, <code>slice</code>, and even <code>partition</code> that we just created for the <code>Array</code> prototype. Let&rsquo;s add some more functionality to the <code>arr</code> object:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#e6db74">&#34;hello&#34;</span>
-</code></pre></div><p><strong>Pop Quiz!</strong> What&rsquo;s going to be returned when we run the following code?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">partition</span>(<span style="color:#a6e22e">e</span> =&gt; <span style="color:#a6e22e">e</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>) <span style="color:#75715e">// #1
-</span><span style="color:#75715e"></span>
-<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">hello</span>() <span style="color:#75715e">// #2
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">foo</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
-<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">hello</span>() <span style="color:#75715e">// #3
-</span><span style="color:#75715e"></span>
-Array.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">bye</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#e6db74">&#34;bye&#34;</span>
-<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">bye</span>() <span style="color:#75715e">// #4
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">bye</span>() <span style="color:#75715e">// #5
-</span></code></pre></div><p><strong>Answers</strong></p>
+
+<pre><code class="language-javascript">arr.hello = () =&gt; &quot;hello&quot;
+</code></pre>
+
+<p><strong>Pop Quiz!</strong> What&rsquo;s going to be returned when we run the following code?</p>
+
+<pre><code class="language-javascript">arr.partition(e =&gt; e &lt; 3) // #1
+
+arr.hello() // #2
+
+let foo = [1,2,3]
+foo.hello() // #3
+
+Array.prototype.bye = () =&gt; &quot;bye&quot;
+arr.bye() // #4
+foo.bye() // #5
+</code></pre>
+
+<p><strong>Answers</strong></p>
+
 <ul>
 <li><strong>#1</strong> is going to return <code>[[1,2], [3,4,5]]</code> because <code>partition</code> is defined for <code>Array</code>, which <code>arr</code> inherits from.</li>
 <li><strong>#2</strong> is going to return &ldquo;hello&rdquo; because we created a new function for <code>arr</code> object called <code>hello</code> that takes no arguments and returns the string &ldquo;hello&rdquo;.</li>
 <li>For <strong>#3</strong>, If you guessed &ldquo;TypeError: foo.hello is not a function&rdquo;, you are correct. Since <code>foo</code> is a new object created from the <code>Array</code> prototype and <code>hello</code> is not defined for <code>Array</code>, <code>hello</code> will not be defined for <code>foo</code>.</li>
 <li><strong>#4</strong> and <strong>#5</strong> are both going to return &ldquo;bye&rdquo; because in the line above, we added the function <code>bye</code> to the <code>Array</code> prototype from which <code>arr</code> and <code>foo</code> both inherit. Any changes to the prototype will affect every object that inherits from the object, even <em>after the object has been created</em>.</li>
 </ul>
+
 <p>Now we understand the fundamental of prototype, let&rsquo;s go back to the previous example and create <code>Person</code> and <code>User</code> using prototypal inheritance:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">firstName</span>, <span style="color:#a6e22e">lastName</span>) {
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">firstName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">firstName</span>
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lastName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lastName</span>
+
+<pre><code class="language-javascript">function Person(firstName, lastName) {
+  this.firstName = firstName
+  this.lastName = lastName
 }
-<span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getFullName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {  
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">firstName</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lastName</span>
+Person.prototype.getFullName = function () {  
+  return this.firstName + ' ' + this.lastName
 }
-</code></pre></div><p>Now we can use the <code>Person</code> prototype like so:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>(<span style="color:#e6db74">&#39;Dan&#39;</span>, <span style="color:#e6db74">&#39;Abramov&#39;</span>)
-<span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">getFullName</span>() <span style="color:#75715e">//&gt; Dan Abramov
-</span></code></pre></div><p><code>person</code> is an object. Doing a <code>console.log(person)</code> gives us the following:</p>
+</code></pre>
+
+<p>Now we can use the <code>Person</code> prototype like so:</p>
+
+<pre><code class="language-javascript">let person = new Person('Dan', 'Abramov')
+person.getFullName() //&gt; Dan Abramov
+</code></pre>
+
+<p><code>person</code> is an object. Doing a <code>console.log(person)</code> gives us the following:</p>
+
 <pre><code>Person {
   firstName: &quot;Dan&quot;,
   lastName: &quot;Abramov&quot;,
@@ -460,25 +551,31 @@ Array.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">b
   },
   __proto__: Object  
 }
-</code></pre><p>For our <code>User</code>, we just need to extend the <code>Person</code> class:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">User</span>(<span style="color:#a6e22e">firstName</span>, <span style="color:#a6e22e">lastName</span>, <span style="color:#a6e22e">email</span>, <span style="color:#a6e22e">password</span>) {
-  <span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">firstName</span>, <span style="color:#a6e22e">lastName</span>) <span style="color:#75715e">// call super constructor.
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">email</span>
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">password</span>
+</code></pre>
+
+<p>For our <code>User</code>, we just need to extend the <code>Person</code> class:</p>
+
+<pre><code class="language-javascript">function User(firstName, lastName, email, password) {
+  Person.call(this, firstName, lastName) // call super constructor.
+  this.email = email
+  this.password = password
 }
 
-<span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">prototype</span>);
+User.prototype = Object.create(Person.prototype);
 
-<span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">setEmail</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">email</span>) {
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">email</span>
+User.prototype.setEmail = function(email) {
+  this.email = email
 }
 
-<span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getEmail</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">email</span>
+User.prototype.getEmail = function() {
+  return this.email
 }
 
-<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">setEmail</span>(<span style="color:#e6db74">&#39;dan@abramov.com&#39;</span>)
-</code></pre></div><p><code>user</code> is an object. Doing a <code>console.log(user)</code> gives us the following:</p>
+user.setEmail('dan@abramov.com')
+</code></pre>
+
+<p><code>user</code> is an object. Doing a <code>console.log(user)</code> gives us the following:</p>
+
 <pre><code>User {
   firstName: &quot;Dan&quot;,
   lastName: &quot;Abramov&quot;,
@@ -495,40 +592,55 @@ Array.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">b
     }
   }
 }
-</code></pre><p>What if we want to customize the <code>getFullName</code> function for <code>User</code>? How is the following code going to affect <code>person</code> and <code>user</code>?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getFullName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {  
-  <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;User Name: &#39;</span><span style="color:#f92672">+</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">firstName</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lastName</span>
+</code></pre>
+
+<p>What if we want to customize the <code>getFullName</code> function for <code>User</code>? How is the following code going to affect <code>person</code> and <code>user</code>?</p>
+
+<pre><code class="language-javascript">User.prototype.getFullName = function () {  
+  return 'User Name: '+this.firstName + ' ' + this.lastName
 }
 
-<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">getFullName</span>() <span style="color:#75715e">//&gt; &#34;User Name: Dan Abramov&#34;
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">getFullName</span>() <span style="color:#75715e">//&gt; &#34;Dan Abramov&#34;
-</span></code></pre></div><p>As we expect, <code>person</code> is not be affected at all.</p>
+user.getFullName() //&gt; &quot;User Name: Dan Abramov&quot;
+person.getFullName() //&gt; &quot;Dan Abramov&quot;
+</code></pre>
+
+<p>As we expect, <code>person</code> is not be affected at all.</p>
+
 <p>How about decorating the <code>Person</code> object by adding a gender attribute and corresponding getter and setter functions?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">setGender</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">gender</span>) {  
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">gender</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gender</span>
+
+<pre><code class="language-javascript">Person.prototype.setGender = function (gender) {  
+  this.gender = gender
 }
-<span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getGender</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {  
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">gender</span>
+Person.prototype.getGender = function () {  
+  return this.gender
 }
 
-<span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">setGender</span>(<span style="color:#e6db74">&#39;male&#39;</span>)
-<span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">getGender</span>() <span style="color:#75715e">//&gt; male
-</span><span style="color:#75715e"></span>
-<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">getGender</span>() <span style="color:#75715e">//&gt; returns undefined ... but is a function
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">setGender</span>(<span style="color:#e6db74">&#39;male&#39;</span>)
-<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">getGender</span>() <span style="color:#75715e">//&gt; male
-</span></code></pre></div><p>Both <code>person</code> and <code>user</code> are affected because <code>User</code> is prototyped from <code>Person</code> so if <code>Person</code> changes, <code>User</code> changes too.</p>
+person.setGender('male')
+person.getGender() //&gt; male
+
+user.getGender() //&gt; returns undefined ... but is a function
+user.setGender('male')
+user.getGender() //&gt; male
+</code></pre>
+
+<p>Both <code>person</code> and <code>user</code> are affected because <code>User</code> is prototyped from <code>Person</code> so if <code>Person</code> changes, <code>User</code> changes too.</p>
+
 <p>The decorator pattern from prototypal inheritance is not so different from the classical inheritance.</p>
+
 <h2 id="classes-vs-prototypes">Classes vs. Prototypes</h2>
-<p>Dan Abramov <a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4">advices</a> that</p>
+
+<p>Dan Abramov <a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank">advices</a> that</p>
+
 <ul>
 <li>Classes obscure the prototypal inheritance at the core of JS.</li>
 <li>Classes encourage inheritance but you should prefer composition.</li>
 <li>Classes tend to lock you into the first bad design you came up with.</li>
 </ul>
+
 <blockquote>
 <p>Instead of creating a class hierarchy, consider creating several factory functions. They may call each other in chain, tweaking the behavior of each other. You may also teach the “base” factory function to accept a “strategy” object modulating the behavior, and have the other factory functions provide it.</p>
 </blockquote>
+
 <blockquote>
   <p> Unlike most other languages, JavaScript’s object system is based on prototypes, not classes. Unfortunately, most JavaScript developers don’t understand JavaScript’s object system, or how to put it to best use. </p>
   <footer>
@@ -538,145 +650,227 @@ Array.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">b
     
   </footer>
 </blockquote>
+
 <h1 id="a-third-way-no-oop">A Third way: No OOP</h1>
+
 <p>The three cornerstones of OOP - Inheritance, Encapsulation, and Polymorphism - are powerful programming tools/concepts but have their shortcomings:</p>
+
 <h2 id="inheritance">Inheritance</h2>
+
 <p>Inheritance promotes code reuse but you are often forced to take more than what you want.</p>
+
 <p>Joe Armstrong (creator of Erlang) puts it best:</p>
+
 <blockquote>
 <p>The problem with object-oriented languages is they’ve got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.</p>
 </blockquote>
-<p>So what if there&rsquo;s more than what we ask for? Can&rsquo;t we just ignore the stuff we don&rsquo;t need? Only if it&rsquo;s that simple. When we need classes that depend on other classes, which depend on other classes, we&rsquo;re going to have to deal with <a href="https://www.wikiwand.com/en/Dependency_hell">dependency hell</a>, which really slows down the build and debugging processes. Additionally, applications that carry a long chain of dependencies are not very portable.</p>
-<p>There&rsquo;s of course the fragile base class problem as mentioned above. It&rsquo;s <a href="https://medium.com/@cscalfani/goodbye-object-oriented-programming-a59cda4c0e53">unrealistic to expect everything to fall neatly into place</a> when we create mappings between real-world objects and their classes. Inheritance is not forgiving when you need to refactor your code, especially the base class. Also, <a href="http://www.informit.com/articles/article.aspx?p=2210836">inheritance weakens encapsulation</a>, the next cornerstone of OOP:</p>
+
+<p>So what if there&rsquo;s more than what we ask for? Can&rsquo;t we just ignore the stuff we don&rsquo;t need? Only if it&rsquo;s that simple. When we need classes that depend on other classes, which depend on other classes, we&rsquo;re going to have to deal with <a href="https://www.wikiwand.com/en/Dependency_hell" target="_blank">dependency hell</a>, which really slows down the build and debugging processes. Additionally, applications that carry a long chain of dependencies are not very portable.</p>
+
+<p>There&rsquo;s of course the fragile base class problem as mentioned above. It&rsquo;s <a href="https://medium.com/@cscalfani/goodbye-object-oriented-programming-a59cda4c0e53" target="_blank">unrealistic to expect everything to fall neatly into place</a> when we create mappings between real-world objects and their classes. Inheritance is not forgiving when you need to refactor your code, especially the base class. Also, <a href="http://www.informit.com/articles/article.aspx?p=2210836" target="_blank">inheritance weakens encapsulation</a>, the next cornerstone of OOP:</p>
+
 <blockquote>
 <p>The problem is that if you inherit an implementation from a superclass and then change that implementation, the change from the superclass ripples through the class hierarchy. This rippling effect potentially affects all the subclasses.</p>
 </blockquote>
+
 <h2 id="encapsulation">Encapsulation</h2>
+
 <p>Encapsulation keeps every object&rsquo;s internal state variables safe from the outside. The ideal case is that your program would consist of &ldquo;islands of objects&rdquo; each with their own states passing messages back and forth. This sounds like a good idea in theory if you are building a perfectly distributed system but in practice, designing a program consisting of perfectly self-contained objects is hard and limiting.</p>
-<p>Lots of real world applications require solving difficult problems with many moving parts. When you take an OOP approach to design your application, you&rsquo;re going to run into conundrums like how do you divide up the functionalities of your overall applications between different objects and how to manage interactions and data sharing between different objects. <a href="https://medium.com/@brianwill/object-oriented-programming-a-personal-disaster-1b044c2383ab">This article</a> has some interesting points about the design challenges OOP applications:</p>
+
+<p>Lots of real world applications require solving difficult problems with many moving parts. When you take an OOP approach to design your application, you&rsquo;re going to run into conundrums like how do you divide up the functionalities of your overall applications between different objects and how to manage interactions and data sharing between different objects. <a href="https://medium.com/@brianwill/object-oriented-programming-a-personal-disaster-1b044c2383ab" target="_blank">This article</a> has some interesting points about the design challenges OOP applications:</p>
+
 <blockquote>
-<p>When we consider the needed functionality of our code, many behaviors are inherently cross-cutting concerns and so don’t really belong to any particular data type. Yet these behaviors have to live somewhere, so we end up concocting nonsense <a href="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html">Doer</a> classes to contain them&hellip;And these nonsense entities have a habit of begetting more nonsense entities: when I have umpteen Manager objects, I then need a ManagerManager.</p>
+<p>When we consider the needed functionality of our code, many behaviors are inherently cross-cutting concerns and so don’t really belong to any particular data type. Yet these behaviors have to live somewhere, so we end up concocting nonsense <a href="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank">Doer</a> classes to contain them&hellip;And these nonsense entities have a habit of begetting more nonsense entities: when I have umpteen Manager objects, I then need a ManagerManager.</p>
 </blockquote>
+
 <p>It&rsquo;s true. I&rsquo;ve seen &ldquo;ManagerManager classes&rdquo; in production software that wasn&rsquo;t originally designed to be this way has grown in complexity over the years.</p>
+
 <p>As we will see next when I introduce function composition (the alternative to OOP), we have something much simpler than objects that encapsulates its private variables and performs a specific task - it&rsquo;s called functions!</p>
+
 <p>But before we go there, we need to talk about the last cornerstone of OOP:</p>
+
 <h2 id="polymorphism">Polymorphism</h2>
+
 <p>Polymorphism let&rsquo;s us specify behavior regardless of data type. In OOP, this means designing a class or prototype that can be adapted by objects that need to work with different kinds of data. The objects that use the polymorphic class/prototype needs to define type-specific behavior to make it work. Let&rsquo;s see an example.</p>
+
 <p>Suppose to want to create a general (polymorphic) object that takes some data and a status flag as parameters. If the status says the data is valid (i.e., <code>status === true</code>), a function can be applied onto the data and the result, along with the status flag, will be returned. If the status flags the data as invalid, then the function will not be applied onto the data and the data, along with the invalid status flag, will be returned.</p>
+
 <p>Let&rsquo;s start with creating a polymorphic prototype object called <code>Maybe</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Maybe</span>({<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">status</span>}) {
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">status</span>
+
+<pre><code class="language-javascript">function Maybe({data, status}) {
+  this.data = data
+  this.status = status
 }
-</code></pre></div><p><code>Maybe</code> is a wrapper for <code>data</code>. To wrap the <code>data</code> in <code>Maybe</code>, we provide an additional field called <code>status</code> that indicates if the data is valid or not.</p>
+</code></pre>
+
+<p><code>Maybe</code> is a wrapper for <code>data</code>. To wrap the <code>data</code> in <code>Maybe</code>, we provide an additional field called <code>status</code> that indicates if the data is valid or not.</p>
+
 <p>We can make <code>Maybe</code> a prototype with a function called <code>apply</code>, which takes a function and applies it on the data only if the status of the data indicates that it is valid.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Maybe</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">apply</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">f</span>) {
-  <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">status</span>) {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Maybe</span>({<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">f</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span>), <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">status</span>})
+
+<pre><code class="language-javascript">Maybe.prototype.apply = function (f) {
+  if(this.status) {
+    return new Maybe({data: f(this.data), status: this.status})
   }
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Maybe</span>({<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">status</span>})
+  return new Maybe({data: this.data, status: this.status})
 }
-</code></pre></div><p>We can add another function to the <code>Maybe</code> prototype which gets the data or returns a message if there&rsquo;s an error with the data.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Maybe</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getOrElse</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">msg</span>) {
-  <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">status</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span>
+</code></pre>
 
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">msg</span>
+<p>We can add another function to the <code>Maybe</code> prototype which gets the data or returns a message if there&rsquo;s an error with the data.</p>
+
+<pre><code class="language-javascript">Maybe.prototype.getOrElse = function (msg) {
+  if(this.status) return this.data
+
+  return msg
 }
-</code></pre></div><p>Now we create two objects from the <code>Maybe</code> prototype called <code>Number</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> Number(<span style="color:#a6e22e">data</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;number&#39;</span>)
-  <span style="color:#a6e22e">Maybe</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>, {<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">status</span>})
+</code></pre>
+
+<p>Now we create two objects from the <code>Maybe</code> prototype called <code>Number</code>:</p>
+
+<pre><code class="language-javascript">function Number(data) {
+  let status = (typeof data === 'number')
+  Maybe.call(this, {data, status})
 }
-Number.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">Maybe</span>.<span style="color:#a6e22e">prototype</span>)
-</code></pre></div><p>and <code>String</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> String(<span style="color:#a6e22e">data</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;string&#39;</span>)
-  <span style="color:#a6e22e">Maybe</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>, {<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">status</span>})
+Number.prototype = Object.create(Maybe.prototype)
+</code></pre>
+
+<p>and <code>String</code>:</p>
+
+<pre><code class="language-javascript">function String(data) {
+  let status = (typeof data === 'string')
+  Maybe.call(this, {data, status})
 }
-String.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">Maybe</span>.<span style="color:#a6e22e">prototype</span>)
-</code></pre></div><p>Let&rsquo;s see our objects in action. We create a function called <code>increment</code> that&rsquo;s only defined for numbers and another function called <code>split</code> that&rsquo;s only defined for strings:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">increment</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">num</span> =&gt; <span style="color:#a6e22e">num</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">split</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">str</span> =&gt; <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>)
-</code></pre></div><p>Because JavaScript is not type safe, it won&rsquo;t prevent you from incrementing a string or splitting a number. You will see a runtime error when you uses an undefined method on a data type. For example, suppose we try the following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">foop</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>
-<span style="color:#a6e22e">foop</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;&#39;</span>)
-</code></pre></div><p>That&rsquo;s going to give you a type error when you run the code.</p>
+String.prototype = Object.create(Maybe.prototype)
+</code></pre>
+
+<p>Let&rsquo;s see our objects in action. We create a function called <code>increment</code> that&rsquo;s only defined for numbers and another function called <code>split</code> that&rsquo;s only defined for strings:</p>
+
+<pre><code class="language-javascript">const increment = num =&gt; num + 1
+const split = str =&gt; str.split('')
+</code></pre>
+
+<p>Because JavaScript is not type safe, it won&rsquo;t prevent you from incrementing a string or splitting a number. You will see a runtime error when you uses an undefined method on a data type. For example, suppose we try the following:</p>
+
+<pre><code class="language-javascript">let foop = 12
+foop.split('')
+</code></pre>
+
+<p>That&rsquo;s going to give you a type error when you run the code.</p>
+
 <p>However, if we used our <code>Number</code> and <code>String</code> objects to <em>wrap</em> the numbers and strings before operating on them, we can prevent these run time errors:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numValid</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Number(<span style="color:#ae81ff">12</span>)
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numInvalid</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Number(<span style="color:#e6db74">&#34;foo&#34;</span>)
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">strValid</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#34;hello world&#34;</span>)
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">strInvalid</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
 
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">numValid</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#a6e22e">increment</span>).<span style="color:#a6e22e">getOrElse</span>(<span style="color:#e6db74">&#39;TypeError!&#39;</span>)
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">numInvalid</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#a6e22e">increment</span>).<span style="color:#a6e22e">getOrElse</span>(<span style="color:#e6db74">&#39;TypeError Oh no!&#39;</span>)
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">strValid</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#a6e22e">split</span>).<span style="color:#a6e22e">getOrElse</span>(<span style="color:#e6db74">&#39;TypeError!&#39;</span>)
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">strInvalid</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#a6e22e">split</span>).<span style="color:#a6e22e">getOrElse</span>(<span style="color:#e6db74">&#39;TypeError :(&#39;</span>)
-</code></pre></div><p>What will the following print out?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>({<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">d</span>})
-</code></pre></div><p>Since we designed our <code>Maybe</code> prototype to only apply the function onto the data if the data is the right type, this will be logged to console:</p>
+<pre><code class="language-javascript">let numValid = new Number(12)
+let numInvalid = new Number(&quot;foo&quot;)
+let strValid = new String(&quot;hello world&quot;)
+let strInvalid = new String(-1)
+
+let a = numValid.apply(increment).getOrElse('TypeError!')
+let b = numInvalid.apply(increment).getOrElse('TypeError Oh no!')
+let c = strValid.apply(split).getOrElse('TypeError!')
+let d = strInvalid.apply(split).getOrElse('TypeError :(')
+</code></pre>
+
+<p>What will the following print out?</p>
+
+<pre><code class="language-javascript">console.log({a, b, c, d})
+</code></pre>
+
+<p>Since we designed our <code>Maybe</code> prototype to only apply the function onto the data if the data is the right type, this will be logged to console:</p>
+
 <pre><code>{
   a: 13,
   b: 'TypeError Oh no!',
   c: [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd' ],
   d: 'TypeError :('
 }
-</code></pre><p>What we just did is a type of a <a href="https://www.wikiwand.com/en/Monad_(functional_programming)#/overview">monad</a> (albeit I didn&rsquo;t implement <code>Maybe</code>  to follow all the <a href="https://miklos-martin.github.io/learn/fp/2016/03/10/monad-laws-for-regular-developers.html">monad laws</a>). The <code>Maybe</code> monad is a wrapper that&rsquo;s used when a value can be absent or some validation can fail and you don&rsquo;t care about the exact cause. Typically this can occur during data retrieval and validation. Maybe handles failure in validation or failure in applying a function similar to the <code>try-catch</code> you&rsquo;ve likely seen before. In <code>Maybe</code>, we are handling the failure in type validation by printing to a string, but we can easily revise the <code>getOrElse</code> function to call another function which handles the validation error.</p>
-<p>Some programming languages like Haskell <a href="https://functional.works-hub.com/learn/demystifying-the-monad-in-scala-cf414">come with a built-in monad type</a> but in JavaScript, you have to <a href="https://moduscreate.com/blog/monad-pattern-for-functional-programming-in-es6/">roll your own</a>. ES6 introduced <code>Promise</code>, which is a monad for dealing with latency. Sometimes you need data that could take a while to retrieve. <code>Promise</code> lets you write code that appears synchronous while delaying operation on the data until the data becomes available. Using <code>Promise</code> is a cleaner way of asynchronous programming than using callback functions, which could lead to a phenomenon called the callback hell.</p>
+</code></pre>
+
+<p>What we just did is a type of a <a href="https://www.wikiwand.com/en/Monad_(functional_programming)#/overview" target="_blank">monad</a> (albeit I didn&rsquo;t implement <code>Maybe</code>  to follow all the <a href="https://miklos-martin.github.io/learn/fp/2016/03/10/monad-laws-for-regular-developers.html" target="_blank">monad laws</a>). The <code>Maybe</code> monad is a wrapper that&rsquo;s used when a value can be absent or some validation can fail and you don&rsquo;t care about the exact cause. Typically this can occur during data retrieval and validation. Maybe handles failure in validation or failure in applying a function similar to the <code>try-catch</code> you&rsquo;ve likely seen before. In <code>Maybe</code>, we are handling the failure in type validation by printing to a string, but we can easily revise the <code>getOrElse</code> function to call another function which handles the validation error.</p>
+
+<p>Some programming languages like Haskell <a href="https://functional.works-hub.com/learn/demystifying-the-monad-in-scala-cf414" target="_blank">come with a built-in monad type</a> but in JavaScript, you have to <a href="https://moduscreate.com/blog/monad-pattern-for-functional-programming-in-es6/" target="_blank">roll your own</a>. ES6 introduced <code>Promise</code>, which is a monad for dealing with latency. Sometimes you need data that could take a while to retrieve. <code>Promise</code> lets you write code that appears synchronous while delaying operation on the data until the data becomes available. Using <code>Promise</code> is a cleaner way of asynchronous programming than using callback functions, which could lead to a phenomenon called the callback hell.</p>
+
 <h2 id="composition">Composition</h2>
+
 <p>As alluded to earlier, there&rsquo;s something much simpler than class/prototypes which can be easily reused, encapsulates internal states, performs a given operation on any type of data, and be polymorphic - it&rsquo;s called functional composition.</p>
+
 <p>JavaScript easily lets us bundle related functions and data together in an object:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Person</span> <span style="color:#f92672">=</span> {
-  <span style="color:#a6e22e">firstName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;firstName&#39;</span>,
-  <span style="color:#a6e22e">lastName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;lastName&#39;</span>,
-  <span style="color:#a6e22e">getFullName</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
-    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">firstName</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lastName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+
+<pre><code class="language-javascript">const Person = {
+  firstName: 'firstName',
+  lastName: 'lastName',
+  getFullName: function() {
+    return `${this.firstName} ${this.lastName}`
   }
 }
-</code></pre></div><p>Then we can use the <code>Person</code> object directly like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">Person</span>)
+</code></pre>
 
-<span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">getFullName</span>() <span style="color:#75715e">//&gt; &#34;firstName lastName&#34;
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// Assign internal state variables
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">firstName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Dan&#39;</span>
-<span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">lastName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Abramov&#39;</span>
+<p>Then we can use the <code>Person</code> object directly like this:</p>
 
-<span style="color:#75715e">// Access internal state variables
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">getFullName</span>() <span style="color:#75715e">//&gt; &#34;Dan Abramov&#34;
-</span></code></pre></div><p>Let&rsquo;s make a <code>User</code> object by cloning the <code>Person</code> object, then augmenting it with additional data and functions:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">User</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">Person</span>)
-<span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
-<span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
-<span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">getEmail</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">email</span>
+<pre><code class="language-javascript">let person = Object.create(Person)
+
+person.getFullName() //&gt; &quot;firstName lastName&quot;
+
+// Assign internal state variables
+person.firstName = 'Dan'
+person.lastName = 'Abramov'
+
+// Access internal state variables
+person.getFullName() //&gt; &quot;Dan Abramov&quot;
+</code></pre>
+
+<p>Let&rsquo;s make a <code>User</code> object by cloning the <code>Person</code> object, then augmenting it with additional data and functions:</p>
+
+<pre><code class="language-javascript">const User = Object.create(Person)
+User.email = ''
+User.password = ''
+User.getEmail = function() {
+  return this.email
 }
-</code></pre></div><p>Then we can create an instance of user using <code>Object.create</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">User</span>)
-<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">firstName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Dan&#39;</span>
-<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">lastName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Abramov&#39;</span>
-<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;dan@abramov.com&#39;</span>
-<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;iLuvES6&#39;</span>
-</code></pre></div><p>A gotcha here is use <code>Object.create</code> whenever you want to copy. Objects in JavaScript are mutable so when you straight out assigning to create a new object and you mutate the second object, it will change the original object!</p>
+</code></pre>
+
+<p>Then we can create an instance of user using <code>Object.create</code></p>
+
+<pre><code class="language-javascript">let user = Object.create(User)
+user.firstName = 'Dan'
+user.lastName = 'Abramov'
+user.email = 'dan@abramov.com'
+user.password = 'iLuvES6'
+</code></pre>
+
+<p>A gotcha here is use <code>Object.create</code> whenever you want to copy. Objects in JavaScript are mutable so when you straight out assigning to create a new object and you mutate the second object, it will change the original object!</p>
+
 <p>Except for numbers, strings, and boolean, everything in JavaScript is an object.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Wrong
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>
-<span style="color:#a6e22e">arr2</span>.<span style="color:#a6e22e">pop</span>()
-<span style="color:#a6e22e">arr</span> <span style="color:#75715e">//&gt; [1,2]
-</span></code></pre></div><p>In the above example, I used <code>const</code> to show that it doesn&rsquo;t protect you from mutating objects. Objects are defined by their reference so while <code>const</code> prevents you from reassigning <code>arr</code>, it doesn&rsquo;t make the object &ldquo;constant&rdquo;.</p>
+
+<pre><code class="language-javascript">// Wrong
+const arr = [1,2,3]
+const arr2 = arr
+arr2.pop()
+arr //&gt; [1,2]
+</code></pre>
+
+<p>In the above example, I used <code>const</code> to show that it doesn&rsquo;t protect you from mutating objects. Objects are defined by their reference so while <code>const</code> prevents you from reassigning <code>arr</code>, it doesn&rsquo;t make the object &ldquo;constant&rdquo;.</p>
+
 <p><code>Object.create</code> makes sure we are copying an object instead of passing its reference around.</p>
+
 <p>Like Lego pieces, we can create copies of the same objects and tweak them, compose them, and pass them onto other objects to augment the capability of other objects.</p>
+
 <p>For example, we define a <code>Customer</code> object with data and functions. When our <code>User</code> converts, we want to add the <code>Customer</code> stuff to our user instance.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Customer</span> <span style="color:#f92672">=</span> {
-  <span style="color:#a6e22e">plan</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;trial&#39;</span>
+
+<pre><code class="language-javascript">const Customer = {
+  plan: 'trial'
 }
-<span style="color:#a6e22e">Customer</span>.<span style="color:#a6e22e">setPremium</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
-  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">plan</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;premium&#39;</span>
+Customer.setPremium = function() {
+  this.plan = 'premium'
 }
-</code></pre></div><p>Now we can augment user object with an Customer methods and fields.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">customer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Customer</span>
-<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">customer</span>.<span style="color:#a6e22e">setPremium</span>()
-</code></pre></div><p>After running the above two lines of codes, this becomes our <code>user</code> object:</p>
+</code></pre>
+
+<p>Now we can augment user object with an Customer methods and fields.</p>
+
+<pre><code class="language-javascript">User.customer = Customer
+user.customer.setPremium()
+</code></pre>
+
+<p>After running the above two lines of codes, this becomes our <code>user</code> object:</p>
+
 <pre><code>{
   firstName: 'Dan',
   lastName: 'Abramov',
@@ -684,24 +878,32 @@ String.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">
   password: 'iLuvES6',
   customer: { plan: 'premium', setPremium: [Function] }
 }
-</code></pre><p>When we want to supply a object with some additional capability, higher order objects cover every use case.</p>
-<p>As shown in the example above, we should favor composition over class inheritance because  composition is <a href="https://medium.com/javascript-scene/3-different-kinds-of-prototypal-inheritance-es6-edition-32d777fa16c9">simpler, more expressive, and more flexible</a>:</p>
+</code></pre>
+
+<p>When we want to supply a object with some additional capability, higher order objects cover every use case.</p>
+
+<p>As shown in the example above, we should favor composition over class inheritance because  composition is <a href="https://medium.com/javascript-scene/3-different-kinds-of-prototypal-inheritance-es6-edition-32d777fa16c9" target="_blank">simpler, more expressive, and more flexible</a>:</p>
+
 <blockquote>
 <p>Classical inheritance creates <strong>is-a</strong> relationships with restrictive taxonomies, all of which are eventually wrong for new use-cases. But it turns out, we usually employ inheritance for <strong>has-a</strong>, <strong>uses-a</strong>, or <strong>can-do</strong> relationships.</p>
 </blockquote>
+
 <h1 id="conclusion">Conclusion</h1>
+
 <p>Programmers often have to make a tradeoff between <strong>Code reusability and code scalability.</strong>  Classical OOP probably makes sense for enterprise software because they don&rsquo;t change that much. In OOP behavior is hard coded in abstract classes but is configurable to some extent during construction. This promotes better code reuse, which saves developers a lot of time upfront.  However, if you expect your code to extend more capability later and have to revise your design many times in the future, then OOP will end up hurting developer productivity and make the code highly coupled with the environment and untestable.</p>
+
 <h1 id="resources">Resources</h1>
+
 <ul>
-<li><a href="https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e">JavaScript Factory Functions vs Constructor Functions vs Classes</a></li>
-<li><a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4">How to Use Classes and Sleep at Night</a></li>
-<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9">Master the JavaScript Interview: What’s the Difference Between Class &amp; Prototypal Inheritance?</a></li>
-<li><a href="https://medium.com/ecmascript-2015/es6-classes-and-inheritance-607804080906">ES6 — classes and inheritance</a></li>
-<li><a href="http://javascriptissexy.com/javascript-objects-in-detail/">JavaScript Objects In Detail</a></li>
-<li><a href="https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91">Factory Function Patterns In Depth</a></li>
-<li><a href="https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee">Elegant patterns in modern JavaScript: Ice Factory</a></li>
-<li><a href="https://medium.com/@copyconstruct/small-functions-considered-harmful-91035d316c29">Small Functions considered Harmful</a></li>
-<li><a href="https://hackernoon.com/prototypes-in-javascript-5bba2990e04b">Prototypes In JavaScript</a></li>
+<li><a href="https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e" target="_blank">JavaScript Factory Functions vs Constructor Functions vs Classes</a></li>
+<li><a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank">How to Use Classes and Sleep at Night</a></li>
+<li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9" target="_blank">Master the JavaScript Interview: What’s the Difference Between Class &amp; Prototypal Inheritance?</a></li>
+<li><a href="https://medium.com/ecmascript-2015/es6-classes-and-inheritance-607804080906" target="_blank">ES6 — classes and inheritance</a></li>
+<li><a href="http://javascriptissexy.com/javascript-objects-in-detail/" target="_blank">JavaScript Objects In Detail</a></li>
+<li><a href="https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91" target="_blank">Factory Function Patterns In Depth</a></li>
+<li><a href="https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee" target="_blank">Elegant patterns in modern JavaScript: Ice Factory</a></li>
+<li><a href="https://medium.com/@copyconstruct/small-functions-considered-harmful-91035d316c29" target="_blank">Small Functions considered Harmful</a></li>
+<li><a href="https://hackernoon.com/prototypes-in-javascript-5bba2990e04b" target="_blank">Prototypes In JavaScript</a></li>
 </ul>
               
             </div>
@@ -782,7 +984,7 @@ String.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -885,7 +1087,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>

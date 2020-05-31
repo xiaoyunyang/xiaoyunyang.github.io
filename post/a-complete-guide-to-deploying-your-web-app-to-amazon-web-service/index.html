@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.58.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="AWS, Docker, DevOps, MERN">
 <meta name="description" content="
+
 This a comprehensive guide for how to containerize your Mongo-Express-React-Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.">
 
 
 <meta property="og:description" content="
+
 This a comprehensive guide for how to containerize your Mongo-Express-React-Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A Complete Guide To Deploying Your Web App To Amazon Web Service">
@@ -21,8 +23,10 @@ This a comprehensive guide for how to containerize your Mongo-Express-React-Node
 <meta property="twitter:url" content="https://xiaoyunyang.github.io/post/a-complete-guide-to-deploying-your-web-app-to-amazon-web-service/">
 <meta property="og:site_name" content="Xiaoyun Yang">
 <meta property="og:description" content="
+
 This a comprehensive guide for how to containerize your Mongo-Express-React-Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.">
 <meta name="twitter:description" content="
+
 This a comprehensive guide for how to containerize your Mongo-Express-React-Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.">
 <meta property="og:locale" content="en-us">
 
@@ -283,13 +287,55 @@ This a comprehensive guide for how to containerize your Mongo-Express-React-Node
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p><img src="https://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png" alt=""></p>
+              <p><img src="https://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png" alt="" /></p>
+
 <p>This a comprehensive guide for how to containerize your Mongo-Express-React-Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&rsquo;t work, how I prepared the app for deployment and accomplished the deployment.</p>
-<!-- raw HTML omitted -->
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#prep-app-for-deployment">Prep App for Deployment</a>
+<ul>
+<li><a href="#step-1-optimize-build">Step 1: Optimize Build</a></li>
+<li><a href="#step-2-automate-scripts">Step 2: Automate scripts</a></li>
+<li><a href="#step-3-dockerize-your-app">Step 3: Dockerize Your App</a></li>
+</ul></li>
+<li><a href="#deploy-docker-image-to-aws-ecs">Deploy Docker Image to AWS ECS</a>
+<ul>
+<li><a href="#quick-primer-on-ecs">Quick Primer on ECS</a></li>
+<li><a href="#step-1-aws-cli-and-ssh-keypair">Step 1: AWS CLI and SSH Keypair</a></li>
+<li><a href="#step-2-create-ecs-cluster-task-and-service">Step 2: Create ECS Cluster, Task, and Service</a></li>
+<li><a href="#step-3-add-ssl">Step 3: Add SSL</a></li>
+<li><a href="#step-4-create-load-balancer">Step 4: Create Load Balancer</a></li>
+<li><a href="#step-5-link-to-domain-name">Step 5: Link to Domain Name</a></li>
+</ul></li>
+<li><a href="#persisting-data">Persisting Data</a>
+<ul>
+<li><a href="#efs-primer">EFS Primer</a></li>
+<li><a href="#set-up-efs-with-your-containers">Set Up EFS With Your Containers</a></li>
+<li><a href="#update-your-app">Update Your App</a></li>
+</ul></li>
+<li><a href="#gotchas">Gotchas</a>
+<ul>
+<li><a href="#ecs-container-db-not-persisting">ECS Container DB Not Persisting</a></li>
+<li><a href="#unable-to-mount-efs-on-ecs-instance">Unable to mount EFS on ECS instance</a></li>
+<li><a href="#unable-to-ssh-into-ec2-instance">Unable to SSH into EC2 instance.</a></li>
+<li><a href="#image-proliferation">Image Proliferation</a></li>
+<li><a href="#aws-elastic-beanstalk">AWS Elastic Beanstalk</a></li>
+<li><a href="#mongo-atlas">Mongo Atlas</a></li>
+<li><a href="#using-mongo-shell-via-container">Using Mongo Shell Via Container</a></li>
+<li><a href="#useful-commands">Useful Commands</a></li>
+</ul></li>
+</ul>
+</nav>
+
 <h1 id="prep-app-for-deployment">Prep App for Deployment</h1>
+
 <h2 id="step-1-optimize-build">Step 1: Optimize Build</h2>
+
 <p>I have an isomorphic app which leverages Webpack with code splitting.</p>
+
 <p>The motivation for optimizing production build is twofold: increase performance and decrease build time and size.</p>
+
 
 
  
@@ -321,37 +367,46 @@ This a comprehensive guide for how to containerize your Mongo-Express-React-Node
   
 </div>
 
+
 <p>When running the Webpack build script in production mode, the following warning messages are provided:</p>
+
 <blockquote>
 <p>WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
 This can impact web performance.</p>
 </blockquote>
+
 <p>and</p>
+
 <blockquote>
 <p>WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.</p>
 </blockquote>
-<p><a href="https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size">This Google Web Fundamentals</a> post discusses a few strategies for decreasing the size and build time of your production app bundles, including using url-loader, utilizing css-loader with the minimize option, making sure you use the <code>--production</code> flag when building your production bundles, and a few optimizations your can include in your Webpack configuration file. These optimizations provide marginal improvements. But through my other research, it became apparent that the <strong>splitChunks</strong> plugin is a necessary optimization, especially if you use a lot of big node modules like react and your app is set up with code splitting.</p>
-<p>According to the <a href="https://webpack.js.org/guides/code-splitting/">Webpack docs</a>, code splitting has a pitfall in which common vendor code used in all your bundles are duplicated in your bundles. This makes all your bundles big and increases overall build time. We can remove the duplicated modules with <a href="https://itnext.io/react-router-and-webpack-v4-code-splitting-using-splitchunksplugin-f0a48f110312">splitChunksPlugin</a>. To use this optimization, add the following to your <code>webpack.config.js</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// webpack.config.js
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
-  <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#75715e">// ...
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#75715e">// ...
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> <span style="color:#75715e">// ...
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">optimization</span><span style="color:#f92672">:</span> {
-    <span style="color:#a6e22e">splitChunks</span><span style="color:#f92672">:</span> {
-      <span style="color:#a6e22e">cacheGroups</span><span style="color:#f92672">:</span> {
-        <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
-        <span style="color:#a6e22e">vendors</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
-        <span style="color:#a6e22e">vendor</span><span style="color:#f92672">:</span> {
-          <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;vendor&#39;</span>,
-          <span style="color:#a6e22e">chunks</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;all&#39;</span>,
-          <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/node_modules/</span>
+
+<p><a href="https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size" target="_blank">This Google Web Fundamentals</a> post discusses a few strategies for decreasing the size and build time of your production app bundles, including using url-loader, utilizing css-loader with the minimize option, making sure you use the <code>--production</code> flag when building your production bundles, and a few optimizations your can include in your Webpack configuration file. These optimizations provide marginal improvements. But through my other research, it became apparent that the <strong>splitChunks</strong> plugin is a necessary optimization, especially if you use a lot of big node modules like react and your app is set up with code splitting.</p>
+
+<p>According to the <a href="https://webpack.js.org/guides/code-splitting/" target="_blank">Webpack docs</a>, code splitting has a pitfall in which common vendor code used in all your bundles are duplicated in your bundles. This makes all your bundles big and increases overall build time. We can remove the duplicated modules with <a href="https://itnext.io/react-router-and-webpack-v4-code-splitting-using-splitchunksplugin-f0a48f110312" target="_blank">splitChunksPlugin</a>. To use this optimization, add the following to your <code>webpack.config.js</code>:</p>
+
+<pre><code class="language-javascript">// webpack.config.js
+module.exports = {
+  mode: // ...
+  entry: // ...
+  output: // ...
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        vendors: false,
+        vendor: {
+          name: 'vendor',
+          chunks: 'all',
+          test: /node_modules/
         }
       }
     }
   }
 }
-</code></pre></div><p>
+</code></pre>
+
+<p>
 
  
   
@@ -422,51 +477,74 @@ This can impact web performance.</p>
 
   <div style="clear:both;"></div>
 </p>
+
 <h2 id="step-2-automate-scripts">Step 2: Automate scripts</h2>
+
 <p>I added a few npm run scripts in order to allow different ways of spinning up the servers.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// package.json
-</span><span style="color:#75715e"></span>{
-  <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;looseleaf-node&#34;</span>,
-  <span style="color:#e6db74">&#34;private&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-  <span style="color:#e6db74">&#34;version&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
-  <span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span> {
-    <span style="color:#e6db74">&#34;build:prod&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./node_modules/.bin/webpack --mode production&#34;</span>,
-    <span style="color:#e6db74">&#34;build:dev&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./node_modules/.bin/webpack --mode development&#34;</span>,
-    <span style="color:#e6db74">&#34;prestart&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;npm run build:prod&#34;</span>,
-    <span style="color:#e6db74">&#34;start&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;node server/run-prod.js&#34;</span>,
-    <span style="color:#e6db74">&#34;start-server&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;node server/run-prod.js&#34;</span>,
-    <span style="color:#e6db74">&#34;start-server-dev&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;nodemon server/run-dev.js --watch server --watch client/iso-middleware&#34;</span>,
-    <span style="color:#e6db74">&#34;start-client&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;node server/start-client.js&#34;</span>,
-    <span style="color:#e6db74">&#34;start-dev&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;concurrently \&#34;npm run start-server-dev\&#34; \&#34;npm run start-client\&#34;&#34;</span>,
+
+<pre><code class="language-javascript">// package.json
+{
+  &quot;name&quot;: &quot;looseleaf-node&quot;,
+  &quot;private&quot;: true,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;scripts&quot;: {
+    &quot;build:prod&quot;: &quot;./node_modules/.bin/webpack --mode production&quot;,
+    &quot;build:dev&quot;: &quot;./node_modules/.bin/webpack --mode development&quot;,
+    &quot;prestart&quot;: &quot;npm run build:prod&quot;,
+    &quot;start&quot;: &quot;node server/run-prod.js&quot;,
+    &quot;start-server&quot;: &quot;node server/run-prod.js&quot;,
+    &quot;start-server-dev&quot;: &quot;nodemon server/run-dev.js --watch server --watch client/iso-middleware&quot;,
+    &quot;start-client&quot;: &quot;node server/start-client.js&quot;,
+    &quot;start-dev&quot;: &quot;concurrently \&quot;npm run start-server-dev\&quot; \&quot;npm run start-client\&quot;&quot;,
   },
-  <span style="color:#e6db74">&#34;dependencies&#34;</span><span style="color:#f92672">:</span> {
-    <span style="color:#75715e">// ...
-</span><span style="color:#75715e"></span>  }
+  &quot;dependencies&quot;: {
+    // ...
+  }
 }
-</code></pre></div><p>Since <code>npm prestart</code> is always executed with <code>npm start</code>, we want to create a separate run script for when we just want to fire up our server without rebuilding bundles. Thus, <code>start-server</code> was added.</p>
+</code></pre>
+
+<p>Since <code>npm prestart</code> is always executed with <code>npm start</code>, we want to create a separate run script for when we just want to fire up our server without rebuilding bundles. Thus, <code>start-server</code> was added.</p>
+
 <p>Additionally, we want a version which can be used to spin up servers with <code>nodemon</code> and concurrently run our isomorphic app on one server (<code>npm run start-server</code>) and create-react-app with hot module reload and react hot loader on another server.</p>
+
 <p>Note, start-client is defined in another file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// start-client.js
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;start&#39;</span>];
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">opts</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">stdio</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;inherit&#39;</span>, <span style="color:#a6e22e">cwd</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;client&#39;</span>, <span style="color:#a6e22e">shell</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> };
-<span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;child_process&#39;</span>).<span style="color:#a6e22e">spawn</span>(<span style="color:#e6db74">&#39;npm&#39;</span>, <span style="color:#a6e22e">args</span>, <span style="color:#a6e22e">opts</span>);
-</code></pre></div><h2 id="step-3-dockerize-your-app">Step 3: Dockerize Your App</h2>
-<p><a href="https://www.codementor.io/collections/aws-ecs-lbxm7zj38">Gokce Yalcin</a> and <a href="https://www.youtube.com/watch?v=YFl2mCHdv24">Jake Wright</a> provide a great primer for Docker and ECS.</p>
+
+<pre><code class="language-javascript">// start-client.js
+const args = ['start'];
+const opts = { stdio: 'inherit', cwd: 'client', shell: true };
+require('child_process').spawn('npm', args, opts);
+</code></pre>
+
+<h2 id="step-3-dockerize-your-app">Step 3: Dockerize Your App</h2>
+
+<p><a href="https://www.codementor.io/collections/aws-ecs-lbxm7zj38" target="_blank">Gokce Yalcin</a> and <a href="https://www.youtube.com/watch?v=YFl2mCHdv24" target="_blank">Jake Wright</a> provide a great primer for Docker and ECS.</p>
+
 <blockquote>
 <p>Docker is a way to manage and run containers - it is an abstraction that lets you share host resources with your application by process isolation.</p>
 </blockquote>
+
 <p>The motivation for Docker is portability. Apps come with a lot of environmental configurations that would run on one computer but break on another computer which does not have the right configuration.</p>
-<p>As <a href="https://cloudacademy.com/blog/amazon-ec2-container-service-docker-aws/">this article</a> puts it:</p>
+
+<p>As <a href="https://cloudacademy.com/blog/amazon-ec2-container-service-docker-aws/" target="_blank">this article</a> puts it:</p>
+
 <blockquote>
 <p>Modern DevOps practices demand the ability to quickly build servers and ship code to be run in different environments. Welcome to the world of containers: extremely lightweight, abstracted user space instances that can be easily launched on any compatible server and reliably provide a predictable experience.</p>
 </blockquote>
+
 <p>For our MERN app, the environmental configuration is our Mongo database.</p>
+
 <p>A lot of tutorials I found show you how to create container for simple apps which do not depend on other images like Mongo. The build definition provided by <strong>Dockerfile</strong> was not adequate in associating the app build with Mongo. The app ends up failing upon initial launch due to failing to bind with Mongo.</p>
+
 <p>To dockerize our MERN app for running locally, we need to create two files: <strong>Dockerfile</strong> and <strong>docker-compose.yml</strong>.</p>
+
 <p>Dockerfile is required if you want to use Docker to containerize your app but docker-compose is optional but useful if you want to fire up a Docker container locally to use Mongo.</p>
+
 <p>Before when I run the server locally, I&rsquo;d have to make sure to run <code>mongod</code> and <code>mongo</code> in the command line to fire up the  Mongo daemon and Mongo shell.</p>
+
 <p>But with containerization, I can create an image that includes the app and the mongodb image and driver mapping that the app depends on.</p>
+
 <p><strong>Dockerfile</strong>:</p>
+
 <pre><code>FROM node:8.11.1
 
 # Set image metadata
@@ -489,7 +567,10 @@ COPY . .
 EXPOSE 3001
 
 CMD [ &quot;npm&quot;, &quot;run&quot;, &quot;start&quot; ]
-</code></pre><p><strong>docker-compose.yml</strong></p>
+</code></pre>
+
+<p><strong>docker-compose.yml</strong></p>
+
 <pre><code>version: &quot;2&quot;
 services:
   web:
@@ -508,94 +589,163 @@ services:
       - data-volume:/data/db
 volumes:
   data-volume:
-</code></pre><p>To run both our app and Mongo in the container, we run this command:</p>
+</code></pre>
+
+<p>To run both our app and Mongo in the container, we run this command:</p>
+
 <pre><code>$ docker-compose up
-</code></pre><h1 id="deploy-docker-image-to-aws-ecs">Deploy Docker Image to AWS ECS</h1>
-<p><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html">The official docs from Amazon</a> provides  detailed information on how AWS ECS leverages Docker.</p>
+</code></pre>
+
+<h1 id="deploy-docker-image-to-aws-ecs">Deploy Docker Image to AWS ECS</h1>
+
+<p><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html" target="_blank">The official docs from Amazon</a> provides  detailed information on how AWS ECS leverages Docker.</p>
+
 <blockquote>
 <p>Amazon ECS uses Docker images in task definitions to launch containers on EC2 instances in your clusters.</p>
 </blockquote>
+
 <h2 id="quick-primer-on-ecs">Quick Primer on ECS</h2>
+
 <blockquote>
-<p>Amazon EC2 Container Service (Amazon ECS) is a highly-scalable, high performance container management service that supports Docker containers and allows you to run applications easily on a managed cluster of EC2 instances. The ECS service scheduler places tasks—groups of containers used for your application—onto container instances in the cluster, monitors their performance and health, and restarts failed tasks as needed. ~<a href="https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/">AWS Blog</a></p>
+<p>Amazon EC2 Container Service (Amazon ECS) is a highly-scalable, high performance container management service that supports Docker containers and allows you to run applications easily on a managed cluster of EC2 instances. The ECS service scheduler places tasks—groups of containers used for your application—onto container instances in the cluster, monitors their performance and health, and restarts failed tasks as needed. ~<a href="https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/" target="_blank">AWS Blog</a></p>
 </blockquote>
+
 <p>There are four parts to ECS:</p>
+
 <ol>
 <li>Repository or Elastic Container Registry (ECR)</li>
 <li>Cluster</li>
 <li>Task Definition</li>
 <li>Service</li>
 </ol>
+
 <p>The Repository is where you store the app image created using docker. You can push updated image of your app to the ECR using the AWS CLI. Alternatively, if you don&rsquo;t want to use ECR to store your image, you could push your image to DockerHub.</p>
+
 <p>A Cluster is where AWS runs containers.</p>
+
 <p>Task Definition is where you tells AWS how to create your containers. Each container has is associated with an image, which is used to start your container and can be mapped to ports and volumes.</p>
+
 <p>A service is essentially a collection of containers that will run on EC2 instances (ECS container instances) and auto scale according to specified rules.</p>
+
 <h2 id="step-1-aws-cli-and-ssh-keypair">Step 1: AWS CLI and SSH Keypair</h2>
-<p>It&rsquo;s a good idea to be able to ssh into your EC2 instance for troubleshooting. Use the AWS CLI to create a new ssh keypair (See docs <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-keypairs.html">for ssh</a> and <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance-connect.html">for connecting to your container instance</a>).</p>
+
+<p>It&rsquo;s a good idea to be able to ssh into your EC2 instance for troubleshooting. Use the AWS CLI to create a new ssh keypair (See docs <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-keypairs.html" target="_blank">for ssh</a> and <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance-connect.html" target="_blank">for connecting to your container instance</a>).</p>
+
 <p>Your private key is not stored in AWS and can only be retrieved when it is created. Therefore, we are creating the <code>MyKeyPair.pem</code> to be stored locally.</p>
+
 <p>Generally, the correct place to put your <code>.pem</code> file is in your <code>.ssh</code> folder, in your user directory. The <code>.ssh</code> folder is a hidden folder, to open it in finder open terminal and execute the open command.</p>
-<p>First we need to <a href="https://docs.aws.amazon.com/cli/latest/userguide/installing.html">install AWS CLI</a> and configure it.</p>
+
+<p>First we need to <a href="https://docs.aws.amazon.com/cli/latest/userguide/installing.html" target="_blank">install AWS CLI</a> and configure it.</p>
+
 <p>Then we use the AWS CLI to create keypair in the <code>.ssh</code> folder.</p>
+
 <pre><code>$ mkdir .ssh
 $ cd .ssh
 $ aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text | out-file -encoding ascii -filepath MyKeyPair.pem
 $ chmod 400 MyKeyPair.pem
-</code></pre><h2 id="step-2-create-ecs-cluster-task-and-service">Step 2: Create ECS Cluster, Task, and Service</h2>
-<p>You could get started with AWS ECS using the <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html">official docs</a>. I suggest following <a href="https://node.university/blog/978472/aws-ecs-containers">this tutorial from Node University</a> which walks you through (with screenshot) an actual example deploying a node app containerized with Mongo to ECS. <a href="https://www.youtube.com/watch?v=zp7gUCgyS34">This video</a> walks you through how to use the Amazon ECS console to create repository, a task definition, and a cluster. <a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832#file-step-by-step-how-to-for-aws-ecs-md">This Gist</a> provides step-by-step procedure for creating a ECS cluster, task definition and containers, as well as load balancer.</p>
+</code></pre>
+
+<h2 id="step-2-create-ecs-cluster-task-and-service">Step 2: Create ECS Cluster, Task, and Service</h2>
+
+<p>You could get started with AWS ECS using the <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html" target="_blank">official docs</a>. I suggest following <a href="https://node.university/blog/978472/aws-ecs-containers" target="_blank">this tutorial from Node University</a> which walks you through (with screenshot) an actual example deploying a node app containerized with Mongo to ECS. <a href="https://www.youtube.com/watch?v=zp7gUCgyS34" target="_blank">This video</a> walks you through how to use the Amazon ECS console to create repository, a task definition, and a cluster. <a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832#file-step-by-step-how-to-for-aws-ecs-md" target="_blank">This Gist</a> provides step-by-step procedure for creating a ECS cluster, task definition and containers, as well as load balancer.</p>
+
 <p>In short, we need to take the following steps:</p>
+
 <ol>
 <li>Create ECS Container Registry.</li>
 <li>Create a repository under Amazon ECS. This is where you push your docker images using the aws cli.</li>
-<li>Create new task definition, which includes port mapping and your two containers (node app and Mongo). See <a href="https://github.com/awsdocs/amazon-ecs-developer-guide/blob/master/doc_source/create-task-definition.md">aws gist</a> on creating a task definition.</li>
+<li>Create new task definition, which includes port mapping and your two containers (node app and Mongo). See <a href="https://github.com/awsdocs/amazon-ecs-developer-guide/blob/master/doc_source/create-task-definition.md" target="_blank">aws gist</a> on creating a task definition.</li>
 <li>Create a Cluster (specify the ssh keypair you created in the previous step). I use EC2 instance type m4.large. When prompt, create a new VPC.</li>
 <li>Create a Service.</li>
 </ol>
+
 <p>Amazon Virtual Private Cloud (VPC) provisions a logically isolated section of AWS where you can launch AWS resources in a virtual network that you define. When you create a cluster you should create a new VPC.</p>
+
 <p>A EC2 instance is automatically created by ECS and associated with the VPC. Write the VPC ID down. You are going to need to use it a lot later when creating EFS, Security group, and load balancer.</p>
-<p>As a side note, for all these steps, you can use Amazon&rsquo;s console and AWS CLI. There&rsquo;s an open source cli called <a href="https://github.com/coldbrewcloud/coldbrew-cli">coldbrew</a> that you can download from Github which automates your Docker container deployment process. I couldn&rsquo;t figure out how the configuration file suppose to look if I wanted to fire up the app container with Mongo. Also, Coldbrew seem to have a lot of &ldquo;magic&rdquo; that when my deployed app failed to launch, I couldn&rsquo;t figure out how to troubleshoot.</p>
+
+<p>As a side note, for all these steps, you can use Amazon&rsquo;s console and AWS CLI. There&rsquo;s an open source cli called <a href="https://github.com/coldbrewcloud/coldbrew-cli" target="_blank">coldbrew</a> that you can download from Github which automates your Docker container deployment process. I couldn&rsquo;t figure out how the configuration file suppose to look if I wanted to fire up the app container with Mongo. Also, Coldbrew seem to have a lot of &ldquo;magic&rdquo; that when my deployed app failed to launch, I couldn&rsquo;t figure out how to troubleshoot.</p>
+
 <p>Once you created the ECR and repository, use the Docker CLI to build our image:</p>
+
 <pre><code>$ docker build -t &lt;image-name&gt; .
-</code></pre><p>Don&rsquo;t forget the &ldquo;dot&rdquo; at the end of the command.</p>
+</code></pre>
+
+<p>Don&rsquo;t forget the &ldquo;dot&rdquo; at the end of the command.</p>
+
 <p>Then tag our built image and use the Docker CLI to push the image to our AWS ECS repository. You use two commands which you can copy-paste into your Terminal from the AWS ECS console.</p>
+
 <p>For example:</p>
-<p><img src="https://xiaoyunyang.github.io/post/images/deployapp/aws-ecs-repo.png" alt="AWS ECS Repo"></p>
-<p><img src="https://xiaoyunyang.github.io/post/images/deployapp/aws-ecs-commands.png" alt="AWS ECS Repo"></p>
+
+<p><img src="https://xiaoyunyang.github.io/post/images/deployapp/aws-ecs-repo.png" alt="AWS ECS Repo" /></p>
+
+<p><img src="https://xiaoyunyang.github.io/post/images/deployapp/aws-ecs-commands.png" alt="AWS ECS Repo" /></p>
+
 <p>Before you push, make sure to to authenticate Docker to an Amazon ECR registry with get-login.</p>
+
 <pre><code>$ $(aws ecr get-login --no-include-email --region us-east-1)
-</code></pre><p>Note, the $(command) expression is called <a href="https://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html">command substitution</a>, which is a shortcut that essentially tells bash to execute the standard output of command. If we simply execute the <code>aws ecr get-login --no-include-email --region us-east-1</code> command, the stdout is  <code>docker login -u AWS -p &lt;really really long hash string&gt;</code>. We&rsquo;d have to copy-paste the whole string into the command line to login. Executing the <code>$(aws ecr get-login --no-include-email --region us-east-1)</code> command saves us from that extra step.</p>
+</code></pre>
+
+<p>Note, the $(command) expression is called <a href="https://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html" target="_blank">command substitution</a>, which is a shortcut that essentially tells bash to execute the standard output of command. If we simply execute the <code>aws ecr get-login --no-include-email --region us-east-1</code> command, the stdout is  <code>docker login -u AWS -p &lt;really really long hash string&gt;</code>. We&rsquo;d have to copy-paste the whole string into the command line to login. Executing the <code>$(aws ecr get-login --no-include-email --region us-east-1)</code> command saves us from that extra step.</p>
+
 <p>For our example, the complete sequence of commands for first and subsequent deploys is:</p>
+
 <pre><code>$ $(aws ecr get-login --no-include-email --region us-east-1)
 $ docker build -t looseleaf-node .
 $ aws ecr get-login
 $ docker tag looseleaf-node:latest 767822753727.dkr.ecr.us-east-1.amazonaws.com/looseleaf-node:latest
 $ docker push 767822753727.dkr.ecr.us-east-1.amazonaws.com/looseleaf-node:latest
-</code></pre><p>You could put all this script in a shell script and automate the whole process of deployment.</p>
+</code></pre>
+
+<p>You could put all this script in a shell script and automate the whole process of deployment.</p>
+
 <pre><code>$ touch deploy.sh
 $ # put all the scripts above into deploy.sh
 $ chmod +x deploy.sh
 $ ./deploy.sh # run this everytime you want to deploy
-</code></pre><p><img src="https://xiaoyunyang.github.io/post/images/deployapp/docker-on-aws.png" alt="https://cloudonaut.io/aws-velocity-containerized-ecs-based-app-ci-cd-pipeline/"></p>
+</code></pre>
+
+<p><img src="https://xiaoyunyang.github.io/post/images/deployapp/docker-on-aws.png" alt="https://cloudonaut.io/aws-velocity-containerized-ecs-based-app-ci-cd-pipeline/" /></p>
+
 <p>To make sure the image is running in our container instance, go to the EC2 console and click on the container instance that was fired up by your ECS.</p>
+
 <p>Let&rsquo;s ssh into this container instance by going to the ECS console ➡️ select your instance ➡️ click connect. You&rsquo;ll see a command like this:</p>
+
 <pre><code>ssh -i &quot;MyKeyPair.pem&quot; root@ec2-18-386-245-264.compute-1.amazonaws.com
-</code></pre><p>If you try to run the above command, you&rsquo;ll get an error:</p>
+</code></pre>
+
+<p>If you try to run the above command, you&rsquo;ll get an error:</p>
+
 <blockquote>
 <p>Please login as the user &ldquo;ec2-user&rdquo; rather than the user &ldquo;root&rdquo;.</p>
 </blockquote>
+
 <p>So we try this instead:</p>
+
 <pre><code>$ cd .ssh
 $ ssh -i &quot;MyKeyPair.pem&quot; ec2-user@ec2-18-386-245-264.compute-1.amazonaws.com
-</code></pre><p>And it should work! You can use this to connect to the EC2 instance.</p>
+</code></pre>
+
+<p>And it should work! You can use this to connect to the EC2 instance.</p>
+
 <p>You will use the following command to check if the container instance is running our docker image:</p>
+
 <pre><code>[ec2-user ~]$ docker ps
-</code></pre><h2 id="step-3-add-ssl">Step 3: Add SSL</h2>
-<p>The <a href="https://aws.amazon.com/blogs/aws/new-aws-certificate-manager-deploy-ssltls-based-apps-on-aws/">AWS Tutorial</a> guides you through setting up your <a href="https://aws.amazon.com/certificate-manager/">AWS Certificate Manager</a>.</p>
+</code></pre>
+
+<h2 id="step-3-add-ssl">Step 3: Add SSL</h2>
+
+<p>The <a href="https://aws.amazon.com/blogs/aws/new-aws-certificate-manager-deploy-ssltls-based-apps-on-aws/" target="_blank">AWS Tutorial</a> guides you through setting up your <a href="https://aws.amazon.com/certificate-manager/" target="_blank">AWS Certificate Manager</a>.</p>
+
 <blockquote>
 <p>SSL/TLS certificates are used to secure network communications and establish the identity of websites over the Internet as well as resources on private networks.</p>
 </blockquote>
+
 <p>SL/TLS certificates provisioned through AWS Certificate Manager are free.</p>
+
 <p>The AWS Tutorial linked above is actually a little out-dated.</p>
+
 <p>Here are the steps I took:</p>
+
 <ol>
 <li>Login to your AWS Console and click to Services ➡️ Certificate Manager.</li>
 <li>Get started on Provision Certificates.</li>
@@ -605,59 +755,95 @@ $ ssh -i &quot;MyKeyPair.pem&quot; ec2-user@ec2-18-386-245-264.compute-1.amazona
 <li>On the review page, click &ldquo;Confirm and request&rdquo; once you are satisfied.</li>
 <li>On the Validation page, use Amazon Route 53 to validate CNAME for you. If everything goes well, you&rsquo;ll get this message:</li>
 </ol>
+
 <blockquote>
 <p>The DNS record was written to your Route 53 hosted zone. It can take 30 minutes or longer for the changes to propagate and for AWS to validate the domain and issue the certificate.</p>
 </blockquote>
+
 <p>It doesn&rsquo;t take 30 minutes. I refreshed the page and Validation status changed to Success.</p>
+
 <p>Next, go to the EC2 dashboard. For the container instance, click on the Security Group. Add an inbound rule with Type HTTPS and port 443.</p>
+
 <h2 id="step-4-create-load-balancer">Step 4: Create Load Balancer</h2>
+
 <blockquote>
-<p>The Network Load Balancer is the best option for managing secure traffic as it provides support for TCP traffic pass through, without decrypting and then re-encrypting the traffic. ~<a href="https://aws.amazon.com/blogs/compute/maintaining-transport-layer-security-all-the-way-to-your-container-using-the-network-load-balancer-with-amazon-ecs/">AWS Compute Blog</a></p>
+<p>The Network Load Balancer is the best option for managing secure traffic as it provides support for TCP traffic pass through, without decrypting and then re-encrypting the traffic. ~<a href="https://aws.amazon.com/blogs/compute/maintaining-transport-layer-security-all-the-way-to-your-container-using-the-network-load-balancer-with-amazon-ecs/" target="_blank">AWS Compute Blog</a></p>
 </blockquote>
-<p><img src="https://xiaoyunyang.github.io/post/images/deployapp/ecs-diagram-1.png" alt="https://aws.amazon.com/blogs/compute/maintaining-transport-layer-security-all-the-way-to-your-container-using-the-network-load-balancer-with-amazon-ecs/"></p>
-<p>I followed this <a href="https://www.youtube.com/watch?v=E5MYky95atE">video tutorial</a> to create a classic load balancer.</p>
-<p>You can also Check out the <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html">AWS official tutorial</a> on how to create a classic Load Balancer with an HTTPS Listener.</p>
+
+<p><img src="https://xiaoyunyang.github.io/post/images/deployapp/ecs-diagram-1.png" alt="https://aws.amazon.com/blogs/compute/maintaining-transport-layer-security-all-the-way-to-your-container-using-the-network-load-balancer-with-amazon-ecs/" /></p>
+
+<p>I followed this <a href="https://www.youtube.com/watch?v=E5MYky95atE" target="_blank">video tutorial</a> to create a classic load balancer.</p>
+
+<p>You can also Check out the <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html" target="_blank">AWS official tutorial</a> on how to create a classic Load Balancer with an HTTPS Listener.</p>
+
 <p>Make sure your load balancer settings are:</p>
+
 <ul>
 <li>VPC ID: the VPC ID for your ECS container</li>
 <li>Scheme: internet-facing</li>
 <li>Listeners: (1) load balancer port HTTPS 443 &ndash;&gt; instance port HTTP 80 and (2) load balancer port HTTP 80 &ndash;&gt; instance port HTTP &ndash;&gt; 80</li>
 <li>Health Check: Ping Target <code>HTTP:80/&lt;filename&gt;</code> where <code>&lt;filename&gt;</code> is a file that your website serves from the root. For my site, it&rsquo;s index.css.</li>
 </ul>
+
 <h2 id="step-5-link-to-domain-name">Step 5: Link to Domain Name</h2>
+
 <p>Use AWS Route 53 to associate your container instance with a domain name.</p>
+
 <p>I purchased my domain name from Google Domains. I got on chat with the customer service representative from Google Domains who walked me through how to set up route for AWS Route 53 with:</p>
+
 <ul>
 <li>CNAME (canonical name)</li>
 <li>MX (mail exchange if you use G Suite)</li>
 <li>NS (Name server)</li>
 <li>SOA (Start of authority)</li>
 </ul>
+
 <p>After you&rsquo;ve done all that, Create Record, select &ldquo;Type A-IPv4 address&rdquo;, select Yes for Alias, and select the load balancer from Alias Target. This gives you <code>https://yourdomain.com</code> and forwards <code>http://yourdomain.com</code> to <code>https://yourdomain.com</code>.</p>
+
 <p><strong>Optional:</strong> You may be able to create another Alias for <code>www.yourdomain.com</code> to forward to <code>https://yourdomain.com</code> (I don&rsquo;t know how to do that yet).</p>
+
 <h1 id="persisting-data">Persisting Data</h1>
-<p>Following <a href="https://node.university/blog/978472/aws-ecs-containers">the tutorial from Node University</a> helped me get the app up and running but there was a big problem with the setup: whenever the server goes down for whatever reason, all the data is lost.</p>
+
+<p>Following <a href="https://node.university/blog/978472/aws-ecs-containers" target="_blank">the tutorial from Node University</a> helped me get the app up and running but there was a big problem with the setup: whenever the server goes down for whatever reason, all the data is lost.</p>
+
 <p>By default, the Amazon ECS-optimized AMI ships with 30 GiB of total storage. You can modify this value at launch time to increase or decrease the available storage on your container instance. This storage is used for the operating system and for Docker images and metadata.</p>
+
 <p>The docker info command also provides information about how much data space it is using, and how much data space is available.</p>
+
 <p>SSH into your instance and run this command:</p>
+
 <pre><code>[ec2-user ~]$ docker info | grep &quot;Data Space&quot;
-</code></pre><p>Output for a m4.large:</p>
+</code></pre>
+
+<p>Output for a m4.large:</p>
+
 <pre><code>Data Space Used: 3.326GB
 Data Space Total: 23.33GB
 Data Space Available: 20GB
-</code></pre><p>This might seem like a lot storage but this storage is ephemeral, i.e., something that is temporary in nature.</p>
+</code></pre>
+
+<p>This might seem like a lot storage but this storage is ephemeral, i.e., something that is temporary in nature.</p>
+
 <p>If you run your MongoDB in a container, the data is hosted in the instance&rsquo;s ephemeral disk. This means the data stored in the container is gone the moment your container is deleted or restarted.</p>
-<p>Per the <a href="https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/">AWS Blog</a>:</p>
+
+<p>Per the <a href="https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/" target="_blank">AWS Blog</a>:</p>
+
 <blockquote>
 <p>Using task definitions, you can define the properties of the containers you want to run together and configure containers to store data on the underlying ECS container instance that your task is running on. Because tasks can be restarted on any ECS container instance in the cluster, you need to consider whether the data is temporary or needs to persist.</p>
 </blockquote>
+
 <p>If your container needs access to the original data each time it starts, you require a file system that your containers can connect to regardless of which instance they’re running on. That’s where <strong>Elastic File System (EFS)</strong> comes in.</p>
+
 <p>AWS EFS is a storage service that can be used to persist data to disk or share it among multiple containers; for example, when you are running MongoDB in a Docker container, capturing application logs, or simply using it as temporary scratch space to process data.</p>
+
 <blockquote>
 <p>EFS allows you to persist data onto a durable shared file system that all of the ECS container instances in the ECS cluster can use.</p>
 </blockquote>
+
 <h2 id="efs-primer">EFS Primer</h2>
-<p>EFS is one of three main cloud storage solutions offered by AWS and is a relatively new service compared to S3 and EBS. Like S3, EFS grows with your storage needs. You don’t have to provision the storage up front. Like EBS, EFS can be attached to an EC2 instance but EFS can be attached to multiple EC2 instances while EBS can only be attached to one. Amazon provides a nice <a href="https://aws.amazon.com/efs/when-to-choose-efs/">comparison table</a> for the three services and a <a href="https://aws.amazon.com/what-is-cloud-file-storage/">pretty good summary</a> of the three options and what they are good for:</p>
+
+<p>EFS is one of three main cloud storage solutions offered by AWS and is a relatively new service compared to S3 and EBS. Like S3, EFS grows with your storage needs. You don’t have to provision the storage up front. Like EBS, EFS can be attached to an EC2 instance but EFS can be attached to multiple EC2 instances while EBS can only be attached to one. Amazon provides a nice <a href="https://aws.amazon.com/efs/when-to-choose-efs/" target="_blank">comparison table</a> for the three services and a <a href="https://aws.amazon.com/what-is-cloud-file-storage/" target="_blank">pretty good summary</a> of the three options and what they are good for:</p>
+
 
 
  
@@ -687,64 +873,81 @@ Data Space Available: 20GB
   
 </div>
 
-<p><a href="https://dzone.com/articles/confused-by-aws-storage-options-s3-ebs-amp-efs-explained">See this article</a> for a discussion on when to use what.</p>
-<p>In general, EFS is ideal if your web app is set up as microservices deployed to ECS in Docker containers. EFS is a fully managed file storage solution that can provide persistent shared access to data that all containers in a cluster can use. <a href="https://convox.com/blog/efs/"><strong>EFS is container friendly</strong></a>. If you need a network filesystem solution that can allow multiple EC2 instances to access the same data at the same time, use EFS.</p>
+
+<p><a href="https://dzone.com/articles/confused-by-aws-storage-options-s3-ebs-amp-efs-explained" target="_blank">See this article</a> for a discussion on when to use what.</p>
+
+<p>In general, EFS is ideal if your web app is set up as microservices deployed to ECS in Docker containers. EFS is a fully managed file storage solution that can provide persistent shared access to data that all containers in a cluster can use. <a href="https://convox.com/blog/efs/" target="_blank"><strong>EFS is container friendly</strong></a>. If you need a network filesystem solution that can allow multiple EC2 instances to access the same data at the same time, use EFS.</p>
+
 <p>What we want to do is to have containers that gets access to the original data each time it starts. The original data comes from EFS.</p>
-<p><img src="https://xiaoyunyang.github.io/post/images/deployapp/efs-ebs-instancestore.png" alt="image attribution  https://cloudonaut.io/sharing-data-volumes-between-machines-efs/"></p>
-<p>Image source: <a href="https://cloudonaut.io/sharing-data-volumes-between-machines-efs/">cloudonaut</a>, originally from <a href="https://www.manning.com/books/amazon-web-services-in-action-second-edition">Amazon Web Services in Action, Second Edition</a>.</p>
+
+<p><img src="https://xiaoyunyang.github.io/post/images/deployapp/efs-ebs-instancestore.png" alt="image attribution  https://cloudonaut.io/sharing-data-volumes-between-machines-efs/" /></p>
+
+<p>Image source: <a href="https://cloudonaut.io/sharing-data-volumes-between-machines-efs/" target="_blank">cloudonaut</a>, originally from <a href="https://www.manning.com/books/amazon-web-services-in-action-second-edition" target="_blank">Amazon Web Services in Action, Second Edition</a>.</p>
+
 <p>It&rsquo;s worth noting some important constraints of EFS:</p>
+
 <ul>
 <li>Only available for Linux EC2. Fargate or Windows EC2 not supported.</li>
 <li>The EC2 Instance must be in the same subnet as the EFS Mount Target.</li>
 </ul>
+
 <h2 id="set-up-efs-with-your-containers">Set Up EFS With Your Containers</h2>
-<p><a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832">This Gist</a> provides step-by-step tutorial to set up AWS ECS with EFS. Note, there&rsquo;s an error in the gist&rsquo;s tutorial in the task volume mapping. See below for the correct mapping.</p>
+
+<p><a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832" target="_blank">This Gist</a> provides step-by-step tutorial to set up AWS ECS with EFS. Note, there&rsquo;s an error in the gist&rsquo;s tutorial in the task volume mapping. See below for the correct mapping.</p>
+
 <p>Other useful resources I found include:</p>
+
 <ul>
-<li><a href="https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/">Official tutorial from Amazon</a></li>
-<li><a href="https://spin.atomicobject.com/2017/05/03/sharing-efs-filesystem-ecs/">Atomic Object tutorial</a></li>
-<li><a href="https://www.youtube.com/watch?v=M9CP42BsB6c">Knowledge India Video</a></li>
-<li><a href="https://cloudonaut.io/sharing-data-volumes-between-machines-efs/">Cloudonaut article</a></li>
-<li><a href="https://www.veritas.com/content/support/en_US/doc/NB_CC_EFS_HA_AWS">Veritas Tutorial</a> (with pictures)</li>
+<li><a href="https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/" target="_blank">Official tutorial from Amazon</a></li>
+<li><a href="https://spin.atomicobject.com/2017/05/03/sharing-efs-filesystem-ecs/" target="_blank">Atomic Object tutorial</a></li>
+<li><a href="https://www.youtube.com/watch?v=M9CP42BsB6c" target="_blank">Knowledge India Video</a></li>
+<li><a href="https://cloudonaut.io/sharing-data-volumes-between-machines-efs/" target="_blank">Cloudonaut article</a></li>
+<li><a href="https://www.veritas.com/content/support/en_US/doc/NB_CC_EFS_HA_AWS" target="_blank">Veritas Tutorial</a> (with pictures)</li>
 </ul>
-<p>Basically, I followed <a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832">the gist</a> in combination with <a href="https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/">this aws Compute blog post</a> and <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_efs.html#efs-add-content">this AWS official doc for ECS+EFS</a> to:</p>
+
+<p>Basically, I followed <a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832" target="_blank">the gist</a> in combination with <a href="https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/" target="_blank">this aws Compute blog post</a> and <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_efs.html#efs-add-content" target="_blank">this AWS official doc for ECS+EFS</a> to:</p>
+
 <ol>
 <li>Create a KMS Encryption Key.</li>
 <li>Create a security group for the EFS filesystem that allows 2049 inbound with the source being the EC2&rsquo;s security group.
-<img src="https://docs.aws.amazon.com/efs/latest/ug/images/gs-ec2-resources-120.png" alt="">
+<img src="https://docs.aws.amazon.com/efs/latest/ug/images/gs-ec2-resources-120.png" alt="" />
 Name the security group EFS-access-for-sg-dc025fa2. Replace &ldquo;sg-dc025fa2&rdquo; with the security group id of your EC2 instance.</li>
 <li>Create a new EFS filesystem.
+
 <ul>
 <li>Enable encryption</li>
 <li>Use the VPC ID of your ECS cluster.</li>
 <li>Use the security group ID created in the previous step for the mount target security group.</li>
-</ul>
-</li>
-<li>update ECS cluster&rsquo;s CloudFormation template <a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832#update-your-cloud-formation-template">per the gist instruction</a>.</li>
+</ul></li>
+<li>update ECS cluster&rsquo;s CloudFormation template <a href="https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832#update-your-cloud-formation-template" target="_blank">per the gist instruction</a>.</li>
 <li>Updated the Task Definition:
+
 <ul>
 <li>Create the mapping to the volume mapping:
+
 <ul>
 <li>volume name: <code>efs</code></li>
 <li>source path: <code>/efs/&lt;yourDatabase&gt;</code></li>
-</ul>
-</li>
+</ul></li>
 <li>Update the mongo container&rsquo;s mount point to include:
+
 <ul>
 <li>container path: <code>/data/db</code></li>
 <li>source volume: <code>efs</code></li>
-</ul>
-</li>
+</ul></li>
 <li>The two volume mapping is needed because we want the container to access the file system is mounted on the host instance in.</li>
-</ul>
-</li>
+</ul></li>
 <li>Update service in ECS to use the updated Task Definition.</li>
 <li>Scale instances down to 0, then to 1 again. This terminates the existing EC2 instance and then spins up a new EC2 instance using the new Task Definition and CloudFormation script. EFS mounting should be automatically done by the start script in CloudFormation. The Task Definition volumes mapping ensures the EFS mount target is hooked up to the mongo container.</li>
 <li>Verify EFS is properly mounted</li>
 </ol>
+
 <p>Before you try to restarting your instance and run the automated script in the CloudFormation template, it&rsquo;s a good idea to try to ssh into your instance and do make sure you can do everything manually. See the <a href="#ecs-container-db-not-persisting">gotcha section</a> for more on that.</p>
+
 <p>After you restarts the EC2 instance with the updated task definition, ssh into the instance and make sure the file system volume is mounted and is mapped to the mongo container volume:</p>
+
 <p>Run the following command. If you see a similar output on the last line, that&rsquo;s a good sign.</p>
+
 <pre><code>[ec2-user ~]$ cat /etc/fstab
 #
 LABEL=/     /           ext4    defaults,noatime  1   1
@@ -753,40 +956,68 @@ devpts      /dev/pts    devpts  gid=5,mode=620  0   0
 sysfs       /sys        sysfs   defaults        0   0
 proc        /proc       proc    defaults        0   0
 &lt;EfsUri&gt;:/ /efs nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0
-</code></pre><p>Then run this command:</p>
+</code></pre>
+
+<p>Then run this command:</p>
+
 <pre><code>[ec2-user ~]$ cd /efs/&lt;yourDatabase&gt; &amp;&amp; ls
-</code></pre><p>The output of the above of the above command should be a bunch of .wt files and some other mongo files.</p>
+</code></pre>
+
+<p>The output of the above of the above command should be a bunch of .wt files and some other mongo files.</p>
+
 <p>Next, verify that the volume is mapped correctly to the mongo container&rsquo;s volume:</p>
+
 <pre><code>[ec2-user ~]$ docker ps
 [ec2-user ~]$ docker exec -it &lt;containerID&gt; /bin/bash
 root@mongo:/$ cd data/db
 root@mongo:/data/db$ ls
-</code></pre><p>The output should be the same files you see in the <code>/efs/&lt;yourDatabase&gt;</code> directory.</p>
+</code></pre>
+
+<p>The output should be the same files you see in the <code>/efs/&lt;yourDatabase&gt;</code> directory.</p>
+
 <p>Try writing to the directory:</p>
+
 <pre><code>root@mongo:/data/db$ echo 'hello' &gt;&gt; test
 root@mongo:/data/db$ cat test
 hello
 root@mongo:/data/db$ exit
 [ec2-user ~]$ cd /efs/&lt;yourDatabase&gt; &amp;&amp; cat test
 hello
-</code></pre><p>This proves that the two volumes are syncing.</p>
+</code></pre>
+
+<p>This proves that the two volumes are syncing.</p>
+
 <p>To verify the mount status of the Amazon EFS File System on host volume:</p>
+
 <pre><code>[ec2-user ~]$ df -T
 Filesystem     Type              1K-blocks    Used          Available Use% Mounted on
 /dev/xvda1     ext4                8123812 1949800            6073764  25% /
 devtmpfs       devtmpfs            4078468      56            4078412   1% /dev
 tmpfs          tmpfs               4089312       0            4089312   0% /dev/shm
 efs-dns        nfs4       9007199254740992       0   9007199254740992   0% /efs
-</code></pre><p>Where <code>efs-dns</code> has the following form:</p>
+</code></pre>
+
+<p>Where <code>efs-dns</code> has the following form:</p>
+
 <pre><code>file-system-id.efs.aws-region.amazonaws.com:/
-</code></pre><p>If you see <code>efs-dns</code> in the output, that shows the file system is properly mounted.</p>
+</code></pre>
+
+<p>If you see <code>efs-dns</code> in the output, that shows the file system is properly mounted.</p>
+
 <p>Alternatively, you can check mount status using the following commands:</p>
+
 <pre><code>[ec2-user ~]$ df -h | egrep '^Filesystem|efs’
 [ec2-user ~]$ mount | grep efs
-</code></pre><h2 id="update-your-app">Update Your App</h2>
+</code></pre>
+
+<h2 id="update-your-app">Update Your App</h2>
+
 <p>To update your application, you may have to update the task definition and then update</p>
+
 <p><strong>How to update ECS container to update service task to reflect latest image in ECR:</strong></p>
-<p><a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/update-service.html">AWS recommends</a> registering a new task definition and updating the service to use the new task definition. The easiest way to do this is to:</p>
+
+<p><a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/update-service.html" target="_blank">AWS recommends</a> registering a new task definition and updating the service to use the new task definition. The easiest way to do this is to:</p>
+
 <ol>
 <li>Use the deploy script discussed earlier in this guide to deploy an updated image to the ECR</li>
 <li>Navigate to Task Definitions, select the latest task, choose create new revision</li>
@@ -795,84 +1026,152 @@ efs-dns        nfs4       9007199254740992       0   9007199254740992   0% /efs
 <li>Wait for new the service to be restarted</li>
 <li>Scale down your cluster to n instances.</li>
 </ol>
+
 <p><strong>If you need to change your instance type:</strong></p>
+
 <ol>
 <li>Go to CloudFormation. click on the Stack corresponding to your ECS-Cluster.</li>
 <li>Click &ldquo;Update Stack&rdquo;</li>
 <li>Use current template, Next</li>
-<li>Change <code>EcsInstanceType</code> to your preferred <a href="https://aws.amazon.com/ec2/instance-types/">instance type</a></li>
+<li>Change <code>EcsInstanceType</code> to your preferred <a href="https://aws.amazon.com/ec2/instance-types/" target="_blank">instance type</a></li>
 <li>Next, Next, Update</li>
 <li>Scale up your cluster to 2*n instances</li>
 <li>Wait for the n new instances of the new type being created</li>
 <li>Scale down your cluster to n</li>
 </ol>
+
 <h1 id="gotchas">Gotchas</h1>
+
 <h2 id="ecs-container-db-not-persisting">ECS Container DB Not Persisting</h2>
-<p>Based on AWS&rsquo;s Docs on <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_efs.html#efs-run-task">using Amazon EFS File Systems with Amazon ECS</a>, we need to configure a running container instance to use an Amazon EFS file system:</p>
+
+<p>Based on AWS&rsquo;s Docs on <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_efs.html#efs-run-task" target="_blank">using Amazon EFS File Systems with Amazon ECS</a>, we need to configure a running container instance to use an Amazon EFS file system:</p>
+
 <ul>
 <li>Log in to the container instance via SSH.</li>
 <li>Go to AWS console ➡️ EFS. Click on the file system. There&rsquo;s a link on the page that reads &ldquo;Amazon EC2 mount instructions&rdquo;. Click on that link, then execute the commands listed.</li>
 </ul>
+
 <p>Validate that the file system is mounted correctly with the following command.</p>
+
 <pre><code>$ mount | grep efs
-</code></pre><p>Note, if you make a mistake, use unmount as follows</p>
+</code></pre>
+
+<p>Note, if you make a mistake, use unmount as follows</p>
+
 <pre><code>$ umount /efs
-</code></pre><p>You can verify that your Amazon EFS file system has been unmounted by running the df command to display the disk usage statistics for the file systems currently mounted on your Linux-based Amazon EC2 instance.</p>
+</code></pre>
+
+<p>You can verify that your Amazon EFS file system has been unmounted by running the df command to display the disk usage statistics for the file systems currently mounted on your Linux-based Amazon EC2 instance.</p>
+
 <pre><code>$ df -T
-</code></pre><p>Make a backup of the /etc/fstab file.</p>
+</code></pre>
+
+<p>Make a backup of the /etc/fstab file.</p>
+
 <pre><code>$ sudo cp /etc/fstab /etc/fstab.bak
-</code></pre><p>Update the /etc/fstab file to automatically mount the file system at boot. Replace <code>fs-613c8628.efs.us-east-1.amazonaws.com</code> with your actual file system DNS name.</p>
+</code></pre>
+
+<p>Update the /etc/fstab file to automatically mount the file system at boot. Replace <code>fs-613c8628.efs.us-east-1.amazonaws.com</code> with your actual file system DNS name.</p>
+
 <pre><code>$ echo 'fs-613c8628.efs.us-east-1.amazonaws.com:/ /efs nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0' | sudo tee -a /etc/fstab
-</code></pre><p>Reload the file system table to verify that your mounts are working properly.</p>
+</code></pre>
+
+<p>Reload the file system table to verify that your mounts are working properly.</p>
+
 <pre><code>$ sudo mount -a
-</code></pre><p>After mounting the file system on the host container instance, we want to create a Task definition to use the Amazon EFS file system. Let&rsquo;s create a volume mount in our ECS task definition that allows our containers to access the file system.</p>
+</code></pre>
+
+<p>After mounting the file system on the host container instance, we want to create a Task definition to use the Amazon EFS file system. Let&rsquo;s create a volume mount in our ECS task definition that allows our containers to access the file system.</p>
+
 <p>Allow the ECS container instances to connect to the EFS file system via mount targets in your VPC.</p>
-<p>EFS can result in <a href="https://gitlab.com/gitlab-org/gitlab-ee/blob/master/doc/administration/high_availability/nfs.md#aws-elastic-file-system">significantly degraded performance</a></p>
+
+<p>EFS can result in <a href="https://gitlab.com/gitlab-org/gitlab-ee/blob/master/doc/administration/high_availability/nfs.md#aws-elastic-file-system" target="_blank">significantly degraded performance</a></p>
+
 <blockquote>
 <p>Workloads where many small files are written in a serialized manner, like git,
 are not well-suited for EFS. EBS with an NFS server on top will perform much better.</p>
 </blockquote>
+
 <h2 id="unable-to-mount-efs-on-ecs-instance">Unable to mount EFS on ECS instance</h2>
+
 <p><strong>Symptom:</strong> running the mount commands hangs, times out, and display the following error:</p>
+
 <pre><code>mount.nfs4: Connection reset by peer
 Failed to initialize TLS tunnel
-</code></pre><p><strong>Root Causes:</strong></p>
+</code></pre>
+
+<p><strong>Root Causes:</strong></p>
+
 <ul>
 <li>Security group is not set up correctly.</li>
 </ul>
+
 <p><strong>Remedy:</strong></p>
-<p>According to <a href="https://forums.aws.amazon.com/thread.jspa?threadID=235344">this thread on AWS forum</a>, the problem may lie with the configuration of the mount target’s security group. Use <a href="https://docs.aws.amazon.com/efs/latest/ug/accessing-fs-create-security-groups.html">this guide</a> for more on how to create security groups so you can use Secure Shell (SSH) to connect to any instances that have mounted Amazon EFS file systems. <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_efs.html#efs-security-group">This tutorial</a> walks you through how to create a security group for your EFS File System.</p>
+
+<p>According to <a href="https://forums.aws.amazon.com/thread.jspa?threadID=235344" target="_blank">this thread on AWS forum</a>, the problem may lie with the configuration of the mount target’s security group. Use <a href="https://docs.aws.amazon.com/efs/latest/ug/accessing-fs-create-security-groups.html" target="_blank">this guide</a> for more on how to create security groups so you can use Secure Shell (SSH) to connect to any instances that have mounted Amazon EFS file systems. <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_efs.html#efs-security-group" target="_blank">This tutorial</a> walks you through how to create a security group for your EFS File System.</p>
+
 <p>What we want is to have two security groups, one for your EC2 instance and another for your EFS file system that connects to your EC2 instance.</p>
+
 <p>For your EFS security group inbound rules, make sure you have this rule:</p>
-<p><img src="https://docs.aws.amazon.com/efs/latest/ug/images/gs-ec2-resources-120.png" alt=""></p>
+
+<p><img src="https://docs.aws.amazon.com/efs/latest/ug/images/gs-ec2-resources-120.png" alt="" /></p>
+
 <p>Where <code>sg-8b033bee</code> in the &ldquo;Source&rdquo; field of the image above should be the actual security group ID of your EC2 instance.</p>
+
 <p>Make sure both security group&rsquo;s VPC IDs are identical and equal to the VPC ID created when you first created the ECS cluster.</p>
+
 <h2 id="unable-to-ssh-into-ec2-instance">Unable to SSH into EC2 instance.</h2>
+
 <p>For your EC2 security group inbound rules, make sure you have this rule:</p>
-<p><img src="https://docs.aws.amazon.com/efs/latest/ug/images/gs-ec2-resources-100.png" alt=""></p>
+
+<p><img src="https://docs.aws.amazon.com/efs/latest/ug/images/gs-ec2-resources-100.png" alt="" /></p>
+
 <p>As an added security measure, it&rsquo;s a good idea to specify the IP address when you open up port 22 for inbound communications (under inbound rules settings). If you are taking this approach, make sure to whitelist all the IP addresses from all the location where you work (e.g. your office, home, co-working space) as the IP address will be different. Otherwise, the ssh attempt will hang and time out.</p>
+
 <h2 id="image-proliferation">Image Proliferation</h2>
+
 <ul>
 <li>Every time you run <code>docker-compose up</code>, you are building a new image. These images could be more than a gigabyte in size. I wasn&rsquo;t aware that these images are being built and retained after I <code>ctrl+c</code> from the docker process. Quickly my hard drive was running low on memory. Make sure you delete outdated images with the following lines of commands:</li>
 </ul>
+
 <p>List containers:</p>
+
 <pre><code>$ docker ps -a
-</code></pre><p>Remove containers by id:</p>
+</code></pre>
+
+<p>Remove containers by id:</p>
+
 <pre><code>$ docker rm &lt;CONTAINER ID&gt;
-</code></pre><p>List images:</p>
+</code></pre>
+
+<p>List images:</p>
+
 <pre><code>$ docker images
-</code></pre><p>Remove images:</p>
+</code></pre>
+
+<p>Remove images:</p>
+
 <pre><code>$ docker rmi &lt;IMAGE ID&gt;
-</code></pre><p>Make sure to run <code>docker rm</code> to delete the containers before removing the images. Otherwise, you&rsquo;ll get this error:</p>
+</code></pre>
+
+<p>Make sure to run <code>docker rm</code> to delete the containers before removing the images. Otherwise, you&rsquo;ll get this error:</p>
+
 <blockquote>
 <p>Error response from daemon: conflict: unable to delete 3d2765b2fe31 (must be forced) - image is being used by stopped container 5ee892b7f037</p>
 </blockquote>
+
 <h2 id="aws-elastic-beanstalk">AWS Elastic Beanstalk</h2>
+
 <p>Don&rsquo;t use it. Use AWS ECS instead.</p>
+
 <h2 id="mongo-atlas">Mongo Atlas</h2>
+
 <p>Don&rsquo;t use it. Mongo Atlas free tier can’t execute certain commands like find. Costs too much money 😞</p>
-<p>Their tutorial (<a href="https://www.mongodb.com/blog/post/building-a-nodejs-app-with-mongodb-atlas-and-aws-elastic-container-service-part-1">part 1</a>, <a href="https://www.mongodb.com/blog/post/building-a-nodejs-app-with-mongodb-atlas-and-aws-elastic-container-service-part-2">part 2</a>) is pretty good though.</p>
+
+<p>Their tutorial (<a href="https://www.mongodb.com/blog/post/building-a-nodejs-app-with-mongodb-atlas-and-aws-elastic-container-service-part-1" target="_blank">part 1</a>, <a href="https://www.mongodb.com/blog/post/building-a-nodejs-app-with-mongodb-atlas-and-aws-elastic-container-service-part-2" target="_blank">part 2</a>) is pretty good though.</p>
+
 <h2 id="using-mongo-shell-via-container">Using Mongo Shell Via Container</h2>
+
 <pre><code>$ docker run -it -d mongo
 592a2dfdcffd8a2c59615800eace1e922ba5e88bb836eaf11c06e06278112ed9
 
@@ -885,11 +1184,18 @@ $ docker exec -it cranky_chebyshev bash
 root@592a2dfdcffd:/#
 # docker stop cranky_chebyshev
 # docker rm cranky_chebyshev
-</code></pre><h2 id="useful-commands">Useful Commands</h2>
+</code></pre>
+
+<h2 id="useful-commands">Useful Commands</h2>
+
 <p>See which process is running in port 3000, then kill that process.</p>
+
 <pre><code>$ lsof -i tcp:3000
 $ kill &lt;PID&gt;
-</code></pre><p>Kill all mongo servers</p>
+</code></pre>
+
+<p>Kill all mongo servers</p>
+
 <pre><code>$ lsof -i | grep mongo
 ~$ lsof -i | grep mongo
 mongod    19557 xiaoyun   10u  IPv4 0x6b9c9aebc1dd3e63      0t0  TCP localhost:27017 (LISTEN)
@@ -899,9 +1205,15 @@ mongod    19557 xiaoyun   35u  IPv4 0x6b9c9aebadd5c3e3      0t0  TCP localhost:2
 mongod    19557 xiaoyun   37u  IPv4 0x6b9c9aebe97b1123      0t0  TCP localhost:27017-&gt;localhost:56389 (ESTABLISHED)
 mongo     19569 xiaoyun    7u  IPv4 0x6b9c9aebdde83e63      0t0  TCP localhost:56370-&gt;localhost:27017 (ESTABLISHED)
 $ kill 19557
-</code></pre><p>you could also use the following command to see that EBS drive is provisioned with the EC2 instance.</p>
+</code></pre>
+
+<p>you could also use the following command to see that EBS drive is provisioned with the EC2 instance.</p>
+
 <pre><code>[ec2-user ~]$ df -h
-</code></pre><p>You can use the following command to check the AWS EBS volume’s listing on the instance:</p>
+</code></pre>
+
+<p>You can use the following command to check the AWS EBS volume’s listing on the instance:</p>
+
 <pre><code>[ec2-user ~]$ lsblk                     
 </code></pre>
               
@@ -985,7 +1297,7 @@ $ kill 19557
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -1088,7 +1400,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>

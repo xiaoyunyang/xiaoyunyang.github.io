@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software Design on Xiaoyun Yang</title>
@@ -20,6 +20,7 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/</guid>
       <description>&lt;p&gt;What I learned working at a mature startup that&amp;rsquo;s building new things but also has a ton of customers and products in production.&lt;/p&gt;
+
 &lt;p&gt;This post is a WIP.&lt;/p&gt;</description>
     </item>
     
@@ -39,6 +40,7 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/</guid>
       <description>&lt;p&gt;Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.&lt;/p&gt;
+
 &lt;p&gt;This post is a WIP.&lt;/p&gt;</description>
     </item>
     
@@ -48,7 +50,7 @@
       <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34;&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34; /&gt;
 This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;</description>
     </item>
     

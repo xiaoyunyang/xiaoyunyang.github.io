@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.71.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.58.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="">
 <meta name="description" content="Go is becoming pretty mainstream. Every job posting I&rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.">
@@ -281,41 +281,97 @@
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Go is becoming pretty mainstream. Every job posting I&rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.</p>
-<!-- raw HTML omitted -->
-<p><img src="https://images2.imgbox.com/f8/aa/OSwaqz8O_o.png" alt="Go Gopher"></p>
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#what-is-go">What is Go</a>
+<ul>
+<li><a href="#why-learn-go">Why Learn Go</a></li>
+<li><a href="#language-features">Language Features</a></li>
+<li><a href="#go-offers-best-balance">Go Offers Best Balance</a></li>
+</ul></li>
+<li><a href="#your-first-go-program">Your First Go Program</a>
+<ul>
+<li><a href="#set-up">Set up</a></li>
+<li><a href="#cat-program">Cat program</a></li>
+</ul></li>
+<li><a href="#dependencies">Dependencies</a>
+<ul>
+<li><a href="#go-modules">Go Modules</a></li>
+</ul></li>
+<li><a href="#stuff-to-check-out">Stuff to check out</a></li>
+</ul>
+</nav>
+
+<p><img src="https://images2.imgbox.com/f8/aa/OSwaqz8O_o.png" alt="Go Gopher" /></p>
+
 <div class="alert info ">
   <p>This is a Live Document. I will be updating it periodically.</p>
 </div>
-<!-- raw HTML omitted -->
+
+<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#what-is-go">What is Go</a>
+<ul>
+<li><a href="#why-learn-go">Why Learn Go</a></li>
+<li><a href="#language-features">Language Features</a></li>
+<li><a href="#go-offers-best-balance">Go Offers Best Balance</a></li>
+</ul></li>
+<li><a href="#your-first-go-program">Your First Go Program</a>
+<ul>
+<li><a href="#set-up">Set up</a></li>
+<li><a href="#cat-program">Cat program</a></li>
+</ul></li>
+<li><a href="#dependencies">Dependencies</a>
+<ul>
+<li><a href="#go-modules">Go Modules</a></li>
+</ul></li>
+<li><a href="#stuff-to-check-out">Stuff to check out</a></li>
+</ul>
+</nav>
+
 <h1 id="what-is-go">What is Go</h1>
-<p><a href="https://github.com/golang/go">Go</a> is a programming language created by Google. It started as an experiment by some engineers, to develop to address the pain points of  C++ and Java without compromising performance and capability that those languages provides. Other than a well-thought design, it has some specific features for concurrency like a type of light-weight processes called goroutines.</p>
-<p>In <a href="https://tomassetti.me/best-programming-languages/">Tomassett&rsquo;s blog article</a> on best articles for each situation, he writes:</p>
+
+<p><a href="https://github.com/golang/go" target="_blank">Go</a> is a programming language created by Google. It started as an experiment by some engineers, to develop to address the pain points of  C++ and Java without compromising performance and capability that those languages provides. Other than a well-thought design, it has some specific features for concurrency like a type of light-weight processes called goroutines.</p>
+
+<p>In <a href="https://tomassetti.me/best-programming-languages/" target="_blank">Tomassett&rsquo;s blog article</a> on best articles for each situation, he writes:</p>
+
 <blockquote>
 <p>All its Go&rsquo;s authors expressed a dislike for C++ complexity. So, in some way, it is a language designed to persuade C people to enter the new century.</p>
 </blockquote>
+
 <h2 id="why-learn-go">Why Learn Go</h2>
+
 <ol>
-<li>It&rsquo;s <a href="https://movio.co/en/blog/migrate-Scala-to-Go/">easy to learn</a>.</li>
+<li>It&rsquo;s <a href="https://movio.co/en/blog/migrate-Scala-to-Go/" target="_blank">easy to learn</a>.</li>
 <li>It let&rsquo;s you do concurrency without the overhead.</li>
 <li>It&rsquo;s type safe.</li>
 <li>It&rsquo;s fast.</li>
 </ol>
-<p>This article discusses the <a href="https://medium.com/@kevalpatel2106/why-should-you-learn-go-f607681fad65">business case for why learn go</a>, including Moore&rsquo;s law is failing, which drives the need for a language with built-in concurrency support. <a href="https://blog.golang.org/concurrency-is-not-parallelism">Concurrency is not parallelism</a>.</p>
+
+<p>This article discusses the <a href="https://medium.com/@kevalpatel2106/why-should-you-learn-go-f607681fad65" target="_blank">business case for why learn go</a>, including Moore&rsquo;s law is failing, which drives the need for a language with built-in concurrency support. <a href="https://blog.golang.org/concurrency-is-not-parallelism" target="_blank">Concurrency is not parallelism</a>.</p>
+
 <blockquote>
 <p>concurrency is the <strong>composition</strong> of independently executing processes, while parallelism is the simultaneous execution of (possibly related) computations. Concurrency is about <strong>dealing with lots</strong> of things at once. Parallelism is about <strong>doing lots</strong> of things at once.</p>
 </blockquote>
+
 <h2 id="language-features">Language Features</h2>
+
 <ul>
-<li>Easy to learn - <a href="https://movio.co/en/blog/migrate-Scala-to-Go/">See this article</a></li>
+<li>Easy to learn - <a href="https://movio.co/en/blog/migrate-Scala-to-Go/" target="_blank">See this article</a></li>
 <li>Built-in Concurrency Support</li>
 <li>Go is that it&rsquo;s a modern high performant low level language with built in concurrency support and strong type system</li>
 <li>supports OOP but instead of class inheritance, it uses composition</li>
 <li>Supports lambda expressions with their function literals and also supports higher order functions</li>
 <li>The market share for Go is networking and servers but based on current trends, it seems Go will beat C, C++, Java, and Rust in the language for building infrastructure since the future is multicore processing. Go is not totally mainstream yet but is gaining a lot of traction</li>
 </ul>
+
 <h2 id="go-offers-best-balance">Go Offers Best Balance</h2>
+
 <p>There used to be a time when programmers have to make a tradeoff between and efficient code and clean and easy to read code when selecting a language.</p>
+
 <p>Go lets you write efficient and clean code.</p>
+
 
  
   
@@ -368,137 +424,179 @@
 
   <div style="clear:both;"></div>
 
-<h1 id="your-first-go-program">Your First Go Program</h1>
-<h2 id="set-up">Set up</h2>
-<p>Download Go from <a href="https://golang.org/dl/">this link</a> and install Go on your computer.</p>
-<p>Set up GOPATH and GOBIN:</p>
-<ol>
-<li>
-<p>Add $GOPATH and $GOBIN</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ vim ~/.bash_profile
-</code></pre></div><p>Add the following lines to .bash_profile</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export GOPATH<span style="color:#f92672">=</span>$HOME/go
-export GOBIN<span style="color:#f92672">=</span>$HOME/go/bin
-</code></pre></div></li>
-<li>
-<p>Refresh <code>.bash_profile</code> for the GOPATH and GOBIN to take effect:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ . ~/.bash_profile<span style="color:#e6db74">`</span>
-</code></pre></div></li>
-<li>
-<p>Verify paths</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo $GOPATH
-/Users/xiaoyun/go
-</code></pre></div></li>
-</ol>
-<p>For more information about GOPATH, checkout <a href="https://github.com/golang/go/wiki/SettingGOPATH">the wiki</a>.</p>
-<h2 id="cat-program">Cat program</h2>
-<p>We will implement <code>cat</code> in Go. It should take at least one argument which specifies the file name and prints out the contents.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
-<span style="color:#f92672">import</span> (
-  <span style="color:#e6db74">&#34;fmt&#34;</span>
-  <span style="color:#e6db74">&#34;io&#34;</span>
-  <span style="color:#e6db74">&#34;os&#34;</span>
+<h1 id="your-first-go-program">Your First Go Program</h1>
+
+<h2 id="set-up">Set up</h2>
+
+<p>Download Go from <a href="https://golang.org/dl/" target="_blank">this link</a> and install Go on your computer.</p>
+
+<p>Set up GOPATH and GOBIN:</p>
+
+<ol>
+<li><p>Add $GOPATH and $GOBIN</p>
+
+<pre><code class="language-bash">$ vim ~/.bash_profile
+</code></pre>
+
+<p>Add the following lines to .bash_profile</p>
+
+<pre><code class="language-bash">export GOPATH=$HOME/go
+export GOBIN=$HOME/go/bin
+</code></pre></li>
+
+<li><p>Refresh <code>.bash_profile</code> for the GOPATH and GOBIN to take effect:</p>
+
+<pre><code class="language-bash">$ . ~/.bash_profile`
+</code></pre></li>
+
+<li><p>Verify paths</p>
+
+<pre><code class="language-bash">$ echo $GOPATH
+/Users/xiaoyun/go
+</code></pre></li>
+</ol>
+
+<p>For more information about GOPATH, checkout <a href="https://github.com/golang/go/wiki/SettingGOPATH" target="_blank">the wiki</a>.</p>
+
+<h2 id="cat-program">Cat program</h2>
+
+<p>We will implement <code>cat</code> in Go. It should take at least one argument which specifies the file name and prints out the contents.</p>
+
+<pre><code class="language-go">package main
+
+import (
+  &quot;fmt&quot;
+  &quot;io&quot;
+  &quot;os&quot;
 )
 
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-  <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>) &lt; <span style="color:#ae81ff">2</span> {
-    <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Copy</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdout</span>, <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdin</span>)
+func main() {
+  if len(os.Args) &lt; 2 {
+    _, err := io.Copy(os.Stdout, os.Stdin)
 
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stderr</span>, <span style="color:#e6db74">&#34;%v\n&#34;</span>, <span style="color:#a6e22e">err</span>)
-      <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">1</span>)
+    if err != nil {
+      fmt.Fprintf(os.Stderr, &quot;%v\n&quot;, err)
+      os.Exit(1)
     }
 
-    <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">0</span>)
+    os.Exit(0)
   }
 
-  <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">files</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>[<span style="color:#ae81ff">1</span>:] {
-    <span style="color:#a6e22e">r</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Open</span>(<span style="color:#a6e22e">files</span>)
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stderr</span>, <span style="color:#e6db74">&#34;%v\n&#34;</span>, <span style="color:#a6e22e">err</span>)
-      <span style="color:#66d9ef">continue</span>
+  for _, files := range os.Args[1:] {
+    r, err := os.Open(files)
+    if err != nil {
+      fmt.Fprintf(os.Stderr, &quot;%v\n&quot;, err)
+      continue
     }
 
-    <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">cerr</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Copy</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdout</span>, <span style="color:#a6e22e">r</span>)
+    _, cerr := io.Copy(os.Stdout, r)
 
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">cerr</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stderr</span>, <span style="color:#e6db74">&#34;%v\n&#34;</span>, <span style="color:#a6e22e">err</span>)
-      <span style="color:#66d9ef">continue</span>
+    if cerr != nil {
+      fmt.Fprintf(os.Stderr, &quot;%v\n&quot;, err)
+      continue
     }
-    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Close</span>()
+    r.Close()
   }
 }
-</code></pre></div><p>Save the code to a file called <code>cat.go</code>. Then in the same directory, create two files:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo foo! &gt; foo
+</code></pre>
+
+<p>Save the code to a file called <code>cat.go</code>. Then in the same directory, create two files:</p>
+
+<pre><code class="language-bash">$ echo foo! &gt; foo
 $ echo bar! &gt; bar
-</code></pre></div><p>Build the cat program in go:</p>
+</code></pre>
+
+<p>Build the cat program in go:</p>
+
 <pre><code>$ go build cat.go
-</code></pre><p>Then we can run our cat program as such:</p>
+</code></pre>
+
+<p>Then we can run our cat program as such:</p>
+
 <pre><code>$ ./cat foo bar
 foo!
 bar!
-</code></pre><p>We don&rsquo;t have to build a program to run it. Another way to run the program:</p>
+</code></pre>
+
+<p>We don&rsquo;t have to build a program to run it. Another way to run the program:</p>
+
 <pre><code>$ go run cat.go foo bar
-</code></pre><h1 id="dependencies">Dependencies</h1>
+</code></pre>
+
+<h1 id="dependencies">Dependencies</h1>
+
 <p>To use libraries created by the Go community in your code, we can use the <code>go get</code> command. A pre-requisite is to have <code>GOPATH</code> set.</p>
-<p>For example, let&rsquo;s use <a href="https://github.com/ajstarks/svgo">SVGo</a>:</p>
+
+<p>For example, let&rsquo;s use <a href="https://github.com/ajstarks/svgo" target="_blank">SVGo</a>:</p>
+
 <pre><code>$ go get github.com/ajstarks/svgo
-</code></pre><p>The command above basically performs a <code>git clone</code> and download all the code from that repository into <code>$GOPATH/src/github.com/ajstarks/svgo</code>. After executing the command, you can use the svgo library as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</code></pre>
 
-<span style="color:#f92672">import</span> (
-  <span style="color:#e6db74">&#34;math/rand&#34;</span>
-  <span style="color:#e6db74">&#34;os&#34;</span>
+<p>The command above basically performs a <code>git clone</code> and download all the code from that repository into <code>$GOPATH/src/github.com/ajstarks/svgo</code>. After executing the command, you can use the svgo library as follows:</p>
+
+<pre><code class="language-go">package main
+
+import (
+  &quot;math/rand&quot;
+  &quot;os&quot;
   
-  <span style="color:#a6e22e">svg</span> <span style="color:#e6db74">&#34;github.com/ajstarks/svgo&#34;</span>
+  svg &quot;github.com/ajstarks/svgo&quot;
 )
 
-<span style="color:#66d9ef">var</span> (
-  <span style="color:#a6e22e">canvas</span> = <span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdout</span>)
-  <span style="color:#a6e22e">width</span>  = <span style="color:#ae81ff">1000</span>
-  <span style="color:#a6e22e">height</span> = <span style="color:#ae81ff">500</span>
+var (
+  canvas = svg.New(os.Stdout)
+  width  = 1000
+  height = 500
 )
 
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-  <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">Start</span>(<span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>)
-  <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">Gstyle</span>(<span style="color:#e6db74">&#34;fill:#22264b&#34;</span>)
+func main() {
+  canvas.Start(width, height)
+  canvas.Gstyle(&quot;fill:#22264b&quot;)
   
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">color</span> <span style="color:#66d9ef">string</span>
-  <span style="color:#a6e22e">radius</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">90</span>
-  <span style="color:#a6e22e">step</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">8</span>
+  var color string
+  radius := 90
+  step := 8
   
-  <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">200</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">%</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
-      <span style="color:#a6e22e">color</span> = <span style="color:#e6db74">&#34;#e6cf8b&#34;</span>
-    } <span style="color:#66d9ef">else</span> {
-      <span style="color:#a6e22e">color</span> = <span style="color:#e6db74">&#34;#b56969&#34;</span>
+  for i := 0; i &lt; 200; i++ {
+    if i%4 == 0 {
+      color = &quot;#e6cf8b&quot;
+    } else {
+      color = &quot;#b56969&quot;
     }
 
-    <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Intn</span>(<span style="color:#a6e22e">width</span>), <span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Intn</span>(<span style="color:#a6e22e">height</span>)
+    x, y := rand.Intn(width), rand.Intn(height)
 
-    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">r</span>, <span style="color:#a6e22e">nc</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">radius</span>, <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">nc</span> &lt; <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">nc</span><span style="color:#f92672">++</span> {
-      <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">Circle</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">r</span>, <span style="color:#e6db74">&#34;stroke:&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">color</span>)
-      <span style="color:#a6e22e">r</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">step</span>
+    for r, nc := radius, 0; nc &lt; 10; nc++ {
+      canvas.Circle(x, y, r, &quot;stroke:&quot;+color)
+      r -= step
     }
   }
   
-  <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">Gend</span>()
-  <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">End</span>()
+  canvas.Gend()
+  canvas.End()
 }
-</code></pre></div><p>Run the code above using <code>go run main.go &gt; circles.html &amp;&amp; open circles.html</code> generates the following image:</p>
-<p><img src="https://images2.imgbox.com/03/bc/WbCkgbm6_o.png" alt=""></p>
+</code></pre>
+
+<p>Run the code above using <code>go run main.go &gt; circles.html &amp;&amp; open circles.html</code> generates the following image:</p>
+
+<p><img src="https://images2.imgbox.com/03/bc/WbCkgbm6_o.png" alt="" /></p>
+
 <h2 id="go-modules">Go Modules</h2>
+
 <p>Go v.1.11 introduced Go modules, which is a dependency management solution in Go. Here&rsquo;s a good introduction to go.modules:</p>
+
 <ul>
-<li><a href="https://github.com/Yigenana/WWGNYC/blob/master/go-modules/INSTRUCTIONS.md">Walkthrough</a></li>
-<li><a href="https://github.com/Yigenana/WWGNYC/blob/master/go-modules/Getting-Started-with-Go-Modules.pdf">Slides</a></li>
+<li><a href="https://github.com/Yigenana/WWGNYC/blob/master/go-modules/INSTRUCTIONS.md" target="_blank">Walkthrough</a></li>
+<li><a href="https://github.com/Yigenana/WWGNYC/blob/master/go-modules/Getting-Started-with-Go-Modules.pdf" target="_blank">Slides</a></li>
 </ul>
+
 <h1 id="stuff-to-check-out">Stuff to check out</h1>
+
 <ul>
-<li><a href="https://github.com/ajstarks/svgo">SVGo</a> - generates SVG and canvas elements</li>
-<li><a href="https://github.com/gomods/athens">Athens</a> - A Go module datastore and proxy (NPM for Go)</li>
-<li><a href="https://gopherize.me/">GopherizeMe</a> - Make Gopher version of yourself</li>
+<li><a href="https://github.com/ajstarks/svgo" target="_blank">SVGo</a> - generates SVG and canvas elements</li>
+<li><a href="https://github.com/gomods/athens" target="_blank">Athens</a> - A Go module datastore and proxy (NPM for Go)</li>
+<li><a href="https://gopherize.me/" target="_blank">GopherizeMe</a> - Make Gopher version of yourself</li>
 </ul>
               
             </div>
@@ -579,7 +677,7 @@ bar!
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>
@@ -682,7 +780,7 @@ s.setAttribute('data-timestamp', +new Date());
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#">
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
         
           <i class="fa fa-list"></i>
         </a>

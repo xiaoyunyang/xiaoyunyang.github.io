@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scala on Xiaoyun Yang</title>
@@ -28,7 +28,7 @@
       <pubDate>Sun, 12 Mar 2017 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</guid>
-      <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34; target=&#34;_blank&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;</description>
     </item>
     
   </channel>

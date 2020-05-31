@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Node on Xiaoyun Yang</title>
@@ -28,7 +28,7 @@
       <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34;&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34; /&gt;
 This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;</description>
     </item>
     
@@ -38,7 +38,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34; target=&#34;_blank&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;</description>
     </item>
     
     <item>
