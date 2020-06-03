@@ -15,8 +15,6 @@ keywords:
   - DevOps
   - SonarQube
   - Static Code Analysis
-thumbnailImagePosition: top
-thumbnailImage: https://lh3.googleusercontent.com/
 ---
 
 ![Static code analysis](/post/images/sonarqube/cover-static-analysis.png)
