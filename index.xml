@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Tue, 02 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My Experience Buying a Home in NYC during the COVID-19 Pandemic</title>
+      <link>https://xiaoyunyang.github.io/post/my-experience-buying-a-home-in-nyc-during-the-covid-19-pandemic/</link>
+      <pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/my-experience-buying-a-home-in-nyc-during-the-covid-19-pandemic/</guid>
+      <description>&lt;p&gt;I worked from home for almost 4 months since the start of the quarantine before I got a monitor for working from home. I&amp;rsquo;m a programmer. I was under the impression that we were going to be able to go back to work first in April, then May. Now the government is saying August, but I no longer trust anything the government or the media says about the reopening timeline. I’m going to assume the worst that we are going to work from home until the vaccine becomes widely available. A realistic timeline for when that will be is late 2021, early 2022. I’m making preparations for a long term social distancing, work from home situation. Buying the monitor is the first step. I’m also getting a new set of furniture and moving to a bigger apartment so I’ll have a better time staying at home for an extended period of time. COVID-19 is the catalyst for me initiating the process of purchasing a home in NY, but I&amp;rsquo;ve always planned to purchase. This is my experience buying a home in NYC in the spring / summer of 2020.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>How to Set Up Static Code Analysis For Your Project</title>
