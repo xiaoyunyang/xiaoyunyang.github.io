@@ -197,6 +197,8 @@ Another important thing to verify is [what fees](https://www.valuepenguin.com/mo
 
 ## Buying a Coop
 
+Coop is short for Cooperative Housing Project. When you are buying a coop property, you are not buying the real-estate, but rather a share in a not-for profit corporation.
+
 There are a few important things to be aware of when buying a Coop:
 
 1. Sub-lease
@@ -207,7 +209,7 @@ There are a few important things to be aware of when buying a Coop:
 
 When you buy a condo, it is your property and you have unrestricted right to rent out your apartment and make it a full investment property.
 
-With a Coop, however, you need approval from the Coop's Board of Directors if you want to sublet your apartment. This is because when you purchase an apartment in a coop, you do not own the deed to property; rather you become a tenant-shareholder and owns shares of the building. The number of shares is based on the size of the apartment so a two-bedroom apartment is worth more than a studio apartment and as such, has more shares. The coop's sales package should includes sublet policy.
+With a Coop, however, you need approval from the Coop's Board of Directors if you want to sublet your apartment. This is because when you purchase an apartment in a coop, you do not own the deed to property; rather you become a tenant-shareholder, which gives you shares of the building. The number of shares is based on the size of the apartment so a two-bedroom apartment is worth more than a studio apartment and as such, has more shares. The coop's sales package should includes sublet policy.
 
 ### Maintenance Fee
 
@@ -228,7 +230,7 @@ Typically, maintenance increases average 3 to 4 percent a year but sometimes, ma
 
 Currently, VA loans can be used to purchase a house, townhouse, condominium or even a mobile home, but not a co-op. While congress is [discussing a plan to extend VA loans program to cover coops](https://www.housingwire.com/articles/house-bill-would-extend-va-loans-to-co-ops/), there is no timeline for when this bill will be passed.
 
-Coops are the dominant type of housing in the NY housing market but VA loans cannot be used to purchase a coop. Right now, veterans looking to buy a home in NYC would have to either come up with the 20% or 25% required down-payment for the coop or buy condos, which costs significantly more than coops.
+Coops are the dominant type of housing in the NY housing market but [VA loans cannot be used](https://www.military.com/money/va-loans/eligible-properties-for-va-loans.html) to purchase a coop. Right now, veterans looking to buy a home in NYC would have to either come up with the 20% or 25% required down-payment for the coop or buy condos, which costs significantly more than coops.
 
 ## Real-estate Investment
 
