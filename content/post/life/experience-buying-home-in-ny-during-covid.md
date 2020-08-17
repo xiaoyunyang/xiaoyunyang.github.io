@@ -197,7 +197,38 @@ Another important thing to verify is [what fees](https://www.valuepenguin.com/mo
 
 ## Buying a Coop
 
-You are a tenant-shareholder.
+There are a few important things to be aware of when buying a Coop:
+
+1. Sub-lease
+2. Maintenance Fee
+3. VA Loan Applicability
+
+### Sub-lease
+
+When you buy a condo, it is your property and you have unrestricted right to rent out your apartment and make it a full investment property.
+
+With a Coop, however, you need approval from the Coop's Board of Directors if you want to sublet your apartment. This is because when you purchase an apartment in a coop, you do not own the deed to property; rather you become a tenant-shareholder and owns shares of the building. The number of shares is based on the size of the apartment so a two-bedroom apartment is worth more than a studio apartment and as such, has more shares. The coop's sales package should includes sublet policy.
+
+### Maintenance Fee
+
+While you pay taxes or common charges for a Condo each month, you pay a monthly maintenance fee for a coop. The maintenance fee pays for costs to run the building, including:
+
+- taxes for the whole building,
+- the building's expenses, which includes operational costs (e.g., management company, super's salary, doorman, electricity for the public areas),
+- gas and water for the apartments,
+- Mortgage for the coop building, if applicable
+
+If you are buying in a buildings with a mortgage, you will probably pay a higher maintenance fee; however, you can get tax deduction on a percentage of your maintenance fee.
+
+Maintenance increase is a big risk when buying a home in a coop. During the contract review phase, ask for financial documents from the building and ask your attorney about any red flags such as poor income to debt ratio, poor coop financial management, pending or past lawsuits, deferred maintenance, and reasons for any substantial maintenance increases in the past. The attorney should also check the status of the building's mortgage to see the principal and interest rate, and any plan to refinance the mortgage.
+
+Typically, maintenance increases average 3 to 4 percent a year but sometimes, maintenance may go down if the building successfully negotiates a favorable long-term lease with its commercial tenants.
+
+### VA Loan Applicability
+
+Currently, VA loans can be used to purchase a house, townhouse, condominium or even a mobile home, but not a co-op. While congress is [discussing a plan to extend VA loans program to cover coops](https://www.housingwire.com/articles/house-bill-would-extend-va-loans-to-co-ops/), there is no timeline for when this bill will be passed.
+
+Coops are the dominant type of housing in the NY housing market but VA loans cannot be used to purchase a coop. Right now, veterans looking to buy a home in NYC would have to either come up with the 20% or 25% required down-payment for the coop or buy condos, which costs significantly more than coops.
 
 ## Real-estate Investment
 
