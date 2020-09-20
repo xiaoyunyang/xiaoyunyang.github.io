@@ -1,6 +1,6 @@
 ---
 title: "A Guide to Open Sourcing"
-date: 2020-08-21
+date: 2020-10-21
 draft: true
 categories:
   - project
@@ -68,7 +68,6 @@ Remove proprietary information
 6. Figure out type and subtype for WF steps and to what extent they should affect the library's logic
 7. Write Algo for calculating WF Step Order (i.e., distance of node from source node)
     * If BE data already has WF Step Order, bypass the calc. Otherwise, perform the calc to generate the WorkflowVisData
-
 
 ## Phase 2
 

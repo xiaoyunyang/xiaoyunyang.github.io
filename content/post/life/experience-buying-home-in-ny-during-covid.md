@@ -160,7 +160,123 @@ Once you are ready to make an offer, here's what comes next:
       - What fee to pay to the building if I want to rent it out in 3 years?
 
 6. **Loan Application:**
-    - It's assumed that at this point, you'd have shopped around for the best rates and have a bank or a broker you are going to be working with to get the loan. The lender needs a fully-executed contract to lock your rate. 
+    - It's assumed that at this point, you'd have shopped around for the best rates and have a bank or a broker you are going to be working with to get the loan. The lender needs a fully-executed contract to lock your rate.
+
+# Phase 3 Going Under Contract
+
+In short, what happens during the period is:
+
+1. Submit documents to the lender for underwriting.
+2. Get Loan Commitment Letter.
+3. Submit Coop application, which should include Loan Commitment Letter.
+4. Interview with the Coop board.
+5. Get Coop board approval to get Clear to Close (CTC) from the lender.
+
+You officially go under contract after both the Buyer and Seller sign the contract. The seller signed the contract after the good faith deposit was wired to the Seller attorney's Escrow account. The lender requires the fully executed contract (i.e., signed by both Buyer and Seller) to lock the mortgage rate.
+
+After you lock the rate with the lender, the next big milestone is to get the **Loan Commitment Letter** from the lender, which is required as part of the application I need to submit to the coop board.
+
+## Getting Loan Commitment Letter
+
+The lender works with an underwriter to determine how much risk a lender will take on if they gave you that loan. To support this evaluation, they required documentation from me as well as the coop.
+
+The financial documents I needed to provide include:
+
+1. Contract of Sale (fully executed contract)
+2. Copy of purchase deal sheet, which should include the name and contact information of my attorney and realtor.
+3. Copy of Photo ID
+4. 2018 and 2019 W2’s/1099’s as applicable for all employers
+5. 2018 and 2019 tax returns, all pages and schedules
+6. One month of **recent** paystubs, in addition to 2018 and 2019 year end stubs if bonus income received
+7. Two consecutive months of recent bank statements for checking, savings & money market (all pages)
+8. Two consecutive months of recent statements for any investment accounts, ex. Stocks, bonds, CD’s, IRA’s, 401k, etc... ( all pages)
+9. Retirement/401k accounts- provide plan terms that describe the terms & conditions of withdrawal *(if withdrawal is only allowed with termination, retirement or death, funds cannot be used as reserves)*
+10. Letter from Present Landlord or managing agent (or signed and dated letter from parents confirming you currently reside with them free of rent)
+
+The financial documents the building needed to provide include a questionnaire for which I need to pay $250 (The questionnaire was required because the bank had not approved a loan for this building this year. I had to pay the coop management company $250 to release the questionnaire to the bank). The building provided.
+
+In addition to the documentation, the lender will also hire an appraiser to evaluate the value of the property to give the lender confidence that the homeowner is not over-borrowing for a property.
+
+After all the financial documents and appraisal report are received, the underwriting process began.
+
+## Getting Coop Board Approval
+
+While I waited for the Loan Commitment Letter, I prepared for the coop application. My real-estate agent completed the application for me while I provided him all the required documents, a lot of which overlapped with the documents I needed to submit to the lender. Below are the documents I prepared for the application, which I split up into two categories (easy and long lead time / effort):
+
+Easy Stuff
+
+1. Contract of Sale (fully executed contract)
+2. Purchase Application (agent filled out)
+3. Financial Statement (Enclosed) must include all supporting financial information (e.g., Life Insurance Policy).
+4. Two Years Federal Income Tax Returns with w'2's (all schedules) all pages of tax return submitted and 1099 if self-employed.
+5. Lead-paint-forms.
+6. Signed Statement regarding transfer taxes
+7. House Rules Acknowledgement
+8. Lead Paint Notice to be executed by Seller & buyer.
+9. Three (3) Original Recognition Agreements (i.e., AZTEC forms).
+
+Long Lead Time / Requires Effort
+
+1. Employer's Letter of reference, stating position held, length of employment and annual salary- If self-employed- A letter from accountant stating income for the last 3 years.
+2. Two business reference letters.
+3. Two personal reference letters.
+4. Letter from Present Landlord or managing agent (or signed and dated letter from parents confirming you currently reside with them free of rent)
+5. Bank verification of cash on deposit, securities and/or pension assets must be documented) All pages of each statement must be submitted.
+6. Cover letter
+7. If financing (i.e., taking out a mortgage loan)
+    - Bank Commitment Letter
+    - Copy of Loan Application
+
+Getting the bank verification letters required me visiting a branch of each of my banks (hard during COVID pandemic) to get a teller to hand me a physical copy of a letter stating (1) how long I have had the account, (2) whether the account is in good standing, and (3) average balance of the account. The coop did not accept bank statements.
+
+The reference letters and cover letter need to include certain information. I asked my real-estate agent for a template for these letters.
+
+As I had prepared everything ahead of the Loan Commitment Letter, I submitted the application the day after the Loan Commitment Letter was received. The management company reviewed my package and presented my application at the next coop board meeting and I was invited to interview with the board.
+
+The board interview took place at the building and lasted 10 minutes. I read up some tips online about what to expect during a coop interview and the dos and don'ts. I dressed up (business casual), showed up 5-10 minutes before the start time of the interview, answered all the questions briefly and concisely, not volunteering more information than required, and limited the questions I have for them. The following summarized the interview:
+
+Questions coop board asked me:
+
+1. Where have you been living? (use the opportunity to talk about your background)
+2. Followup: Why do you want to live here?
+3. Have you read the house rules about carpeting?
+4. Do you have any pets or plan on getting pets?
+
+Questions I asked the coop board:
+
+1. How can I get involved with the coop board? I have skills I'd like to contribute (they really liked that).
+2. How did the COVID lock-down affect the building's income from its commercial tenants? (I learned that the maintenance could go down in 10 years because the building sold the right to get income from the commercial spaces and that is set to expire in 10 years)
+
+A few hours after the interview, I received news that I was approved by the coop board.
+
+## Getting the Clear to Close (CTC)
+
+When I received the Loan Commitment Letter, I also received a list of additional documents that I need to provide for final review by the underwriter before the lender officially approves my loan. These documents include:
+
+- Signed and dated letters clarifying various things in my financial documents.
+- Signed and dated letters explaining recent hard credit inquiries.
+- Lien Search (attorney will provide that)
+- Board approval
+
+# Closing
+
+TBD
+
+# Timeline
+
+- **June 26 -** Toured the apartment
+- **June 27 -** Made verbal offer to Seller and seller agreed on sales pice
+- **June 29 -** Received Pre-approval Letter from Lenderz
+- **June 30 -** Received Contract of Sales for review
+- **July 7 -** Received fully executed contract
+- **July 7 -** Locked Rate
+- **July 22 -** Appraisal Report completed
+- **August 13 -** Received Loan Commitment Letter
+- **August 17 -** Submitted Coop Application to management company
+- **August 27 -** Interview scheduled
+- **September 1 -** Interview with the Coop board
+- **September 1 -** Coop board approval
+- **September 2 -** Lien Search completed
 
 # Tips and Gotchas
 
