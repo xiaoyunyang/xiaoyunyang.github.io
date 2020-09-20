@@ -266,7 +266,7 @@ TBD
 
 - **June 26 -** Toured the apartment
 - **June 27 -** Made verbal offer to Seller and seller agreed on sales pice
-- **June 29 -** Received Pre-approval Letter from Lenderz
+- **June 29 -** Received Pre-approval Letter from lender
 - **June 30 -** Received Contract of Sales for review
 - **July 7 -** Received fully executed contract
 - **July 7 -** Locked Rate
