@@ -7,7 +7,7 @@ tags:
   - life
 keywords:
   - Life Hack
-  - New York Coop
+  - New York Co-op
   - Real estate
   - New York City
   - NYC
@@ -93,12 +93,12 @@ This is an exercise in the process of elimination. What I did:
     - tax benefits (how much maintenance is tax deductible)
     - Not in a high risk flood zone (see [map of flood prone areas in NYC](https://www.arcgis.com/apps/webappviewer/index.html?id=1c37d271fba14163bbb520517153d6d5) and [flood zone nyc](https://www.floodzonenyc.com/))
 
-4. I created [this online calculator](http://xiaoyunyang.com) to help me figure out the post-closing reserve for all the potential apartments. **Confirm** that you have enough reserve (or you have a way to have enough reserve, e.g., lower price, increase liquid asset, gift from parents, increase down-payment) **before** you tour the property. You want to have between 6-24 months of money in the reserve (liquid asset, retirement accounts don't count) that you can use to pay monthly mortgage plus maintenance fee or similar. This is very important when you are buying a coop in NYC. The Coop board looks for 6-24 months of reserve and will disqualify buyers who don't meet their reserve requirement. Coop board approval is one of the last steps of buying a home. Even if you can get the financing, have money for down payment, and seller agrees to the offer, you cannot buy the property if you fail to get coop board approval and you will end up losing a lot of money from closing fees, application fees, attorney fees, etc and wasting a lot of people's time.
+4. I created [this online calculator](http://xiaoyunyang.com) to help me figure out the post-closing reserve for all the potential apartments. **Confirm** that you have enough reserve (or you have a way to have enough reserve, e.g., lower price, increase liquid asset, gift from parents, increase down-payment) **before** you tour the property. You want to have between 6-24 months of money in the reserve (liquid asset, retirement accounts don't count) that you can use to pay monthly mortgage plus maintenance fee or similar. This is very important when you are buying a co-op in NYC. The co-op board looks for 6-24 months of reserve and will disqualify buyers who don't meet their reserve requirement. Co-op board approval is one of the last steps of buying a home. Even if you can get the financing, have money for down payment, and seller agrees to the offer, you cannot buy the property if you fail to get co-op board approval and you will end up losing a lot of money from closing fees, application fees, attorney fees, etc and wasting a lot of people's time.
 
   - **Pro-tip**: Talk to a loan officer before to get pre-qualification for a loan. You don't have to pay anything. This is simply to give you an idea of what you qualify for. I worked with Jennifer Adams from GuardHill. I picked her over the other loan officer I had reached out to because she responded to my emails right away and we had a call the same day, whereas the other person did not respond until 3 days later. She asked me about my current liquid asset (cash, etc), salary, and debt. Within 10 minutes on the phone, she told me I could expect to qualify for a 3.25% loan for a $600K property with a 80% financing.
   - You can use this [NYC Take-home pay calculator](https://smartasset.com/taxes/new-york-paycheck-calculator#UAEhpgEN3v) to determine if your monthly take-home sufficiently covers all your expenses. There are [three rules of thumb](https://www.youtube.com/watch?v=EiiuDazKqYM) to determine if you will be house broke.
 
-5. The most important of my soft acceptance criteria (nice-to-haves) is subletting. Flexibility is very important to me in life. I want the option to be able to easily move to another city or country without selling my home. Many coop buildings have a sublet policy of a max of 2 year sublet, unless with special permission from the coop board. These apartment features improves my chances of finding a qualified tenant:
+5. The most important of my soft acceptance criteria (nice-to-haves) is subletting. Flexibility is very important to me in life. I want the option to be able to easily move to another city or country without selling my home. Many co-op buildings have a sublet policy of a max of 2 year sublet, unless with special permission from the co-op board. These apartment features improves my chances of finding a qualified tenant:
     - Close to college campuses (e.g., NYU) - college students don't tend to stay in NYC for a really long time and many have wealthy parents
     - In a good neighborhood with a lot of dining and entertainment options
     - Walking distance to subway stations
@@ -138,7 +138,7 @@ Once you are ready to make an offer, here's what comes next:
 
 2. **Negotiate the Price Down:**  Have your agent negotiate with the seller's agent to get your price down as low as possible. You should have two numbers you care about when you negotiate: 
     - **Price A:** The price that if it goes any lower, it would not be worth it for the seller.
-    - **Price B:** The price that if it goes any higher, you will not be able to afford the down payment, or monthly payments, or lose too much of your reserve that you'd be house broke (or at a high risk of not getting approved by the coop board).
+    - **Price B:** The price that if it goes any higher, you will not be able to afford the down payment, or monthly payments, or lose too much of your reserve that you'd be house broke (or at a high risk of not getting approved by the co-op board).
 
     When you negotiate, make your first offer Price A. The seller is going to come back with a number between the listing price and Price A. Then you tell the seller your final offer is just below Price B. Take it or leave it. If the seller is motivated, he may simply accept Price B or counter with a number slightly higher than your final offer price, which should be close to Price B. If that happens, you accept immediately and get the ball rolling to sign the contract. If the seller refuses, walk away. {{< hl-text danger >}}It's critically important to walk away from a property you cannot afford.{{< /hl-text >}}
 
@@ -149,7 +149,7 @@ Once you are ready to make an offer, here's what comes next:
     - Make sure you find a attorney before you start this step. The lawyer's name needs to be listed in the deal sheet and the lawyer will be involved in closing the contract.
 
 4. **Get the money ready:**
-    - If you need gift money from your parents to afford the down-payment or bump up the post-closing reserve, do that right now. Even if you don't need the money for the down-payment, get the gift anyway to increase your post-closing refund, which will strengthen your coop board application.
+    - If you need gift money from your parents to afford the down-payment or bump up the post-closing reserve, do that right now. Even if you don't need the money for the down-payment, get the gift anyway to increase your post-closing refund, which will strengthen your co-op board application.
     - There will be a form to fill out for the gift giver during the underwriting process later on but there's no special process to transfer the gift money to your bank account right away. Make sure to double check if the gift will incur a gifting tax.
 
 5. **Make the official offer:**
@@ -168,17 +168,17 @@ In short, what happens during the period is:
 
 1. Submit documents to the lender for underwriting.
 2. Get Loan Commitment Letter.
-3. Submit Coop application, which should include Loan Commitment Letter.
-4. Interview with the Coop board.
-5. Get Coop board approval to get Clear to Close (CTC) from the lender.
+3. Submit Co-op application, which should include Loan Commitment Letter.
+4. Interview with the Co-op board.
+5. Get Co-op board approval to get Clear to Close (CTC) from the lender.
 
 You officially go under contract after both the Buyer and Seller sign the contract. The seller signed the contract after the good faith deposit was wired to the Seller attorney's Escrow account. The lender requires the fully executed contract (i.e., signed by both Buyer and Seller) to lock the mortgage rate.
 
-After you lock the rate with the lender, the next big milestone is to get the **Loan Commitment Letter** from the lender, which is required as part of the application I need to submit to the coop board.
+After you lock the rate with the lender, the next big milestone is to get the **Loan Commitment Letter** from the lender, which is required as part of the application I need to submit to the co-op board.
 
 ## Getting Loan Commitment Letter
 
-The lender works with an underwriter to determine how much risk a lender will take on if they gave you that loan. To support this evaluation, they required documentation from me as well as the coop.
+The lender works with an underwriter to determine how much risk a lender will take on if they gave you that loan. To support this evaluation, they required documentation from me as well as the co-op.
 
 The financial documents I needed to provide include:
 
@@ -193,15 +193,15 @@ The financial documents I needed to provide include:
 9. Retirement/401k accounts- provide plan terms that describe the terms & conditions of withdrawal *(if withdrawal is only allowed with termination, retirement or death, funds cannot be used as reserves)*
 10. Letter from Present Landlord or managing agent (or signed and dated letter from parents confirming you currently reside with them free of rent)
 
-The financial documents the building needed to provide include a questionnaire for which I need to pay $250 (The questionnaire was required because the bank had not approved a loan for this building this year. I had to pay the coop management company $250 to release the questionnaire to the bank). The building provided.
+The financial documents the building needed to provide include a questionnaire for which I need to pay $250 (The questionnaire was required because the bank had not approved a loan for this building this year. I had to pay the co-op management company $250 to release the questionnaire to the bank). The building provided.
 
 In addition to the documentation, the lender will also hire an appraiser to evaluate the value of the property to give the lender confidence that the homeowner is not over-borrowing for a property.
 
 After all the financial documents and appraisal report are received, the underwriting process began.
 
-## Getting Coop Board Approval
+## Getting Co-op Board Approval
 
-While I waited for the Loan Commitment Letter, I prepared for the coop application. My real-estate agent completed the application for me while I provided him all the required documents, a lot of which overlapped with the documents I needed to submit to the lender. Below are the documents I prepared for the application, which I split up into two categories (easy and long lead time / effort):
+While I waited for the Loan Commitment Letter, I prepared for the co-op application. My real-estate agent completed the application for me while I provided him all the required documents, a lot of which overlapped with the documents I needed to submit to the lender. Below are the documents I prepared for the application, which I split up into two categories (easy and long lead time / effort):
 
 Easy Stuff
 
@@ -227,27 +227,27 @@ Long Lead Time / Requires Effort
     - Bank Commitment Letter
     - Copy of Loan Application
 
-Getting the bank verification letters required me visiting a branch of each of my banks (hard during COVID pandemic) to get a teller to hand me a physical copy of a letter stating (1) how long I have had the account, (2) whether the account is in good standing, and (3) average balance of the account. The coop did not accept bank statements.
+Getting the bank verification letters required me visiting a branch of each of my banks (hard during COVID pandemic) to get a teller to hand me a physical copy of a letter stating (1) how long I have had the account, (2) whether the account is in good standing, and (3) average balance of the account. The co-op did not accept bank statements.
 
 The reference letters and cover letter need to include certain information. I asked my real-estate agent for a template for these letters.
 
-As I had prepared everything ahead of the Loan Commitment Letter, I submitted the application the day after the Loan Commitment Letter was received. The management company reviewed my package and presented my application at the next coop board meeting and I was invited to interview with the board.
+As I had prepared everything ahead of the Loan Commitment Letter, I submitted the application the day after the Loan Commitment Letter was received. The management company reviewed my package and presented my application at the next co-op board meeting and I was invited to interview with the board.
 
-The board interview took place at the building and lasted 10 minutes. I read up some tips online about what to expect during a coop interview and the dos and don'ts. I dressed up (business casual), showed up 5-10 minutes before the start time of the interview, answered all the questions briefly and concisely, not volunteering more information than required, and limited the questions I have for them. The following summarized the interview:
+The board interview took place at the building and lasted 10 minutes. I read up some tips online about what to expect during a co-op interview and the dos and don'ts. I dressed up (business casual), showed up 5-10 minutes before the start time of the interview, answered all the questions briefly and concisely, not volunteering more information than required, and limited the questions I have for them. The following summarized the interview:
 
-Questions coop board asked me:
+Questions co-op board asked me:
 
 1. Where have you been living? (use the opportunity to talk about your background)
 2. Followup: Why do you want to live here?
 3. Have you read the house rules about carpeting?
 4. Do you have any pets or plan on getting pets?
 
-Questions I asked the coop board:
+Questions I asked the co-op board:
 
-1. How can I get involved with the coop board? I have skills I'd like to contribute (they really liked that).
+1. How can I get involved with the co-op board? I have skills I'd like to contribute (they really liked that).
 2. How did the COVID lock-down affect the building's income from its commercial tenants? (I learned that the maintenance could go down in 10 years because the building sold the right to get income from the commercial spaces and that is set to expire in 10 years)
 
-A few hours after the interview, I received news that I was approved by the coop board.
+A few hours after the interview, I received news that I was approved by the co-op board.
 
 ## Getting the Clear to Close (CTC)
 
@@ -258,25 +258,53 @@ When I received the Loan Commitment Letter, I also received a list of additional
 - Lien Search (attorney will provide that)
 - Board approval
 
-# Closing
+# Phase 4 Closing
 
-TBD
+I received the keys to my new home once I completed all the actions for closing. Closing involves going to my attorney's office to sign a lot of documents and handing over a lot of money to the co-op, the attorney, and the seller.
+
+Prior to closing, I needed to purchase Homeowner's insurance with policy start date on the closing date. I used [Lemonade](https://www.lemonade.com/) for their modern website and mobile app, good customer support, and competitive premium. Lemonade is a peer-to-peer insurance provider that replaces brokers and bureaucracy with bots and machine learning. I was able to purchase insurance from them in less than 10 minutes using the self-service feature on their website and when I needed to change the policy start-date because of a delay on CTC from the lender's side, I was able to easily change the start date using the app.
+
+Closing cannot take place until a few days after the closing disclosure is received from the lender. The closing disclosure outlines all the monies that have to be paid out by different parties.
+
+On the closing date, I brought around $8,600 worth in checks for the following expenses
+
+| Fee                                                 | cost      |
+|-----------------------------------------------------|-----------|
+| lender's lawyer                                     | $350      |
+| first month's maintenance fee                       | $1073.43  |
+| Move-in fee for the co-op                           | $500      |
+| Move-in deposit (refundable) for the co-op          | $1,000    |
+| New owner processing fee for the co-op              | $500      |
+| Working capital contribution (3 months maintenance) | $3,220.29 |
+| Legal fee for my attorney                           | $1,500    |
+| Lien search fee                                     | $450      |
+| TOTAL                                               | 8,593.72  |
+
+Also, I went to the bank to wire the remaining down-payment to the seller. The money from the lender and my wire go into my attorney's escrow account. Then, my attorney will wire money to different stackholders (the seller, etc). The keys to the apartment is given once everyone receives their payment.
+
+# After Closing
+
+- Check out NYC.gov STAR
+- Stck and lease is held by the lender until I pay off my loan. Then, I will receive the stock and lease.
 
 # Timeline
 
-- **June 26 -** Toured the apartment
-- **June 27 -** Made verbal offer to Seller and seller agreed on sales pice
-- **June 29 -** Received Pre-approval Letter from lender
-- **June 30 -** Received Contract of Sales for review
-- **July 7 -** Received fully executed contract
-- **July 7 -** Locked Rate
-- **July 22 -** Appraisal Report completed
-- **August 13 -** Received Loan Commitment Letter
-- **August 17 -** Submitted Coop Application to management company
-- **August 27 -** Interview scheduled
-- **September 1 -** Interview with the Coop board
-- **September 1 -** Coop board approval
-- **September 2 -** Lien Search completed
+| Date         | Milestone                                                   |
+|--------------|-------------------------------------------------------------|
+| June 26      | Toured the apartment                                        |
+| June 27      | Made verbal offer to Seller and seller agreed on sales pice |
+| June 29      | Received Pre-approval Letter from lender                    |
+| June 30      | Received Contract of Sales for review                       |
+| July 7       | Locked Rate                                                 |
+| July 22      | Appraisal Report completed                                  |
+| August 13    | Received Loan Commitment Letter                             |
+| August 17    | Submitted Co-op Application to management company           |
+| August 27    | Interview scheduled                                         |
+| September 1  | Interview with the Co-op board                              |
+| September 1  | Co-op board approval                                        |
+| September 2  | Lien Search completed                                       |
+| September 29 | Closing disclosure received from lender                     |
+| October 2    | Closing                                                     |
 
 # Tips and Gotchas
 
@@ -284,6 +312,8 @@ TBD
 2. Demand a credit score disclosure whenever someone pulls your credit. When a bank or broker performs a hard inquiry on your credit score, they are required to share with you the result of the inquiry. An inquiry has a small effect on your credit score but in a 30-day period, multiple inquiries will not result in anymore decrease to your credit score.
 3. In the contract, add a COVID-19 contingency. Because of the COVID situation, I might not have access to a services I need to close the deal. Can there be a contingency clause built into the contract that the closing date be extended to accommodate the current situation in the world. I recommend you add a COVID-19 contingency to the contract when you buy. until there is a vaccine, there's a risk of lock-downs.
   {{< image classes="fancybox fig-100 clear" src="/post/images/life/covid-home-purchase-contingency.png" thumbnail="/post/images/life/covid-home-purchase-contingency.png" title="Amendment added to the contract">}}
+4. Make sure all the issues you found during the home inspection gets addressed before you close or you ask for a credit at closing to cover the cost of repair. I discovered some leakage in the bathroom sink and tub during the home inspection. The seller hired a plumbing company to get a quote and scope of work and put his credit card on file to be charged when the work is executed. I did not order the work before closing and after closing, it was difficult to get in touch with the seller as I did not have his contact directly and we only communicated through the real-estate brokers. Fortunately, my real-estate broker continued to work with me after closing to get in touch with the seller to authorize the work. The broker did not have to help me as he and the seller's broker both got their commission on the day of closing.
+5. If you close at the beginning of the month, you get to live at your apartment for two months until your first mortgage payment is due. The [bank policy for mortgage payment](https://www.policygenius.com/mortgages/when-is-my-first-mortgage-payment-due/) is your first mortgage payment is due one month after the last day of the month you closed on the home. I closed on October 2nd and my first mortgage payment is on December 1st.
 
 ## Mortgage shopping Tips
 
@@ -301,7 +331,7 @@ The benefits of working with a bank is you know exactly who's lending you money 
 
 The downsides of working with a bank are that a lot of banks have restrictions on whom they lend to, the amount they are willing to finance. For example, when I was shopping around for mortgage with banks, Bank of America suddenly changed their policy to not finance anything above 70%. Depending on the property, a bank may take really long to process your loan applications because they need the latest financial statements from the building you're purchasing the apartment in.
 
-Additionally, when you lock down your rate with a bank, that rate is good for 90 days. However, if it takes longer than expected to close (a non-negligible concern for buying a coop during a pandemic), you have to pay a fee to extend that rate. You could always start an new application with another bank if you don't want to pay the fee to extend the rate, but you have to pay a brand new set of fees to work with another bank. If you are working with a broker, the broker can initiate another loan application for you with another lender so you don't have to pay any additional fees to extend the rate or switch to a different lender.
+Additionally, when you lock down your rate with a bank, that rate is good for 90 days. However, if it takes longer than expected to close (a non-negligible concern for buying a co-op during a pandemic), you have to pay a fee to extend that rate. You could always start an new application with another bank if you don't want to pay the fee to extend the rate, but you have to pay a brand new set of fees to work with another bank. If you are working with a broker, the broker can initiate another loan application for you with another lender so you don't have to pay any additional fees to extend the rate or switch to a different lender.
 
 ### Advice
 
@@ -311,11 +341,11 @@ Interest rate on a mortgage is one of these things that could affect you for a l
 
 Another important thing to verify is [what fees](https://www.valuepenguin.com/mortgages/what-are-closing-costs-buying-a-home) the bank or broker charges if you work with them. Get them to break down all the fees so you do a side-by-side comparison. I created [this online tool for mortgage shopping](http://xiaoyunyang.com) to help me compare all the options from different banks and see how the different interest rates will affect my monthly loan payment.
 
-## Buying a Coop
+## Buying a Co-op
 
-Coop is short for Cooperative Housing Project. When you are buying a coop property, you are not buying the real-estate, but rather a share in a not-for profit corporation.
+Co-op is short for Cooperative Housing Project. When you are buying a co-op property, you are not buying the real-estate, but rather a share in a not-for profit corporation.
 
-There are a few important things to be aware of when buying a Coop:
+There are a few important things to be aware of when buying a Co-op:
 
 1. Sub-lease
 2. Maintenance Fee
@@ -325,34 +355,34 @@ There are a few important things to be aware of when buying a Coop:
 
 When you buy a condo, it is your property and you have unrestricted right to rent out your apartment and make it a full investment property.
 
-With a Coop, however, you need approval from the Coop's Board of Directors if you want to sublet your apartment. This is because when you purchase an apartment in a coop, you do not own the deed to property; rather you become a tenant-shareholder, which gives you shares of the building. The number of shares is based on the size of the apartment so a two-bedroom apartment is worth more than a studio apartment and as such, has more shares. The coop's sales package should includes sublet policy.
+With a co-op, however, you need approval from the Co-op's Board of Directors if you want to sublet your apartment. This is because when you purchase an apartment in a co-op, you do not own the deed to property; rather you become a tenant-shareholder, which gives you shares of the building. The number of shares is based on the size of the apartment so a two-bedroom apartment is worth more than a studio apartment and as such, has more shares. The co-op's sales package should includes sublet policy.
 
 ### Maintenance Fee
 
-While you pay taxes or common charges for a Condo each month, you pay a monthly maintenance fee for a coop. The maintenance fee pays for costs to run the building, including:
+While you pay taxes or common charges for a Condo each month, you pay a monthly maintenance fee for a co-op. The maintenance fee pays for costs to run the building, including:
 
 - taxes for the whole building,
 - the building's expenses, which includes operational costs (e.g., management company, super's salary, doorman, electricity for the public areas),
 - gas and water for the apartments,
-- Mortgage for the coop building, if applicable
+- Mortgage for the co-op building, if applicable
 
 If you are buying in a buildings with a mortgage, you will probably pay a higher maintenance fee; however, you can get tax deduction on a percentage of your maintenance fee.
 
-Maintenance increase is a big risk when buying a home in a coop. During the contract review phase, ask for financial documents from the building and ask your attorney about any red flags such as poor income to debt ratio, poor coop financial management, pending or past lawsuits, deferred maintenance, and reasons for any substantial maintenance increases in the past. The attorney should also check the status of the building's mortgage to see the principal and interest rate, and any plan to refinance the mortgage.
+Maintenance increase is a big risk when buying a home in a co-op. During the contract review phase, ask for financial documents from the building and ask your attorney about any red flags such as poor income to debt ratio, poor co-op financial management, pending or past lawsuits, deferred maintenance, and reasons for any substantial maintenance increases in the past. The attorney should also check the status of the building's mortgage to see the principal and interest rate, and any plan to refinance the mortgage.
 
 Typically, maintenance increases average 3 to 4 percent a year but sometimes, maintenance may go down if the building successfully negotiates a favorable long-term lease with its commercial tenants.
 
 ### VA Loan Applicability
 
-Currently, VA loans can be used to purchase a house, townhouse, condominium or even a mobile home, but not a co-op. While congress is [discussing a plan to extend VA loans program to cover coops](https://www.housingwire.com/articles/house-bill-would-extend-va-loans-to-co-ops/), there is no timeline for when this bill will be passed.
+Currently, VA loans can be used to purchase a house, townhouse, condominium or even a mobile home, but not a co-op. While congress is [discussing a plan to extend VA loans program to cover co-ops](https://www.housingwire.com/articles/house-bill-would-extend-va-loans-to-co-ops/), there is no timeline for when this bill will be passed.
 
-Coops are the dominant type of housing in the NY housing market but [VA loans cannot be used](https://www.military.com/money/va-loans/eligible-properties-for-va-loans.html) to purchase a coop. Right now, veterans looking to buy a home in NYC would have to either come up with the 20% or 25% required down-payment for the coop or buy condos, which costs significantly more than coops.
+Co-ops are the dominant type of housing in the NY housing market but [VA loans cannot be used](https://www.military.com/money/va-loans/eligible-properties-for-va-loans.html) to purchase a co-op. Right now, veterans looking to buy a home in NYC would have to either come up with the 20% or 25% required down-payment for the co-op or buy condos, which costs significantly more than co-ops.
 
 ## Real-estate Investment
 
 Before making an offer for an apartment you really like, it is important to understand whether you are paying a good price and how feasible it is to rent out the apartment.
 
-A good offering price for an apartment should be calculated based on the potential to collect a high enough rent that covers your monthly mortgage, maintenance fee, homeowner's insurance, fee for the coop for subletting, plus some extra for profit.
+A good offering price for an apartment should be calculated based on the potential to collect a high enough rent that covers your monthly mortgage, maintenance fee, homeowner's insurance, fee for the co-op for subletting, plus some extra for profit.
 
 If you are financing your purchase with a loan, the lender will order an appraisal for the property you want to purchase. The appraiser will perform an analysis of the home's value by:
 
