@@ -285,7 +285,8 @@ Also, I went to the bank to wire the remaining down-payment to the seller. The m
 # After Closing
 
 - Check out NYC.gov STAR
-- Stck and lease is held by the lender until I pay off my loan. Then, I will receive the stock and lease.
+- Sign up for NYC department of finance. Create an account at [www.nyc.gov/dofinvite](www.nyc.gov/dofinvite) using an invitation code. I got sent the invitation code in mail along wth the instruction for how to use this resource. This website allows you to ask questions and track the questions you asked about my co-op building's property taxes, property taxes I may qualify for. [www.nyc.gov/ownerexemption](www.nyc.gov/ownerexemption) has information on how to apply for property tax exemptions. I will need to contact my co-op board to apply for the co-op abatement.
+- The Stock and lease is for the Co-op held by the lender until I pay off my loan. Then, I will receive the stock and lease.
 
 # Timeline
 
