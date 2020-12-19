@@ -14,7 +14,7 @@ showSocial:     false
 
 #### Hello!
 
-I'm a software engineer and tech entrepreneur living in New York. I have a full time job at a startup and bootstrapping my own startup. In my spare time I like to contribute to open source software and blog.
+I'm a software engineer and tech entrepreneur living in New York. In my spare time I like to contribute to open source software and tech blogs.
 
 I'm excited by opportunities that let me develop elegant solutions for obvious problems where there are no obvious solutions. I believe in automating wherever possible, and leveraging existing technology to quickly bootstrap solutions. My mantra is trial and error, which I apply to both building a startup as well as living a fulfilling life.
 
@@ -22,33 +22,66 @@ Here are some details about me:
 
 ## Work Experience
 
-* I work at a software company called Smartling.
-* I'm a founder of a startup called LooseLeaf, which is a web app that disrupts the higher education industry. [Read more](http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/) about what I've done so far.
-* I helped a friend create the first mobile apps for NumberShapes that teaches little kids essential math skills and number sense. [Read more](http://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/) about what I did at NumberShapes.
-* I've worked at Naval Reactors as a product manager since graduating college in 2013. While working at Naval Reactors, I was also an active duty Navy officer.
-* I've completed various programming side projects for fun, sharpening my skills, and to improve the lives of myself, my friends, and co-workers. These side projects include building a [React Native mobile app](http://xiaoyunyang.github.io/post/building-a-react-native-travel-app/) to help me and my friends plan an upcoming trip to Japan.
-* I enjoy technical writing, especially [blogging about programming topics](/categories/blog/) that I'm still learning. I enjoy the process of putting complicated things in simple terms, drawing analogies and illustrating the concept with clarifying examples. Best of all, I think trying to explain what you think you know could lead you to discover knowledge gaps, which motivates more learning.
-
 {{< alert info >}} See **[My Resume](https://drive.google.com/file/d/0B_uByl2mOTJIVTM3ZWRYRVpIcWs/view)** for my skills and experience or see below for a summary of my employment history. {{< /alert >}}
 
-**Smartling**
-<div class="resume-header">
-  <div class="job-title">Senior Frontend Engineer</div>
-  <div class="job-dates">Dec 2018 - </div>
+#### OkCupid
+
+<div class="resume-group">
+	<div class="resume-header">
+  	<div class="job-title">Senior Software Engineer - Web</div>
+  	<div class="job-dates">Oct 2020 - current</div>
+	</div>
 </div>
 
-* Develop new single page applications using React + Redux, Node.js, and ES2017.
-* Develop components within a highly scalable component architecture.
-* Peer code reviews.
-* Design and implement functional tests.
-* Collaborate with product and backend service teams.
-* Test Driven Development.
-* Continuous Deployment - multiple times daily.
+* **Engineering Excellence**
+  * Lead engineer responsible for the API and frontend migration to a new location service.
+* **Impact**
+  * Create design system and UI Components Library with built-in accessibility and common eslint config *(coming soon)*.
+  * Improve frontend codebase maintainability by fixing the sourcemap, unit testing, and CSS modules *(coming soon)*.
+  * Migration of GraphQL and React codebases to TypeScript.
+* **Leadership and Initiatives**
+  * Implemented automation to improve code quality: SonarQube in CI/CD pipeline *(coming soon)*, PR template *(in-progress)*.
+* **People**
+  * Host meetup at the office *(coming soon)*.
 
-**LooseLeaf**
-<div class="resume-header">
-  <div class="job-title">Startup Founder</div>
-  <div class="job-dates">Jun 2015 - </div>
+#### Smartling
+
+<div class="resume-group">
+	<div class="resume-header">
+  	<div class="job-title">Team Lead</div>
+  	<div class="job-dates">Dec 2019 - Oct 2021</div>
+	</div>
+	<div class="resume-header">
+		<div class="job-title">Senior Frontend Engineer</div>
+		<div class="job-dates">Dec 2018 - Dec 2020</div>
+	</div>
+</div>
+
+* **Engineering Excellence**
+  * Lead engineer for a browser-based editor tool (CAT tool) for professional translators, which has high performance and complex backend+library integrations requirements.
+  * Developed solutions for unifying dashboards via GraphQL middle-tier (70K lines of code eliminated). Worked on both the GraphQL API and the Apollo Client.
+  * Created a new product (Dynamic Workflows) and open sourced a React library [react-process-flowchart](https://github.com/xiaoyunyang/react-process-flowchart) that I built for this product.
+  * Developed reusable components following a design system which is used across the platform at Smartling in multiple codebases.
+* **Impact**
+  * Successfully completed a rewrite of a core feature in a major production codebase (CAT Tool) to reduce technical complexity in the implementation, remove duplicate code, and improve performance and maintainability. Mitigated risks of this refactoring effort by breaking down and prioritizing the work and implementing thorough unit testing and acceptance testing with every deployment.
+  * Lead TypeScript migration of major production codebases.
+  * Streamlined process for bug and support ticket triage. Created Bug Triage Guide and worked with Product Manager to create internal documentation for answering and prioritizing support tickets.
+* **Leadership and Initiatives**
+  * Implemented automation to improve code quality: SonarQube in CI/CD pipeline, PR template, style guide and best practice, weekly knowledge sharing meetings).
+  * Created systems for developer knowledge sharing: style guide and best practice docs, onboarding documents for new engineers, weekly knowledge sharing meetings with the team.
+* **People**
+  * Mentored and provided periodic training to junior engineer and non-developers and at the company.
+  * Hosted a React meetup at Smartling in collaboration with Women Who Code
+   <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Thank you <a href="https://twitter.com/smartling?ref_src=twsrc%5Etfw">@smartling</a> for hosting <a href="https://twitter.com/hashtag/React?src=hash&amp;ref_src=twsrc%5Etfw">#React</a> optimization talks for <a href="https://twitter.com/WomenWhoCodeNYC?ref_src=twsrc%5Etfw">@WomenWhoCodeNYC</a> — Xiaoyun Yang of Smartling welcomes us. <a href="https://twitter.com/kabibster?ref_src=twsrc%5Etfw">@kabibster</a> on deck to talk about <a href="https://twitter.com/hashtag/RAIL?src=hash&amp;ref_src=twsrc%5Etfw">#RAIL</a> performance model. <a href="https://t.co/FkLeE8EG4m">pic.twitter.com/FkLeE8EG4m</a></p>&mdash; Women Who Code NYC (@WomenWhoCodeNYC) <a href="https://twitter.com/WomenWhoCodeNYC/status/1222671220308574208?ref_src=twsrc%5Etfw">January 30, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  * Created process/standards for and participated in new engineer interviews.
+
+#### LooseLeaf
+
+<div class="resume-group">
+	<div class="resume-header">
+		<div class="job-title">Startup Founder</div>
+		<div class="job-dates">Jun 2015 - Jun 2020</div>
+	</div>
 </div>
 
 * Product Development
@@ -63,25 +96,30 @@ Here are some details about me:
 * Marketing and Design
   * Prototyped SPAs to present at two startup conferences TechDays in DC and Los Angeles) for user research and feedback to revise product design.
   * Created marketing material such as banners and flyers for startup events using vector graphics and Adobe Illustrator.
+* [Read more](http://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/) about what I've done for this project.
 
-**NumberShapes**
-<div class="resume-header">
-  <div class="job-title">Co-Founder</div>
-  <div class="job-dates">Jun 2014 - Mar 2015</div>
+#### NumberShapes
+<div class="resume-group">
+	<div class="resume-header">
+		<div class="job-title">Co-Founder</div>
+		<div class="job-dates">Jun 2014 - Mar 2015</div>
+	</div>
 </div>
 
 * Product Development
-  * Created iOS apps (100K+ downloads) for a gamified early math education experience
+  * Created iOS apps (100K+ downloads) for a gamified early math education experience. These are the first mobile apps for NumberShapes that teaches little kids essential math skills and number sense. [Read more](http://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/) about what I did at NumberShapes.
   * Created a single page application website using Node.js, Express, and AngularJS
 
 * Entrepreneurship
   * Presented NumberShapes at TechDay NY with Co-Founder
   * Advised the development of mobile apps and business plan by Co-founder subsequent to my departure as a Co-Founder for NumberShapes
 
-**Naval Reactors**
-<div class="resume-header">
-  <div class="job-title">Product Manager</div>
-  <div class="job-dates">Jan 2014 - Dec 2018</div>
+#### Naval Reactors
+<div class="resume-group">
+	<div class="resume-header">
+		<div class="job-title">Product Manager, Nuclear Engineer</div>
+		<div class="job-dates">Jan 2014 - Dec 2018</div>
+	</div>
 </div>
 
 * Led the design, development, testing, and deployment of software building blocks to support diverse systems integrations.
@@ -98,17 +136,23 @@ Here are some details about me:
 * I studied Electrical and Computer Engineering at Carnegie Mellon University.
 * I got a B.S. and a M.S in 4.5 years through an integrated bachelors and masters program.
 
+### Side Projects
+
+- **Blogging:** I enjoy technical writing, especially [blogging about programming topics](/categories/blog/) that I'm still learning. I enjoy the process of putting complicated things in simple terms, drawing analogies and illustrating the concept with clarifying examples. Best of all, I think trying to explain what you think you know could lead you to discover knowledge gaps, which motivates more learning.
+- **New technology POC:** I create example projects that illustrates the implementation of a new library or new problem solving approach. These examples are hosted at [https://xiaoyunyang.com](https://xiaoyunyang.com).
+
 ## My Super Power
 
 My super power is my extreme attention to details without losing sight of the big picture and I always challenge my assumptions and continuously critique everything I do to make adjustments as necessary. I recognize the importance of details in affecting the final outcome, as accumulation of small mistakes leads to failure. Being result-driven, I'm dedicated to working out these details even if they are not so glorious or interesting. My ability to prioritize helps me work strategically and smartly applying resources.
 
 # What I value
 
-My [KeyValues](https://www.keyvalues.com/) filters
+My [KeyValues](https://www.keyvalues.com/) filters.
 
-{{< image classes="fancybox fig-100 center clear" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7bda3ee4-a0e3-4dc1-b894-00dbcafa9212/Screenshot_2020-05-09_23.09.46.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200525%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200525T045300Z&X-Amz-Expires=86400&X-Amz-Signature=fb0f8710d9b48692482c948a4b7812e1785048a6da59f14d650327bde0661379&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screenshot_2020-05-09_23.09.46.png%22" title="Xiaoyun's KeyValues">}}
+{{< image classes="fancybox fig-100 center clear" src="/post/images/key-values-filters.png" title="Xiaoyun's KeyValues">}}
 
 ## Trivia
+
 * I have the honor of serving 5 years of active duty in the military at Naval Reactors. I commissioned in 2013 through the Navy Reserved Officer Training Corp (ROTC).
 * Here are some words that describe me:  Love learning, independent, pragmatic, inquisitive, adaptable, good communicator, diligent, attention to detail.
 * I have a little dog called Ollie. He gives high-fives.
