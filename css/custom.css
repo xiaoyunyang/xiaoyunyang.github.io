@@ -19,7 +19,7 @@ h2 {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
   .job-title {
-    padding-left: 15px;
+    padding-left: 0;
   }
   .job-dates {
     padding-left: 40%;
@@ -36,9 +36,6 @@ h2 {
   #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-picture:hover {
     box-shadow: 0 10px 26px rgba(0,0,0,0.25), 0 8px 8px rgba(0,0,0,0.22);
   }
-  .job-title {
-    padding-left: 15px;
-  }
   .job-dates {
     padding-left: 40%;
   }
@@ -49,10 +46,10 @@ h2 {
 @media only screen and (max-width: 768px) {
   .resume-header {
     display: block !important;
+    margin-bottom: 20px;
   }
   .job-title {
     width: 70% !important;
-    padding-left: 15px;
   }
   .job-dates {
     width: 50% !important;
@@ -63,7 +60,11 @@ h2 {
 .resume-header {
   display: flex;
   width: 100%;
-  margin-bottom: -20px;
+}
+
+.resume-group {
+  padding-bottom: 10px;
+  margin-top: -10px;
 }
 
 .job-title {
