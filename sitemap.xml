@@ -3,13 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://xiaoyunyang.github.io/tags/architecture/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xiaoyunyang.github.io/categories/blog/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/categories/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/frontend/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/javascript/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/post/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/react/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/web-dev/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -19,21 +64,6 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/post/my-experience-buying-a-home-in-nyc-during-the-covid-19-pandemic/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/</loc>
     <lastmod>2020-06-29T00:00:00+00:00</lastmod>
   </url>
   
@@ -64,11 +94,6 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/guide/</loc>
-    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/javascript/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -158,11 +183,6 @@
   </url>
   
   <url>
-    <loc>https://xiaoyunyang.github.io/tags/web-dev/</loc>
-    <lastmod>2018-12-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
   </url>
@@ -170,16 +190,6 @@
   <url>
     <loc>https://xiaoyunyang.github.io/post/a-complete-guide-to-deploying-your-web-app-to-amazon-web-service/</loc>
     <lastmod>2018-10-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/frontend/</loc>
-    <lastmod>2018-08-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/react/</loc>
-    <lastmod>2018-08-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>

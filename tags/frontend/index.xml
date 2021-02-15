@@ -8,10 +8,21 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Tue, 14 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/tags/frontend/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Modeling UI State Using A Finite State Machine</title>
+      <link>https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/</guid>
+      <description>&lt;p&gt;A finite state machine (FSM) is an architectural design pattern that allows us to model a large system as a collection of loosely coupled components. Each component in the system changes its behavior when the internal state changes.&lt;/p&gt;
+
+&lt;p&gt;This pattern allows us to build flexible, reusable, and testable systems. In this article, we will explore the use of FSM in building complex React components.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Web Developer Playbook: Rich Text Editor</title>

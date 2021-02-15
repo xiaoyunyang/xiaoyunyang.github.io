@@ -8,10 +8,55 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Mon, 29 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Architecture</title>
+      <link>https://xiaoyunyang.github.io/tags/architecture/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/tags/architecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Frontend</title>
+      <link>https://xiaoyunyang.github.io/tags/frontend/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/tags/frontend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://xiaoyunyang.github.io/tags/javascript/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>React</title>
+      <link>https://xiaoyunyang.github.io/tags/react/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/tags/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Dev</title>
+      <link>https://xiaoyunyang.github.io/tags/web-dev/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/tags/web-dev/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Life</title>
@@ -55,15 +100,6 @@
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/tags/guide/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaScript</title>
-      <link>https://xiaoyunyang.github.io/tags/javascript/</link>
-      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     
@@ -136,33 +172,6 @@
       <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/tags/node/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web Dev</title>
-      <link>https://xiaoyunyang.github.io/tags/web-dev/</link>
-      <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/tags/web-dev/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Frontend</title>
-      <link>https://xiaoyunyang.github.io/tags/frontend/</link>
-      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/tags/frontend/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>React</title>
-      <link>https://xiaoyunyang.github.io/tags/react/</link>
-      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/tags/react/</guid>
       <description></description>
     </item>
     
