@@ -136,7 +136,7 @@ Once you are ready to make an offer, here's what comes next:
 
 1. **Get Pre-approval letter:** Talk to the loan officer to get a loan pre-approval letter. This requires running a credit check, which lowered my credit score by 6 points and also cost me $55, which I charged to my credit card. This should take between 1-3 days.
 
-2. **Negotiate the Price Down:**  Have your agent negotiate with the seller's agent to get your price down as low as possible. You should have two numbers you care about when you negotiate: 
+2. **Negotiate the Price Down:**  Have your agent negotiate with the seller's agent to get your price down as low as possible. You should have two numbers you care about when you negotiate:
     - **Price A:** The price that if it goes any lower, it would not be worth it for the seller.
     - **Price B:** The price that if it goes any higher, you will not be able to afford the down payment, or monthly payments, or lose too much of your reserve that you'd be house broke (or at a high risk of not getting approved by the co-op board).
 
@@ -284,8 +284,8 @@ Also, I went to the bank to wire the remaining down-payment to the seller. The m
 
 # After Closing
 
-- Check out NYC.gov STAR
-- Sign up for NYC department of finance. Create an account at [www.nyc.gov/dofinvite](www.nyc.gov/dofinvite) using an invitation code. I got sent the invitation code in mail along wth the instruction for how to use this resource. This website allows you to ask questions and track the questions you asked about my co-op building's property taxes, property taxes I may qualify for. [www.nyc.gov/ownerexemption](www.nyc.gov/ownerexemption) has information on how to apply for property tax exemptions. I will need to contact my co-op board to apply for the co-op abatement.
+- Check out [NYC.gov STAR](https://www.tax.ny.gov/star/). You are [eligible](https://www.tax.ny.gov/pit/property/star/eligibility.htm) for Basic STAR if the property is your primary residence and your income is $500,000 or less for teh STAR credit or $250,000 or less for the STAR exemption. Hint: get the block and lot number for your property [here](http://maps.nyc.gov/doitt/nycitymap/).
+- Sign up for NYC department of finance. Create an account at [www.nyc.gov/dofinvite](https://nyc.gov/dofinvite) using an invitation code. I got sent the invitation code in mail along wth the instruction for how to use this resource. This website allows you to ask questions and track the questions you asked about my co-op building's property taxes, property taxes I may qualify for. [www.nyc.gov/ownerexemption](https://nyc.gov/ownerexemption) has information on how to apply for property tax exemptions. I will need to contact my co-op board to apply for the co-op abatement.
 - The Stock and lease is for the Co-op held by the lender until I pay off my loan. Then, I will receive the stock and lease.
 
 # Timeline
