@@ -41,7 +41,7 @@ thumbnail="/post/images/fsm/fsm-turnstile.png" title="FSM representing a turnsti
 
 Formally,
 
-- **States** represent the status of the system and drives the output of the system. Light switches have two states: ON or OFF.  [Traffic lights contain three states](https://levelup.gitconnected.com/an-example-based-introduction-to-finite-state-machines-f908858e450f): RED, YELLOW, or GREEN. There are a finite number of states in a FSM and are finite. Every FSM has an initial state, which is the state the system is on when it first initiates.
+- **States** represent the modes of the system and drives the output of the system. Light switches have two states: ON or OFF.  [Traffic lights contain three states](https://levelup.gitconnected.com/an-example-based-introduction-to-finite-state-machines-f908858e450f): RED, YELLOW, or GREEN. There are a finite number of states in a FSM and are finite. Every FSM has an initial state, which is the state the system is on when it first initiates.
 - **State transitions** are rules for going from the current state to the next state based on the current state and the system inputs.
 
 If we model a React component as a FSM, events and component props are inputs to the system. An event can be like a button click or having received a certain response from the server. Inputs are triggered externally by the user, the server, or callers of the component.
@@ -153,6 +153,8 @@ At OkCupid, we've built such a component that lets you select a country and a qu
 
 If you see this in a Jira ticket, it might seem a bit overwhelming. There's a lot of logic that needs to be implemented. But having all the functional requirements up-front is actually a blessing in disguise - it enables us to think more holistically about the design of this component and pick an architecture that can effectively manage all of the complexity of this component.
 
+### Enumeration of All UI States
+
 A nice thing about working on a cross-functional team with a designer is that you get all the mocks before you start implementations. The mocks can be used devise the architecture.
 
 Since this is an article about UI State modeling using FSM, you may have seen it coming. We are going to assign a UI State to each mock, which represents a snapshot of the component in action.
@@ -160,6 +162,41 @@ Since this is an article about UI State modeling using FSM, you may have seen it
 {{< image classes="fancybox fig-90 clear" src="/post/images/fsm/location-search-all-states.png"
 thumbnail="/post/images/fsm/location-search-all-states.png" title="LocationSearch output in every state">}}
 
+These images depict the output (the UI)  of the system in each state. Let's take a look at what the UI have in common in the different states. This will give us an idea on how to split up our `<LocationSearch>` component into sub-systems.
+
+- In the SUCCESS state all the error states, a feedback message is displayed. The text color depends on the state.
+- In the SUCCESS state, DISAMBIGUATION state, and all the error states, an icons is displayed besides the input (check mark vs exclamation mark).
+- In all the states except LOADING, the country dropdown, query input, and geo-location search buttons are enabled and accepting input from the user.
+
+Based on these observations, we can start to delegating the rendering logic to different presentational components.
+
+| Component       | What it renders                                                                               | Value depends on                                          | Affected by uiStates                   |
+|-----------------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------|----------------------------------------|
+| Countries       | - dropdown containing countries retrieved from the server                                     | - found location <br/>- user input                             | LOADING                              |
+| QueryInput      | - input containing the country/city name or zip code <br/>- check mark or x mark icon for feedback | - found location <br/>- user input                             | - LOADING <br/>- SUCCESS <br/>- all error states |
+| Feedback        | - success message containing location name                                                    | - found location <br/>- static messages mapped to error states | - SUCCESS <br/>- all error states           |
+| Suggestions     | - A dropdown containing matched locations                                                     | dropdown containing matched locations from the server   | DISAMBIGUATION                       |
+| GpsSearchButton | - A button to trigger location search by GPS                                                  | N/A                                                       | LOADING                              |
+
+By delegating the implementation of the state-specific output to the these components, we are able to transform `<LocationSearch>` into a system of loosely-coupled components that are coordinated via the UI State. We are encapsulating the FSM in `<LocationSearch>`, in the sense that the parent component `<LocationSearch>` does not know anything about the implementation of the UI state in this component.
+
+Now we've defined the states and the output of each state, we are going to specify the state transitions.
+
+### State Transitions
+
+Similar to `<FriendStatus>`, we are going to instantiate `uiState` as a component state of `<LocationSearch>` and mutate `uiState` in a `useEffect`. The evaluation of the next `uiState` will be done in a helper function `getUiState`.
+
+Recall FSM can be represented as a directed graph and state transitions are the edges between the nodes. This is what our FSM should look like.
 
 {{< image classes="fancybox fig-90 clear" src="/post/images/fsm/location-search-fsm.png"
 thumbnail="/post/images/fsm/location-search-fsm.png" title="LocationSearch as a finite state machine">}}
+
+The PENDING state is the initial state when the `<LocationSearch>` first mounts. As the component can mount with a preloaded location, there's an arrow going directly from PENDING to the SUCCESS state. We can also reach the SUCCESS state by providing a country+query to the server or a gps location to the server.
+
+The ERROR_NOT_ZIP_CODE state is reached via client-side input validation and does not depend on the result of the server request. On the other hand, all the other error states would be reached only after making a request to the server.
+
+## Summary
+
+In this article, we learned what a FSM is and how to model a complex component as a system of loosely coupled sub-systems coordinated via the UI State.
+
+We've seen some examples of how this is done using React primitives like `useState` and `useEffect`. There is a library called [xState](https://xstate.js.org/docs/about/concepts.html) which provides a more opinionated framework for creating, interpreting, and executing finite state machines and statecharts.
