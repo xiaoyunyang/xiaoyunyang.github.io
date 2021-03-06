@@ -284,7 +284,7 @@ Also, I went to the bank to wire the remaining down-payment to the seller. The m
 
 # After Closing
 
-- Check out [NYC.gov STAR](https://www.tax.ny.gov/star/). You are [eligible](https://www.tax.ny.gov/pit/property/star/eligibility.htm) for Basic STAR if the property is your primary residence and your income is $500,000 or less for teh STAR credit or $250,000 or less for the STAR exemption. Hint: get the block and lot number for your property [here](http://maps.nyc.gov/doitt/nycitymap/).
+- Check out [NYC.gov STAR](https://www.tax.ny.gov/star/). You are [eligible](https://www.tax.ny.gov/pit/property/star/eligibility.htm) for Basic STAR if the property is your primary residence and your income is $500,000 or less for the STAR credit or $250,000 or less for the STAR exemption. Hint: get the block and lot number for your property [here](http://maps.nyc.gov/doitt/nycitymap/).
 - Sign up for NYC department of finance. Create an account at [www.nyc.gov/dofinvite](https://nyc.gov/dofinvite) using an invitation code. I got sent the invitation code in mail along wth the instruction for how to use this resource. This website allows you to ask questions and track the questions you asked about my co-op building's property taxes, property taxes I may qualify for. [www.nyc.gov/ownerexemption](https://nyc.gov/ownerexemption) has information on how to apply for property tax exemptions. I will need to contact my co-op board to apply for the co-op abatement.
 - The Stock and lease is for the Co-op held by the lender until I pay off my loan. Then, I will receive the stock and lease.
 
