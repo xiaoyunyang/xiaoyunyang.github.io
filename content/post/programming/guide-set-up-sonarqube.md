@@ -19,12 +19,12 @@ keywords:
 
 ![Static code analysis](/post/images/sonarqube/cover-static-analysis.png)
 
-Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We'll look at one of these tools, [SonarQube](https://www.sonarqube.org/), and walk thorough the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for a your project.
+Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We'll look at one of these tools, [SonarQube](https://www.sonarqube.org/), and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.
 
 <!--more-->
 <!--toc-->
 
-SonarQube provides a free and open source community edition that supports [a variety of languages](https://www.sonarqube.org/features/multi-languages/). There are two main components of the static analyzer:
+SonarQube provides a free and open-source community edition that supports [a variety of languages](https://www.sonarqube.org/features/multi-languages/). There are two main components of the static analyzer:
 
 1. SonarQube Server
 2. SonarQube Scanner
@@ -56,11 +56,11 @@ $ docker pull sonarqube
 $ docker run -d --name sonarqube -p 9000:9000 sonarqube
 ```
 
-After running the `docker run`, you should be able to go to [http://localhost:9000/](http://localhost:9000/) and see this page:
+After running `docker run`, you should be able to go to [http://localhost:9000/](http://localhost:9000/) and see this page:
 
 ![SonarQube Server Start Page](/post/images/sonarqube/sonarqube-server-start-page.png)
 
-Log in with System Administrator credentials (login=admin, password=admin).
+Log in with System Administrator credentials (login=admin, password=admin). You may be prompted to change your password to something more secure.
 
 ## Set Up SonarScanner
 
@@ -104,25 +104,38 @@ sonar.projectKey=my-awesome-project
 #sonar.projectVersion=1.0
  
 # Path is relative to the sonar-project.properties file. Defaults to .
-#sonar.sources=.
- 
+sonar.sources=src
+
 # Encoding of the source code. Default is default system encoding
 #sonar.sourceEncoding=UTF-8
+
+sonar.host.url=http://localhost:9000
 ```
 
 The `sonar.projectKey` for every project has to be unique. Choose a key appropriate for your project.
 
-To perform a sonar scan on your project is as simple as running the following command:
+In order to analyze JavaScript code using SonarScanner, you need to have Node.js >= 10 installed on the machine running the scan. Make sure before you are ready to launch the analysis, set your machine’s node version to 10.
+
+```bash
+nvm install 10
+nvm use 10
+```
+
+```bash
+$ yarn jest --coverage
+```
+
+To perform a sonar scan on your project is as simple as running the following command from the project base directory, passing your [authentication token](https://docs.sonarqube.org/latest/user-guide/user-token/):
 
 ```
-$ sonar-scanner
+$ sonar-scanner -Dsonar.login=<project_security_token>
 ```
 
-When you visit the sonar server again, you'll see that the result of the sonar scan:
+Once the analysis is complete, visit the sonar server and you'll see that the result of the sonar scan: 
 
 ![SonarQube Server Dashboard](/post/images/sonarqube/sonarqube-server-dashboard.png)
 
-We can click on the project and using the SonarQube Server app's UI to explore the results of the scan.
+You can then click on each analyzed projects and using the SonarQube Server app's UI to explore the results of the scan.
 
 ## Test Coverage Set up
 
@@ -133,7 +146,7 @@ According to the [SonarQube Doc](https://docs.sonarqube.org/latest/analysis/cove
 Suppose we have a [Create React App](https://create-react-app.dev/docs/running-tests/) project with Jest as our unit testing framework. We can generate a test coverage report with the following command:
 
 ```
-$ yarn test -- --coverage
+$ yarn jest --coverage
 ```
 
 This will generate a `coverage` folder which contains the following:
