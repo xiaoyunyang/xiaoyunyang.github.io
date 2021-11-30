@@ -100,11 +100,11 @@ More to be updated later.
 
 This wasn't the first hackathon I organized and it surely won't be the last. I find the social accountability and synergy from hackathons to be truly motivating in shaping my focus to produce great work. It was pretty inspiring to see how much we were all able to accomplish in a short period of time (My co-worker Josh wrote [a tool for using Git as an Rsync replacement](https://github.com/thejoshwolfe/git-push-working-tree)!)
 
-Because there will be a demo at the end of the weekend, there was a real deadline to do the best you can to get to a working solution in 3 days. The deadline also helps to reduce the scope of the project to something achievable over a 3 day weekend.
+Because there will be a demo at the end of the weekend, there was a real deadline to do the best you can to get to a working solution in three days. The deadline also helps to reduce the scope of the project to something achievable over a three-day weekend.
 
-During the kickoff meeting, I identified a list of around 10 rules I wanted to implement and chose two of these rules which I think provide the most value and are easy enough to implement in 3 days.
+During the kickoff meeting, I identified a list of around ten rules I wanted to implement and chose two of these rules which I think provide the most value and are easy enough to implement in three days.
 
-Keeping the scope limited to what's achievable in 3 days really helped to kick the project off. At the demo, I was able to showcase two working rules [`no-eval-in-placeholder`](https://github.com/OkCupid/eslint-plugin-i18n-lingui/blob/main/docs/rules/no-eval-in-placeholder.md)
+Keeping the scope limited to what's achievable in three days really helped to kick the project off. At the demo, I was able to showcase two working rules [`no-eval-in-placeholder`](https://github.com/OkCupid/eslint-plugin-i18n-lingui/blob/main/docs/rules/no-eval-in-placeholder.md)
 
 ![eslint-plugin-i18n-lingui no-eval-in-placeholder](/post/images/open-source/no-eval-in-placeholder.png)
 
@@ -120,19 +120,13 @@ As the co-founder of GitHub Tom Preston-Werner [puts it](https://tom.preston-wer
 
 > If your code is popular enough to attract outside contributions, you will have created a force multiplier that helps you get more work done faster and cheaper. More users means more use cases being explored which means more robust code.
 
-[Many eyes make all bugs shallow](https://www.microsoft.com/security/blog/2006/06/07/linuss-law-aka-many-eyes-make-all-bugs-shallow/). If this plugin gets used by developers outside of OkCupid and adapted to a variety of use cases beyond just the ones it was originally intended, bugs and edge cases will be surfaced, creating more robust software.
+[Many eyes make all bugs shallow](https://www.microsoft.com/security/blog/2006/06/07/linuss-law-aka-many-eyes-make-all-bugs-shallow/). If this plugin gets used by developers outside of OkCupid and adapted to a variety of use cases beyond just the ones for which it was originally intended, bugs and edge cases will be surfaced, creating more robust software.
 
-Open sourcing it also creates opportunity for developers outside of your team and organization to contribute in form of reporting bugs, proposing new features, and even implementing fixes and improvements to the codebase.
+Open sourcing also creates opportunities for developers outside of your team and organization to contribute in form of reporting bugs, proposing new features, and even implementing fixes and improvements to the codebase.
 
-When I originally created the public repo for `eslint-plugin-i18n-lingui` under my own GitHub account, the code was open sourced and available for outside contributing. But my instinct told me I should transfer ownership of the repo to OkCupid.
+I think "should I have this on my personal account or company account" is a big blocker to open sourcing for a company. If I just want the code to be out there and available as quickly as possible and I don't care what happens to it after it's out, having it under my personal account makes more sense.
 
-On one hand, transferring ownership to OkCupid carries the following risks:
-
-- The plugin becomes close sourced until legal approval to open source is obtained
-- Additional overhead like code reviews to publishing updates
-- Potentially losing unrestricted control over the project that I created
-
-But having the project associated with a well-known company like OkCupid could improve adoption. Also it ensures that this project continues to get maintained if I can't continue to maintain this project anymore.
+On the other hand, having the project be maintained by a well-known company like OkCupid could improve adoption because a company-owned open sourced project will more likely  be updated after initial release than one which is maintained by an individual developer. This is especially true if the company has a strong open source culture (capable and willing to dedicate engineering resources to maintaining), uses the open source code themselves (incentive to improve the code).
 
 After talking to my manager Susan, who has been very supportive of open sourcing, she will work with me to get approval from Legal, higher-ups, and our information security team to make the code open.
 
@@ -246,10 +240,16 @@ General-purpose tools and libraries are good candidates for open sourcing becaus
 
 **Take initiative.**
 
-You have to spend your own time working on it, at least in the beginning. But it's easy to do when you find a project that you feel passionate about and enjoyable enough that you want to work on in your free time. I'm a fan of weekend hackathons with friends as I find that to be a highly effective and enjoyable way of getting a lot of stuff done over a short period of time. Completing a proof of concept (POC) / minimal viable product (MVP) will make it easier to show that it's viable to dedicate some engineering resources to it.
+You may have to spend your own time working on it, at least in the beginning. But it's easy to do when you find a project that you feel passionate about and enjoyable enough that you want to work on in your free time. Completing a proof of concept (POC) / minimal viable product (MVP) will make it easier to show that it's viable to dedicate some engineering resources to it.
+
+I'm a fan of weekend hackathons with friends as I find that to be a highly effective and enjoyable way of getting a lot of stuff done over a short period of time. During my weekend hackathon when I built the MVP, I kept the scope limited to what's achievable in three days. Keeping the MVP scope small really helped to kick the project off.
 
 Many companies like OkCupid have hack weeks in which engineers are given company time to work on their own  ideas as long as it directly or tangentially benefits the company in some way. Hack weeks provide opportunities to work on things such as creating and open sourcing software for your company.
 
 **Talk to your manager.**
 
 They can be your biggest ally. I’ve never met anyone who’s against the idea of open sourcing a general purpose tool or solution to a general problem but you have to convince them that it's worth letting you work on it on company time. Having the POC / MVP when you are having the conversation with them will help a ton.
+
+I think "should I have this on my personal account or company account" is a big blocker to open sourcing for a company. If I just want the code to be out there and available as quickly as possible, having it under my personal account makes more sense.
+
+Another blocker for many people is using their personal time to work on something that they don't "own". When I told my non-tech friends about the project, people were surprised that I "gave away my work for free". I feel like no one can really "own" open-source code.
