@@ -165,7 +165,7 @@
     
       <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
@@ -231,6 +231,70 @@
         
           <section class="postShorten-group main-content-wrap">
             
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/">
+          How I Open Sourced An ESLint Plugin for OkCupid
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-11-29T00:00:00Z">
+        
+  November 29, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoyunyang.github.io/categories/blog">blog</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        <p>We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. The solutions for common general-purpose problems are good candidates for open sourcing because they do not represent core business values to keep them proprietary.</p>
+
+<p>I recently open sourced an <a href="https://eslint.org/docs/about/" target="_blank">ESLint</a> plugin for OkCupid called <a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui" target="_blank"><code>eslint-plugin-i18n-lingui</code></a>. The plugin is an extension for ESLint&rsquo;s core static code analysis rules that enforces <a href="https://www.smartling.com/resources/101/localization-101/" target="_blank">localization</a> best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.</p>
+
+<p>This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.</p>
+
+<p>Although this post will not discuss the localization best practices that <code>eslint-plugin-i18n-lingui</code> enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!</p>
+      
+      <p>
+        <a href="https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+    <a href="https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/">
+      <div class="postShorten-thumbnailimg">
+        <img alt="" itemprop="image" src="https://xiaoyunyang.github.io/post/images/open-source/cover.png"/>
+      </div>
+    </a>
+  
+</article>
+
             
               
   
@@ -396,7 +460,7 @@
       
         <p><img src="https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png" alt="Static code analysis" /></p>
 
-<p>Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, <a href="https://www.sonarqube.org/" target="_blank">SonarQube</a>, and walk thorough the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for a your project.</p>
+<p>Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, <a href="https://www.sonarqube.org/" target="_blank">SonarQube</a>, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.</p>
       
       <p>
         <a href="https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/" class="postShorten-excerpt_link link">Continue reading</a>
@@ -580,64 +644,6 @@
     <a href="https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
       <div class="postShorten-thumbnailimg">
         <img alt="" itemprop="image" src="https://xiaoyunyang.github.io/post/images/typescript.png"/>
-      </div>
-    </a>
-  
-</article>
-
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/">
-          The Algorithm for Managing Stress
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2019-07-16T00:00:00Z">
-        
-  July 16, 2019
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="https://xiaoyunyang.github.io/categories/blog">blog</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        <p>What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &ldquo;top 10 things you can do to &hellip;.&rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.</p>
-      
-      <p>
-        <a href="https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://xiaoyunyang.github.io/post/images/stress.png"/>
       </div>
     </a>
   

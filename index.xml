@@ -8,10 +8,25 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Nov 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xiaoyunyang.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How I Open Sourced An ESLint Plugin for OkCupid</title>
+      <link>https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/</link>
+      <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/</guid>
+      <description>&lt;p&gt;We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. The solutions for common general-purpose problems are good candidates for open sourcing because they do not represent core business values to keep them proprietary.&lt;/p&gt;
+
+&lt;p&gt;I recently open sourced an &lt;a href=&#34;https://eslint.org/docs/about/&#34; target=&#34;_blank&#34;&gt;ESLint&lt;/a&gt; plugin for OkCupid called &lt;a href=&#34;https://github.com/OkCupid/eslint-plugin-i18n-lingui&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt;&lt;/a&gt;. The plugin is an extension for ESLint&amp;rsquo;s core static code analysis rules that enforces &lt;a href=&#34;https://www.smartling.com/resources/101/localization-101/&#34; target=&#34;_blank&#34;&gt;localization&lt;/a&gt; best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.&lt;/p&gt;
+
+&lt;p&gt;This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.&lt;/p&gt;
+
+&lt;p&gt;Although this post will not discuss the localization best practices that &lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt; enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Modeling UI State Using A Finite State Machine</title>
@@ -41,7 +56,7 @@
       <guid>https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png&#34; alt=&#34;Static code analysis&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&amp;rsquo;ll look at one of these tools, &lt;a href=&#34;https://www.sonarqube.org/&#34; target=&#34;_blank&#34;&gt;SonarQube&lt;/a&gt;, and walk thorough the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for a your project.&lt;/p&gt;</description>
+&lt;p&gt;Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&amp;rsquo;ll look at one of these tools, &lt;a href=&#34;https://www.sonarqube.org/&#34; target=&#34;_blank&#34;&gt;SonarQube&lt;/a&gt;, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.&lt;/p&gt;</description>
     </item>
     
     <item>

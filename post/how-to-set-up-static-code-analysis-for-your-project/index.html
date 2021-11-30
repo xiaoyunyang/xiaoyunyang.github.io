@@ -10,12 +10,12 @@
 <meta name="keywords" content="programming, software design, guide, productivity, DevOps, SonarQube, Static Code Analysis">
 <meta name="description" content="
 
-Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, SonarQube, and walk thorough the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for a your project.">
+Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, SonarQube, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.">
 
 
 <meta property="og:description" content="
 
-Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, SonarQube, and walk thorough the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for a your project.">
+Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, SonarQube, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Set Up Static Code Analysis For Your Project">
 <meta name="twitter:title" content="How to Set Up Static Code Analysis For Your Project">
@@ -24,10 +24,10 @@ Static code analysis is a method for identifying bugs and other quality issues i
 <meta property="og:site_name" content="Xiaoyun Yang">
 <meta property="og:description" content="
 
-Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, SonarQube, and walk thorough the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for a your project.">
+Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, SonarQube, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.">
 <meta name="twitter:description" content="
 
-Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, SonarQube, and walk thorough the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for a your project.">
+Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, SonarQube, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.">
 <meta property="og:locale" content="en-us">
 
   
@@ -193,7 +193,7 @@ Static code analysis is a method for identifying bugs and other quality issues i
     
       <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
@@ -289,7 +289,7 @@ Static code analysis is a method for identifying bugs and other quality issues i
             <div class="main-content-wrap">
               <p><img src="https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png" alt="Static code analysis" /></p>
 
-<p>Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, <a href="https://www.sonarqube.org/" target="_blank">SonarQube</a>, and walk thorough the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for a your project.</p>
+<p>Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, <a href="https://www.sonarqube.org/" target="_blank">SonarQube</a>, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.</p>
 
 <h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
 <ul>
@@ -310,7 +310,7 @@ Static code analysis is a method for identifying bugs and other quality issues i
 </ul>
 </nav>
 
-<p>SonarQube provides a free and open source community edition that supports <a href="https://www.sonarqube.org/features/multi-languages/" target="_blank">a variety of languages</a>. There are two main components of the static analyzer:</p>
+<p>SonarQube provides a free and open-source community edition that supports <a href="https://www.sonarqube.org/features/multi-languages/" target="_blank">a variety of languages</a>. There are two main components of the static analyzer:</p>
 
 <ol>
 <li>SonarQube Server</li>
@@ -342,11 +342,11 @@ Static code analysis is a method for identifying bugs and other quality issues i
 $ docker run -d --name sonarqube -p 9000:9000 sonarqube
 </code></pre>
 
-<p>After running the <code>docker run</code>, you should be able to go to <a href="http://localhost:9000/" target="_blank">http://localhost:9000/</a> and see this page:</p>
+<p>After running <code>docker run</code>, you should be able to go to <a href="http://localhost:9000/" target="_blank">http://localhost:9000/</a> and see this page:</p>
 
 <p><img src="https://xiaoyunyang.github.io/post/images/sonarqube/sonarqube-server-start-page.png" alt="SonarQube Server Start Page" /></p>
 
-<p>Log in with System Administrator credentials (login=admin, password=admin).</p>
+<p>Log in with System Administrator credentials (login=admin, password=admin). You may be prompted to change your password to something more secure.</p>
 
 <h2 id="set-up-sonarscanner">Set Up SonarScanner</h2>
 
@@ -386,24 +386,35 @@ sonar.projectKey=my-awesome-project
 #sonar.projectVersion=1.0
  
 # Path is relative to the sonar-project.properties file. Defaults to .
-#sonar.sources=.
- 
+sonar.sources=src
+
 # Encoding of the source code. Default is default system encoding
 #sonar.sourceEncoding=UTF-8
+
+sonar.host.url=http://localhost:9000
 </code></pre>
 
 <p>The <code>sonar.projectKey</code> for every project has to be unique. Choose a key appropriate for your project.</p>
 
-<p>To perform a sonar scan on your project is as simple as running the following command:</p>
+<p>In order to analyze JavaScript code using SonarScanner, you need to have Node.js &gt;= 10 installed on the machine running the scan. Make sure before you are ready to launch the analysis, set your machine’s node version to 10.</p>
 
-<pre><code>$ sonar-scanner
+<pre><code class="language-bash">nvm install 10
+nvm use 10
 </code></pre>
 
-<p>When you visit the sonar server again, you&rsquo;ll see that the result of the sonar scan:</p>
+<pre><code class="language-bash">$ yarn jest --coverage
+</code></pre>
+
+<p>To perform a sonar scan on your project is as simple as running the following command from the project base directory, passing your <a href="https://docs.sonarqube.org/latest/user-guide/user-token/" target="_blank">authentication token</a>:</p>
+
+<pre><code>$ sonar-scanner -Dsonar.login=&lt;project_security_token&gt;
+</code></pre>
+
+<p>Once the analysis is complete, visit the sonar server and you&rsquo;ll see that the result of the sonar scan:</p>
 
 <p><img src="https://xiaoyunyang.github.io/post/images/sonarqube/sonarqube-server-dashboard.png" alt="SonarQube Server Dashboard" /></p>
 
-<p>We can click on the project and using the SonarQube Server app&rsquo;s UI to explore the results of the scan.</p>
+<p>You can then click on each analyzed projects and using the SonarQube Server app&rsquo;s UI to explore the results of the scan.</p>
 
 <h2 id="test-coverage-set-up">Test Coverage Set up</h2>
 
@@ -415,7 +426,7 @@ sonar.projectKey=my-awesome-project
 
 <p>Suppose we have a <a href="https://create-react-app.dev/docs/running-tests/" target="_blank">Create React App</a> project with Jest as our unit testing framework. We can generate a test coverage report with the following command:</p>
 
-<pre><code>$ yarn test -- --coverage
+<pre><code>$ yarn jest --coverage
 </code></pre>
 
 <p>This will generate a <code>coverage</code> folder which contains the following:</p>

@@ -3,17 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://xiaoyunyang.github.io/tags/architecture/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://xiaoyunyang.github.io/categories/blog/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://xiaoyunyang.github.io/categories/</loc>
+    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/</loc>
+    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/javascript/</loc>
+    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/open-source/</loc>
+    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/post/</loc>
+    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/productivity/</loc>
+    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/software-design/</loc>
+    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/</loc>
+    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/</loc>
+    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xiaoyunyang.github.io/tags/architecture/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -23,17 +63,7 @@
   </url>
   
   <url>
-    <loc>https://xiaoyunyang.github.io/tags/javascript/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -43,17 +73,7 @@
   </url>
   
   <url>
-    <loc>https://xiaoyunyang.github.io/tags/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://xiaoyunyang.github.io/tags/web-dev/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -78,11 +98,6 @@
   </url>
   
   <url>
-    <loc>https://xiaoyunyang.github.io/tags/productivity/</loc>
-    <lastmod>2020-06-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://xiaoyunyang.github.io/tags/programming/</loc>
     <lastmod>2020-06-02T00:00:00+00:00</lastmod>
   </url>
@@ -94,11 +109,6 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/guide/</loc>
-    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/software-design/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -134,11 +144,6 @@
   
   <url>
     <loc>https://xiaoyunyang.github.io/tags/hardware/</loc>
-    <lastmod>2019-01-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/open-source/</loc>
     <lastmod>2019-01-11T00:00:00+00:00</lastmod>
   </url>
   
