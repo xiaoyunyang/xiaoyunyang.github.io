@@ -415,11 +415,11 @@ More to be updated later.
 
 <p>This wasn&rsquo;t the first hackathon I organized and it surely won&rsquo;t be the last. I find the social accountability and synergy from hackathons to be truly motivating in shaping my focus to produce great work. It was pretty inspiring to see how much we were all able to accomplish in a short period of time (My co-worker Josh wrote <a href="https://github.com/thejoshwolfe/git-push-working-tree" target="_blank">a tool for using Git as an Rsync replacement</a>!)</p>
 
-<p>Because there will be a demo at the end of the weekend, there was a real deadline to do the best you can to get to a working solution in 3 days. The deadline also helps to reduce the scope of the project to something achievable over a 3 day weekend.</p>
+<p>Because there will be a demo at the end of the weekend, there was a real deadline to do the best you can to get to a working solution in three days. The deadline also helps to reduce the scope of the project to something achievable over a three-day weekend.</p>
 
-<p>During the kickoff meeting, I identified a list of around 10 rules I wanted to implement and chose two of these rules which I think provide the most value and are easy enough to implement in 3 days.</p>
+<p>During the kickoff meeting, I identified a list of around ten rules I wanted to implement and chose two of these rules which I think provide the most value and are easy enough to implement in three days.</p>
 
-<p>Keeping the scope limited to what&rsquo;s achievable in 3 days really helped to kick the project off. At the demo, I was able to showcase two working rules <a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui/blob/main/docs/rules/no-eval-in-placeholder.md" target="_blank"><code>no-eval-in-placeholder</code></a></p>
+<p>Keeping the scope limited to what&rsquo;s achievable in three days really helped to kick the project off. At the demo, I was able to showcase two working rules <a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui/blob/main/docs/rules/no-eval-in-placeholder.md" target="_blank"><code>no-eval-in-placeholder</code></a></p>
 
 <p><img src="https://xiaoyunyang.github.io/post/images/open-source/no-eval-in-placeholder.png" alt="eslint-plugin-i18n-lingui no-eval-in-placeholder" /></p>
 
@@ -437,21 +437,13 @@ More to be updated later.
 <p>If your code is popular enough to attract outside contributions, you will have created a force multiplier that helps you get more work done faster and cheaper. More users means more use cases being explored which means more robust code.</p>
 </blockquote>
 
-<p><a href="https://www.microsoft.com/security/blog/2006/06/07/linuss-law-aka-many-eyes-make-all-bugs-shallow/" target="_blank">Many eyes make all bugs shallow</a>. If this plugin gets used by developers outside of OkCupid and adapted to a variety of use cases beyond just the ones it was originally intended, bugs and edge cases will be surfaced, creating more robust software.</p>
+<p><a href="https://www.microsoft.com/security/blog/2006/06/07/linuss-law-aka-many-eyes-make-all-bugs-shallow/" target="_blank">Many eyes make all bugs shallow</a>. If this plugin gets used by developers outside of OkCupid and adapted to a variety of use cases beyond just the ones for which it was originally intended, bugs and edge cases will be surfaced, creating more robust software.</p>
 
-<p>Open sourcing it also creates opportunity for developers outside of your team and organization to contribute in form of reporting bugs, proposing new features, and even implementing fixes and improvements to the codebase.</p>
+<p>Open sourcing also creates opportunities for developers outside of your team and organization to contribute in form of reporting bugs, proposing new features, and even implementing fixes and improvements to the codebase.</p>
 
-<p>When I originally created the public repo for <code>eslint-plugin-i18n-lingui</code> under my own GitHub account, the code was open sourced and available for outside contributing. But my instinct told me I should transfer ownership of the repo to OkCupid.</p>
+<p>I think &ldquo;should I have this on my personal account or company account&rdquo; is a big blocker to open sourcing for a company. If I just want the code to be out there and available as quickly as possible and I don&rsquo;t care what happens to it after it&rsquo;s out, having it under my personal account makes more sense.</p>
 
-<p>On one hand, transferring ownership to OkCupid carries the following risks:</p>
-
-<ul>
-<li>The plugin becomes close sourced until legal approval to open source is obtained</li>
-<li>Additional overhead like code reviews to publishing updates</li>
-<li>Potentially losing unrestricted control over the project that I created</li>
-</ul>
-
-<p>But having the project associated with a well-known company like OkCupid could improve adoption. Also it ensures that this project continues to get maintained if I can&rsquo;t continue to maintain this project anymore.</p>
+<p>On the other hand, having the project be maintained by a well-known company like OkCupid could improve adoption because a company-owned open sourced project will more likely  be updated after initial release than one which is maintained by an individual developer. This is especially true if the company has a strong open source culture (capable and willing to dedicate engineering resources to maintaining), uses the open source code themselves (incentive to improve the code).</p>
 
 <p>After talking to my manager Susan, who has been very supportive of open sourcing, she will work with me to get approval from Legal, higher-ups, and our information security team to make the code open.</p>
 
@@ -619,13 +611,19 @@ This is in contrast to an open source project like React which requires a full t
 
 <p><strong>Take initiative.</strong></p>
 
-<p>You have to spend your own time working on it, at least in the beginning. But it&rsquo;s easy to do when you find a project that you feel passionate about and enjoyable enough that you want to work on in your free time. I&rsquo;m a fan of weekend hackathons with friends as I find that to be a highly effective and enjoyable way of getting a lot of stuff done over a short period of time. Completing a proof of concept (POC) / minimal viable product (MVP) will make it easier to show that it&rsquo;s viable to dedicate some engineering resources to it.</p>
+<p>You may have to spend your own time working on it, at least in the beginning. But it&rsquo;s easy to do when you find a project that you feel passionate about and enjoyable enough that you want to work on in your free time. Completing a proof of concept (POC) / minimal viable product (MVP) will make it easier to show that it&rsquo;s viable to dedicate some engineering resources to it.</p>
+
+<p>I&rsquo;m a fan of weekend hackathons with friends as I find that to be a highly effective and enjoyable way of getting a lot of stuff done over a short period of time. During my weekend hackathon when I built the MVP, I kept the scope limited to what&rsquo;s achievable in three days. Keeping the MVP scope small really helped to kick the project off.</p>
 
 <p>Many companies like OkCupid have hack weeks in which engineers are given company time to work on their own  ideas as long as it directly or tangentially benefits the company in some way. Hack weeks provide opportunities to work on things such as creating and open sourcing software for your company.</p>
 
 <p><strong>Talk to your manager.</strong></p>
 
 <p>They can be your biggest ally. I’ve never met anyone who’s against the idea of open sourcing a general purpose tool or solution to a general problem but you have to convince them that it&rsquo;s worth letting you work on it on company time. Having the POC / MVP when you are having the conversation with them will help a ton.</p>
+
+<p>I think &ldquo;should I have this on my personal account or company account&rdquo; is a big blocker to open sourcing for a company. If I just want the code to be out there and available as quickly as possible, having it under my personal account makes more sense.</p>
+
+<p>Another blocker for many people is using their personal time to work on something that they don&rsquo;t &ldquo;own&rdquo;. When I told my non-tech friends about the project, people were surprised that I &ldquo;gave away my work for free&rdquo;. I feel like no one can really &ldquo;own&rdquo; open-source code.</p>
               
 
 
