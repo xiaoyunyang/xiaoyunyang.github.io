@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>TypeScript on Xiaoyun Yang</title>
+    <title>Typescript on Xiaoyun Yang</title>
     <link>https://xiaoyunyang.github.io/tags/typescript/</link>
-    <description>Recent content in TypeScript on Xiaoyun Yang</description>
+    <description>Recent content in Typescript on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>

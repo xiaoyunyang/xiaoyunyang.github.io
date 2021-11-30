@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DevOps on Xiaoyun Yang</title>
+    <title>Devops on Xiaoyun Yang</title>
     <link>https://xiaoyunyang.github.io/tags/devops/</link>
-    <description>Recent content in DevOps on Xiaoyun Yang</description>
+    <description>Recent content in Devops on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>

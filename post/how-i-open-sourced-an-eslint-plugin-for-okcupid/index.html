@@ -2,10 +2,36 @@
 <html lang="en-us">
   <head>
     
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https://xiaoyunyang.github.io/",
+  "author": {
+    "@type": "Person",
+    "name": Xiaoyun Yang,
+    
+    "image": https://xiaoyunyang.github.io/images/xyang.png
+    
+  },
+  "name":"Xiaoyun Yang",
+  "description":"<p>We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. The solutions for common general-purpose problems are good candidates for open sourcing because they do not represent core business values to keep them proprietary.</p>
+
+<p>I recently open sourced an <a href="https://eslint.org/docs/about/" target="_blank">ESLint</a> plugin for OkCupid called <a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui" target="_blank"><code>eslint-plugin-i18n-lingui</code></a>. The plugin is an extension for ESLint&rsquo;s core static code analysis rules that enforces <a href="https://www.smartling.com/resources/101/localization-101/" target="_blank">localization</a> best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.</p>
+
+<p>This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.</p>
+
+<p>Although this post will not discuss the localization best practices that <code>eslint-plugin-i18n-lingui</code> enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!</p>",
+  "url":"https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/",
+  "keywords":"[ESLint Plugin, eslint-plugin-i18n-lingui, web development, javascript, guide]"
+}
+
+</script>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.58.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.53 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="ESLint Plugin, eslint-plugin-i18n-lingui, web development, javascript, guide">
 <meta name="description" content="We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. The solutions for common general-purpose problems are good candidates for open sourcing because they do not represent core business values to keep them proprietary.
@@ -79,15 +105,15 @@ Although this post will not discuss the localization best practices that eslint-
 
 
 
-  <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/open-source/cover.png">
-  <meta property="twitter:image" content="https://xiaoyunyang.github.io/post/images/open-source/cover.png">
-
-
-
-
-
   <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
   <meta property="twitter:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/open-source/cover.png">
+  <meta property="twitter:image" content="https://xiaoyunyang.github.io/post/images/open-source/cover.png">
 
 
     <title>How I Open Sourced An ESLint Plugin for OkCupid</title>
@@ -100,12 +126,12 @@ Although this post will not discuss the localization best practices that eslint-
     <link rel="canonical" href="https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/">
 
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     
-    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
     
     
       
@@ -124,12 +150,12 @@ Although this post will not discuss the localization best practices that eslint-
       <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
-    <a class="header-title-link" href="https://xiaoyunyang.github.io/">Xiaoyun Yang</a>
+    <a class="header-title-link" href="https://xiaoyunyang.github.io/" aria-label="Go to homepage">Xiaoyun Yang</a>
   </div>
   
     
       <a class="header-right-picture "
-         href="https://xiaoyunyang.github.io/#about">
+         href="https://xiaoyunyang.github.io/#about" aria-label="Open the link: /#about">
     
     
     
@@ -145,7 +171,7 @@ Although this post will not discuss the localization best practices that eslint-
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
-        <a href="https://xiaoyunyang.github.io/#about">
+        <a href="https://xiaoyunyang.github.io/#about" aria-label="Read more about the author">
           <img class="sidebar-profile-picture" src="https://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
@@ -158,7 +184,7 @@ Although this post will not discuss the localization best practices that eslint-
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/">
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/" title="Home">
     
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
       
@@ -168,7 +194,7 @@ Although this post will not discuss the localization best practices that eslint-
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/projects">
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/projects" title="Projects">
     
       <i class="sidebar-button-icon fa fa-lg fa-code"></i>
       
@@ -178,9 +204,9 @@ Although this post will not discuss the localization best practices that eslint-
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/blog">
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/blog" title="Blog">
     
-      <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
+      <i class="sidebar-button-icon fa fa-lg fa-pen-square"></i>
       
       <span class="sidebar-button-desc">Blog</span>
     </a>
@@ -188,7 +214,7 @@ Although this post will not discuss the localization best practices that eslint-
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/tags">
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/tags" title="Tags">
     
       <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
       
@@ -198,7 +224,7 @@ Although this post will not discuss the localization best practices that eslint-
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/about">
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/about" title="About">
     
       <i class="sidebar-button-icon fa fa-lg fa-user"></i>
       
@@ -212,9 +238,9 @@ Although this post will not discuss the localization best practices that eslint-
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener" title="GitHub">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
@@ -222,9 +248,9 @@ Although this post will not discuss the localization best practices that eslint-
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener" title="Medium">
     
-      <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
+      <i class="sidebar-button-icon fab fa-lg fa-medium"></i>
       
       <span class="sidebar-button-desc">Medium</span>
     </a>
@@ -232,9 +258,9 @@ Although this post will not discuss the localization best practices that eslint-
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener" title="Linkedin">
     
-      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin"></i>
       
       <span class="sidebar-button-desc">Linkedin</span>
     </a>
@@ -242,9 +268,9 @@ Although this post will not discuss the localization best practices that eslint-
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener" title="AngelList">
     
-      <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
+      <i class="sidebar-button-icon fab fa-lg fa-angellist"></i>
       
       <span class="sidebar-button-desc">AngelList</span>
     </a>
@@ -252,7 +278,7 @@ Although this post will not discuss the localization best practices that eslint-
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" target="_blank" rel="noopener" title="Email Me">
     
       <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
       
@@ -280,14 +306,14 @@ Although this post will not discuss the localization best practices that eslint-
           
             <div class="post-header main-content-wrap text-left">
   
-    <h1 class="post-title" itemprop="headline">
+    <h1 class="post-title">
       How I Open Sourced An ESLint Plugin for OkCupid
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2021-11-29T00:00:00Z">
+      <time datetime="2021-11-29T00:00:00Z">
         
   November 29, 2021
 
@@ -336,7 +362,7 @@ Although this post will not discuss the localization best practices that eslint-
 
 <p>An effort was made to share these best practices during meetings but developers are not good with following arbitrary rules. On the other hand, developer tools like ESLint are excellent at following arbitrary rules!</p>
 
-<p>We already use ESLint in our development process so the concept of linting is well embraced by the team. There are no cultural barriers to introducing a new plugin.</p>
+<p>We were already using ESLint in our development process so the concept of linting is well embraced by the team. There are no cultural barriers to introducing a new plugin.</p>
 
 <h2 id="long-weekend-side-project-hackathon">Long Weekend Side Project Hackathon</h2>
 
@@ -348,9 +374,9 @@ Although this post will not discuss the localization best practices that eslint-
 
 <p>In preparation for the work, I created a Facebook event for the long weekend hackathon and found a friend and a coworker to participate with me. The Facebook event reads:</p>
 
-<pre><code class="language-text">Welcome to the third 2021 Virtual Hackathon dedicated to personal projects!
+<pre><code class="language-text">Welcome to the third 2021 Virtual Hackathon dedicated to personal projects! 
 
-The rule of the hackathon is you must work on a personal project
+The rule of the hackathon is you must work on a personal project 
 (work side project does not count) which is demo-able by the end of the event.
 Some cool things people have done in the past long weekend hackathons:
 - Package room notification app for apartment building
@@ -370,12 +396,12 @@ Some other examples of personal projects
 
 You can work in teams or on your own. We kick off the event with presentations
 from participants of what they want to work on during the hackathon.
-Participants form teams after the presentations.
+Participants can form teams after the presentations.
 
 We end the event with demos.
 
-How you spend the time between the kickoff and the demo is up to you.
-It's encouraged that participants join a zoom room during the hackathon
+How you spend the time between the kickoff and the demo is up to you. 
+It's encouraged that participants join a zoom room during the hackathon 
 for collaboration and check-ins. Even if everyone is working on different projects,
 it's good to have other people to bounce ideas off of.
 
@@ -383,11 +409,11 @@ Agenda:
 - Friday 7/2 8pm - 9pm kickoff and form teams
 - Saturday 7/3 9am - Monday 7/5 4pm Hack on projects
 - Monday 1/18 5pm - 7pm demo
-During the hackathon, we will have socials like dinners and drinks.
+During the hackathon, we will have socials like dinners and drinks. 
 More to be updated later.
 </code></pre>
 
-<p>This wasn&rsquo;t the first hackathon I organized and it surely won&rsquo;t be the last. I find the social accountability and synergy from hackathons to be truly motivating in shaping my focus to produce great work. It was pretty inspiring to see how much we were all able to accomplish in a short period of time (My co-worker Josh wrote a <a href="https://github.com/thejoshwolfe/git-push-working-tree" target="_blank">replacement for Git</a>!)</p>
+<p>This wasn&rsquo;t the first hackathon I organized and it surely won&rsquo;t be the last. I find the social accountability and synergy from hackathons to be truly motivating in shaping my focus to produce great work. It was pretty inspiring to see how much we were all able to accomplish in a short period of time (My co-worker Josh wrote <a href="https://github.com/thejoshwolfe/git-push-working-tree" target="_blank">a tool for using Git as an Rsync replacement</a>!)</p>
 
 <p>Because there will be a demo at the end of the weekend, there was a real deadline to do the best you can to get to a working solution in 3 days. The deadline also helps to reduce the scope of the project to something achievable over a 3 day weekend.</p>
 
@@ -429,7 +455,7 @@ More to be updated later.
 
 <p>After talking to my manager Susan, who has been very supportive of open sourcing, she will work with me to get approval from Legal, higher-ups, and our information security team to make the code open.</p>
 
-<p>During one of our one-on-ones when we talked about my career goals, I mentioned that being an open source contributor and maintainer of open source projects is important to me, she is amenable to having me work on the open source project during my functional week. At OkCupid, every developer gets a week per quarter to work on something that is not directly related to the product. This can include clearing tech debt, deprecating legacy code, upgrading dependencies, improving web infrastructure, etc. Improving the ESLint plugin definitely falls under the umbrella of functional tasks that improves developer velocity with respect to localization work.</p>
+<p>During one of our one-on-ones when we talked about my career goals, I mentioned that being an open source contributor and maintainer of open source projects is important to me, she is amenable to having me work on the open source project during my functional week. At OkCupid, every developer gets a week per quarter to work on something that is not directly related to the product. This can include deprecating legacy code, upgrading dependencies, improving web infrastructure, etc. Improving the ESLint plugin definitely falls under the umbrella of functional tasks that improves developer velocity with respect to localization work.</p>
 
 <h2 id="blocked-by-legal">Blocked By Legal</h2>
 
@@ -443,19 +469,19 @@ More to be updated later.
 <p>A few considerations that go into the decision whether to open any of our code will be the quality of the code, any potential security issues from making it public, and the company&rsquo;s willingness to dedicate resources necessary to maintain the project on an ongoing basis.</p>
 </blockquote>
 
-<p>He sent me the Match Group OSS policy document full of legalse to read through and a form to fill out. There  most important questions I had to answer were:</p>
+<p>He sent me the Match Group OSS policy document full of legalese to read through and a form to fill out. There  most important questions I had to answer were:</p>
 
 <h3 id="who-will-maintain-the-project">Who will maintain the project</h3>
 
 <p>From a legal perspective, the only acceptable answer is employees of the Company will maintain the project.</p>
 
-<p>In practice, <a href="https://opensource.guide/best-practices/" target="_blank">open source maintainers</a> are like <a href="https://www.fosslife.org/whats-open-source-software-maintainer" target="_blank">the conductors of an orchestra</a>. While anyone with a GitHub account can contribute to the project, the maintainers are responsible for documenting process and guiding the project&rsquo;s strategic decision, leveraging the community, triaging issues, and keeping communications public and public friend. The job of an open source maintainer is sometimes compared to that of a <a href="https://steveklabnik.com/writing/how-to-be-an-open-source-gardener" target="_blank">gardener</a>, a librarian, a cat herder, and a moderator.</p>
+<p>In practice, <a href="https://opensource.guide/best-practices/" target="_blank">open source maintainers</a> are like <a href="https://www.fosslife.org/whats-open-source-software-maintainer" target="_blank">the conductors of an orchestra</a>. While anyone with a GitHub account can contribute to the project, the maintainers are responsible for documenting the process and guiding the project&rsquo;s strategic decision, leveraging the community, triaging issues, and keeping communications public and public friend. The job of an open source maintainer is sometimes compared to that of a <a href="https://steveklabnik.com/writing/how-to-be-an-open-source-gardener" target="_blank">gardener</a>, a librarian, a cat herder, and a moderator.</p>
 
 <h3 id="licensing">Licensing</h3>
 
 <p>I immediately gravitated to the <a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank">MIT license</a> because it&rsquo;s the most popular type of license I&rsquo;ve seen used for open source projects.</p>
 
-<p>Choosing the wrong license could hinder adoption of the open source software, create uncertainty from the community about whether the software is truly free and open.</p>
+<p>Choosing the wrong license could hinder the adoption of the open source software, create uncertainty from the community about whether the software is truly free and open.</p>
 
 <p>Facebook changed the license on one of their most popular open source projects React, from their <a href="https://engineering.fb.com/2017/08/18/open-source/explaining-react-s-license/" target="_blank">custom BSD+Patents license</a> to the popular MIT license. The <a href="https://engineering.fb.com/2017/09/22/web/relicensing-react-jest-flow-and-immutable-js/" target="_blank">decision came</a> after &ldquo;several weeks of disappointment and uncertainty&rdquo; from their user community, in particular, <a href="https://ma.tt/2017/09/on-react-and-wordpress/" target="_blank">WordPress</a> which powers 25% of all websites.</p>
 
@@ -467,15 +493,65 @@ More to be updated later.
 
 <p>The first and the most obvious is it provides brand recognition and reputation for OkCupid as a tech company. This attracts engineering talent.</p>
 
-<p>The company&rsquo;s dedication to open sourcing can also retain engineering talent because open source project can be a great outlet for developers for scratch their creative itch, solve challenging problems that they don&rsquo;t normally experience in their day-to-day work, and make a positive impact on the world.</p>
+<p>The company&rsquo;s dedication to open sourcing can also retain engineering talent because working on open source projects can be a great outlet for developers to scratch their creative itch, solve challenging problems that they don&rsquo;t normally experience in their day-to-day work, and make a positive impact on the world.</p>
 
-<p>Finally, open source code can potentially increase developer velocity when it&rsquo;s popular enough to attract outside contributors. However, maintaining open source projects could be <a href="https://www.zdnet.com/article/hard-work-and-poor-pay-stresses-out-open-source-maintainers/" target="_blank">demanding</a> and exceeds the company&rsquo;s capacity or willingness to dedicate engineering resources towards.</p>
+<p>Finally, open source code can potentially increase developer velocity when it&rsquo;s popular enough to attract outside contributors. However, maintaining open source projects could be <a href="https://www.zdnet.com/article/hard-work-and-poor-pay-stresses-out-open-source-maintainers/" target="_blank">demanding</a> and could exceed the company&rsquo;s capacity or willingness to dedicate engineering resources.</p>
 
-<p><img src="https://xiaoyunyang.github.io/post/images/open-source/xkcd-automation.png" alt="XKCD 1319" />
-<a href="https://xkcd.com/1319/" target="_blank">https://xkcd.com/1319/</a></p>
 
-<p>I don&rsquo;t expect the ESLint plugin to require more than an engineer 1-2 days a quarter to maintain even if it gets hundreds of downloads everyday. The plugin is an extension to a developer tool that is meant to improves developer experience and developer. If there is any bug in a rule that breaks for an edge case, that rule can be commented out for the parts of the code or entirely.
-This is contrast to an open source project like React which requires a full team of engineers at Facebook to maintain because is a framework that represents core platform infrastructure for most web apps.</p>
+ 
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+<div class="figure fig-75 center" >
+  
+    <a class="fancybox" href="https://xiaoyunyang.github.io/post/images/open-source/xkcd-automation.png" title="https://xkcd.com/1319" data-fancybox="">
+  
+    <img class="fig-img" src="https://xiaoyunyang.github.io/post/images/open-source/xkcd-automation.png"  alt="https://xkcd.com/1319">
+  
+    </a>
+  
+   
+    <span class="caption">https://xkcd.com/1319</span>
+  
+</div>
+
+  <div style="clear:both;"></div>
+
+
+<p>I don&rsquo;t expect the ESLint plugin to require more than an engineer 1-2 days a quarter to maintain even if it gets hundreds of downloads every day. The plugin is an extension to a developer tool that is meant to improve developer experience and developer. If there is a bug in a rule that breaks for an edge case, that rule can be ignored for the parts of the code or entirely.
+This is in contrast to an open source project like React which requires a full team of engineers at Facebook to maintain because is a framework that represents core platform infrastructure for most web apps.</p>
 
 <h2 id="one-last-obstacle">One Last Obstacle</h2>
 
@@ -485,13 +561,13 @@ This is contrast to an open source project like React which requires a full team
 
 <p>The next step is to make it official by publishing this ESLint plugin to NPM so everyone can use it.</p>
 
-<p>NPM, or Node package Manager, is an online registry for JavaScript packages. These packages can be paid or private.</p>
+<p>NPM, or Node Package Manager, is an online registry for JavaScript packages. These packages can be paid or private.</p>
 
 <p>We needed to create a user account on the public registry and publish the plugin under that account. Optionally, a package can be <a href="https://docs.npmjs.com/creating-and-publishing-scoped-public-packages" target="_blank">scoped to an organization</a> (e.g., <code>@okcupid/eslint-plugin-i18n-lingui</code>).</p>
 
 <p>I worked with the information security officer to create an OkCupid email specifically to set up an NPM user account.</p>
 
-<p>When we were looking into creating the <code>okcupid</code> organization, we noticed that it was already owned by another user account. That user account belongs to someone who used to work at OkCupid. When she worked here. The organization was created by the former employee under her personal NPM user account when she was looking at publishing a NPM package for OkCupid.</p>
+<p>When we were looking into creating the <code>okcupid</code> organization, we noticed that it was already owned by another user account. That user account belongs to someone who used to work at OkCupid. The organization was created by the former employee under her personal NPM user account when she was looking at publishing an NPM package for OkCupid.</p>
 
 <p>I reached out to her on LinkedIn to see if it&rsquo;s possible to transfer the organization back to us. She was very responsive and immediately transferred both <code>okcupid</code> and <code>matchgroup</code> back to us.</p>
 
@@ -501,11 +577,11 @@ This is contrast to an open source project like React which requires a full team
 
 <h2 id="moment-of-truth">Moment of Truth</h2>
 
-<p>We end up not needing to scope the package to the organization because we decided to publish the ESLint plugin as an unscoped package. Scoping the package allows two packages with the same name to co-exist. Since <a href="https://www.npmjs.com/package/eslint-plugin-i18n-lingui" target="_blank">eslint-plugin-i18n-lingui</a> is a unique package name, it can be kept as unscoped. OkCupid&rsquo;s brand is still attached to this package because the NPM page as well as all the docs link to the repo under OkCupid&rsquo;s GitHub handle.</p>
+<p>We ended up not needing to scope the package to the organization because we decided to publish the ESLint plugin as an unscoped package. Scoping the package allows two packages with the same name to co-exist. Since <a href="https://www.npmjs.com/package/eslint-plugin-i18n-lingui" target="_blank">eslint-plugin-i18n-lingui</a> is a unique package name, it can be kept as unscoped. OkCupid&rsquo;s brand is still attached to this package because the NPM page as well as all the docs link to the repo under OkCupid&rsquo;s GitHub handle.</p>
 
-<p>Publishing the <code>eslint-plugin-i18n-lingui</code> to NPM took a few seconds using NPM&rsquo;s command line interface.</p>
+<p>Publishing <code>eslint-plugin-i18n-lingui</code> to NPM took a few seconds using NPM&rsquo;s command line interface.</p>
 
-<p>There were a few small updates I made after the initial publishing the package public I followed the best practice <a href="https://docs.npmjs.com/about-semantic-versioning" target="_blank">semantic versioning</a> to increment version.</p>
+<p>There were a few small updates I made after the initial publishing of the package. I followed <a href="https://docs.npmjs.com/about-semantic-versioning" target="_blank">semantic versioning</a> best practice to increment the version.</p>
 
 <p><img src="https://xiaoyunyang.github.io/post/images/open-source/semantic-versioning.png" alt="NPM semantic versioning guide" /></p>
 
@@ -517,7 +593,7 @@ This is contrast to an open source project like React which requires a full team
 
 <p>As this project continues to mature, I hope that other people on my team will become interested in being an open source maintainer of the project (not just because Legal requires maintainers to be OkCupid employees).</p>
 
-<p>The need to educate and document the process for how to open source and contribute to this project for both internal and external contributors becomes apparent; this includes writing internal documentation on how to be a maintainer, adding a contribution guide to the repo, , giving tech talks about how to write an ESLint plugin, promoting the localization best practices that this plugin enforces. This blog post is one of the many actions that could help to drive interests to this project and open sourcing in general.</p>
+<p>The need to educate and document the process on how to open source and contribute to this project for both internal and external contributors becomes apparent; this includes writing internal documentation on how to be a maintainer, adding a contribution guide to the repo, giving tech talks about how to write an ESLint plugin, and promoting the localization best practices that this plugin enforces. This blog post is one of the many actions that could help to drive interests in this project and open sourcing in general.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
@@ -533,7 +609,7 @@ This is contrast to an open source project like React which requires a full team
 
 <p>I hope this post sheds some light on what it&rsquo;s like to open source for a company as the process may be opaque or non-existent at all.</p>
 
-<p>Most developers know how to write code in the open. You create a GitHub repo and push some code to remote. But getting paid to work on open source projects requires a bit of hustling and a lot of initiative.</p>
+<p>Most developers know how to write code in the open. You create a GitHub repo and push some code to the remote branch. But getting paid to work on open source projects requires a bit of hustling and a lot of initiative.</p>
 
 <p>Advice for developers who are looking to open source something for their company is this:</p>
 
@@ -551,6 +627,8 @@ This is contrast to an open source project like React which requires a full team
 
 <p>They can be your biggest ally. I’ve never met anyone who’s against the idea of open sourcing a general purpose tool or solution to a general problem but you have to convince them that it&rsquo;s worth letting you work on it on company time. Having the POC / MVP when you are having the conversation with them will help a ton.</p>
               
+
+
             </div>
           </div>
           <div id="post-footer" class="post-footer main-content-wrap">
@@ -581,74 +659,68 @@ This is contrast to an open source project like React which requires a full team
   style="height: 40px; width: 40px; margin: 0; padding: 0;"
 ></a>
 
-            <div class="post-actions-wrap">
-  
-      <nav >
-        <ul class="post-actions post-action-nav">
-          
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--disabled">
-              
-                  <i class="fa fa-angle-left"></i>
-                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
-                </a>
-            </li>
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/" data-tooltip="Modeling UI State Using A Finite State Machine">
-              
-                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
-                  <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-          
-        </ul>
-      </nav>
-    <ul class="post-actions post-action-share" >
-      
-        <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
-          </a>
-        </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
-      
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
       
         <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/" data-tooltip="Modeling UI State Using A Finite State Machine" aria-label="PREVIOUS: Modeling UI State Using A Finite State Machine">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
         </li>
       
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default" href="#">
-        
-          <i class="fa fa-list"></i>
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
-    </ul>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
   
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
 </div>
+
 
             
               
@@ -684,107 +756,104 @@ s.setAttribute('data-timestamp', +new Date());
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
-        <div class="post-actions-wrap">
-  
-      <nav >
-        <ul class="post-actions post-action-nav">
-          
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--disabled">
-              
-                  <i class="fa fa-angle-left"></i>
-                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
-                </a>
-            </li>
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/" data-tooltip="Modeling UI State Using A Finite State Machine">
-              
-                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
-                  <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-          
-        </ul>
-      </nav>
-    <ul class="post-actions post-action-share" >
-      
-        <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
-          </a>
-        </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
-      
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
       
         <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/" data-tooltip="Modeling UI State Using A Finite State Machine" aria-label="PREVIOUS: Modeling UI State Using A Finite State Machine">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
         </li>
       
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default" href="#">
-        
-          <i class="fa fa-list"></i>
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
-    </ul>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
   
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
 </div>
 
+
       </div>
-      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
-  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-i-open-sourced-an-eslint-plugin-for-okcupid%2F">
-          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-i-open-sourced-an-eslint-plugin-for-okcupid%2F" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-i-open-sourced-an-eslint-plugin-for-okcupid%2F">
-          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-i-open-sourced-an-eslint-plugin-for-okcupid%2F" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-i-open-sourced-an-eslint-plugin-for-okcupid%2F">
-          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-i-open-sourced-an-eslint-plugin-for-okcupid%2F" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>
     
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
+
+
     </div>
     
     <div id="about">
   <div id="about-card">
     <div id="about-btn-close">
-      <i class="fa fa-remove"></i>
+      <i class="fa fa-times"></i>
     </div>
     
       <img id="about-card-picture" src="https://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
@@ -802,7 +871,7 @@ s.setAttribute('data-timestamp', +new Date());
     
     
       <div id="about-card-location">
-        <i class="fa fa-map-marker"></i>
+        <i class="fa fa-map-marker-alt"></i>
         <br/>
         New York
       </div>
@@ -822,14 +891,14 @@ s.setAttribute('data-timestamp', +new Date());
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<script src="https://xiaoyunyang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+<script src="https://xiaoyunyang.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
 
 
   
@@ -840,20 +909,6 @@ s.setAttribute('data-timestamp', +new Date());
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
   
 
-<script lang="javascript">
-window.onload = updateMinWidth;
-window.onresize = updateMinWidth;
-document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
-function updateMinWidth() {
-  var sidebar = document.getElementById("sidebar");
-  var main = document.getElementById("main");
-  main.style.minWidth = "";
-  var w1 = getComputedStyle(main).getPropertyValue("min-width");
-  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
-  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
-  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
-}
-</script>
 
 <script>
 $(document).ready(function() {
@@ -866,33 +921,6 @@ $(document).ready(function() {
   });
 });
 </script>
-
-
-  
-    
-      <script>
-        var disqus_config = function () {
-          this.page.url = 'https:\/\/xiaoyunyang.github.io\/post\/how-i-open-sourced-an-eslint-plugin-for-okcupid\/';
-          
-            this.page.identifier = '\/post\/how-i-open-sourced-an-eslint-plugin-for-okcupid\/'
-          
-        };
-        (function() {
-          
-          
-          if (window.location.hostname == "localhost") {
-            return;
-          }
-          var d = document, s = d.createElement('script');
-          var disqus_shortname = 'http-xiaoyunyang-github-io';
-          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-    
-  
 
 
 

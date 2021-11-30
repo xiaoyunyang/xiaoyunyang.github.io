@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>blog on Xiaoyun Yang</title>
+    <title>Blog on Xiaoyun Yang</title>
     <link>https://xiaoyunyang.github.io/categories/blog/</link>
-    <description>Recent content in blog on Xiaoyun Yang</description>
+    <description>Recent content in Blog on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
@@ -132,7 +132,7 @@
 
 &lt;div class=&#34;figure fig-70&#34; &gt;
   
-    &lt;a class=&#34;fancybox&#34; href=&#34;https://images2.imgbox.com/26/21/MQB5dNYd_o.png&#34; title=&#34;My KeyValues filter&#34; data-fancybox-group=&#34;&#34;&gt;
+    &lt;a class=&#34;fancybox&#34; href=&#34;https://images2.imgbox.com/26/21/MQB5dNYd_o.png&#34; title=&#34;My KeyValues filter&#34; data-fancybox=&#34;&#34;&gt;
   
     &lt;img class=&#34;fig-img&#34; src=&#34;https://images2.imgbox.com/26/21/MQB5dNYd_o.png&#34;  alt=&#34;My KeyValues filter&#34;&gt;
   

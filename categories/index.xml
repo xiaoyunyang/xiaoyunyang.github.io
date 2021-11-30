@@ -14,7 +14,7 @@
     
     
     <item>
-      <title>blog</title>
+      <title>Blog</title>
       <link>https://xiaoyunyang.github.io/categories/blog/</link>
       <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
@@ -23,16 +23,7 @@
     </item>
     
     <item>
-      <title>projects</title>
-      <link>https://xiaoyunyang.github.io/categories/projects/</link>
-      <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/categories/projects/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>category</title>
+      <title>Category</title>
       <link>https://xiaoyunyang.github.io/categories/category/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
@@ -41,7 +32,16 @@
     </item>
     
     <item>
-      <title>subcategory</title>
+      <title>Projects</title>
+      <link>https://xiaoyunyang.github.io/categories/projects/</link>
+      <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/categories/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Subcategory</title>
       <link>https://xiaoyunyang.github.io/categories/subcategory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>

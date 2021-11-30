@@ -2,10 +2,32 @@
 <html lang="en-us">
   <head>
     
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https://xiaoyunyang.github.io/",
+  "author": {
+    "@type": "Person",
+    "name": Xiaoyun Yang,
+    
+    "image": https://xiaoyunyang.github.io/images/xyang.png
+    
+  },
+  "name":"Xiaoyun Yang",
+  "description":"<p><img src="https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png" alt="Static code analysis" /></p>
+
+<p>Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, <a href="https://www.sonarqube.org/" target="_blank">SonarQube</a>, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.</p>",
+  "url":"https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/",
+  "keywords":"[programming, software design, guide, productivity, DevOps, SonarQube, Static Code Analysis]"
+}
+
+</script>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.58.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.53 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="programming, software design, guide, productivity, DevOps, SonarQube, Static Code Analysis">
 <meta name="description" content="
@@ -61,12 +83,12 @@ Static code analysis is a method for identifying bugs and other quality issues i
 
 
 
-
-
-
-
   <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
   <meta property="twitter:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+
+
+
+
 
 
     <title>How to Set Up Static Code Analysis For Your Project</title>
@@ -79,12 +101,12 @@ Static code analysis is a method for identifying bugs and other quality issues i
     <link rel="canonical" href="https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/">
 
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     
-    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
     
     
       
@@ -103,12 +125,12 @@ Static code analysis is a method for identifying bugs and other quality issues i
       <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
-    <a class="header-title-link" href="https://xiaoyunyang.github.io/">Xiaoyun Yang</a>
+    <a class="header-title-link" href="https://xiaoyunyang.github.io/" aria-label="Go to homepage">Xiaoyun Yang</a>
   </div>
   
     
       <a class="header-right-picture "
-         href="https://xiaoyunyang.github.io/#about">
+         href="https://xiaoyunyang.github.io/#about" aria-label="Open the link: /#about">
     
     
     
@@ -124,7 +146,7 @@ Static code analysis is a method for identifying bugs and other quality issues i
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
-        <a href="https://xiaoyunyang.github.io/#about">
+        <a href="https://xiaoyunyang.github.io/#about" aria-label="Read more about the author">
           <img class="sidebar-profile-picture" src="https://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
@@ -137,7 +159,7 @@ Static code analysis is a method for identifying bugs and other quality issues i
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/">
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/" title="Home">
     
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
       
@@ -147,7 +169,7 @@ Static code analysis is a method for identifying bugs and other quality issues i
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/projects">
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/projects" title="Projects">
     
       <i class="sidebar-button-icon fa fa-lg fa-code"></i>
       
@@ -157,9 +179,9 @@ Static code analysis is a method for identifying bugs and other quality issues i
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/blog">
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/blog" title="Blog">
     
-      <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
+      <i class="sidebar-button-icon fa fa-lg fa-pen-square"></i>
       
       <span class="sidebar-button-desc">Blog</span>
     </a>
@@ -167,7 +189,7 @@ Static code analysis is a method for identifying bugs and other quality issues i
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/tags">
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/tags" title="Tags">
     
       <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
       
@@ -177,7 +199,7 @@ Static code analysis is a method for identifying bugs and other quality issues i
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/about">
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/about" title="About">
     
       <i class="sidebar-button-icon fa fa-lg fa-user"></i>
       
@@ -191,9 +213,9 @@ Static code analysis is a method for identifying bugs and other quality issues i
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener" title="GitHub">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
@@ -201,9 +223,9 @@ Static code analysis is a method for identifying bugs and other quality issues i
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener" title="Medium">
     
-      <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
+      <i class="sidebar-button-icon fab fa-lg fa-medium"></i>
       
       <span class="sidebar-button-desc">Medium</span>
     </a>
@@ -211,9 +233,9 @@ Static code analysis is a method for identifying bugs and other quality issues i
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener" title="Linkedin">
     
-      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin"></i>
       
       <span class="sidebar-button-desc">Linkedin</span>
     </a>
@@ -221,9 +243,9 @@ Static code analysis is a method for identifying bugs and other quality issues i
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener" title="AngelList">
     
-      <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
+      <i class="sidebar-button-icon fab fa-lg fa-angellist"></i>
       
       <span class="sidebar-button-desc">AngelList</span>
     </a>
@@ -231,7 +253,7 @@ Static code analysis is a method for identifying bugs and other quality issues i
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" target="_blank" rel="noopener">
+      <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" target="_blank" rel="noopener" title="Email Me">
     
       <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
       
@@ -259,14 +281,14 @@ Static code analysis is a method for identifying bugs and other quality issues i
           
             <div class="post-header main-content-wrap text-left">
   
-    <h1 class="post-title" itemprop="headline">
+    <h1 class="post-title">
       How to Set Up Static Code Analysis For Your Project
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-06-02T00:00:00Z">
+      <time datetime="2020-06-02T00:00:00Z">
         
   June 2, 2020
 
@@ -499,18 +521,18 @@ sonar.projectKey=my-awesome-project
 sonar.javascript.lcov.reportPaths=coverage/lcov.info
 </code></pre></li>
 
-<li><p>Add a new stage to <code>Jenkinsfile</code>.</p>
-
-<pre><code class="language-bash">stage('Static Code Analysis') {
-  sh 'yarn'
-  def scannerHome = tool 'SonarQube Scanner';
-  withSonarQubeEnv('SonarQube Server') {
-      sh &quot;${scannerHome}/bin/sonar-scanner&quot;
-  }
-  sh 'rm -rf node_modules'
-}
-</code></pre></li>
+<li><p>Add a new stage to <code>Jenkinsfile</code>.</p></li>
 </ol>
+
+<pre><code class="language-bash">  stage('Static Code Analysis') {
+      sh 'yarn'
+      def scannerHome = tool 'SonarQube Scanner';
+      withSonarQubeEnv('SonarQube Server') {
+          sh &quot;${scannerHome}/bin/sonar-scanner&quot;
+      }
+      sh 'rm -rf node_modules'
+  }
+</code></pre>
 
 <h1 id="tips-and-cheat-sheet">Tips and Cheat Sheet</h1>
 
@@ -526,37 +548,31 @@ sonar.javascript.lcov.reportPaths=coverage/lcov.info
 
 <ol>
 <li>Start Docker</li>
-
-<li><p>Start the server docker image</p>
-
-<pre><code class="language-bash">docker run -d --name sonarqube -p 9000:9000 sonarqube
-</code></pre>
-
-<p>Alternatively, if you previously started and stopped a sonarQube server instance, just find out the container ID with:</p>
-
-<pre><code class="language-bash">docker ps -a
-</code></pre>
-
-<p>Then you can just start the process again</p>
-
-<pre><code class="language-bash">docker start &lt;CONTAINER_ID&gt;
-</code></pre></li>
-
-<li><p>Check Server is Started by visiting <a href="http://localhost:9000/" target="_blank">http://localhost:9000/</a> or perform an inspection of docker processes with <code>docker ps -a</code></p></li>
-
-<li><p>Open to <code>/path-to-sonar-scanner/sonar-scanner/conf/sonar-scanner.properties</code></p>
-
-<pre><code class="language-bash">cd ~/sonar-scanner/conf
+<li>Start the server docker image
+<code>bash
+docker run -d --name sonarqube -p 9000:9000 sonarqube
+</code>
+Alternatively, if you previously started and stopped a sonarQube server instance, just find out the container ID with:
+<code>bash
+docker ps -a
+</code>
+Then you can just start the process again
+<code>bash
+docker start &lt;CONTAINER_ID&gt;
+</code></li>
+<li>Check Server is Started by visiting <a href="http://localhost:9000/" target="_blank">http://localhost:9000/</a> or perform an inspection of docker processes with <code>docker ps -a</code></li>
+<li>Open to <code>/path-to-sonar-scanner/sonar-scanner/conf/sonar-scanner.properties</code>
+<code>bash
+cd ~/sonar-scanner/conf
 code sonar-scanner.properties
-</code></pre>
-
-<p>Make sure <code>sonar.host.url</code> is set to <code>localhost:9000</code></p></li>
-
-<li><p>Perform SonarQube scan in the project directory by running <code>sonar-scanner</code></p></li>
-
-<li><p>Check <a href="http://localhost:9000/" target="_blank">http://localhost:9000/</a> to see that the result is written to the SonarQube server.</p></li>
+</code>
+Make sure <code>sonar.host.url</code> is set to <code>localhost:9000</code></li>
+<li>Perform SonarQube scan in the project directory by running <code>sonar-scanner</code></li>
+<li>Check <a href="http://localhost:9000/" target="_blank">http://localhost:9000/</a> to see that the result is written to the SonarQube server.</li>
 </ol>
               
+
+
             </div>
           </div>
           <div id="post-footer" class="post-footer main-content-wrap">
@@ -585,74 +601,68 @@ code sonar-scanner.properties
   style="height: 40px; width: 40px; margin: 0; padding: 0;"
 ></a>
 
-            <div class="post-actions-wrap">
-  
-      <nav >
-        <ul class="post-actions post-action-nav">
-          
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/my-experience-buying-a-home-in-nyc-during-the-covid-19-pandemic/" data-tooltip="My Experience Buying a Home in NYC during the COVID-19 Pandemic">
-              
-                  <i class="fa fa-angle-left"></i>
-                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
-                </a>
-            </li>
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/" data-tooltip="Beyond Minimum Viable Product: A Lesson on Building Production-ready Software">
-              
-                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
-                  <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-          
-        </ul>
-      </nav>
-    <ul class="post-actions post-action-share" >
-      
-        <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
-          </a>
-        </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
-      
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
       
         <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/my-experience-buying-a-home-in-nyc-during-the-covid-19-pandemic/" data-tooltip="My Experience Buying a Home in NYC during the COVID-19 Pandemic" aria-label="NEXT: My Experience Buying a Home in NYC during the COVID-19 Pandemic">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/" data-tooltip="Beyond Minimum Viable Product: A Lesson on Building Production-ready Software" aria-label="PREVIOUS: Beyond Minimum Viable Product: A Lesson on Building Production-ready Software">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
         </li>
       
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default" href="#table-of-contents">
-        
-          <i class="fa fa-list"></i>
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
-    </ul>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
   
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
+      <i class="fa fa-list" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
 </div>
+
 
             
               
@@ -688,107 +698,104 @@ s.setAttribute('data-timestamp', +new Date());
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
-        <div class="post-actions-wrap">
-  
-      <nav >
-        <ul class="post-actions post-action-nav">
-          
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/my-experience-buying-a-home-in-nyc-during-the-covid-19-pandemic/" data-tooltip="My Experience Buying a Home in NYC during the COVID-19 Pandemic">
-              
-                  <i class="fa fa-angle-left"></i>
-                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
-                </a>
-            </li>
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/" data-tooltip="Beyond Minimum Viable Product: A Lesson on Building Production-ready Software">
-              
-                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
-                  <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-          
-        </ul>
-      </nav>
-    <ul class="post-actions post-action-share" >
-      
-        <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
-          </a>
-        </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
-      
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
       
         <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/my-experience-buying-a-home-in-nyc-during-the-covid-19-pandemic/" data-tooltip="My Experience Buying a Home in NYC during the COVID-19 Pandemic" aria-label="NEXT: My Experience Buying a Home in NYC during the COVID-19 Pandemic">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/" data-tooltip="Beyond Minimum Viable Product: A Lesson on Building Production-ready Software" aria-label="PREVIOUS: Beyond Minimum Viable Product: A Lesson on Building Production-ready Software">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
         </li>
       
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default" href="#table-of-contents">
-        
-          <i class="fa fa-list"></i>
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
-    </ul>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
   
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
+      <i class="fa fa-list" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
 </div>
 
+
       </div>
-      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
-  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-set-up-static-code-analysis-for-your-project%2F">
-          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-set-up-static-code-analysis-for-your-project%2F" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-set-up-static-code-analysis-for-your-project%2F">
-          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-set-up-static-code-analysis-for-your-project%2F" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-set-up-static-code-analysis-for-your-project%2F">
-          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fhow-to-set-up-static-code-analysis-for-your-project%2F" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>
     
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
+
+
     </div>
     
     <div id="about">
   <div id="about-card">
     <div id="about-btn-close">
-      <i class="fa fa-remove"></i>
+      <i class="fa fa-times"></i>
     </div>
     
       <img id="about-card-picture" src="https://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
@@ -806,7 +813,7 @@ s.setAttribute('data-timestamp', +new Date());
     
     
       <div id="about-card-location">
-        <i class="fa fa-map-marker"></i>
+        <i class="fa fa-map-marker-alt"></i>
         <br/>
         New York
       </div>
@@ -826,14 +833,14 @@ s.setAttribute('data-timestamp', +new Date());
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<script src="https://xiaoyunyang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+<script src="https://xiaoyunyang.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
 
 
   
@@ -844,20 +851,6 @@ s.setAttribute('data-timestamp', +new Date());
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
   
 
-<script lang="javascript">
-window.onload = updateMinWidth;
-window.onresize = updateMinWidth;
-document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
-function updateMinWidth() {
-  var sidebar = document.getElementById("sidebar");
-  var main = document.getElementById("main");
-  main.style.minWidth = "";
-  var w1 = getComputedStyle(main).getPropertyValue("min-width");
-  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
-  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
-  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
-}
-</script>
 
 <script>
 $(document).ready(function() {
@@ -870,33 +863,6 @@ $(document).ready(function() {
   });
 });
 </script>
-
-
-  
-    
-      <script>
-        var disqus_config = function () {
-          this.page.url = 'https:\/\/xiaoyunyang.github.io\/post\/how-to-set-up-static-code-analysis-for-your-project\/';
-          
-            this.page.identifier = '\/post\/how-to-set-up-static-code-analysis-for-your-project\/'
-          
-        };
-        (function() {
-          
-          
-          if (window.location.hostname == "localhost") {
-            return;
-          }
-          var d = document, s = d.createElement('script');
-          var disqus_shortname = 'http-xiaoyunyang-github-io';
-          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-    
-  
 
 
 
