@@ -27,7 +27,7 @@ hugo
 
 ### Draft
 
-To make a post draft, addthe following to front matter:
+To make a post draft, add the following to front matter:
 
 ```
 draft: true
