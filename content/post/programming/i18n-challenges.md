@@ -51,6 +51,10 @@ How to come up with the rules?
 - Look at all the questions raised by translators in our TMS.
 - Look at the QA issues raised on the source string.
 
+### Terminologies
+
+- **Wrapping strings**
+
 ## Linting
 
 > Linting is something that will save you time, not 
