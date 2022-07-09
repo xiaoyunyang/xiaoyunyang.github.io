@@ -1,6 +1,6 @@
 ---
 title: "Data Structure with JavaScript Object: Tree"
-date: 2022-05-22
+date: 2022-10-22
 draft: true
 categories:
   - blog
@@ -28,15 +28,15 @@ A Tree is like a [Linked list](/data-structure-with-javascript-object-linked-lis
 
 Trees are used to solve the following problems:
 
-* Storing sorted objects and quickly retrieving (Binary Search Tree)
+- Storing sorted objects and quickly retrieving (Binary Search Tree)
 
 # Definition
 
 ```javascript
 function TreeNode(val) {
-   this.val = val;
-   this.left = this.right = null;
- }
+  this.val = val;
+  this.left = this.right = null;
+}
 ```
 
 # Tree Basics
@@ -59,28 +59,28 @@ Can we codify how do we test if a given node is a leaf? A leaf is something that
 
 ```javascript
 function isLeaf(node) {
-  return !node.left && !node.right
+  return !node.left && !node.right;
 }
 ```
 
 ## Add to Tree
 
 ```javascript
-let tree = new TreeNode(5)
-let curr = tree // 5
-curr.left = new TreeNode(4)
-curr.right = new TreeNode(8)
-curr = tree.left // 4
-curr.left = new TreeNode(11)
-curr = tree.left.left // 11
-curr.left = new TreeNode(7)
-curr.right = new TreeNode(2)
-curr = tree.right // 8
-curr.left = new TreeNode(13)
-curr.right = new TreeNode(4)
-curr = tree.right.right // 4
-curr.left = new TreeNode(5)
-curr.right = new TreeNode(1)
+let tree = new TreeNode(5);
+let curr = tree; // 5
+curr.left = new TreeNode(4);
+curr.right = new TreeNode(8);
+curr = tree.left; // 4
+curr.left = new TreeNode(11);
+curr = tree.left.left; // 11
+curr.left = new TreeNode(7);
+curr.right = new TreeNode(2);
+curr = tree.right; // 8
+curr.left = new TreeNode(13);
+curr.right = new TreeNode(4);
+curr = tree.right.right; // 4
+curr.left = new TreeNode(5);
+curr.right = new TreeNode(1);
 ```
 
 ## Traverse a Tree
@@ -93,4 +93,4 @@ curr.right = new TreeNode(1)
 
 # More Reading
 
-* Difference between tree and node: [Quora Response](https://www.quora.com/What-is-the-difference-between-Binary-Tree-and-Linked-Lists)
+- Difference between tree and node: [Quora Response](https://www.quora.com/What-is-the-difference-between-Binary-Tree-and-Linked-Lists)

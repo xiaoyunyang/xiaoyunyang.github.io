@@ -1,6 +1,6 @@
 ---
 title: "7 Profound Experiences Growing Up In China"
-date: 2021-12-30
+date: 2022-08-30
 categories:
   - blog
 tags:
@@ -20,21 +20,24 @@ This was mostly possible because the one-party system has maintained vast contro
 
 Skepticism of authority. Stoicism.
 
-
 # 2. Stock Exchange
 
 # 3. McDonald's
+
 Doing social good to promote a business.
 
 Make money by helping people.
 
 # 4. Personal Space
+
 I kind of missed the communal living. It's nice not sharing a bathroom with your neighbors.
 
 # 5. Individuality
+
 We wear uniform.
 
 # 6. School
+
 The biggest cultural shock is how people don't care about school get bullied for trying hard at school.
 How the
 
