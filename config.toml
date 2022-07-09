@@ -129,7 +129,7 @@ canonifyurls = true
   identifier = "email"
   name = "Email Me"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-envelope\"></i>"
-  url = "mailto:xiaoyun@looseleafapp.com"
+  url = "mailto:xyang232@gmail.com"
 
 
 [params]
