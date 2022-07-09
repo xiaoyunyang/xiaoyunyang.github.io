@@ -249,3 +249,7 @@ Many companies like OkCupid have hack weeks in which engineers are given company
 **Talk to your manager.**
 
 They can be your biggest ally. I’ve never met anyone who’s against the idea of open sourcing a general purpose tool or solution to a general problem but you have to convince them that it's worth letting you work on it on company time. Having the POC / MVP when you are having the conversation with them will help a ton.
+
+I think "should I have this on my personal account or company account" is a big blocker to open sourcing for a company. If I just want the code to be out there and available as quickly as possible, having it under my personal account makes more sense.
+
+Another blocker for many people is using their personal time to work on something that they don't "own". When I told my non-tech friends about the project, people were surprised that I "gave away my work for free". I feel like no one can really "own" open-source code.
