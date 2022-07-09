@@ -18,7 +18,7 @@ thumbnailImage: /post/images/open-source/cover.png
 thumbnailImagePosition: left
 ---
 
-We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. The solutions for common general-purpose problems are good candidates for open sourcing because they do not represent core business values to keep them proprietary.
+We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?
 
 I recently open sourced an [ESLint](https://eslint.org/docs/about/) plugin for OkCupid called [`eslint-plugin-i18n-lingui`](https://github.com/OkCupid/eslint-plugin-i18n-lingui). The plugin is an extension for ESLint's core static code analysis rules that enforces [localization](https://www.smartling.com/resources/101/localization-101/) best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.
 
@@ -236,7 +236,7 @@ Advice for developers who are looking to open source something for their company
 
 **Pick the right project to open source.**
 
-General-purpose tools and libraries are good candidates for open sourcing because they don't represent core business values to keep it proprietary. Apps and design systems (e.g., re-usable components library) are not good for open sourcing because they are too closely tied to the business and the brand.
+General-purpose tools and libraries are good candidates to open source for your company because they don't represent core business values to keep it proprietary. Apps and design systems (e.g., re-usable components library) are not good for open sourcing because they are too closely tied to the business and the brand.
 
 **Take initiative.**
 
