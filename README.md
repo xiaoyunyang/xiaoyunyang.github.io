@@ -12,6 +12,7 @@ This is the source code of the website. There are essentially three repos in thi
 
 - Clone this repo and switch to `sourcecode` branch.
 - `cd` into the root directory and clone this repo again (remain on `master` branch), then rename this directory `public`.
+- Download the theme submodule: while on the `sourcecode` branch, do `git submodule update --init`.
 
 ### Development
 
@@ -41,14 +42,18 @@ Run the [deploy.sh](/deploy.sh) script to build the static website in `public/` 
 ./deploy.sh 'optional commit message'
 ```
 
-### Update Theme
+### Initialize Theme
 
 ```bash
 cd themes/hugo-tranquilpeak-theme
-git pull origin master
+git fetch --prune
+git checkout [hash]
+cd -
+git add themes/hugo-tranquilpeak-theme
+git commit -m "update submodule"
 ```
 
-## Static Site Generator:
+## Static Site Generator
 
 - [Hugo](https://gohugo.io/getting-started/quick-start/)
 
@@ -61,11 +66,10 @@ git pull origin master
 - Showcase: [https://philippgaertner.github.io/](https://philippgaertner.github.io/) and [repo](https://github.com/philippgaertner/philippgaertner.github.io)
 - Showcase: [http://robinforest.net](http://robinforest.net) and [repo](https://github.com/robinfhu/personal-site)
 
-
 ### Docs Shortcut
 
-* [Customizing Themes](https://gohugo.io/themes/customizing/)
-* [Permalink](https://gohugo.io/content-management/urls/#permalinks) - configures how your url appears
+- [Customizing Themes](https://gohugo.io/themes/customizing/)
+- [Permalink](https://gohugo.io/content-management/urls/#permalinks) - configures how your url appears
 
 ### Tips
 
@@ -73,6 +77,6 @@ git pull origin master
 
 ### TODO
 
-- [X] Find [character Face Icon](https://www.freepik.com/index.php?goto=74&idfoto=777192&term=user%20avatar) for my favicon
-- [X] Deployment: [host from github](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
-- [X] Add Disqus to end of each post
+- [x] Find [character Face Icon](https://www.freepik.com/index.php?goto=74&idfoto=777192&term=user%20avatar) for my favicon
+- [x] Deployment: [host from github](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
+- [x] Add Disqus to end of each post
