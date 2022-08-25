@@ -34,7 +34,7 @@ canonifyurls = true
 
 [author]
   name = "Xiaoyun Yang"
-  bio = "Software Engineer. Entrepreneur."
+  bio = "Software Engineer. Climber. Snowboarder."
   job = "Software Engineer"
   location = "New York"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
