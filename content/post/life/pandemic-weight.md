@@ -1,6 +1,6 @@
 ---
 title: "How I Lost My Pandemic Weight and Got Ripped"
-date: 2022-07-27
+date: 2022-08-27
 categories:
   - blog
 tags:
@@ -195,6 +195,7 @@ Pitfalls:
 - Eat a salad before a cheat meal. Fiber helps you digest better.
 - Drink 3 liters of regular water every day - water boosts metabolism (no seltzer water)
 - no carbs after 4pm (if you are strict)
+
 -
 
 Eat bland unprocessed food → no more craving. only crave water and plain chicken breast and fiber
@@ -272,7 +273,7 @@ Goal: 6 pack
 
 ### Do I Really Want to Lose More Weight?
 
-### Burnout management:
+### Burnout management
 
 Is it ok to work out 3 times a day?
 
