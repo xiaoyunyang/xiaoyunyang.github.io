@@ -142,13 +142,9 @@ canonifyurls = true
   # Global keywords configuration. Following keywords will be add to every pages
   # keywords = ["development", "next-gen"]
 
-  # Syntax highlighter, possible choice between: "highlight.js" (recommanded) and "prism.js" (experimental)
+  # Syntax highlighter, possible choice between: "highlight.js" (recommended) and "prism.js" (experimental)
   # You can comment it to disable syntax highlighting
   syntaxHighlighter = "highlight.js"
-  customJS = [
-    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/go.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"
-  ]
 
   # Hide sidebar on all article page to let article take full width to improve reading, and enjoy wide images and cover images. (true: enable, false: disable)
   clearReading = true
@@ -209,9 +205,10 @@ canonifyurls = true
 
   # Custom CSS. Put here your custom CSS files. They are loaded after the theme CSS;
   # they have to be referred from static root. Example
-
-  [[params.customCSS]]
-     href = "css/custom.css"
+  customCSS = [
+    "css/custom.css",
+    "css/syntax.css"
+  ]
 
   # Custom JS. Put here your custom JS files. They are loaded after the theme JS;
   # they have to be referred from static root. Example
