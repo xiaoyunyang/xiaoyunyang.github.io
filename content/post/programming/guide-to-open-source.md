@@ -23,7 +23,8 @@ Introduction to TypeScript and guide for how to migrate your project from Flow t
 This post is a WIP.
 
 <!--more-->
-<!--toc-->
+
+{{< toc >}}
 
 # Specific Techniques
 
@@ -59,15 +60,15 @@ Remove proprietary information
 
 1. Modularize flowchart library
 2. Update workflow mock data
-    * Remove Smartling and Translation Verbiage from file names and mock data
+   - Remove Smartling and Translation Verbiage from file names and mock data
 3. Update name of repo to react-css-grid-flowchart
 4. Add flowchart examples
-    * TDD/CICD:  Add Test => Run Test => Make a change => Refactor
+   - TDD/CICD: Add Test => Run Test => Make a change => Refactor
 5. Support custom themes and CSS
-    * For now, copying-pasting from https://github.com/Smartling/tms-dashboard-ui-components/tree/master/packages/lib/theme
+   - For now, copying-pasting from https://github.com/Smartling/tms-dashboard-ui-components/tree/master/packages/lib/theme
 6. Figure out type and subtype for WF steps and to what extent they should affect the library's logic
 7. Write Algo for calculating WF Step Order (i.e., distance of node from source node)
-    * If BE data already has WF Step Order, bypass the calc. Otherwise, perform the calc to generate the WorkflowVisData
+   - If BE data already has WF Step Order, bypass the calc. Otherwise, perform the calc to generate the WorkflowVisData
 
 ## Phase 2
 
@@ -76,14 +77,14 @@ Reusable components
 1. Make Config file for all the Icons mapping
 2. Add context for workflowVis component. Context will include …?
 3. workflowStepConfig
-    1. Type -> { theme, dropdown menu options array }
-    2. Node Type based on Config files
+   1. Type -> { theme, dropdown menu options array }
+   2. Node Type based on Config files
 4. Create Config file where All the Smartling Components are passed down from the top level
-    1. Popover
-    2. Icons
-        * Type vs Subtype
-    3. Tooltip
-    4. FontAwesome
+   1. Popover
+   2. Icons
+      - Type vs Subtype
+   3. Tooltip
+   4. FontAwesome
 
 ## Phase 3
 
@@ -92,7 +93,7 @@ Add documentation
 1. Two modes for the DataVis - (1) Display only. (2) Editable workflow
 2. Example
 3. API
-    1. Example: https://github.com/One-com/react-truncate#api
+   1. Example: https://github.com/One-com/react-truncate#api
 
 ## Modularize
 
@@ -101,9 +102,7 @@ Add documentation
 ```javascript
 import * as Utils from "./utils";
 export * from "./messages";
-export {
-    Utils
-}
+export { Utils };
 ```
 
 To [export an imported module](https://stackoverflow.com/questions/34444909/export-an-imported-module)
@@ -119,12 +118,12 @@ export { default as messages } from "./messages";
 
 ```ts
 <WorkflowVisContainer
-    togglePopup={togglePopup}
-    flashStepChange={flashStepChange}
-    workflowUid={workflow.workflowUid}
-    workflowSteps={workflow.workflowSteps}
-    editMode={this.state.editMode}
-    highlightedSteps={this.highlightedSteps}
+  togglePopup={togglePopup}
+  flashStepChange={flashStepChange}
+  workflowUid={workflow.workflowUid}
+  workflowSteps={workflow.workflowSteps}
+  editMode={this.state.editMode}
+  highlightedSteps={this.highlightedSteps}
 />
 ```
 
@@ -167,17 +166,17 @@ or
 
 ## tile
 
-* containerName: `connectorContainerBox`, `connectorContainerStandard`, `connectorContainerDiamond` determine the width of the column.
-* id: e.g., `box|empty`, `standard|lineHoriz`
-* name: `empty`, `lineHoriz`
-* `type`: `NodeType`, "box", "standard" or "diamond". box, standard, and diamond are all connector types.
+- containerName: `connectorContainerBox`, `connectorContainerStandard`, `connectorContainerDiamond` determine the width of the column.
+- id: e.g., `box|empty`, `standard|lineHoriz`
+- name: `empty`, `lineHoriz`
+- `type`: `NodeType`, "box", "standard" or "diamond". box, standard, and diamond are all connector types.
 
 ```js
 {
-    containerName: "connectorContainerBox"
-    id: "box|empty"
-    name: "empty"
-    type: "box"
+  containerName: "connectorContainerBox";
+  id: "box|empty";
+  name: "empty";
+  type: "box";
 }
 ```
 
@@ -185,10 +184,10 @@ or
 
 ```js
 {
-    containerName: "connectorContainerStandard"
-    id: "standard|arrowRight"
-    name: "arrowRight"
-    type: "standard"
+  containerName: "connectorContainerStandard";
+  id: "standard|arrowRight";
+  name: "arrowRight";
+  type: "standard";
 }
 ```
 
@@ -196,17 +195,15 @@ or
 
 ```js
 {
-    containerName: "connectorContainerDiamond"
-    id: "diamond|downRight"
-    name: "downRight"
-    type: "diamond"
+  containerName: "connectorContainerDiamond";
+  id: "diamond|downRight";
+  name: "downRight";
+  type: "diamond";
 }
-
 ```
 
-
 | prop                            | type         | default | description                                                                               |
-|---------------------------------|--------------|---------|-------------------------------------------------------------------------------------------|
+| ------------------------------- | ------------ | ------- | ----------------------------------------------------------------------------------------- |
 | `children`                      | renderable   | `null`  | swipeable content                                                                         |
 | `leftContent`                   | renderable   | `null`  | (optional) left content visible during pull action                                        |
 | `rightContent`                  | renderable   | `null`  | (optional) right content visible during pull action                                       |

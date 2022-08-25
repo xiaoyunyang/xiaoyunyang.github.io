@@ -13,17 +13,18 @@ thumbnailImage: https://images2.imgbox.com/49/17/WNnaYp5v_o.png
 Go is becoming pretty mainstream. Every job posting I've seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.
 
 <!--more-->
-<!--toc-->
+
+{{< toc >}}
 
 ![Go Gopher](https://images2.imgbox.com/f8/aa/OSwaqz8O_o.png)
 
 {{< alert info >}} This is a Live Document. I will be updating it periodically. {{< /alert >}}
 
-<!-- toc -->
+{{< toc >}}
 
 # What is Go
 
-[Go](https://github.com/golang/go) is a programming language created by Google. It started as an experiment by some engineers, to develop to address the pain points of  C++ and Java without compromising performance and capability that those languages provides. Other than a well-thought design, it has some specific features for concurrency like a type of light-weight processes called goroutines.
+[Go](https://github.com/golang/go) is a programming language created by Google. It started as an experiment by some engineers, to develop to address the pain points of C++ and Java without compromising performance and capability that those languages provides. Other than a well-thought design, it has some specific features for concurrency like a type of light-weight processes called goroutines.
 
 In [Tomassett's blog article](https://tomassetti.me/best-programming-languages/) on best articles for each situation, he writes:
 
@@ -42,12 +43,12 @@ This article discusses the [business case for why learn go](https://medium.com/@
 
 ## Language Features
 
-* Easy to learn - [See this article](https://movio.co/en/blog/migrate-Scala-to-Go/)
-* Built-in Concurrency Support
-* Go is that it's a modern high performant low level language with built in concurrency support and strong type system
-* supports OOP but instead of class inheritance, it uses composition
-* Supports lambda expressions with their function literals and also supports higher order functions
-* The market share for Go is networking and servers but based on current trends, it seems Go will beat C, C++, Java, and Rust in the language for building infrastructure since the future is multicore processing. Go is not totally mainstream yet but is gaining a lot of traction
+- Easy to learn - [See this article](https://movio.co/en/blog/migrate-Scala-to-Go/)
+- Built-in Concurrency Support
+- Go is that it's a modern high performant low level language with built in concurrency support and strong type system
+- supports OOP but instead of class inheritance, it uses composition
+- Supports lambda expressions with their function literals and also supports higher order functions
+- The market share for Go is networking and servers but based on current trends, it seems Go will beat C, C++, Java, and Rust in the language for building infrastructure since the future is multicore processing. Go is not totally mainstream yet but is gaining a lot of traction
 
 ## Go Offers Best Balance
 
@@ -68,32 +69,31 @@ Set up GOPATH and GOBIN:
 
 1. Add $GOPATH and $GOBIN
 
-    ```bash
-    $ vim ~/.bash_profile
-    ```
+   ```bash
+   $ vim ~/.bash_profile
+   ```
 
-    Add the following lines to .bash_profile
+   Add the following lines to .bash_profile
 
-    ```bash
-    export GOPATH=$HOME/go
-    export GOBIN=$HOME/go/bin
-    ```
+   ```bash
+   export GOPATH=$HOME/go
+   export GOBIN=$HOME/go/bin
+   ```
 
-2. Refresh `.bash_profile` for the GOPATH and GOBIN to take effect: 
+2. Refresh `.bash_profile` for the GOPATH and GOBIN to take effect:
 
-    ```bash
-    $ . ~/.bash_profile`
-    ```
+   ```bash
+   $ . ~/.bash_profile`
+   ```
 
 3. Verify paths
 
-    ```bash
-    $ echo $GOPATH
-    /Users/xiaoyun/go
-    ```
+   ```bash
+   $ echo $GOPATH
+   /Users/xiaoyun/go
+   ```
 
 For more information about GOPATH, checkout [the wiki](https://github.com/golang/go/wiki/SettingGOPATH).
-
 
 ## Cat program
 
@@ -183,7 +183,7 @@ package main
 import (
   "math/rand"
   "os"
-  
+
   svg "github.com/ajstarks/svgo"
 )
 
@@ -196,11 +196,11 @@ var (
 func main() {
   canvas.Start(width, height)
   canvas.Gstyle("fill:#22264b")
-  
+
   var color string
   radius := 90
   step := 8
-  
+
   for i := 0; i < 200; i++ {
     if i%4 == 0 {
       color = "#e6cf8b"
@@ -215,7 +215,7 @@ func main() {
       r -= step
     }
   }
-  
+
   canvas.Gend()
   canvas.End()
 }
@@ -229,8 +229,8 @@ Run the code above using `go run main.go > circles.html && open circles.html` ge
 
 Go v.1.11 introduced Go modules, which is a dependency management solution in Go. Here's a good introduction to go.modules:
 
-* [Walkthrough](https://github.com/Yigenana/WWGNYC/blob/master/go-modules/INSTRUCTIONS.md)
-* [Slides](https://github.com/Yigenana/WWGNYC/blob/master/go-modules/Getting-Started-with-Go-Modules.pdf)
+- [Walkthrough](https://github.com/Yigenana/WWGNYC/blob/master/go-modules/INSTRUCTIONS.md)
+- [Slides](https://github.com/Yigenana/WWGNYC/blob/master/go-modules/Getting-Started-with-Go-Modules.pdf)
 
 # Stuff to check out
 

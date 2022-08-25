@@ -34,7 +34,7 @@ Before I begin telling the story of how I lost my pandemic weight post-lockdown,
 
 ![infographic of weight loss]()
 
-<!--toc-->
+{{< toc >}}
 
 ## Chapter 1: Overweight to Fit
 
@@ -325,7 +325,7 @@ Low impact lengthening workouts like pilates
 - Building muscle
   - Burning fat is about eating less, exercising more and optimizing your metabolism. The best way to get abs as a female is to build more total-body lean muscle mass. The more lean muscle mass you have, the more energy your body expends building and maintaining it.
   - While fat takes very little energy to maintain, muscle is metabolically active and accounts for up to 20 percent of your total daily energy expenditure
-  The best moves for getting six-pack abs include:
+    The best moves for getting six-pack abs include:
   - Squats
   - Lunges
   - Dead lifts

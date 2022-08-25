@@ -21,7 +21,8 @@ thumbnailImage: /post/images/life/covid-home-purchase-cover.png
 I worked from home for almost 4 months since the start of the quarantine before I got a monitor for working from home. I'm a programmer. I was under the impression that we were going to be able to go back to work first in April, then May. Now the government is saying August, but I no longer trust anything the government or the media says about the reopening timeline. I’m going to assume the worst that we are going to work from home until the vaccine becomes widely available. A realistic timeline for when that will be is late 2021, early 2022. I’m making preparations for a long term social distancing, work from home situation. Buying the monitor is the first step. I’m also getting a new set of furniture and moving to a bigger apartment so I’ll have a better time staying at home for an extended period of time. COVID-19 is the catalyst for me initiating the process of purchasing a home in NY, but I've always planned to purchase. This is my experience buying a home in NYC in the spring / summer of 2020.
 
 <!--more-->
-<!--toc-->
+
+{{< toc >}}
 
 # Phase 0 Deciding to Buy
 
@@ -31,19 +32,19 @@ Look at the opportunity, cost, and affordability of buying a home. I bought my a
 
 - Mortgage is very low right now. Investors are turning to bonds. The fed just injected a lot of money into mortgage financing system in March.
 
-    [This article](https://www.nerdwallet.com/blog/mortgages/what-coronavirus-means-for-your-home-loan-and-mortgage-rates/) says
+  [This article](https://www.nerdwallet.com/blog/mortgages/what-coronavirus-means-for-your-home-loan-and-mortgage-rates/) says
 
-    > The Federal Reserve took steps in March to keep money flowing through the mortgage financing system. The actions, including two rate cuts, were part of the central bank’s broader efforts to protect the economy from more damage from the COVID-19 pandemic.
+  > The Federal Reserve took steps in March to keep money flowing through the mortgage financing system. The actions, including two rate cuts, were part of the central bank’s broader efforts to protect the economy from more damage from the COVID-19 pandemic.
 
 - **short-term:** Need a better long term space to work from home and for extended lock-down.
-- **long-term:** Better chance of getting a good deal now.  Can take advantage of the situation - motivated sellers, fewer people looking to buy. Tours were canceled until Phase 2 re-opening (June 22). I started touring the first week NYC went into Phase 2.
+- **long-term:** Better chance of getting a good deal now. Can take advantage of the situation - motivated sellers, fewer people looking to buy. Tours were canceled until Phase 2 re-opening (June 22). I started touring the first week NYC went into Phase 2.
 
 ## Feasibility
 
 - I have money in the bank for a down-payment plus more.
 - I have a secure job, in a high paying profession, and I can easily find another job if I get laid off.
 - Can get approved for a very good mortgage rate: Mortgage rate at an all time low ([source: FreedieMac](http://www.freddiemac.com/pmms/#)).
-    {{< image classes="fancybox fig-100 clear" src="/post/images/life/covid-mortgage-rate.png" thumbnail="/post/images/life/covid-mortgage-rate.png" title="Mortgage rate during COVID-19 pandemic is at an all-time low">}}
+  {{< image classes="fancybox fig-100 clear" src="/post/images/life/covid-mortgage-rate.png" thumbnail="/post/images/life/covid-mortgage-rate.png" title="Mortgage rate during COVID-19 pandemic is at an all-time low">}}
 - For a 30 year mortgage for 600K, 3% range, excellent credit Score of 770. A loan amount of 480K can be easily approve with 3.25% interest rate.
 
 ## Opportunity Cost
@@ -75,38 +76,40 @@ This is an exercise in the process of elimination. What I did:
 2. Reach out to a real-estate agent. You don't pay them. They get their commission from the seller. I worked with Peter Zakian based on recommendation from a friend. He was very responsive and will hustle for you. He also has good relationship with other professional contacts like loan offers and attorney you'd need to work with down the line after you make an offer.
 
 3. Compile a list of all possible apartments then **prune that list** based on your acceptance criteria and affordability of each apartment. My hard acceptance criteria are:
-    - No basements
-    - Location: Shall be in the area of the city bounded by 14th street to the north, 6th Street to the west, Avenue A to the East, and Grand street to the South.
-    - No walkups more than the 3rd floor.
-    - Monthly mortgage + maintenance payment shall not exceed $2,500.
 
-    It's better to come up with as many hard acceptance criteria as possible to minimize regret, create better filters for the search, and help you make swift decisions when it comes to making offer.
+   - No basements
+   - Location: Shall be in the area of the city bounded by 14th street to the north, 6th Street to the west, Avenue A to the East, and Grand street to the South.
+   - No walkups more than the 3rd floor.
+   - Monthly mortgage + maintenance payment shall not exceed $2,500.
 
-    I also came up with a list of nice-to-haves. These are not required but will make a difference when I need to decide between multiple properties that meet all my hard acceptance criteria:
+   It's better to come up with as many hard acceptance criteria as possible to minimize regret, create better filters for the search, and help you make swift decisions when it comes to making offer.
 
-    - South facing window, good natural light
-    - elevator,  laundry, and bike storage in the building
-    - Good ISP in the building - FiOs
-    - No remodeling or renovation required. Move-in ready.
-    - Good layout, Availability of outlets
-    - lease options (e.g., sublet after 2 years)
-    - tax benefits (how much maintenance is tax deductible)
-    - Not in a high risk flood zone (see [map of flood prone areas in NYC](https://www.arcgis.com/apps/webappviewer/index.html?id=1c37d271fba14163bbb520517153d6d5) and [flood zone nyc](https://www.floodzonenyc.com/))
+   I also came up with a list of nice-to-haves. These are not required but will make a difference when I need to decide between multiple properties that meet all my hard acceptance criteria:
+
+   - South facing window, good natural light
+   - elevator, laundry, and bike storage in the building
+   - Good ISP in the building - FiOs
+   - No remodeling or renovation required. Move-in ready.
+   - Good layout, Availability of outlets
+   - lease options (e.g., sublet after 2 years)
+   - tax benefits (how much maintenance is tax deductible)
+   - Not in a high risk flood zone (see [map of flood prone areas in NYC](https://www.arcgis.com/apps/webappviewer/index.html?id=1c37d271fba14163bbb520517153d6d5) and [flood zone nyc](https://www.floodzonenyc.com/))
 
 4. I created [this online calculator](http://xiaoyunyang.com) to help me figure out the post-closing reserve for all the potential apartments. **Confirm** that you have enough reserve (or you have a way to have enough reserve, e.g., lower price, increase liquid asset, gift from parents, increase down-payment) **before** you tour the property. You want to have between 6-24 months of money in the reserve (liquid asset, retirement accounts don't count) that you can use to pay monthly mortgage plus maintenance fee or similar. This is very important when you are buying a co-op in NYC. The co-op board looks for 6-24 months of reserve and will disqualify buyers who don't meet their reserve requirement. Co-op board approval is one of the last steps of buying a home. Even if you can get the financing, have money for down payment, and seller agrees to the offer, you cannot buy the property if you fail to get co-op board approval and you will end up losing a lot of money from closing fees, application fees, attorney fees, etc and wasting a lot of people's time.
 
-  - **Pro-tip**: Talk to a loan officer before to get pre-qualification for a loan. You don't have to pay anything. This is simply to give you an idea of what you qualify for. I worked with Jennifer Adams from GuardHill. I picked her over the other loan officer I had reached out to because she responded to my emails right away and we had a call the same day, whereas the other person did not respond until 3 days later. She asked me about my current liquid asset (cash, etc), salary, and debt. Within 10 minutes on the phone, she told me I could expect to qualify for a 3.25% loan for a $600K property with a 80% financing.
-  - You can use this [NYC Take-home pay calculator](https://smartasset.com/taxes/new-york-paycheck-calculator#UAEhpgEN3v) to determine if your monthly take-home sufficiently covers all your expenses. There are [three rules of thumb](https://www.youtube.com/watch?v=EiiuDazKqYM) to determine if you will be house broke.
+- **Pro-tip**: Talk to a loan officer before to get pre-qualification for a loan. You don't have to pay anything. This is simply to give you an idea of what you qualify for. I worked with Jennifer Adams from GuardHill. I picked her over the other loan officer I had reached out to because she responded to my emails right away and we had a call the same day, whereas the other person did not respond until 3 days later. She asked me about my current liquid asset (cash, etc), salary, and debt. Within 10 minutes on the phone, she told me I could expect to qualify for a 3.25% loan for a $600K property with a 80% financing.
+- You can use this [NYC Take-home pay calculator](https://smartasset.com/taxes/new-york-paycheck-calculator#UAEhpgEN3v) to determine if your monthly take-home sufficiently covers all your expenses. There are [three rules of thumb](https://www.youtube.com/watch?v=EiiuDazKqYM) to determine if you will be house broke.
 
 5. The most important of my soft acceptance criteria (nice-to-haves) is subletting. Flexibility is very important to me in life. I want the option to be able to easily move to another city or country without selling my home. Many co-op buildings have a sublet policy of a max of 2 year sublet, unless with special permission from the co-op board. These apartment features improves my chances of finding a qualified tenant:
-    - Close to college campuses (e.g., NYU) - college students don't tend to stay in NYC for a really long time and many have wealthy parents
-    - In a good neighborhood with a lot of dining and entertainment options
-    - Walking distance to subway stations
-    - Laundry and elevator in the building
 
-    To research the subletting opportunities of each apartment, I went on StreetEasy and other similar sites to look up the rental history of similar apartments in the same building in recent years. I look for what prices they go for and compare those numbers with the monthly cost of owning to make sure that if I do decide to rent it out, I'd be able to make enough to cover the mortgage payment, maintenance, and other fees, and be able to earn profit on top of that.
+   - Close to college campuses (e.g., NYU) - college students don't tend to stay in NYC for a really long time and many have wealthy parents
+   - In a good neighborhood with a lot of dining and entertainment options
+   - Walking distance to subway stations
+   - Laundry and elevator in the building
 
-    Another thing I researched is the similar apartments in the same area in other buildings. I looked for features of the apartments that make the rental price higher. Location, of course, is a key driver of rental price but I also noticed that  apartments with nice building amenities like elevator and laundry tend to go a lot higher than those without.
+   To research the subletting opportunities of each apartment, I went on StreetEasy and other similar sites to look up the rental history of similar apartments in the same building in recent years. I look for what prices they go for and compare those numbers with the monthly cost of owning to make sure that if I do decide to rent it out, I'd be able to make enough to cover the mortgage payment, maintenance, and other fees, and be able to earn profit on top of that.
+
+   Another thing I researched is the similar apartments in the same area in other buildings. I looked for features of the apartments that make the rental price higher. Location, of course, is a key driver of rental price but I also noticed that apartments with nice building amenities like elevator and laundry tend to go a lot higher than those without.
 
 6. Eliminate all the apartments you cannot afford or fails your hard acceptance criteria. Out of sight, out of mind.
 
@@ -136,31 +139,35 @@ Once you are ready to make an offer, here's what comes next:
 
 1. **Get Pre-approval letter:** Talk to the loan officer to get a loan pre-approval letter. This requires running a credit check, which lowered my credit score by 6 points and also cost me $55, which I charged to my credit card. This should take between 1-3 days.
 
-2. **Negotiate the Price Down:**  Have your agent negotiate with the seller's agent to get your price down as low as possible. You should have two numbers you care about when you negotiate:
-    - **Price A:** The price that if it goes any lower, it would not be worth it for the seller.
-    - **Price B:** The price that if it goes any higher, you will not be able to afford the down payment, or monthly payments, or lose too much of your reserve that you'd be house broke (or at a high risk of not getting approved by the co-op board).
+2. **Negotiate the Price Down:** Have your agent negotiate with the seller's agent to get your price down as low as possible. You should have two numbers you care about when you negotiate:
 
-    When you negotiate, make your first offer Price A. The seller is going to come back with a number between the listing price and Price A. Then you tell the seller your final offer is just below Price B. Take it or leave it. If the seller is motivated, he may simply accept Price B or counter with a number slightly higher than your final offer price, which should be close to Price B. If that happens, you accept immediately and get the ball rolling to sign the contract. If the seller refuses, walk away. {{< hl-text danger >}}It's critically important to walk away from a property you cannot afford.{{< /hl-text >}}
+   - **Price A:** The price that if it goes any lower, it would not be worth it for the seller.
+   - **Price B:** The price that if it goes any higher, you will not be able to afford the down payment, or monthly payments, or lose too much of your reserve that you'd be house broke (or at a high risk of not getting approved by the co-op board).
 
-    - Sometimes, the price could be unreasonably high because the seller believes incorrectly the property is worth more than it is actually is and/or is not motivated enough to sell right away. It's not impossible to still get that dream home you can't afford if you walk away now. Chances are that property could stay on the market for long enough that the price naturally goes down. At that point, you can approach the seller again with your offer.
+   When you negotiate, make your first offer Price A. The seller is going to come back with a number between the listing price and Price A. Then you tell the seller your final offer is just below Price B. Take it or leave it. If the seller is motivated, he may simply accept Price B or counter with a number slightly higher than your final offer price, which should be close to Price B. If that happens, you accept immediately and get the ball rolling to sign the contract. If the seller refuses, walk away. {{< hl-text danger >}}It's critically important to walk away from a property you cannot afford.{{< /hl-text >}}
+
+   - Sometimes, the price could be unreasonably high because the seller believes incorrectly the property is worth more than it is actually is and/or is not motivated enough to sell right away. It's not impossible to still get that dream home you can't afford if you walk away now. Chances are that property could stay on the market for long enough that the price naturally goes down. At that point, you can approach the seller again with your offer.
 
 3. **Make the verbal offer:**
-    - The verbal offer consists of an email and phone calls that we do until we have an official accepted offer. This includes a deal sheet that mentions the final price and all the parties involved in the transaction.
-    - Make sure you find a attorney before you start this step. The lawyer's name needs to be listed in the deal sheet and the lawyer will be involved in closing the contract.
+
+   - The verbal offer consists of an email and phone calls that we do until we have an official accepted offer. This includes a deal sheet that mentions the final price and all the parties involved in the transaction.
+   - Make sure you find a attorney before you start this step. The lawyer's name needs to be listed in the deal sheet and the lawyer will be involved in closing the contract.
 
 4. **Get the money ready:**
-    - If you need gift money from your parents to afford the down-payment or bump up the post-closing reserve, do that right now. Even if you don't need the money for the down-payment, get the gift anyway to increase your post-closing refund, which will strengthen your co-op board application.
-    - There will be a form to fill out for the gift giver during the underwriting process later on but there's no special process to transfer the gift money to your bank account right away. Make sure to double check if the gift will incur a gifting tax.
+
+   - If you need gift money from your parents to afford the down-payment or bump up the post-closing reserve, do that right now. Even if you don't need the money for the down-payment, get the gift anyway to increase your post-closing refund, which will strengthen your co-op board application.
+   - There will be a form to fill out for the gift giver during the underwriting process later on but there's no special process to transfer the gift money to your bank account right away. Make sure to double check if the gift will incur a gifting tax.
 
 5. **Make the official offer:**
-    - The Seller's attorney will send the contract to your attorney for you to sign. You need to have a deposit ready (generally 10% of the down payment) when you sign the contract. Once the Seller also signs the contract, you'll have a fully-executed contract, which you need to move forward with the loan application. After that, the seller's agent will update the listing to "in contract" and you can officially start the loan application.
-    - Pay close attention to all the fees. The things to verify when reviewing the contract:
-      - The [flip tax](https://ny.curbed.com/2012/3/28/10385724/seller-concerns-what-is-a-flip-tax-and-who-has-to-pay-it) (usually paid for by the seller but sometimes buyer pays),
-      - Is there an upper limit for how much maintenance will go up?
-      - What fee to pay to the building if I want to rent it out in 3 years?
+
+   - The Seller's attorney will send the contract to your attorney for you to sign. You need to have a deposit ready (generally 10% of the down payment) when you sign the contract. Once the Seller also signs the contract, you'll have a fully-executed contract, which you need to move forward with the loan application. After that, the seller's agent will update the listing to "in contract" and you can officially start the loan application.
+   - Pay close attention to all the fees. The things to verify when reviewing the contract:
+     - The [flip tax](https://ny.curbed.com/2012/3/28/10385724/seller-concerns-what-is-a-flip-tax-and-who-has-to-pay-it) (usually paid for by the seller but sometimes buyer pays),
+     - Is there an upper limit for how much maintenance will go up?
+     - What fee to pay to the building if I want to rent it out in 3 years?
 
 6. **Loan Application:**
-    - It's assumed that at this point, you'd have shopped around for the best rates and have a bank or a broker you are going to be working with to get the loan. The lender needs a fully-executed contract to lock your rate.
+   - It's assumed that at this point, you'd have shopped around for the best rates and have a bank or a broker you are going to be working with to get the loan. The lender needs a fully-executed contract to lock your rate.
 
 # Phase 3 Going Under Contract
 
@@ -190,7 +197,7 @@ The financial documents I needed to provide include:
 6. One month of **recent** paystubs, in addition to 2018 and 2019 year end stubs if bonus income received
 7. Two consecutive months of recent bank statements for checking, savings & money market (all pages)
 8. Two consecutive months of recent statements for any investment accounts, ex. Stocks, bonds, CD’s, IRA’s, 401k, etc... ( all pages)
-9. Retirement/401k accounts- provide plan terms that describe the terms & conditions of withdrawal *(if withdrawal is only allowed with termination, retirement or death, funds cannot be used as reserves)*
+9. Retirement/401k accounts- provide plan terms that describe the terms & conditions of withdrawal _(if withdrawal is only allowed with termination, retirement or death, funds cannot be used as reserves)_
 10. Letter from Present Landlord or managing agent (or signed and dated letter from parents confirming you currently reside with them free of rent)
 
 The financial documents the building needed to provide include a questionnaire for which I need to pay $250 (The questionnaire was required because the bank had not approved a loan for this building this year. I had to pay the co-op management company $250 to release the questionnaire to the bank). The building provided.
@@ -224,8 +231,8 @@ Long Lead Time / Requires Effort
 5. Bank verification of cash on deposit, securities and/or pension assets must be documented) All pages of each statement must be submitted.
 6. Cover letter
 7. If financing (i.e., taking out a mortgage loan)
-    - Bank Commitment Letter
-    - Copy of Loan Application
+   - Bank Commitment Letter
+   - Copy of Loan Application
 
 Getting the bank verification letters required me visiting a branch of each of my banks (hard during COVID pandemic) to get a teller to hand me a physical copy of a letter stating (1) how long I have had the account, (2) whether the account is in good standing, and (3) average balance of the account. The co-op did not accept bank statements.
 
@@ -269,7 +276,7 @@ Closing cannot take place until a few days after the closing disclosure is recei
 On the closing date, I brought around $8,600 worth in checks for the following expenses
 
 | Fee                                                 | cost      |
-|-----------------------------------------------------|-----------|
+| --------------------------------------------------- | --------- |
 | lender's lawyer                                     | $350      |
 | first month's maintenance fee                       | $1073.43  |
 | Move-in fee for the co-op                           | $500      |
@@ -291,7 +298,7 @@ Also, I went to the bank to wire the remaining down-payment to the seller. The m
 # Timeline
 
 | Date         | Milestone                                                   |
-|--------------|-------------------------------------------------------------|
+| ------------ | ----------------------------------------------------------- |
 | June 26      | Toured the apartment                                        |
 | June 27      | Made verbal offer to Seller and seller agreed on sales pice |
 | June 29      | Received Pre-approval Letter from lender                    |
@@ -312,7 +319,7 @@ Also, I went to the bank to wire the remaining down-payment to the seller. The m
 1. Before you start searching for property to buy, get a clear picture of your financial situation. Figure out how much total liquid asset you have and your [Debt-to-Income ratio](https://www.nerdwallet.com/article/loans/personal-loans/calculate-debt-income-ratio). If you have your money spread out across many accounts, I suggest using [Mint](https://mint.intuit.com/) to get a consolidated view of all your money. I have been using Mint for many years and I'm very happy with the platform's ability to provide trends on Net Worth and spending.
 2. Demand a credit score disclosure whenever someone pulls your credit. When a bank or broker performs a hard inquiry on your credit score, they are required to share with you the result of the inquiry. An inquiry has a small effect on your credit score but in a 30-day period, multiple inquiries will not result in anymore decrease to your credit score.
 3. In the contract, add a COVID-19 contingency. Because of the COVID situation, I might not have access to a services I need to close the deal. Can there be a contingency clause built into the contract that the closing date be extended to accommodate the current situation in the world. I recommend you add a COVID-19 contingency to the contract when you buy. until there is a vaccine, there's a risk of lock-downs.
-  {{< image classes="fancybox fig-100 clear" src="/post/images/life/covid-home-purchase-contingency.png" thumbnail="/post/images/life/covid-home-purchase-contingency.png" title="Amendment added to the contract">}}
+   {{< image classes="fancybox fig-100 clear" src="/post/images/life/covid-home-purchase-contingency.png" thumbnail="/post/images/life/covid-home-purchase-contingency.png" title="Amendment added to the contract">}}
 4. Make sure all the issues you found during the home inspection gets addressed before you close or you ask for a credit at closing to cover the cost of repair. I discovered some leakage in the bathroom sink and tub during the home inspection. The seller hired a plumbing company to get a quote and scope of work and put his credit card on file to be charged when the work is executed. I did not order the work before closing and after closing, it was difficult to get in touch with the seller as I did not have his contact directly and we only communicated through the real-estate brokers. Fortunately, my real-estate broker continued to work with me after closing to get in touch with the seller to authorize the work. The broker did not have to help me as he and the seller's broker both got their commission on the day of closing.
 5. If you close at the beginning of the month, you get to live at your apartment for two months until your first mortgage payment is due. The [bank policy for mortgage payment](https://www.policygenius.com/mortgages/when-is-my-first-mortgage-payment-due/) is your first mortgage payment is due one month after the last day of the month you closed on the home. I closed on October 2nd and my first mortgage payment is on December 1st.
 

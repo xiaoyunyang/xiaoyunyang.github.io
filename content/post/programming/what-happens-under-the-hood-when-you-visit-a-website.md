@@ -222,7 +222,7 @@ The above example demonstrates the another usefulness of REST API as it allows y
 
 **What is HTTP?**
 
-[HTTP](https://www.wikiwand.com/en/Hypertext_Transfer_Protocol) stands for Hypertext Transport Protocol. It was invented for the Web to retrieve HTML, images, documents etc. The basic concept of HTTP is (1) establish a connection, (2) request a document, (3) retrieve the document, and (4) close the connection. Let's see HTTP in action. In your terminal, type:
+[HTTP](https://www.wikiwand.com/en/Hypertext_Transfer_Prool) stands for Hypertext Transport Protocol. It was invented for the Web to retrieve HTML, images, documents etc. The basic concept of HTTP is (1) establish a connection, (2) request a document, (3) retrieve the document, and (4) close the connection. Let's see HTTP in action. In your terminal, type:
 
 ```
 $ telnet www.rigaut.com 80

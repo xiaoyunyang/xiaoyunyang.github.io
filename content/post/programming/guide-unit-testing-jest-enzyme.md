@@ -21,7 +21,8 @@ thumbnailImage: https://images2.imgbox.com/22/c7/WQabWJ4U_o.png
 The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.
 
 <!--more-->
-<!--toc-->
+
+{{< toc >}}
 
 # Testing Concepts
 
@@ -106,14 +107,12 @@ A mock of other pieces of software is essentially data that we expect to get as 
 We create mocks to support unit tests. For example
 
 ```javascript
-const generateMockUser = (
-  {
-    userName = "janeDoe",
-    firstName = "Jane",
-    lastName = "Doe",
-    email = "janeDoe@example.com"
-  }
-) => ({ userName, firstName, lastName, email})
+const generateMockUser = ({
+  userName = "janeDoe",
+  firstName = "Jane",
+  lastName = "Doe",
+  email = "janeDoe@example.com",
+}) => ({ userName, firstName, lastName, email });
 ```
 
 Every argument in `generateMockUser` is optional with a default. This provides maximum flexibility for creating a customizable mock.
@@ -152,30 +151,24 @@ import generateMockUser from "./mocks/mockUser";
 const mockUser = generateMockUser({});
 
 describe("EditProfileForm", () => {
-      let props;
-      let form;
-      let submitSpy = jest.fn();
+  let props;
+  let form;
+  let submitSpy = jest.fn();
 
-      beforeEach(() => {
-        submitSpy = jest.fn();
-        props = {
-          ...mockUser,
-          submit: submitSpy
-        }
-        form = shallow(<EditProfileForm {...props} />);
-      });
+  beforeEach(() => {
+    submitSpy = jest.fn();
+    props = {
+      ...mockUser,
+      submit: submitSpy,
+    };
+    form = shallow(<EditProfileForm {...props} />);
+  });
 
-      describe("render", () => {
-        test("renders...", () => {
-
-        });
-        test("renders...", () => {
-
-        });
-      });
-      describe("submit", () => {
-
-      });
+  describe("render", () => {
+    test("renders...", () => {});
+    test("renders...", () => {});
+  });
+  describe("submit", () => {});
 });
 ```
 
@@ -188,7 +181,7 @@ test("renders emailInput with right props", () => {
   const emailInput = form.find(EmailInput);
   expect(emailInput).toHaveLength(1);
   expect(emailInput.props()).toEqual({
-    value: props.email
+    value: props.email,
   });
 });
 ```
@@ -201,15 +194,15 @@ test("renders the text input with right props", () => {
   expect(textInputs).toHaveLength(3);
   expect(textInputs.at(0).props()).toEqual({
     value: props.userName,
-    locked: true
+    locked: true,
   });
   expect(textInputs.at(1).props()).toEqual({
     value: props.firstName,
-    locked: false
+    locked: false,
   });
   expect(textInputs.at(2).props()).toEqual({
     value: props.lastName,
-    locked: false
+    locked: false,
   });
 });
 ```
@@ -217,14 +210,14 @@ test("renders the text input with right props", () => {
 We can also find by class
 
 ```javascript
-const input = form.find(".inputClassName")
+const input = form.find(".inputClassName");
 ```
 
 And by HTML Element
 
 ```javascript
-const paragraph = form.find("p")
-const textInParagraph = paragraph.at(0).childAt(0).text()
+const paragraph = form.find("p");
+const textInParagraph = paragraph.at(0).childAt(0).text();
 ```
 
 ## childAt vs at
@@ -269,7 +262,7 @@ describe("submit", () => {
     expect(submitSpy).toHaveBeenNthCalledWith(1, {
       email: form.state().email,
       firstName: form.state().firstName,
-      lastName: form.state().lastName
+      lastName: form.state().lastName,
     });
   });
 });
@@ -284,7 +277,7 @@ global.fetch = jest.fn().mockImplementation(() => {
   const p = new Promise((resolve) => {
     resolve({
       status: 200,
-      json: () => p
+      json: () => p,
     });
   });
   return p;
@@ -307,15 +300,14 @@ const increment = (val) => {
 
 ```javascript
 test.each([
-    [-1, 0],
-    [0, 1],
-    [1, 2],
-    [1.5, 2]
-    ["2", 3],
-    ["foo", undefined],
-    [null, undefined]
+  [-1, 0],
+  [0, 1],
+  [1, 2],
+  [1.5, 2][("2", 3)],
+  ["foo", undefined],
+  [null, undefined],
 ])("increment %s", (val, expectedRes) => {
-    expect(increment(val)).toBe(expectedRes);
+  expect(increment(val)).toBe(expectedRes);
 });
 ```
 
@@ -367,14 +359,14 @@ class Counter extends React.PureComponent {
 test("should increment value when incrementValue is called", () => {
   const props = {
     counterValue: 0,
-    updateCounter: jest.fn()
-  }
+    updateCounter: jest.fn(),
+  };
   const wrapper = shallow(<Counter {...props} />);
   expect(wrapper.state("value")).toBe(0);
   wrapper.instance().incrementValue();
   wrapper.instance().incrementValue();
   expect(wrapper.state("value")).toBe(2);
-  expect(props.updateCounter).toHaveBeenNthCalledWith(1, 2)
+  expect(props.updateCounter).toHaveBeenNthCalledWith(1, 2);
 });
 ```
 
@@ -390,18 +382,18 @@ class App extends React.PureComponent {
     super(props);
     this.updateCounterBound = this.updateCounter.bind(this);
     this.state({
-      counterValue: 0
+      counterValue: 0,
     });
   }
   updateCounter(newValue) {
-    this.setState({ counterValue: newValue })
+    this.setState({ counterValue: newValue });
   }
   render() {
     return (
-        <Counter
-  counterValue={this.state.value}
-  updateValue={this.updateCounterBound}
-/>
+      <Counter
+        counterValue={this.state.value}
+        updateValue={this.updateCounterBound}
+      />
     );
   }
 }
@@ -416,9 +408,9 @@ test("renders Counter with right props", () => {
   expect(counter).toHaveLength(1);
   expect(counter.props()).toEqual({
     counterValue: app.state("counterValue"),
-    updateCounter: app.instance().updateCounterBound
+    updateCounter: app.instance().updateCounterBound,
   });
-})
+});
 ```
 
 What about checking for higher order functions?
@@ -439,8 +431,8 @@ describe("incrementValue", () => {
   beforeEach(() => {
     const props = {
       counterValue: 0,
-      updateCounter: jest.fn()
-    }
+      updateCounter: jest.fn(),
+    };
     counter = shallow(<Counter {...props} />);
     counterInstance = counter.instance();
     incrementValueSpy = jest.spyOn(counterInstance, "incrementValue");
@@ -488,11 +480,11 @@ export class Layout extends React.PureComponent {
   render() {
     return (
       <ContentPage
-   topNav={TopNav}
-   sidebar={Sidebar}
-   screen={MainScreen}
-   title={"My Awesome App"}
-/>
+        topNav={TopNav}
+        sidebar={Sidebar}
+        screen={MainScreen}
+        title={"My Awesome App"}
+      />
     );
   }
 }
@@ -537,13 +529,13 @@ For this section, we will use the following component:
 class Foo extends React.PureComponent {
   constructor(props) {
     this.state = {
-      title: "foo"
-    }
+      title: "foo",
+    };
   }
   render() {
     return (
       <div>
-        <h1>{this.state.title}</h1>  
+        <h1>{this.state.title}</h1>
         <p>{this.props.value}</p>
       </div>
     );
@@ -559,7 +551,7 @@ describe("Foo", () => {
   let foo;
   beforeEach(() => {
     props = {
-      value: "Hello World"
+      value: "Hello World",
     };
     foo = mount(<Foo {...props} />);
   });
@@ -605,7 +597,7 @@ expect(foo.state().value).toBe(props.value);
 ```javascript
 expect(foo.find("p").text()).toBe("Hello World");
 foo.setProps({
-  value: "Hello"
+  value: "Hello",
 });
 expect(foo.find("p").text()).toBe("Hello");
 ```
@@ -634,7 +626,7 @@ flashNameChange = async ({ newName }) => {
   await delay(FLASH_CHANGE_DURATION);
 
   this.setState({ textColor: "black" });
-}
+};
 ```
 
 ```javascript
@@ -646,28 +638,30 @@ describe("flashNameChange", () => {
     wrapper.instance().flashNameChange({ newName });
     expect(wrapper.instance().state).toEqual({
       name: newName,
-      textColor: "red"
-     });
+      textColor: "red",
+    });
   });
 
-  test("should set textColor back to black after FLASH_CHANGE_DURATION elapsed", async () => {
-    await wrapper.instance().flashNameChange({ newName });
+  test(
+    "should set textColor back to black after FLASH_CHANGE_DURATION elapsed",
+    async () => {
+      await wrapper.instance().flashNameChange({ newName });
 
-    expect(wrapper.instance().state.textColor).toEqual("black");
-  }, FLASH_MESSAGE_DURATION * 2);
+      expect(wrapper.instance().state.textColor).toEqual("black");
+    },
+    FLASH_MESSAGE_DURATION * 2
+  );
 });
-
 ```
 
 See [this](https://github.com/facebook/jest/issues/5055) for more information on timeouts.
 
-
 ## Spying on Async Functions
 
 ```javascript
-makeRequestSpy = jest.spyOn(ApiRequestUtils, "makeRequest").mockImplementation(
-  () => Promise.resolve({ code: "SUCCESS", data: {  } })
-);
+makeRequestSpy = jest
+  .spyOn(ApiRequestUtils, "makeRequest")
+  .mockImplementation(() => Promise.resolve({ code: "SUCCESS", data: {} }));
 ```
 
 ## Document and Element With Timeout
@@ -774,50 +768,44 @@ Then we can add the following tests to verify that when provided with a valid `e
 
 ```js
 describe("Scroll to and highlight Section based on scrollTo", () => {
-  test.each(
-    [[undefined], ["invalid sectionId"]]
-  )("scrolls to and highlights section when scrollTo = %s", (elementId) => {
-      page = mount(
-          <Page scrollTo={elementId} />,
-          { attachTo: window.domNode }
-      );
+  test.each([[undefined], ["invalid sectionId"]])(
+    "scrolls to and highlights section when scrollTo = %s",
+    (elementId) => {
+      page = mount(<Page scrollTo={elementId} />, { attachTo: window.domNode });
       expect(page.state().highlightSection).toBe(false);
       expect(scrollIntoViewSpy).toHaveBeenCalledTimes(0);
-  });
-  test.each(
-    validElementIds
-  )("scrolls to and highlights section when scrollTo = %s", (elementId) => {
-      page = mount(
-          <Page scrollTo={elementId} />,
-          { attachTo: window.domNode }
-      );
+    }
+  );
+  test.each(validElementIds)(
+    "scrolls to and highlights section when scrollTo = %s",
+    (elementId) => {
+      page = mount(<Page scrollTo={elementId} />, { attachTo: window.domNode });
       expect(page.state().highlightSection).toBe(true);
       expect(scrollIntoViewSpy).toHaveBeenCalledTimes(1);
       const element = page.find(`#${elementId}`);
       expect(element.hasClass("highlightedSection")).toBe(true);
-  });
+    }
+  );
 });
 ```
 
 Finally, we also want to test that the highlight is removed after a specified duration.
 
 ```js
-test("should set highlightSection to false after flash duration elapses after mount", async () => {
+test(
+  "should set highlightSection to false after flash duration elapses after mount",
+  async () => {
     const elementId = validElementIds[0];
 
-    page = mount(
-        <Page scrollTo={elementId} />,
-        { attachTo: window.domNode }
-    );
+    page = mount(<Page scrollTo={elementId} />, { attachTo: window.domNode });
 
-    await page.instance().scrollToElement(
-        document.getElementById(elementId)
-    );
+    await page.instance().scrollToElement(document.getElementById(elementId));
 
     expect(userPreferencesForm.state().highlightSection).toBe(false);
-}, FLASH_DURATION * 2);
+  },
+  FLASH_DURATION * 2
+);
 ```
-
 
 # Resources
 

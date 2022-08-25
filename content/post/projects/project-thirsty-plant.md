@@ -16,7 +16,7 @@ I love indoor plants but I'm bad a keeping them alive. I once had a cactus that 
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 ![plants](https://images2.imgbox.com/56/7e/Wn038aAw_o.jpg)
 
 # Concept Design
@@ -93,7 +93,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   Serial.println("Motor test!");
-  
+
   motor.setSpeed(200);     // set the speed to 200/255
 
 }
@@ -102,7 +102,7 @@ void loop() {
   Serial.print("tick ");
   motor.run(FORWARD);      // turn it on going forward
   delay(1000);
-  
+
   Serial.print("tock ");
   motor.run(BACKWARD);     // the other way
   delay(1000);
@@ -110,7 +110,7 @@ void loop() {
   Serial.print("tack ");
   motor.run(RELEASE);      // stopped
   delay(1000);
-  
+
   int sensorValue = analogRead(A0);
   float voltage= sensorValue * (5.0 / 1023.0);
   Serial.println(voltage);
@@ -147,7 +147,7 @@ AF_DCMotor motor(1, MOTOR12_1KHZ); // create motor #1, 1KHz pwm
 void setup() {
   Serial.begin(9600);
   Serial.println("Motor test!");
-  
+
   motor.setSpeed(200);     // set the speed to 200/255
 
 }
@@ -219,7 +219,7 @@ $ cat  /dev/cu.usbmodem1411 > moisturelog1.csv
 
 Note:
 
-- Y-axis is the sensor output (The sensor reading can go from 0 to 1023)* X-axis represent time from 0 to 30 minutes (with a sampling rate of 100/ms).
+- Y-axis is the sensor output (The sensor reading can go from 0 to 1023)\* X-axis represent time from 0 to 30 minutes (with a sampling rate of 100/ms).
 - Before the first pour, the sensor was reading 0 (bone dry soil). The first pour was about an inch from the sensor. The second pour was about half an inch from the sensor.
 
 Clyde's note:

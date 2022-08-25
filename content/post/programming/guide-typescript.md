@@ -24,7 +24,8 @@ Introduction to TypeScript and guide for how to migrate your project from Flow t
 This post is a WIP.
 
 <!--more-->
-<!--toc-->
+
+{{< toc >}}
 
 # Motivation
 
@@ -44,7 +45,7 @@ Assuming the project used Flow.
 
 ### Update Loader
 
-__Option 1__ - Delete .babelrc and babel dependencies
+**Option 1** - Delete .babelrc and babel dependencies
 
 Why? TypeScript now supports transpiling JavaScript.
 
@@ -54,7 +55,7 @@ yarn remove babel-loader
 yarn add --dev awesome-typescript-loader source-map-loader typings-for-css-modules-loader
 ```
 
-__Option 2__ - Update babel loader
+**Option 2** - Update babel loader
 
 If you have a project that needs to support both JS and TS, update babel
 
@@ -66,24 +67,18 @@ touch babel.config.js
 ```js
 // babel.config.js
 
-module.exports = function babelConfig (api) {
-    api.cache(true);
-    return {
-        presets: [
-            "@smartling/babel-preset-smartling",
-            "@babel/preset-typescript"
-        ],
-        plugins: [
-            "@babel/plugin-transform-modules-commonjs"
-        ],
-        env: {
-            test: {
-                plugins: ["@babel/plugin-transform-modules-commonjs"]
-            }
-        }
-    };
+module.exports = function babelConfig(api) {
+  api.cache(true);
+  return {
+    presets: ["@smartling/babel-preset-smartling", "@babel/preset-typescript"],
+    plugins: ["@babel/plugin-transform-modules-commonjs"],
+    env: {
+      test: {
+        plugins: ["@babel/plugin-transform-modules-commonjs"],
+      },
+    },
+  };
 };
-
 ```
 
 Update Webpack Config to use new loader
@@ -99,48 +94,57 @@ const webpack = require("webpack");
 const isDevelopmentMode = process.env.NODE_ENV === "development";
 
 module.exports = {
-    bail: !isDevelopmentMode,
-    cache: true,
-    devtool: isDevelopmentMode ? "eval-source-map" : false,
-    mode: isDevelopmentMode ? "development" : "production",
-    module: {
-        rules: [
-            {
-                test: /\.(t|j)sx?$/,
-                exclude: /node_modules/,
-                loader: "eslint-loader",
-                enforce: "pre"
-            },
-            {
-                test: /\.(t|j)sx?$/,
-                exclude: /node_modules/,
-                loader: "babel-loader",
-                query: {
-                    cacheDirectory: true
-                }
-            },
-            {
-                test: /\.(woff2?|ttf|eot|svg)(\?[\s\S]+)?$/,
-                loader: "url-loader",
-                options: {
-                    name: "[name]-[hash].[ext]"
-                }
-            }
-        ]
-    },
-    plugins: [
-        new webpack.DefinePlugin({
-            "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
-        }),
-        new MiniCssExtractPlugin({ filename: "editor.css", allChunks: true })
+  bail: !isDevelopmentMode,
+  cache: true,
+  devtool: isDevelopmentMode ? "eval-source-map" : false,
+  mode: isDevelopmentMode ? "development" : "production",
+  module: {
+    rules: [
+      {
+        test: /\.(t|j)sx?$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+        enforce: "pre",
+      },
+      {
+        test: /\.(t|j)sx?$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        query: {
+          cacheDirectory: true,
+        },
+      },
+      {
+        test: /\.(woff2?|ttf|eot|svg)(\?[\s\S]+)?$/,
+        loader: "url-loader",
+        options: {
+          name: "[name]-[hash].[ext]",
+        },
+      },
     ],
-    resolve: {
-        extensions: [".js", ".jsx", ".ts", ".tsx", ".d.ts", ".scss", ".json", ".css"],
-        modules: [
-            path.resolve(__dirname, "../src"),
-            path.resolve(__dirname, "../node_modules")
-        ]
-    }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+    }),
+    new MiniCssExtractPlugin({ filename: "editor.css", allChunks: true }),
+  ],
+  resolve: {
+    extensions: [
+      ".js",
+      ".jsx",
+      ".ts",
+      ".tsx",
+      ".d.ts",
+      ".scss",
+      ".json",
+      ".css",
+    ],
+    modules: [
+      path.resolve(__dirname, "../src"),
+      path.resolve(__dirname, "../node_modules"),
+    ],
+  },
 };
 ```
 
@@ -171,8 +175,8 @@ yarn add @types/classnames
 
 etc etc
 
-__Optional:__ Add type-check script in `package.json`
-  
+**Optional:** Add type-check script in `package.json`
+
 ```javascript
 scripts: {
  "type-check": "tsc"
@@ -227,58 +231,58 @@ Update `eslintrc.js`
 ```javascript
 //eslintrc.js
 module.exports = {
-    extends: [
-        "plugin:@typescript-eslint/recommended",
-        "eslint:recommended",
-        "@smartling/eslint-config-smartling"
-    ],
-    parser: "@typescript-eslint/parser",
-    plugins: ["import", "@typescript-eslint"],
-    parserOptions: {
-        ecmaFeatures: {
-            jsx: true
-        },
-        sourceType: "module",
-        useJSXTextNode: true,
-        project: "./tsconfig.json"
+  extends: [
+    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
+    "@smartling/eslint-config-smartling",
+  ],
+  parser: "@typescript-eslint/parser",
+  plugins: ["import", "@typescript-eslint"],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
-    rules: {
-        "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/explicit-member-accessibility": "off",
-        "@typescript-eslint/member-delimiter-style": [2],
-        "import/extensions": [1, "never", { ts: "never", "json": "always" }],
-        "react/jsx-indent": [0],
-        "react/jsx-indent-props": [0],
-        "indent": [0]
+    sourceType: "module",
+    useJSXTextNode: true,
+    project: "./tsconfig.json",
+  },
+  rules: {
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/member-delimiter-style": [2],
+    "import/extensions": [1, "never", { ts: "never", json: "always" }],
+    "react/jsx-indent": [0],
+    "react/jsx-indent-props": [0],
+    indent: [0],
+  },
+  overrides: [
+    {
+      files: ["**/*.ts", "**/*.tsx"],
+      rules: {
+        semi: 1,
+        "no-unused-vars": ["off"],
+        "quote-props": ["error", "as-needed"],
+      },
     },
-    overrides: [
-        {
-            files: ["**/*.ts", "**/*.tsx"],
-            rules: {
-                "semi": 1,
-                "no-unused-vars": ["off"],
-                "quote-props": ["error", "as-needed"]
-            }
-        }
-    ],
-    settings: {
-        "import/resolver": {
-            node: {
-                extensions: [".js", ".jsx", ".ts", ".tsx"]
-            },
-            "eslint-import-resolver-typescript": true
-        },
-        "import/parsers": {
-            "@typescript-eslint/parser": [".ts", ".tsx"]
-        },
-        react: {
-            version: "detect"
-        }
+  ],
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
+      "eslint-import-resolver-typescript": true,
     },
-    env: {
-        jest: true,
-        browser: true
-    }
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
+    },
+    react: {
+      version: "detect",
+    },
+  },
+  env: {
+    jest: true,
+    browser: true,
+  },
 };
 ```
 
@@ -322,13 +326,13 @@ Open VSCode setting (See more about setting up TSLint [here](http://artsy.github
 
 ## Phase 2 TypeScriptify Flow Project
 
-
 ### Update files
 
 1. Delete Flow-related files. This include, but are not limited to:
-    - `flow-typed` folder
-    - flowconfig
-    - `flow-typed` in eslintignore
+
+   - `flow-typed` folder
+   - flowconfig
+   - `flow-typed` in eslintignore
 
 2. Delete all instances of `// @flow` and update import. Also, delete all instances of `// $FlowFixMe`
 
@@ -407,9 +411,9 @@ import { Type1, Type2 } from ./dir/to/path
 We can also use literals as types. For example:
 
 ```ts
-type One = 1
-const one: One = 1
-const two: One = 2 // <- error
+type One = 1;
+const one: One = 1;
+const two: One = 2; // <- error
 ```
 
 #### Typing Functions
@@ -420,8 +424,8 @@ In TypeScript, there are [three ways](https://mariusschulz.com/blog/typing-funct
 // Flow
 type Date = {
   toString: () => string,
-  setTime: (time: number) => number
-}
+  setTime: (time: number) => number,
+};
 ```
 
 ```ts
@@ -469,19 +473,19 @@ function acceptsMaybeString(value: string | null) {
 // Flow
 
 type User = {
-    firstName: string,
-    lastName: string,
-    email: string
-}
+  firstName: string,
+  lastName: string,
+  email: string,
+};
 const user = {
-    firstName: "Jane",
-    lastname: "Doe",
-    email: "example@example.com",
-    paidUser: true
+  firstName: "Jane",
+  lastname: "Doe",
+  email: "example@example.com",
+  paidUser: true,
 };
 const user2 = {
-    firstName: "Jane",
-    lastname: "Doe"
+  firstName: "Jane",
+  lastname: "Doe",
 };
 
 const userAsUser: User = ((user: User): User);
@@ -504,8 +508,8 @@ interface User {
 }
 
 const user: User = {
-    firstName: "Jane",
-    lastName: "Jane Doe",
+  firstName: "Jane",
+  lastName: "Jane Doe",
 } as any as User;
 ```
 
@@ -525,7 +529,7 @@ function getUser (): { name: string, age: number }
 ```typescript
 // TypeScript
 // Note the semicolon
-function getUser (): { name: string; age: number }
+function getUser(): { name: string; age: number };
 ```
 
 #### Explicit
@@ -551,7 +555,7 @@ interface User {
   age: number;
 }
 
-function getUser (): User
+function getUser(): User;
 ```
 
 #### Optional Type
@@ -561,8 +565,8 @@ function getUser (): User
 type User = {
   name: string,
   age: number,
-  location?: string
-}
+  location?: string,
+};
 ```
 
 ```ts
@@ -582,9 +586,9 @@ In Flow
 
 ```javascript
 type MyList = {
-  filter: Array<*> => Array<*>,
-  head: Array<*> => *
-}
+  filter: (Array<*>) => Array<*>,
+  head: (Array<*>) => *,
+};
 ```
 
 In TypeScript
@@ -603,39 +607,39 @@ An interface can extend other interfaces as demonstrated in these more complex e
 
 ```ts
 interface Entry {
-    name: string;
-    id: string;
+  name: string;
+  id: string;
 }
 
 interface EntryWithData<T> extends Entry {
-    data?: T[];
-    lastUpdated?: Date;
+  data?: T[];
+  lastUpdated?: Date;
 }
 
 const stuff: EntryWithData<number> = {
-    data: [1,2,3] // TS error: name and id are required for EntryWithData
-}
+  data: [1, 2, 3], // TS error: name and id are required for EntryWithData
+};
 ```
 
 ```ts
 interface GenericIcfOrChunk<T> {
-    readonly type: T;
-    chunks?: Chunk[];
-    text?: string | null;
+  readonly type: T;
+  chunks?: Chunk[];
+  text?: string | null;
 }
 
 interface Chunk extends GenericIcfOrChunk<number> {
-    id?: number;
-    group?: number;
+  id?: number;
+  group?: number;
 }
 
 interface GenericIcf<I> extends GenericIcfOrChunk<IcfType> {
-    id: I;
-    group: number;
+  id: I;
+  group: number;
 }
 
-export type IcfDoc = GenericIcf<0>
-export type IcfSegment = GenericIcf<number>
+export type IcfDoc = GenericIcf<0>;
+export type IcfSegment = GenericIcf<number>;
 ```
 
 For more on Generics in TypeScript See the [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/generics.html).
@@ -684,12 +688,12 @@ This section only deals with TypeScript since Flow does not support enum, rather
 
 ```js
 FilterTypes = {
-    ALL: "ALL",
-    COMPLETED: "COMPLETED",
-    UNASSIGNED: "UNASSIGNED"
-}
+  ALL: "ALL",
+  COMPLETED: "COMPLETED",
+  UNASSIGNED: "UNASSIGNED",
+};
 
-const currentFilter: $Keys<typeof FilterTypes> = FilterTypes.ALL
+const currentFilter: $Keys<typeof FilterTypes> = FilterTypes.ALL;
 ```
 
 Enum in TypeScript allow us to make a collection of constants as types. Some examples:
@@ -702,28 +706,27 @@ Combining two enums
 enum Mammal {
   DOG = "DOG",
   HORSE = "HORSE",
-  HUMAN = "HUMAN"
+  HUMAN = "HUMAN",
 }
 enum Insect {
   ANT = "ANT",
   BEE = "BEE",
-  FLY = "FLY"
+  FLY = "FLY",
 }
 
 const Animal = {
   ...Mammal,
-  ...Insect
-}
+  ...Insect,
+};
 
-type Animal = Mammal | Insect
+type Animal = Mammal | Insect;
 
-type animalCounts = { [key in ValueOf<typeof AnimalT>]: number }
+type animalCounts = { [key in ValueOf<typeof AnimalT>]: number };
 ```
 
 💡 ProTip: you can use the same name for the type and a value of merged enum
 
-
-The [naming convention for enums](https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/4x252001(v=vs.71)) is to:
+The [naming convention for enums](<https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/4x252001(v=vs.71)>) is to:
 
 > Use a singular name for most Enum types, but use a plural name for Enum types that are bit fields.
 
@@ -736,11 +739,11 @@ Here's another Example:
 ```ts
 const enum BasicEvents {
   Start = "Start",
-  Finish = "Finish"
+  Finish = "Finish",
 }
 const enum AdvEvents {
   Pause = "Pause",
-  Resume = "Resume"
+  Resume = "Resume",
 }
 
 type Events = BasicEvents | AdvEvents;
@@ -752,7 +755,7 @@ let e: Events = AdvEvents.Pause;
 
 ```ts
 export const isMammal = (animal: Animal): animal is Animal =>
-    Object.values(Mammal).includes(animal);
+  Object.values(Mammal).includes(animal);
 ```
 
 ##### Subset of Enum
@@ -770,16 +773,20 @@ Note the difference between Animal and AnimalT!
 Consider the case when you have a union type that could be one of the two interfaces.
 
 ```ts
-interface A { a: string }
-interface B { b: string }
-type AorB = A | B
+interface A {
+  a: string;
+}
+interface B {
+  b: string;
+}
+type AorB = A | B;
 ```
 
 We create the following objects:
 
 ```ts
-const a: AorB = { a: "a" }
-const b: AorB = { b: "b" }
+const a: AorB = { a: "a" };
+const b: AorB = { b: "b" };
 ```
 
 If we want to access the property `a` from `a`, sometimes we need to assert type like so:
@@ -819,15 +826,15 @@ type Dict = { [var in VarType]: string }
 
 ```ts
 enum Animal {
-    LION = "LION",
-    PIG = "PIG",
-    COW = "COW",
-    ANT = "ANT"
+  LION = "LION",
+  PIG = "PIG",
+  COW = "COW",
+  ANT = "ANT",
 }
 
 type DomesticatedMammals = {
-    [animal in Exclude<Animal, Animal.ANT>]: boolean
-}
+  [animal in Exclude<Animal, Animal.ANT>]: boolean;
+};
 ```
 
 #### Using enums in `Map`
@@ -836,19 +843,19 @@ type DomesticatedMammals = {
 enum One {
   A = "A",
   B = "B",
-  C = "C"
+  C = "C",
 }
 
 enum Two {
   D = "D",
   E = "E",
-  F = "F"
+  F = "F",
 }
 
 const map = new Map<string, One | Two>([
-    ["a", One.A],
-    ["d", Two.D]
-])
+  ["a", One.A],
+  ["d", Two.D],
+]);
 ```
 
 #### Shape
@@ -864,11 +871,11 @@ TypeScript sometimes does not recognize Tuple Types. Solution: explicit casting 
 Example
 
 ```ts
-type Interval = [number, number]
+type Interval = [number, number];
 
 const getMaxAndMin = (interval: Interval) => ({
-    min: interval[0],
-    max: interval[1]
+  min: interval[0],
+  max: interval[1],
 });
 
 const interval = [0, 3];
@@ -879,7 +886,7 @@ getMaxAndMin(interval);
 TypeScript complains:
 
 > Argument of type 'number[]' is not assignable to parameter of type '[number, number]'. Type 'number[]' is missing the following properties from type '[number, number]'
-  
+
 Solution:
 
 ```ts
@@ -891,31 +898,29 @@ getMaxAndMin(interval);
 Or
 
 ```ts
-getMaxAndMin([0,3]);
+getMaxAndMin([0, 3]);
 ```
 
 #### Enzyme Mount
 
 ```ts
 class MyButton extends React.Component {
-    constructor() {
-        this.handleClickBound = handleClick.bind(this);
-    }
-    handleClick() {
-        console.log("do something");
-    }
-    render() {
-        return (
-            <button onClick={handleClickBound}>Click Me</button>
-        )
-    }
+  constructor() {
+    this.handleClickBound = handleClick.bind(this);
+  }
+  handleClick() {
+    console.log("do something");
+  }
+  render() {
+    return <button onClick={handleClickBound}>Click Me</button>;
+  }
 }
 ```
 
 ```ts
 const button = mount(<MyButton />);
 const buttonInstance = button.instance();
-buttonInstance.handleClick()
+buttonInstance.handleClick();
 ```
 
 > Property 'handleClick' does not exist on type 'Component<{}, {}, any>'
@@ -945,107 +950,106 @@ Easy set up
 
 1. Add Storybook for React
 
-    ```bash
-    npx -p @storybook/cli sb init --type react
-    ```
+   ```bash
+   npx -p @storybook/cli sb init --type react
+   ```
 
-    This create a `.storybook` directory at the root of your project. Alternatively, you can do everything manually. 
+   This create a `.storybook` directory at the root of your project. Alternatively, you can do everything manually.
 
-    Add all the dependencies
+   Add all the dependencies
 
-    ```bash
-    yarn add -d @babel/core @storybook/addon-actions @storybook/addon-links @storybook/addons @storybook/react babel-loader
-    ```
+   ```bash
+   yarn add -d @babel/core @storybook/addon-actions @storybook/addon-links @storybook/addons @storybook/react babel-loader
+   ```
 
-    ```bash
-    yarn add -D @storybook/react @storybook/addon-info @storybook/addon-jest @storybook/addon-knobs @storybook/addon-options @storybook/addons @storybook/react storybook-addon-jsx @types/react babel-core typescript awesome-typescript-loader react-docgen-typescript-webpack-plugin jest @types/jest ts-jest
-    ```
+   ```bash
+   yarn add -D @storybook/react @storybook/addon-info @storybook/addon-jest @storybook/addon-knobs @storybook/addon-options @storybook/addons @storybook/react storybook-addon-jsx @types/react babel-core typescript awesome-typescript-loader react-docgen-typescript-webpack-plugin jest @types/jest ts-jest
+   ```
 
-    Create the files and folders
+   Create the files and folders
 
-    ```bash
-    mkdir .storybook
-    touch .storybook/config.js .storybook/addons.js .storybook/webpack.config.js
-    ```
+   ```bash
+   mkdir .storybook
+   touch .storybook/config.js .storybook/addons.js .storybook/webpack.config.js
+   ```
 
 2. Add add-ons for Storybook
 
-    ```bash
-    yarn add -D @storybook/addon-storysource @storybook/addon-knobs storybook-addon-jsx @storybook/addon-a11y
-    ```
+   ```bash
+   yarn add -D @storybook/addon-storysource @storybook/addon-knobs storybook-addon-jsx @storybook/addon-a11y
+   ```
 
 3. Add the dependencies for typescript loader:
 
-    ```bash
-    yarn add awesome-typescript-loader @storybook/addon-info react-docgen-typescript-loader
-    ```
+   ```bash
+   yarn add awesome-typescript-loader @storybook/addon-info react-docgen-typescript-loader
+   ```
 
 4. In `tsconfig.json`, make sure `compilerOptions` has the following attribute:
 
-    ```js
-    "jsx": "react"
-    ```
+   ```js
+   "jsx": "react"
+   ```
 
-    And make sure `rootDir` includes `stories`:
+   And make sure `rootDir` includes `stories`:
 
-    ```js
-    "rootDirs": [
-        "src", "stories"
-    ],
-    ```
+   ```js
+   "rootDirs": [
+       "src", "stories"
+   ],
+   ```
 
 5. Update `.storybook/config.js`:
 
-    ```js
-    import { configure } from '@storybook/react';
-    import { setAddon, addDecorator } from '@storybook/react';
-    import JSXAddon from 'storybook-addon-jsx';
-    import { withKnobs, select } from '@storybook/addon-knobs/react';
+   ```js
+   import { configure } from "@storybook/react";
+   import { setAddon, addDecorator } from "@storybook/react";
+   import JSXAddon from "storybook-addon-jsx";
+   import { withKnobs, select } from "@storybook/addon-knobs/react";
 
+   addDecorator(withKnobs);
+   setAddon(JSXAddon);
 
-    addDecorator(withKnobs);
-    setAddon(JSXAddon);
+   // automatically import all files ending in *.stories.js
+   const req = require.context("../stories", true, /.stories.(t|j)sx?$/);
 
-    // automatically import all files ending in *.stories.js
-    const req = require.context('../stories', true, /.stories.(t|j)sx?$/);
+   function loadStories() {
+     req.keys().forEach((filename) => req(filename));
+   }
 
-    function loadStories() {
-    req.keys().forEach(filename => req(filename));
-    }
-
-    configure(loadStories, module);
-    ```
+   configure(loadStories, module);
+   ```
 
 6. Add `.storybook/webpack.config.js`:
 
-    ```js
-    module.exports = ({ config }) => {
-        config.module.rules.push({
-            test: /\.stories\.jsx?$/,
-            use: [
-            {
-                loader: require.resolve('@storybook/addon-storysource/loader')
-            },
-            ],
-        });
-        config.module.rules.push({
-            test: /\.stories\.tsx?$/,
-            use: [
-            {
-                loader: require.resolve('awesome-typescript-loader'),
-            },
-            // Optional
-            {
-                loader: require.resolve('react-docgen-typescript-loader'),
-            }
-            ],
-        });
-        config.resolve.extensions.push('.ts', '.tsx');
-        return config;
-    };
-    ```
+   ```js
+   module.exports = ({ config }) => {
+     config.module.rules.push({
+       test: /\.stories\.jsx?$/,
+       use: [
+         {
+           loader: require.resolve("@storybook/addon-storysource/loader"),
+         },
+       ],
+     });
+     config.module.rules.push({
+       test: /\.stories\.tsx?$/,
+       use: [
+         {
+           loader: require.resolve("awesome-typescript-loader"),
+         },
+         // Optional
+         {
+           loader: require.resolve("react-docgen-typescript-loader"),
+         },
+       ],
+     });
+     config.resolve.extensions.push(".ts", ".tsx");
+     return config;
+   };
+   ```
 
-    This configuration gives us the ability to load both js and ts stories.
+   This configuration gives us the ability to load both js and ts stories.
 
 Guides and Resources
 

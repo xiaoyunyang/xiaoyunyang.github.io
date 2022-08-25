@@ -12,7 +12,6 @@ keywords:
   - Docker
   - DevOps
   - MERN
-
 ---
 
 ![](/post/images/deployapp/ecs-docker.png)
@@ -21,13 +20,13 @@ This a comprehensive guide for how to containerize your Mongo-Express-React-Node
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # Prep App for Deployment
 
 ## Step 1: Optimize Build
 
-I have an isomorphic app which leverages Webpack with code splitting.  
+I have an isomorphic app which leverages Webpack with code splitting.
 
 The motivation for optimizing production build is twofold: increase performance and decrease build time and size.
 
@@ -37,7 +36,7 @@ thumbnail="/post/images/deployapp/xkcd-compiling.png" title="XKCD: Compiling">}}
 When running the Webpack build script in production mode, the following warning messages are provided:
 
 > WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
-This can impact web performance.
+> This can impact web performance.
 
 and
 
@@ -108,9 +107,9 @@ Note, start-client is defined in another file:
 
 ```javascript
 // start-client.js
-const args = ['start'];
-const opts = { stdio: 'inherit', cwd: 'client', shell: true };
-require('child_process').spawn('npm', args, opts);
+const args = ["start"];
+const opts = { stdio: "inherit", cwd: "client", shell: true };
+require("child_process").spawn("npm", args, opts);
 ```
 
 ## Step 3: Dockerize Your App
@@ -133,10 +132,9 @@ To dockerize our MERN app for running locally, we need to create two files: **Do
 
 Dockerfile is required if you want to use Docker to containerize your app but docker-compose is optional but useful if you want to fire up a Docker container locally to use Mongo.
 
-Before when I run the server locally, I'd have to make sure to run `mongod` and `mongo` in the command line to fire up the  Mongo daemon and Mongo shell.
+Before when I run the server locally, I'd have to make sure to run `mongod` and `mongo` in the command line to fire up the Mongo daemon and Mongo shell.
 
 But with containerization, I can create an image that includes the app and the mongodb image and driver mapping that the app depends on.
-
 
 **Dockerfile**:
 
@@ -196,14 +194,13 @@ $ docker-compose up
 
 # Deploy Docker Image to AWS ECS
 
-[The official docs from Amazon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html) provides  detailed information on how AWS ECS leverages Docker.
+[The official docs from Amazon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html) provides detailed information on how AWS ECS leverages Docker.
 
 > Amazon ECS uses Docker images in task definitions to launch containers on EC2 instances in your clusters.
 
 ## Quick Primer on ECS
 
 > Amazon EC2 Container Service (Amazon ECS) is a highly-scalable, high performance container management service that supports Docker containers and allows you to run applications easily on a managed cluster of EC2 instances. The ECS service scheduler places tasks—groups of containers used for your application—onto container instances in the cluster, monitors their performance and health, and restarts failed tasks as needed. ~[AWS Blog](https://aws.amazon.com/blogs/compute/using-amazon-efs-to-persist-data-from-amazon-ecs-containers/)
-
 
 There are four parts to ECS:
 
@@ -273,7 +270,6 @@ For example:
 
 ![AWS ECS Repo](/post/images/deployapp/aws-ecs-commands.png)
 
-
 Before you push, make sure to to authenticate Docker to an Amazon ECR registry with get-login.
 
 ```
@@ -302,7 +298,6 @@ $ ./deploy.sh # run this everytime you want to deploy
 ```
 
 ![https://cloudonaut.io/aws-velocity-containerized-ecs-based-app-ci-cd-pipeline/](/post/images/deployapp/docker-on-aws.png)
-
 
 To make sure the image is running in our container instance, go to the EC2 console and click on the container instance that was fired up by your ECS.
 
@@ -447,7 +442,6 @@ It's worth noting some important constraints of EFS:
 - Only available for Linux EC2. Fargate or Windows EC2 not supported.
 - The EC2 Instance must be in the same subnet as the EFS Mount Target.
 
-
 ## Set Up EFS With Your Containers
 
 [This Gist](https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832) provides step-by-step tutorial to set up AWS ECS with EFS. Note, there's an error in the gist's tutorial in the task volume mapping. See below for the correct mapping.
@@ -464,21 +458,21 @@ Basically, I followed [the gist](https://gist.github.com/duluca/ebcf98923f733a1f
 
 1. Create a KMS Encryption Key.
 2. Create a security group for the EFS filesystem that allows 2049 inbound with the source being the EC2's security group.
-    ![](https://docs.aws.amazon.com/efs/latest/ug/images/gs-ec2-resources-120.png)
-    Name the security group EFS-access-for-sg-dc025fa2. Replace "sg-dc025fa2" with the security group id of your EC2 instance.
+   ![](https://docs.aws.amazon.com/efs/latest/ug/images/gs-ec2-resources-120.png)
+   Name the security group EFS-access-for-sg-dc025fa2. Replace "sg-dc025fa2" with the security group id of your EC2 instance.
 3. Create a new EFS filesystem.
-    - Enable encryption
-    - Use the VPC ID of your ECS cluster.
-    - Use the security group ID created in the previous step for the mount target security group.
+   - Enable encryption
+   - Use the VPC ID of your ECS cluster.
+   - Use the security group ID created in the previous step for the mount target security group.
 4. update ECS cluster's CloudFormation template [per the gist instruction](https://gist.github.com/duluca/ebcf98923f733a1fdb6682f111b1a832#update-your-cloud-formation-template).
 5. Updated the Task Definition:
-    - Create the mapping to the volume mapping:
-      - volume name: `efs`
-      - source path: `/efs/<yourDatabase>`
-    - Update the mongo container's mount point to include:
-      - container path: `/data/db`
-      - source volume: `efs`
-    - The two volume mapping is needed because we want the container to access the file system is mounted on the host instance in.
+   - Create the mapping to the volume mapping:
+     - volume name: `efs`
+     - source path: `/efs/<yourDatabase>`
+   - Update the mongo container's mount point to include:
+     - container path: `/data/db`
+     - source volume: `efs`
+   - The two volume mapping is needed because we want the container to access the file system is mounted on the host instance in.
 6. Update service in ECS to use the updated Task Definition.
 7. Scale instances down to 0, then to 1 again. This terminates the existing EC2 instance and then spins up a new EC2 instance using the new Task Definition and CloudFormation script. EFS mounting should be automatically done by the start script in CloudFormation. The Task Definition volumes mapping ensures the EFS mount target is hooked up to the mongo container.
 8. Verify EFS is properly mounted
@@ -551,7 +545,6 @@ file-system-id.efs.aws-region.amazonaws.com:/
 
 If you see `efs-dns` in the output, that shows the file system is properly mounted.
 
-
 Alternatively, you can check mount status using the following commands:
 
 ```
@@ -570,7 +563,7 @@ To update your application, you may have to update the task definition and then 
 1. Use the deploy script discussed earlier in this guide to deploy an updated image to the ECR
 2. Navigate to Task Definitions, select the latest task, choose create new revision
 3. Update Service to use the latest task revision.
-4. Scale up your cluster to 2*n instances. You will see that a new running task is created to use the latest revision.
+4. Scale up your cluster to 2\*n instances. You will see that a new running task is created to use the latest revision.
 5. Wait for new the service to be restarted
 6. Scale down your cluster to n instances.
 
@@ -581,7 +574,7 @@ To update your application, you may have to update the task definition and then 
 3. Use current template, Next
 4. Change `EcsInstanceType` to your preferred [instance type](https://aws.amazon.com/ec2/instance-types/)
 5. Next, Next, Update
-6. Scale up your cluster to 2*n instances
+6. Scale up your cluster to 2\*n instances
 7. Wait for the n new instances of the new type being created
 8. Scale down your cluster to n
 
@@ -595,7 +588,6 @@ Based on AWS's Docs on [using Amazon EFS File Systems with Amazon ECS](https://d
 - Go to AWS console ➡️ EFS. Click on the file system. There's a link on the page that reads "Amazon EC2 mount instructions". Click on that link, then execute the commands listed.
 
 Validate that the file system is mounted correctly with the following command.
-
 
 ```
 $ mount | grep efs
@@ -638,8 +630,7 @@ Allow the ECS container instances to connect to the EFS file system via mount ta
 EFS can result in [significantly degraded performance](https://gitlab.com/gitlab-org/gitlab-ee/blob/master/doc/administration/high_availability/nfs.md#aws-elastic-file-system)
 
 > Workloads where many small files are written in a serialized manner, like git,
-are not well-suited for EFS. EBS with an NFS server on top will perform much better.
-
+> are not well-suited for EFS. EBS with an NFS server on top will perform much better.
 
 ## Unable to mount EFS on ECS instance
 
@@ -685,6 +676,7 @@ List containers:
 ```
 $ docker ps -a
 ```
+
 Remove containers by id:
 
 ```
@@ -766,5 +758,5 @@ you could also use the following command to see that EBS drive is provisioned wi
 You can use the following command to check the AWS EBS volume’s listing on the instance:
 
 ```
-[ec2-user ~]$ lsblk                     
+[ec2-user ~]$ lsblk
 ```

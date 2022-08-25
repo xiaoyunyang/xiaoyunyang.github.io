@@ -22,10 +22,9 @@ coverImage: /post/images/brooklyn-bridge.png
 
 What I learned working at a mature startup that's building new things but also has a ton of customers and products in production.
 
-This post is a WIP.
-
 <!--more-->
-<!--toc-->
+
+{{< toc >}}
 
 # Testing
 
@@ -44,7 +43,7 @@ If it's hard to test, that means you didn't design your software well.
 
 For things in production, ensure thorough test coverage. For greenfield projects, usually you don’t have good picture of what correct looks like, or it’s difficult to verify quantitatively. It's acceptable to iterate on the experimental code without tests at first. But once you are settled on the algorithm and design, you should turn your experimental code into production-ready code with a fews phases of refactoring and tests, depending on the complexity of the code.
 
-*Tests hinders rapid prototyping. Once design is locked down, then add tests.*
+_Tests hinders rapid prototyping. Once design is locked down, then add tests._
 
 As discussed in [this post about unit testing](https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/), test driven development (TDD) requires that you write your tests before you write code. For projects that have a lot of uncertainties on design and implementation, we cannot implement true TDD. True TDD is implementable for projects that include extensive functional requirements which drive development. For instance, safety critcal software or software developed to meet specific contracts have functional requirements and product specification that specify exactly how the software should behave. Tests can be written based on these functional requirements.
 
@@ -85,7 +84,7 @@ Best practice for accessibility
 - Protip: use TabIndex = 0 or TabIndex = -1
 - Pressing enter on a focused element should achieve the same result as clicking. ProTip: In addition to onClick, also add onKeyboard enter
 - Don’t make spans buttons, use button for buttons. Use the correct HTML markup. That gives you accessibility out of the box. Use correct landmarks (eg, nav, aside, footer)
-- Use Alt Text: Make sure your pencil icon has the correct alt text (alt text fulfills the same promise as what the icon represents). make altText  “edit”
+- Use Alt Text: Make sure your pencil icon has the correct alt text (alt text fulfills the same promise as what the icon represents). make altText “edit”
 - Esc key closes the modal
 - Use automated test (1) chrome developer tool (Lighthouse) -Audit - accessibility checkbox, (2) Storybook Accessibility Tab, (3) accessibility eslint plugin: [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)
 
@@ -118,13 +117,12 @@ While New Relic helps you gathers aggregate data on how your product is being us
 ## Post-mortems
 
 ```
-// TODO: 
+// TODO:
 ```
 
 # Refactoring
 
 <img alt="Refactoring meme" style="width: 300px; margin-left: auto; margin-right: auto;" src="/post/images/refactoring-meme.png"/>
-
 
 Every refactoring has the potential to break existing functionality. Before attempting a refactor, make sure to reduce the the risks of breaking something by
 
@@ -143,7 +141,7 @@ There's cost to refactoring, specifically time and effort. You need to spend tim
 
 Cost of not refactoring could potentially be higher. As tech tech accumulates, software becomes harder to extend, understand, and maintain. Adding even the smallest change requires a ton of effort and QA. Cost of testing and QA go up. See [Lesson from 6 software rewrite stories](https://medium.com/@herbcaudill/lessons-from-6-software-rewrite-stories-635e4c8f7c22). Not refactoring also caries risks of code entropy and tech debt increase. Codebase becomes increasingly difficult and unpleasant to work with, which could result in difficulties with retaining and attracting talent to work on the codebase.
 
-On the other hand, while refactoring code makes code more scalable, easier to extend/maintain, and more pleasant to work with,  it has to balanced with the time and risk of refactoring, especially when you are working on a production-grade software. The rule of thumb is if you are working with a large codebase that often has new features requests, it’s always worth refactoring if it will make it easier and faster to add new features to the codebase on a go-forward basis and make the codebase more maintainable and less buggy. If you think the long term benefit of refactoring outweighs the cost but the refactoring effort is extensive and management has different priorities and/or a “if it’s not broken, don’t fix it” culture, then convince management to let you work on the refactoring / code rewrite in a separate branch as a side project.
+On the other hand, while refactoring code makes code more scalable, easier to extend/maintain, and more pleasant to work with, it has to balanced with the time and risk of refactoring, especially when you are working on a production-grade software. The rule of thumb is if you are working with a large codebase that often has new features requests, it’s always worth refactoring if it will make it easier and faster to add new features to the codebase on a go-forward basis and make the codebase more maintainable and less buggy. If you think the long term benefit of refactoring outweighs the cost but the refactoring effort is extensive and management has different priorities and/or a “if it’s not broken, don’t fix it” culture, then convince management to let you work on the refactoring / code rewrite in a separate branch as a side project.
 
 I don't think refactoring should always be pursued for a product that’s rarely used or rarely updated.
 
@@ -254,7 +252,7 @@ If there a precedent for what you’re trying to do, don’t waste time rebuildi
 
 The cost of using the library code is low if the library is well built and maintained and has a lot of users and active contributions.
 
-Using Open Source is great if you have simple need and is covered by the general use case. If you have special needs, adopting an open source library could be high. If your use case is not exactly the typical use case of the library code, you have to build adapters to  make your data model has to conform to the library's data model and decorators to extend the functionality of the library. In the worst case, you may have to fork the library if you can't get the maintainer of the library to make changes. 
+Using Open Source is great if you have simple need and is covered by the general use case. If you have special needs, adopting an open source library could be high. If your use case is not exactly the typical use case of the library code, you have to build adapters to make your data model has to conform to the library's data model and decorators to extend the functionality of the library. In the worst case, you may have to fork the library if you can't get the maintainer of the library to make changes.
 
 Getting maintainers of the library to make a change can be a frustrating process. Fragmentation is dangerous for open source.
 
@@ -314,7 +312,6 @@ Use this PR Template. Simply add `pull-request-template.md` to the root of your 
 ### Preview link (optional)
 
 [Link on Staging]()
-
 ```
 
 In the Notable Changes section, make sure to reference specific lines of code (the most important ones) and/or files, in addition to describing what the changes are about and the high level design. This saves a lot of time for the reviewer and improves the experience of the review process.

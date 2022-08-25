@@ -21,9 +21,9 @@ You are usually given the flexibility of choosing the language you are most comf
 
 These tests are also designed to gauge your knowledge of computer science fundamentals like various data structures (e.g., arrays, strings, object/dictionaries), logic building blocks (e.g., loops, if-statements, functions), and problem solving patterns (e.g., recursion, pattern matching, higher order functions).
 
-For coding challenges, there's always a time limit. The faster you can solve a problem correctly, the better. Thus, this post introduces JavaScript features, best practices,  to leverage and common pitfalls to avoid to help you get productive with JavaScript and get the right result quickly.
+For coding challenges, there's always a time limit. The faster you can solve a problem correctly, the better. Thus, this post introduces JavaScript features, best practices, to leverage and common pitfalls to avoid to help you get productive with JavaScript and get the right result quickly.
 
-<!-- toc -->
+{{< toc >}}
 
 For more extensive cheatsheet, check out [Let's Get Productive With JavaScript](https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/)
 
@@ -43,20 +43,18 @@ We can assume we only want to test for websites with the .com and .org top level
 
 Input and expected output:
 
-* "google.com" → true
-* "www.icann.org" → true
-* "google.foobar" → false
+- "google.com" → true
+- "www.icann.org" → true
+- "google.foobar" → false
 
 ```javascript
-const isStrUrl = str => {
-  const matchTld = /(\.com|\.org)$/i
+const isStrUrl = (str) => {
+  const matchTld = /(\.com|\.org)$/i;
   return matchTld.test(str);
 };
 ```
 
-
 The `matchTld` is the regex that specifies that we are looking for a string that ends with `.com` or `.org`. The `\.` escapes the dot (`.`). The `$` at the end of the regex means this pattern should appear at the end of the string. In summary:
-
 
 {{< image classes="fancybox fig-75 center clear" src="/post/images/programming/regex-url.png"
 thumbnail="/post/images/programming/regex-url.png" title="Regex URL">}}
@@ -64,11 +62,11 @@ thumbnail="/post/images/programming/regex-url.png" title="Regex URL">}}
 You can match an exact sequence in the string using the following regex:
 
 ```javascript
-const matchApple = /^apple$/
-matchApple.test('apple'); //> true
-matchApple.test('orange'); //> false
-matchApple.test('apples'); //> false
-matchApple.test('Apple'); //> false
+const matchApple = /^apple$/;
+matchApple.test("apple"); //> true
+matchApple.test("orange"); //> false
+matchApple.test("apples"); //> false
+matchApple.test("Apple"); //> false
 ```
 
 The caret (`^`) and the dollar sign (`$`) signal "match from the beginning" and "match until the end", respectively.
@@ -78,13 +76,13 @@ As illustrated with the above example, regex is case sensitive.
 If you want to match a sequence of characters regardless of whether the letters are upper case or lower case, you could convert every letter in the string to lowercase, then do the pattern matching:
 
 ```javascript
-const str = 'Apple'.toLowerCase();
+const str = "Apple".toLowerCase();
 matchApple.test(str); //> true
 ```
 
 Other useful regexes include:
 
-* whitespace: `/^\s$/`
+- whitespace: `/^\s$/`
 
 ## String manipulation
 
@@ -93,7 +91,7 @@ Suppose we have a string containing alphanumeric characters sprinkled with some 
 Using regex:
 
 ```javascript
-const dirtyStr = "<script>window.location=\"http://evil.com\"</script>";
+const dirtyStr = '<script>window.location="http://evil.com"</script>';
 const matchIllegals = /<|>|\\|\/|"/g;
 const cleanStr = dirtyStr.replace(matchIllegals, "");
 console.log(cleanStr); //> scriptwindow.location=http:evil.comscript
@@ -106,26 +104,26 @@ We are using the JavaScript built-in function for string, i.e., `replace`, to re
 `str.chartAt(i)` gives us the character at a index `i` from `str`.
 
 ```javascript
-let str = 'hello'
-str.charAt(0) //> 'h'
-str.charAt(str.length-1) //> 'o'
-str.charAt(str.length) //> ''
+let str = "hello";
+str.charAt(0); //> 'h'
+str.charAt(str.length - 1); //> 'o'
+str.charAt(str.length); //> ''
 ```
 
 What happens if we do the following?
 
 ```javascript
-str.charAt(str.length) //> ''
+str.charAt(str.length); //> ''
 ```
 
-It returns an empty string! You don't get any help like the index out of bounds error that people who work with a statically typed language with a compiler like Java would be familiar with. This could be a really nasty bug. A similar thing happens with arrays when you access an index out of bound array element:  `arr[arr.length]` gives you `undefined`.
+It returns an empty string! You don't get any help like the index out of bounds error that people who work with a statically typed language with a compiler like Java would be familiar with. This could be a really nasty bug. A similar thing happens with arrays when you access an index out of bound array element: `arr[arr.length]` gives you `undefined`.
 
 Getting Multiple Characters (Substrings)
 
 Say we have "hello world" as our string but we only want "world". What do we do? Slice recursively. "hello" plus space is 6 characters.
 
 ```javascript
-"hello world".slice(6) //> "world"
+"hello world".slice(6); //> "world"
 ```
 
 Using `slice` works because a string is really just an array of characters.
@@ -133,7 +131,7 @@ Using `slice` works because a string is really just an array of characters.
 A more general function for obtaining the substring is appropriately called `substring` and it takes two arguments: where to start (inclusive) and where to stop (exclusive). Here's how you use substring:
 
 ```javascript
-'hello'.substring(0, 2); //> 'he'
+"hello".substring(0, 2); //> 'he'
 ```
 
 However, using `slice` and `substring` for extracting the sub-string requires knowing exactly where is the starting index is. Usually, the substring we want to extract are delimited by a space or a special character such as a slash. Suppose we have the following problem:
@@ -149,11 +147,11 @@ https://<domainName>/<route>/<username>
 What we want is the username at the end. Since `domainName` and `route` could be arbitrarily long, we can't use `slice` to solve our problem. What we can do is this:
 
 ```javascript
-const getUsername = url => {
-  return url.split('/').pop().slice(1);
+const getUsername = (url) => {
+  return url.split("/").pop().slice(1);
 };
 
-getUsername('https://medium.com/@xiaoyunyang') //> xiaoyunyang
+getUsername("https://medium.com/@xiaoyunyang"); //> xiaoyunyang
 ```
 
 `getUsername` function has a one-liner solution but there are few things going on:
@@ -170,8 +168,8 @@ When we work with arrays in JavaScript, we have a whole suite of built-in functi
 
 Mutable
 
-* `array.push(elem)` - adds `elem` to the end of `array`
-* `array.unshift(elem)` - adds `elem` to the beginning of `array`
+- `array.push(elem)` - adds `elem` to the end of `array`
+- `array.unshift(elem)` - adds `elem` to the beginning of `array`
 
 Example:
 
@@ -186,10 +184,10 @@ console.log(mutatingArr); //> [0, 1, 2, 3, 4]
 
 Immutable
 
-* `array.concat(elem)` - adds elem to the front or back of an array without mutating the original array.
-* `[...arr1, ...arr2]` - ES6 Spread operator to merge two arrays
-* `[elem, ...arr2]` - ES6 add elem to head of the array
-* `[...arr1, elem]` - ES6 add elem to tail of the array
+- `array.concat(elem)` - adds elem to the front or back of an array without mutating the original array.
+- `[...arr1, ...arr2]` - ES6 Spread operator to merge two arrays
+- `[elem, ...arr2]` - ES6 add elem to head of the array
+- `[...arr1, elem]` - ES6 add elem to tail of the array
 
 Example with concat:
 
@@ -200,7 +198,7 @@ const arr2 = [3, 4];
 
 const arr3 = arr1.concat(arr2); //> [1, 2, 3, 4]
 const arr4 = arr0.concat(arr3); //> [0, 1, 2]
-const arr5 = arr0.concat(arr1, arr2) //> [0, 1, 2, 3, 4]
+const arr5 = arr0.concat(arr1, arr2); //> [0, 1, 2, 3, 4]
 ```
 
 Example with spread operator
@@ -229,8 +227,8 @@ Example:
 ```javascript
 const arr = [0, 1, 2];
 const tailArr = arr.splice(-1);
-console.log(tailArr) //> [2]
-console.log(arr) //> [0, 1]
+console.log(tailArr); //> [2]
+console.log(arr); //> [0, 1]
 ```
 
 One gotcha with using `splice` in this way is `arr.splice(-1)` returns the tail element of `arr` wrapped in an array. If you just want `elem`, you can use ES6 destructuring:
@@ -266,7 +264,7 @@ console.log(tailArr); //> [2]
 console.log(arr); //> [0, 1, 2]
 ```
 
-`slice` and `splice` are useful for extracting any part of the array, not just the tail. The general way you use these functions is `arr.slice(from, until)` and `arr.splice(from, until)` where `from` and `until` are indices.  The sub-array returned from these operations includes the element at index `from` until the element that precedes index `until`. For example:
+`slice` and `splice` are useful for extracting any part of the array, not just the tail. The general way you use these functions is `arr.slice(from, until)` and `arr.splice(from, until)` where `from` and `until` are indices. The sub-array returned from these operations includes the element at index `from` until the element that precedes index `until`. For example:
 
 ```javascript
 const numbers = [0, 1, 2, 3, 4];
@@ -297,18 +295,18 @@ const nums = [3, 2, 7, 1, 2, 0];
 Sort in ascending order:
 
 ```javascript
-nums.sort((a,b) => {
-  return a-b
+nums.sort((a, b) => {
+  return a - b;
 });
 
-console.log(nums) //> [ 0, 1, 2, 2, 3, 7 ]
+console.log(nums); //> [ 0, 1, 2, 2, 3, 7 ]
 ```
 
 Sort in descending order:
 
 ```javascript
-nums.sort((a,b) => {
-  return b-a
+nums.sort((a, b) => {
+  return b - a;
 });
 
 console.log(nums); //> [ 7, 3, 2, 2, 1, 0 ]
@@ -319,17 +317,19 @@ It's important note that the `sort` function mutates the original array!
 If you don't pass in a function, `sort` will by default give you the mutated array in ascending order.
 
 ```javascript
-const letters = ['c', 'r', 'a', 'b', 'a', 't']
-letters.sort()
-letters //> [ 'a', 'a', 'b', 'c', 'r', 't' ]
+const letters = ["c", "r", "a", "b", "a", "t"];
+letters.sort();
+letters; //> [ 'a', 'a', 'b', 'c', 'r', 't' ]
 ```
 
 Another useful function is `String.prototype.localeCompare`.
 
 ```javascript
-const letters = ['c', 'r', 'a', 'b', 'a', 't']
-letters.sort((a,b) => {return b.localeCompare(a)})
-letters //> [ 't', 'r', 'c', 'b', 'a', 'a' ]
+const letters = ["c", "r", "a", "b", "a", "t"];
+letters.sort((a, b) => {
+  return b.localeCompare(a);
+});
+letters; //> [ 't', 'r', 'c', 'b', 'a', 'a' ]
 ```
 
 # Working with Objects
@@ -338,72 +338,72 @@ JavaScript Objects are used to store key-value pairs and can nest other objects 
 
 ```javascript
 const arr1 = {
-    0: 0,
-    1: 1,
-    2: 2
-}
+  0: 0,
+  1: 1,
+  2: 2,
+};
 const arr2 = [0, 1, 2];
 ```
 
-The syntax  I use to access the elements from the object and array are indistinguishable:
+The syntax I use to access the elements from the object and array are indistinguishable:
 
 ```javascript
-arr1[1] //> 1
-arr2[1] //> 1
+arr1[1]; //> 1
+arr2[1]; //> 1
 ```
 
 This is how I remember the rules for accessing the value of an object using the key - it looks just like the way you access the element of an array at a given index!
 
 ```javascript
 const basket = {
-    'apple': 1,
-    'pear': 2
-}
-const numApple = basket['apple']; //> 1
-const numPear = basket['pear']; //> 2
+  apple: 1,
+  pear: 2,
+};
+const numApple = basket["apple"]; //> 1
+const numPear = basket["pear"]; //> 2
 ```
 
 ## Size of object
 
-* `Object.keys(dict).length` gives you the number of entries in the object called `dict` (short for dictionary).
+- `Object.keys(dict).length` gives you the number of entries in the object called `dict` (short for dictionary).
 
 Example:
 
 ```javascript
 let basket = {};
 Object.keys(basket).length; // 0
-basket = {apple: 2}
+basket = { apple: 2 };
 Object.keys(basket).length; // 1
 ```
 
 ## Merging two objects
 
-* Use spread operator
+- Use spread operator
 
 There's a more verbose way of doing it but we are using ES6's spread operator here:
 
 ```javascript
-const foo = {a: 'a', b: 'b'}
-const bar = {c: 'c', d: 'd'}
-const foobar = {...foo, ...bar} //> {a: "a", b: "b", c: "c", d: "d"}
+const foo = { a: "a", b: "b" };
+const bar = { c: "c", d: "d" };
+const foobar = { ...foo, ...bar }; //> {a: "a", b: "b", c: "c", d: "d"}
 ```
 
 you can also use the spread operator to make a deep copy of the object.
 
 ```javascript
-const foobarCpy = {...foobar} //> {a: "a", b: "b", c: "c", d: "d"}
+const foobarCpy = { ...foobar }; //> {a: "a", b: "b", c: "c", d: "d"}
 ```
 
 Consistent with the tip above for preferring `slice` over `splice` for array operations, we want to err on the side of immutability. We want to make deep copies of things before we start changing things in arrays and objects to avoid nasty bugs and side effects. Assigning objects to another variable does not make a copy of the object, rather, it creates a new reference to the original object:
 
 ```javascript
 const basket = {
-    apple: 1,
-    pear: 2
-}
+  apple: 1,
+  pear: 2,
+};
 
 basket2 = basket;
-basketCpy = {...basket};
+basketCpy = { ...basket };
 console.log(basket === basket2); //> true
 console.log(basket === basketCpy); //> false
 ```
@@ -415,7 +415,7 @@ Add to object (functional way):
 ```javascript
 const addToDict = (dict, newKey, newVal) => {
   if (dict[newKey]) return dict;
-  const newDict = {...dict};
+  const newDict = { ...dict };
   newDict[newKey] = newVal;
   return newDict;
 };
@@ -426,7 +426,7 @@ Delete from object (functional way):
 ```javascript
 const deleteFromDict = (dict, newKey, newVal) => {
   if (!dict[key]) return dict;
-  const newDict = {...dict};
+  const newDict = { ...dict };
   newDict[key] = newVal;
   return newDict;
 };
@@ -435,9 +435,9 @@ const deleteFromDict = (dict, newKey, newVal) => {
 Sometimes for performance reasons, it's desirable to add/delete from object by mutating the object:
 
 ```javascript
-const foobar = {'foo': 'foo', 'bar': 'bar'};
-delete foobar['bar'];
-foobar['baz'] = 'baz';
+const foobar = { foo: "foo", bar: "bar" };
+delete foobar["bar"];
+foobar["baz"] = "baz";
 console.log(foobar); //> { foo: 'foo', baz: 'baz' }
 ```
 
@@ -447,16 +447,16 @@ What if you have two dictionaries and you want to see if they are equal? The tri
 
 ```javascript
 let dict1 = {};
-dict1['a'] = 1;
-dict1['b'] = 2;
+dict1["a"] = 1;
+dict1["b"] = 2;
 
 let dict2 = {};
-dict2['a'] = 1;
+dict2["a"] = 1;
 dict2["b"] = 2;
 
 JSON.stringify(dict1) === JSON.stringify(dict2); //> true
 
-dict1['a'] = 2;
+dict1["a"] = 2;
 JSON.stringify(dict1) === JSON.stringify(dict2); //> false
 ```
 
@@ -465,9 +465,9 @@ JSON.stringify(dict1) === JSON.stringify(dict2); //> false
 Once again the trick is to use `JSON.stringify` along with `JSON.parse`.
 
 ```javascript
-const makeDeepCopy = obj => {
-  return JSON.parse(JSON.stringify(obj))
-}
+const makeDeepCopy = (obj) => {
+  return JSON.parse(JSON.stringify(obj));
+};
 ```
 
 # Conversion Between Data Types
@@ -510,56 +510,56 @@ function ListNode(val) {
 ```
 
 ```javascript
-ListNode.prototype.appendToTail = function(val) {
-  let curr = this
-  while(curr) {
-    if(!curr.next) {
-      curr.next = new ListNode(val)
-      return this
+ListNode.prototype.appendToTail = function (val) {
+  let curr = this;
+  while (curr) {
+    if (!curr.next) {
+      curr.next = new ListNode(val);
+      return this;
     }
-    curr = curr.next
+    curr = curr.next;
   }
-  return this
-}
+  return this;
+};
 ```
 
 ```javascript
-ListNode.prototype.appendToHead = function(val) {
-  let head = new ListNode(val)
-  head.next = this
-  return head
-}
+ListNode.prototype.appendToHead = function (val) {
+  let head = new ListNode(val);
+  head.next = this;
+  return head;
+};
 ```
 
 ## Stack
 
 Basic operations are:
 
-* `push(item)` - adds item to top of stack -  O(1)
-* `pop()` - remove the top item from the stack - O(1)
-* `peek()` - returns top of the stack - O(1)
-* `isEmpty()` - returns true if stack is empty - O(1)
+- `push(item)` - adds item to top of stack - O(1)
+- `pop()` - remove the top item from the stack - O(1)
+- `peek()` - returns top of the stack - O(1)
+- `isEmpty()` - returns true if stack is empty - O(1)
 
 We can use JavaScript's array object as a stack.
 
 For example:
 
 ```javascript
-const browserHistory = []
-const clickLink = link => {
-  browserHistory.push(link)
-}
+const browserHistory = [];
+const clickLink = (link) => {
+  browserHistory.push(link);
+};
 const clickBackBtn = () => {
-  browserHistory.pop()
-}
-clickLink('facebook.com')
-console.log(browserHistory) //> [ 'facebook.com' ]
-clickLink('medium.com')
-console.log(browserHistory) //> [ 'facebook.com', 'medium.com' ]
-clickBackBtn()
-console.log(browserHistory) //> [ 'facebook.com' ]
-clickLink('youtube.com')
-console.log(browserHistory) //> [ 'facebook.com', 'youtube.com' ]
+  browserHistory.pop();
+};
+clickLink("facebook.com");
+console.log(browserHistory); //> [ 'facebook.com' ]
+clickLink("medium.com");
+console.log(browserHistory); //> [ 'facebook.com', 'medium.com' ]
+clickBackBtn();
+console.log(browserHistory); //> [ 'facebook.com' ]
+clickLink("youtube.com");
+console.log(browserHistory); //> [ 'facebook.com', 'youtube.com' ]
 ```
 
 Problem to be solved using a stack is Palindrome
@@ -569,97 +569,97 @@ Problem to be solved using a stack is Palindrome
 // palindrom (even number): abba
 // ignore space?
 function isPalindrome(str) {
-  let seen = [] //> stack
+  let seen = []; //> stack
 
   // construct stack
-  for(let i=0; i<str.length; i++) {
-    let curr = str.charAt(i)
-    seen.push(curr)
+  for (let i = 0; i < str.length; i++) {
+    let curr = str.charAt(i);
+    seen.push(curr);
   }
-  let revStr = ''
+  let revStr = "";
 
   // construct reverse string
-  while(seen.length > 0) {
-    revStr += seen.pop()
+  while (seen.length > 0) {
+    revStr += seen.pop();
 
     //optimization
-    if(revStr!==str.substring(0,revStr.length)) {
-      return false
+    if (revStr !== str.substring(0, revStr.length)) {
+      return false;
     }
   }
 
-  return str === revStr
+  return str === revStr;
 }
 ```
 
 ## Queue
 
-* `add(item)` - add an item to the end of the list - O(1)
-* `remove()` - remove the first item in the list - O(1)
-* `peek()` - return the front of the queue
-* `isEmpty()` - return true if the queue is empty
+- `add(item)` - add an item to the end of the list - O(1)
+- `remove()` - remove the first item in the list - O(1)
+- `peek()` - return the front of the queue
+- `isEmpty()` - return true if the queue is empty
 
 How to implement a Queue in JavaScript (See [repl](https://repl.it/@xiaoyunyang/Queue))
 
 ```javascript
 function DoublyNode(val) {
   this.val = val;
-  this.prev = null
-  this.next = null
+  this.prev = null;
+  this.next = null;
 }
 function Queue() {
-  this.front = null
-  this.back = null
+  this.front = null;
+  this.back = null;
 
-  this.add = item => {
-    let newNode = new DoublyNode(item)
-    if(!this.front) {
-      this.front = newNode
-      this.back = newNode
-      return
+  this.add = (item) => {
+    let newNode = new DoublyNode(item);
+    if (!this.front) {
+      this.front = newNode;
+      this.back = newNode;
+      return;
     }
-    this.back.next = newNode
-    newNode.prev = this.back
-    this.back = newNode
-  }
-    this.printForward = () => {
-    let vals = ''
-    let n = this.front
-    while(n) {
-      vals += `${n.val} -> `
-      n = n.next
+    this.back.next = newNode;
+    newNode.prev = this.back;
+    this.back = newNode;
+  };
+  this.printForward = () => {
+    let vals = "";
+    let n = this.front;
+    while (n) {
+      vals += `${n.val} -> `;
+      n = n.next;
     }
-    return `${vals}null`
-  }
+    return `${vals}null`;
+  };
   this.printBackward = () => {
-    let vals = ''
-    let n = this.back
-    while(n) {
-      vals = ` <- ${n.val}`.concat(vals)
-      n = n.prev
+    let vals = "";
+    let n = this.back;
+    while (n) {
+      vals = ` <- ${n.val}`.concat(vals);
+      n = n.prev;
     }
-    return `null${vals}`
-  }
+    return `null${vals}`;
+  };
   this.remove = () => {
     // remove from the front and return the removed node's val
-    if(!this.front) return null
-    let firstNode = this.front
-    this.front = this.front.next
+    if (!this.front) return null;
+    let firstNode = this.front;
+    this.front = this.front.next;
     // edge case: if this.front.next is null, the next line of
     // code will fail because can't dereference null pointer
-    if(this.front) {
-      this.front.prev = null
+    if (this.front) {
+      this.front.prev = null;
     } else {
-      this.back = null
+      this.back = null;
     }
-    firstNode.next = null
-    return firstNode.val
-  }
+    firstNode.next = null;
+    return firstNode.val;
+  };
 
   this.peek = () => {
-    if(!this.front) return null
-    return this.front.val
-  }
+    if (!this.front) return null;
+    return this.front.val;
+  };
 }
 ```
 
@@ -675,8 +675,8 @@ console.log(arr); //> [ <10 empty items> ]
 ## Find Max
 
 ```javascript
-const arr = [1, 2, 3]
-Math.max(...arr)
+const arr = [1, 2, 3];
+Math.max(...arr);
 ```
 
 There's a few gotchas associated with `Math.max`. Consider if you have an array in which contains `null` or `undefined`:
@@ -691,19 +691,18 @@ console.log(Math.max(...[undefined, null, 1])); //> NaN
 Empty elements in the array is the same as `undefined`:
 
 ```javascript
-const foo = Array(3)
-foo[0] = 2
-console.log(Math.max(...foo)) //> NaN
+const foo = Array(3);
+foo[0] = 2;
+console.log(Math.max(...foo)); //> NaN
 ```
 
 ## Swapping
 
 ```javascript
-let a = 'hello';
-let b = 'world'
-[a, b] = [b, a];
-console.log(a) //> 'world'
-console.log(b) //> 'hello'
+let a = "hello";
+let b = ("world"[(a, b)] = [b, a]);
+console.log(a); //> 'world'
+console.log(b); //> 'hello'
 ```
 
 ## Generating a sequence
@@ -719,10 +718,10 @@ Let's write a function that insert a new element into a sorted array. splice is 
 
 ```javascript
 function insertIntoSorted(newItem, sortedItems) {
-  let arr = sortedItems
-  for(let i in arr) {
+  let arr = sortedItems;
+  for (let i in arr) {
     let curr = arr[i];
-    if(newItem<curr) {
+    if (newItem < curr) {
       arr.splice(i, 0, newItem);
       return arr;
     }
@@ -736,15 +735,15 @@ function insertIntoSorted(newItem, sortedItems) {
 In action:
 
 ```javascript
-let arr = [1,2,5,9]
-arr = insertIntoSorted(10, arr)
-console.log(arr) //> [ 1, 2, 5, 9, 10 ]
+let arr = [1, 2, 5, 9];
+arr = insertIntoSorted(10, arr);
+console.log(arr); //> [ 1, 2, 5, 9, 10 ]
 
-arr = insertIntoSorted(4, arr)
-console.log(arr) //> [ 1, 2, 4, 5, 9, 10 ]
+arr = insertIntoSorted(4, arr);
+console.log(arr); //> [ 1, 2, 4, 5, 9, 10 ]
 
-arr = insertIntoSorted(0, arr)
-console.log(arr) //> [ 0, 1, 2, 4, 5, 9, 10 ]
+arr = insertIntoSorted(0, arr);
+console.log(arr); //> [ 0, 1, 2, 4, 5, 9, 10 ]
 ```
 
 ## Optional Parameter
@@ -752,9 +751,9 @@ console.log(arr) //> [ 0, 1, 2, 4, 5, 9, 10 ]
 ES6 shortcut using default value:
 
 ```javascript
-function foo(fruit='apple') {
-  let toPrint = fruit
-  console.log('word:', toPrint)
+function foo(fruit = "apple") {
+  let toPrint = fruit;
+  console.log("word:", toPrint);
 }
 ```
 
@@ -762,8 +761,8 @@ As opposed to the old way of doing it using ternary operator:
 
 ```javascript
 function foo(fruit) {
-  let toPrint = fruit ? fruit : 'apple'
-  console.log('word:', toPrint)
+  let toPrint = fruit ? fruit : "apple";
+  console.log("word:", toPrint);
 }
 ```
 
@@ -772,7 +771,7 @@ function foo(fruit) {
 Prepending `+` to the string is a shorthand for converting the string to a number.
 
 ```javascript
-const [a,b,c] = [+'1', +'1.5', +'foo'];
+const [a, b, c] = [+"1", +"1.5", +"foo"];
 console.log(a); //> 1
 console.log(b); //> 1.5
 console.log(c); //> NaN
@@ -783,21 +782,21 @@ console.log(c); //> NaN
 Suppose we have the following data we want to loop through:
 
 ```javascript
-let colors = ['red', 'blue', 'green', 'purple', 'yellow'];
+let colors = ["red", "blue", "green", "purple", "yellow"];
 ```
 
 We could do a simple for-loop:
 
 ```javascript
-for(let i=0; i<colors.length; i++) {
-  console.log(colors[i])
+for (let i = 0; i < colors.length; i++) {
+  console.log(colors[i]);
 }
 ```
 
 There's a less verbose way of achieving the same thing:
 
 ```javascript
-for(let i in colors) {
+for (let i in colors) {
   console.log(colors[i]);
 }
 ```
@@ -805,15 +804,15 @@ for(let i in colors) {
 If we don't are about the index but just the value, we could use `forEach`:
 
 ```javascript
-colors.forEach(color => {
-  console.log(color)
+colors.forEach((color) => {
+  console.log(color);
 });
 ```
 
 For some algorithms, we may need to use the while-loop:
 
 ```javascript
-while(colors.length > 0) {
+while (colors.length > 0) {
   let color = colors.shift();
   console.log(color);
 }
@@ -825,14 +824,14 @@ To loop through an object, we could do the following:
 
 ```javascript
 let keycodeMapping = {
-  65: 'a',
-  66: 'b',
-  187: '=',
-  191: '/'
+  65: "a",
+  66: "b",
+  187: "=",
+  191: "/",
 };
 
-Object.keys(keycodeMapping).forEach(key => {
-  console.log('keycode, value:', key, keycodeMapping[key]);
+Object.keys(keycodeMapping).forEach((key) => {
+  console.log("keycode, value:", key, keycodeMapping[key]);
 });
 ```
 
@@ -845,51 +844,51 @@ Object.keys(keycodeMapping).forEach(key => {
 
 `var` is scoped to the function while `let` is scoped to the [block](https://edgecoders.com/function-scopes-and-block-scopes-in-javascript-25bbd7f293d7). `let` also [prevents re-declaration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Description) of variables in the same scope.
 
-Here's an example to understand the differences between `let` and  `var`. ([try it out in repl](https://repl.it/@xiaoyunyang/let-v-var))
+Here's an example to understand the differences between `let` and `var`. ([try it out in repl](https://repl.it/@xiaoyunyang/let-v-var))
 
 {{< codeblock "let-v-var.js" >}}
 function foo() {
-  let res = ''
-  let j = 10
+let res = ''
+let j = 10
 
-  for(let i=0; i<j; i++) {
-    // uncommenting ... the following line causes error
-    // var j = 5
-    res += `${j}, `
-    j -= 1
-  }
-  res += `${j}`
-  console.log(`foo: ${res}`)
+for(let i=0; i<j; i++) {
+// uncommenting ... the following line causes error
+// var j = 5
+res += `${j},`
+j -= 1
+}
+res += `${j}`
+console.log(`foo: ${res}`)
 }
 
 function bar() {
-  let res = ''
-  let j = 10
+let res = ''
+let j = 10
 
-  for(let i=0; i<j; i++) {
-    let j = 5
-    res += `${j}, `
-    j -= 1
-  }
-  res += `${j}`
-  console.log(`bar: ${res}`)
+for(let i=0; i<j; i++) {
+let j = 5
+res += `${j},`
+j -= 1
+}
+res += `${j}`
+console.log(`bar: ${res}`)
 }
 
 function baz() {
-  let res = ''
-  var j = 10
+let res = ''
+var j = 10
 
-  for(let i=0; i<j; i++) {
-    var j = 5
-    res += `${j}, `
-    j -= 1
-  }
-  res += `${j}`
-  console.log(`baz: ${res}`)
+for(let i=0; i<j; i++) {
+var j = 5
+res += `${j},`
+j -= 1
+}
+res += `${j}`
+console.log(`baz: ${res}`)
 }
 {{< /codeblock >}}
 
-What do we expect logged to console when we run `foo()`, `bar()` and `baz()`? 
+What do we expect logged to console when we run `foo()`, `bar()` and `baz()`?
 
 ```
 foo: 10, 9, 8, 7, 6, 5
@@ -902,7 +901,7 @@ Let's discuss what's happening in each function to fully appreciate the nuances 
 **foo:**<br/>
 Line 7 is commented out because it causes the "duplicate declaration" error because `var` is scoped to the `foo` function and on line 3, `j` is already declared and scoped to `foo` using the `let` keyword. Variables declared using `let` is protected from re-decalaration in the same scope. What happens if we declare `j` on Line 3 using `var` and declare `j` on Line 7 using `let`? The result is going to be same as `bar`. Why?
 
-**bar:**<br/> 
+**bar:**<br/>
 The `j` in the condition of the for-loop on line 19 is the same `j` that's declared on line 17. The `j` that is being concatenated to `res` on line 21 is the same `j` that is declared on line 20. Line 20 does not cause the "duplicate decalaration" error because the `let` keyword is used so a new variable is created which is scoped ot the for-loop. When accessing `j` on line 21, the one that is closest to the current scope is used. Therefore, `bar` prints out 10 "5"s, followed by one "10" at the end. The fact that `j` is "10" before the function returns confirms that the `j` declared on line 17 is never changed and and that a new `j` is created on line 20.
 
 **baz:**<br/>
@@ -912,21 +911,20 @@ Both the `j`s declared on line 30 and 33 are scoped to the `baz` function. We ca
 
 Suppose we want to sort a shuffled array, then print out the shuffled array and the sorted array. Let's implement the `sortArr` function to accomplish that:
 
-
 ```javascript
 function sortArr(arr) {
-  return arr.sort((a,b) => a-b)
+  return arr.sort((a, b) => a - b);
 }
 ```
 
 When we run the following code, we get an incorrect result when we print out the original array:
 
 ```javascript
-const arr = [3,2,4,1]
-const sortedArr = sortArr(arr)
+const arr = [3, 2, 4, 1];
+const sortedArr = sortArr(arr);
 
-console.log(arr) //> [ 1, 2, 3, 4 ]
-console.log(sortedArr) //> [ 1, 2, 3, 4 ]
+console.log(arr); //> [ 1, 2, 3, 4 ]
+console.log(sortedArr); //> [ 1, 2, 3, 4 ]
 ```
 
 `Array.sort` mutates the original array! This is a side effect we'd like to avoid.
@@ -935,12 +933,12 @@ To fix this problem, we make a copy of the original array, then sort that copy:
 
 ```javascript
 function sortArr(arr) {
-  const arrCpy = [...arr]
-  return arrCpy.sort((a,b) => a-b)
+  const arrCpy = [...arr];
+  return arrCpy.sort((a, b) => a - b);
 }
 ```
 
-# Study material for JS interviews:
+# Study material for JS interviews
 
 - [What is a Closure?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36#.ecfskj935)
 - [What is the Difference Between Class and Prototypal Inheritance?](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9#.h96dymht1)

@@ -16,14 +16,13 @@ keywords:
   - CSRF
 thumbnailImagePosition: left
 thumbnailImage: /post/images/webdev/web-security.png
-
 ---
 
 This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.
 
 <!--more-->
 
-<!--toc-->
+{{< toc >}}
 
 # Cross Site Scripting (XSS)
 
@@ -37,13 +36,13 @@ XSS could be very harmful to your site's users because malicious code is execute
 
 Malicious user of your website put some malicious code into a form. The client/server does not sanitize user input and processes the malicious code (e.g., an inline script like `<script>alert('you're hacked')</script>`) as if it were data. The malicious code is then stored in your web app's server and served to other users of your site as data.
 
-Upon page load, the malicious code is executed, which could make your web app inoperable and harm your users when the malicious code is run in their browsers. There are three types of XSS attacks: [stored, reflected](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)#Stored_and_Reflected_XSS_Attacks), and [DOM based](https://www.owasp.org/index.php/DOM_Based_XSS).
+Upon page load, the malicious code is executed, which could make your web app inoperable and harm your users when the malicious code is run in their browsers. There are three types of XSS attacks: [stored, reflected](<https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)#Stored_and_Reflected_XSS_Attacks>), and [DOM based](https://www.owasp.org/index.php/DOM_Based_XSS).
 
 **Defense**
 
 There are some simple things we can do to protect our web app against XSS:
 
-*1. Enable web browser's XSS protection.*
+_1. Enable web browser's XSS protection._
 
 You also want this to your app's response header:
 
@@ -61,7 +60,7 @@ app.use(helmet.xssFilter());
 But Firefox does not protect you from xss with this in the header.
 So make sure you sanitize your input!
 
-*2. Set Content Security Policy (CSP) Header.*
+_2. Set Content Security Policy (CSP) Header._
 
 CSP is a security feature that web browsers offer which allows the web app to tell web browsers what should and should not be executed when rendering the website. For example, this is a basic CSP that forbids execution of inline script
 
@@ -69,9 +68,9 @@ CSP is a security feature that web browsers offer which allows the web app to te
 Content-Security-Policy: default-src 'self';
 ```
 
-*3. Sanitize user inputs.*
+_3. Sanitize user inputs._
 
-We can validate user input on the client side or server side. On the client side, we can display a warning message to the user that special characters such as angle brackets are not allowed and prevent the user from submitting the form to the server when there are invalid characters. On the server side, we can sanitizing user inputs ensures we don't allow malicious user generated content to be stored in persistent storage on your server. Sanitization means replacing angle brackets, slashes, and other characters with their [html entities](https://www.freeformatter.com/html-entities.html) equivalent. For example, `<` becomes `&lt;`,  `/` becomes `&#47;`, and `>` becomes `&gt;`. This is generally achieved using regular expressions but there are open source libraries to use for input validation and sanitization.
+We can validate user input on the client side or server side. On the client side, we can display a warning message to the user that special characters such as angle brackets are not allowed and prevent the user from submitting the form to the server when there are invalid characters. On the server side, we can sanitizing user inputs ensures we don't allow malicious user generated content to be stored in persistent storage on your server. Sanitization means replacing angle brackets, slashes, and other characters with their [html entities](https://www.freeformatter.com/html-entities.html) equivalent. For example, `<` becomes `&lt;`, `/` becomes `&#47;`, and `>` becomes `&gt;`. This is generally achieved using regular expressions but there are open source libraries to use for input validation and sanitization.
 
 I use [`validator`](https://github.com/chriso/validator.js/).
 
@@ -81,9 +80,9 @@ let q = '<script>alert("you are hacked")</script>'
 let sanitizedQ = validator.escape(q)
 ```
 
-which makes `<script>alert("you are hacked")</script>` into: 
+which makes `<script>alert("you are hacked")</script>` into:
 
->&lt;script&gt;alert(&quot;you are hacked&quot;)&lt;&#x2F;script&gt;
+> &lt;script&gt;alert(&quot;you are hacked&quot;)&lt;&#x2F;script&gt;
 
 Try out validator in [the runkit playground](https://runkit.com/xiaoyunyang/validator-example)
 
@@ -117,7 +116,7 @@ Sanize all user input!
 
 After clicking an embedded link on a web page to open a new web page in a different tab, the originating web page changes (e.g., redirects to a different page).
 
-This hack is called *Reverse Tabnabbing*.
+This hack is called _Reverse Tabnabbing_.
 
 Mathias Bynens provides a [really great example](https://mathiasbynens.github.io/rel-noopener/#hax) of reverse tabnabbing.
 
@@ -125,12 +124,10 @@ Mathias Bynens provides a [really great example](https://mathiasbynens.github.io
 
 Web pages have a ton of links which open to another webpage from a different origin. Sometimes, these result in opening the page in another tab. This behavior is implemented in HTML using the anchor tag.
 
-Suppose our *index.html* has the following line:
+Suppose our _index.html_ has the following line:
 
 ```html
-<a target="_blank" href="http://example.com/malicious.html">
-  Example site
-</a>
+<a target="_blank" href="http://example.com/malicious.html"> Example site </a>
 ```
 
 When that link is clicked, `malicious.html` opens in a new tab and has access to the `window` object of `index.html` through the `window.opener`.
@@ -142,18 +139,22 @@ Even if `malicious.html` is from a different origin than `index.html`, `maliciou
 You should always use `rel=noopener noreferrer` whenever you use `target="_blank"`, especially if you want to open a link from a different origin in a separate tab.
 
 ```html
-<a target="_blank" href="http://example.com/malicious.html" rel='noopener noreferrer'>
+<a
+  target="_blank"
+  href="http://example.com/malicious.html"
+  rel="noopener noreferrer"
+>
   Example site
 </a>
 ```
 
-From  [the W3 Spec for `<a>` tag](https://www.w3schools.com/tags/att_a_rel.asp):
+From [the W3 Spec for `<a>` tag](https://www.w3schools.com/tags/att_a_rel.asp):
 
 - The `rel` attribute specifies the relationship between the current document and the linked document.
 - `noopener` tells the browser not to not send `window.opener` context from the originator of the link click.
 - `noreferrer` tells the browser to not send an HTTP referer header if the user follows the hyperlink.
 
-*Pro-tip* Use lint. In fact, I first learned about reverse tabnabbing from [a lint error](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md) about the danger of using `target="_blank"` in anchor without adding the `rel="noopener noreferrer"` attribute. It's always a good idea to use lint to support your development which does a lot to help you write secure, clean, and maintainable code. Popular editors like VSCode and Atom have lint support.
+_Pro-tip_ Use lint. In fact, I first learned about reverse tabnabbing from [a lint error](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md) about the danger of using `target="_blank"` in anchor without adding the `rel="noopener noreferrer"` attribute. It's always a good idea to use lint to support your development which does a lot to help you write secure, clean, and maintainable code. Popular editors like VSCode and Atom have lint support.
 
 # Cross-site Request Forgery (CSRF)
 
@@ -169,7 +170,7 @@ To verify that the request is coming from the actual user, your app would need t
 
 Checking the user's session id is a good start but not enough.
 
-Suppose I'm a user of your web app. A hacker doesn't know my cookie and can't guess it but she can trick me into sending a post request to your app by making me fill out a fake form or the real form embedded in an iframe (with some CSS tricks) that submits a post request to your app without my knowledge. The second technique is known as *clickjacking and iframe* attack.
+Suppose I'm a user of your web app. A hacker doesn't know my cookie and can't guess it but she can trick me into sending a post request to your app by making me fill out a fake form or the real form embedded in an iframe (with some CSS tricks) that submits a post request to your app without my knowledge. The second technique is known as _clickjacking and iframe_ attack.
 
 Because I'm the one making the request, I have the correct session id stored in my cookie. Thus, if your app only checks for session id to authenticate the origin of the request, it's going to accept the post request.
 
@@ -177,13 +178,13 @@ Because I'm the one making the request, I have the correct session id stored in 
 
 There are few things your web app to protect your users from being tricked into sending post requests.
 
-*1. Expiring Sessions*
+_1. Expiring Sessions_
 
 Your app can log its users out automatically after a period of inactivity. This technique is employed by many online banking web apps.
 
 The hacker cannot perform a CSRF attack without getting me to do something while I'm an authenticated user. If I'm not logged in to your site, then your app will not accept my post requests.
 
-*2. Token validation*
+_2. Token validation_
 
 The idea is we want to embed a randomly generated, un-guessable token in the form which the user uses to make the post request. When the user makes a post request using the form, the token is transmitted with the data as `X-CSRF-Token` in the request header.
 
@@ -193,7 +194,7 @@ A real life example of a CSRF token is the form from AngelList's profile edit fo
 
 ![](/post/images/webdev/csrf-token-alist.png)
 
-*3. CSP Header*
+_3. CSP Header_
 
 To guard against a CSRF attack resulting from clickjacking and iframe, we can use the CSP to set a policy for `child-src ‘self’`, indicating that the site must only be iframed by a page that shares the same origin, and no other.
 
@@ -205,11 +206,11 @@ If you use a lot of open source software in your application, these dependencies
 
 **Defense in depth**
 
-*1. Subscribe to security vulnerability warnings*
+_1. Subscribe to security vulnerability warnings_
 
 If you keep your code on Github, Github will show a warning about a repo that contains a dependency that has a security vulnerability.
 
-*2. Keeping your dependencies up to date*
+_2. Keeping your dependencies up to date_
 
 If you use NPM, you can also use the following commands to find out which npm modules are outdated.
 
@@ -251,5 +252,6 @@ $ yarn why <package-name>
 ```
 
 # More Reading
+
 - [Security of JavaScript Applications](https://medium.com/@dhtmlx/security-of-javascript-applications-1c95cd2ce533)
 - [Securing DevOps](https://www.manning.com/books/securing-devops)

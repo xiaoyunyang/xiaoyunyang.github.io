@@ -22,7 +22,8 @@ thumbnailImage: /post/images/algo/graph.png
 A Graph is like a [Tree](/data-structure-with-javascript-object-tree/) but has edges and may have direction and cycles when traversing through nodes. A tree is undirected, connected graph with no cycles.
 
 <!--more-->
-<!--toc-->
+
+{{< toc >}}
 
 # Motivation
 

@@ -22,7 +22,8 @@ thumbnailImage: /post/images/algo/tree.png
 A Tree is like a [Linked list](/data-structure-with-javascript-object-linked-list/) but each node usually points to two other nodes instead of just one other node. All linked lists are trees but not all trees are linked lists.
 
 <!--more-->
-<!--toc-->
+
+{{< toc >}}
 
 # Motivation
 

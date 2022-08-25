@@ -14,11 +14,12 @@ I joined the US Navy after graduating from college. The service commitment is 5 
 thumbnail="https://images2.imgbox.com/26/21/MQB5dNYd_o.png" title="My KeyValues filter">}}
 
 <!--more-->
-<!--toc-->
+
+{{< toc >}}
 
 # 1. Ask for What You Want At Your Current Workplace
 
-Because I got the ROTC scholarship to pay for college, I knew I was going to work in the public sector. Working in the public sector has some downsides. Specifically, you don't get as much exposure to in-demand skills that are valued by the private sector. Some public sector positions are more similar to a career in the private sector than others. For the Navy, that's [Naval Reactors]( https://fas.org/man/dod-101/sys/ship/eng/appndx-c.htm).
+Because I got the ROTC scholarship to pay for college, I knew I was going to work in the public sector. Working in the public sector has some downsides. Specifically, you don't get as much exposure to in-demand skills that are valued by the private sector. Some public sector positions are more similar to a career in the private sector than others. For the Navy, that's [Naval Reactors](https://fas.org/man/dod-101/sys/ship/eng/appndx-c.htm).
 
 I received a Navy ROTC scholarship which came with the obligation to serve active duty in the Navy as an officer for five years after graduating. There were a few service communities to join and most of them entail going on deployment on a ship.
 
@@ -125,11 +126,11 @@ Another way to think about it is it's not bragging. It's marketing. You have 5 m
 
 When I started interviewing with companies, I would tell companies that I worked at Naval Reactors but it was just something I started doing as part of my military service. Because it was a 9-5 job, I had evenings and weekends to work on my side projects. The interviewers were impressed that I took the initiative and dedicated my free time in the last 5 years working on side projects which had nothing to do with my day job. But they were that impressed with Naval Reactors.
 
-It was a missed opportunity to gloss over Naval Reactors. Even though it had little to do with the roles I was interviewing for, I could have used the *exclusivity* of Naval Reactors to implicitly brag about how smart I am.
+It was a missed opportunity to gloss over Naval Reactors. Even though it had little to do with the roles I was interviewing for, I could have used the _exclusivity_ of Naval Reactors to implicitly brag about how smart I am.
 
-After realizing that, I started telling the interviewers that Naval Reactors is *very selective* and they only invite the best graduating engineering students with top GPAs from universities all over the country for the interviews. They only have two or three open positions each year and to get the job offer, you have to do well on three technical interviews, followed by an interview with a four star Admiral. After I said that, every interviewer's response was a clear "Wow".
+After realizing that, I started telling the interviewers that Naval Reactors is _very selective_ and they only invite the best graduating engineering students with top GPAs from universities all over the country for the interviews. They only have two or three open positions each year and to get the job offer, you have to do well on three technical interviews, followed by an interview with a four star Admiral. After I said that, every interviewer's response was a clear "Wow".
 
-## If you could create a position for yourself at [insert company name], what would it be? 
+## If you could create a position for yourself at [insert company name], what would it be?
 
 A variation of this question is **What do you want in your next role?**
 
@@ -137,26 +138,27 @@ The response depends on which company you are interviewing with. Read the compan
 
 - Google asked me this question and my response was:
 
-    > I want my time to be split between working on a big project like Gmail and working on a side project that could be the next Gmail. The big project helps me get exposure to a big codebase, work with the brightest at Google and become a better software engineer, while the side project lets me be creative and take lots of risks working with cutting edge technologies and create something transformative.
+  > I want my time to be split between working on a big project like Gmail and working on a side project that could be the next Gmail. The big project helps me get exposure to a big codebase, work with the brightest at Google and become a better software engineer, while the side project lets me be creative and take lots of risks working with cutting edge technologies and create something transformative.
+
 - In response to a very early stage startup:
 
-    > I want a role that gives me start-to-finish ownership of the engineering side while gives me the chance to be more than an engineer. I'd like to contribute to the business development, product design, hiring, and marketing for the company as well. I'd like a role that lets me wear many hats and experience what it's like building a big company.
-    
+  > I want a role that gives me start-to-finish ownership of the engineering side while gives me the chance to be more than an engineer. I'd like to contribute to the business development, product design, hiring, and marketing for the company as well. I'd like a role that lets me wear many hats and experience what it's like building a big company.
+
 - In response to a medium size startup with a very product-centric mission:
 
-    > I envision my day to be spent collaborating with other engineers and designers, figuring out how to build a great user experience for our customers.
+  > I envision my day to be spent collaborating with other engineers and designers, figuring out how to build a great user experience for our customers.
 
-    You get the idea.
+  You get the idea.
 
 ## How many hours a day do you spend coding? Why are you passionate about coding?
 
 - Google asked me this. My response for the first question was:
 
-    > I have a co-working space membership. After I get off work, I go to the gym, then I go to the co-working space from 7pm until 10 or 11pm to work on my side projects. Sometimes if I'm solving an interesting problem, I keep coding until 3am. 
-    
-    For the followup question, my response was:
-    
-    > It's empowering. If you see a problem, you can come up with the solution on you own with just your computer You don't need anyone's permission or getting a loan from the bank to start coding and solving the problem that you care about and the solution you come up with generally has very high social impact. For example, I volunteer for this non-profit in DC whose mission is to connect the homeless population in the DC metro area with services. The DC government provide unlimited free SMS to homeless people. The non-profit provide software solutions to let homeless people receive SMS about services around them (for example, free food giveaways, job fairs). Everyone has seen and interacted with a homeless person once in their life. I could give a few dollars to a single homeless person, which is not a scalable solution to help homeless people, or I can spend my time building a microservice for this non-profit, which helps countless homeless people and also gives me a testbed for a new technology like AWS Lambda which I've wanted to try out.
+  > I have a co-working space membership. After I get off work, I go to the gym, then I go to the co-working space from 7pm until 10 or 11pm to work on my side projects. Sometimes if I'm solving an interesting problem, I keep coding until 3am.
+
+  For the followup question, my response was:
+
+  > It's empowering. If you see a problem, you can come up with the solution on you own with just your computer You don't need anyone's permission or getting a loan from the bank to start coding and solving the problem that you care about and the solution you come up with generally has very high social impact. For example, I volunteer for this non-profit in DC whose mission is to connect the homeless population in the DC metro area with services. The DC government provide unlimited free SMS to homeless people. The non-profit provide software solutions to let homeless people receive SMS about services around them (for example, free food giveaways, job fairs). Everyone has seen and interacted with a homeless person once in their life. I could give a few dollars to a single homeless person, which is not a scalable solution to help homeless people, or I can spend my time building a microservice for this non-profit, which helps countless homeless people and also gives me a testbed for a new technology like AWS Lambda which I've wanted to try out.
 
 ## What kind of problem do you enjoy solving?
 
@@ -173,7 +175,7 @@ The response depends on which company you are interviewing with. Read the compan
 - Work with coworkers who are passionate about their craft and are tech visionaries
 - Social impact
 - more hands on, infrastructure, architectural design, building infrastructure for hyper growth. Scaling.
--  Problem is so interesting and important that you have a lot of fun and feel a lot of purpose in the thing you work on.
+- Problem is so interesting and important that you have a lot of fun and feel a lot of purpose in the thing you work on.
 - Building a great product for people who are not tech. Consumer product
 - work on a new product. Not something that is just a repackaging of something that exists. To use Peter Thiel’s terminology, I want to work on the zero-to-one products.
 - Another important factor is team. Team dynamic, good relationship with coworkers and ability / flexibility to do more than the job description is important. I want to be a team member, not another dev. Team really affects day-to-day happiness.
@@ -181,10 +183,10 @@ The response depends on which company you are interviewing with. Read the compan
 - I’m not religious about specific domain, languages, or framework. I’m driven to make the world more compassionate, innovative, and sustainable.
 - being challenged every day, pushed to the limit but having a lot of fun. Learning new things everyday, including different and better ways to think about a problem
 - Everyday, doing things I’ve not done before. Surrounded by peers and mentors who push me and support me to maintain healthy stress and avoid burnout
-- learning a lot. Being asked “can we do better”, not being told how exactly to do things better but encouraged to   work on my own solutions by applying creativity
+- learning a lot. Being asked “can we do better”, not being told how exactly to do things better but encouraged to work on my own solutions by applying creativity
 - Having an engineering culture of devil’s in the details, applying engineering rigor in everything we do, not taking shortcuts, treating problem solving not as application of boilerplate or following a cookbook
 - take idea to reality in quick sprints and being able to test your hypothesis
-- Humility and no shame in being wrong but treating mistakes as a learning opportunity rather than a failure. Not being dismissive about dissenting opinions. Welcoming dissenting opinions. 
+- Humility and no shame in being wrong but treating mistakes as a learning opportunity rather than a failure. Not being dismissive about dissenting opinions. Welcoming dissenting opinions.
 - Company leaders are transparent about what the goals are and sharing company news and strategic visions frequently to help the engineers calibrate their problem solving and prioritize appropriately to align with the overall vision
 - follow through. Young companies have a lot of new initiatives occurring simultaneously. Need to let people know rationale for prioritization
 - having a company of teams working in sync, going in the same direction
@@ -199,9 +201,9 @@ With the follow up questions
 
 ## Do you have any questions for me?
 
-Take the opportunity to ask as many questions you can to understand what problem the company is solving and *why* they are solving this problem.
+Take the opportunity to ask as many questions you can to understand what problem the company is solving and _why_ they are solving this problem.
 
-Companies are not hiring someone to get the job done. They are hiring someone to join their team, to build a company together. They want someone who can get along with the rest of the team and show a strong interest for the company's mission. They want someone with whom they can have a conversation with and can work well with others. 
+Companies are not hiring someone to get the job done. They are hiring someone to join their team, to build a company together. They want someone who can get along with the rest of the team and show a strong interest for the company's mission. They want someone with whom they can have a conversation with and can work well with others.
 
 > To be interesting, you have to be interested.
 

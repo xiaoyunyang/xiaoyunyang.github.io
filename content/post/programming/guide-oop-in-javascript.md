@@ -18,30 +18,33 @@ thumbnailImagePosition: left
 thumbnailImage: /post/images/oop.png
 ---
 
-Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I'm going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.  
+Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I'm going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.
 
 <!--more-->
+
 {{< alert info >}} This article was also [published on Medium](https://medium.com/@xiaoyunyang/how-to-do-object-oriented-programming-the-right-way-1339c1a25286). {{< /alert >}}
-<!--toc-->
+{{< toc >}}
 
 # Primer: What is an Object?
+
 OOP is concerned with composing objects that manages simple tasks to create complex computer programs. An object consists of private mutable states and functions (called methods) that operate on these mutable states. Objects have a notion of self and reused behavior inherited from a blueprint (classical inheritance) or other objects (prototypal inheritance).
 
-Inheritance is the ability to say that these objects are just like that other set of objects *except* for these changes. The goal of inheritance is to speed up development by promoting code reuse.
+Inheritance is the ability to say that these objects are just like that other set of objects _except_ for these changes. The goal of inheritance is to speed up development by promoting code reuse.
 
 # Classical Inheritance
-In classical OOP, classes are blueprints for objects. Objects are created or *instantiated* from classes. There's a constructor that is used to create an instance of the class with custom properties.
+
+In classical OOP, classes are blueprints for objects. Objects are created or _instantiated_ from classes. There's a constructor that is used to create an instance of the class with custom properties.
 
 Consider the following example:
 
 ```javascript
 class Person {
   constructor(firstName, lastName) {
-    this.firstName = firstName
-    this.lastName = lastName
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
   getFullName() {
-    return this.firstName + ' ' + this.lastName
+    return this.firstName + " " + this.lastName;
   }
 }
 ```
@@ -51,47 +54,47 @@ The `class` keyword from ES6 is used to create the `Person` class with propertie
 We instantiate an object called `person` from the `Person` class with the `new` key word as follows:
 
 ```javascript
-let person = new Person('Dan', 'Abramov')
-person.getFullName() //> "Dan Abramov"
+let person = new Person("Dan", "Abramov");
+person.getFullName(); //> "Dan Abramov"
 
 // We can use an accessor function or access directly
-person.firstName //> "Dan"
-person.lastName //> "Abramov"
+person.firstName; //> "Dan"
+person.lastName; //> "Abramov"
 ```
 
-Objects created using the `new` keyword are mutable. In other words, changes to a class affect all objects created from that class and all derived classes which *extends* from the class.
+Objects created using the `new` keyword are mutable. In other words, changes to a class affect all objects created from that class and all derived classes which _extends_ from the class.
 
 To extend a class, we can create another class. Let's extend the `Person` class to make a `User`. A `User` is a Person with an email and a password.
 
 ```javascript
 class User extends Person {
   constructor(firstName, lastName, email, password) {
-    super(firstName, lastName)
-    this.email = email
-    this.password = password
+    super(firstName, lastName);
+    this.email = email;
+    this.password = password;
   }
   getEmail() {
-    return this.email
+    return this.email;
   }
   getPassword() {
-    return this.password
+    return this.password;
   }
 }
 ```
 
-In the code above, we created a `User` class which *extends* the capability of the `Person` class by adding email and password properties and accessor functions. In the `App` function below, a `user` object is *instantiated* from the `User` class:
+In the code above, we created a `User` class which _extends_ the capability of the `Person` class by adding email and password properties and accessor functions. In the `App` function below, a `user` object is _instantiated_ from the `User` class:
 
 ```javascript
 function App() {
-  let user = new User('Dan', 'Abramov', 'dan@abramov.com', 'iLuvES6')
-  user.getFullName() //> "Dan Abramov"
-  user.getEmail() //> "dan@abramov.com"
-  user.getPassword() //> "iLuvES6"
+  let user = new User("Dan", "Abramov", "dan@abramov.com", "iLuvES6");
+  user.getFullName(); //> "Dan Abramov"
+  user.getEmail(); //> "dan@abramov.com"
+  user.getPassword(); //> "iLuvES6"
 
-  user.firstName //> "Dan"
-  user.lastName //> "Abramov"
-  user.email //> "dan@abramov.com"
-  user.password //> "iLuvES6"
+  user.firstName; //> "Dan"
+  user.lastName; //> "Abramov"
+  user.email; //> "dan@abramov.com"
+  user.password; //> "iLuvES6"
 }
 ```
 
@@ -110,13 +113,14 @@ Eric Elliot described how classical inheritance can potentially lead to project 
 When many derived classes with wildly different use cases are created from the same base class, any seemingly benign change to the base class could cause the derived classes to malfunction. At the cost of increased complexity to your code and the entire software creation process, you could try to mitigate side effects by creating a [dependency injection container](https://medium.com/the-everyday-developer/creating-an-ioc-container-with-dependency-injection-in-javascript-9db228d34060) to provide an uniform service instantiation interface by abstracting the instantiation details. Is there a better way?
 
 # Prototypal Inheritance
-Prototypal inheritance does not use classes at all. Instead, objects are created from other objects. We start with a *generalized object* we called a prototype. We can use the prototype to create other objects by cloning it or extend it with custom features.
+
+Prototypal inheritance does not use classes at all. Instead, objects are created from other objects. We start with a _generalized object_ we called a prototype. We can use the prototype to create other objects by cloning it or extend it with custom features.
 
 Although in the previous section, we showed how to use the ES6 `class`, [**JavaScript classes are not classy**](https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee).
 
 ```javascript
-typeof Person //> "function"
-typeof User //> "function"
+typeof Person; //> "function"
+typeof User; //> "function"
 ```
 
 ES6 classes are actually [syntactic sugar](https://stackoverflow.com/questions/36419713/are-es6-classes-just-syntactic-sugar-for-the-prototypal-pattern-in-javascript/36419728) of JavaScript's existing prototypal inheritance. Under the hood, creating a class with a `new` keyword creates a function object with code from the `constructor`.
@@ -124,7 +128,7 @@ ES6 classes are actually [syntactic sugar](https://stackoverflow.com/questions/3
 JavaScript is fundamentally a prototype-oriented language.
 
 {{< blockquote "Douglas Crockford (creator of JSON)" "https://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742" "JavaScript: The Good Parts" >}}
-The simple types of JavaScript are numbers, strings, booleans (true and false), null, and undefined. All other values are objects.  Numbers, strings, and booleans are object-like in that they have methods, but they are immutable. Objects in JavaScript are mutable keyed collections. In JavaScript, arrays are objects, functions are objects, regular expressions are objects, and, of course, objects are objects.
+The simple types of JavaScript are numbers, strings, booleans (true and false), null, and undefined. All other values are objects. Numbers, strings, and booleans are object-like in that they have methods, but they are immutable. Objects in JavaScript are mutable keyed collections. In JavaScript, arrays are objects, functions are objects, regular expressions are objects, and, of course, objects are objects.
 {{< /blockquote >}}
 
 Let's look at one of these objects that JavaScript gives us for free out-of-the-box: the `Array`.
@@ -133,46 +137,46 @@ Array instances inherit from [Array.prototype](https://developer.mozilla.org/en-
 
 **Accessors:**
 
-* [`Array.prototype.includes(e)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) - returns true if element `e` is included in the array. False otherwise.
-* [`Array.prototype.slice(i,j)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) - extract array from index `i` to index `j` (exclusive). Return as new array.
+- [`Array.prototype.includes(e)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) - returns true if element `e` is included in the array. False otherwise.
+- [`Array.prototype.slice(i,j)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) - extract array from index `i` to index `j` (exclusive). Return as new array.
 
 **Mutators:**
 
-* [`Array.prototype.push(e)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) - add `e` to the tail
-* [`Array.prototype.pop(e)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) - remove `e` from the tail
-* [`Array.prototype.splice(i, j)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) - extract array from index `i` to index `j` (exclusive). Discard the rest.
+- [`Array.prototype.push(e)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) - add `e` to the tail
+- [`Array.prototype.pop(e)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) - remove `e` from the tail
+- [`Array.prototype.splice(i, j)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) - extract array from index `i` to index `j` (exclusive). Discard the rest.
 
 Mutator functions modify the original array. `splice` gives you the same sub-array as `slice` but you want to maintain the original array, `slice` is a better choice.
 
 **Iterators:**
 
-* [`Array.prototype.map(f)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) - applies the function `f` onto every element of the given array to compute the new elements of the resultant array.
-* [`Array.prototype.filter(f)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) - evaluates every element of the given array against a predicate `f` and returns it with the resultant array if it passes `f`.
-* [`Array.prototype.forEach(f)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) - applies the function `f` onto every element of the given array.
+- [`Array.prototype.map(f)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) - applies the function `f` onto every element of the given array to compute the new elements of the resultant array.
+- [`Array.prototype.filter(f)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) - evaluates every element of the given array against a predicate `f` and returns it with the resultant array if it passes `f`.
+- [`Array.prototype.forEach(f)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) - applies the function `f` onto every element of the given array.
 
-`map` and `forEach` are similar in that they are doing *something* to everything to the array but the key difference is `map` returns an array while `forEach` is like a void function and returns nothing. Good functional software design practices say we should always write functions that has no side effects, i.e., don't use void functions. `forEach` doesn't do anything to the original array so `map` is a better choice if you want to do any data transformation. One potential use case of `forEach` is printing to console for debugging:
+`map` and `forEach` are similar in that they are doing _something_ to everything to the array but the key difference is `map` returns an array while `forEach` is like a void function and returns nothing. Good functional software design practices say we should always write functions that has no side effects, i.e., don't use void functions. `forEach` doesn't do anything to the original array so `map` is a better choice if you want to do any data transformation. One potential use case of `forEach` is printing to console for debugging:
 
 ```javascript
-let arr = [1,2,3]
-arr.forEach(e => console.log(e))
-arr //> [1,2,3]
+let arr = [1, 2, 3];
+arr.forEach((e) => console.log(e));
+arr; //> [1,2,3]
 ```
 
 Suppose we want to extend the `Array` prototype by introducing a new method called `partition`, which divides the array into two arrays based on a predicate. For example [1,2,3,4,5] becomes [[1,2,3], [4,5]] if the predicate is "less than or equal to 3". Let's write some code to add `partition` to the Array prototype:
 
 ```javascript
-Array.prototype.partition = function(pred) {
-  let passed = []
-  let failed = []
-  for(let i=0; i<this.length; i++) {
+Array.prototype.partition = function (pred) {
+  let passed = [];
+  let failed = [];
+  for (let i = 0; i < this.length; i++) {
     if (pred(this[i])) {
-      passed.push(this[i])
+      passed.push(this[i]);
     } else {
-      failed.push(this[i])
+      failed.push(this[i]);
     }
   }
-  return [ passed, failed ]
-}
+  return [passed, failed];
+};
 ```
 
 Now we can use `partition` on any array:
@@ -186,18 +190,18 @@ Now we can use `partition` on any array:
 
 ```javascript
 // Literal
-[1,2,3,4,5]
+[1, 2, 3, 4, 5];
 
 // Factory Function
-Array(1,2,3,4,5)
+Array(1, 2, 3, 4, 5);
 
 // Object.create
-let arr = Object.create(Array.prototype)
-arr.push(1)
-arr.push(2)
-arr.push(3)
-arr.push(4)
-arr.push(5)
+let arr = Object.create(Array.prototype);
+arr.push(1);
+arr.push(2);
+arr.push(3);
+arr.push(4);
+arr.push(5);
 ```
 
 A factory function is any function that takes a few arguments and returns a new object composed of those arguments. In JavaScript, any function can return an object. When it does so without the `new` keyword, it’s a factory function. Factory functions have [always been attractive in JavaScript](https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1) because they offer the ability to easily produce object instances without diving into the complexities of classes and the `new` keyword.
@@ -205,48 +209,48 @@ A factory function is any function that takes a few arguments and returns a new 
 In the code above, we created an object called `arr` using `Object.create` and pushed 5 elements into the array. `arr` comes with all the functions inherited from the `Array` prototype such as `map`, `pop`, `slice`, and even `partition` that we just created for the `Array` prototype. Let's add some more functionality to the `arr` object:
 
 ```javascript
-arr.hello = () => "hello"
+arr.hello = () => "hello";
 ```
 
 **Pop Quiz!** What's going to be returned when we run the following code?
 
 ```javascript
-arr.partition(e => e < 3) // #1
+arr.partition((e) => e < 3); // #1
 
-arr.hello() // #2
+arr.hello(); // #2
 
-let foo = [1,2,3]
-foo.hello() // #3
+let foo = [1, 2, 3];
+foo.hello(); // #3
 
-Array.prototype.bye = () => "bye"
-arr.bye() // #4
-foo.bye() // #5
+Array.prototype.bye = () => "bye";
+arr.bye(); // #4
+foo.bye(); // #5
 ```
 
 **Answers**
 
-* **#1** is going to return `[[1,2], [3,4,5]]` because `partition` is defined for `Array`, which `arr` inherits from.
-* **#2** is going to return "hello" because we created a new function for `arr` object called `hello` that takes no arguments and returns the string "hello".
-* For **#3**, If you guessed "TypeError: foo.hello is not a function", you are correct. Since `foo` is a new object created from the `Array` prototype and `hello` is not defined for `Array`, `hello` will not be defined for `foo`.
-* **#4** and **#5** are both going to return "bye" because in the line above, we added the function `bye` to the `Array` prototype from which `arr` and `foo` both inherit. Any changes to the prototype will affect every object that inherits from the object, even *after the object has been created*.
+- **#1** is going to return `[[1,2], [3,4,5]]` because `partition` is defined for `Array`, which `arr` inherits from.
+- **#2** is going to return "hello" because we created a new function for `arr` object called `hello` that takes no arguments and returns the string "hello".
+- For **#3**, If you guessed "TypeError: foo.hello is not a function", you are correct. Since `foo` is a new object created from the `Array` prototype and `hello` is not defined for `Array`, `hello` will not be defined for `foo`.
+- **#4** and **#5** are both going to return "bye" because in the line above, we added the function `bye` to the `Array` prototype from which `arr` and `foo` both inherit. Any changes to the prototype will affect every object that inherits from the object, even _after the object has been created_.
 
 Now we understand the fundamental of prototype, let's go back to the previous example and create `Person` and `User` using prototypal inheritance:
 
 ```javascript
 function Person(firstName, lastName) {
-  this.firstName = firstName
-  this.lastName = lastName
+  this.firstName = firstName;
+  this.lastName = lastName;
 }
-Person.prototype.getFullName = function () {  
-  return this.firstName + ' ' + this.lastName
-}
+Person.prototype.getFullName = function () {
+  return this.firstName + " " + this.lastName;
+};
 ```
 
 Now we can use the `Person` prototype like so:
 
 ```javascript
-let person = new Person('Dan', 'Abramov')
-person.getFullName() //> Dan Abramov
+let person = new Person("Dan", "Abramov");
+person.getFullName(); //> Dan Abramov
 ```
 
 `person` is an object. Doing a `console.log(person)` gives us the following:
@@ -259,7 +263,7 @@ Person {
     getFullName: f
     constructor: f Person(firstName, lastName)
   },
-  __proto__: Object  
+  __proto__: Object
 }
 ```
 
@@ -267,22 +271,22 @@ For our `User`, we just need to extend the `Person` class:
 
 ```javascript
 function User(firstName, lastName, email, password) {
-  Person.call(this, firstName, lastName) // call super constructor.
-  this.email = email
-  this.password = password
+  Person.call(this, firstName, lastName); // call super constructor.
+  this.email = email;
+  this.password = password;
 }
 
 User.prototype = Object.create(Person.prototype);
 
-User.prototype.setEmail = function(email) {
-  this.email = email
-}
+User.prototype.setEmail = function (email) {
+  this.email = email;
+};
 
-User.prototype.getEmail = function() {
-  return this.email
-}
+User.prototype.getEmail = function () {
+  return this.email;
+};
 
-user.setEmail('dan@abramov.com')
+user.setEmail("dan@abramov.com");
 ```
 
 `user` is an object. Doing a `console.log(user)` gives us the following:
@@ -309,31 +313,32 @@ User {
 What if we want to customize the `getFullName` function for `User`? How is the following code going to affect `person` and `user`?
 
 ```javascript
-User.prototype.getFullName = function () {  
-  return 'User Name: '+this.firstName + ' ' + this.lastName
-}
+User.prototype.getFullName = function () {
+  return "User Name: " + this.firstName + " " + this.lastName;
+};
 
-user.getFullName() //> "User Name: Dan Abramov"
-person.getFullName() //> "Dan Abramov"
+user.getFullName(); //> "User Name: Dan Abramov"
+person.getFullName(); //> "Dan Abramov"
 ```
+
 As we expect, `person` is not be affected at all.
 
 How about decorating the `Person` object by adding a gender attribute and corresponding getter and setter functions?
 
 ```javascript
-Person.prototype.setGender = function (gender) {  
-  this.gender = gender
-}
-Person.prototype.getGender = function () {  
-  return this.gender
-}
+Person.prototype.setGender = function (gender) {
+  this.gender = gender;
+};
+Person.prototype.getGender = function () {
+  return this.gender;
+};
 
-person.setGender('male')
-person.getGender() //> male
+person.setGender("male");
+person.getGender(); //> male
 
-user.getGender() //> returns undefined ... but is a function
-user.setGender('male')
-user.getGender() //> male
+user.getGender(); //> returns undefined ... but is a function
+user.setGender("male");
+user.getGender(); //> male
 ```
 
 Both `person` and `user` are affected because `User` is prototyped from `Person` so if `Person` changes, `User` changes too.
@@ -341,14 +346,14 @@ Both `person` and `user` are affected because `User` is prototyped from `Person`
 The decorator pattern from prototypal inheritance is not so different from the classical inheritance.
 
 ## Classes vs. Prototypes
+
 Dan Abramov [advices](https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4) that
 
-* Classes obscure the prototypal inheritance at the core of JS.
-* Classes encourage inheritance but you should prefer composition.
-* Classes tend to lock you into the first bad design you came up with.
+- Classes obscure the prototypal inheritance at the core of JS.
+- Classes encourage inheritance but you should prefer composition.
+- Classes tend to lock you into the first bad design you came up with.
 
 > Instead of creating a class hierarchy, consider creating several factory functions. They may call each other in chain, tweaking the behavior of each other. You may also teach the “base” factory function to accept a “strategy” object modulating the behavior, and have the other factory functions provide it.
-
 
 {{< blockquote "Eric Elliot" "https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9" "Master the JavaScript Interview: What’s the Difference Between Class & Prototypal Inheritance?" >}} Unlike most other languages, JavaScript’s object system is based on prototypes, not classes. Unfortunately, most JavaScript developers don’t understand JavaScript’s object system, or how to put it to best use. {{< /blockquote >}}
 
@@ -393,9 +398,9 @@ Suppose to want to create a general (polymorphic) object that takes some data an
 Let's start with creating a polymorphic prototype object called `Maybe`:
 
 ```javascript
-function Maybe({data, status}) {
-  this.data = data
-  this.status = status
+function Maybe({ data, status }) {
+  this.data = data;
+  this.status = status;
 }
 ```
 
@@ -405,76 +410,77 @@ We can make `Maybe` a prototype with a function called `apply`, which takes a fu
 
 ```javascript
 Maybe.prototype.apply = function (f) {
-  if(this.status) {
-    return new Maybe({data: f(this.data), status: this.status})
+  if (this.status) {
+    return new Maybe({ data: f(this.data), status: this.status });
   }
-  return new Maybe({data: this.data, status: this.status})
-}
+  return new Maybe({ data: this.data, status: this.status });
+};
 ```
 
 We can add another function to the `Maybe` prototype which gets the data or returns a message if there's an error with the data.
 
 ```javascript
 Maybe.prototype.getOrElse = function (msg) {
-  if(this.status) return this.data
+  if (this.status) return this.data;
 
-  return msg
-}
+  return msg;
+};
 ```
 
 Now we create two objects from the `Maybe` prototype called `Number`:
 
 ```javascript
 function Number(data) {
-  let status = (typeof data === 'number')
-  Maybe.call(this, {data, status})
+  let status = typeof data === "number";
+  Maybe.call(this, { data, status });
 }
-Number.prototype = Object.create(Maybe.prototype)
+Number.prototype = Object.create(Maybe.prototype);
 ```
 
 and `String`:
 
 ```javascript
 function String(data) {
-  let status = (typeof data === 'string')
-  Maybe.call(this, {data, status})
+  let status = typeof data === "string";
+  Maybe.call(this, { data, status });
 }
-String.prototype = Object.create(Maybe.prototype)
+String.prototype = Object.create(Maybe.prototype);
 ```
 
 Let's see our objects in action. We create a function called `increment` that's only defined for numbers and another function called `split` that's only defined for strings:
 
 ```javascript
-const increment = num => num + 1
-const split = str => str.split('')
+const increment = (num) => num + 1;
+const split = (str) => str.split("");
 ```
+
 Because JavaScript is not type safe, it won't prevent you from incrementing a string or splitting a number. You will see a runtime error when you uses an undefined method on a data type. For example, suppose we try the following:
 
 ```javascript
-let foop = 12
-foop.split('')
+let foop = 12;
+foop.split("");
 ```
 
 That's going to give you a type error when you run the code.
 
-However, if we used our `Number` and `String` objects to *wrap* the numbers and strings before operating on them, we can prevent these run time errors:
+However, if we used our `Number` and `String` objects to _wrap_ the numbers and strings before operating on them, we can prevent these run time errors:
 
 ```javascript
-let numValid = new Number(12)
-let numInvalid = new Number("foo")
-let strValid = new String("hello world")
-let strInvalid = new String(-1)
+let numValid = new Number(12);
+let numInvalid = new Number("foo");
+let strValid = new String("hello world");
+let strInvalid = new String(-1);
 
-let a = numValid.apply(increment).getOrElse('TypeError!')
-let b = numInvalid.apply(increment).getOrElse('TypeError Oh no!')
-let c = strValid.apply(split).getOrElse('TypeError!')
-let d = strInvalid.apply(split).getOrElse('TypeError :(')
+let a = numValid.apply(increment).getOrElse("TypeError!");
+let b = numInvalid.apply(increment).getOrElse("TypeError Oh no!");
+let c = strValid.apply(split).getOrElse("TypeError!");
+let d = strInvalid.apply(split).getOrElse("TypeError :(");
 ```
 
 What will the following print out?
 
 ```javascript
-console.log({a, b, c, d})
+console.log({ a, b, c, d });
 ```
 
 Since we designed our `Maybe` prototype to only apply the function onto the data if the data is the right type, this will be logged to console:
@@ -488,7 +494,7 @@ Since we designed our `Maybe` prototype to only apply the function onto the data
 }
 ```
 
-What we just did is a type of a [monad](https://www.wikiwand.com/en/Monad_(functional_programming)#/overview) (albeit I didn't implement `Maybe`  to follow all the [monad laws](https://miklos-martin.github.io/learn/fp/2016/03/10/monad-laws-for-regular-developers.html)). The `Maybe` monad is a wrapper that's used when a value can be absent or some validation can fail and you don't care about the exact cause. Typically this can occur during data retrieval and validation. Maybe handles failure in validation or failure in applying a function similar to the `try-catch` you've likely seen before. In `Maybe`, we are handling the failure in type validation by printing to a string, but we can easily revise the `getOrElse` function to call another function which handles the validation error.
+What we just did is a type of a [monad](<https://www.wikiwand.com/en/Monad_(functional_programming)#/overview>) (albeit I didn't implement `Maybe` to follow all the [monad laws](https://miklos-martin.github.io/learn/fp/2016/03/10/monad-laws-for-regular-developers.html)). The `Maybe` monad is a wrapper that's used when a value can be absent or some validation can fail and you don't care about the exact cause. Typically this can occur during data retrieval and validation. Maybe handles failure in validation or failure in applying a function similar to the `try-catch` you've likely seen before. In `Maybe`, we are handling the failure in type validation by printing to a string, but we can easily revise the `getOrElse` function to call another function which handles the validation error.
 
 Some programming languages like Haskell [come with a built-in monad type](https://functional.works-hub.com/learn/demystifying-the-monad-in-scala-cf414) but in JavaScript, you have to [roll your own](https://moduscreate.com/blog/monad-pattern-for-functional-programming-in-es6/). ES6 introduced `Promise`, which is a monad for dealing with latency. Sometimes you need data that could take a while to retrieve. `Promise` lets you write code that appears synchronous while delaying operation on the data until the data becomes available. Using `Promise` is a cleaner way of asynchronous programming than using callback functions, which could lead to a phenomenon called the callback hell.
 
@@ -500,47 +506,48 @@ JavaScript easily lets us bundle related functions and data together in an objec
 
 ```javascript
 const Person = {
-  firstName: 'firstName',
-  lastName: 'lastName',
-  getFullName: function() {
-    return `${this.firstName} ${this.lastName}`
-  }
-}
+  firstName: "firstName",
+  lastName: "lastName",
+  getFullName: function () {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
 ```
 
 Then we can use the `Person` object directly like this:
 
 ```javascript
-let person = Object.create(Person)
+let person = Object.create(Person);
 
-person.getFullName() //> "firstName lastName"
+person.getFullName(); //> "firstName lastName"
 
 // Assign internal state variables
-person.firstName = 'Dan'
-person.lastName = 'Abramov'
+person.firstName = "Dan";
+person.lastName = "Abramov";
 
 // Access internal state variables
-person.getFullName() //> "Dan Abramov"
+person.getFullName(); //> "Dan Abramov"
 ```
 
 Let's make a `User` object by cloning the `Person` object, then augmenting it with additional data and functions:
 
 ```javascript
-const User = Object.create(Person)
-User.email = ''
-User.password = ''
-User.getEmail = function() {
-  return this.email
-}
+const User = Object.create(Person);
+User.email = "";
+User.password = "";
+User.getEmail = function () {
+  return this.email;
+};
 ```
 
 Then we can create an instance of user using `Object.create`
+
 ```javascript
-let user = Object.create(User)
-user.firstName = 'Dan'
-user.lastName = 'Abramov'
-user.email = 'dan@abramov.com'
-user.password = 'iLuvES6'
+let user = Object.create(User);
+user.firstName = "Dan";
+user.lastName = "Abramov";
+user.email = "dan@abramov.com";
+user.password = "iLuvES6";
 ```
 
 A gotcha here is use `Object.create` whenever you want to copy. Objects in JavaScript are mutable so when you straight out assigning to create a new object and you mutate the second object, it will change the original object!
@@ -549,10 +556,10 @@ Except for numbers, strings, and boolean, everything in JavaScript is an object.
 
 ```javascript
 // Wrong
-const arr = [1,2,3]
-const arr2 = arr
-arr2.pop()
-arr //> [1,2]
+const arr = [1, 2, 3];
+const arr2 = arr;
+arr2.pop();
+arr; //> [1,2]
 ```
 
 In the above example, I used `const` to show that it doesn't protect you from mutating objects. Objects are defined by their reference so while `const` prevents you from reassigning `arr`, it doesn't make the object "constant".
@@ -565,18 +572,18 @@ For example, we define a `Customer` object with data and functions. When our `Us
 
 ```javascript
 const Customer = {
-  plan: 'trial'
-}
-Customer.setPremium = function() {
-  this.plan = 'premium'
-}
+  plan: "trial",
+};
+Customer.setPremium = function () {
+  this.plan = "premium";
+};
 ```
 
 Now we can augment user object with an Customer methods and fields.
 
 ```javascript
-User.customer = Customer
-user.customer.setPremium()
+User.customer = Customer;
+user.customer.setPremium();
 ```
 
 After running the above two lines of codes, this becomes our `user` object:
@@ -591,25 +598,24 @@ After running the above two lines of codes, this becomes our `user` object:
 }
 ```
 
-
 When we want to supply a object with some additional capability, higher order objects cover every use case.
 
-As shown in the example above, we should favor composition over class inheritance because  composition is [simpler, more expressive, and more flexible](https://medium.com/javascript-scene/3-different-kinds-of-prototypal-inheritance-es6-edition-32d777fa16c9):
+As shown in the example above, we should favor composition over class inheritance because composition is [simpler, more expressive, and more flexible](https://medium.com/javascript-scene/3-different-kinds-of-prototypal-inheritance-es6-edition-32d777fa16c9):
 
 > Classical inheritance creates **is-a** relationships with restrictive taxonomies, all of which are eventually wrong for new use-cases. But it turns out, we usually employ inheritance for **has-a**, **uses-a**, or **can-do** relationships.
 
 # Conclusion
 
-Programmers often have to make a tradeoff between **Code reusability and code scalability.**  Classical OOP probably makes sense for enterprise software because they don't change that much. In OOP behavior is hard coded in abstract classes but is configurable to some extent during construction. This promotes better code reuse, which saves developers a lot of time upfront.  However, if you expect your code to extend more capability later and have to revise your design many times in the future, then OOP will end up hurting developer productivity and make the code highly coupled with the environment and untestable.
+Programmers often have to make a tradeoff between **Code reusability and code scalability.** Classical OOP probably makes sense for enterprise software because they don't change that much. In OOP behavior is hard coded in abstract classes but is configurable to some extent during construction. This promotes better code reuse, which saves developers a lot of time upfront. However, if you expect your code to extend more capability later and have to revise your design many times in the future, then OOP will end up hurting developer productivity and make the code highly coupled with the environment and untestable.
 
 # Resources
 
-* [JavaScript Factory Functions vs Constructor Functions vs Classes](https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e)
-* [How to Use Classes and Sleep at Night](https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4)
-* [Master the JavaScript Interview: What’s the Difference Between Class & Prototypal Inheritance?](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)
-* [ES6 — classes and inheritance](https://medium.com/ecmascript-2015/es6-classes-and-inheritance-607804080906)
-* [JavaScript Objects In Detail](http://javascriptissexy.com/javascript-objects-in-detail/)
-* [Factory Function Patterns In Depth](https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91)
-* [Elegant patterns in modern JavaScript: Ice Factory](https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee)
-* [Small Functions considered Harmful](https://medium.com/@copyconstruct/small-functions-considered-harmful-91035d316c29)
-* [Prototypes In JavaScript](https://hackernoon.com/prototypes-in-javascript-5bba2990e04b)
+- [JavaScript Factory Functions vs Constructor Functions vs Classes](https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e)
+- [How to Use Classes and Sleep at Night](https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4)
+- [Master the JavaScript Interview: What’s the Difference Between Class & Prototypal Inheritance?](https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9)
+- [ES6 — classes and inheritance](https://medium.com/ecmascript-2015/es6-classes-and-inheritance-607804080906)
+- [JavaScript Objects In Detail](http://javascriptissexy.com/javascript-objects-in-detail/)
+- [Factory Function Patterns In Depth](https://medium.com/@pyrolistical/factory-functions-pattern-in-depth-356d14801c91)
+- [Elegant patterns in modern JavaScript: Ice Factory](https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-ice-factory-4161859a0eee)
+- [Small Functions considered Harmful](https://medium.com/@copyconstruct/small-functions-considered-harmful-91035d316c29)
+- [Prototypes In JavaScript](https://hackernoon.com/prototypes-in-javascript-5bba2990e04b)
