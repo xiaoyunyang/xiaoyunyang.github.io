@@ -7,21 +7,17 @@
 {  
   "@context":"http://schema.org",
   "@type":"Website",
-  "@id":"https://xiaoyunyang.github.io/",
+  "@id":"https:\/\/xiaoyunyang.github.io\/",
   "author": {
     "@type": "Person",
-    "name": Xiaoyun Yang,
+    "name": "Xiaoyun Yang",
     
-    "image": https://xiaoyunyang.github.io/images/xyang.png
+    "image": "https://xiaoyunyang.github.io/images/xyang.png"
     
   },
   "name":"Xiaoyun Yang",
-  "description":"<p>Suppose you are asked this question during a technical interview:</p>
-
-<blockquote>
-<p>When do you use immutable (functional) data structures and when do you use mutable data structure?</p>
-</blockquote>",
-  "url":"https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/",
+  "description":"\u003cp\u003eSuppose you are asked this question during a technical interview:\u003c\/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003eWhen do you use immutable (functional) data structures and when do you use mutable data structure?\u003c\/p\u003e\n\u003c\/blockquote\u003e",
+  "url":"https:\/\/xiaoyunyang.github.io\/post\/when-to-use-immutable-data-structures\/",
   "keywords":"[JavaScript, Best Practices, Interview Prep, Functional Programming, Data Structure, Queue]"
 }
 
@@ -29,18 +25,16 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.53 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="JavaScript, Best Practices, Interview Prep, Functional Programming, Data Structure, Queue">
 <meta name="description" content="Suppose you are asked this question during a technical interview:
-
 
 When do you use immutable (functional) data structures and when do you use mutable data structure?
 ">
 
 
 <meta property="og:description" content="Suppose you are asked this question during a technical interview:
-
 
 When do you use immutable (functional) data structures and when do you use mutable data structure?
 ">
@@ -52,11 +46,9 @@ When do you use immutable (functional) data structures and when do you use mutab
 <meta property="og:site_name" content="Xiaoyun Yang">
 <meta property="og:description" content="Suppose you are asked this question during a technical interview:
 
-
 When do you use immutable (functional) data structures and when do you use mutable data structure?
 ">
 <meta name="twitter:description" content="Suppose you are asked this question during a technical interview:
-
 
 When do you use immutable (functional) data structures and when do you use mutable data structure?
 ">
@@ -123,7 +115,11 @@ When do you use immutable (functional) data structures and when do you use mutab
     
     
       
-        <link rel="stylesheet"  href="https://xiaoyunyang.github.io/css/custom.css">
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/custom.css">
+      
+    
+      
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/syntax.css">
       
     
 
@@ -164,7 +160,7 @@ When do you use immutable (functional) data structures and when do you use mutab
         </a>
         <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
         
-          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+          <h5 class="sidebar-profile-bio">Software Engineer. Climber. Snowboarder.</h5>
         
       </div>
     
@@ -323,123 +319,86 @@ When do you use immutable (functional) data structures and when do you use mutab
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Suppose you are asked this question during a technical interview:</p>
-
 <blockquote>
 <p>When do you use immutable (functional) data structures and when do you use mutable data structure?</p>
 </blockquote>
-
 <p>To answer this question, let&rsquo;s go over some basics first.</p>
-
 <h1 id="mutable-vs-immutable-data-structure">Mutable vs. Immutable Data structure</h1>
-
 <p>To illustrate the differences between mutable and immutable data structure, we are going to implement the queue using an array.</p>
-
 <p>The definition of a queue:</p>
-
-<p><img src="https://xiaoyunyang.github.io/post/images/algo/queue.png" alt="queue" /></p>
-
+<p><img src="https://xiaoyunyang.github.io/post/images/algo/queue.png" alt="queue"></p>
 <div class="alert info ">
-  <p>Note, I&rsquo;m using an array to represent the Queue for simplicity. That&rsquo;s not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js" target="_blank">A correct implementation of a queue</a> uses a <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Node/DoublyNode.js" target="_blank">DoublyNode</a> and two pointers for head and tail of the Queue.</p>
+  <p>Note, I&rsquo;m using an array to represent the Queue for simplicity. That&rsquo;s not the correct way. Queue has the property of O(1) enqueue and dequeue operations. Using an array to represent a Queue results in O(N) enqueue and dequeue operations. <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Queue.js">A correct implementation of a queue</a> uses a <a href="https://github.com/xiaoyunyang/coding-challenges/blob/master/datastructure/Node/DoublyNode.js">DoublyNode</a> and two pointers for head and tail of the Queue.</p>
 </div>
-
 <p>Here&rsquo;s an implementation of the Queue as an <em>mutable</em> data structure.</p>
-
-<pre><code class="language-javascript">function QueueMutable() {
-  let arr = [] // private variable
-
-  this.enqueue = val =&gt; {
-    arr.push(val)
-    return this
-  }
-  this.dequeue = () =&gt; {
-    let head = arr.shift()
-    return [head, this]
-  }
-  this.isEmpty = () =&gt; arr.length === 0
-  this.getData = () =&gt; arr
-}
-</code></pre>
-
-<p>Here&rsquo;s an implementation of the Queue as a <em>immutable</em> data structure.</p>
-
-<pre><code class="language-javascript">function QueueImmutable(dataIn = []) { // data is an optional parameter
-  let data = dataIn // private variable
-
-  this.enqueue = item =&gt; {
-    let newData = data.concat([item]) // concat returns a new arr
-    return new QueueImmutable(newData)
-  }
-  
-  this.dequeue = () =&gt; {
-    let [head, ...rest] = data
-    return [head, new QueueImmutable(rest)]
-  }
-  this.getData = () =&gt; data
-  this.isEmpty = () =&gt; data.length === 0
-}
-</code></pre>
-
-<p>One key difference you may have noticed is that the immutable Queue does not mutate the original queue. <code>enqueue</code> and <code>dequeue</code> functions returns a new queue data structure.</p>
-
-<p>Try out these Queue implementations <a href="https://repl.it/@xiaoyunyang/queue" target="_blank">in repl</a>.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">QueueMutable</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [] <span style="color:#75715e">// private variable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">enqueue</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span> =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">val</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dequeue</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">head</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">shift</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [<span style="color:#a6e22e">head</span>, <span style="color:#66d9ef">this</span>]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isEmpty</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getData</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#a6e22e">arr</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Here&rsquo;s an implementation of the Queue as a <em>immutable</em> data structure.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">QueueImmutable</span>(<span style="color:#a6e22e">dataIn</span> <span style="color:#f92672">=</span> []) { <span style="color:#75715e">// data is an optional parameter
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">dataIn</span> <span style="color:#75715e">// private variable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">enqueue</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span> =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">newData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">concat</span>([<span style="color:#a6e22e">item</span>]) <span style="color:#75715e">// concat returns a new arr
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueImmutable</span>(<span style="color:#a6e22e">newData</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dequeue</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">head</span>, ...<span style="color:#a6e22e">rest</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [<span style="color:#a6e22e">head</span>, <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueImmutable</span>(<span style="color:#a6e22e">rest</span>)]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getData</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#a6e22e">data</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isEmpty</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>One key difference you may have noticed is that the immutable Queue does not mutate the original queue. <code>enqueue</code> and <code>dequeue</code> functions returns a new queue data structure.</p>
+<p>Try out these Queue implementations <a href="https://repl.it/@xiaoyunyang/queue">in repl</a>.</p>
 <h1 id="pros-and-cons">Pros and Cons</h1>
-
 <p>Consider this example:</p>
-
-<pre><code class="language-javascript">let qIm = new QueueImmutable()
-qIm.enqueue(1)
-console.log(qIm.getData()) //&gt; A
-qIm.enqueue(2)
-qIm.enqueue(3)
-console.log(qIm.getData()) //&gt; B
-
-let qM = new QueueMutable()
-qM.enqueue(1)
-console.log(qIm.getData()) //&gt; C
-qM.enqueue(2)
-qM.enqueue(3)
-console.log(qIm.getData()) //&gt; D
-
-</code></pre>
-
-<p><code>qIm.getData()</code> always returns <code>[]</code> at lines A and B because <code>qIm</code> hasn&rsquo;t changed. On the other hand, each time we call <code>qM.getData()</code>, we get different results: The call on line C returns <code>[1]</code> and the call on line D returns <code>[1,2,3]</code>.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">qIm</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueImmutable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">getData</span>()) <span style="color:#75715e">//&gt; A
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">getData</span>()) <span style="color:#75715e">//&gt; B
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">qM</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueMutable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">qM</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">getData</span>()) <span style="color:#75715e">//&gt; C
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">qM</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">qM</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">getData</span>()) <span style="color:#75715e">//&gt; D
+</span></span></span></code></pre></div><p><code>qIm.getData()</code> always returns <code>[]</code> at lines A and B because <code>qIm</code> hasn&rsquo;t changed. On the other hand, each time we call <code>qM.getData()</code>, we get different results: The call on line C returns <code>[1]</code> and the call on line D returns <code>[1,2,3]</code>.</p>
 <p>Why is it an advantage to return the same results for the same input? Better predicability, maintability, and less buggy code.</p>
-
 <p>There&rsquo;s a concept in functional programming called referential transparency forces the invariant that everything a function does is represented by the value that it returns.</p>
-
 <p>Immutable data structures provides referential transparency which makes it easier to reason about our program locally.</p>
-
 <p>Another way to think about it is that every time we execute a pure (referentially transparent) function with the same input, we get the same output. Pure functions do not depend on context (e.g., when you execute function in your overall program) and may be reasoned about locally. On the other hand, functions which are not referentially transparent produce results which are context-dependent, require more global reasoning, are harder to refactor, and are more likely to introduce nasty bugs due to side effects.</p>
-
 <p>An obvious disadvantage with using an immutable data structure is you are creating a new data structure every time you want to make a change.</p>
-
 <p>At first glance, both Queue implementations seem to have identical behavior and can be used to construct a queue with almost identical syntax using chaining:</p>
-
-<pre><code class="language-javascript">let qM = new QueueMutable()
-qM.enqueue(1).enqueue(2).enqueue(3).dequeue()[1]
-console.log(qM.getData()) //&gt; [2,3]
-
-let qIM = new QueueImmutable()
-qIm = qIm.enqueue(1).enqueue(2).enqueue(3).dequeue()[1]
-console.log(qIm.getData()) //&gt; [2,3]
-</code></pre>
-
-<p>Notice we don&rsquo;t need to reassign <code>qM</code> to point to a new data structure since the original data structure is modified in place via <code>enqueue</code> and <code>dequeue</code>.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">qM</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueMutable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">qM</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">2</span>).<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">3</span>).<span style="color:#a6e22e">dequeue</span>()[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">qM</span>.<span style="color:#a6e22e">getData</span>()) <span style="color:#75715e">//&gt; [2,3]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">qIM</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueImmutable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">qIm</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">2</span>).<span style="color:#a6e22e">enqueue</span>(<span style="color:#ae81ff">3</span>).<span style="color:#a6e22e">dequeue</span>()[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">qIm</span>.<span style="color:#a6e22e">getData</span>()) <span style="color:#75715e">//&gt; [2,3]
+</span></span></span></code></pre></div><p>Notice we don&rsquo;t need to reassign <code>qM</code> to point to a new data structure since the original data structure is modified in place via <code>enqueue</code> and <code>dequeue</code>.</p>
 <p>However, for the immutable Queue, a new Queue is created each time we call <code>enqueue</code> and <code>dequeue</code>, so that&rsquo;s four new Queues total to support the four Queue operations. Also we needed to update the <code>qIm</code> to point to the final Queue containing 2 and 3 which was created by the <code>dequeue</code> function.</p>
-
 <h1 id="when-to-use-immutable-data-structure">When to use immutable data structure</h1>
-
 <p>In concurrent programs, functional programming and immutable data structures are used to ensure correctness when multiple parts of the program use shared resource. The shared resource is encoded in an immutable data structure.</p>
-
 <p>Modern client side applications often have multiple components (e.g., parts of the DOM or screens of a single page application) access and making changes to the same shared state. React and redux provides a powerful framework for building rich client side applications which rely on heavily on functional programming techniques. For instance, redux provides an an abstraction for managing shared data by leveraging immutable data structure and a collection of functions called reducers and actions to provide a &ldquo;single source of truth&rdquo; to multiple React components.</p>
-
 <h1 id="when-to-use-mutable-data-structure">When to use mutable data structure</h1>
-
 <p>When concurrency and resource sharing are not involved and you are concerned with making your program run as fast as possible, you are better off using mutable data structures. Using an immutable data structure is expensive because it&rsquo;s creating a new modified version of a data structure every time you want to make a change.</p>
-
 <p>In game programming, memory allocation is usually the slowest thing (resource pools are popular in game programming). In games you not only want each frame to process quickly but also for speed to be consistent. The usual symptom of a garbage collector bottleneck is that the game intermittently freezes but runs normally in between. In that case, you don&rsquo;t want to continuously allocate memory for the new data structure; rather you want to update the existing data structure in place.</p>
               
 
@@ -673,7 +632,7 @@ s.setAttribute('data-timestamp', +new Date());
     
     <h4 id="about-card-name">Xiaoyun Yang</h4>
     
-      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+      <div id="about-card-bio">Software Engineer. Climber. Snowboarder.</div>
     
     
       <div id="about-card-job">
@@ -713,14 +672,6 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script src="https://xiaoyunyang.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
 
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/go.min.js"></script>
-  
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
-  
 
 
 <script>

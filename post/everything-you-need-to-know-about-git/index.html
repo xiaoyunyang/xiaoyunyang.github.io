@@ -7,17 +7,17 @@
 {  
   "@context":"http://schema.org",
   "@type":"Website",
-  "@id":"https://xiaoyunyang.github.io/",
+  "@id":"https:\/\/xiaoyunyang.github.io\/",
   "author": {
     "@type": "Person",
-    "name": Xiaoyun Yang,
+    "name": "Xiaoyun Yang",
     
-    "image": https://xiaoyunyang.github.io/images/xyang.png
+    "image": "https://xiaoyunyang.github.io/images/xyang.png"
     
   },
   "name":"Xiaoyun Yang",
-  "description":"<p>This is a cheatsheet of all the git commands that I&rsquo;ve ever used in my career as a programmer and contributor of open source projects. I&rsquo;m not a git power user (I use about three commands on a daily basis). From time to time, I still use this cheatsheet to for a quick lookup of a special command.</p>",
-  "url":"https://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/",
+  "description":"\u003cp\u003eThis is a cheatsheet of all the git commands that I\u0026rsquo;ve ever used in my career as a programmer and contributor of open source projects. I\u0026rsquo;m not a git power user (I use about three commands on a daily basis). From time to time, I still use this cheatsheet to for a quick lookup of a special command.\u003c\/p\u003e",
+  "url":"https:\/\/xiaoyunyang.github.io\/post\/everything-you-need-to-know-about-git\/",
   "keywords":"[]"
 }
 
@@ -25,7 +25,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.53 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="">
 <meta name="description" content="This is a cheatsheet of all the git commands that I&rsquo;ve ever used in my career as a programmer and contributor of open source projects. I&rsquo;m not a git power user (I use about three commands on a daily basis). From time to time, I still use this cheatsheet to for a quick lookup of a special command.">
@@ -101,7 +101,11 @@
     
     
       
-        <link rel="stylesheet"  href="https://xiaoyunyang.github.io/css/custom.css">
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/custom.css">
+      
+    
+      
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/syntax.css">
       
     
 
@@ -142,7 +146,7 @@
         </a>
         <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
         
-          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+          <h5 class="sidebar-profile-bio">Software Engineer. Climber. Snowboarder.</h5>
         
       </div>
     
@@ -301,202 +305,163 @@
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>This is a cheatsheet of all the git commands that I&rsquo;ve ever used in my career as a programmer and contributor of open source projects. I&rsquo;m not a git power user (I use about three commands on a daily basis). From time to time, I still use this cheatsheet to for a quick lookup of a special command.</p>
-
 <div class="alert info ">
   <p>This is a Live Document. I won&rsquo;t be updating it that often.</p>
 </div>
+<h1 id="table-of-contents">Table of Contents</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#forking">Forking</a></li>
+    <li><a href="#branching">Branching</a></li>
+  </ul>
 
-<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#setting-it-all-up-from-scratch">Setting it all up from scratch</a></li>
-<li><a href="#basics">Basics</a>
-<ul>
-<li><a href="#forking">Forking</a></li>
-<li><a href="#branching">Branching</a></li>
-</ul></li>
-<li><a href="#other-useful-commands">Other Useful Commands</a>
-<ul>
-<li><a href="#revert-to-previous-version-of-code">Revert to previous version of code</a></li>
-<li><a href="#switching-between-branches">Switching between branches</a></li>
-<li><a href="#git-won-t-let-me-commit">Git won&rsquo;t let me commit</a></li>
-<li><a href="#gitignore">gitignore</a></li>
-</ul></li>
-<li><a href="#advanced-topics">Advanced Topics</a>
-<ul>
-<li><a href="#submodules">Submodules</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#revert-to-previous-version-of-code">Revert to previous version of code</a></li>
+    <li><a href="#switching-between-branches">Switching between branches</a></li>
+    <li><a href="#git-wont-let-me-commit">Git won&rsquo;t let me commit</a></li>
+    <li><a href="#gitignore">gitignore</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#submodules">Submodules</a></li>
+  </ul>
 </nav>
 
 <p>This is a tutorial for Unix and Git newbies.</p>
-
 <h1 id="setting-it-all-up-from-scratch">Setting it all up from scratch</h1>
-
-<p><a href="https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-2-5fbdea95f8a1" target="_blank">This</a> provides a good tutorial for how to create a repo on github, use <code>ssh-keygen</code> to generate a SSH private/public key pair.</p>
-
+<p><a href="https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-2-5fbdea95f8a1">This</a> provides a good tutorial for how to create a repo on github, use <code>ssh-keygen</code> to generate a SSH private/public key pair.</p>
 <h1 id="basics">Basics</h1>
-
 <h2 id="forking">Forking</h2>
-
 <p>Forking is used when you contribute to a open source repository.</p>
-
 <p><em>Assume:</em></p>
-
 <ul>
 <li>userA, userB, and userC all setup their computers with a Github account.</li>
 </ul>
-
 <p><em>Suppose:</em></p>
-
 <ul>
 <li>userA wants to create an original repo called <code>ProjectName</code>.</li>
 <li>userB wants to fork the <code>ProjectName</code> repo from usernameB.</li>
 <li>userC wants to fork the <code>ProjectName</code> repo from userB.</li>
 </ul>
-
 <p><strong>Git Tutorial For userA</strong></p>
-
-<p>Go to https://<span></span>github.com/<code>userA</code>/ and click the &ldquo;New&rdquo; button. Name the new repo <code>project-name</code>.</p>
-
+<p>Go to https://<!-- raw HTML omitted --><!-- raw HTML omitted -->github.com/<code>userA</code>/ and click the &ldquo;New&rdquo; button. Name the new repo <code>project-name</code>.</p>
 <ol>
-<li><p>On your computer, go to terminal and <code>cd</code> into the directory you want to host the local repo, then do:</p>
-
-<pre><code>$ git clone https://github.com/userA/project-name.git
+<li>
+<p>On your computer, go to terminal and <code>cd</code> into the directory you want to host the local repo, then do:</p>
+<pre tabindex="0"><code>$ git clone https://github.com/userA/project-name.git
 </code></pre></li>
-
-<li><p>Check that you have remote:</p>
-
-<pre><code>$ git remote
+<li>
+<p>Check that you have remote:</p>
+<pre tabindex="0"><code>$ git remote
 origin
 </code></pre></li>
-
-<li><p>Open the project in finder and in atom to edit the content of the folder.</p>
-
-<pre><code>$ open .
+<li>
+<p>Open the project in finder and in atom to edit the content of the folder.</p>
+<pre tabindex="0"><code>$ open .
 $ atom .
 </code></pre></li>
 </ol>
-
 <p>Alternatively&hellip;</p>
-
 <p>On your computer, in Finder, make a new folder called <code>project-name</code>. Copy all the files you want to the <code>ProjectName</code> folder.</p>
-
 <p>In the Terminal, do the following:</p>
-
 <ol>
-<li><p>Type <code>cd</code> into the terminal then drag the <code>project-name</code> folder  into the terminal. You’ll see <code>directoryPath</code> being auto-completed in Terminal.</p>
-
-<p><code>$ cd directoryPath</code></p></li>
-
-<li><p>Initialize the <code>project-name</code> folder as a git repo. This essentially makes this folder a &ldquo;local git repo&rdquo;.</p>
-
-<p><code>$ git init</code></p></li>
-
-<li><p>Link your &ldquo;local git repo&rdquo; to a &ldquo;remote git repo&rdquo; that you own. Call this remote git repo <code>origin</code>.</p>
-
-<pre><code>$ git remote add origin ssh://git@github.com/userA/project-name.git
+<li>
+<p>Type <code>cd</code> into the terminal then drag the <code>project-name</code> folder into the terminal. You’ll see <code>directoryPath</code> being auto-completed in Terminal.</p>
+<p><code>$ cd directoryPath</code></p>
+</li>
+<li>
+<p>Initialize the <code>project-name</code> folder as a git repo. This essentially makes this folder a &ldquo;local git repo&rdquo;.</p>
+<p><code>$ git init</code></p>
+</li>
+<li>
+<p>Link your &ldquo;local git repo&rdquo; to a &ldquo;remote git repo&rdquo; that you own. Call this remote git repo <code>origin</code>.</p>
+<pre tabindex="0"><code>$ git remote add origin ssh://git@github.com/userA/project-name.git
 </code></pre></li>
-
-<li><p>Make sure <code>origin</code> is an available remote and check the path.</p>
-
-<pre><code>$ git remote
+<li>
+<p>Make sure <code>origin</code> is an available remote and check the path.</p>
+<pre tabindex="0"><code>$ git remote
 # git remote -v
 </code></pre></li>
-
-<li><p>Sync your local repo to your remote repo.</p>
-
-<pre><code>$ git fetch origin
+<li>
+<p>Sync your local repo to your remote repo.</p>
+<pre tabindex="0"><code>$ git fetch origin
 $ git add --all
-$ git commit -m 'Initial Commit!'
+$ git commit -m &#39;Initial Commit!&#39;
 $ git push origin master
-</code></pre>
-
-<p>Note, if you added a LICENSE file or a README file from Github, make sure to do a <code>git pull origin master</code> before you do a <code>git add --all</code>.</p></li>
-
-<li><p>Now open a file within <code>ProjectName</code> in <a href="https://atom.io/" target="_blank">Atom</a> or another text editor. Make some changes to the code. To sync your local repo with your remote repo, do this:</p>
-
-<pre><code>$ git fetch origin
+</code></pre><p>Note, if you added a LICENSE file or a README file from Github, make sure to do a <code>git pull origin master</code> before you do a <code>git add --all</code>.</p>
+</li>
+<li>
+<p>Now open a file within <code>ProjectName</code> in <a href="https://atom.io/">Atom</a> or another text editor. Make some changes to the code. To sync your local repo with your remote repo, do this:</p>
+<pre tabindex="0"><code>$ git fetch origin
 $ git add --all
-$ git commit -m 'I made some changes!'
+$ git commit -m &#39;I made some changes!&#39;
 $ git push origin master
 </code></pre></li>
-
-<li><p>After you accept a pull request from userB, your remote repo is updated. Now you want to sync your local repo with your remote repo:</p>
-
-<p>$<code>git pull origin master</code></p></li>
+<li>
+<p>After you accept a pull request from userB, your remote repo is updated. Now you want to sync your local repo with your remote repo:</p>
+<p>$<code>git pull origin master</code></p>
+</li>
 </ol>
-
 <p><strong>Git Tutorial For userC</strong></p>
-
-<p>Go to https://<span></span>github.com/<code>userB</code>/<code>project-name</code> and click the &ldquo;Fork&rdquo; button.</p>
-
+<p>Go to https://<!-- raw HTML omitted --><!-- raw HTML omitted -->github.com/<code>userB</code>/<code>project-name</code> and click the &ldquo;Fork&rdquo; button.</p>
 <p>In the Terminal, do the following:</p>
-
 <ol>
-<li><p>Type <code>cd</code> into the terminal and drag and drop the folder where you want to create the project folder from Finder into Terminal. You’ll see directoryPath being auto-completed in Terminal.</p>
-
-<p><code>$ cd directoryPath</code></p></li>
-
-<li><p>Make a new folder called <code>project-name</code>.</p>
-
-<p><code>$ mkdir project-name</code></p></li>
-
-<li><p>Go into the <code>project-name</code> folder</p>
-
-<p><code>$ cd project-name</code></p></li>
-
-<li><p>Initialize the <code>project-name</code> folder as a git repo. This essentially makes this folder a &ldquo;local git repo&rdquo;.</p>
-
-<p><code>$ git init</code></p></li>
-
-<li><p>Link your &ldquo;local git repo&rdquo; to a &ldquo;remote git repo&rdquo; that you own. Call this remote git repo <code>origin</code>.</p>
-
-<p><code>$ git remote add origin ssh://git@github.com/userC/project-name.git</code></p></li>
-
-<li><p>Populate the <code>project-name</code> folder on your computer (i.e., local repo) with the files from the remote repo&rsquo;s master branch.</p>
-
-<p><code>$ git pull origin master</code></p></li>
-
-<li><p>List the files in your <code>project-name</code> folder to make sure the pull was successful. You should see this folder populated with files downloaded from the remote repo</p>
-
-<p><code>$ ls</code></p></li>
-
-<li><p>Link your &ldquo;local git repo&rdquo; to another remote git repo that userB owns. Recall you forked the <code>project-name</code> repo from userB. The upstream user&rsquo;s (i.e., userB) repo. Call this <code>upstream</code>.</p>
-
-<p><code>$ git remote add upstream https://github.com/userB/project-name</code></p></li>
-
-<li><p>Make sure <code>origin</code> and <code>upstream</code> are both available remote.</p>
-
-<p><code>$ git remote</code></p></li>
-
-<li><p>Now open a file within <code>project-name</code> in <a href="https://atom.io/" target="_blank">Atom</a> or another text editor. Make some changes to the code. To sync your local repo with your remote repo, do this:</p>
-
-<pre><code>$ git fetch origin
+<li>
+<p>Type <code>cd</code> into the terminal and drag and drop the folder where you want to create the project folder from Finder into Terminal. You’ll see directoryPath being auto-completed in Terminal.</p>
+<p><code>$ cd directoryPath</code></p>
+</li>
+<li>
+<p>Make a new folder called <code>project-name</code>.</p>
+<p><code>$ mkdir project-name</code></p>
+</li>
+<li>
+<p>Go into the <code>project-name</code> folder</p>
+<p><code>$ cd project-name</code></p>
+</li>
+<li>
+<p>Initialize the <code>project-name</code> folder as a git repo. This essentially makes this folder a &ldquo;local git repo&rdquo;.</p>
+<p><code>$ git init</code></p>
+</li>
+<li>
+<p>Link your &ldquo;local git repo&rdquo; to a &ldquo;remote git repo&rdquo; that you own. Call this remote git repo <code>origin</code>.</p>
+<p><code>$ git remote add origin ssh://git@github.com/userC/project-name.git</code></p>
+</li>
+<li>
+<p>Populate the <code>project-name</code> folder on your computer (i.e., local repo) with the files from the remote repo&rsquo;s master branch.</p>
+<p><code>$ git pull origin master</code></p>
+</li>
+<li>
+<p>List the files in your <code>project-name</code> folder to make sure the pull was successful. You should see this folder populated with files downloaded from the remote repo</p>
+<p><code>$ ls</code></p>
+</li>
+<li>
+<p>Link your &ldquo;local git repo&rdquo; to another remote git repo that userB owns. Recall you forked the <code>project-name</code> repo from userB. The upstream user&rsquo;s (i.e., userB) repo. Call this <code>upstream</code>.</p>
+<p><code>$ git remote add upstream https://github.com/userB/project-name</code></p>
+</li>
+<li>
+<p>Make sure <code>origin</code> and <code>upstream</code> are both available remote.</p>
+<p><code>$ git remote</code></p>
+</li>
+<li>
+<p>Now open a file within <code>project-name</code> in <a href="https://atom.io/">Atom</a> or another text editor. Make some changes to the code. To sync your local repo with your remote repo, do this:</p>
+<pre tabindex="0"><code>$ git fetch origin
 $ git add --all
-$ git commit -m ‘I made some changes!'
+$ git commit -m ‘I made some changes!&#39;
 $ git push origin master
 </code></pre></li>
-
-<li><p>To sync your local repo with userB&rsquo;s repo, do the following:</p>
-
-<p><code>$ git pull upstream master</code></p></li>
+<li>
+<p>To sync your local repo with userB&rsquo;s repo, do the following:</p>
+<p><code>$ git pull upstream master</code></p>
+</li>
 </ol>
-
 <h2 id="branching">Branching</h2>
-
 <p>When we develop software on a team of developers, everyone would work to commit changes to a development branch. Every new feature added would correspond to a ticket in Jira&rsquo;s backlog. When you work on each ticket, you create a feature branch from the development branch and then you would submit a pull request to the development branch with the Jira ticket number in the commit message.</p>
-
-<p>To illustrate how branching works, check out this <a href="https://github.com/xiaoyunyang/toy-repo" target="_blank">toy repo</a></p>
-
+<p>To illustrate how branching works, check out this <a href="https://github.com/xiaoyunyang/toy-repo">toy repo</a></p>
 <h1 id="other-useful-commands">Other Useful Commands</h1>
-
 <p>Some useful things you can do when things go haywire or just to get the most usefulness out of git:</p>
-
 <h2 id="revert-to-previous-version-of-code">Revert to previous version of code</h2>
-
 <p>Revert your local repo to the previously committed version when everything still worked:</p>
-
-<pre><code>$ git log
+<pre tabindex="0"><code>$ git log
 
 # git will display the following:
 # commit: &lt;commitID&gt;
@@ -510,12 +475,8 @@ $ git reset --hard &lt;commitID&gt;
 
 # force your remote to the commitID
 $ git push --force origin master
-
-</code></pre>
-
-<h2 id="switching-between-branches">Switching between branches</h2>
-
-<pre><code># checkout the alias of the remote e.g., origin
+</code></pre><h2 id="switching-between-branches">Switching between branches</h2>
+<pre tabindex="0"><code># checkout the alias of the remote e.g., origin
 $ git remote -v
 
 # switch to a new branch called boilerplate
@@ -527,45 +488,33 @@ $ git branch
 # b1 = master and b2 = boilerplate
 
 # push local repo to boilerplate branch
-$ git push origin boilerplate  
-</code></pre>
-
-<h2 id="git-won-t-let-me-commit">Git won&rsquo;t let me commit</h2>
-
+$ git push origin boilerplate
+</code></pre><h2 id="git-wont-let-me-commit">Git won&rsquo;t let me commit</h2>
 <p>Your local repo should never go out of sync with your remote repo. Git prevents you from pushing changes from your local repo to your remote repo if there are changes in your remote repo that you don&rsquo;t have locally. If you don&rsquo;t want to sync with your local repo with the remote and you just want to overwrite the remote repo with whatever you have locally, this is a useful command:</p>
-
-<pre><code>$ git push origin master --force
-</code></pre>
-
-<ol>
-<li><p>If you accidentally initiated a directory as a git repo, this undos the <code>git init</code>:</p>
-
-<pre><code>$ rm -rf .git
+<pre tabindex="0"><code>$ git push origin master --force
+</code></pre><ol start="4">
+<li>
+<p>If you accidentally initiated a directory as a git repo, this undos the <code>git init</code>:</p>
+<pre tabindex="0"><code>$ rm -rf .git
 </code></pre></li>
-
-<li><p>If you don&rsquo;t want to have to enter your password everytime when you push to a remote, then in the project local repo, do the following:</p>
-
+<li>
+<pre><code> If you don't want to have to enter your password everytime when you push to a remote, then in the project local repo, do the following:
+</code></pre>
 <ul>
-<li>Per <a href="https://help.github.com/articles/changing-a-remote-s-url/" target="_blank"><strong>the official guide from Github</strong></a>, you want to switch your remote URLs from SSH to HTTPS:</li>
+<li>Per <a href="https://help.github.com/articles/changing-a-remote-s-url/"><strong>the official guide from Github</strong></a>, you want to switch your remote URLs from SSH to HTTPS:</li>
 </ul>
-
-<pre><code>$ git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+<pre tabindex="0"><code>$ git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
 </code></pre></li>
 </ol>
-
 <h2 id="gitignore">gitignore</h2>
-
 <p>The <code>.gitignore</code> file should be included in your local repo folder, which tells git to not add files and folders that you don&rsquo;t want to share publically on Github to your remote repo. What kind of files are these?</p>
-
 <ul>
 <li><code>DS_Store</code> and other metadata files that macOS create</li>
 <li><code>.env</code> files which includes configuration for your application that may include secret keys that you don&rsquo;t want people to know about.</li>
 <li>Transient files from your working directory that aren&rsquo;t useful to other collaborators, such as compilation products, temporary files IDEs create, etc. Prime example is the <code>node_modules</code> which tend to be large and people downloading your project can get from running <code>npm install</code> if they have the right dependencies listed in <code>package.json</code>.</li>
 </ul>
-
 <p>In general, you should include the following in your <code>.gitignore</code></p>
-
-<pre><code>lib-cov
+<pre tabindex="0"><code>lib-cov
 *.seed
 *.log
 *.csv
@@ -597,30 +546,17 @@ build
 # OS metadata
 .DS_Store
 Thumbs.db
-
-</code></pre>
-
-<h1 id="advanced-topics">Advanced Topics</h1>
-
+</code></pre><h1 id="advanced-topics">Advanced Topics</h1>
 <h2 id="submodules">Submodules</h2>
-
-<p>Submodules is like a repo inside of a repo. See <a href="https://blog.github.com/2016-02-01-working-with-submodules/" target="_blank">GitHub Blog</a> for a brief tutorial.</p>
-
-<p><strong>Pro-tip:</strong> Use GitKraken to simplify the process of working with submodules. <a href="https://support.gitkraken.com/working-with-repositories/submodules" target="_blank">See Tutorial</a></p>
-
+<p>Submodules is like a repo inside of a repo. See <a href="https://blog.github.com/2016-02-01-working-with-submodules/">GitHub Blog</a> for a brief tutorial.</p>
+<p><strong>Pro-tip:</strong> Use GitKraken to simplify the process of working with submodules. <a href="https://support.gitkraken.com/working-with-repositories/submodules">See Tutorial</a></p>
 <p><strong>Adding a submodule:</strong></p>
-
-<pre><code>$ git submodule add https://github.com/kakawait/hugo-tranquilpeak-theme.git themes/tranquilpeak
+<pre tabindex="0"><code>$ git submodule add https://github.com/kakawait/hugo-tranquilpeak-theme.git themes/tranquilpeak
 $ git submodule update
 $ git submodule init
-</code></pre>
-
-<pre><code>$ git submodule add -b master git@github.com:xiaoyunyang/xiaoyunyang.github.io.git public
-</code></pre>
-
-<p><strong>Removing a submodule</strong></p>
-
-<p>It&rsquo;s painful with the command line. I was in a git hell for a long time and couldn&rsquo;t get it working. I ended up using <a href="https://www.gitkraken.com/" target="_blank">Gitkraken</a> to remove my submodules and it worked like a charm.</p>
+</code></pre><pre tabindex="0"><code>$ git submodule add -b master git@github.com:xiaoyunyang/xiaoyunyang.github.io.git public
+</code></pre><p><strong>Removing a submodule</strong></p>
+<p>It&rsquo;s painful with the command line. I was in a git hell for a long time and couldn&rsquo;t get it working. I ended up using <a href="https://www.gitkraken.com/">Gitkraken</a> to remove my submodules and it worked like a charm.</p>
               
 
 
@@ -704,8 +640,8 @@ $ git submodule init
   
   <li class="post-action">
     
-      <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
-      <i class="fa fa-list" aria-hidden="true"></i>
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
     
     </a>
   </li>
@@ -801,8 +737,8 @@ s.setAttribute('data-timestamp', +new Date());
   
   <li class="post-action">
     
-      <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
-      <i class="fa fa-list" aria-hidden="true"></i>
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
     
     </a>
   </li>
@@ -851,7 +787,7 @@ s.setAttribute('data-timestamp', +new Date());
     
     <h4 id="about-card-name">Xiaoyun Yang</h4>
     
-      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+      <div id="about-card-bio">Software Engineer. Climber. Snowboarder.</div>
     
     
       <div id="about-card-job">
@@ -891,14 +827,6 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script src="https://xiaoyunyang.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
 
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/go.min.js"></script>
-  
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
-  
 
 
 <script>

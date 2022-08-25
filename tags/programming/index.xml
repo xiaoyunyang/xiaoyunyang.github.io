@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming on Xiaoyun Yang</title>
@@ -8,20 +8,15 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Tue, 02 Jun 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xiaoyunyang.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 02 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Set Up Static Code Analysis For Your Project</title>
       <link>https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/</link>
       <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png&#34; alt=&#34;Static code analysis&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&amp;rsquo;ll look at one of these tools, &lt;a href=&#34;https://www.sonarqube.org/&#34; target=&#34;_blank&#34;&gt;SonarQube&lt;/a&gt;, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png&#34; alt=&#34;Static code analysis&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&amp;rsquo;ll look at one of these tools, &lt;a href=&#34;https://www.sonarqube.org/&#34;&gt;SonarQube&lt;/a&gt;, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -40,7 +35,6 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/</guid>
       <description>&lt;p&gt;Suppose you are asked this question during a technical interview:&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;When do you use immutable (functional) data structures and when do you use mutable data structure?&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -53,7 +47,6 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</guid>
       <description>&lt;p&gt;The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&amp;rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;Can you be productive with JavaScript?&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -74,7 +67,7 @@
       <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</guid>
-      <description>&lt;p&gt;We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&amp;rsquo;m drawing these problems from &lt;a href=&#34;https://leetcode.com/&#34; target=&#34;_blank&#34;&gt;LeetCode&lt;/a&gt; and &lt;a href=&#34;https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=2E72V7DJM4CV4DNTBTKD&#34; target=&#34;_blank&#34;&gt;Cracking the Coding Interview&lt;/a&gt;. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.&lt;/p&gt;</description>
+      <description>&lt;p&gt;We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&amp;rsquo;m drawing these problems from &lt;a href=&#34;https://leetcode.com/&#34;&gt;LeetCode&lt;/a&gt; and &lt;a href=&#34;https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=2E72V7DJM4CV4DNTBTKD&#34;&gt;Cracking the Coding Interview&lt;/a&gt;. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -110,7 +103,7 @@
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</guid>
-      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&amp;rsquo;s console (hit &lt;code&gt;Cmd&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt; if you are using Chrome and Mac) and start typing.&lt;/p&gt;</description>
+      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just open up your browser&amp;rsquo;s console (hit &lt;code&gt;Cmd&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt; if you are using Chrome and Mac) and start typing.&lt;/p&gt;</description>
     </item>
     
   </channel>

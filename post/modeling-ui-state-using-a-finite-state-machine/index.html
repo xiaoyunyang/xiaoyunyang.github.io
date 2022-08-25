@@ -7,19 +7,17 @@
 {  
   "@context":"http://schema.org",
   "@type":"Website",
-  "@id":"https://xiaoyunyang.github.io/",
+  "@id":"https:\/\/xiaoyunyang.github.io\/",
   "author": {
     "@type": "Person",
-    "name": Xiaoyun Yang,
+    "name": "Xiaoyun Yang",
     
-    "image": https://xiaoyunyang.github.io/images/xyang.png
+    "image": "https://xiaoyunyang.github.io/images/xyang.png"
     
   },
   "name":"Xiaoyun Yang",
-  "description":"<p>A finite state machine (FSM) is an architectural design pattern that allows us to model a large system as a collection of loosely coupled components. Each component in the system changes its behavior when the internal state changes. This pattern allows us to write flexible, reusable, and testable code. In this article, we will explore the use of FSM in building complex React components.</p>
-
-<p>The primary use of FSM has been in <a href="https://www.embedded.com/programming-embedded-systems-the-easy-way-with-state-machines/" target="_blank">programming embedded systems</a> but in recent years, there has been an emergence of FSM in other applications like <a href="https://www.smashingmagazine.com/2018/01/rise-state-machines/" target="_blank">managing states in the browser</a>, <a href="https://mind-simulation.com/en/blog/tech/using-finite-state-machines-to-model-behavior.html" target="_blank">modeling behavior</a>, and <a href="https://www.hamidadelyar.com/blog/finite-state-machine-chatbot/" target="_blank">building chatbots</a>. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like <a href="http://redux.js.org/" target="_blank">Redux</a> but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and <a href="https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems" target="_blank">delete-able</a>.</p>",
-  "url":"https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/",
+  "description":"\u003cp\u003eA finite state machine (FSM) is an architectural design pattern that allows us to model a large system as a collection of loosely coupled components. Each component in the system changes its behavior when the internal state changes. This pattern allows us to write flexible, reusable, and testable code. In this article, we will explore the use of FSM in building complex React components.\u003c\/p\u003e\n\u003cp\u003eThe primary use of FSM has been in \u003ca href=\u0022https:\/\/www.embedded.com\/programming-embedded-systems-the-easy-way-with-state-machines\/\u0022\u003eprogramming embedded systems\u003c\/a\u003e but in recent years, there has been an emergence of FSM in other applications like \u003ca href=\u0022https:\/\/www.smashingmagazine.com\/2018\/01\/rise-state-machines\/\u0022\u003emanaging states in the browser\u003c\/a\u003e, \u003ca href=\u0022https:\/\/mind-simulation.com\/en\/blog\/tech\/using-finite-state-machines-to-model-behavior.html\u0022\u003emodeling behavior\u003c\/a\u003e, and \u003ca href=\u0022https:\/\/www.hamidadelyar.com\/blog\/finite-state-machine-chatbot\/\u0022\u003ebuilding chatbots\u003c\/a\u003e. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like \u003ca href=\u0022http:\/\/redux.js.org\/\u0022\u003eRedux\u003c\/a\u003e but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and \u003ca href=\u0022https:\/\/programmingisterrible.com\/post\/139222674273\/how-to-write-disposable-code-in-large-systems\u0022\u003edelete-able\u003c\/a\u003e.\u003c\/p\u003e",
+  "url":"https:\/\/xiaoyunyang.github.io\/post\/modeling-ui-state-using-a-finite-state-machine\/",
   "keywords":"[JavaScript, React, Best Practices, Web Design, Web Development, React.js, Finite State Machine, FSM, Design Pattern, Architecture, ]"
 }
 
@@ -27,16 +25,14 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.53 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="JavaScript, React, Best Practices, Web Design, Web Development, React.js, Finite State Machine, FSM, Design Pattern, Architecture, ">
 <meta name="description" content="A finite state machine (FSM) is an architectural design pattern that allows us to model a large system as a collection of loosely coupled components. Each component in the system changes its behavior when the internal state changes. This pattern allows us to write flexible, reusable, and testable code. In this article, we will explore the use of FSM in building complex React components.
-
 The primary use of FSM has been in programming embedded systems but in recent years, there has been an emergence of FSM in other applications like managing states in the browser, modeling behavior, and building chatbots. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like Redux but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and delete-able.">
 
 
 <meta property="og:description" content="A finite state machine (FSM) is an architectural design pattern that allows us to model a large system as a collection of loosely coupled components. Each component in the system changes its behavior when the internal state changes. This pattern allows us to write flexible, reusable, and testable code. In this article, we will explore the use of FSM in building complex React components.
-
 The primary use of FSM has been in programming embedded systems but in recent years, there has been an emergence of FSM in other applications like managing states in the browser, modeling behavior, and building chatbots. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like Redux but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and delete-able.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Modeling UI State Using A Finite State Machine">
@@ -45,10 +41,8 @@ The primary use of FSM has been in programming embedded systems but in recent ye
 <meta property="twitter:url" content="https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/">
 <meta property="og:site_name" content="Xiaoyun Yang">
 <meta property="og:description" content="A finite state machine (FSM) is an architectural design pattern that allows us to model a large system as a collection of loosely coupled components. Each component in the system changes its behavior when the internal state changes. This pattern allows us to write flexible, reusable, and testable code. In this article, we will explore the use of FSM in building complex React components.
-
 The primary use of FSM has been in programming embedded systems but in recent years, there has been an emergence of FSM in other applications like managing states in the browser, modeling behavior, and building chatbots. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like Redux but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and delete-able.">
 <meta name="twitter:description" content="A finite state machine (FSM) is an architectural design pattern that allows us to model a large system as a collection of loosely coupled components. Each component in the system changes its behavior when the internal state changes. This pattern allows us to write flexible, reusable, and testable code. In this article, we will explore the use of FSM in building complex React components.
-
 The primary use of FSM has been in programming embedded systems but in recent years, there has been an emergence of FSM in other applications like managing states in the browser, modeling behavior, and building chatbots. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like Redux but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and delete-able.">
 <meta property="og:locale" content="en-us">
 
@@ -117,7 +111,11 @@ The primary use of FSM has been in programming embedded systems but in recent ye
     
     
       
-        <link rel="stylesheet"  href="https://xiaoyunyang.github.io/css/custom.css">
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/custom.css">
+      
+    
+      
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/syntax.css">
       
     
 
@@ -158,7 +156,7 @@ The primary use of FSM has been in programming embedded systems but in recent ye
         </a>
         <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
         
-          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+          <h5 class="sidebar-profile-bio">Software Engineer. Climber. Snowboarder.</h5>
         
       </div>
     
@@ -317,13 +315,9 @@ The primary use of FSM has been in programming embedded systems but in recent ye
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>A finite state machine (FSM) is an architectural design pattern that allows us to model a large system as a collection of loosely coupled components. Each component in the system changes its behavior when the internal state changes. This pattern allows us to write flexible, reusable, and testable code. In this article, we will explore the use of FSM in building complex React components.</p>
-
-<p>The primary use of FSM has been in <a href="https://www.embedded.com/programming-embedded-systems-the-easy-way-with-state-machines/" target="_blank">programming embedded systems</a> but in recent years, there has been an emergence of FSM in other applications like <a href="https://www.smashingmagazine.com/2018/01/rise-state-machines/" target="_blank">managing states in the browser</a>, <a href="https://mind-simulation.com/en/blog/tech/using-finite-state-machines-to-model-behavior.html" target="_blank">modeling behavior</a>, and <a href="https://www.hamidadelyar.com/blog/finite-state-machine-chatbot/" target="_blank">building chatbots</a>. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like <a href="http://redux.js.org/" target="_blank">Redux</a> but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and <a href="https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems" target="_blank">delete-able</a>.</p>
-
+<p>The primary use of FSM has been in <a href="https://www.embedded.com/programming-embedded-systems-the-easy-way-with-state-machines/">programming embedded systems</a> but in recent years, there has been an emergence of FSM in other applications like <a href="https://www.smashingmagazine.com/2018/01/rise-state-machines/">managing states in the browser</a>, <a href="https://mind-simulation.com/en/blog/tech/using-finite-state-machines-to-model-behavior.html">modeling behavior</a>, and <a href="https://www.hamidadelyar.com/blog/finite-state-machine-chatbot/">building chatbots</a>. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like <a href="http://redux.js.org/">Redux</a> but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and <a href="https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems">delete-able</a>.</p>
 <h2 id="core-concepts">Core Concepts</h2>
-
-<p>An FSM consists of states and state transitions. It can be represented by a state machine <a href="https://medium.com/well-red/state-machines-for-everyone-part-1-introduction-b7ac9aaf482e" target="_blank">diagram</a>:</p>
-
+<p>An FSM consists of states and state transitions. It can be represented by a state machine <a href="https://medium.com/well-red/state-machines-for-everyone-part-1-introduction-b7ac9aaf482e">diagram</a>:</p>
 
  
   
@@ -368,16 +362,12 @@ The primary use of FSM has been in programming embedded systems but in recent ye
 
   <div style="clear:both;"></div>
 
-
 <p>Formally,</p>
-
 <ul>
-<li><strong>States</strong> represent the modes of the system and drive the output of the system. Light switches have two states: ON or OFF.  <a href="https://levelup.gitconnected.com/an-example-based-introduction-to-finite-state-machines-f908858e450f" target="_blank">Traffic lights contain three states</a>: RED, YELLOW, or GREEN. There are a finite number of states in an FSM. Every FSM has an initial state, which is the state the system is in when it first initiates.</li>
+<li><strong>States</strong> represent the modes of the system and drive the output of the system. Light switches have two states: ON or OFF.  <a href="https://levelup.gitconnected.com/an-example-based-introduction-to-finite-state-machines-f908858e450f">Traffic lights contain three states</a>: RED, YELLOW, or GREEN. There are a finite number of states in an FSM. Every FSM has an initial state, which is the state the system is in when it first initiates.</li>
 <li><strong>State transitions</strong> are rules for going from the current state to the next state based on the current state and the system inputs.</li>
 </ul>
-
 <p>If we model a React component as an FSM, system inputs are provided externally by the user, the server, or callers of the component. These include events, such as a button click or having received a certain response from the server. The output of the system is the JSX (i.e., what is rendered) because that is what is ultimately returned from the component.</p>
-
 
  
   
@@ -422,118 +412,91 @@ The primary use of FSM has been in programming embedded systems but in recent ye
 
   <div style="clear:both;"></div>
 
-
 <p>Transitions out of a state must be mutually exclusive. That means a given input cannot cause transition into two states. This ensures the deterministic behavior of our system.</p>
-
 <h2 id="a-component-with-few-states">A Component with Few States</h2>
-
 <p>You probably already have had experience building React components that use component states like  isLoading  and isDisabled to determine how to render. These are examples of stateful components that can be modeled with a simple FSM with binary states. Let&rsquo;s apply what we learned about FSMs so far to model a simple stateful React component as an FSM in a concrete example.</p>
-
-<p>Suppose we are building the <code>&lt;FriendStatus&gt;</code> component from the <a href="https://reactjs.org/docs/hooks-effect.html#example-using-hooks-1" target="_blank">React Hooks documentation</a>. At any given time, this component displays one of the three messages &ldquo;Loading&hellip;&rdquo;, &ldquo;Online&rdquo;, and &ldquo;Offline&rdquo;.</p>
-
-<pre><code class="language-js">import React, { useState } from &quot;react&quot;;
-
-function FriendStatus(props) {
-  const [isOnline, setIsOnline] = useState(null);
-
-  useEffect(() =&gt; {
-    function handleStatusChange(status) {
-      setIsOnline(status.isOnline);
-    }
-    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
-    // Specify how to clean up after this effect:
-    return function cleanup() {
-      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
-    };
-  });
-
-  if (isOnline === null) {
-    return &quot;Loading...&quot;;
-  }
-  return isOnline ? &quot;Online&quot; : &quot;Offline&quot;;
-}
-</code></pre>
-
-<p>The <strong>component state</strong>  <code>isOnline</code> determines exactly what message to render and is initialized to <code>null</code> and updated to &ldquo;online&rdquo; or &ldquo;offline&rdquo; in the <code>useEffect</code>.</p>
-
+<p>Suppose we are building the <code>&lt;FriendStatus&gt;</code> component from the <a href="https://reactjs.org/docs/hooks-effect.html#example-using-hooks-1">React Hooks documentation</a>. At any given time, this component displays one of the three messages &ldquo;Loading&hellip;&rdquo;, &ldquo;Online&rdquo;, and &ldquo;Offline&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span>, { <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">FriendStatus</span>(<span style="color:#a6e22e">props</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">isOnline</span>, <span style="color:#a6e22e">setIsOnline</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">handleStatusChange</span>(<span style="color:#a6e22e">status</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setIsOnline</span>(<span style="color:#a6e22e">status</span>.<span style="color:#a6e22e">isOnline</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ChatAPI</span>.<span style="color:#a6e22e">subscribeToFriendStatus</span>(<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">friend</span>.<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">handleStatusChange</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Specify how to clean up after this effect:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cleanup</span>() {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ChatAPI</span>.<span style="color:#a6e22e">unsubscribeFromFriendStatus</span>(<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">friend</span>.<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">handleStatusChange</span>);
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isOnline</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Loading...&#34;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">isOnline</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;Online&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Offline&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <strong>component state</strong>  <code>isOnline</code> determines exactly what message to render and is initialized to <code>null</code> and updated to &ldquo;online&rdquo; or &ldquo;offline&rdquo; in the <code>useEffect</code>.</p>
 <p><code>isOnline</code> allows us to stores three <strong>UI States</strong>: LOADING, OFFLINE, ONLINE.</p>
-
 <p>We can rewrite <code>&lt;FriendStatus&gt;</code> to render based on the <strong>UI State</strong> instead.</p>
-
-<pre><code class="language-js">import React, { useState } from &quot;react&quot;;
-
-const UiState = {
-  LOADING: &quot;LOADING&quot;,
-  ONLINE: &quot;ONLINE&quot;,
-  OFFLINE: &quot;OFFLINE&quot;,
-};
-
-const UiStateMessageMap = {
-  [UiState.LOADING]: &quot;Loading...&quot;,
-  [UiState.ONLINE]: &quot;Online&quot;,
-  [UiState.OFFLINE]: &quot;Offline&quot;,
-};
-
-const getUiState = (status) =&gt; {
-  const { isOnline } = status;
-  if (isOnline === null) return UiState.LOADING;
-  return isOnline ? UiState.ONLINE : UiState.OFFLINE
-};
-
-function FriendStatus(props) {
-  const [uiState, setUiState] = useState(UiState.LOADING); // init state
-
-  useEffect(() =&gt; {
-    function handleStatusChange(status) {
-      const nextUiState = getUiState(status);
-      setUiState(nextUiState);
-    }
-    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
-    // Specify how to clean up after this effect:
-    return function cleanup() {
-      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
-    };
-  });
-
-  return UiStateMessageMap[uiState];
-}
-</code></pre>
-
-<p>The state transition happens in <code>handleStatusChange</code>, which is triggered on every render because the <code>useEffect</code> has no second argument.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span>, { <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">UiState</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">LOADING</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;LOADING&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ONLINE</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ONLINE&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">OFFLINE</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;OFFLINE&#34;</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">UiStateMessageMap</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">UiState</span>.<span style="color:#a6e22e">LOADING</span>]<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Loading...&#34;</span>,
+</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">UiState</span>.<span style="color:#a6e22e">ONLINE</span>]<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Online&#34;</span>,
+</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">UiState</span>.<span style="color:#a6e22e">OFFLINE</span>]<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Offline&#34;</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getUiState</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">status</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">isOnline</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">status</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isOnline</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">UiState</span>.<span style="color:#a6e22e">LOADING</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">isOnline</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">UiState</span>.<span style="color:#a6e22e">ONLINE</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">UiState</span>.<span style="color:#a6e22e">OFFLINE</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">FriendStatus</span>(<span style="color:#a6e22e">props</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">uiState</span>, <span style="color:#a6e22e">setUiState</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#a6e22e">UiState</span>.<span style="color:#a6e22e">LOADING</span>); <span style="color:#75715e">// init state
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">handleStatusChange</span>(<span style="color:#a6e22e">status</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nextUiState</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getUiState</span>(<span style="color:#a6e22e">status</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setUiState</span>(<span style="color:#a6e22e">nextUiState</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ChatAPI</span>.<span style="color:#a6e22e">subscribeToFriendStatus</span>(<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">friend</span>.<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">handleStatusChange</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Specify how to clean up after this effect:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cleanup</span>() {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ChatAPI</span>.<span style="color:#a6e22e">unsubscribeFromFriendStatus</span>(<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">friend</span>.<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">handleStatusChange</span>);
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">UiStateMessageMap</span>[<span style="color:#a6e22e">uiState</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The state transition happens in <code>handleStatusChange</code>, which is triggered on every render because the <code>useEffect</code> has no second argument.</p>
 <p>The <code>setUiState(nextUiState)</code> is responsible for causing the transition from the current uiState to the next uiState based on the system input (i.e., <code>status</code> from ChatAPI).</p>
-
-<p>Our system output is the message we want to render, which comes directly from <code>UiStateMessageMap</code>. We can do this because our system can only ever be in one of three states. When the output of the system depends solely on the current state, we have a special type of FSM called a <a href="https://en.wikipedia.org/wiki/Moore_machine" target="_blank">Moore machine</a>. A Moore machine is more deterministic but reacts slower to input changes compared to a <a href="https://en.wikipedia.org/wiki/Mealy_machine" target="_blank">Mealy machine</a>. In a Mealy machine, the output depends on both the current state and the inputs of the system.</p>
-
+<p>Our system output is the message we want to render, which comes directly from <code>UiStateMessageMap</code>. We can do this because our system can only ever be in one of three states. When the output of the system depends solely on the current state, we have a special type of FSM called a <a href="https://en.wikipedia.org/wiki/Moore_machine">Moore machine</a>. A Moore machine is more deterministic but reacts slower to input changes compared to a <a href="https://en.wikipedia.org/wiki/Mealy_machine">Mealy machine</a>. In a Mealy machine, the output depends on both the current state and the inputs of the system.</p>
 <p>Whether you build a Moore machine or a Mealy machine really depends on the requirements of your system. We will see in the next part of the post how we can build a system that is a hybrid Moore and Mealy machine using an architecture that delegates the implementation of state-driven output to the child components.</p>
-
 <h2 id="a-component-with-many-states">A Component with Many States</h2>
-
 <p>For simple components that have only two or three states, an FSM may be overkill. There is quite a lot of overhead to implement the FSM (e.g., defining all the UI States and transitions) for not much additional benefit.</p>
-
 <p>For a complex system consisting of many sub-systems with cross-cutting concerns, an FSM provides a huge benefit.</p>
-
 <p>Consider you have a system composed of multiple components in which one component needs to be disabled while another component is loading and the output of the two components determines the output of the third component.</p>
-
 <p>The cross-component dependencies could result in tight coupling of components and make encapsulation difficult and the system difficult to test.</p>
-
-<p>At my company, <a href="https://www.okcupid.com/careers" target="_blank">OkCupid</a>, we&rsquo;ve built such a component (<code>&lt;LocationSearch&gt;</code>) that lets you specify a country and a query term (zip code or city name) to find a location anywhere in the world. This seems pretty straight-forward until you consider all the edge cases this component has to handle.</p>
-
+<p>At my company, <a href="https://www.okcupid.com/careers">OkCupid</a>, we&rsquo;ve built such a component (<code>&lt;LocationSearch&gt;</code>) that lets you specify a country and a query term (zip code or city name) to find a location anywhere in the world. This seems pretty straight-forward until you consider all the edge cases this component has to handle.</p>
 <ul>
 <li>The component interfaces with an API that provides an array of location objects that best match the country and query search term. Based on the length of this array, the component could display a success message, a variety of error messages, and another selection UI to disambiguate the search by selecting from a list of best matches.</li>
 <li>A bonus feature of this component is that if it&rsquo;s used on a mobile device, there&rsquo;s a button that lets you locate yourself automatically using your GPS location (latitude and longitude). The same API accepts the GPS location as input and responds with the locations array.</li>
 <li>The component needs to handles client-side input validation errors like invalid zip code as well as network errors.</li>
 <li>Furthermore, the component can be mounted with a <strong>preloaded</strong> location, which needs to be reflected in the country dropdown, zip code/city name input, and success message immediately when the component first mounts.</li>
 </ul>
-
 <p>If you see this design spec in a Jira ticket, it might seem a bit overwhelming. There&rsquo;s a lot of logic that needs to be implemented. But having all the functional requirements up-front is actually a blessing in disguise - it enables us to think more holistically about the design of this component and pick an architecture that can effectively manage all of the complexity of this component.</p>
-
 <h3 id="enumeration-of-all-ui-states">Enumeration of All UI States</h3>
-
 <p>A nice thing about working on a cross-functional team with a designer is that you get all the mocks before you start the implementation. The mocks can be used to devise the architecture.</p>
-
 <p>Since this is an article about UI State modeling using FSM, you may have seen it coming. We are going to assign a UI State to each mock, which represents a snapshot of the component in action.</p>
-
 
  
   
@@ -578,17 +541,13 @@ function FriendStatus(props) {
 
   <div style="clear:both;"></div>
 
-
 <p>These images depict the output of the system (what the user sees) in each state. Let&rsquo;s take a look at what the outputs have in common in the different states. This will give us an idea on how to split up our <code>&lt;LocationSearch&gt;</code> component into sub-systems.</p>
-
 <ul>
 <li>In the SUCCESS state all the error states, a feedback message is displayed. The text color depends on the state.</li>
 <li>In the SUCCESS state, the DISAMBIGUATION state, and all the error states, an icon is displayed next to the input (checkmark and exclamation mark).</li>
 <li>In all the states except LOADING, the country dropdown, query input, and geo-location search button (labeled &ldquo;USE CURRENT LOCATION&rdquo;) are enabled and accepting input from the user.</li>
 </ul>
-
 <p>Based on these observations, we can start to delegate the rendering logic to different presentational components.</p>
-
 <table>
 <thead>
 <tr>
@@ -598,36 +557,31 @@ function FriendStatus(props) {
 <th>Affected by uiStates</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Countries</td>
 <td>Dropdown menu containing countries retrieved from the server</td>
-<td>- Found location <br/>- User input</td>
+<td>- Found location <!-- raw HTML omitted -->- User input</td>
 <td>LOADING</td>
 </tr>
-
 <tr>
 <td>QueryInput</td>
-<td>- Input field containing the country/city name or zip code <br/>- Checkmark or exclamation mark icon for feedback</td>
-<td>- Found location <br/>- User input</td>
-<td>- LOADING <br/>- SUCCESS <br/>- All error states</td>
+<td>- Input field containing the country/city name or zip code <!-- raw HTML omitted -->- Checkmark or exclamation mark icon for feedback</td>
+<td>- Found location <!-- raw HTML omitted -->- User input</td>
+<td>- LOADING <!-- raw HTML omitted -->- SUCCESS <!-- raw HTML omitted -->- All error states</td>
 </tr>
-
 <tr>
 <td>Feedback</td>
 <td>Success message containing location name</td>
-<td>- Found location <br/>- Static messages mapped to error states</td>
-<td>- SUCCESS <br/>- All error states</td>
+<td>- Found location <!-- raw HTML omitted -->- Static messages mapped to error states</td>
+<td>- SUCCESS <!-- raw HTML omitted -->- All error states</td>
 </tr>
-
 <tr>
 <td>Suggestions</td>
 <td>Dropdown menu containing matched locations</td>
 <td>Matched locations from the server</td>
 <td>DISAMBIGUATION</td>
 </tr>
-
 <tr>
 <td>GpsSearchButton</td>
 <td>Button to trigger location search by GPS</td>
@@ -636,17 +590,11 @@ function FriendStatus(props) {
 </tr>
 </tbody>
 </table>
-
 <p>By delegating the implementation of the state-specific output to these components, we are able to transform <code>&lt;LocationSearch&gt;</code> into a system of loosely-coupled components that are coordinated via the UI State. We are encapsulating the FSM in <code>&lt;LocationSearch&gt;</code>, in the sense that the parent components of <code>&lt;LocationSearch&gt;</code> do not know anything about the implementation of the UI state in this component.</p>
-
 <p>Now we&rsquo;ve defined the states and the output of each state, we are going to specify the state transitions.</p>
-
 <h3 id="state-transitions">State Transitions</h3>
-
 <p>Similar to what we did in <code>&lt;FriendStatus&gt;</code> earlier, we are going to instantiate <code>uiState</code> as a component state of <code>&lt;LocationSearch&gt;</code> and mutate <code>uiState</code> in a <code>useEffect</code>. The evaluation of the next <code>uiState</code> will be done in a helper function <code>getUiState</code>. The advantage of making the next state evaluation explicit in <code>getUiState</code> is that we will be able to separate the concern of computing <em>when</em> to render from the concern of <em>what</em> to render.</p>
-
 <p>Recall FSM can be represented as a directed graph and state transitions are the edges between the nodes. This is what our FSM should look like.</p>
-
 
  
   
@@ -691,17 +639,11 @@ function FriendStatus(props) {
 
   <div style="clear:both;"></div>
 
-
 <p>The PENDING state is the initial state when the <code>&lt;LocationSearch&gt;</code> first mounts. As the component can mount with a preloaded location, there&rsquo;s an arrow going directly from the PENDING state to the SUCCESS state. We can also reach the SUCCESS state by providing a country+query to the server or a GPS location to the server.</p>
-
 <p>The ERROR_NOT_ZIP_CODE state is reached via client-side input validation and does not depend on the result of the server request. On the other hand, all the other error states would be reached only after making a request to the server.</p>
-
 <h2 id="conclusion">Conclusion</h2>
-
-<p>In this post, we learned what an FSM is and how to model a complex React component as a system of loosely coupled sub-systems coordinated via the UI State. The FSM allowed us to build a robust system that is understandable, extendable, and <a href="https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems" target="_blank">delete-able</a>.</p>
-
-<p>We&rsquo;ve seen some examples of how this is done using React primitives like <code>useState</code> and <code>useEffect</code>. There exist JavaScript libraries like <a href="https://xstate.js.org/docs/about/concepts.html" target="_blank">xState</a> and <a href="http://machina-js.org/" target="_blank">Machina.js</a> which provide a more opinionated framework for creating, interpreting, and executing finite state machines and statecharts.</p>
-
+<p>In this post, we learned what an FSM is and how to model a complex React component as a system of loosely coupled sub-systems coordinated via the UI State. The FSM allowed us to build a robust system that is understandable, extendable, and <a href="https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems">delete-able</a>.</p>
+<p>We&rsquo;ve seen some examples of how this is done using React primitives like <code>useState</code> and <code>useEffect</code>. There exist JavaScript libraries like <a href="https://xstate.js.org/docs/about/concepts.html">xState</a> and <a href="http://machina-js.org/">Machina.js</a> which provide a more opinionated framework for creating, interpreting, and executing finite state machines and statecharts.</p>
 <p>While the FSM is a powerful design pattern, it is not always the right thing to use for a project. Architectural design is most effective when there is a clear product vision and requirements upfront for how the full user experience should be. Pre-mature optimization could lead to worse code maintainability. Fortunately, the location search experience project was blessed with good product planning and clear design goals that made it possible to break down the problem and architect a robust technical solution.</p>
               
 
@@ -939,7 +881,7 @@ s.setAttribute('data-timestamp', +new Date());
     
     <h4 id="about-card-name">Xiaoyun Yang</h4>
     
-      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+      <div id="about-card-bio">Software Engineer. Climber. Snowboarder.</div>
     
     
       <div id="about-card-job">
@@ -979,14 +921,6 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script src="https://xiaoyunyang.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
 
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/go.min.js"></script>
-  
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
-  
 
 
 <script>

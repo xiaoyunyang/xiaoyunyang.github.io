@@ -7,19 +7,17 @@
 {  
   "@context":"http://schema.org",
   "@type":"Website",
-  "@id":"https://xiaoyunyang.github.io/",
+  "@id":"https:\/\/xiaoyunyang.github.io\/",
   "author": {
     "@type": "Person",
-    "name": Xiaoyun Yang,
+    "name": "Xiaoyun Yang",
     
-    "image": https://xiaoyunyang.github.io/images/xyang.png
+    "image": "https://xiaoyunyang.github.io/images/xyang.png"
     
   },
   "name":"Xiaoyun Yang",
-  "description":"<p><img src="https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png" alt="Static code analysis" /></p>
-
-<p>Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, <a href="https://www.sonarqube.org/" target="_blank">SonarQube</a>, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.</p>",
-  "url":"https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/",
+  "description":"\u003cp\u003e\u003cimg src=\u0022\/post\/images\/sonarqube\/cover-static-analysis.png\u0022 alt=\u0022Static code analysis\u0022\u003e\u003c\/p\u003e\n\u003cp\u003eStatic code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We\u0026rsquo;ll look at one of these tools, \u003ca href=\u0022https:\/\/www.sonarqube.org\/\u0022\u003eSonarQube\u003c\/a\u003e, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration\/Continuous Delivery (CI\/CD) process for your projects.\u003c\/p\u003e",
+  "url":"https:\/\/xiaoyunyang.github.io\/post\/how-to-set-up-static-code-analysis-for-your-project\/",
   "keywords":"[programming, software design, guide, productivity, DevOps, SonarQube, Static Code Analysis]"
 }
 
@@ -27,16 +25,14 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.53 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="programming, software design, guide, productivity, DevOps, SonarQube, Static Code Analysis">
 <meta name="description" content="
-
 Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, SonarQube, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.">
 
 
 <meta property="og:description" content="
-
 Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, SonarQube, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Set Up Static Code Analysis For Your Project">
@@ -45,10 +41,8 @@ Static code analysis is a method for identifying bugs and other quality issues i
 <meta property="twitter:url" content="https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/">
 <meta property="og:site_name" content="Xiaoyun Yang">
 <meta property="og:description" content="
-
 Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, SonarQube, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.">
 <meta name="twitter:description" content="
-
 Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, SonarQube, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.">
 <meta property="og:locale" content="en-us">
 
@@ -110,7 +104,11 @@ Static code analysis is a method for identifying bugs and other quality issues i
     
     
       
-        <link rel="stylesheet"  href="https://xiaoyunyang.github.io/css/custom.css">
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/custom.css">
+      
+    
+      
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/syntax.css">
       
     
 
@@ -151,7 +149,7 @@ Static code analysis is a method for identifying bugs and other quality issues i
         </a>
         <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
         
-          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+          <h5 class="sidebar-profile-bio">Software Engineer. Climber. Snowboarder.</h5>
         
       </div>
     
@@ -309,267 +307,186 @@ Static code analysis is a method for identifying bugs and other quality issues i
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p><img src="https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png" alt="Static code analysis" /></p>
+              <p><img src="https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png" alt="Static code analysis"></p>
+<p>Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, <a href="https://www.sonarqube.org/">SonarQube</a>, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.</p>
+<h1 id="table-of-contents">Table of Contents</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisite">Prerequisite</a></li>
+    <li><a href="#set-up-and-start-the-sonarqube-server">Set Up and Start The SonarQube Server</a></li>
+    <li><a href="#set-up-sonarscanner">Set Up SonarScanner</a></li>
+    <li><a href="#perform-sonarqube-scan-on-project">Perform SonarQube Scan on Project</a></li>
+    <li><a href="#test-coverage-set-up">Test Coverage Set up</a></li>
+  </ul>
 
-<p>Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&rsquo;ll look at one of these tools, <a href="https://www.sonarqube.org/" target="_blank">SonarQube</a>, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.</p>
-
-<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#setting-up-sonarqube-on-local-machine">Setting Up SonarQube on Local Machine</a>
-<ul>
-<li><a href="#prerequisite">Prerequisite</a></li>
-<li><a href="#set-up-and-start-the-sonarqube-server">Set Up and Start The SonarQube Server</a></li>
-<li><a href="#set-up-sonarscanner">Set Up SonarScanner</a></li>
-<li><a href="#perform-sonarqube-scan-on-project">Perform SonarQube Scan on Project</a></li>
-<li><a href="#test-coverage-set-up">Test Coverage Set up</a></li>
-</ul></li>
-<li><a href="#integrate-sonarqube-with-jenkins">Integrate SonarQube With Jenkins</a></li>
-<li><a href="#tips-and-cheat-sheet">Tips and Cheat Sheet</a>
-<ul>
-<li><a href="#tips">Tips</a></li>
-<li><a href="#cheatsheet-perform-sonarqube-scan-on-your-own-machine">Cheatsheet: Perform SonarQube Scan on your own Machine</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#tips">Tips</a></li>
+    <li><a href="#cheatsheet-perform-sonarqube-scan-on-your-own-machine">Cheatsheet: Perform SonarQube Scan on your own Machine</a></li>
+  </ul>
 </nav>
 
-<p>SonarQube provides a free and open-source community edition that supports <a href="https://www.sonarqube.org/features/multi-languages/" target="_blank">a variety of languages</a>. There are two main components of the static analyzer:</p>
-
+<p>SonarQube provides a free and open-source community edition that supports <a href="https://www.sonarqube.org/features/multi-languages/">a variety of languages</a>. There are two main components of the static analyzer:</p>
 <ol>
 <li>SonarQube Server</li>
 <li>SonarQube Scanner</li>
 </ol>
-
 <p>As the name implies, the Scanner scans your codebase for code smells, bugs, etc, and sends the result to the SonarQube Server. You just need to set up SonarQube Server and Scanner once on each machine to be able to perform scans of all the codebases which exist on that machine.</p>
-
 <p>Let&rsquo;s try to set up SonarQube Server and Scanner on our local machine.</p>
-
 <h1 id="setting-up-sonarqube-on-local-machine">Setting Up SonarQube on Local Machine</h1>
-
 <h2 id="prerequisite">Prerequisite</h2>
-
 <p>You can skip this section if you already have Docker installed.</p>
-
-<p>We need to install docker to run the sonarqube server docker image. Install the Docker Desktop app <a href="https://docs.docker.com/get-docker/" target="_blank">from here</a>.</p>
-
+<p>We need to install docker to run the sonarqube server docker image. Install the Docker Desktop app <a href="https://docs.docker.com/get-docker/">from here</a>.</p>
 <p>Install <code>docker-machine</code></p>
-
-<pre><code class="language-bash">$ brew install docker-machine
-</code></pre>
-
-<h2 id="set-up-and-start-the-sonarqube-server">Set Up and Start The SonarQube Server</h2>
-
-<p>We are going to run our server using the <a href="https://hub.docker.com/_/sonarqube/" target="_blank">Official SonarQube Docker Image</a>.</p>
-
-<pre><code class="language-bash">$ docker pull sonarqube
-$ docker run -d --name sonarqube -p 9000:9000 sonarqube
-</code></pre>
-
-<p>After running <code>docker run</code>, you should be able to go to <a href="http://localhost:9000/" target="_blank">http://localhost:9000/</a> and see this page:</p>
-
-<p><img src="https://xiaoyunyang.github.io/post/images/sonarqube/sonarqube-server-start-page.png" alt="SonarQube Server Start Page" /></p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ brew install docker-machine
+</span></span></code></pre></div><h2 id="set-up-and-start-the-sonarqube-server">Set Up and Start The SonarQube Server</h2>
+<p>We are going to run our server using the <a href="https://hub.docker.com/_/sonarqube/">Official SonarQube Docker Image</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker pull sonarqube
+</span></span><span style="display:flex;"><span>$ docker run -d --name sonarqube -p 9000:9000 sonarqube
+</span></span></code></pre></div><p>After running <code>docker run</code>, you should be able to go to <a href="http://localhost:9000/">http://localhost:9000/</a> and see this page:</p>
+<p><img src="https://xiaoyunyang.github.io/post/images/sonarqube/sonarqube-server-start-page.png" alt="SonarQube Server Start Page"></p>
 <p>Log in with System Administrator credentials (login=admin, password=admin). You may be prompted to change your password to something more secure.</p>
-
 <h2 id="set-up-sonarscanner">Set Up SonarScanner</h2>
-
 <p>After your server is up and running, you&rsquo;ll need to install one or more SonarScanners on the machines where analysis will be performed.</p>
-
-<p>Download SonarScanner <a href="https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/" target="_blank">from here</a>.</p>
-
+<p>Download SonarScanner <a href="https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/">from here</a>.</p>
 <p>If you choose to download the zip file, update <code>.bash_profile</code> to add SonarScanner to your PATH:</p>
-
-<pre><code class="language-bash">$ code ~/.bash_profile
-</code></pre>
-
-<pre><code>export PATH=&quot;/usr/local/bin:$PATH:/path/to/sonarScanner/bin&quot;
-</code></pre>
-
-<p>Then update <code>conf/sonar-scanner.properties</code> to point to your SonarQube Server.</p>
-
-<pre><code>sonar.host.url=http://localhost:9000
-</code></pre>
-
-<p>If your SonarQube server is hosted somewhere else, update the host url appropriately.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ code ~/.bash_profile
+</span></span></code></pre></div><pre tabindex="0"><code>export PATH=&#34;/usr/local/bin:$PATH:/path/to/sonarScanner/bin&#34;
+</code></pre><p>Then update <code>conf/sonar-scanner.properties</code> to point to your SonarQube Server.</p>
+<pre tabindex="0"><code>sonar.host.url=http://localhost:9000
+</code></pre><p>If your SonarQube server is hosted somewhere else, update the host url appropriately.</p>
 <h2 id="perform-sonarqube-scan-on-project">Perform SonarQube Scan on Project</h2>
-
 <p>To set up the ability to scan a project on your machine is as easy as adding a file to the root directory and run <code>sonar-scanner</code> from the root directory.</p>
-
 <p>Let&rsquo;s add <code>sonar-project.properties</code> to the project:</p>
-
-<pre><code class="language-bash"># must be unique in a given SonarQube instance
-sonar.projectKey=my-awesome-project
-
-# --- optional properties ---
-
-# defaults to project key
-#sonar.projectName=My project
-# defaults to 'not provided'
-#sonar.projectVersion=1.0
- 
-# Path is relative to the sonar-project.properties file. Defaults to .
-sonar.sources=src
-
-# Encoding of the source code. Default is default system encoding
-#sonar.sourceEncoding=UTF-8
-
-sonar.host.url=http://localhost:9000
-</code></pre>
-
-<p>The <code>sonar.projectKey</code> for every project has to be unique. Choose a key appropriate for your project.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># must be unique in a given SonarQube instance</span>
+</span></span><span style="display:flex;"><span>sonar.projectKey<span style="color:#f92672">=</span>my-awesome-project
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- optional properties ---</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># defaults to project key</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#sonar.projectName=My project</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># defaults to &#39;not provided&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#sonar.projectVersion=1.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Path is relative to the sonar-project.properties file. Defaults to .</span>
+</span></span><span style="display:flex;"><span>sonar.sources<span style="color:#f92672">=</span>src
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Encoding of the source code. Default is default system encoding</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#sonar.sourceEncoding=UTF-8</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sonar.host.url<span style="color:#f92672">=</span>http://localhost:9000
+</span></span></code></pre></div><p>The <code>sonar.projectKey</code> for every project has to be unique. Choose a key appropriate for your project.</p>
 <p>In order to analyze JavaScript code using SonarScanner, you need to have Node.js &gt;= 10 installed on the machine running the scan. Make sure before you are ready to launch the analysis, set your machine’s node version to 10.</p>
-
-<pre><code class="language-bash">nvm install 10
-nvm use 10
-</code></pre>
-
-<pre><code class="language-bash">$ yarn jest --coverage
-</code></pre>
-
-<p>To perform a sonar scan on your project is as simple as running the following command from the project base directory, passing your <a href="https://docs.sonarqube.org/latest/user-guide/user-token/" target="_blank">authentication token</a>:</p>
-
-<pre><code>$ sonar-scanner -Dsonar.login=&lt;project_security_token&gt;
-</code></pre>
-
-<p>Once the analysis is complete, visit the sonar server and you&rsquo;ll see that the result of the sonar scan:</p>
-
-<p><img src="https://xiaoyunyang.github.io/post/images/sonarqube/sonarqube-server-dashboard.png" alt="SonarQube Server Dashboard" /></p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nvm install <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>nvm use <span style="color:#ae81ff">10</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ yarn jest --coverage
+</span></span></code></pre></div><p>To perform a sonar scan on your project is as simple as running the following command from the project base directory, passing your <a href="https://docs.sonarqube.org/latest/user-guide/user-token/">authentication token</a>:</p>
+<pre tabindex="0"><code>$ sonar-scanner -Dsonar.login=&lt;project_security_token&gt;
+</code></pre><p>Once the analysis is complete, visit the sonar server and you&rsquo;ll see that the result of the sonar scan:</p>
+<p><img src="https://xiaoyunyang.github.io/post/images/sonarqube/sonarqube-server-dashboard.png" alt="SonarQube Server Dashboard"></p>
 <p>You can then click on each analyzed projects and using the SonarQube Server app&rsquo;s UI to explore the results of the scan.</p>
-
 <h2 id="test-coverage-set-up">Test Coverage Set up</h2>
-
-<p>According to the <a href="https://docs.sonarqube.org/latest/analysis/coverage/" target="_blank">SonarQube Doc</a>,</p>
-
+<p>According to the <a href="https://docs.sonarqube.org/latest/analysis/coverage/">SonarQube Doc</a>,</p>
 <blockquote>
 <p>SonarSource analyzers do not run your tests or generate reports. They only import pre-generated reports.</p>
 </blockquote>
-
-<p>Suppose we have a <a href="https://create-react-app.dev/docs/running-tests/" target="_blank">Create React App</a> project with Jest as our unit testing framework. We can generate a test coverage report with the following command:</p>
-
-<pre><code>$ yarn jest --coverage
-</code></pre>
-
-<p>This will generate a <code>coverage</code> folder which contains the following:</p>
-
+<p>Suppose we have a <a href="https://create-react-app.dev/docs/running-tests/">Create React App</a> project with Jest as our unit testing framework. We can generate a test coverage report with the following command:</p>
+<pre tabindex="0"><code>$ yarn jest --coverage
+</code></pre><p>This will generate a <code>coverage</code> folder which contains the following:</p>
 <ul>
 <li><code>Icov-report/</code></li>
 <li><code>clover.xml</code></li>
 <li><code>coverage-final.json</code></li>
 <li><code>Icov.info</code></li>
 </ul>
-
 <p>In our <code>sonar-project.properties</code>, add the following line</p>
-
-<pre><code>sonar.javascript.lcov.reportPaths=coverage/lcov.info
-</code></pre>
-
-<h1 id="integrate-sonarqube-with-jenkins">Integrate SonarQube With Jenkins</h1>
-
+<pre tabindex="0"><code>sonar.javascript.lcov.reportPaths=coverage/lcov.info
+</code></pre><h1 id="integrate-sonarqube-with-jenkins">Integrate SonarQube With Jenkins</h1>
 <p>The community edition does not support automatic integration with GitHub and other repository hosting platforms. However, if you have your own CI/CD server (e.g., Jenkins) set up, you can easily add a step to your CI/CD pipeline.</p>
-
 <p>The following tutorial walks through how you can set up SonarQube for Jenkins and your project. The setup for Jenkins only has to be performed once to allow all projects on the Jenkins server to utilize the SonarQube Scanner in its CI by updating the JenkinsFile. When everything is set up, the SonarQube Scanner will be invoked in a CI stage to trigger analysis on the source code and send the analysis to the SonarQube Server.</p>
-
 <p>You do not need System Administrator credential to view the analysis results on the SonarQube Server but if you want to make changes to the projects, you need to log in with the following credentials</p>
-
 <ul>
 <li>login: admin</li>
 <li>password: admin</li>
 </ul>
-
-<p>This tutorial does not cover setting up <a href="https://docs.sonarqube.org/latest/user-guide/quality-gates/" target="_blank">SonarQube Quality Gate</a>; however, it&rsquo;s a good idea to set up quality gate for your project to fail CI if it fails a set of conditions that qualify it for production release.</p>
-
+<p>This tutorial does not cover setting up <a href="https://docs.sonarqube.org/latest/user-guide/quality-gates/">SonarQube Quality Gate</a>; however, it&rsquo;s a good idea to set up quality gate for your project to fail CI if it fails a set of conditions that qualify it for production release.</p>
 <ol>
-<li>Add SonarQube Server Configuration
-
+<li>
+<p>Add SonarQube Server Configuration</p>
 <ul>
 <li>Go to <strong>Manage Jenkins</strong> &gt; <strong>Configure System</strong>.</li>
 <li>Scroll down to the SonarQube configuration section and click on &ldquo;Add SonarQube&rdquo;.</li>
 <li>Fill in fields appropriately. The name you enter (e.g., &ldquo;SonarQube Server&rdquo;) is the environmental variable name that you&rsquo;ll use in <code>JenkinsFile</code>.</li>
-</ul></li>
-<li>Install SonarQube Scanner for Jenkins
-
+</ul>
+</li>
+<li>
+<p>Install SonarQube Scanner for Jenkins</p>
 <ul>
 <li><strong>Manage Jenkins</strong> &gt; <strong>Manage Plugins</strong> &gt; <strong>Available</strong></li>
 <li>Install without restart &ldquo;SonarQube Scanner&rdquo;</li>
-</ul></li>
-<li>Configure SonarQube Scanner
-
+</ul>
+</li>
+<li>
+<p>Configure SonarQube Scanner</p>
 <ul>
 <li><strong>Manage Jenkins</strong> &gt; <strong>Global Tool Configuration</strong> &gt; <strong>SonarQube Scanner</strong></li>
 <li>Picl &ldquo;Install automatically&rdquo; and pick a version from the dropdown menu. Enter the name of your scanner. The name you enter for the SonarQube Scanner field (e.g., &ldquo;SonarQube Scanner&rdquo;) is the tool name that you&rsquo;ll use in <code>JenkinsFile</code>.</li>
-</ul></li>
-
-<li><p>Add <code>sonar-project.properties</code> to your project. For example:</p>
-
-<pre><code class="language-bash"># must be unique in a given SonarQube instance
-sonar.projectKey=my-awesome-project
-
-# --- optional properties ---
-
-# defaults to project key
-#sonar.projectName=My project
-# defaults to 'not provided'
-#sonar.projectVersion=1.0
-
-# Path is relative to the sonar-project.properties file. Defaults to .
-#sonar.sources=.
-
-# Encoding of the source code. Default is default system encoding
-#sonar.sourceEncoding=UTF-8
-sonar.javascript.lcov.reportPaths=coverage/lcov.info
-</code></pre></li>
-
-<li><p>Add a new stage to <code>Jenkinsfile</code>.</p></li>
+</ul>
+</li>
+<li>
+<p>Add <code>sonar-project.properties</code> to your project. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># must be unique in a given SonarQube instance</span>
+</span></span><span style="display:flex;"><span>sonar.projectKey<span style="color:#f92672">=</span>my-awesome-project
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- optional properties ---</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># defaults to project key</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#sonar.projectName=My project</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># defaults to &#39;not provided&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#sonar.projectVersion=1.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Path is relative to the sonar-project.properties file. Defaults to .</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#sonar.sources=.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Encoding of the source code. Default is default system encoding</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#sonar.sourceEncoding=UTF-8</span>
+</span></span><span style="display:flex;"><span>sonar.javascript.lcov.reportPaths<span style="color:#f92672">=</span>coverage/lcov.info
+</span></span></code></pre></div></li>
+<li>
+<p>Add a new stage to <code>Jenkinsfile</code>.</p>
+</li>
 </ol>
-
-<pre><code class="language-bash">  stage('Static Code Analysis') {
-      sh 'yarn'
-      def scannerHome = tool 'SonarQube Scanner';
-      withSonarQubeEnv('SonarQube Server') {
-          sh &quot;${scannerHome}/bin/sonar-scanner&quot;
-      }
-      sh 'rm -rf node_modules'
-  }
-</code></pre>
-
-<h1 id="tips-and-cheat-sheet">Tips and Cheat Sheet</h1>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>stage<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Static Code Analysis&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    sh <span style="color:#e6db74">&#39;yarn&#39;</span>
+</span></span><span style="display:flex;"><span>    def scannerHome <span style="color:#f92672">=</span> tool <span style="color:#e6db74">&#39;SonarQube Scanner&#39;</span>;
+</span></span><span style="display:flex;"><span>    withSonarQubeEnv<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;SonarQube Server&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        sh <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>scannerHome<span style="color:#e6db74">}</span><span style="color:#e6db74">/bin/sonar-scanner&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    sh <span style="color:#e6db74">&#39;rm -rf node_modules&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h1 id="tips-and-cheat-sheet">Tips and Cheat Sheet</h1>
 <h2 id="tips">Tips</h2>
-
 <ol>
 <li>Running the sonar scanner locally will create a <code>.scannerwork</code> folder. Add that to your <code>.gitignore</code> for the project</li>
 <li>When you are done, stop the sonarQube server <code>docker stop &lt;CONTAINER ID&gt;</code></li>
 <li>If your SonarQube server keeps crashing each time after you send results to it from a sonar scan, look at <code>docker ps -a</code>, <code>docker logs &lt;CONTAINER_ID&gt;</code> to find out the cause</li>
 </ol>
-
 <h2 id="cheatsheet-perform-sonarqube-scan-on-your-own-machine">Cheatsheet: Perform SonarQube Scan on your own Machine</h2>
-
 <ol>
 <li>Start Docker</li>
-<li>Start the server docker image
-<code>bash
-docker run -d --name sonarqube -p 9000:9000 sonarqube
-</code>
-Alternatively, if you previously started and stopped a sonarQube server instance, just find out the container ID with:
-<code>bash
-docker ps -a
-</code>
-Then you can just start the process again
-<code>bash
-docker start &lt;CONTAINER_ID&gt;
-</code></li>
-<li>Check Server is Started by visiting <a href="http://localhost:9000/" target="_blank">http://localhost:9000/</a> or perform an inspection of docker processes with <code>docker ps -a</code></li>
-<li>Open to <code>/path-to-sonar-scanner/sonar-scanner/conf/sonar-scanner.properties</code>
-<code>bash
-cd ~/sonar-scanner/conf
-code sonar-scanner.properties
-</code>
-Make sure <code>sonar.host.url</code> is set to <code>localhost:9000</code></li>
-<li>Perform SonarQube scan in the project directory by running <code>sonar-scanner</code></li>
-<li>Check <a href="http://localhost:9000/" target="_blank">http://localhost:9000/</a> to see that the result is written to the SonarQube server.</li>
+<li>Start the server docker image</li>
 </ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d --name sonarqube -p 9000:9000 sonarqube
+</span></span></code></pre></div><p>Alternatively, if you previously started and stopped a sonarQube server instance, just find out the container ID with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker ps -a
+</span></span></code></pre></div><p>Then you can just start the process again</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker start &lt;CONTAINER_ID&gt;
+</span></span></code></pre></div><ol start="3">
+<li>Check Server is Started by visiting <a href="http://localhost:9000/">http://localhost:9000/</a> or perform an inspection of docker processes with <code>docker ps -a</code></li>
+<li>Open to <code>/path-to-sonar-scanner/sonar-scanner/conf/sonar-scanner.properties </code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~/sonar-scanner/conf
+</span></span><span style="display:flex;"><span>code sonar-scanner.properties
+</span></span></code></pre></div><p>Make sure <code>sonar.host.url</code> is set to <code>localhost:9000</code> 5. Perform SonarQube scan in the project directory by running <code>sonar-scanner</code> 6. Check <a href="http://localhost:9000/">http://localhost:9000/</a> to see that the result is written to the SonarQube server.</p>
               
 
 
@@ -655,8 +572,8 @@ Make sure <code>sonar.host.url</code> is set to <code>localhost:9000</code></li>
   
   <li class="post-action">
     
-      <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
-      <i class="fa fa-list" aria-hidden="true"></i>
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
     
     </a>
   </li>
@@ -752,8 +669,8 @@ s.setAttribute('data-timestamp', +new Date());
   
   <li class="post-action">
     
-      <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
-      <i class="fa fa-list" aria-hidden="true"></i>
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
     
     </a>
   </li>
@@ -802,7 +719,7 @@ s.setAttribute('data-timestamp', +new Date());
     
     <h4 id="about-card-name">Xiaoyun Yang</h4>
     
-      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+      <div id="about-card-bio">Software Engineer. Climber. Snowboarder.</div>
     
     
       <div id="about-card-job">
@@ -842,14 +759,6 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script src="https://xiaoyunyang.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
 
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/go.min.js"></script>
-  
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
-  
 
 
 <script>

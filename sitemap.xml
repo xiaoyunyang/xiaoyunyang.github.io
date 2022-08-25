@@ -1,414 +1,232 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/</loc>
-    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/my-experience-buying-a-home-in-nyc-during-the-covid-19-pandemic/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/</loc>
-    <lastmod>2020-06-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/</loc>
-    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/</loc>
-    <lastmod>2019-08-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/</loc>
-    <lastmod>2019-07-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</loc>
-    <lastmod>2019-07-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/get-started-with-go/</loc>
-    <lastmod>2019-02-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/</loc>
-    <lastmod>2019-01-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/</loc>
-    <lastmod>2018-12-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/</loc>
-    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/</loc>
-    <lastmod>2018-12-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</loc>
-    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/a-complete-guide-to-deploying-your-web-app-to-amazon-web-service/</loc>
-    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</loc>
-    <lastmod>2018-08-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/dont-quit-your-job-to-be-an-entrepreneur/</loc>
-    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</loc>
-    <lastmod>2018-07-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/getting-started-with-career-pivot-with-looseleaf/</loc>
-    <lastmod>2018-05-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/</loc>
-    <lastmod>2018-05-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</loc>
-    <lastmod>2018-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/single-page-application-for-work/</loc>
-    <lastmod>2018-05-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</loc>
-    <lastmod>2018-05-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</loc>
-    <lastmod>2018-05-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/</loc>
-    <lastmod>2018-05-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/</loc>
-    <lastmod>2018-04-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</loc>
-    <lastmod>2018-04-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</loc>
-    <lastmod>2018-04-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/algorithms-for-web-developers/</loc>
-    <lastmod>2018-04-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</loc>
-    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/</loc>
-    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/is-employee-loyalty-important/</loc>
-    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/</loc>
-    <lastmod>2018-04-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/</loc>
-    <lastmod>2018-04-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</loc>
-    <lastmod>2018-03-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</loc>
-    <lastmod>2018-03-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</loc>
-    <lastmod>2018-02-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/how-formal-education-may-close-doors-to-opportunities/</loc>
-    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</loc>
-    <lastmod>2018-01-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</loc>
-    <lastmod>2017-12-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</loc>
-    <lastmod>2017-03-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/</loc>
-    <lastmod>2015-08-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/about/</loc>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/architecture/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/archives/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/backend/</loc>
-    <lastmod>2018-07-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/best-practice/</loc>
-    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
   <url>
     <loc>https://xiaoyunyang.github.io/categories/blog/</loc>
-    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/career/</loc>
-    <lastmod>2018-12-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+    <lastmod>2022-08-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xiaoyunyang.github.io/categories/</loc>
-    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/categories/category/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/devops/</loc>
-    <lastmod>2020-06-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/entrepreneurship/</loc>
-    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+    <lastmod>2022-08-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xiaoyunyang.github.io/tags/frontend/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/go/</loc>
-    <lastmod>2019-02-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+    <lastmod>2022-08-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xiaoyunyang.github.io/tags/guide/</loc>
-    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/hardware/</loc>
-    <lastmod>2019-01-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+    <lastmod>2022-08-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/</loc>
+    <lastmod>2022-08-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/react/</loc>
+    <lastmod>2022-08-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/</loc>
+    <lastmod>2022-08-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/ux/</loc>
+    <lastmod>2022-08-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/</loc>
+    <lastmod>2022-08-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/</loc>
+    <lastmod>2022-08-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/</loc>
+    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xiaoyunyang.github.io/tags/javascript/</loc>
     <lastmod>2021-11-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/life/</loc>
-    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/mobile-app/</loc>
-    <lastmod>2018-03-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/node/</loc>
-    <lastmod>2018-12-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://xiaoyunyang.github.io/tags/open-source/</loc>
     <lastmod>2021-11-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/post/</loc>
-    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://xiaoyunyang.github.io/tags/productivity/</loc>
     <lastmod>2021-11-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/programming/</loc>
-    <lastmod>2020-06-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/categories/projects/</loc>
-    <lastmod>2019-01-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/react/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/react-native/</loc>
-    <lastmod>2018-03-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/scala/</loc>
-    <lastmod>2017-12-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://xiaoyunyang.github.io/tags/software-design/</loc>
     <lastmod>2021-11-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/categories/subcategory/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/</loc>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/architecture/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/typescript/</loc>
-    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/tags/ux/</loc>
-    <lastmod>2018-08-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xiaoyunyang.github.io/tags/web-dev/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/life/</loc>
+    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/my-experience-buying-a-home-in-nyc-during-the-covid-19-pandemic/</loc>
+    <lastmod>2020-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/devops/</loc>
+    <lastmod>2020-06-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/</loc>
+    <lastmod>2020-06-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/programming/</loc>
+    <lastmod>2020-06-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/typescript/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/</loc>
+    <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/</loc>
+    <lastmod>2019-07-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</loc>
+    <lastmod>2019-07-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/get-started-with-go/</loc>
+    <lastmod>2019-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/go/</loc>
+    <lastmod>2019-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/hardware/</loc>
+    <lastmod>2019-01-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/categories/projects/</loc>
+    <lastmod>2019-01-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/</loc>
+    <lastmod>2019-01-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/career/</loc>
+    <lastmod>2018-12-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/</loc>
+    <lastmod>2018-12-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/best-practice/</loc>
+    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/</loc>
+    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/node/</loc>
+    <lastmod>2018-12-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/</loc>
+    <lastmod>2018-12-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</loc>
+    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/a-complete-guide-to-deploying-your-web-app-to-amazon-web-service/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</loc>
+    <lastmod>2018-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/dont-quit-your-job-to-be-an-entrepreneur/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/entrepreneurship/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/backend/</loc>
+    <lastmod>2018-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</loc>
+    <lastmod>2018-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/getting-started-with-career-pivot-with-looseleaf/</loc>
+    <lastmod>2018-05-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/</loc>
+    <lastmod>2018-05-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</loc>
+    <lastmod>2018-05-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/single-page-application-for-work/</loc>
+    <lastmod>2018-05-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</loc>
+    <lastmod>2018-05-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</loc>
+    <lastmod>2018-05-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/</loc>
+    <lastmod>2018-05-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/</loc>
+    <lastmod>2018-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</loc>
+    <lastmod>2018-04-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</loc>
+    <lastmod>2018-04-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/algorithms-for-web-developers/</loc>
+    <lastmod>2018-04-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</loc>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/</loc>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/is-employee-loyalty-important/</loc>
+    <lastmod>2018-04-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/</loc>
+    <lastmod>2018-04-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/</loc>
+    <lastmod>2018-04-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</loc>
+    <lastmod>2018-03-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/mobile-app/</loc>
+    <lastmod>2018-03-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/react-native/</loc>
+    <lastmod>2018-03-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</loc>
+    <lastmod>2018-03-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</loc>
+    <lastmod>2018-02-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/how-formal-education-may-close-doors-to-opportunities/</loc>
+    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</loc>
+    <lastmod>2018-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</loc>
+    <lastmod>2017-12-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/tags/scala/</loc>
+    <lastmod>2017-12-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</loc>
+    <lastmod>2017-03-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/</loc>
+    <lastmod>2015-08-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/about/</loc>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/archives/</loc>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/categories/category/</loc>
+  </url><url>
+    <loc>https://xiaoyunyang.github.io/categories/subcategory/</loc>
   </url>
-  
-  <url>
-    <loc>https://xiaoyunyang.github.io/</loc>
-    <lastmod>2021-11-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
 </urlset>

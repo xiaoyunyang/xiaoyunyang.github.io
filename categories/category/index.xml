@@ -1,24 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Category on Xiaoyun Yang</title>
+    <title>category on Xiaoyun Yang</title>
     <link>https://xiaoyunyang.github.io/categories/category/</link>
-    <description>Recent content in Category on Xiaoyun Yang</description>
+    <description>Recent content in category on Xiaoyun Yang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
-    <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    
-	<atom:link href="https://xiaoyunyang.github.io/categories/category/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster><atom:link href="https://xiaoyunyang.github.io/categories/category/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
       <link>https://xiaoyunyang.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/about/</guid>
-      <description>Hello! I&amp;rsquo;m a software engineer and tech entrepreneur living in New York. In my spare time I like to contribute to open source software and tech blogs.
+      <description>Hello I&amp;rsquo;m a software engineer and tech entrepreneur living in New York. In my spare time I like to contribute to open source software and tech blogs.
 I&amp;rsquo;m excited by opportunities that let me develop elegant solutions for obvious problems where there are no obvious solutions. I believe in automating wherever possible, and leveraging existing technology to quickly bootstrap solutions. My mantra is trial and error, which I apply to both building a startup as well as living a fulfilling life.</description>
     </item>
     

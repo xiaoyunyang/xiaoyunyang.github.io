@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>React on Xiaoyun Yang</title>
@@ -8,10 +8,16 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xiaoyunyang.github.io/tags/react/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 25 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web Developer Playbook: Optimistic UI</title>
+      <link>https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/</link>
+      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/</guid>
+      <description>&lt;p&gt;In classic implementations of a CRUD app, the client app makes a request to the server and only updates its display state if the server responds to the request. However, in many modern applications like chat apps and note taking apps, users expect the display state to immediately update after they initiate an action.&lt;/p&gt;
+&lt;p&gt;Quick response time from the server is not always achievable, especially when the user is on a slow network on a mobile device.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Modeling UI State Using A Finite State Machine</title>
@@ -20,8 +26,7 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/</guid>
       <description>&lt;p&gt;A finite state machine (FSM) is an architectural design pattern that allows us to model a large system as a collection of loosely coupled components. Each component in the system changes its behavior when the internal state changes. This pattern allows us to write flexible, reusable, and testable code. In this article, we will explore the use of FSM in building complex React components.&lt;/p&gt;
-
-&lt;p&gt;The primary use of FSM has been in &lt;a href=&#34;https://www.embedded.com/programming-embedded-systems-the-easy-way-with-state-machines/&#34; target=&#34;_blank&#34;&gt;programming embedded systems&lt;/a&gt; but in recent years, there has been an emergence of FSM in other applications like &lt;a href=&#34;https://www.smashingmagazine.com/2018/01/rise-state-machines/&#34; target=&#34;_blank&#34;&gt;managing states in the browser&lt;/a&gt;, &lt;a href=&#34;https://mind-simulation.com/en/blog/tech/using-finite-state-machines-to-model-behavior.html&#34; target=&#34;_blank&#34;&gt;modeling behavior&lt;/a&gt;, and &lt;a href=&#34;https://www.hamidadelyar.com/blog/finite-state-machine-chatbot/&#34; target=&#34;_blank&#34;&gt;building chatbots&lt;/a&gt;. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like &lt;a href=&#34;http://redux.js.org/&#34; target=&#34;_blank&#34;&gt;Redux&lt;/a&gt; but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and &lt;a href=&#34;https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems&#34; target=&#34;_blank&#34;&gt;delete-able&lt;/a&gt;.&lt;/p&gt;</description>
+&lt;p&gt;The primary use of FSM has been in &lt;a href=&#34;https://www.embedded.com/programming-embedded-systems-the-easy-way-with-state-machines/&#34;&gt;programming embedded systems&lt;/a&gt; but in recent years, there has been an emergence of FSM in other applications like &lt;a href=&#34;https://www.smashingmagazine.com/2018/01/rise-state-machines/&#34;&gt;managing states in the browser&lt;/a&gt;, &lt;a href=&#34;https://mind-simulation.com/en/blog/tech/using-finite-state-machines-to-model-behavior.html&#34;&gt;modeling behavior&lt;/a&gt;, and &lt;a href=&#34;https://www.hamidadelyar.com/blog/finite-state-machine-chatbot/&#34;&gt;building chatbots&lt;/a&gt;. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like &lt;a href=&#34;http://redux.js.org/&#34;&gt;Redux&lt;/a&gt; but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and &lt;a href=&#34;https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems&#34;&gt;delete-able&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -30,9 +35,8 @@
       <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</guid>
-      <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34; target=&#34;_blank&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
+&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s get started!&lt;/p&gt;</description>
     </item>
     
@@ -51,7 +55,7 @@
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34; target=&#34;_blank&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;</description>
     </item>
     
     <item>

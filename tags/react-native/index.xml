@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>React Native on Xiaoyun Yang</title>
@@ -8,11 +8,7 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Fri, 30 Mar 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xiaoyunyang.github.io/tags/react-native/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 30 Mar 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/react-native/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building A React Native Travel App</title>
       <link>https://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</link>

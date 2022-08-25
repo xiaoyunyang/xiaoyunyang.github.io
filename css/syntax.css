@@ -1,0 +1,16 @@
+/*
+
+Overwrites highlight.js default theme color for diff syntax highlighting (not working)
+
+*/
+
+
+.addition {
+  background: #dafbe1 !important;
+  color:  #116329 !important;
+}
+
+.deletion {
+  background: #ffeae9 !important;
+  color: #82061e !important;
+}

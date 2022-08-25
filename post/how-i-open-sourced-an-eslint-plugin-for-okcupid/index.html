@@ -7,23 +7,17 @@
 {  
   "@context":"http://schema.org",
   "@type":"Website",
-  "@id":"https://xiaoyunyang.github.io/",
+  "@id":"https:\/\/xiaoyunyang.github.io\/",
   "author": {
     "@type": "Person",
-    "name": Xiaoyun Yang,
+    "name": "Xiaoyun Yang",
     
-    "image": https://xiaoyunyang.github.io/images/xyang.png
+    "image": "https://xiaoyunyang.github.io/images/xyang.png"
     
   },
   "name":"Xiaoyun Yang",
-  "description":"<p>We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?</p>
-
-<p>I recently open sourced an <a href="https://eslint.org/docs/about/" target="_blank">ESLint</a> plugin for OkCupid called <a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui" target="_blank"><code>eslint-plugin-i18n-lingui</code></a>. The plugin is an extension for ESLint&rsquo;s core static code analysis rules that enforces <a href="https://www.smartling.com/resources/101/localization-101/" target="_blank">localization</a> best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.</p>
-
-<p>This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.</p>
-
-<p>Although this post will not discuss the localization best practices that <code>eslint-plugin-i18n-lingui</code> enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!</p>",
-  "url":"https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/",
+  "description":"\u003cp\u003eWe developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?\u003c\/p\u003e\n\u003cp\u003eI recently open sourced an \u003ca href=\u0022https:\/\/eslint.org\/docs\/about\/\u0022\u003eESLint\u003c\/a\u003e plugin for OkCupid called \u003ca href=\u0022https:\/\/github.com\/OkCupid\/eslint-plugin-i18n-lingui\u0022\u003e\u003ccode\u003eeslint-plugin-i18n-lingui\u003c\/code\u003e\u003c\/a\u003e. The plugin is an extension for ESLint\u0026rsquo;s core static code analysis rules that enforces \u003ca href=\u0022https:\/\/www.smartling.com\/resources\/101\/localization-101\/\u0022\u003elocalization\u003c\/a\u003e best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.\u003c\/p\u003e\n\u003cp\u003eThis post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.\u003c\/p\u003e\n\u003cp\u003eAlthough this post will not discuss the localization best practices that \u003ccode\u003eeslint-plugin-i18n-lingui\u003c\/code\u003e enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!\u003c\/p\u003e",
+  "url":"https:\/\/xiaoyunyang.github.io\/post\/how-i-open-sourced-an-eslint-plugin-for-okcupid\/",
   "keywords":"[ESLint Plugin, eslint-plugin-i18n-lingui, web development, javascript, guide]"
 }
 
@@ -31,24 +25,18 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.53 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="ESLint Plugin, eslint-plugin-i18n-lingui, web development, javascript, guide">
 <meta name="description" content="We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?
-
 I recently open sourced an ESLint plugin for OkCupid called eslint-plugin-i18n-lingui. The plugin is an extension for ESLint&rsquo;s core static code analysis rules that enforces localization best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.
-
 This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.
-
 Although this post will not discuss the localization best practices that eslint-plugin-i18n-lingui enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!">
 
 
 <meta property="og:description" content="We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?
-
 I recently open sourced an ESLint plugin for OkCupid called eslint-plugin-i18n-lingui. The plugin is an extension for ESLint&rsquo;s core static code analysis rules that enforces localization best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.
-
 This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.
-
 Although this post will not discuss the localization best practices that eslint-plugin-i18n-lingui enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How I Open Sourced An ESLint Plugin for OkCupid">
@@ -57,18 +45,12 @@ Although this post will not discuss the localization best practices that eslint-
 <meta property="twitter:url" content="https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/">
 <meta property="og:site_name" content="Xiaoyun Yang">
 <meta property="og:description" content="We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?
-
 I recently open sourced an ESLint plugin for OkCupid called eslint-plugin-i18n-lingui. The plugin is an extension for ESLint&rsquo;s core static code analysis rules that enforces localization best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.
-
 This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.
-
 Although this post will not discuss the localization best practices that eslint-plugin-i18n-lingui enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!">
 <meta name="twitter:description" content="We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?
-
 I recently open sourced an ESLint plugin for OkCupid called eslint-plugin-i18n-lingui. The plugin is an extension for ESLint&rsquo;s core static code analysis rules that enforces localization best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.
-
 This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.
-
 Although this post will not discuss the localization best practices that eslint-plugin-i18n-lingui enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!">
 <meta property="og:locale" content="en-us">
 
@@ -135,7 +117,11 @@ Although this post will not discuss the localization best practices that eslint-
     
     
       
-        <link rel="stylesheet"  href="https://xiaoyunyang.github.io/css/custom.css">
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/custom.css">
+      
+    
+      
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/syntax.css">
       
     
 
@@ -176,7 +162,7 @@ Although this post will not discuss the localization best practices that eslint-
         </a>
         <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
         
-          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+          <h5 class="sidebar-profile-bio">Software Engineer. Climber. Snowboarder.</h5>
         
       </div>
     
@@ -335,20 +321,13 @@ Although this post will not discuss the localization best practices that eslint-
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?</p>
-
-<p>I recently open sourced an <a href="https://eslint.org/docs/about/" target="_blank">ESLint</a> plugin for OkCupid called <a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui" target="_blank"><code>eslint-plugin-i18n-lingui</code></a>. The plugin is an extension for ESLint&rsquo;s core static code analysis rules that enforces <a href="https://www.smartling.com/resources/101/localization-101/" target="_blank">localization</a> best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.</p>
-
+<p>I recently open sourced an <a href="https://eslint.org/docs/about/">ESLint</a> plugin for OkCupid called <a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui"><code>eslint-plugin-i18n-lingui</code></a>. The plugin is an extension for ESLint&rsquo;s core static code analysis rules that enforces <a href="https://www.smartling.com/resources/101/localization-101/">localization</a> best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.</p>
 <p>This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.</p>
-
 <p>Although this post will not discuss the localization best practices that <code>eslint-plugin-i18n-lingui</code> enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!</p>
-
-<p><img src="https://xiaoyunyang.github.io/post/images/open-source/cover.png" alt="open source eslint-plugin-i18n-lingui" /></p>
-
-<!--Photo by <a href="https://unsplash.com/@lukesouthern?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Luke Southern</a> on <a href="https://unsplash.com/s/photos/open-source?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
--->
-
+<p><img src="https://xiaoyunyang.github.io/post/images/open-source/cover.png" alt="open source eslint-plugin-i18n-lingui"></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>When we were localizing our website for launches in Turkey and Germany, I had noticed some patterns in code review feedback about how to prepare content in the source code for localization. Some examples of the review feedback:</p>
-
 <ul>
 <li>Don&rsquo;t use three periods <code>...</code> in the text; instead use unicode ellipsis <code>…</code></li>
 <li>Use smartquotes <code>’</code>, <code>“</code>, and <code>”</code> in localized strings</li>
@@ -357,138 +336,91 @@ Although this post will not discuss the localization best practices that eslint-
 <li>Wrap punctuations</li>
 <li>Wrap emojis</li>
 </ul>
-
-<p>The reasons were not always so obvious but they loosely follow some <a href="https://developer.mozilla.org.cach3.com/en-US/docs/Mozilla/Localization/Localization_content_best_practices#Tooltips" target="_blank">best practice guides</a> and tribal knowledge.</p>
-
+<p>The reasons were not always so obvious but they loosely follow some <a href="https://developer.mozilla.org.cach3.com/en-US/docs/Mozilla/Localization/Localization_content_best_practices#Tooltips">best practice guides</a> and tribal knowledge.</p>
 <p>An effort was made to share these best practices during meetings but developers are not good with following arbitrary rules. On the other hand, developer tools like ESLint are excellent at following arbitrary rules!</p>
-
 <p>We were already using ESLint in our development process so the concept of linting is well embraced by the team. There are no cultural barriers to introducing a new plugin.</p>
-
 <h2 id="long-weekend-side-project-hackathon">Long Weekend Side Project Hackathon</h2>
-
 <p>It was July 2021. I&rsquo;ve collected a list of automatable pre-localization checks that were at the time being done manually via code reviews.</p>
-
-<p>After watching a <a href="https://youtu.be/nAIiXcisknc" target="_blank">talk</a> my friend <a href="https://github.com/bmish" target="_blank">Bryan</a> gave at EmberConf about using and creating ESLint plugins, I was inspired to write an ESLint plugin. There was an opportunity to work on this over the 4th of July long weekend.</p>
-
+<p>After watching a <a href="https://youtu.be/nAIiXcisknc">talk</a> my friend <a href="https://github.com/bmish">Bryan</a> gave at EmberConf about using and creating ESLint plugins, I was inspired to write an ESLint plugin. There was an opportunity to work on this over the 4th of July long weekend.</p>
 <p>Writing your own lint rules is actually very approachable. ESLint provides a convenient framework for visiting nodes in the Abstract Syntax Tree, which is used to represent the source code. The plugin just needs to implement the visitor functions.</p>
-
 <p>In preparation for the work, I created a Facebook event for the long weekend hackathon and found a friend and a coworker to participate with me. The Facebook event reads:</p>
-
-<pre><code class="language-text">Welcome to the third 2021 Virtual Hackathon dedicated to personal projects! 
-
-The rule of the hackathon is you must work on a personal project 
-(work side project does not count) which is demo-able by the end of the event.
-Some cool things people have done in the past long weekend hackathons:
-- Package room notification app for apartment building
-- Update resume
-- A wrapper for Redux
-- Music video on a homemade game console
-- Deck for an Ember conference on eslint plugins
-- Blog post on the use of finite state machine to model UI state
-- Animation of a drawing using Adobe Illustrator
-
-Some other examples of personal projects
-- reaching the next milestone of an existing project you currently work on
-- publishing a blog post
-- completing an illustration or piece of artwork
-- contributing to an open source project - creating a personal website
-- building the MVP for a startup idea you have.
-
-You can work in teams or on your own. We kick off the event with presentations
-from participants of what they want to work on during the hackathon.
-Participants can form teams after the presentations.
-
-We end the event with demos.
-
-How you spend the time between the kickoff and the demo is up to you. 
-It's encouraged that participants join a zoom room during the hackathon 
-for collaboration and check-ins. Even if everyone is working on different projects,
-it's good to have other people to bounce ideas off of.
-
-Agenda:
-- Friday 7/2 8pm - 9pm kickoff and form teams
-- Saturday 7/3 9am - Monday 7/5 4pm Hack on projects
-- Monday 1/18 5pm - 7pm demo
-During the hackathon, we will have socials like dinners and drinks. 
-More to be updated later.
-</code></pre>
-
-<p>This wasn&rsquo;t the first hackathon I organized and it surely won&rsquo;t be the last. I find the social accountability and synergy from hackathons to be truly motivating in shaping my focus to produce great work. It was pretty inspiring to see how much we were all able to accomplish in a short period of time (My co-worker Josh wrote <a href="https://github.com/thejoshwolfe/git-push-working-tree" target="_blank">a tool for using Git as an Rsync replacement</a>!)</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Welcome to the third 2021 Virtual Hackathon dedicated to personal projects! 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The rule of the hackathon is you must work on a personal project 
+</span></span><span style="display:flex;"><span>(work side project does not count) which is demo-able by the end of the event.
+</span></span><span style="display:flex;"><span>Some cool things people have done in the past long weekend hackathons:
+</span></span><span style="display:flex;"><span>- Package room notification app for apartment building
+</span></span><span style="display:flex;"><span>- Update resume
+</span></span><span style="display:flex;"><span>- A wrapper for Redux
+</span></span><span style="display:flex;"><span>- Music video on a homemade game console
+</span></span><span style="display:flex;"><span>- Deck for an Ember conference on eslint plugins
+</span></span><span style="display:flex;"><span>- Blog post on the use of finite state machine to model UI state
+</span></span><span style="display:flex;"><span>- Animation of a drawing using Adobe Illustrator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Some other examples of personal projects
+</span></span><span style="display:flex;"><span>- reaching the next milestone of an existing project you currently work on
+</span></span><span style="display:flex;"><span>- publishing a blog post
+</span></span><span style="display:flex;"><span>- completing an illustration or piece of artwork
+</span></span><span style="display:flex;"><span>- contributing to an open source project - creating a personal website
+</span></span><span style="display:flex;"><span>- building the MVP for a startup idea you have.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>You can work in teams or on your own. We kick off the event with presentations
+</span></span><span style="display:flex;"><span>from participants of what they want to work on during the hackathon.
+</span></span><span style="display:flex;"><span>Participants can form teams after the presentations.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>We end the event with demos.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>How you spend the time between the kickoff and the demo is up to you. 
+</span></span><span style="display:flex;"><span>It&#39;s encouraged that participants join a zoom room during the hackathon 
+</span></span><span style="display:flex;"><span>for collaboration and check-ins. Even if everyone is working on different projects,
+</span></span><span style="display:flex;"><span>it&#39;s good to have other people to bounce ideas off of.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Agenda:
+</span></span><span style="display:flex;"><span>- Friday 7/2 8pm - 9pm kickoff and form teams
+</span></span><span style="display:flex;"><span>- Saturday 7/3 9am - Monday 7/5 4pm Hack on projects
+</span></span><span style="display:flex;"><span>- Monday 1/18 5pm - 7pm demo
+</span></span><span style="display:flex;"><span>During the hackathon, we will have socials like dinners and drinks. 
+</span></span><span style="display:flex;"><span>More to be updated later.
+</span></span></code></pre></div><p>This wasn&rsquo;t the first hackathon I organized and it surely won&rsquo;t be the last. I find the social accountability and synergy from hackathons to be truly motivating in shaping my focus to produce great work. It was pretty inspiring to see how much we were all able to accomplish in a short period of time (My co-worker Josh wrote <a href="https://github.com/thejoshwolfe/git-push-working-tree">a tool for using Git as an Rsync replacement</a>!)</p>
 <p>Because there will be a demo at the end of the weekend, there was a real deadline to do the best you can to get to a working solution in three days. The deadline also helps to reduce the scope of the project to something achievable over a three-day weekend.</p>
-
 <p>During the kickoff meeting, I identified a list of around ten rules I wanted to implement and chose two of these rules which I think provide the most value and are easy enough to implement in three days.</p>
-
-<p>Keeping the scope limited to what&rsquo;s achievable in three days really helped to kick the project off. At the demo, I was able to showcase two working rules <a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui/blob/main/docs/rules/no-eval-in-placeholder.md" target="_blank"><code>no-eval-in-placeholder</code></a></p>
-
-<p><img src="https://xiaoyunyang.github.io/post/images/open-source/no-eval-in-placeholder.png" alt="eslint-plugin-i18n-lingui no-eval-in-placeholder" /></p>
-
-<p>and <a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui/blob/main/docs/rules/prefer-unicode-ellipsis.md" target="_blank"><code>prefer-unicode-ellipsis</code></a>, which not only flags the violation but also fixes it!</p>
-
-<p><img src="https://xiaoyunyang.github.io/post/images/open-source/prefer-unicode-ellipsis.gif" alt="eslint-plugin-i18n-lingui prefer-unicode-ellipsis" /></p>
-
+<p>Keeping the scope limited to what&rsquo;s achievable in three days really helped to kick the project off. At the demo, I was able to showcase two working rules <a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui/blob/main/docs/rules/no-eval-in-placeholder.md"><code>no-eval-in-placeholder</code></a></p>
+<p><img src="https://xiaoyunyang.github.io/post/images/open-source/no-eval-in-placeholder.png" alt="eslint-plugin-i18n-lingui no-eval-in-placeholder"></p>
+<p>and <a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui/blob/main/docs/rules/prefer-unicode-ellipsis.md"><code>prefer-unicode-ellipsis</code></a>, which not only flags the violation but also fixes it!</p>
+<p><img src="https://xiaoyunyang.github.io/post/images/open-source/prefer-unicode-ellipsis.gif" alt="eslint-plugin-i18n-lingui prefer-unicode-ellipsis"></p>
 <h2 id="open-sourcing-under-company-name">Open Sourcing Under Company Name</h2>
-
 <p>The goal has always been to open source this ESLint plugin because it&rsquo;s a general purpose tool that catches localization anti-patterns which are not uniquely experienced by OkCupid.</p>
-
-<p>As the co-founder of GitHub Tom Preston-Werner <a href="https://tom.preston-werner.com/2011/11/22/open-source-everything.html" target="_blank">puts it</a></p>
-
+<p>As the co-founder of GitHub Tom Preston-Werner <a href="https://tom.preston-werner.com/2011/11/22/open-source-everything.html">puts it</a></p>
 <blockquote>
 <p>If your code is popular enough to attract outside contributions, you will have created a force multiplier that helps you get more work done faster and cheaper. More users means more use cases being explored which means more robust code.</p>
 </blockquote>
-
-<p><a href="https://www.microsoft.com/security/blog/2006/06/07/linuss-law-aka-many-eyes-make-all-bugs-shallow/" target="_blank">Many eyes make all bugs shallow</a>. If this plugin gets used by developers outside of OkCupid and adapted to a variety of use cases beyond just the ones for which it was originally intended, bugs and edge cases will be surfaced, creating more robust software.</p>
-
+<p><a href="https://www.microsoft.com/security/blog/2006/06/07/linuss-law-aka-many-eyes-make-all-bugs-shallow/">Many eyes make all bugs shallow</a>. If this plugin gets used by developers outside of OkCupid and adapted to a variety of use cases beyond just the ones for which it was originally intended, bugs and edge cases will be surfaced, creating more robust software.</p>
 <p>Open sourcing also creates opportunities for developers outside of your team and organization to contribute in form of reporting bugs, proposing new features, and even implementing fixes and improvements to the codebase.</p>
-
 <p>I think &ldquo;should I have this on my personal account or company account&rdquo; is a big blocker to open sourcing for a company. If I just want the code to be out there and available as quickly as possible and I don&rsquo;t care what happens to it after it&rsquo;s out, having it under my personal account makes more sense.</p>
-
 <p>On the other hand, having the project be maintained by a well-known company like OkCupid could improve adoption because a company-owned open sourced project will more likely  be updated after initial release than one which is maintained by an individual developer. This is especially true if the company has a strong open source culture (capable and willing to dedicate engineering resources to maintaining), uses the open source code themselves (incentive to improve the code).</p>
-
 <p>After talking to my manager Susan, who has been very supportive of open sourcing, she will work with me to get approval from Legal, higher-ups, and our information security team to make the code open.</p>
-
 <p>During one of our one-on-ones when we talked about my career goals, I mentioned that being an open source contributor and maintainer of open source projects is important to me, she is amenable to having me work on the open source project during my functional week. At OkCupid, every developer gets a week per quarter to work on something that is not directly related to the product. This can include deprecating legacy code, upgrading dependencies, improving web infrastructure, etc. Improving the ESLint plugin definitely falls under the umbrella of functional tasks that improves developer velocity with respect to localization work.</p>
-
 <h2 id="blocked-by-legal">Blocked By Legal</h2>
-
 <p>It was July 8th. With blessing from my manager, I transferred the repo from my account to OkCupid&rsquo;s account and it automatically got converted to a private repo. I submitted a service desk ticket to information security to flip the switch on that GitHub repo from private to public but there&rsquo;s a setback I didn&rsquo;t expect.</p>
-
 <p>Because OkCupid is owned by Match Group, we had to go through Match Legal to get permission to open source anything.</p>
-
 <p>The Match Group Intellectual Property and Litigations person responded with</p>
-
 <blockquote>
 <p>A few considerations that go into the decision whether to open any of our code will be the quality of the code, any potential security issues from making it public, and the company&rsquo;s willingness to dedicate resources necessary to maintain the project on an ongoing basis.</p>
 </blockquote>
-
 <p>He sent me the Match Group OSS policy document full of legalese to read through and a form to fill out. There  most important questions I had to answer were:</p>
-
 <h3 id="who-will-maintain-the-project">Who will maintain the project</h3>
-
 <p>From a legal perspective, the only acceptable answer is employees of the Company will maintain the project.</p>
-
-<p>In practice, <a href="https://opensource.guide/best-practices/" target="_blank">open source maintainers</a> are like <a href="https://www.fosslife.org/whats-open-source-software-maintainer" target="_blank">the conductors of an orchestra</a>. While anyone with a GitHub account can contribute to the project, the maintainers are responsible for documenting the process and guiding the project&rsquo;s strategic decision, leveraging the community, triaging issues, and keeping communications public and public friend. The job of an open source maintainer is sometimes compared to that of a <a href="https://steveklabnik.com/writing/how-to-be-an-open-source-gardener" target="_blank">gardener</a>, a librarian, a cat herder, and a moderator.</p>
-
+<p>In practice, <a href="https://opensource.guide/best-practices/">open source maintainers</a> are like <a href="https://www.fosslife.org/whats-open-source-software-maintainer">the conductors of an orchestra</a>. While anyone with a GitHub account can contribute to the project, the maintainers are responsible for documenting the process and guiding the project&rsquo;s strategic decision, leveraging the community, triaging issues, and keeping communications public and public friend. The job of an open source maintainer is sometimes compared to that of a <a href="https://steveklabnik.com/writing/how-to-be-an-open-source-gardener">gardener</a>, a librarian, a cat herder, and a moderator.</p>
 <h3 id="licensing">Licensing</h3>
-
-<p>I immediately gravitated to the <a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank">MIT license</a> because it&rsquo;s the most popular type of license I&rsquo;ve seen used for open source projects.</p>
-
+<p>I immediately gravitated to the <a href="https://en.wikipedia.org/wiki/MIT_License">MIT license</a> because it&rsquo;s the most popular type of license I&rsquo;ve seen used for open source projects.</p>
 <p>Choosing the wrong license could hinder the adoption of the open source software, create uncertainty from the community about whether the software is truly free and open.</p>
-
-<p>Facebook changed the license on one of their most popular open source projects React, from their <a href="https://engineering.fb.com/2017/08/18/open-source/explaining-react-s-license/" target="_blank">custom BSD+Patents license</a> to the popular MIT license. The <a href="https://engineering.fb.com/2017/09/22/web/relicensing-react-jest-flow-and-immutable-js/" target="_blank">decision came</a> after &ldquo;several weeks of disappointment and uncertainty&rdquo; from their user community, in particular, <a href="https://ma.tt/2017/09/on-react-and-wordpress/" target="_blank">WordPress</a> which powers 25% of all websites.</p>
-
-<p>MIT is <a href="https://tom.preston-werner.com/2011/11/22/open-source-everything.html" target="_blank">the one true license for open source</a> because it&rsquo;s short (anyone who reads it understands what it means) and offers enough protection so you won&rsquo;t get sued if something goes wrong when someone uses your code.</p>
-
+<p>Facebook changed the license on one of their most popular open source projects React, from their <a href="https://engineering.fb.com/2017/08/18/open-source/explaining-react-s-license/">custom BSD+Patents license</a> to the popular MIT license. The <a href="https://engineering.fb.com/2017/09/22/web/relicensing-react-jest-flow-and-immutable-js/">decision came</a> after &ldquo;several weeks of disappointment and uncertainty&rdquo; from their user community, in particular, <a href="https://ma.tt/2017/09/on-react-and-wordpress/">WordPress</a> which powers 25% of all websites.</p>
+<p>MIT is <a href="https://tom.preston-werner.com/2011/11/22/open-source-everything.html">the one true license for open source</a> because it&rsquo;s short (anyone who reads it understands what it means) and offers enough protection so you won&rsquo;t get sued if something goes wrong when someone uses your code.</p>
 <h3 id="business-case">Business case</h3>
-
 <p>I think there are three benefits to the Company for open sourcing this project.</p>
-
 <p>The first and the most obvious is it provides brand recognition and reputation for OkCupid as a tech company. This attracts engineering talent.</p>
-
 <p>The company&rsquo;s dedication to open sourcing can also retain engineering talent because working on open source projects can be a great outlet for developers to scratch their creative itch, solve challenging problems that they don&rsquo;t normally experience in their day-to-day work, and make a positive impact on the world.</p>
-
-<p>Finally, open source code can potentially increase developer velocity when it&rsquo;s popular enough to attract outside contributors. However, maintaining open source projects could be <a href="https://www.zdnet.com/article/hard-work-and-poor-pay-stresses-out-open-source-maintainers/" target="_blank">demanding</a> and could exceed the company&rsquo;s capacity or willingness to dedicate engineering resources.</p>
-
+<p>Finally, open source code can potentially increase developer velocity when it&rsquo;s popular enough to attract outside contributors. However, maintaining open source projects could be <a href="https://www.zdnet.com/article/hard-work-and-poor-pay-stresses-out-open-source-maintainers/">demanding</a> and could exceed the company&rsquo;s capacity or willingness to dedicate engineering resources.</p>
 
  
   
@@ -541,88 +473,49 @@ More to be updated later.
 
   <div style="clear:both;"></div>
 
-
 <p>I don&rsquo;t expect the ESLint plugin to require more than an engineer 1-2 days a quarter to maintain even if it gets hundreds of downloads every day. The plugin is an extension to a developer tool that is meant to improve developer experience and developer. If there is a bug in a rule that breaks for an edge case, that rule can be ignored for the parts of the code or entirely.
 This is in contrast to an open source project like React which requires a full team of engineers at Facebook to maintain because is a framework that represents core platform infrastructure for most web apps.</p>
-
 <h2 id="one-last-obstacle">One Last Obstacle</h2>
-
 <p>It was October 14th. Match Legal finally approved open sourcing <code>eslint-plugin-i18n-lingui</code> after all the back and forth emails, waiting on people to come back from vacation, and getting all the signatures from the chain of command. My manager was instrumental in getting this on everyone&rsquo;s radar and pinging the right people to move this along.</p>
-
 <p>Now we can finally flip the switch from private to public on that repo. 🎉</p>
-
 <p>The next step is to make it official by publishing this ESLint plugin to NPM so everyone can use it.</p>
-
 <p>NPM, or Node Package Manager, is an online registry for JavaScript packages. These packages can be paid or private.</p>
-
-<p>We needed to create a user account on the public registry and publish the plugin under that account. Optionally, a package can be <a href="https://docs.npmjs.com/creating-and-publishing-scoped-public-packages" target="_blank">scoped to an organization</a> (e.g., <code>@okcupid/eslint-plugin-i18n-lingui</code>).</p>
-
+<p>We needed to create a user account on the public registry and publish the plugin under that account. Optionally, a package can be <a href="https://docs.npmjs.com/creating-and-publishing-scoped-public-packages">scoped to an organization</a> (e.g., <code>@okcupid/eslint-plugin-i18n-lingui</code>).</p>
 <p>I worked with the information security officer to create an OkCupid email specifically to set up an NPM user account.</p>
-
 <p>When we were looking into creating the <code>okcupid</code> organization, we noticed that it was already owned by another user account. That user account belongs to someone who used to work at OkCupid. The organization was created by the former employee under her personal NPM user account when she was looking at publishing an NPM package for OkCupid.</p>
-
 <p>I reached out to her on LinkedIn to see if it&rsquo;s possible to transfer the organization back to us. She was very responsive and immediately transferred both <code>okcupid</code> and <code>matchgroup</code> back to us.</p>
-
 <p>I guess the lesson learned here is to make sure to get the right people involved from the beginning to set up accounts and configure access rights correctly so the team won&rsquo;t be blocked if someone leaves the company.</p>
-
 <p>It&rsquo;s also beneficial to stay in touch and be on good terms with your ex-coworkers because you never know what you need their help with!</p>
-
 <h2 id="moment-of-truth">Moment of Truth</h2>
-
-<p>We ended up not needing to scope the package to the organization because we decided to publish the ESLint plugin as an unscoped package. Scoping the package allows two packages with the same name to co-exist. Since <a href="https://www.npmjs.com/package/eslint-plugin-i18n-lingui" target="_blank">eslint-plugin-i18n-lingui</a> is a unique package name, it can be kept as unscoped. OkCupid&rsquo;s brand is still attached to this package because the NPM page as well as all the docs link to the repo under OkCupid&rsquo;s GitHub handle.</p>
-
+<p>We ended up not needing to scope the package to the organization because we decided to publish the ESLint plugin as an unscoped package. Scoping the package allows two packages with the same name to co-exist. Since <a href="https://www.npmjs.com/package/eslint-plugin-i18n-lingui">eslint-plugin-i18n-lingui</a> is a unique package name, it can be kept as unscoped. OkCupid&rsquo;s brand is still attached to this package because the NPM page as well as all the docs link to the repo under OkCupid&rsquo;s GitHub handle.</p>
 <p>Publishing <code>eslint-plugin-i18n-lingui</code> to NPM took a few seconds using NPM&rsquo;s command line interface.</p>
-
-<p>There were a few small updates I made after the initial publishing of the package. I followed <a href="https://docs.npmjs.com/about-semantic-versioning" target="_blank">semantic versioning</a> best practice to increment the version.</p>
-
-<p><img src="https://xiaoyunyang.github.io/post/images/open-source/semantic-versioning.png" alt="NPM semantic versioning guide" /></p>
-
-<p>The most significant update I had to make was to fix the false positives for the<a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui/blob/main/docs/rules/no-eval-in-placeholder.md" target="_blank"><code>no-eval-in-placeholder</code></a> rule after integrating the package into our actual codebase. There were edge cases I did not consider during the initial development of the rule.</p>
-
+<p>There were a few small updates I made after the initial publishing of the package. I followed <a href="https://docs.npmjs.com/about-semantic-versioning">semantic versioning</a> best practice to increment the version.</p>
+<p><img src="https://xiaoyunyang.github.io/post/images/open-source/semantic-versioning.png" alt="NPM semantic versioning guide"></p>
+<p>The most significant update I had to make was to fix the false positives for the<a href="https://github.com/OkCupid/eslint-plugin-i18n-lingui/blob/main/docs/rules/no-eval-in-placeholder.md"><code>no-eval-in-placeholder</code></a> rule after integrating the package into our actual codebase. There were edge cases I did not consider during the initial development of the rule.</p>
 <h2 id="open-source-contribution">Open Source Contribution</h2>
-
 <p>When the repo was finally made public, I shared the good news with my friends, many of them software engineers. Bryan, the friend who inspired me to write the ESLint plugin in the first place and an active open source contributor in the JavaScript community, created a bunch of pull requests like adding internal linting and improving configuration based on his previous work on ESLint plugins. His contributions are extremely helpful as they are best practices for writing ESLint plugins that I didn&rsquo;t know existed.</p>
-
 <p>As this project continues to mature, I hope that other people on my team will become interested in being an open source maintainer of the project (not just because Legal requires maintainers to be OkCupid employees).</p>
-
 <p>The need to educate and document the process on how to open source and contribute to this project for both internal and external contributors becomes apparent; this includes writing internal documentation on how to be a maintainer, adding a contribution guide to the repo, giving tech talks about how to write an ESLint plugin, and promoting the localization best practices that this plugin enforces. This blog post is one of the many actions that could help to drive interests in this project and open sourcing in general.</p>
-
 <h2 id="conclusion">Conclusion</h2>
-
-<p>Meta (formerly Facebook) who has a strong open source culture <a href="https://opensource.fb.com/" target="_blank">outlines</a> these three tenants for why a company should care about open sourcing:</p>
-
+<p>Meta (formerly Facebook) who has a strong open source culture <a href="https://opensource.fb.com/">outlines</a> these three tenants for why a company should care about open sourcing:</p>
 <ul>
 <li><strong>collaboration:</strong> learn from and work with developers from around the world to achieve common goals.</li>
 <li><strong>community:</strong> be a part of something bigger than yourself and your company; empower diverse communities through open source technology.</li>
 <li><strong>technology:</strong> open sourcing has been the key facilitator at creating historical technologies like Linux, Android, Git, Chromium, and Python, and Linux.</li>
 </ul>
-
 <p>A company&rsquo;s commitment to open source is demonstrated by its policy and culture, which OkCupid excels in. There was little friction in making the project open sourced and everyone has been supportive from day one.</p>
-
 <p>I hope this post sheds some light on what it&rsquo;s like to open source for a company as the process may be opaque or non-existent at all.</p>
-
 <p>Most developers know how to write code in the open. You create a GitHub repo and push some code to the remote branch. But getting paid to work on open source projects requires a bit of hustling and a lot of initiative.</p>
-
 <p>Advice for developers who are looking to open source something for their company is this:</p>
-
 <p><strong>Pick the right project to open source.</strong></p>
-
 <p>General-purpose tools and libraries are good candidates to open source for your company because they don&rsquo;t represent core business values to keep it proprietary. Apps and design systems (e.g., re-usable components library) are not good for open sourcing because they are too closely tied to the business and the brand.</p>
-
 <p><strong>Take initiative.</strong></p>
-
 <p>You may have to spend your own time working on it, at least in the beginning. But it&rsquo;s easy to do when you find a project that you feel passionate about and enjoyable enough that you want to work on in your free time. Completing a proof of concept (POC) / minimal viable product (MVP) will make it easier to show that it&rsquo;s viable to dedicate some engineering resources to it.</p>
-
 <p>I&rsquo;m a fan of weekend hackathons with friends as I find that to be a highly effective and enjoyable way of getting a lot of stuff done over a short period of time. During my weekend hackathon when I built the MVP, I kept the scope limited to what&rsquo;s achievable in three days. Keeping the MVP scope small really helped to kick the project off.</p>
-
 <p>Many companies like OkCupid have hack weeks in which engineers are given company time to work on their own  ideas as long as it directly or tangentially benefits the company in some way. Hack weeks provide opportunities to work on things such as creating and open sourcing software for your company.</p>
-
 <p><strong>Talk to your manager.</strong></p>
-
 <p>They can be your biggest ally. I’ve never met anyone who’s against the idea of open sourcing a general purpose tool or solution to a general problem but you have to convince them that it&rsquo;s worth letting you work on it on company time. Having the POC / MVP when you are having the conversation with them will help a ton.</p>
-
 <p>I think &ldquo;should I have this on my personal account or company account&rdquo; is a big blocker to open sourcing for a company. If I just want the code to be out there and available as quickly as possible, having it under my personal account makes more sense.</p>
-
 <p>Another blocker for many people is using their personal time to work on something that they don&rsquo;t &ldquo;own&rdquo;. When I told my non-tech friends about the project, people were surprised that I &ldquo;gave away my work for free&rdquo;. I feel like no one can really &ldquo;own&rdquo; open-source code.</p>
               
 
@@ -664,7 +557,7 @@ This is in contrast to an open source project like React which requires a full t
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/" data-tooltip="Web Developer Playbook: Optimistic UI" aria-label="NEXT: Web Developer Playbook: Optimistic UI">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -761,7 +654,7 @@ s.setAttribute('data-timestamp', +new Date());
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/" data-tooltip="Web Developer Playbook: Optimistic UI" aria-label="NEXT: Web Developer Playbook: Optimistic UI">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -858,7 +751,7 @@ s.setAttribute('data-timestamp', +new Date());
     
     <h4 id="about-card-name">Xiaoyun Yang</h4>
     
-      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+      <div id="about-card-bio">Software Engineer. Climber. Snowboarder.</div>
     
     
       <div id="about-card-job">
@@ -898,14 +791,6 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script src="https://xiaoyunyang.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
 
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/go.min.js"></script>
-  
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
-  
 
 
 <script>

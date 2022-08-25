@@ -7,17 +7,17 @@
 {  
   "@context":"http://schema.org",
   "@type":"Website",
-  "@id":"https://xiaoyunyang.github.io/",
+  "@id":"https:\/\/xiaoyunyang.github.io\/",
   "author": {
     "@type": "Person",
-    "name": Xiaoyun Yang,
+    "name": "Xiaoyun Yang",
     
-    "image": https://xiaoyunyang.github.io/images/xyang.png
+    "image": "https://xiaoyunyang.github.io/images/xyang.png"
     
   },
   "name":"Xiaoyun Yang",
-  "description":"<p>Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.</p>",
-  "url":"https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/",
+  "description":"\u003cp\u003eLinked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.\u003c\/p\u003e",
+  "url":"https:\/\/xiaoyunyang.github.io\/post\/data-structure-with-javascript-object-linked-list\/",
   "keywords":"[computer science, javascript, interview prep, algorithms, data structure, learn to code, linked list]"
 }
 
@@ -25,7 +25,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.53 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="computer science, javascript, interview prep, algorithms, data structure, learn to code, linked list">
 <meta name="description" content="Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.">
@@ -101,7 +101,11 @@
     
     
       
-        <link rel="stylesheet"  href="https://xiaoyunyang.github.io/css/custom.css">
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/custom.css">
+      
+    
+      
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/syntax.css">
       
     
 
@@ -142,7 +146,7 @@
         </a>
         <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
         
-          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+          <h5 class="sidebar-profile-bio">Software Engineer. Climber. Snowboarder.</h5>
         
       </div>
     
@@ -301,63 +305,44 @@
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.</p>
-
 <div class="alert info ">
-  <p>This article was also <a href="https://codeburst.io/cs-with-js-linked-list-e27008cfc9d9" target="_blank">published on Medium</a> under Codeburst.</p>
+  <p>This article was also <a href="https://codeburst.io/cs-with-js-linked-list-e27008cfc9d9">published on Medium</a> under Codeburst.</p>
 </div>
+<h1 id="table-of-contents">Table of Contents</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#add-to-tail">Add to tail</a></li>
+    <li><a href="#add-to-head">Add to head</a></li>
+    <li><a href="#remove-from-head">Remove from head</a></li>
+  </ul>
 
-<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
-<ul>
-<li><a href="#motivation">Motivation</a></li>
-<li><a href="#definition">Definition</a></li>
-<li><a href="#linked-list-basics">Linked List Basics</a>
-<ul>
-<li><a href="#add-to-tail">Add to tail</a></li>
-<li><a href="#add-to-head">Add to head</a></li>
-<li><a href="#remove-from-head">Remove from head</a></li>
-</ul></li>
-<li><a href="#algos">Algos:</a>
-<ul>
-<li><a href="#create-linked-list-from-array">Create Linked List from Array</a></li>
-<li><a href="#zip">Zip</a></li>
-<li><a href="#reverse">Reverse</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#create-linked-list-from-array">Create Linked List from Array</a></li>
+    <li><a href="#zip">Zip</a></li>
+    <li><a href="#reverse">Reverse</a></li>
+  </ul>
 </nav>
 
 <p>We are only going to focus on singly linked list for this article. Doubly linked lists are also implemented sometimes but having an extra pointer to the predecessor of each node increases the overhead of a linked list as we have to keep twice as many pointers.</p>
-
 <h1 id="motivation">Motivation</h1>
-
 <p>The main benefit of a linked list is that it is a more memory efficient way of maintaining a dynamic collection of things that could get really large. Because the relationship between the thing and the next thing in the collection is defined by a pointer rather than the proximity in memory, things that are next to each other in the linked list don&rsquo;t need to be physically stored next to each other in memory. As such, you can use a linked list for solving the following problems:</p>
-
 <ul>
 <li>Maintain a sorted list that you can keep adding things to without overhead of copying the entire list to a new array.</li>
 <li>Maintain a Last in, first out (LIFO) or a stack. Stacks are used for managing computer processes when your main process get interrupted by calling a subroutine.</li>
 </ul>
-
 <h1 id="definition">Definition</h1>
-
-<pre><code class="language-javascript">function ListNode(val) {
-  this.val = val;
-  this.next = null;
-}
-</code></pre>
-
-<h1 id="linked-list-basics">Linked List Basics</h1>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#a6e22e">val</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">val</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="linked-list-basics">Linked List Basics</h1>
 <h2 id="add-to-tail">Add to tail</h2>
-
 <p>Adding to tail of a linked list of size N is an O(N) operation because you have to traverse the entire linked list to the end. We can create a linked list manually by keep adding to the tail:</p>
-
-<pre><code class="language-javascript">let l = new ListNode(1)
-l.next = new ListNode(2)
-l.next.next = new ListNode(3)
-</code></pre>
-
-<p>This creates the following linked list:</p>
-
-<pre><code>ListNode {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">l</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">next</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#ae81ff">3</span>);
+</span></span></code></pre></div><p>This creates the following linked list:</p>
+<pre tabindex="0"><code>ListNode {
   val: 1,
   next: ListNode {
     val: 2,
@@ -368,206 +353,147 @@ l.next.next = new ListNode(3)
     }
   }
 }
-</code></pre>
-
-<p>linked list is often drawn as such:  <code>1 -&gt; 2 -&gt; 3 -&gt; null</code>.</p>
-
+</code></pre><p>linked list is often drawn as such: <code>1 -&gt; 2 -&gt; 3 -&gt; null</code>.</p>
 <p>We can also create a method for <code>ListNode</code> that adds a new node to the end of a given chain of ListNodes:</p>
-
-<pre><code class="language-javascript">ListNode.prototype.add = function(val) {
-  let curr = this
-  while(curr) {
-    if(!curr.next) {
-      curr.next = new ListNode(val)
-      return this
-    }
-    curr = curr.next  
-  }
-  return this
-}
-</code></pre>
-
-<p>In the code above, <code>curr</code> is a pointer that traverses the entire linked list. <code>add</code> is a mutator method which modifies the original linked list (i.e., <code>this</code>). Specifically, it modifies the <code>next</code> of the last node in the original list by making it point to a new node instead of being null (which means it doesn&rsquo;t point to anything).</p>
-
-<pre><code>console.log('l before adding\n', l) //&gt; 1 -&gt; 2 -&gt; 3 -&gt; null
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">ListNode</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">add</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">val</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">curr</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">curr</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">curr</span>.<span style="color:#a6e22e">next</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">curr</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#a6e22e">val</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">curr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">curr</span>.<span style="color:#a6e22e">next</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>In the code above, <code>curr</code> is a pointer that traverses the entire linked list. <code>add</code> is a mutator method which modifies the original linked list (i.e., <code>this</code>). Specifically, it modifies the <code>next</code> of the last node in the original list by making it point to a new node instead of being null (which means it doesn&rsquo;t point to anything).</p>
+<pre tabindex="0"><code>console.log(&#39;l before adding\n&#39;, l) //&gt; 1 -&gt; 2 -&gt; 3 -&gt; null
 let lmod = l.add(4)
 
-console.log('lmod after adding\n', lmod) //&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null
-console.log('l after adding\n', l) //&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null
-</code></pre>
-
-<h2 id="add-to-head">Add to head</h2>
-
+console.log(&#39;lmod after adding\n&#39;, lmod) //&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null
+console.log(&#39;l after adding\n&#39;, l) //&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null
+</code></pre><h2 id="add-to-head">Add to head</h2>
 <p>Adding to the head of the linked list is an O(1) operation. Let&rsquo;s write a method for <code>ListNode</code> called <code>push</code>.</p>
-
-<pre><code class="language-javascript">ListNode.prototype.push = function(val) {
-  let head = new ListNode(val)
-  head.next = this
-  return head
-}
-</code></pre>
-
-<p><code>push</code> does not modify the original list, which becomes a subset of the extended list with a new head whose <code>next</code> points to the original array.</p>
-
-<pre><code class="language-javascript">let lmod = l.push(0)
-console.log('lmod', lmod) // 0 -&gt; 1 -&gt; 2 -&gt; 3
-console.log('l', l) // 1 -&gt; 2 -&gt; 3 ...same as before
-</code></pre>
-
-<h2 id="remove-from-head">Remove from head</h2>
-
-<pre><code class="language-javascript">ListNode.prototype.pop = function() {
-  return this.next
-}
-</code></pre>
-
-<h1 id="algos">Algos:</h1>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">ListNode</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">push</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">val</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">head</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#a6e22e">val</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">head</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">head</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><code>push</code> does not modify the original list, which becomes a subset of the extended list with a new head whose <code>next</code> points to the original array.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">lmod</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">push</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;lmod&#34;</span>, <span style="color:#a6e22e">lmod</span>); <span style="color:#75715e">// 0 -&gt; 1 -&gt; 2 -&gt; 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;l&#34;</span>, <span style="color:#a6e22e">l</span>); <span style="color:#75715e">// 1 -&gt; 2 -&gt; 3 ...same as before
+</span></span></span></code></pre></div><h2 id="remove-from-head">Remove from head</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">ListNode</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">pop</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">next</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h1 id="algos">Algos:</h1>
 <h2 id="create-linked-list-from-array">Create Linked List from Array</h2>
-
-<pre><code class="language-javascript">let arr1 = ['a', 'b', 'c']
-let arr2 = ['x', 'y', 'z']
-let curr = new ListNode(0)
-let tail = null
-
-let l1 = createLL(arr1)
-let l2 = createLL(arr2)
-</code></pre>
-
-<p>Now we write our <code>createLL</code> function:</p>
-
-<pre><code class="language-javascript">function createLL(arr) {
-  let ll, head
-  // initialize ll:
-  ll = null
-  for(let i=arr.length-1; i&gt;=0; i--) {
-    head = new ListNode(arr[i])
-    head.next = ll
-    ll = head
-  }
-  return ll
-}
-</code></pre>
-
-<p>The result:</p>
-
-<pre><code class="language-javascript">console.log('l1:\n', l1) //&gt; a -&gt; b -&gt; c -&gt; null
-console.log('l2:\n', l2)  //&gt; x -&gt; y -&gt; z -&gt; null
-</code></pre>
-
-<p><code>push</code> and <code>pop</code> are stack operations.  Stack is a data structure that&rsquo;s generally implemented with a linked list.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr1</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr2</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#e6db74">&#34;y&#34;</span>, <span style="color:#e6db74">&#34;z&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">curr</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tail</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">l1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createLL</span>(<span style="color:#a6e22e">arr1</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">l2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createLL</span>(<span style="color:#a6e22e">arr2</span>);
+</span></span></code></pre></div><p>Now we write our <code>createLL</code> function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createLL</span>(<span style="color:#a6e22e">arr</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">ll</span>, <span style="color:#a6e22e">head</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// initialize ll:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ll</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">head</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>]);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">head</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ll</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ll</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">head</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ll</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The result:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;l1:\n&#34;</span>, <span style="color:#a6e22e">l1</span>); <span style="color:#75715e">//&gt; a -&gt; b -&gt; c -&gt; null
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;l2:\n&#34;</span>, <span style="color:#a6e22e">l2</span>); <span style="color:#75715e">//&gt; x -&gt; y -&gt; z -&gt; null
+</span></span></span></code></pre></div><p><code>push</code> and <code>pop</code> are stack operations. Stack is a data structure that&rsquo;s generally implemented with a linked list.</p>
 <h2 id="zip">Zip</h2>
-
 <p><code>zip</code> takes two linked lists and return a linked list that is the result of combining the arguments:</p>
-
-<pre><code class="language-javascript">function zip(l1,l2) {
-  let l3, tail, pred
-  // initialize l3
-  l3 = new ListNode('')
-  tail = l3
-  while(l1 || l2) {
-    if(l1 !== null) tail.val += l1.val
-    if(l2 !== null) tail.val += l2.val
-
-    tail.next = new ListNode('')
-    pred = tail
-    tail = tail.next
-
-    l1 = l1 ? l1.next : l1
-    l2 = l2 ? l2.next : l2
-  }
-
-  pred.next = null // Doing tail = null here doesn't work. Why?
-
-  return l3
-}
-</code></pre>
-
-<p>Let&rsquo;s run <code>zip</code> on <code>l1</code> and <code>l2</code> from earlier:</p>
-
-<pre><code class="language-javascript">let l3 = zip(l1,l2)
-console.log('l3:\n', l3)
-</code></pre>
-
-<pre><code>l3:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">zip</span>(<span style="color:#a6e22e">l1</span>, <span style="color:#a6e22e">l2</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">l3</span>, <span style="color:#a6e22e">tail</span>, <span style="color:#a6e22e">pred</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// initialize l3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">l3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tail</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l3</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">l1</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">l2</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">l1</span> <span style="color:#f92672">!==</span> <span style="color:#66d9ef">null</span>) <span style="color:#a6e22e">tail</span>.<span style="color:#a6e22e">val</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">l1</span>.<span style="color:#a6e22e">val</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">l2</span> <span style="color:#f92672">!==</span> <span style="color:#66d9ef">null</span>) <span style="color:#a6e22e">tail</span>.<span style="color:#a6e22e">val</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">l2</span>.<span style="color:#a6e22e">val</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tail</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pred</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tail</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tail</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tail</span>.<span style="color:#a6e22e">next</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">l1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l1</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">l1</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">l1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">l2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l2</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">l2</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">l2</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pred</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>; <span style="color:#75715e">// Doing tail = null here doesn&#39;t work. Why?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">l3</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Let&rsquo;s run <code>zip</code> on <code>l1</code> and <code>l2</code> from earlier:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">l3</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">zip</span>(<span style="color:#a6e22e">l1</span>, <span style="color:#a6e22e">l2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;l3:\n&#34;</span>, <span style="color:#a6e22e">l3</span>);
+</span></span></code></pre></div><pre tabindex="0"><code>l3:
  ListNode {
-  val: 'ax',
+  val: &#39;ax&#39;,
   next: ListNode {
-    val: 'by',
+    val: &#39;by&#39;,
     next: ListNode {
-      val: 'cz',
+      val: &#39;cz&#39;,
       next: null
     }
   }
 }
-</code></pre>
-
-<p>Why did we need <code>pred</code>? Why can&rsquo;t we do <code>tail = null</code> or <code>tail = tail.next</code>?</p>
-
+</code></pre><p>Why did we need <code>pred</code>? Why can&rsquo;t we do <code>tail = null</code> or <code>tail = tail.next</code>?</p>
 <p>Well, when we break out of the loop, <code>tail</code> is point to an object <code>ListNode {val: '', next: null}</code>, which is part of <code>l3</code>. Setting <code>tail</code> to null doesn&rsquo;t set that object to null but rather destroys the reference to that object. setting <code>pred.next</code> to null modifies the predecessor node so instead of point to <code>ListNode {val: '', next: null}</code>, it points to null.</p>
-
 <p>A simpler example to understand the concept of JavaScript object and references is with this example:</p>
-
-<pre><code class="language-javascript">let arr = [1,2,3]
-let arr2 = arr
-arr2.pop()
-console.log('arr:', arr) // #1
-arr2 = null
-console.log('arr:', arr) // #2
-</code></pre>
-
-<p><code>#1</code> prints out <code>arr: [1,2]</code> because arr2 is a reference to arr and when we use the Array mutator method <code>pop</code> on arr2, arr is mutated.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">arr2</span>.<span style="color:#a6e22e">pop</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;arr:&#34;</span>, <span style="color:#a6e22e">arr</span>); <span style="color:#75715e">// #1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">arr2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;arr:&#34;</span>, <span style="color:#a6e22e">arr</span>); <span style="color:#75715e">// #2
+</span></span></span></code></pre></div><p><code>#1</code> prints out <code>arr: [1,2]</code> because arr2 is a reference to arr and when we use the Array mutator method <code>pop</code> on arr2, arr is mutated.</p>
 <p><code>#2</code> prints out <code>arr: [1,2]</code>, not null. When we set <code>arr2</code> to null, we destroy a reference to the array in arr2 but <code>arr</code> still maintains a reference to the array.</p>
-
 <p>JavaScript has some primitives which are object-like because they have methods, but making a copy actually makes a hard copy:</p>
-
 <p>JavaScript primitive: Number</p>
-
-<pre><code class="language-javascript">let a = 1
-let b = a
-b = 13
-console.log(a) //&gt; 1
-</code></pre>
-
-<p>JavaScript primitive: String</p>
-
-<pre><code class="language-javascript">let c = 'hi'
-let d = c
-d = 'bye'
-console.log(c) //&gt; &quot;hi&quot;
-</code></pre>
-
-<h2 id="reverse">Reverse</h2>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>); <span style="color:#75715e">//&gt; 1
+</span></span></span></code></pre></div><p>JavaScript primitive: String</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hi&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bye&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span>); <span style="color:#75715e">//&gt; &#34;hi&#34;
+</span></span></span></code></pre></div><h2 id="reverse">Reverse</h2>
 <p>Write a function <code>reverseLL</code> which takes a linked list and returns a linked list that&rsquo;s the reverse. For example, <code>1 -&gt; 2 -&gt; 3 -&gt; null</code> becomes <code>3 -&gt; 2 -&gt; 1 -&gt; null</code>I&rsquo;m using a recursive function but you can use a loop to do this.</p>
-
-<pre><code class="language-javascript">const reverseLL = (ll, revLL) =&gt; {
-  if(ll === null) return revLL
-  let newRevLL = new ListNode(ll.val)
-  newRevLL.next = revLL
-  return reverseLL(ll.next, newRevLL)    
-}
-
-let l3Rev = reverseLL(l3, null)
-console.log('l3Rev:\n', l3Rev)
-</code></pre>
-
-<pre><code>l3Rev:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">reverseLL</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">ll</span>, <span style="color:#a6e22e">revLL</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">ll</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">revLL</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">newRevLL</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListNode</span>(<span style="color:#a6e22e">ll</span>.<span style="color:#a6e22e">val</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">newRevLL</span>.<span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">revLL</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">reverseLL</span>(<span style="color:#a6e22e">ll</span>.<span style="color:#a6e22e">next</span>, <span style="color:#a6e22e">newRevLL</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">l3Rev</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">reverseLL</span>(<span style="color:#a6e22e">l3</span>, <span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;l3Rev:\n&#34;</span>, <span style="color:#a6e22e">l3Rev</span>);
+</span></span></code></pre></div><pre tabindex="0"><code>l3Rev:
  ListNode {
-  val: 'cz',
+  val: &#39;cz&#39;,
   next: ListNode {
-    val: 'by',
+    val: &#39;by&#39;,
     next: ListNode {
-      val: 'ax',
+      val: &#39;ax&#39;,
       next: null
     }
   }
 }
-</code></pre>
-
-<p>All the code is <a href="https://repl.it/@xiaoyunyang/DataStructure-LinkedList" target="_blank">here</a></p>
+</code></pre><p>All the code is <a href="https://repl.it/@xiaoyunyang/DataStructure-LinkedList">here</a></p>
               
 
 
@@ -651,8 +577,8 @@ console.log('l3Rev:\n', l3Rev)
   
   <li class="post-action">
     
-      <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
-      <i class="fa fa-list" aria-hidden="true"></i>
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
     
     </a>
   </li>
@@ -748,8 +674,8 @@ s.setAttribute('data-timestamp', +new Date());
   
   <li class="post-action">
     
-      <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
-      <i class="fa fa-list" aria-hidden="true"></i>
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
     
     </a>
   </li>
@@ -798,7 +724,7 @@ s.setAttribute('data-timestamp', +new Date());
     
     <h4 id="about-card-name">Xiaoyun Yang</h4>
     
-      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+      <div id="about-card-bio">Software Engineer. Climber. Snowboarder.</div>
     
     
       <div id="about-card-job">
@@ -838,14 +764,6 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script src="https://xiaoyunyang.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
 
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/go.min.js"></script>
-  
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
-  
 
 
 <script>

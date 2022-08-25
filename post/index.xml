@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Xiaoyun Yang</title>
@@ -8,10 +8,16 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Mon, 29 Nov 2021 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xiaoyunyang.github.io/post/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 25 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web Developer Playbook: Optimistic UI</title>
+      <link>https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/</link>
+      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/</guid>
+      <description>&lt;p&gt;In classic implementations of a CRUD app, the client app makes a request to the server and only updates its display state if the server responds to the request. However, in many modern applications like chat apps and note taking apps, users expect the display state to immediately update after they initiate an action.&lt;/p&gt;
+&lt;p&gt;Quick response time from the server is not always achievable, especially when the user is on a slow network on a mobile device.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>How I Open Sourced An ESLint Plugin for OkCupid</title>
@@ -20,11 +26,8 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/</guid>
       <description>&lt;p&gt;We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?&lt;/p&gt;
-
-&lt;p&gt;I recently open sourced an &lt;a href=&#34;https://eslint.org/docs/about/&#34; target=&#34;_blank&#34;&gt;ESLint&lt;/a&gt; plugin for OkCupid called &lt;a href=&#34;https://github.com/OkCupid/eslint-plugin-i18n-lingui&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt;&lt;/a&gt;. The plugin is an extension for ESLint&amp;rsquo;s core static code analysis rules that enforces &lt;a href=&#34;https://www.smartling.com/resources/101/localization-101/&#34; target=&#34;_blank&#34;&gt;localization&lt;/a&gt; best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.&lt;/p&gt;
-
+&lt;p&gt;I recently open sourced an &lt;a href=&#34;https://eslint.org/docs/about/&#34;&gt;ESLint&lt;/a&gt; plugin for OkCupid called &lt;a href=&#34;https://github.com/OkCupid/eslint-plugin-i18n-lingui&#34;&gt;&lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt;&lt;/a&gt;. The plugin is an extension for ESLint&amp;rsquo;s core static code analysis rules that enforces &lt;a href=&#34;https://www.smartling.com/resources/101/localization-101/&#34;&gt;localization&lt;/a&gt; best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.&lt;/p&gt;
 &lt;p&gt;This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.&lt;/p&gt;
-
 &lt;p&gt;Although this post will not discuss the localization best practices that &lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt; enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!&lt;/p&gt;</description>
     </item>
     
@@ -35,8 +38,7 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/</guid>
       <description>&lt;p&gt;A finite state machine (FSM) is an architectural design pattern that allows us to model a large system as a collection of loosely coupled components. Each component in the system changes its behavior when the internal state changes. This pattern allows us to write flexible, reusable, and testable code. In this article, we will explore the use of FSM in building complex React components.&lt;/p&gt;
-
-&lt;p&gt;The primary use of FSM has been in &lt;a href=&#34;https://www.embedded.com/programming-embedded-systems-the-easy-way-with-state-machines/&#34; target=&#34;_blank&#34;&gt;programming embedded systems&lt;/a&gt; but in recent years, there has been an emergence of FSM in other applications like &lt;a href=&#34;https://www.smashingmagazine.com/2018/01/rise-state-machines/&#34; target=&#34;_blank&#34;&gt;managing states in the browser&lt;/a&gt;, &lt;a href=&#34;https://mind-simulation.com/en/blog/tech/using-finite-state-machines-to-model-behavior.html&#34; target=&#34;_blank&#34;&gt;modeling behavior&lt;/a&gt;, and &lt;a href=&#34;https://www.hamidadelyar.com/blog/finite-state-machine-chatbot/&#34; target=&#34;_blank&#34;&gt;building chatbots&lt;/a&gt;. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like &lt;a href=&#34;http://redux.js.org/&#34; target=&#34;_blank&#34;&gt;Redux&lt;/a&gt; but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and &lt;a href=&#34;https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems&#34; target=&#34;_blank&#34;&gt;delete-able&lt;/a&gt;.&lt;/p&gt;</description>
+&lt;p&gt;The primary use of FSM has been in &lt;a href=&#34;https://www.embedded.com/programming-embedded-systems-the-easy-way-with-state-machines/&#34;&gt;programming embedded systems&lt;/a&gt; but in recent years, there has been an emergence of FSM in other applications like &lt;a href=&#34;https://www.smashingmagazine.com/2018/01/rise-state-machines/&#34;&gt;managing states in the browser&lt;/a&gt;, &lt;a href=&#34;https://mind-simulation.com/en/blog/tech/using-finite-state-machines-to-model-behavior.html&#34;&gt;modeling behavior&lt;/a&gt;, and &lt;a href=&#34;https://www.hamidadelyar.com/blog/finite-state-machine-chatbot/&#34;&gt;building chatbots&lt;/a&gt;. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like &lt;a href=&#34;http://redux.js.org/&#34;&gt;Redux&lt;/a&gt; but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and &lt;a href=&#34;https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems&#34;&gt;delete-able&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -54,9 +56,8 @@
       <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png&#34; alt=&#34;Static code analysis&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&amp;rsquo;ll look at one of these tools, &lt;a href=&#34;https://www.sonarqube.org/&#34; target=&#34;_blank&#34;&gt;SonarQube&lt;/a&gt;, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png&#34; alt=&#34;Static code analysis&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&amp;rsquo;ll look at one of these tools, &lt;a href=&#34;https://www.sonarqube.org/&#34;&gt;SonarQube&lt;/a&gt;, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -65,9 +66,7 @@
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/</guid>
-      <description>&lt;p&gt;What I learned working at a mature startup that&amp;rsquo;s building new things but also has a ton of customers and products in production.&lt;/p&gt;
-
-&lt;p&gt;This post is a WIP.&lt;/p&gt;</description>
+      <description>&lt;p&gt;What I learned working at a mature startup that&amp;rsquo;s building new things but also has a ton of customers and products in production.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -86,7 +85,6 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/</guid>
       <description>&lt;p&gt;Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.&lt;/p&gt;
-
 &lt;p&gt;This post is a WIP.&lt;/p&gt;</description>
     </item>
     
@@ -114,8 +112,7 @@
       <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/</guid>
-      <description>&lt;p&gt;&lt;em&gt;by &lt;a href=&#34;https://github.com/xiaoyunyang&#34; target=&#34;_blank&#34;&gt;Xiaoyun Yang&lt;/a&gt; and &lt;a href=&#34;https://github.com/clydeshaffer&#34; target=&#34;_blank&#34;&gt;Clyde Shaffer&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;em&gt;by &lt;a href=&#34;https://github.com/xiaoyunyang&#34;&gt;Xiaoyun Yang&lt;/a&gt; and &lt;a href=&#34;https://github.com/clydeshaffer&#34;&gt;Clyde Shaffer&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;I love indoor plants but I&amp;rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&amp;rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&amp;rsquo;s call it ThirstyPlant.&lt;/p&gt;</description>
     </item>
     
@@ -126,7 +123,6 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/</guid>
       <description>&lt;p&gt;I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.&lt;/p&gt;
-
 
 
  
@@ -162,7 +158,6 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/</guid>
       <description>&lt;p&gt;Suppose you are asked this question during a technical interview:&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;When do you use immutable (functional) data structures and when do you use mutable data structure?&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -184,7 +179,6 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</guid>
       <description>&lt;p&gt;The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&amp;rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;Can you be productive with JavaScript?&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -196,8 +190,7 @@
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/a-complete-guide-to-deploying-your-web-app-to-amazon-web-service/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This a comprehensive guide for how to containerize your Mongo-Express-React-Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&amp;rsquo;t work, how I prepared the app for deployment and accomplished the deployment.&lt;/p&gt;</description>
     </item>
     
@@ -207,9 +200,8 @@
       <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</guid>
-      <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34; target=&#34;_blank&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
+&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s get started!&lt;/p&gt;</description>
     </item>
     
@@ -228,7 +220,7 @@
       <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34; /&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34;&gt;
 This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;</description>
     </item>
     
@@ -256,7 +248,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</guid>
-      <description>&lt;p&gt;We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&amp;rsquo;m drawing these problems from &lt;a href=&#34;https://leetcode.com/&#34; target=&#34;_blank&#34;&gt;LeetCode&lt;/a&gt; and &lt;a href=&#34;https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=2E72V7DJM4CV4DNTBTKD&#34; target=&#34;_blank&#34;&gt;Cracking the Coding Interview&lt;/a&gt;. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.&lt;/p&gt;</description>
+      <description>&lt;p&gt;We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&amp;rsquo;m drawing these problems from &lt;a href=&#34;https://leetcode.com/&#34;&gt;LeetCode&lt;/a&gt; and &lt;a href=&#34;https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=2E72V7DJM4CV4DNTBTKD&#34;&gt;Cracking the Coding Interview&lt;/a&gt;. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -337,7 +329,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34; target=&#34;_blank&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -355,7 +347,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/is-employee-loyalty-important/</guid>
-      <description>&lt;p&gt;High-value employees are a major assets for a strong company. Losing a high contributing team member could leave a void and impact the team&amp;rsquo;s morale and workflow. Investors are also concerned by high turnover rates, especially amongst the senior executives. Groupon had trouble retaining their senior executives, which contributed to &lt;a href=&#34;https://www.youtube.com/watch?v=zeNQE3VBRnQ&#34; target=&#34;_blank&#34;&gt;an 85% drop in their value&lt;/a&gt; a year after going public. It&amp;rsquo;s clear we want to &lt;strong&gt;retain&lt;/strong&gt; high-valued employees, but is &lt;strong&gt;employee loyalty&lt;/strong&gt; the way to achieve retention?&lt;/p&gt;</description>
+      <description>&lt;p&gt;High-value employees are a major assets for a strong company. Losing a high contributing team member could leave a void and impact the team&amp;rsquo;s morale and workflow. Investors are also concerned by high turnover rates, especially amongst the senior executives. Groupon had trouble retaining their senior executives, which contributed to &lt;a href=&#34;https://www.youtube.com/watch?v=zeNQE3VBRnQ&#34;&gt;an 85% drop in their value&lt;/a&gt; a year after going public. It&amp;rsquo;s clear we want to &lt;strong&gt;retain&lt;/strong&gt; high-valued employees, but is &lt;strong&gt;employee loyalty&lt;/strong&gt; the way to achieve retention?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -364,7 +356,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s not always clear why we need need a personal website. But here&amp;rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like &lt;a href=&#34;https://gohugo.io/&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;It&amp;rsquo;s not always clear why we need need a personal website. But here&amp;rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -400,7 +392,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</guid>
-      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just  open up your browser&amp;rsquo;s console (hit &lt;code&gt;Cmd&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt; if you are using Chrome and Mac) and start typing.&lt;/p&gt;</description>
+      <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just open up your browser&amp;rsquo;s console (hit &lt;code&gt;Cmd&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt; if you are using Chrome and Mac) and start typing.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -409,7 +401,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-formal-education-may-close-doors-to-opportunities/</guid>
-      <description>&lt;p&gt;The average completion rate of Online Open Course (MOOC) certification programs is abysmally low. &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2889436&#34; target=&#34;_blank&#34;&gt;A report published in 2016 by researchers at Harvard and MIT&lt;/a&gt; based on 4 years of data indicated an average certification completion rate of just 5.5%. This does not discredit MOOCs to be a good source of quality education content for those looking for good information to improve their understanding for a particular subject; however, the depressing statistics underlines a deeper concern with the ineffectiveness of using a college curriculum to steer people&amp;rsquo;s professional development.&lt;/p&gt;</description>
+      <description>&lt;p&gt;The average completion rate of Online Open Course (MOOC) certification programs is abysmally low. &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2889436&#34;&gt;A report published in 2016 by researchers at Harvard and MIT&lt;/a&gt; based on 4 years of data indicated an average certification completion rate of just 5.5%. This does not discredit MOOCs to be a good source of quality education content for those looking for good information to improve their understanding for a particular subject; however, the depressing statistics underlines a deeper concern with the ineffectiveness of using a college curriculum to steer people&amp;rsquo;s professional development.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -436,7 +428,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Sun, 12 Mar 2017 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</guid>
-      <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34; target=&#34;_blank&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -445,7 +437,7 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <pubDate>Wed, 12 Aug 2015 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://number-shapes.com&#34; target=&#34;_blank&#34;&gt;NumberShapes&lt;/a&gt; is a collection of mobile apps that make numbers come alive through numerical visualizations and interactions. In 2014, I worked on the software development for the first few apps, which are iOS matching games that help young learners with familiarization of addition, subtraction, multiplication and other math facts.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://number-shapes.com&#34;&gt;NumberShapes&lt;/a&gt; is a collection of mobile apps that make numbers come alive through numerical visualizations and interactions. In 2014, I worked on the software development for the first few apps, which are iOS matching games that help young learners with familiarization of addition, subtraction, multiplication and other math facts.&lt;/p&gt;</description>
     </item>
     
   </channel>

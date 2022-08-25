@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Career on Xiaoyun Yang</title>
@@ -8,11 +8,7 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Sun, 16 Dec 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xiaoyunyang.github.io/tags/career/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 16 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/career/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From Public Sector To Senior Software Engineer:  How I made the Transition</title>
       <link>https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/</link>
@@ -20,7 +16,6 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/</guid>
       <description>&lt;p&gt;I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.&lt;/p&gt;
-
 
 
  
@@ -64,7 +59,7 @@
       <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</guid>
-      <description>&lt;p&gt;We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&amp;rsquo;m drawing these problems from &lt;a href=&#34;https://leetcode.com/&#34; target=&#34;_blank&#34;&gt;LeetCode&lt;/a&gt; and &lt;a href=&#34;https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=2E72V7DJM4CV4DNTBTKD&#34; target=&#34;_blank&#34;&gt;Cracking the Coding Interview&lt;/a&gt;. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.&lt;/p&gt;</description>
+      <description>&lt;p&gt;We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&amp;rsquo;m drawing these problems from &lt;a href=&#34;https://leetcode.com/&#34;&gt;LeetCode&lt;/a&gt; and &lt;a href=&#34;https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=2E72V7DJM4CV4DNTBTKD&#34;&gt;Cracking the Coding Interview&lt;/a&gt;. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -91,7 +86,7 @@
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/is-employee-loyalty-important/</guid>
-      <description>&lt;p&gt;High-value employees are a major assets for a strong company. Losing a high contributing team member could leave a void and impact the team&amp;rsquo;s morale and workflow. Investors are also concerned by high turnover rates, especially amongst the senior executives. Groupon had trouble retaining their senior executives, which contributed to &lt;a href=&#34;https://www.youtube.com/watch?v=zeNQE3VBRnQ&#34; target=&#34;_blank&#34;&gt;an 85% drop in their value&lt;/a&gt; a year after going public. It&amp;rsquo;s clear we want to &lt;strong&gt;retain&lt;/strong&gt; high-valued employees, but is &lt;strong&gt;employee loyalty&lt;/strong&gt; the way to achieve retention?&lt;/p&gt;</description>
+      <description>&lt;p&gt;High-value employees are a major assets for a strong company. Losing a high contributing team member could leave a void and impact the team&amp;rsquo;s morale and workflow. Investors are also concerned by high turnover rates, especially amongst the senior executives. Groupon had trouble retaining their senior executives, which contributed to &lt;a href=&#34;https://www.youtube.com/watch?v=zeNQE3VBRnQ&#34;&gt;an 85% drop in their value&lt;/a&gt; a year after going public. It&amp;rsquo;s clear we want to &lt;strong&gt;retain&lt;/strong&gt; high-valued employees, but is &lt;strong&gt;employee loyalty&lt;/strong&gt; the way to achieve retention?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -100,7 +95,7 @@
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s not always clear why we need need a personal website. But here&amp;rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like &lt;a href=&#34;https://gohugo.io/&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;It&amp;rsquo;s not always clear why we need need a personal website. But here&amp;rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -109,7 +104,7 @@
       <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-formal-education-may-close-doors-to-opportunities/</guid>
-      <description>&lt;p&gt;The average completion rate of Online Open Course (MOOC) certification programs is abysmally low. &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2889436&#34; target=&#34;_blank&#34;&gt;A report published in 2016 by researchers at Harvard and MIT&lt;/a&gt; based on 4 years of data indicated an average certification completion rate of just 5.5%. This does not discredit MOOCs to be a good source of quality education content for those looking for good information to improve their understanding for a particular subject; however, the depressing statistics underlines a deeper concern with the ineffectiveness of using a college curriculum to steer people&amp;rsquo;s professional development.&lt;/p&gt;</description>
+      <description>&lt;p&gt;The average completion rate of Online Open Course (MOOC) certification programs is abysmally low. &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2889436&#34;&gt;A report published in 2016 by researchers at Harvard and MIT&lt;/a&gt; based on 4 years of data indicated an average certification completion rate of just 5.5%. This does not discredit MOOCs to be a good source of quality education content for those looking for good information to improve their understanding for a particular subject; however, the depressing statistics underlines a deeper concern with the ineffectiveness of using a college curriculum to steer people&amp;rsquo;s professional development.&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -7,17 +7,17 @@
 {  
   "@context":"http://schema.org",
   "@type":"Website",
-  "@id":"https://xiaoyunyang.github.io/",
+  "@id":"https:\/\/xiaoyunyang.github.io\/",
   "author": {
     "@type": "Person",
-    "name": Xiaoyun Yang,
+    "name": "Xiaoyun Yang",
     
-    "image": https://xiaoyunyang.github.io/images/xyang.png
+    "image": "https://xiaoyunyang.github.io/images/xyang.png"
     
   },
   "name":"Xiaoyun Yang",
-  "description":"<p>It&rsquo;s not always clear why we need need a personal website. But here&rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like <a href="https://gohugo.io/" target="_blank">Hugo</a>.</p>",
-  "url":"https://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/",
+  "description":"\u003cp\u003eIt\u0026rsquo;s not always clear why we need need a personal website. But here\u0026rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like \u003ca href=\u0022https:\/\/gohugo.io\/\u0022\u003eHugo\u003c\/a\u003e.\u003c\/p\u003e",
+  "url":"https:\/\/xiaoyunyang.github.io\/post\/using-hugo-to-build-a-personal-brand-website\/",
   "keywords":"[CMS, static site generator, Hugo, Jekyll, Gatsby, Personal website, personal brand]"
 }
 
@@ -25,7 +25,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.53 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="CMS, static site generator, Hugo, Jekyll, Gatsby, Personal website, personal brand">
 <meta name="description" content="It&rsquo;s not always clear why we need need a personal website. But here&rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like Hugo.">
@@ -104,7 +104,11 @@
     
     
       
-        <link rel="stylesheet"  href="https://xiaoyunyang.github.io/css/custom.css">
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/custom.css">
+      
+    
+      
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/syntax.css">
       
     
 
@@ -145,7 +149,7 @@
         </a>
         <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
         
-          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+          <h5 class="sidebar-profile-bio">Software Engineer. Climber. Snowboarder.</h5>
         
       </div>
     
@@ -311,63 +315,42 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>It&rsquo;s not always clear why we need need a personal website. But here&rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like <a href="https://gohugo.io/" target="_blank">Hugo</a>.</p>
-
+              <p>It&rsquo;s not always clear why we need need a personal website. But here&rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like <a href="https://gohugo.io/">Hugo</a>.</p>
 <h2 id="what-a-personal-brand-website-needs">What A Personal Brand Website Needs</h2>
-
 <p>I need a website to:</p>
-
 <ol>
 <li>Showcase my projects,</li>
 <li>Blog about programming and my other interests, and</li>
 <li>Share information about me that would be of interest to a recruiter, including my resume, email, and links to my Github, Medium, and LinkedIn pages.</li>
 </ol>
-
 <p>Being able to easily generate and publish blog posts is another extremely beneficial, but not required featured.</p>
-
 <p>I&rsquo;ve always find myself in a situation where I have thoughts and ideas but no single place to record and consolidate them all. There are times when I would give thoughtful comments for an article I read on Medium or Linkedin or go on some long rant on Facebook and thinking to myself: &ldquo;man, I&rsquo;m not going to be able to easily find this again when I want to share it with another person&rdquo;.</p>
-
 <h2 id="why-use-a-static-site-generator">Why Use A Static Site Generator</h2>
-
-<p>My old personal website was built with vanilla HTML, React, Backbone.js (for routing) and <a href="https://github.com/markedjs/marked" target="_blank">marked</a> for dynamically load markdown files. It was high maintenance and not scalable. Although I kinda set the website up to separate content from code, I still had to go into the code when I want to add more pages to the website. The website was set up to display three pages: Work, About, and Writing, which included links to articles I <a href="https://medium.com/@xiaoyunyang/latest" target="_blank">published on Medium</a>.</p>
-
+<p>My old personal website was built with vanilla HTML, React, Backbone.js (for routing) and <a href="https://github.com/markedjs/marked">marked</a> for dynamically load markdown files. It was high maintenance and not scalable. Although I kinda set the website up to separate content from code, I still had to go into the code when I want to add more pages to the website. The website was set up to display three pages: Work, About, and Writing, which included links to articles I <a href="https://medium.com/@xiaoyunyang/latest">published on Medium</a>.</p>
 <p>My old website was bootstrapped. I wanted something set up quickly and didn&rsquo;t have a lot of time to architect it. I had on my todo-list for a long time to clean up the code for the website to also let it function as a blog.</p>
-
-<p>One day I watched <a href="https://www.youtube.com/watch?v=KX4G49ZrvY0" target="_blank">a talk on YouTube</a> by a content management system (CMS) evangelist. He discussed the benefits of using a CMS to generate a website composed of content from markdown and text files. This promotes separation of content from code and better security and speed at which content is delivered. Some CMS are either git-backed or talk to an API.</p>
-
-<p>This is when I decided to abandon my old website. I built my old website as a static site generator. Writing all the code myself and maintaining the codebase seems like a low-value added activity, especially when I can simply leverage existing static site generators. I rather spend my time creating content for my website and work on my <a href="http://xiaoyunyang.github.io/categories/projects/" target="_blank">various other projects</a>.</p>
-
+<p>One day I watched <a href="https://www.youtube.com/watch?v=KX4G49ZrvY0">a talk on YouTube</a> by a content management system (CMS) evangelist. He discussed the benefits of using a CMS to generate a website composed of content from markdown and text files. This promotes separation of content from code and better security and speed at which content is delivered. Some CMS are either git-backed or talk to an API.</p>
+<p>This is when I decided to abandon my old website. I built my old website as a static site generator. Writing all the code myself and maintaining the codebase seems like a low-value added activity, especially when I can simply leverage existing static site generators. I rather spend my time creating content for my website and work on my <a href="http://xiaoyunyang.github.io/categories/projects/">various other projects</a>.</p>
 <h2 id="why-i-chose-hugo">Why I Chose Hugo</h2>
-
 <p>I&rsquo;m going with the git-backed option for a personal brand website because I want to use github to host my website for free and having an API to serve static files just seems like an overkill for a simple personal / blog website.</p>
-
-<p>I researched different options for <a href="https://www.netlify.com/blog/2016/05/02/top-ten-static-website-generators/" target="_blank">static site generators</a>. My criteria are:</p>
-
+<p>I researched different options for <a href="https://www.netlify.com/blog/2016/05/02/top-ten-static-website-generators/">static site generators</a>. My criteria are:</p>
 <ol>
 <li><strong>Speed</strong> - This includes speed of development (getting a website up and running quickly), and the performance of the website at delivering content.</li>
 <li><strong>Popularity</strong> - A very important but often overlooked aspect of choosing a technology is how many people use it. When a technology is popular, you&rsquo;d be able to get more community support (e.g. StackOverflow, tutorials, sample projects) and the creators of the tools have an incentive to continue to support and improve upon their product.</li>
 <li><strong>Customization</strong>  - This is a fringe criterion. Style and uniqueness of the website are not super important for me. I want my website to be a place to share information about me and having too unique of a website could make it more difficult for visitors of the website to find information. Still, it&rsquo;d be nice if I have the option to choose from different layouts for my website and some customization like fonts.</li>
 </ol>
-
 <p>From my research, a few static site generators impressed me:</p>
-
 <ul>
-<li><a href="https://jekyllrb.com/" target="_blank">Jekyll</a>: Built with Ruby and uses Liquid templates. Very popular, created by the founder of Github, and offers free hosting on Github.</li>
-<li><a href="https://docusaurus.io/" target="_blank">Docusaurus</a>: Built with JavaScript and uses Markdown templates. Created by Facebook engineers to create and maintain documentation.</li>
-<li><a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a>: Built with JavaScript and uses React.js templates. Gatsby is a static Progressive Web App generator good for websites that are mostly static (for example, a portfolio or a blog). You can write your website in React (Create-React-App) and Gatsby pre-renders the website into HTML at the build time.</li>
-<li><a href="https://github.com/zeit/next.js" target="_blank">Next</a>: Built with JavaScript and uses React templates. A framework for statically-exported React apps.</li>
-<li><a href="https://gohugo.io/" target="_blank">Hugo</a>: Go and Go Template</li>
+<li><a href="https://jekyllrb.com/">Jekyll</a>: Built with Ruby and uses Liquid templates. Very popular, created by the founder of Github, and offers free hosting on Github.</li>
+<li><a href="https://docusaurus.io/">Docusaurus</a>: Built with JavaScript and uses Markdown templates. Created by Facebook engineers to create and maintain documentation.</li>
+<li><a href="https://www.gatsbyjs.org/">Gatsby</a>: Built with JavaScript and uses React.js templates. Gatsby is a static Progressive Web App generator good for websites that are mostly static (for example, a portfolio or a blog). You can write your website in React (Create-React-App) and Gatsby pre-renders the website into HTML at the build time.</li>
+<li><a href="https://github.com/zeit/next.js">Next</a>: Built with JavaScript and uses React templates. A framework for statically-exported React apps.</li>
+<li><a href="https://gohugo.io/">Hugo</a>: Go and Go Template</li>
 </ul>
-
-<p>I ultimately went with Hugo because it&rsquo;s popular, has a plethora of <a href="https://themes.gohugo.io/" target="_blank">themes</a> to choose from, lets you <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/" target="_blank">host from github</a>, and provides a simple workflow and a straightforward means of customizing your site.</p>
-
+<p>I ultimately went with Hugo because it&rsquo;s popular, has a plethora of <a href="https://themes.gohugo.io/">themes</a> to choose from, lets you <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">host from github</a>, and provides a simple workflow and a straightforward means of customizing your site.</p>
 <h2 id="creating-a-website-powered-by-hugo">Creating A Website Powered By Hugo</h2>
-
-<p>Setting up the Hugo project is easy enough with their <a href="https://gohugo.io/getting-started/quick-start/" target="_blank">5-step Quick Start</a> Tutorial. Choosing a template took a while. The <a href="https://themes.gohugo.io/" target="_blank">Hugo templates</a> are created by third party developers and are hosted from Github. I want a template that not only looks good, but has good documentation, lots of users, and is actively maintained. I ultimately went with the <a href="https://github.com/kakawait/hugo-tranquilpeak-theme" target="_blank">tranquilpeak</a> template, which has the nice sidebar navigation that I adore, well maintained as an open source project, and has a good number of users.</p>
-
+<p>Setting up the Hugo project is easy enough with their <a href="https://gohugo.io/getting-started/quick-start/">5-step Quick Start</a> Tutorial. Choosing a template took a while. The <a href="https://themes.gohugo.io/">Hugo templates</a> are created by third party developers and are hosted from Github. I want a template that not only looks good, but has good documentation, lots of users, and is actively maintained. I ultimately went with the <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">tranquilpeak</a> template, which has the nice sidebar navigation that I adore, well maintained as an open source project, and has a good number of users.</p>
 <h2 id="conclusion">Conclusion</h2>
-
-<p>I need a personal website to build my brand, assemble a portfolio for myself and let the world know who I am and what I care about by keeping a blog. I want to focus on the &ldquo;what&rdquo; and not the &ldquo;how&rdquo; for my personal website. Thus, I&rsquo;m leveraging a static site generator like <a href="https://gohugo.io/" target="_blank">Hugo</a>.</p>
+<p>I need a personal website to build my brand, assemble a portfolio for myself and let the world know who I am and what I care about by keeping a blog. I want to focus on the &ldquo;what&rdquo; and not the &ldquo;how&rdquo; for my personal website. Thus, I&rsquo;m leveraging a static site generator like <a href="https://gohugo.io/">Hugo</a>.</p>
               
 
 
@@ -598,7 +581,7 @@ s.setAttribute('data-timestamp', +new Date());
     
     <h4 id="about-card-name">Xiaoyun Yang</h4>
     
-      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+      <div id="about-card-bio">Software Engineer. Climber. Snowboarder.</div>
     
     
       <div id="about-card-job">
@@ -638,14 +621,6 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script src="https://xiaoyunyang.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
 
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/go.min.js"></script>
-  
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
-  
 
 
 <script>

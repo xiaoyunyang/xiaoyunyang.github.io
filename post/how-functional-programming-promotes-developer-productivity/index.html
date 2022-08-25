@@ -7,17 +7,17 @@
 {  
   "@context":"http://schema.org",
   "@type":"Website",
-  "@id":"https://xiaoyunyang.github.io/",
+  "@id":"https:\/\/xiaoyunyang.github.io\/",
   "author": {
     "@type": "Person",
-    "name": Xiaoyun Yang,
+    "name": "Xiaoyun Yang",
     
-    "image": https://xiaoyunyang.github.io/images/xyang.png
+    "image": "https://xiaoyunyang.github.io/images/xyang.png"
     
   },
   "name":"Xiaoyun Yang",
-  "description":"<p>Functional Programming is more than just a buzzword these days. It&rsquo;s super useful and makes you rethink everything you&rsquo;ve learned about software.</p>",
-  "url":"https://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/",
+  "description":"\u003cp\u003eFunctional Programming is more than just a buzzword these days. It\u0026rsquo;s super useful and makes you rethink everything you\u0026rsquo;ve learned about software.\u003c\/p\u003e",
+  "url":"https:\/\/xiaoyunyang.github.io\/post\/how-functional-programming-promotes-developer-productivity\/",
   "keywords":"[]"
 }
 
@@ -25,7 +25,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.53 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="">
 <meta name="description" content="Functional Programming is more than just a buzzword these days. It&rsquo;s super useful and makes you rethink everything you&rsquo;ve learned about software.">
@@ -103,7 +103,11 @@
     
     
       
-        <link rel="stylesheet"  href="https://xiaoyunyang.github.io/css/custom.css">
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/custom.css">
+      
+    
+      
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/syntax.css">
       
     
 
@@ -144,7 +148,7 @@
         </a>
         <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
         
-          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+          <h5 class="sidebar-profile-bio">Software Engineer. Climber. Snowboarder.</h5>
         
       </div>
     
@@ -303,387 +307,279 @@
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Functional Programming is more than just a buzzword these days. It&rsquo;s super useful and makes you rethink everything you&rsquo;ve learned about software.</p>
-
 <div class="alert info ">
-  <p>This article was originally <a href="https://medium.com/@xiaoyunyang/why-functional-programming-from-a-developer-productivity-perspective-69c4b8100776" target="_blank">published on Medium</a> before I had my own blog.</p>
+  <p>This article was originally <a href="https://medium.com/@xiaoyunyang/why-functional-programming-from-a-developer-productivity-perspective-69c4b8100776">published on Medium</a> before I had my own blog.</p>
 </div>
-
-<h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#motivation">Motivation</a></li>
-<li><a href="#key-and-cool-ideas-from-fp">Key (and cool) Ideas From FP</a>
-<ul>
-<li><a href="#functional-programming-design-patterns">Functional Programming Design Patterns</a></li>
-<li><a href="#types">Types</a></li>
-<li><a href="#referential-transparency-rt">Referential Transparency (RT)</a></li>
-<li><a href="#laziness">Laziness</a></li>
-<li><a href="#monad">Monad</a></li>
-<li><a href="#monoid">Monoid</a></li>
-</ul></li>
-</ul></li>
-</ul>
+<h1 id="table-of-contents">Table of Contents</h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#key-and-cool-ideas-from-fp">Key (and cool) Ideas From FP</a>
+      <ul>
+        <li><a href="#functional-programming-design-patterns">Functional Programming Design Patterns</a></li>
+        <li><a href="#types">Types</a></li>
+        <li><a href="#referential-transparency-rt">Referential Transparency (RT)</a></li>
+        <li><a href="#laziness">Laziness</a></li>
+        <li><a href="#monad">Monad</a></li>
+        <li><a href="#monoid">Monoid</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 
 <h2 id="motivation">Motivation</h2>
-
 <p><strong>Why Learn Functional Programming (FP)?</strong></p>
-
-<p>Let&rsquo;s start with a simple motivating example to demonstrate the key differences between functional programming  and imperative programming.</p>
-
+<p>Let&rsquo;s start with a simple motivating example to demonstrate the key differences between functional programming and imperative programming.</p>
 <p>Suppose you want to find the average of a list of Ints. In imperative programming, you would do something like this:</p>
-
-<pre><code class="language-java">//In Java
-double[] arr = new double[] {1,2,3};
-double acc = 0;
-for(int i=0; i&lt;arr.length; i++) {
-	acc += arr[i];
-}
-double ave = acc/arr.length;
-
-System.out.println(&quot;The average of &quot; + Arrays.toString(arr) + &quot; is &quot;+ave);  
-//&gt; The average of [1.0, 2.0, 3.0] is 2.0
-</code></pre>
-
-<p>The functional programming solution is much shorter and more high level:</p>
-
-<pre><code class="language-scala">//In Scala
-def list = List(1.0, 2.0 ,3.0)
-def findAve(l: List[Double]): Double  = l.reduce(_ + _)/l.length
-findAve(List(1,2,3))
-
-println(s&quot;The average of $list is $ave&quot;)
-//&gt; The average of List(1.0, 2.0, 3.0) is 2.0
-</code></pre>
-
-<p>30 years ago, the emphasis was on creating and maintaining small code base that need to fulfill a set of functional requirements. Computational power was a huge constraint. Now we live in a different world. We build complex programs with many moving parts. Programs are expected to be reliable, responsive, and error resistant. Servers are scattered throughout the world so things like latency and multicore programming became the new pain points.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">//In Java
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">double</span><span style="color:#f92672">[]</span> arr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">double</span><span style="color:#f92672">[]</span> <span style="color:#f92672">{</span>1<span style="color:#f92672">,</span>2<span style="color:#f92672">,</span>3<span style="color:#f92672">};</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> acc <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span> i<span style="color:#f92672">&lt;</span>arr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	acc <span style="color:#f92672">+=</span> arr<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> ave <span style="color:#f92672">=</span> acc<span style="color:#f92672">/</span>arr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;The average of &#34;</span> <span style="color:#f92672">+</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(</span>arr<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; is &#34;</span><span style="color:#f92672">+</span>ave<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//&gt; The average of [1.0, 2.0, 3.0] is 2.0
+</span></span></span></code></pre></div><p>The functional programming solution is much shorter and more high level:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#75715e">//In Scala
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> list <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1.0</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">2.0</span> <span style="color:#f92672">,</span><span style="color:#ae81ff">3.0</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> findAve<span style="color:#f92672">(</span>l<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">List</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Double</span><span style="color:#f92672">])</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Double</span>  <span style="color:#f92672">=</span> l<span style="color:#f92672">.</span>reduce<span style="color:#f92672">(</span><span style="color:#66d9ef">_</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">_</span><span style="color:#f92672">)/</span>l<span style="color:#f92672">.</span>length
+</span></span><span style="display:flex;"><span>findAve<span style="color:#f92672">(</span><span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>println<span style="color:#f92672">(</span><span style="color:#e6db74">s&#34;The average of </span><span style="color:#e6db74">$list</span><span style="color:#e6db74"> is </span><span style="color:#e6db74">$ave</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//&gt; The average of List(1.0, 2.0, 3.0) is 2.0
+</span></span></span></code></pre></div><p>30 years ago, the emphasis was on creating and maintaining small code base that need to fulfill a set of functional requirements. Computational power was a huge constraint. Now we live in a different world. We build complex programs with many moving parts. Programs are expected to be reliable, responsive, and error resistant. Servers are scattered throughout the world so things like latency and multicore programming became the new pain points.</p>
 <p>The most visible benefits of functional programming are:</p>
-
 <ul>
 <li><strong>developer productivity</strong> - better code reusability and modularity, which is made possible by treating functions as composable primitives and something that describes behavior in the abstract (i.e., without binding it to actual use cases or data).</li>
 <li><strong>Program correctness</strong> - a benfit of referential transparency</li>
 <li><strong>Scalability</strong> - program correct whether run on one core or multiple cores (another benefit of referential transparency)</li>
 </ul>
-
 <p><strong>Why Now?</strong></p>
-
 <ul>
 <li>1950s -
 Functional programming was invented, but not popular because it took more memory to be stateless. Memory was expensive.</li>
 <li>1980s - Object Oriented Programming (OO) became popular in the 80s because GUIs became popular. In OO style, it’s easier to program things that use a fixed number of operations for an unlimited number of operation.</li>
-<li>2010s - Memory is cheap. Can’t make transistors any smaller (marginal gains in hardware capability). Fast processing and big data processing requires more than one core.  There has been an increasing emphasis on asynchronous, distributed, multi-core and use cloud computing. Multicore competing for the same memory bus, OS no longer manages threads for you on multicore - if you need to perform the same tasks faster and faster, you can increase to unlimited number of cores. Stateful programming is more of a liability now with these new requirement.
+<li>2010s - Memory is cheap. Can’t make transistors any smaller (marginal gains in hardware capability). Fast processing and big data processing requires more than one core. There has been an increasing emphasis on asynchronous, distributed, multi-core and use cloud computing. Multicore competing for the same memory bus, OS no longer manages threads for you on multicore - if you need to perform the same tasks faster and faster, you can increase to unlimited number of cores. Stateful programming is more of a liability now with these new requirement.
 Functional ➡ no assignments ➡ no states ➡ no blocking or concurrency issues.</li>
 </ul>
-
-<p>In the words of <a href="http://web.mit.edu/alexmv/6.037/sicp.pdf" target="_blank">Structure and Interpretation of Computer Programs</a>, a Program is a pattern of rules to direct processes that manipulate data. The functional programming paradigm helps us:</p>
-
+<p>In the words of <a href="http://web.mit.edu/alexmv/6.037/sicp.pdf">Structure and Interpretation of Computer Programs</a>, a Program is a pattern of rules to direct processes that manipulate data. The functional programming paradigm helps us:</p>
 <blockquote>
 <p>use higher order functions to capture patterns in usage.</p>
-
+</blockquote>
+<blockquote>
 <p>control complexity by building abstractions that hide details when appropriate.</p>
-
+</blockquote>
+<blockquote>
 <p>Programs must be written for people to read and only incidentally for machines to execute.</p>
 </blockquote>
-
 <h2 id="key-and-cool-ideas-from-fp">Key (and cool) Ideas From FP</h2>
-
-<p>This section talks about how to use functional programming concepts to design robust software programs. Ideas from this section are inspired by <a href="https://www.youtube.com/watch?v=E8I19uA-wGY" target="_blank">This Video</a> and <a href="https://www.manning.com/books/functional-programming-in-scala" target="_blank">This Book</a></p>
-
+<p>This section talks about how to use functional programming concepts to design robust software programs. Ideas from this section are inspired by <a href="https://www.youtube.com/watch?v=E8I19uA-wGY">This Video</a> and <a href="https://www.manning.com/books/functional-programming-in-scala">This Book</a></p>
 <h3 id="functional-programming-design-patterns">Functional Programming Design Patterns</h3>
-
-<p>In the functional programming paradigm, we want to get away from hard coding values or function behaviors. Thus, we parameterize the behavior as another function.  How do we do that? We have to start thinking about functions as something configurable and composable. These are the bread and butter concepts that FP-ers must come to embrace as a way of life:</p>
-
+<p>In the functional programming paradigm, we want to get away from hard coding values or function behaviors. Thus, we parameterize the behavior as another function. How do we do that? We have to start thinking about functions as something configurable and composable. These are the bread and butter concepts that FP-ers must come to embrace as a way of life:</p>
 <ul>
-<li><p><strong>Functions</strong>:  In FP, we think of our programs as pipes for data to travel through. Functions can be inputs and outputs.</p></li>
-
-<li><p><strong>Higher Order Functions (HOFs)</strong>:  Probably the coolest and most useful concept in FP. A HOF is simply a function that takes another function as input.</p></li>
-
-<li><p><strong>Polymorphic Functions</strong>:  If functions are pipes, think of a polymorphic function as a design for a pipe that can be used to make different types of pipes. Instead of creating a new function from scratch, you can &ldquo;configure&rdquo; a polymorphic function (sometimes called a generic function) to serve specific purpose of the function. We can &ldquo;abstract out&rdquo; the polymorphic function from observing the structural similarities between different functions.</p></li>
+<li>
+<p><strong>Functions</strong>: In FP, we think of our programs as pipes for data to travel through. Functions can be inputs and outputs.</p>
+</li>
+<li>
+<p><strong>Higher Order Functions (HOFs)</strong>: Probably the coolest and most useful concept in FP. A HOF is simply a function that takes another function as input.</p>
+</li>
+<li>
+<p><strong>Polymorphic Functions</strong>: If functions are pipes, think of a polymorphic function as a design for a pipe that can be used to make different types of pipes. Instead of creating a new function from scratch, you can &ldquo;configure&rdquo; a polymorphic function (sometimes called a generic function) to serve specific purpose of the function. We can &ldquo;abstract out&rdquo; the polymorphic function from observing the structural similarities between different functions.</p>
+</li>
 </ul>
-
 <p>Below is a common pattern that illustrates these three concepts:</p>
-
 <p><strong>The Loop Pattern</strong></p>
-
 <p>Let&rsquo;s look at what’s in common between the two loop functions and what’s distinct between them.</p>
-
 <ul>
-<li>Common:  Take an array of <em>stuff</em> and combine them.</li>
+<li>Common: Take an array of <em>stuff</em> and combine them.</li>
 <li>Distinct: The initial value and what the types of data you work on are different.</li>
 </ul>
-
-<pre><code class="language-javascript">//in javascript
-
-//A loop - prints &quot;1 2 3&quot; to console
-var res = 0
-let nums = [1, 2, 3]
-for(i=0; i&lt;nums.length; i++) {
-	res = res + nums[i]
-}
-
-//Another loop - Performs 1+2+3 then print out sum
-var res = &quot;&quot;
-let strs = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
-for(i=0; i&lt; strs.length; i++) {
-	res = res + strs[i]
-}
-
-</code></pre>
-
-<p>We want to preserve the distinction and get rid of the boilerplate common code. So we can parameterize the loop action as a function parameter and the initial value as a data parameter in the fold function. Fold is basically a loop. The boilerplate is represented by the following pseudo code:</p>
-
-<pre><code>Provide arguments and some initial value.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//in javascript
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//A loop - prints &#34;1 2 3&#34; to console
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">nums</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">nums</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//Another loop - Performs 1+2+3 then print out sum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">strs</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">strs</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">strs</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We want to preserve the distinction and get rid of the boilerplate common code. So we can parameterize the loop action as a function parameter and the initial value as a data parameter in the fold function. Fold is basically a loop. The boilerplate is represented by the following pseudo code:</p>
+<pre tabindex="0"><code>Provide arguments and some initial value.
 Iterate through a loop updating this value.
-</code></pre>
-
-<p>We can write a function called <code>reduce</code> that takes care of the boilerplate that can be used to all kinds of problems that uses this pattern:</p>
-
-<pre><code class="language-javascript">[1,2,3].reduce((a,b) =&gt; (a+b), 0) //&gt; 6
-[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;].reduce((a,b) =&gt; a+b, &quot;&quot;) //&gt; &quot;abc&quot;
-</code></pre>
-
-<p><code>reduce</code> is actually a <strong>HOF</strong> that javascript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce?v=a" target="_blank">gives you for free</a>. What makes it a HOF is that it takes another function as an argument, i.e., <code>(a,b) =&gt; a+b</code>. In this example, we are being lazy by not declaring this function first (e.g., assigning to a const called <code>addTwo</code>) prior to using it as an argument in <code>reduce</code>. It is perfectly fine to leave that function without a name, that is <em>anonymous</em>, because it&rsquo;s simple and short enough that we can declare it directly in the <code>reduce</code> function. The <code>(a,b,) =&gt; a+b</code> is called an <strong>anonymous function</strong>.</p>
-
+</code></pre><p>We can write a function called <code>reduce</code> that takes care of the boilerplate that can be used to all kinds of problems that uses this pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>, <span style="color:#ae81ff">0</span>) <span style="color:#75715e">//&gt; 6
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  [(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>)].<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>, <span style="color:#e6db74">&#34;&#34;</span>); <span style="color:#75715e">//&gt; &#34;abc&#34;
+</span></span></span></code></pre></div><p><code>reduce</code> is actually a <strong>HOF</strong> that javascript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce?v=a">gives you for free</a>. What makes it a HOF is that it takes another function as an argument, i.e., <code>(a,b) =&gt; a+b</code>. In this example, we are being lazy by not declaring this function first (e.g., assigning to a const called <code>addTwo</code>) prior to using it as an argument in <code>reduce</code>. It is perfectly fine to leave that function without a name, that is <em>anonymous</em>, because it&rsquo;s simple and short enough that we can declare it directly in the <code>reduce</code> function. The <code>(a,b,) =&gt; a+b</code> is called an <strong>anonymous function</strong>.</p>
 <p><code>reduce</code> is also a <strong>polymorphic function</strong>. It does not hardcode behavior and lets you use it on any array of <em>stuff</em> and reduce it by specifying a rule (e.g., <code>(a,b) =&gt; a+b</code>).</p>
-
-<p>However, if we want to be using the rule with this exact rule a lot, it may be useful to &ldquo;configure&rdquo; the <code>reduce</code> function to some more specific function for brevity and convenience.  As shown below, <code>myReduce</code> can be used on both arrays of strings and arrays of numbers.</p>
-
-<pre><code class="language-javascript">const myReduce = (arr, initVal) =&gt;
-	arr.reduce((a,b) =&gt; (a+b), initVal)
-
-let arr1 = [1,2,3]
-let arr2 = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
-myReduce(arr1, 0) //&gt; 6
-myReduce(arr2, &quot;&quot;) //&gt;&quot;abc&quot;
-
-</code></pre>
-
-<p>What happens if we do this?</p>
-
-<pre><code class="language-javascript">let arr3 = [arr1, arr2]
-myReduce(arr3, [])
-</code></pre>
-
-<p>The above is going to evaluate to <code>&quot;1,2,3a,b,c&quot;</code>. Why is that?</p>
-
+<p>However, if we want to be using the rule with this exact rule a lot, it may be useful to &ldquo;configure&rdquo; the <code>reduce</code> function to some more specific function for brevity and convenience. As shown below, <code>myReduce</code> can be used on both arrays of strings and arrays of numbers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">myReduce</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">arr</span>, <span style="color:#a6e22e">initVal</span>) =&gt; <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">initVal</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr1</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr2</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myReduce</span>(<span style="color:#a6e22e">arr1</span>, <span style="color:#ae81ff">0</span>); <span style="color:#75715e">//&gt; 6
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">myReduce</span>(<span style="color:#a6e22e">arr2</span>, <span style="color:#e6db74">&#34;&#34;</span>); <span style="color:#75715e">//&gt;&#34;abc&#34;
+</span></span></span></code></pre></div><p>What happens if we do this?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr3</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">arr1</span>, <span style="color:#a6e22e">arr2</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myReduce</span>(<span style="color:#a6e22e">arr3</span>, []);
+</span></span></code></pre></div><p>The above is going to evaluate to <code>&quot;1,2,3a,b,c&quot;</code>. Why is that?</p>
 <p>It turns out in javascript, if you want to concatenate arrays, you have to use <code>arr.concat</code>:</p>
-
-<pre><code class="language-javascript">let arr3 = [arr1, arr2]
-arr3.reduce((a,b) =&gt; a.concat(b), [])
-
-</code></pre>
-
-<p>That may seem counterintuitive because when you use <code>+</code> on strings, you are essentially concatenating. Not to mention that fundamentally, strings are just an array of chars.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr3</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">arr1</span>, <span style="color:#a6e22e">arr2</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">arr3</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">concat</span>(<span style="color:#a6e22e">b</span>), []);
+</span></span></code></pre></div><p>That may seem counterintuitive because when you use <code>+</code> on strings, you are essentially concatenating. Not to mention that fundamentally, strings are just an array of chars.</p>
 <p>In scala, the <code>++</code> is used for concatenation of any collections, although the result is going to differ based on how you use it as shown below:</p>
-
-<pre><code class="language-scala">//In Scala
-List(1,2,3) ++ List(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;) //&gt; res: List[Any] = List(1, 2, 3, a, b, c)
-
-List(1,2,3) ++ &quot;abc&quot;
-//&gt; res: List[AnyVal] = List(1, 2, 3, a, b, c)
-
-&quot;abc&quot; ++ List(1,2,3)
-//res: scala.collection.immutable.IndexedSeq[AnyVal] = Vector(a, b, c, 1, 2, 3)
-
-&quot;abc&quot; ++ &quot;def&quot; //&gt; res: String = abcdef
-&quot;abc&quot; + &quot;def&quot; //&gt; res: String = abcdef
-</code></pre>
-
-<p><strong>Function Composition and Partial Application (Currying)</strong></p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#75715e">//In Scala
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">)</span> <span style="color:#f92672">++</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">)</span> <span style="color:#75715e">//&gt; res: List[Any] = List(1, 2, 3, a, b, c)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">)</span> <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;abc&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//&gt; res: List[AnyVal] = List(1, 2, 3, a, b, c)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;abc&#34;</span> <span style="color:#f92672">++</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//res: scala.collection.immutable.IndexedSeq[AnyVal] = Vector(a, b, c, 1, 2, 3)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;abc&#34;</span> <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;def&#34;</span> <span style="color:#75715e">//&gt; res: String = abcdef
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">&#34;abc&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;def&#34;</span> <span style="color:#75715e">//&gt; res: String = abcdef
+</span></span></span></code></pre></div><p><strong>Function Composition and Partial Application (Currying)</strong></p>
 <p>The idea of Currying is named after the mathematician Haskell Curry. He also discovered one of the most important results in computer science, the Curry-Howard isomorphism which says that a program is a logical proof, and the hypothesis that it proves is its type.</p>
-
-<pre><code class="language-scala">//Currying is when you break down a function that takes multiple arguments into a
-//series of functions that take part of the arguments.
-//converts a function f of two arguments into a function of one argument that partially applies f.
-  def curry[A,B,C](f: (A,B) =&gt; C): A =&gt; (B =&gt; C) =
-  		(a: A) =&gt; (b: B) =&gt; f(a,b)  
-  //&gt; curry: [A, B, C](f: (A, B) =&gt; C)A =&gt; (B =&gt; C)
-</code></pre>
-
-<p>Bottomline: Partial application lets you make reusable functions.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#75715e">//Currying is when you break down a function that takes multiple arguments into a
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//series of functions that take part of the arguments.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//converts a function f of two arguments into a function of one argument that partially applies f.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">def</span> curry<span style="color:#f92672">[</span><span style="color:#66d9ef">A</span>,<span style="color:#66d9ef">B</span>,<span style="color:#66d9ef">C</span><span style="color:#f92672">](</span>f<span style="color:#66d9ef">:</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">A</span><span style="color:#f92672">,</span><span style="color:#66d9ef">B</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">=&gt;</span> C<span style="color:#f92672">)</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">A</span> <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">(</span>B <span style="color:#66d9ef">=&gt;</span> C<span style="color:#f92672">)</span> <span style="color:#66d9ef">=</span>
+</span></span><span style="display:flex;"><span>  		<span style="color:#f92672">(</span>a<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">A</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">=&gt;</span> <span style="color:#f92672">(</span>b<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">B</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">=&gt;</span> f<span style="color:#f92672">(</span>a<span style="color:#f92672">,</span>b<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//&gt; curry: [A, B, C](f: (A, B) =&gt; C)A =&gt; (B =&gt; C)
+</span></span></span></code></pre></div><p>Bottomline: Partial application lets you make reusable functions.</p>
 <h3 id="types">Types</h3>
-
-<p>An interesting observation from the sample code above shows that Scala distinguishes between many types of values while javascript has just a few, i.e., <code>var</code> (mutable, global),  <code>const</code> (immutable) or <code>let</code> (mutable, local). This brings up another interesting feature of FP - Types. As quoted from <a href="https://www.youtube.com/watch?v=E8I19uA-wGY" target="_blank">This Video</a>:</p>
-
+<p>An interesting observation from the sample code above shows that Scala distinguishes between many types of values while javascript has just a few, i.e., <code>var</code> (mutable, global), <code>const</code> (immutable) or <code>let</code> (mutable, local). This brings up another interesting feature of FP - Types. As quoted from <a href="https://www.youtube.com/watch?v=E8I19uA-wGY">This Video</a>:</p>
 <blockquote>
 <p>Type are not classes. Types are just the label for the set of inputs or the set of outputs. Classes are a collection of functions, Types can be composed.</p>
 </blockquote>
-
-<p>Scala is type-safe, which is the biggest selling point for Scala according to <a href="https://www.lightbend.com/" target="_blank">LightBend</a> (formerly TypeSafe) - the company founded by the creator of Scala. Using the findAve example from earlier, type safe means you can impose the argument type and return type when you first define your function in Scala.</p>
-
-<pre><code class="language-scala">def findAve(l: List[Double]): Double  = l.reduce(_ + _)/l.length
-findAve(List(1,2,3))
-</code></pre>
-
-<p>Look What happens in a language that&rsquo;s not type safe. Suppose you have a text input to get the user to enter a number <code>num</code>, then your program subtracts 1 from <code>num</code>.</p>
-
-<pre><code class="language-javascript">//In javascript
-let num = &quot;7&quot; //user inputs &quot;7&quot; for num
-let res = num - 1 //&gt; 6 ... good
-
-let num = &quot;07&quot; //user inputs &quot;07&quot; for num
-res = num - 1 //&gt;6 ... still good
-
-let num = &quot;apple&quot; - 1 //&gt; NaN
-res = num - 1 //&gt; NaN ... bad
-
-</code></pre>
-
-<p>In a type-safe language like scala, subtracting 1 from a String doesn&rsquo;t make sense. However, in javascript, it works - but only if the String represents a number.</p>
-
+<p>Scala is type-safe, which is the biggest selling point for Scala according to <a href="https://www.lightbend.com/">LightBend</a> (formerly TypeSafe) - the company founded by the creator of Scala. Using the findAve example from earlier, type safe means you can impose the argument type and return type when you first define your function in Scala.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> findAve<span style="color:#f92672">(</span>l<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">List</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Double</span><span style="color:#f92672">])</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Double</span>  <span style="color:#f92672">=</span> l<span style="color:#f92672">.</span>reduce<span style="color:#f92672">(</span><span style="color:#66d9ef">_</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">_</span><span style="color:#f92672">)/</span>l<span style="color:#f92672">.</span>length
+</span></span><span style="display:flex;"><span>findAve<span style="color:#f92672">(</span><span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">))</span>
+</span></span></code></pre></div><p>Look What happens in a language that&rsquo;s not type safe. Suppose you have a text input to get the user to enter a number <code>num</code>, then your program subtracts 1 from <code>num</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//In javascript
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;7&#34;</span>; <span style="color:#75715e">//user inputs &#34;7&#34; for num
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">//&gt; 6 ... good
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;07&#34;</span>; <span style="color:#75715e">//user inputs &#34;07&#34; for num
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">//&gt;6 ... still good
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;apple&#34;</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">//&gt; NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">//&gt; NaN ... bad
+</span></span></span></code></pre></div><p>In a type-safe language like scala, subtracting 1 from a String doesn&rsquo;t make sense. However, in javascript, it works - but only if the String represents a number.</p>
 <p>When the language is not type-safe, it&rsquo;s up to the programmer to ensure that the string indeed represents a number. Also, javascript is dynamically typed so the compiler won&rsquo;t help you catch this type of error. Errors would come up during run-time depending what that string is, which could lead to some nasty bugs.</p>
-
 <p>Suppose you leave out the return type <code>Double</code> in the function signature. Scala can deduce that the return type is based on the argument type.</p>
-
-<pre><code class="language-scala">def findAve(l: List[Double])  = l.reduce(_ + _)/l.length
-//&gt; findAve: (l: List[Double])Double
-</code></pre>
-
-<p>Type inference is pretty convenient at time and some languages like javascript do a good job making type inferences.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> findAve<span style="color:#f92672">(</span>l<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">List</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Double</span><span style="color:#f92672">])</span>  <span style="color:#66d9ef">=</span> l<span style="color:#f92672">.</span>reduce<span style="color:#f92672">(</span><span style="color:#66d9ef">_</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">_</span><span style="color:#f92672">)/</span>l<span style="color:#f92672">.</span>length
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//&gt; findAve: (l: List[Double])Double
+</span></span></span></code></pre></div><p>Type inference is pretty convenient at time and some languages like javascript do a good job making type inferences.</p>
 <p>However, omiting the type of your data can be the source of some nasty bugs such as the one demonstrated below in javascript. javascript seems to automatically convert your argument type from int to double.</p>
-
-<pre><code class="language-javascript">//In javascript
-let findAve = arr =&gt; arr.reduce((a,b) =&gt; a+b)/arr.length
-
-findAve([1,2,3]) //&gt; 2
-findAve([1,1,3]) //&gt;1.6666666666666667
-</code></pre>
-
-<pre><code class="language-scala">//In Scala
-def findAve(l: List[Int])  = l.reduce(_ + _)/l.length  
-//&gt; findAve: (l: List[Int])Int
-
-findAve(List(1,2,3)) //&gt; 2
-findAve(List(1,1,3)) //&gt; 1
-
-def findAve2(l: List[Int]): Double  = l.reduce(_ + _)/l.length
-findAve2(List(1,1,3)) //&gt; 1.0
-
-def findAve3(l: List[Double]): Double  = l.reduce(_ + _)/l.length
-findAve: (l: List[Double])Double
-findAve(List(1,1,3)) //&gt;1.6666666666666667
-</code></pre>
-
-<p><strong>Pattern Matching</strong></p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//In javascript
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">findAve</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">arr</span>) =&gt; <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">findAve</span>([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]); <span style="color:#75715e">//&gt; 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">findAve</span>([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>]); <span style="color:#75715e">//&gt;1.6666666666666667
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#75715e">//In Scala
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> findAve<span style="color:#f92672">(</span>l<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">List</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Int</span><span style="color:#f92672">])</span>  <span style="color:#66d9ef">=</span> l<span style="color:#f92672">.</span>reduce<span style="color:#f92672">(</span><span style="color:#66d9ef">_</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">_</span><span style="color:#f92672">)/</span>l<span style="color:#f92672">.</span>length
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//&gt; findAve: (l: List[Int])Int
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>findAve<span style="color:#f92672">(</span><span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">))</span> <span style="color:#75715e">//&gt; 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>findAve<span style="color:#f92672">(</span><span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">))</span> <span style="color:#75715e">//&gt; 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> findAve2<span style="color:#f92672">(</span>l<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">List</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Int</span><span style="color:#f92672">])</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Double</span>  <span style="color:#f92672">=</span> l<span style="color:#f92672">.</span>reduce<span style="color:#f92672">(</span><span style="color:#66d9ef">_</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">_</span><span style="color:#f92672">)/</span>l<span style="color:#f92672">.</span>length
+</span></span><span style="display:flex;"><span>findAve2<span style="color:#f92672">(</span><span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">))</span> <span style="color:#75715e">//&gt; 1.0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> findAve3<span style="color:#f92672">(</span>l<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">List</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Double</span><span style="color:#f92672">])</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Double</span>  <span style="color:#f92672">=</span> l<span style="color:#f92672">.</span>reduce<span style="color:#f92672">(</span><span style="color:#66d9ef">_</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">_</span><span style="color:#f92672">)/</span>l<span style="color:#f92672">.</span>length
+</span></span><span style="display:flex;"><span>findAve<span style="color:#66d9ef">:</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">l:</span> <span style="color:#66d9ef">List</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Double</span><span style="color:#f92672">])</span><span style="color:#a6e22e">Double</span>
+</span></span><span style="display:flex;"><span>findAve<span style="color:#f92672">(</span><span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span><span style="color:#ae81ff">3</span><span style="color:#f92672">))</span> <span style="color:#75715e">//&gt;1.6666666666666667
+</span></span></span></code></pre></div><p><strong>Pattern Matching</strong></p>
 <p><strong>Recursion</strong></p>
-
 <h3 id="referential-transparency-rt">Referential Transparency (RT)</h3>
-
-<p>As <a href="https://github.com/fpinscala/fpinscala/wiki/Chapter-1:-What-is-functional-programming%3F" target="_blank">FP in Scala</a> puts it:
-&gt; Referential transparency forces the invariant that everything a function does is represented by the value that it returns, according to the result type of the function. At each step we replace a term with an equivalent one; computation proceeds by substituting equals for equals. In other words, RT enables equational reasoning about programs.</p>
-
-<p>I like the second definition better:
-&gt; Another way of understanding RT is that the meaning of RT expressions does not depend on context and may be reasoned about locally, whereas the meaning of non-RT expressions is context-dependent and requires more global reasoning.</p>
-
+<p>As <a href="https://github.com/fpinscala/fpinscala/wiki/Chapter-1:-What-is-functional-programming%3F">FP in Scala</a> puts it:</p>
+<blockquote>
+<p>Referential transparency forces the invariant that everything a function does is represented by the value that it returns, according to the result type of the function. At each step we replace a term with an equivalent one; computation proceeds by substituting equals for equals. In other words, RT enables equational reasoning about programs.</p>
+</blockquote>
+<p>I like the second definition better:</p>
+<blockquote>
+<p>Another way of understanding RT is that the meaning of RT expressions does not depend on context and may be reasoned about locally, whereas the meaning of non-RT expressions is context-dependent and requires more global reasoning.</p>
+</blockquote>
 <p>The obvious benefit is RT makes the program less prone to bugs. Since RT forces data immutability, making a change to your data requires you to create new data, which hurts memory performance. Similar to recursion, there are things &ldquo;under the hood&rdquo; that can be done to improve memory performance while still enforcing immutability at a high level.</p>
-
 <p>We want to write referential transparent programs to avoid side effects. What are side effects and what are the dangers of side effects? See Monad section below for more on this.</p>
-
 <h3 id="laziness">Laziness</h3>
-
 <p>Laziness and memoization could be translated to two obvious principles:</p>
-
 <ul>
 <li>Laziness = “Don’t compute something until you need it.”</li>
 <li>Memoization = “Don’t recompute something you have computed before.”</li>
 </ul>
-
 <p><strong>Closure</strong></p>
-
 <p>When you declare a local variable, that variable has a scope. Generally local variables exist only within the block or function in which you declare them.</p>
-
 <p>A closure is a persistent local variable scope.</p>
-
 <h3 id="monad">Monad</h3>
-
-<p>Now you understand higher order functions and types, you are ready for learning what a monad is. Instead of hard coding error handlers in your code to deal with non-deterministic nature of real world applications, you delegate the error handling to monads, which are implemented as a type in Scala. Another way to think about the monad is that <a href="https://medium.com/@sinisalouc/demystifying-the-monad-in-scala-cc716bb6f534" target="_blank">a monad is simply a wrapper</a>.</p>
-
+<p>Now you understand higher order functions and types, you are ready for learning what a monad is. Instead of hard coding error handlers in your code to deal with non-deterministic nature of real world applications, you delegate the error handling to monads, which are implemented as a type in Scala. Another way to think about the monad is that <a href="https://medium.com/@sinisalouc/demystifying-the-monad-in-scala-cc716bb6f534">a monad is simply a wrapper</a>.</p>
 <p>There are typically four types of monads to express four types of side effects:</p>
-
 <p>A naive way to handle non-determinism is by writing code with lots of side effects.</p>
-
 <blockquote>
-<p>A side effect is any application state change that is observable outside the called function other than its returned value. ~ <a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0" target="_blank">Eric Elliott</a></p>
+<p>A side effect is any application state change that is observable outside the called function other than its returned value. ~ <a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0">Eric Elliott</a></p>
 </blockquote>
-
 <p>Java web applications from the early 2000s are littered with try/catch blocks to guard against unintended/undesirable program states due to external processes (e.g., user input or loss of network connectivity). This practice often implies lots of boilerplate code that are error prone and results in the <em>blocking</em> of operations downstream until the necessary information is obtained.</p>
-
 <p>Many programs designed with a user interface are especially at risk of side effects. A tell tale sign is anytime your function is reading or modifying external variable (e.g., a global variable) outside its own function scope. These external variables include:</p>
-
 <ul>
 <li>Reading user input</li>
 <li>Writing to a file</li>
 <li>Reading from a network</li>
 <li>Reliance on a global state variable (Note: reading/modifying global variables/states is a necessary evil in many real time embedded systems due to microprocessor constraints; however, you should not be doing that if your distributed software is not running on microprocessors.)</li>
 </ul>
-
 <p>How do side effects hurt developer productivity and program correctness?</p>
-
 <p>Side effects makes it difficult for you to reason about the correctness of your program locally. If you have a referentially transparent function (i.e., free of side effects), then you can look at your function and know exactly what it does, meaning the proof of correctness may be limited to the case of testing the response of the function to given inputs. When your program is not referentially transparent, you need to obtain knowledge about external processes, global variables/states, and there is no way to prove correctness of your function by simply running unit tests. You need to run acceptance testing and user testing every time you make a small change in a function. This can have <em>expensive</em> ramification in the real world.</p>
-
 <p>We don&rsquo;t want to get rid of the interesting parts of our program (e.g., user interface) in fear that they will introduce side effects into our program. Rather we want to introduce FP design patterns into our programs to protect us from the negative consequences of side effects. How do we do that? Monads.</p>
-
 <p>There are typically four types of monads to express four types of side effects:</p>
-
 <ol>
-<li>Exception - Takes into account operations that can fail. The exception monad is <a href="http://blog.xebia.com/try-option-or-either/" target="_blank">implemented</a> using <code>Option</code>, <code>Either</code>, or <code>Try</code> in Scala.</li>
+<li>Exception - Takes into account operations that can fail. The exception monad is <a href="http://blog.xebia.com/try-option-or-either/">implemented</a> using <code>Option</code>, <code>Either</code>, or <code>Try</code> in Scala.</li>
 <li>Future - Takes into account that computation takes time (latency). The future monad is implemented using <code>Future</code> in Scala, which does a callback when the task is complete.</li>
 <li>Iterable - Reacting to synchronous data streams.</li>
 <li>Observable - Reacting to asynchronous data streams.</li>
 </ol>
-
 <h3 id="monoid">Monoid</h3>
-
 <p>The idea of monoid is actually simple. You&rsquo;d encounter a monoid in your day-to-day programming without even realizing it&rsquo;s called a monoid. I&rsquo;ve encountered it the other day while trying to determine whether there is a non-empty string in my collections of arrays.</p>
-
-<pre><code class="language-javascript">//In javascript
-
-let arr1 = [&quot;&quot;]
-let arr2 = [&quot;&quot;, &quot;&quot;]
-let arr3 = [&quot;&quot;, &quot;&quot;, &quot;a&quot;]
-
-let res1 = arr1.reduce((a,b) =&gt; a+b) //&gt; &quot;&quot;
-let res2 = arr2.reduce((a,b) =&gt; a+b) //&gt; &quot;&quot;
-let res3 = arr3.reduce((a,b) =&gt; a+b) //&gt; &quot;a&quot;
-
-const strLen = arr =&gt;
-	arr.reduce((a,b) =&gt; a+b).length
-
-strLen([res1]) //&gt; 0
-strLen([res1, res2]) //&gt; 0
-strLen([res1, res2, res3]) //&gt; 1
-strLen([res3, res2, res1]) //&gt; 1
-</code></pre>
-
-<p>What do we notice?</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//In javascript
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr1</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr2</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr3</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;a&#34;</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">res1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr1</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>); <span style="color:#75715e">//&gt; &#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">res2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr2</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>); <span style="color:#75715e">//&gt; &#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">res3</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr3</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>); <span style="color:#75715e">//&gt; &#34;a&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">strLen</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">arr</span>) =&gt; <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>).<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">strLen</span>([<span style="color:#a6e22e">res1</span>]); <span style="color:#75715e">//&gt; 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">strLen</span>([<span style="color:#a6e22e">res1</span>, <span style="color:#a6e22e">res2</span>]); <span style="color:#75715e">//&gt; 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">strLen</span>([<span style="color:#a6e22e">res1</span>, <span style="color:#a6e22e">res2</span>, <span style="color:#a6e22e">res3</span>]); <span style="color:#75715e">//&gt; 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">strLen</span>([<span style="color:#a6e22e">res3</span>, <span style="color:#a6e22e">res2</span>, <span style="color:#a6e22e">res1</span>]); <span style="color:#75715e">//&gt; 1
+</span></span></span></code></pre></div><p>What do we notice?</p>
 <ul>
 <li>The function <code>isEmpty</code> will provide the same correct result no matter whether the <code>&quot;a&quot;</code> lives in <code>arr1</code>, <code>arr2</code> or <code>arr3</code>. The result does not hinges on the groupings of the strings (Associativity).</li>
 <li>The final result does not care how many empty strings you have as any string <code>s</code> concatenated with the empty string is that string (i.e., <code>s + &quot;&quot; == s</code>). However, having a single non-empty string changes your result.</li>
 <li>The order in which the string inputs are provided to the function <code>isEmpty</code> does not impact the final result (Commuativity).</li>
 </ul>
-
 <p>This is recipe for correctness in asynchronous programming and parallel computing.</p>
-
 <p>Because how you group the things over which you want to compute doesn&rsquo;t matter and the order of computing doesn&rsquo;t matter, you can calculate the final result by assigning the subproblems to be calculated by different processors and combine the final answer at the end.</p>
-
-<p>The most <a href="https://www.safaribooksonline.com/blog/2013/05/15/monoids-for-programmers-a-scala-example/" target="_blank">common monoids</a> are:</p>
-
+<p>The most <a href="https://www.safaribooksonline.com/blog/2013/05/15/monoids-for-programmers-a-scala-example/">common monoids</a> are:</p>
 <ul>
 <li>Integers with addition.</li>
 <li>Strings with concatenation.</li>
 <li>Lists with concatenation, like <code>List(1,2)+List(3,4) == List(1,2,3,4)</code>.</li>
 <li>Sets with their union, like <code>Set(1,2,3)+Set(2,4) == Set(1,2,3,4)</code>.</li>
 </ul>
-
-<p>Bottomline:  Why do we care about monoids at all? You can use the monoid laws to verify correctness of your program (esp. when your program deals with aggregating data and operations) under asynchronous conditions and evaluate whether the behavior of your program is going to change if you tried to use parallel computing to optimize for speed and load distribution.</p>
+<p>Bottomline: Why do we care about monoids at all? You can use the monoid laws to verify correctness of your program (esp. when your program deals with aggregating data and operations) under asynchronous conditions and evaluate whether the behavior of your program is going to change if you tried to use parallel computing to optimize for speed and load distribution.</p>
               
 
 
@@ -769,8 +665,8 @@ strLen([res3, res2, res1]) //&gt; 1
   
   <li class="post-action">
     
-      <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
-      <i class="fa fa-list" aria-hidden="true"></i>
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
     
     </a>
   </li>
@@ -866,8 +762,8 @@ s.setAttribute('data-timestamp', +new Date());
   
   <li class="post-action">
     
-      <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
-      <i class="fa fa-list" aria-hidden="true"></i>
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
     
     </a>
   </li>
@@ -916,7 +812,7 @@ s.setAttribute('data-timestamp', +new Date());
     
     <h4 id="about-card-name">Xiaoyun Yang</h4>
     
-      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+      <div id="about-card-bio">Software Engineer. Climber. Snowboarder.</div>
     
     
       <div id="about-card-job">
@@ -956,14 +852,6 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script src="https://xiaoyunyang.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
 
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/go.min.js"></script>
-  
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
-  
 
 
 <script>
