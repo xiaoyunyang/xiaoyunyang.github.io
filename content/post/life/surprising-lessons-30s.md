@@ -18,7 +18,7 @@ A few weeks after I turned 30, the world went into a lock-down. During the COVID
 
 When we are charged money for a product or service that was never provided or overcharged for poor service, it's tempting to try to get our money back. When the decision to pursue a dispute is primarily principle-driven (motivated by the desire to correct some injustice), it could lead to a sub-optimal outcome.
 
-There's opportunity cost whenever we invest time and energy in a dispute. Depending on the type of dispute, there's a varying probability of success that we can get our money back but not matter the outcome, we will lose the time, energy, and money that we could have invested in something else. Not to mention, there's the non-tangible cost of mental stress and anxiety that we experience during the dispute.
+There's opportunity cost whenever we invest time and energy in a dispute. Depending on the type of dispute, there's a varying probability of success that we can get our money back. No matter the outcome, we will lose the time, energy, and money that we could have invested in something else. Not to mention, there's the non-tangible cost of mental stress and anxiety that we experience during the dispute.
 
 Where's the point of diminishing returns when you lose more than you gain by trying to argue for your money back?
 
@@ -36,9 +36,9 @@ I was on the Spotify free tier for a long time before I upgraded to Premium and 
 
 Whether a subscription is worth paying for depends on the extent to which the subscription enhances your everyday experiences and happiness. How you assess the value of a subscription depends on your financial situation.
 
-When I was a poor college student, I avoided paying for things like music, books, and hotels. I spent extra time finding free versions of everything I needed and opted to couch-surf or stay in hostels. In my 30s, I realized that I'm not saving that much money to worth the extra time and mental energy going with a cheaper alternative. Part of that is my idea of how expensive something is changed as I earn more money in my 30s.
+When I was a poor college student, I avoided paying for things like music, books, and hotels. I spent extra time finding free versions of everything I needed and opted to couch-surf or stay in hostels. In my 30s, I realized that the extra time and mental energy going with a cheaper alternative is not saving me that much money. Part of it is that my idea of what's expensive has changed as I started to earn more money in my 30s.
 
-When I travel, I happily pay for a hotel or Lyft to avoid spending hours commuting by public transit or coordinating with couch-surfing or Airbnb hosts. I pay for [GitHub Copilot](https://github.com/features/copilot) because it significantly improves my throughput. I spend over $300 a month on an [Equinox](https://github.com/features/copilot) membership because I like going to the best gym classes and I go to a lot of them that the membership pays for itself.
+When I travel, I happily pay for a hotel or Lyft to avoid spending hours commuting by public transit or coordinating with couch-surfing or Airbnb hosts. I pay for [GitHub Copilot](https://github.com/features/copilot) because it significantly improves my throughput. I spend over $300 a month on an [Equinox](https://github.com/features/copilot) membership because I like going to the best gym classes. Since I go to a lot of gym classes, the membership pays for itself.
 
 # 3. Duplication is not always bad
 
@@ -50,7 +50,7 @@ A real-life example is when we try to optimize for logistics by trying to take o
 
 Over-optimization can create artificial roadblocks to implementation. It's important to recognize when we are optimizing for DRY just to minimize of duplication or there are actual non-negligible cost-savings.
 
-In the trash and laundry example, there would be non-negligible cost-savings to do them both in one trip if we need to take out trash and laundry every day. But if the operations were not frequent enough or if the trash and laundry are accumulated at different rates, maybe it is not worth dealing with no clean clothes to wear or sitting in a room with smelly trash just to save ourselves an extra 5 minutes going downstairs once a week.
+In the trash and laundry example, there would be non-negligible cost-savings to do them both in one trip if we need to take out trash and laundry every day. But if the operations were not frequent enough or if the trash and laundry accumulate at different rates, maybe it is not worth dealing with no clean clothes to wear or sitting in a room with smelly trash just to save ourselves an extra 5 minutes going downstairs once a week.
 
 For simple and infrequent problems, it's usually better to tolerate some duplications to be more effective and quicker in solution development. But at scale, we have more to lose when we do not eliminate duplication.
 
@@ -85,6 +85,8 @@ However, the tasks I was keeping in my todo-list are related to hobbies and self
 As my todo-list grew and my interests shifted, the list became frequently out-of-date. I found myself spending a lot of time going through items in the list to update the fields for prioritization to the list to reflect what mattered to me at the time. I was a slave to the list and the list was not serving me.
 
 The weakness of this system is that it tries to quantify your overall feeling about something that is unquantifiable. The score is a function of your mood and how you feel at the time. At different points in time, you may give different scores for the same task.
+
+{{< image classes="fancybox fig-100 clear" src="/post/images/life/lessons-30s-fancy-project-sorting.png" thumbnail="/post/images/life/lessons-30s-fancy-project-sorting.png" title="fancy project backlog sorting">}}
 
 Feelings and situations can change very quickly and unexpectedly. Our values and beliefs can change too. A hard-coded prioritization system can become irrelevant and restrictive.
 
