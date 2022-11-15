@@ -1,6 +1,6 @@
 ---
 title: "Data Structure with JavaScript Object: Graph"
-date: 2022-10-25
+date: 2023-10-25
 draft: true
 categories:
   - blog
@@ -37,7 +37,7 @@ Graphs are used to solve the following problems:
 
 ## Traverse a Graph
 
-# Algos:
+# Algos
 
 ## Depth First Search (DFS)
 

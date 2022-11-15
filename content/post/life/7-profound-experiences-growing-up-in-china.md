@@ -1,6 +1,6 @@
 ---
 title: "7 Profound Experiences Growing Up In China"
-date: 2022-08-30
+date: 2023-08-30
 categories:
   - blog
 tags:

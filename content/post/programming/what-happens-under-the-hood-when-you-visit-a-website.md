@@ -1,6 +1,6 @@
 ---
 title: "What Happens Under the Hood When you Visit a Website"
-date: 2022-10-01
+date: 2023-10-01
 categories:
   - blog
 tags:
@@ -225,7 +225,7 @@ The above example demonstrates the another usefulness of REST API as it allows y
 [HTTP](https://www.wikiwand.com/en/Hypertext_Transfer_Prool) stands for Hypertext Transport Protocol. It was invented for the Web to retrieve HTML, images, documents etc. The basic concept of HTTP is (1) establish a connection, (2) request a document, (3) retrieve the document, and (4) close the connection. Let's see HTTP in action. In your terminal, type:
 
 ```
-$ telnet www.rigaut.com 80
+telnet www.rigaut.com 80
 ```
 
 Port 80 is the non-encrypted HTTP port. If you see the following, the connection went through:

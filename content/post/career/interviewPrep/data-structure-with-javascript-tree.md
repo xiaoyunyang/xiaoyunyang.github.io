@@ -1,6 +1,6 @@
 ---
 title: "Data Structure with JavaScript Object: Tree"
-date: 2022-10-22
+date: 2023-10-22
 draft: true
 categories:
   - blog
@@ -86,7 +86,7 @@ curr.right = new TreeNode(1);
 
 ## Traverse a Tree
 
-# Algos:
+# Algos
 
 ## Depth First Search (DFS)
 

@@ -1,6 +1,6 @@
 ---
 title: "A Guide to Open Sourcing"
-date: 2022-10-21
+date: 2023-10-21
 draft: true
 categories:
   - project
@@ -65,7 +65,7 @@ Remove proprietary information
 4. Add flowchart examples
    - TDD/CICD: Add Test => Run Test => Make a change => Refactor
 5. Support custom themes and CSS
-   - For now, copying-pasting from https://github.com/Smartling/tms-dashboard-ui-components/tree/master/packages/lib/theme
+   - For now, copying-pasting from <https://github.com/Smartling/tms-dashboard-ui-components/tree/master/packages/lib/theme>
 6. Figure out type and subtype for WF steps and to what extent they should affect the library's logic
 7. Write Algo for calculating WF Step Order (i.e., distance of node from source node)
    - If BE data already has WF Step Order, bypass the calc. Otherwise, perform the calc to generate the WorkflowVisData
@@ -93,7 +93,7 @@ Add documentation
 1. Two modes for the DataVis - (1) Display only. (2) Editable workflow
 2. Example
 3. API
-   1. Example: https://github.com/One-com/react-truncate#api
+   1. Example: <https://github.com/One-com/react-truncate#api>
 
 ## Modularize
 

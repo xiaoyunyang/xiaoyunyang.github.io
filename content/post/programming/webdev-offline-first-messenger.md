@@ -1,6 +1,6 @@
 ---
 title: "Building An Offline-first Messenger Using Optimistic UI Design Patterns"
-date: 2022-10-24
+date: 2022-11-24
 categories:
   - blog
 tags:
@@ -23,7 +23,9 @@ thumbnailImagePosition: top
 coverImage: /post/images/optimistic-ui/cover.png
 ---
 
-In system design, engineers often have to make tradeoffs between software complexity and a rich feature set.
+In system design, engineers often have to make tradeoffs between managing software complexity and delivering value to our users. When the broader developer community comes out with a shiny new tool or design pattern, it's tempting to use it to solve every problem.
+
+However, it's important to understand the tradeoffs of each tool and design pattern before using it. In this post, we'll explore the tradeoffs of using optimistic UI design patterns in a web application.
 
 Trade off a richer user experience with added technical complexity.
 Failed to send, re-send a message seems like a table stakes feature for all chat apps, even desktop.
@@ -86,7 +88,12 @@ Resend a message
 I missed this - Pagination
 Forgot to add this to the regression testing plan
 
-Tradeoffs
+Tradeoffs - what are we optimizing for? Finding the right balance depends on the engineering
+
+Choosing a more robust solution that at a higher engineering cost is not always **appropriate** for a business that needs to be agile to test hypotheses and iterate quickly.
+
+A social media platform like OkCupid operates in a very competitive landscape so moving quickly to launch and iterate on experimental features and respond to new market insights quickly. A flexible architectural design that is easier and faster to implement but has more technical debt is often the right choice for OkCupid.
+
 Choosing the right place for caching
 
 - Apollo client cache
@@ -95,6 +102,10 @@ Choosing the right place for caching
   Choosing the right data structure and policy for updating it
 - can be abstracted
 - Options: array, map, object
+
+Having multiple architectural patterns in the same codebase introduces cognitive complexity for the maintainers of the codebase.
+
+[code complexity](https://www.codegrip.tech/productivity/a-simple-understanding-of-code-complexity)
 
 ## It Works! What Could Have Been Done Better
 
@@ -167,6 +178,8 @@ So we are left with option 2 to keep our source of truth for messages.
 - `messagesCacheRef` provides data to the component state `messages` (also in `MainWindowWrapper`) for rendering the view. `messages` is updated conditionally in `useEffect` when the Apollo client cache updates and in success / failed message send callbacks.
 
 ### Why use `Map`?
+
+`Map` is an efficient data structure to use for maintaining an ordered list.
 
 `Map` provides the best of both worlds by offering a fast lookup and guarantees ordering based on the original insertion order. If we keep our collection in an array, it's an O(N) lookup, insertion, and deletion by `id`. If we keep our collection in a JavaScript object, the lookup/insertion/deletion operation is O(1) but JavaScript objects do not guarantee order.
 
