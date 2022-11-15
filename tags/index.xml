@@ -8,7 +8,16 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Thu, 25 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Life</title>
+      <link>https://xiaoyunyang.github.io/tags/life/</link>
+      <pubDate>Mon, 14 Nov 2022 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/tags/life/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Frontend</title>
       <link>https://xiaoyunyang.github.io/tags/frontend/</link>
@@ -96,15 +105,6 @@
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/tags/web-dev/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Life</title>
-      <link>https://xiaoyunyang.github.io/tags/life/</link>
-      <pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/tags/life/</guid>
       <description></description>
     </item>
     

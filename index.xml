@@ -8,7 +8,16 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Thu, 25 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>6 Surprising Life Lessons From My 30s</title>
+      <link>https://xiaoyunyang.github.io/post/6-surprising-life-lessons-from-my-30s/</link>
+      <pubDate>Mon, 14 Nov 2022 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/6-surprising-life-lessons-from-my-30s/</guid>
+      <description>&lt;p&gt;A few weeks after I turned 30, the world went into a lock-down. During the COVID-19 pandemic, I&amp;rsquo;ve done a lot of growing and learning as there is a lot of time to reflect on our values and think about better ways to live a more fulfilling life. There are two categories of lessons I&amp;rsquo;ve learned in my 30s. First is how to make better tradeoffs - opportunity cost, money vs time, efficiency vs effectiveness, and quality vs quantity. Second is how to prioritize.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Web Developer Playbook: Optimistic UI</title>
       <link>https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/</link>
@@ -448,6 +457,15 @@ This post is part of the Web Developer Playbook series, which are created to pro
       <guid>https://xiaoyunyang.github.io/about/</guid>
       <description>Hello I&amp;rsquo;m a software engineer and tech entrepreneur living in New York. In my spare time I like to contribute to open source software and tech blogs.
 I&amp;rsquo;m excited by opportunities that let me develop elegant solutions for obvious problems where there are no obvious solutions. I believe in automating wherever possible, and leveraging existing technology to quickly bootstrap solutions. My mantra is trial and error, which I apply to both building a startup as well as living a fulfilling life.</description>
+    </item>
+    
+    <item>
+      <title>JavaScript Antipatterns to Avoid</title>
+      <link>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</guid>
+      <description>&lt;p&gt;Sourcemaking provides a great discussions on all the anti-patterns.&lt;/p&gt;</description>
     </item>
     
   </channel>

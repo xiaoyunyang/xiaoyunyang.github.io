@@ -1,71 +1,109 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/xiaoyunyang.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "Xiaoyun Yang",
+    
+    "image": "https://xiaoyunyang.github.io/images/xyang.png"
+    
+  },
+  "name":"Xiaoyun Yang",
+  "description":"\u003cp\u003eSourcemaking provides a great discussions on all the anti-patterns.\u003c\/p\u003e",
+  "url":"https:\/\/xiaoyunyang.github.io\/post\/javascript-antipatterns-to-avoid\/",
+  "keywords":"[software design principles, computer science, javascript, interview prep, algorithms, separation of concerns, learn to code, balanced parentheses, recursion]"
+}
+
+</script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.3-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Xiaoyun Yang">
+<meta name="keywords" content="software design principles, computer science, javascript, interview prep, algorithms, separation of concerns, learn to code, balanced parentheses, recursion">
+<meta name="description" content="Sourcemaking provides a great discussions on all the anti-patterns.">
+
+
+<meta property="og:description" content="Sourcemaking provides a great discussions on all the anti-patterns.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Antipatterns to Avoid">
+<meta name="twitter:title" content="JavaScript Antipatterns to Avoid">
+<meta property="og:url" content="https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
+<meta property="twitter:url" content="https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
+<meta property="og:site_name" content="Xiaoyun Yang">
+<meta property="og:description" content="Sourcemaking provides a great discussions on all the anti-patterns.">
+<meta name="twitter:description" content="Sourcemaking provides a great discussions on all the anti-patterns.">
+<meta property="og:locale" content="en-us">
+
+  
+  
+  
+  
+    
+      <meta property="article:section" content="blog">
+    
+  
+  
+    
+      <meta property="article:tag" content="JavaScript">
+    
+      <meta property="article:tag" content="Guide">
+    
+      <meta property="article:tag" content="Software Design">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+  <meta property="twitter:image" content="https://xiaoyunyang.github.io/images/xyang.png">
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/brain-lightbulb.png">
+  <meta property="twitter:image" content="https://xiaoyunyang.github.io/post/images/brain-lightbulb.png">
+
+
     <title>JavaScript Antipatterns to Avoid</title>
-    <meta name="author" content="Xiaoyun Yang">
-    <meta name="keywords" content="software design principles, computer science, javascript, interview prep, algorithms, separation of concerns, learn to code, balanced parentheses, recursion">
 
     <link rel="icon" href="https://xiaoyunyang.github.io/favicon-96x96.png">
     
 
     
-    <meta name="description" content="Sourcemaking provides a great discussions on all the anti-patterns.">
-    <meta property="og:description" content="Sourcemaking provides a great discussions on all the anti-patterns.">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="JavaScript Antipatterns to Avoid">
-    <meta property="og:url" content="https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
-    <meta property="og:site_name" content="Xiaoyun Yang">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Xiaoyun Yang">
-    <meta name="twitter:description" content="Sourcemaking provides a great discussions on all the anti-patterns.">
-    
-    
+
+    <link rel="canonical" href="https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
 
     
-    
-
-    
-      <meta property="og:image" content="https://xiaoyunyang.github.io/post/images/brain-lightbulb.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     
     
-
-    
-      <meta property="og:image" content="https://xiaoyunyang.github.io/images/xyang.png">
-    
-
-    
-
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
-    
-    
-    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
     
     
       
-        <link rel="stylesheet"  href="https://xiaoyunyang.github.io/css/custom.css">
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/custom.css">
+      
+    
+      
+        <link rel="stylesheet" href="https://xiaoyunyang.github.io/css/syntax.css">
       
     
 
@@ -80,12 +118,12 @@
       <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
-    <a class="header-title-link" href="https://xiaoyunyang.github.io/">Xiaoyun Yang</a>
+    <a class="header-title-link" href="https://xiaoyunyang.github.io/" aria-label="Go to homepage">Xiaoyun Yang</a>
   </div>
   
     
       <a class="header-right-picture "
-         href="https://xiaoyunyang.github.io/#about">
+         href="https://xiaoyunyang.github.io/#about" aria-label="Open the link: /#about">
     
     
     
@@ -101,20 +139,20 @@
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
-        <a href="https://xiaoyunyang.github.io/#about">
+        <a href="https://xiaoyunyang.github.io/#about" aria-label="Read more about the author">
           <img class="sidebar-profile-picture" src="https://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Xiaoyun Yang</h4>
         
-          <h5 class="sidebar-profile-bio">Software Engineer. Entrepreneur.</h5>
+          <h5 class="sidebar-profile-bio">Software Engineer. Climber. Snowboarder.</h5>
         
       </div>
     
     <ul class="sidebar-buttons">
       
   <li class="sidebar-button">
-     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/">
+    
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/" title="Home">
     
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
       
@@ -123,8 +161,8 @@
   </li>
 
   <li class="sidebar-button">
-     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/projects">
+    
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/projects" title="Projects">
     
       <i class="sidebar-button-icon fa fa-lg fa-code"></i>
       
@@ -133,18 +171,18 @@
   </li>
 
   <li class="sidebar-button">
-     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/blog">
     
-      <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/categories/blog" title="Blog">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-pen-square"></i>
       
       <span class="sidebar-button-desc">Blog</span>
     </a>
   </li>
 
   <li class="sidebar-button">
-     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/tags">
+    
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/tags" title="Tags">
     
       <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
       
@@ -153,8 +191,8 @@
   </li>
 
   <li class="sidebar-button">
-     
-      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/about">
+    
+      <a class="sidebar-button-link " href="https://xiaoyunyang.github.io/about" title="About">
     
       <i class="sidebar-button-icon fa fa-lg fa-user"></i>
       
@@ -167,49 +205,49 @@
     <ul class="sidebar-buttons">
       
   <li class="sidebar-button">
-     
-      <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      <a class="sidebar-button-link " href="https://github.com/xiaoyunyang" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">GitHub</span>
     </a>
   </li>
 
   <li class="sidebar-button">
-     
-      <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-medium"></i>
+      <a class="sidebar-button-link " href="https://medium.com/@xiaoyunyang" target="_blank" rel="noopener" title="Medium">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-medium"></i>
       
       <span class="sidebar-button-desc">Medium</span>
     </a>
   </li>
 
   <li class="sidebar-button">
-     
-      <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      <a class="sidebar-button-link " href="https://linkedin.com/in/xiaoyun-yang" target="_blank" rel="noopener" title="Linkedin">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin"></i>
       
       <span class="sidebar-button-desc">Linkedin</span>
     </a>
   </li>
 
   <li class="sidebar-button">
-     
-      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener">
     
-      <i class="sidebar-button-icon fa fa-lg fa-angellist"></i>
+      <a class="sidebar-button-link " href="https://angel.co/xiaoyunyang" target="_blank" rel="noopener" title="AngelList">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-angellist"></i>
       
       <span class="sidebar-button-desc">AngelList</span>
     </a>
   </li>
 
   <li class="sidebar-button">
-     
-     <a class="sidebar-button-link " href="mailto:xiaoyun@looseleafapp.com" rel="noopener">
-     
+    
+      <a class="sidebar-button-link " href="mailto:xyang232@gmail.com" target="_blank" rel="noopener" title="Email Me">
+    
       <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
       
       <span class="sidebar-button-desc">Email Me</span>
@@ -236,16 +274,16 @@
           
             <div class="post-header main-content-wrap text-left">
   
-    <h1 class="post-title" itemprop="headline">
+    <h1 class="post-title">
       JavaScript Antipatterns to Avoid
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-08-25T00:00:00Z">
+      <time datetime="0001-01-01T00:00:00Z">
         
-  August 25, 2019
+  January 1, 1
 
       </time>
     
@@ -265,68 +303,51 @@
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Sourcemaking provides a great discussions on all the anti-patterns.</p>
-
 <h1 id="antipattern-1-programming-to-implementation-rather-than-interface">Antipattern #1: Programming to Implementation Rather Than Interface</h1>
-
 <p>Program to interface:</p>
-
 <ul>
 <li><code>fun</code> only takes one argument</li>
-
-<li><p>Make sure the names (i.e., arg1 and arg2) are consistent</p>
-
-<pre><code class="language-javascript">const fun = ({arg1, arg2}) =&gt; {
-console.log(`${arg1} ${arg2}`);
-}
-</code></pre></li>
+<li>Make sure the names (i.e., arg1 and arg2) are consistent</li>
 </ul>
-
-<p>Program to implementation:</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fun</span> <span style="color:#f92672">=</span> ({ <span style="color:#a6e22e">arg1</span>, <span style="color:#a6e22e">arg2</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">arg1</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">arg2</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Program to implementation:</p>
 <ul>
 <li><code>fun2</code> takes two or more arguments</li>
 <li>The order in which argument is passed in matters</li>
-
-<li><p>For caller to use <code>fun2</code> correctly, caller has to look up <code>fun2</code>&rsquo;s documentation to figure out what each argument means.</p>
-
-<pre><code class="language-javascript">const fun2 = (arg1, arg2) =&gt; {
-console.log(`${arg1} ${arg2}`);
-}
-</code></pre></li>
+<li>For caller to use <code>fun2</code> correctly, caller has to look up <code>fun2</code>&rsquo;s documentation to figure out what each argument means.</li>
 </ul>
-
-<p>Caller Code</p>
-
-<pre><code class="language-javascript">const caller = () =&gt; {
-  const arg1 = 'hello'
-  const arg2 = 'world'
-  const arg3 = 'goodbye'
-  const args = {arg1: 'hello', arg2:'world'}
-  const args2 = {hello: 'hello', world: 'world'}
-  const args3 = {arg1, world: 'world'}
-  fun({ arg2, arg1 }) // #1
-  fun({ arg2, arg1 }) // #2
-  fun(args) // #3
-  fun(args2) // #4
-  fun(args3) // #5
-  fun({arg1, arg2, arg3}) // #6
-  fun2(arg1, arg2) // #7
-  fun2(arg2, arg1) // #8
-  fun2(arg1, arg3) // #9
-}
-</code></pre>
-
-<p><code>#6</code> prints out &ldquo;hello world&rdquo; because <code>fun</code> doesn&rsquo;t care about <code>arg3</code>.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fun2</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">arg1</span>, <span style="color:#a6e22e">arg2</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">arg1</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">arg2</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Caller Code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">caller</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arg1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arg2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;world&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arg3</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;goodbye&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">arg1</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#a6e22e">arg2</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;world&#34;</span> };
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">args2</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">hello</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#a6e22e">world</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;world&#34;</span> };
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">args3</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">arg1</span>, <span style="color:#a6e22e">world</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;world&#34;</span> };
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fun</span>({ <span style="color:#a6e22e">arg2</span>, <span style="color:#a6e22e">arg1</span> }); <span style="color:#75715e">// #1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">fun</span>({ <span style="color:#a6e22e">arg2</span>, <span style="color:#a6e22e">arg1</span> }); <span style="color:#75715e">// #2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">args</span>); <span style="color:#75715e">// #3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">args2</span>); <span style="color:#75715e">// #4
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">fun</span>(<span style="color:#a6e22e">args3</span>); <span style="color:#75715e">// #5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">fun</span>({ <span style="color:#a6e22e">arg1</span>, <span style="color:#a6e22e">arg2</span>, <span style="color:#a6e22e">arg3</span> }); <span style="color:#75715e">// #6
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">fun2</span>(<span style="color:#a6e22e">arg1</span>, <span style="color:#a6e22e">arg2</span>); <span style="color:#75715e">// #7
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">fun2</span>(<span style="color:#a6e22e">arg2</span>, <span style="color:#a6e22e">arg1</span>); <span style="color:#75715e">// #8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">fun2</span>(<span style="color:#a6e22e">arg1</span>, <span style="color:#a6e22e">arg3</span>); <span style="color:#75715e">// #9
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></code></pre></div><p><code>#6</code> prints out &ldquo;hello world&rdquo; because <code>fun</code> doesn&rsquo;t care about <code>arg3</code>.</p>
 <p>Another way to write <code>fun</code> would be:</p>
-
-<pre><code class="language-javascript">const fun3 = (args) =&gt; {
-  console.log(`${args.arg1} ${args.arg2}`);
-}
-</code></pre>
-
-<p><a href="https://repl.it/@xiaoyunyang/program-to-interface-not-implementation" target="_blank">repl code</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fun3</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">args</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">arg1</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">arg2</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><a href="https://repl.it/@xiaoyunyang/program-to-interface-not-implementation">repl code</a></p>
               
+
+
             </div>
           </div>
           <div id="post-footer" class="post-footer main-content-wrap">
@@ -347,73 +368,75 @@ console.log(`${arg1} ${arg2}`);
                 
               
             
+            <a target="_blank" href="https://www.buymeacoffee.com/xiaoyunyang" 
+  data-tooltip="Buy me a coffee!"
+  id="bmc-wbtn" 
+  style="display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; background: rgb(255, 129, 63); color: white; border-radius: 32px; position: fixed; right: 18px; bottom: 18px; box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 8px; z-index: 999; cursor: pointer; font-weight: 600; transition: all 0.2s ease 0s; transform: scale(1);"><img src="https://cdn.buymeacoffee.com/widget/assets/coffee%20cup.svg" 
+  alt="Buy Me A Coffee" 
+  style="height: 40px; width: 40px; margin: 0; padding: 0;"
+></a>
+
             
-  <div class="post-actions-wrap">
-      <nav >
-        <ul class="post-actions post-action-nav">
-          
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--disabled">
-              
-                  <i class="fa fa-angle-left"></i>
-                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
-                </a>
-            </li>
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/" data-tooltip="Beyond Minimum Viable Product: A Lesson on Building Production-ready Software">
-              
-                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
-                  <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-          
-        </ul>
-      </nav>
-    <ul class="post-actions post-action-share" >
-      
-        <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
-          </a>
-        </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
-      
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
       
         <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/" data-tooltip="Creating NumberShapes: Math Learning Mobile Apps" aria-label="NEXT: Creating NumberShapes: Math Learning Mobile Apps">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
         </li>
       
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default" href="#">
-        
-          <i class="fa fa-list"></i>
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
-    </ul>
-  </div>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
 
 
             
@@ -444,120 +467,117 @@ s.setAttribute('data-timestamp', +new Date());
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 Xiaoyun Yang. All Rights Reserved
+    &copy; 2022 Xiaoyun Yang. All Rights Reserved
   </span>
 </footer>
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
         
-  <div class="post-actions-wrap">
-      <nav >
-        <ul class="post-actions post-action-nav">
-          
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--disabled">
-              
-                  <i class="fa fa-angle-left"></i>
-                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
-                </a>
-            </li>
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/" data-tooltip="Beyond Minimum Viable Product: A Lesson on Building Production-ready Software">
-              
-                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
-                  <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-          
-        </ul>
-      </nav>
-    <ul class="post-actions post-action-share" >
-      
-        <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
-          </a>
-        </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
-      
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
       
         <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/" data-tooltip="Creating NumberShapes: Math Learning Mobile Apps" aria-label="NEXT: Creating NumberShapes: Math Learning Mobile Apps">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
         </li>
       
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default" href="#">
-        
-          <i class="fa fa-list"></i>
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i>
         </a>
       </li>
-    </ul>
-  </div>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/" title="Share on Google&#43;" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
 
 
       </div>
-      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
-  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fjavascript-antipatterns-to-avoid%2F">
-          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fjavascript-antipatterns-to-avoid%2F" aria-label="Share on Facebook">
+          <i class="fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fjavascript-antipatterns-to-avoid%2F">
-          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fjavascript-antipatterns-to-avoid%2F" aria-label="Share on Twitter">
+          <i class="fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fjavascript-antipatterns-to-avoid%2F">
-          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxiaoyunyang.github.io%2Fpost%2Fjavascript-antipatterns-to-avoid%2F" aria-label="Share on Google&#43;">
+          <i class="fa-google-plus" aria-hidden="true"></i><span>Share on Google&#43;</span>
         </a>
       </li>
     
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
+
+
     </div>
     
     <div id="about">
   <div id="about-card">
     <div id="about-btn-close">
-      <i class="fa fa-remove"></i>
+      <i class="fa fa-times"></i>
     </div>
     
       <img id="about-card-picture" src="https://xiaoyunyang.github.io/images/xyang.png" alt="Author&#39;s picture" />
     
     <h4 id="about-card-name">Xiaoyun Yang</h4>
     
-      <div id="about-card-bio">Software Engineer. Entrepreneur.</div>
+      <div id="about-card-bio">Software Engineer. Climber. Snowboarder.</div>
     
     
       <div id="about-card-job">
@@ -568,7 +588,7 @@ s.setAttribute('data-timestamp', +new Date());
     
     
       <div id="about-card-location">
-        <i class="fa fa-map-marker"></i>
+        <i class="fa fa-map-marker-alt"></i>
         <br/>
         New York
       </div>
@@ -576,269 +596,27 @@ s.setAttribute('data-timestamp', +new Date());
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/">
-                <h3 class="media-heading">JavaScript Antipatterns to Avoid</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Aug 8, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Sourcemaking provides a great discussions on all the anti-patterns.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/">
-                <h3 class="media-heading">Beyond Minimum Viable Product: A Lesson on Building Production-ready Software</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Aug 8, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>What I learned working at a mature startup that&rsquo;s building new things but also has a ton of customers and products in production.</p>
+    
 
-<p>This post is a WIP.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/">
-                <h3 class="media-heading">Effective Unit Testing of React Components With Jest And Enzyme</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Aug 8, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/">
-                <h3 class="media-heading">A Guide For Migrating Your Project to TypeScript</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.</p>
-
-<p>This post is a WIP.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/">
-                <h3 class="media-heading">The Algorithm for Managing Stress</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &ldquo;top 10 things you can do to &hellip;.&rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/get-started-with-go/">
-                <h3 class="media-heading">Get Started With Go</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Feb 2, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Go is becoming pretty mainstream. Every job posting I&rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/">
-                <h3 class="media-heading">Thirsty Plant: Automated Plant Waterer</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p><em>by <a href="https://github.com/xiaoyunyang" target="_blank">Xiaoyun Yang</a> and <a href="https://github.com/clydeshaffer" target="_blank">Clyde Shaffer</a></em></p>
-
-<p>I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&rsquo;s call it ThirstyPlant.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/">
-                <h3 class="media-heading">From Public Sector To Senior Software Engineer:  How I made the Transition</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.</p>
-
-
-
- 
-  
-  
-  
-  
     
   
     
       
+      <div id="cover" style="background-image:url('https://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
     
-  
-
-<div class="figure fig-70" >
-  
-    <a class="fancybox" href="https://images2.imgbox.com/26/21/MQB5dNYd_o.png" title="My KeyValues filter" data-fancybox-group="">
-  
-    <img class="fig-img" src="https://images2.imgbox.com/26/21/MQB5dNYd_o.png"  alt="My KeyValues filter">
-  
-    </a>
-  
-   
-    <span class="caption">My KeyValues filter</span>
-  
-</div></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/">
-                <h3 class="media-heading">When To Use Immutable Data Structures</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>Suppose you are asked this question during a technical interview:</p>
-
-<blockquote>
-<p>When do you use immutable (functional) data structures and when do you use mutable data structure?</p>
-</blockquote></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/">
-                <h3 class="media-heading">Security Considerations for Web Applications and Best Practices</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.</p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         39 posts found
-      </p>
-    </div>
-  </div>
-</div>
-    
-  
-    
-    <div id="cover" style="background-image:url('https://xiaoyunyang.github.io/images/cover-blue.jpg');"></div>
   
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
-
-
-<script src="https://xiaoyunyang.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/go.min.js"></script>
-  
+<script src="https://xiaoyunyang.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
 
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/languages/typescript.min.js"></script>
-  
 
 
 <script>
@@ -853,32 +631,6 @@ $(document).ready(function() {
 });
 </script>
 
-
-  
-    
-      <script>
-        var disqus_config = function () {
-          this.page.url = 'https:\/\/xiaoyunyang.github.io\/post\/javascript-antipatterns-to-avoid\/';
-          
-            this.page.identifier = '\/post\/javascript-antipatterns-to-avoid\/'
-          
-        };
-        (function() {
-          
-          
-          if (window.location.hostname == "localhost") {
-            return;
-          }
-          var d = document, s = d.createElement('script');
-          var disqus_shortname = 'http-xiaoyunyang-github-io';
-          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-    
-  
 
 
 
