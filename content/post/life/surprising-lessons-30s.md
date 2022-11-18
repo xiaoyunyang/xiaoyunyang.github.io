@@ -14,7 +14,7 @@ A few weeks after I turned 30, the world went into a lock-down. During the COVID
 
 <!--more-->
 
-# 1. Let the man win
+## 1. Let the man win
 
 When we are charged money for a product or service that was never provided or overcharged for poor service, it's tempting to try to get our money back. When the decision to pursue a dispute is primarily principle-driven (motivated by the desire to correct some injustice), it could lead to a sub-optimal outcome.
 
@@ -30,7 +30,7 @@ I was involved in a dispute in which an airline canceled my return flight becaus
 
 When I showed up to the airport to check in for my return flight, I was surprised to learn that I had no flight booked and the reason was that I was a "no-show". In the interest of getting back in time, I bought a one-way ticket at the airport, which cost double of the original round-trip tickets. I filed a dispute with my credit card company for the original round-trip ticket for service that was not provided. I ended up losing the dispute. I could re-start the dispute and follow up in person by visiting the airline and the credit card company office to show the passport stamp from the outbound flight. But there's no guarantee that it would lead to a different outcome. Having the boarding pass and the passport stamp doesn't definitively prove that I boarded that exact outbound flight. I chose to save myself the headache and extra time trying to win this dispute. The money was substantial (over a thousand dollars), but it was not worth weeks or months of work and headache to get it back. I decided it would be better for me to let the man win.
 
-# 2. Don't be stingy on paid services you use all the time
+## 2. Don't be stingy on paid services you use all the time
 
 I was on the Spotify free tier for a long time before I upgraded to Premium and I'm really glad I did. Having to listen to ads was a small annoyance when I only used Spotify to discover new music but when I really got into music during the pandemic, listening to ads all day contributed to a noticeable degradation in my day-to-day happiness.
 
@@ -40,7 +40,7 @@ When I was a poor college student, I avoided paying for things like music, books
 
 When I travel, I happily pay for a hotel or Lyft to avoid spending hours commuting by public transit or coordinating with couch-surfing or Airbnb hosts. I pay for [GitHub Copilot](https://github.com/features/copilot) because it significantly improves my throughput. I spend over $300 a month on an [Equinox](https://github.com/features/copilot) membership because I like going to the best gym classes. Since I go to a lot of gym classes, the membership pays for itself.
 
-# 3. Duplication is not always bad
+## 3. Duplication is not always bad
 
 In software development, the [Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (DRY) principle aims to reduce redundancy and improve efficiency by developing a framework for solving similar problems (e.g., abstractions and code sharing). But when we try to apply the DRY principle to every problem, we end up with overly complicated solutions on top of a rigid framework that is hard to evolve and maintain.
 
@@ -58,7 +58,7 @@ In the context of software development, we can follow the AHA principle (Avoid H
 
 We should only be implementing an abstraction and writing sharable code when we are confident that future use cases will not deviate from the current pattern. But deviation can still happen. Thus we need to ensure that evolvability, clarity, and maintainability are built-in features of the abstraction. This ensures that we can implement DRY without loss of clarity and maintainability.
 
-# 4. Less is more
+## 4. Less is more
 
 I prefer restaurants with a small menu because you can expect consistently high-quality food. When the menu is small, the kitchen can be more optimized for speed and quality because there is not a large inventory of ingredients to manage and a variety of recipes to execute.
 
@@ -70,7 +70,7 @@ Another example is when you are trying to do too many things on your trip. You a
 
 Generally speaking, "less is more" is a tradeoff between quantity and quality. While having variety and options can make things more interesting and make you feel less restricted, juggling too many things at once can cause inefficiencies from context switching and loss of focus.
 
-# 5. A stack is the most effective way to maintain a side project to-do list
+## 5. A stack is the most effective way to maintain a side project to-do list
 
 I used to have a complicated system for organizing my growing list of side project to-dos. I created a system in a [Notion workspace](https://xiaoyunyang.notion.site/91ca91c2e930457bb2da4c6bc509be55?v=c282281746a14755b42306c2ec58120e) to track and sort a backlog of side projects to-dos based on a score I assign for its urgency, importance relative to some life area that I was trying to optimize for (e.g., career development), how much stress or FOMO it would cause me if it didn't get done, and how much enjoyment I would get if I worked on it.
 
@@ -106,7 +106,7 @@ If you need a system to help you actually get things done, I suggest using the p
 
 I actually use both a stack and a priority queue for maintaining all my to-dos. For example, if I get inspired to write a blog post, I add a task to my stack to just brain dump into a draft blog post. Then I create a task in my priority queue to edit and publish the blog post with a deadline.
 
-# 6. Work-life balance is a false dichotomy
+## 6. Work-life balance is a false dichotomy
 
 Work-life balance is a framework commonly used to prioritize how we spend our time. An important assumption that underlies this framework is that work and life are two separate things and the demands of one’s career and the demands of one’s personal life are mutually exclusive. In reality, it's more like a Venn diagram.
 
