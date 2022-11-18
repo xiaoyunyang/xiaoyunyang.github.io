@@ -1,6 +1,7 @@
 ---
-title: "Building An Offline-first Messenger Using Optimistic UI Design Patterns"
-date: 2022-11-24
+title: "The Design Behind OkCupid's Offline-first Chat App"
+date: 2022-11-18
+draft: true
 categories:
   - blog
 tags:
@@ -23,23 +24,159 @@ thumbnailImagePosition: top
 coverImage: /post/images/optimistic-ui/cover.png
 ---
 
-In system design, engineers often have to make tradeoffs between managing software complexity and delivering value to our users. When the broader developer community comes out with a shiny new tool or design pattern, it's tempting to use it to solve every problem.
+The chat app is a table stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.
 
-However, it's important to understand the tradeoffs of each tool and design pattern before using it. In this post, we'll explore the tradeoffs of using optimistic UI design patterns in a web application.
+In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.
+
+<!--more-->
+
+{{< toc >}}
+
+## Why do we need the chat app to be offline-first?
+
+Quick response time from the server is not always achievable, especially when the user is on a slow network on a mobile device. Offline-mode support is common for mobile apps because mobile apps often have to deal with spotty internet connection.
+
+When do we need offline-mode support for a _web app_? There are two main reasons:
+
+**1. If the web app is used in a mobile web browser on a phone where reliable network connection is not guaranteed.**
+
+It's common for a web app that runs in a desktop browser and the web app that runs in a mobile browser to share code (sometimes they are the same web app!). On mobile web, being offline is a real possibility.
+
+**2. If the web app is managing user-generated data that is expensive for the user to create.**
+
+In a chat app, it can be frustrating user experience if you spend a long time drafting a new message to be sent but the draft is not persisted when the message fails to send, forcing you to have to type it all up again.
+
+The desktop version of popular chat apps like iMessage, Whatsapp, and Facebook Messenger all support offline-mode so users expect offline-mode support for any chat app regardless of the device.
+
+## What does offline-first mean exactly?
+
+An app is considered to be offline-first if it can be used even when the user is offline.
+
+An app that is designed to be offline-first supports unpredictable network latency by default.
+
+We can think of being offline to mean having infinite network response time.
+
+When the app is completely offline, the POST request for new content never resolves. If the app is designed to be offline-first, we would expect the app to still show the new content (responsiveness) and to still allow us to create newer content without losing the previously created new content (persistence).
+
+Responsiveness is achieved by applying [optimistic UI techniques](https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/). To make user interactions seem instant in a CRUD app, we can mock the expected server response before the server response is actually received and display the mocked response (the optimistic result). Optimistic results are things that exist client-side but not server-side.
+
+How and where we are storing the optimistic results becomes important when we want to provide persistence.
+
+Things can get very hairy when we need to persist an arbitrary number of optimistic results and these optimistic results needs to be displayed alongside things that exist server-side.
+
+In the most complicated case, we have apps like Google Docs where multiple people can be editing the same sentence.
+
+[Notion](https://www.notion.so/blog/data-model-behind-notion), another collaborative note-taking app, solves this problem by persisting the operations on the data (adding, deleting, editing) rather the the resultant data after applying the operations.
+
+Fortunately for the chat app, the data we are managing is not collaborative as only one person can create and edit a message. While this greatly simplifies the architecture as we don't have to worry about [conflict resolution](https://www.swyx.io/svelte-amplify-datastore#conflict-resolution), we still need to worry about managing a collection of messages, some of which are client-generated and don't exist server-side.
+
+Next, we will look at the design decisions behind the offline-first OkCupid chat app.
+
+## Architectural Design Considerations
+
+The previous section answers the question of _why_ we need to have offline-mode for the chat app. This section answers the question of _How_ we should implement an offline-first chat app _for OkCupid_.
+
+In general, to design a correct and future-proof solution, we must first consider the requirements and constraints to establish the boundaries for our problem solving. Second, we must decompose the problem into sub-problems and search through the solution space for the best way to solve these sub-problems.
+
+### Requirements Gathering
+
+Understanding the scope of the problem requires insight into the business context of the problem we are solving and how the solution will need to scale for future use cases.
+
+There are must-have and nice-to-have requirements for a modern chat app. The best way to enumerate the functional requirements for a feature is to use [user stories](https://www.mountaingoatsoftware.com/agile/user-stories). As a user, I want to be able to send and receive messages so that I can communicate with other users. More specifically,
+
+- When I first open the chat app, I want to see the most recent messages exchanged me and the other user.
+- I want to be able to draft a new message and send it to the other user.
+- I want to see the new message I sent appear in the chat app immediately after I send it.
+- I want to see the new message the other user sent appear in the chat app immediately after the other user sends it.
+- When the other user sees my message, I want to immediately see the message marked as read.
+- When I scroll up in the chat app, I want to see older messages appear.
+- I want to be able to send a new message even when I am offline.
+- If I try to send a new message when I am offline, I want to see the message appear in the chat history with a status indicating that this message has not actually been sent.
+- When I am online again, I want a simple way to resend the messages that I tried to send when I was offline. It would be nice if the resend is automatic.
+
+Functional requirements include the features we need to support now but the solution design should also consider future features. The better we can anticipate future requirements, the better we can make good initial design decisions to create a robust and scalable solution that can easily adapt to new use cases.
+
+A non-scalable solution cannot evolve to support new requirements without costly refactoring or special-case handling, which introduces maintainability concerns. But when too much emphasis is put on future-proofing, we end up with an over-engineered solution that is also hard to scale and maintain.
+
+Scalability Maintainability are examples of [non-functional and business requirements](https://www.altexsoft.com/blog/business/functional-and-non-functional-requirements-specification-and-types) that we also want to optimize for. For the chat app, we don't want to use a general offline-mode implementation that can be used for both collaborative data as well as non-collaborative data because this implementation has very demanding memory usage and heavy on the computation. Using a memory and power intensive implementation not only causes unnecessary technical complexity in the implementation (bad for maintenance and velocity to launch the feature), but also a degraded offline-first experience from lagginess and crashes on cheap phones without a lot of processing power and memory.
+
+Collaborative data is not a future use-case we will ever need to support for the chat app. As previously mentioned, only one person can create and edit a message and this is true for any chat app.
+
+What are some valid and likely future features we would want to add for the OkCupid chat app? We can look to other chat apps to see what features they have that makes sense for a dating app.
+
+- **Threaded reply** - Very Likely. Almost all modern chat apps provide [threaded reply](https://www.engadget.com/2019-03-20-facebook-messenger-threads.html). Bumble, another dating app, already implements threaded reply in their chat app.
+- **Group chat** - Likely. OkCupid is one of the best dating apps for daters seeking non-traditional relationships and already provides the ability for partnered daters to link their profiles together. It would be on-brand for OkCupid to provide a way for daters to chat with multiple people at once.
+- **Un-send a message** - Unlikely because it is undesirable from a trust and safety standpoint, allowing bad actors to un-send a message will make it difficult to moderate a reported conversation. This feature is also not present in Bumble's chat app.
+- **Edit a sent message** - Unlikely. Same reason as un-send a message.
+
+## Identify Constraints
+
+**bias towards established patterns**
+
+Identifying constraints are important too because
+Limitations in our solution space can be a good thing. It forces us to think creatively and come up with novel solutions. But it can also be a bad thing if we are too constrained by the limitations of our solution space. We want to be able to identify the constraints and biases in our solution space so that we can be aware of them and make conscious decisions to either work within the constraints or to break them.
+
+- how long we have to implement this?
+
+Simplifying assumptions we can make about the creation and update of the messages that it's managing.
+
+There are three types of constraints
+
+**1. Time and Effort**
+
+Choosing a more robust solution that at a higher engineering cost is not always appropriate for a business that needs to be agile to test hypotheses and iterate quickly.
+
+Thus, it's important to understand the business context of what you are building to effectively develop a solid solution that is not over-engineered.
 
 Trade off a richer user experience with added technical complexity.
-Failed to send, re-send a message seems like a table stakes feature for all chat apps, even desktop.
-If we decide to remove the failed-to-send messages from the cache, it’s simpler from a technical perspective but worse from a user experience standpoint.
 
-Prior to adding photo messaging support, the chat app on our website and mobile website did not support offline mode. This meant that when a user sent a message, the message would not appear in the chat until the server responded with a success message. This was a deliberate design decision, as it was easier to implement and less likely to cause bugs.
+**2. Existing Patterns**
 
-[offline-first apps](https://www.swyx.io/svelte-amplify-datastore)
-Having an explicit data layer that controls syncing with the server allows us to implement offline-first apps. This means that the app can be used even when the user is offline, and the app will sync with the server when the user is online again.
+Use reference designs.
 
-## Why are we solving this problem
+Popular chat apps like iMessage, Whatsapp, and Facebook Messenger all implement a desktop version that supports offline-mode. Most implementations rely on the concept of an outbox in which outgoing messages are queued if the device is offline. When the device is online again, the messages in the outbox can be sent out in batch or one-by-one in the order of creation.
 
-Why you need offline support for web app? Why are we solving this problem.
-Reliable network connection is not guaranteed
+Second, all codebases have styleguides and patterns. Don’t break too much from the existing patterns because that would make the codebase more difficult to maintain.
+For our codebase, we use component state, Apollo client cache for state management
+
+**3. Regression**
+
+Are we upgrading something, not building something from scratch? It’s not a replacement, rather an improvement.
+
+We need to not introduce regression
+Don’t make too many sweeping changes unless it’s critical to the solution
+
+Don’t implement cool features at the cost of creating new bugs
+
+## Other Things We Want to Optimize for
+
+- Maintainability - Consistency with existing patterns of problem solving in the codebase
+- Regression prevention -
+  👎 modifying the server schema to keep track of some client state
+
+[Duplication is not always bad](https://xiaoyunyang.github.io/post/6-surprising-life-lessons-from-my-30s/#3-duplication-is-not-always-bad)! Sometimes it makes things simpler.
+
+With respect to persistence, design questions for the datastore
+
+1. Where to store
+2. How to update store
+3.
+
+Design approaches and limitations
+
+Other design considerations
+
+Reference designs:
+
+-
+
+First I identified all the existing functionalities of the chat app and create a plan to perform regression testing
+
+Consideration
+
+- regression testing
+-
+-
 
 What new chat feature we want to add that the current chat app architecture cannot accommodate?
 
@@ -47,30 +184,44 @@ What new chat feature we want to add that the current chat app architecture cann
 - Why? It’s expensive to create a photo
 
 For a desktop app - don’t need offline support for many cases. Originally we did not support offline mode but as the chat app evolved, we need to now
-We share code between desktop and mobile web. On mobile web, bring offline is a real possibility
-Originally designed as a mailbox where real time update is not needed. People’s expectations of email apps do not include real time update although that has changed too with sophisticated email apps like gmail raising the bar of what people expect from a chat app
 
 It’s expensive to create a photo
 
-## Solution Design Considerations
+<https://gist.github.com/sw-yx/108d90755aa3f34401dcb488c2f0f5aa>
 
-what to consider when designing a solution
-Upgrading something, not building something from scratch. It’s not a replacement, rather an improvement
-We need to not introduce regression
-Don’t make too many sweeping changes unless it’s critical to the solution
+feature-rich offline-first messenger
 
-Don’t implement cool features at the cost of creating new bugs
+[offline-first](https://gist.github.com/sw-yx/108d90755aa3f34401dcb488c2f0f5aa)
 
-First I identified all the existing functionalities of the chat app and create a plan to perform regression testing
+tradeoffs of each tool and design pattern before using it. In this post, we'll explore the tradeoffs of using optimistic UI design patterns in a web application.
 
-Second, all codebases have styleguides and patterns. Don’t break too much from the existing patterns because that would make the codebase more difficult to maintain.
-For our codebase, we use component state, Apollo client cache for state management
+Failed to send, re-send a message seems like a table stakes feature for all chat apps, even desktop.
+If we decide to remove the failed-to-send messages from the cache, it’s simpler from a technical perspective but worse from a user experience standpoint.
 
-Consideration
+Prior to adding photo messaging support, the chat app on our website and mobile website did not support offline mode. This meant that when a user sent a message, the message would not appear in the chat until the server responded with a success message. This was a deliberate design decision, as it was easier to implement and less likely to cause bugs.
 
-- regression testing
-- Consistency with existing patterns of problem solving in the codebase
--
+clearly partitioned and
+
+Persisting the data locally enables local manipulation of data but (and subsequent syncing)
+
+In collaboration tools Conflict resolution
+
+we need to store and they need to be associated
+
+Only implementing optimistic UI is not sufficient for offline-mode support because when the
+
+[This article](https://www.swyx.io/svelte-amplify-datastore) distinguishes
+
+offline-first app - local storage and manipulation of data (and subsequent syncing)
+
+Originally designed as a mailbox where real time update is not needed. People’s expectations of email apps do not include real time update although that has changed too with sophisticated email apps like gmail raising the bar of what people expect from a chat app
+
+[offline-first apps](https://www.swyx.io/svelte-amplify-datastore)
+Having an explicit data layer that controls syncing with the server allows us to implement offline-first apps. This means that the app can be used even when the user is offline, and the app will sync with the server when the user is online again.
+
+## Sub-Problems Solution Searching
+
+The solution search space can be partitioned into these non-overlapping areas:
 
 ## The Solution Approaches and Their Limitations
 
@@ -89,8 +240,6 @@ I missed this - Pagination
 Forgot to add this to the regression testing plan
 
 Tradeoffs - what are we optimizing for? Finding the right balance depends on the engineering
-
-Choosing a more robust solution that at a higher engineering cost is not always **appropriate** for a business that needs to be agile to test hypotheses and iterate quickly.
 
 A social media platform like OkCupid operates in a very competitive landscape so moving quickly to launch and iterate on experimental features and respond to new market insights quickly. A flexible architectural design that is easier and faster to implement but has more technical debt is often the right choice for OkCupid.
 
@@ -317,7 +466,7 @@ An important question is do you need optimistic UI? If you are building a chat a
 
 Engineering effort is often spent on building out the backend of a system, and the frontend is often an afterthought. This is especially true for web applications, where the frontend is often a thin layer on top of a backend API.
 
-Over-engineering is a symptom of a lack of understanding of the problem space. It's easy to get caught up in the details of a system, and lose sight of the big picture. In this post, I'll discuss how we designed the frontend of OkCupid Messenger to be fast and responsive, even when the backend is slow or unavailable.
+It's easy to get caught up in the details of a system, and lose sight of the big picture. In this post, I'll discuss how we designed the frontend of OkCupid Messenger to be fast and responsive, even when the backend is slow or unavailable.
 
 We looked at reference designs from other chat applications, and found that they were all too slow and unresponsive. We wanted to build a chat application that was fast and responsive, even when the backend was slow or unavailable.
 
@@ -328,10 +477,6 @@ maintainability and performance.
 Development time. Code complexity. Ease of debugging. These are all factors that engineers consider when designing a system. But there’s another factor that’s often overlooked: user experience.
 
 Product goals
-
-Quick response time from the server is not always achievable, especially when the user is on a slow network on a mobile device.
-
-<!--more-->
 
 - In cases like these, the value of acting early, or precomputating, is called into question by uncertainty about the future.
   Since the benefit of precomputation depends on a specific outcome of future events, it reflects a rather optimistic computation attitude with a confident outlook on the future.
@@ -636,8 +781,6 @@ To let the user know when a channel has not yet been confirmed by the server, we
 
 We know that all server-generated ids are positive integers, but the optimistically “generated” ids are all negative — how lucky!
 
-modifying the server schema to keep track of some client state,
-
 # Options
 
 1. The `optimisticResponse` option on the mutate function.
@@ -750,3 +893,7 @@ Dictionary mapping tempId to actual ID?
   - Find the message in apollo cache using the id. If not found, look at every entry in the dictionary for a matching id
   - We can make a space / time tradeoff by adding another dictionary for faster lookup? More data-structures to maintain and keep in sync with the other dictionary and the apollo client cache data
   - Read receipt and sent indicator calculation depends on all the messages - only the most recent message that has a non-null `readTime` property and was successfully sent out in the client cache gets the read receipt
+
+## Conclusion
+
+In system design, engineers often have to make tradeoffs between managing software complexity and delivering value to our users. When the broader developer community comes out with a shiny new tool or design pattern, it's tempting to use it to solve every problem.
