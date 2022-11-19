@@ -98,48 +98,251 @@ Functional requirements include the features we need to support now but the solu
 
 A non-scalable solution cannot evolve to support new requirements without costly refactoring or special-case handling, which introduces maintainability concerns. But when too much emphasis is put on future-proofing, we end up with an over-engineered solution that is also hard to scale and maintain.
 
-Scalability Maintainability are examples of [non-functional and business requirements](https://www.altexsoft.com/blog/business/functional-and-non-functional-requirements-specification-and-types) that we also want to optimize for. For the chat app, we don't want to use a general offline-mode implementation that can be used for both collaborative data as well as non-collaborative data because this implementation has very demanding memory usage and heavy on the computation. Using a memory and power intensive implementation not only causes unnecessary technical complexity in the implementation (bad for maintenance and velocity to launch the feature), but also a degraded offline-first experience from lagginess and crashes on cheap phones without a lot of processing power and memory.
+Scalability and maintainability are examples of [non-functional and business requirements](https://www.altexsoft.com/blog/business/functional-and-non-functional-requirements-specification-and-types) that we also want to optimize for. For the chat app, we don't want to use a general offline-mode implementation that can be used for both collaborative data as well as non-collaborative data because this implementation can be very demanding on memory usage and computationally intensive. Using a memory and power intensive implementation not only causes unnecessary technical complexity in the implementation (bad for maintenance and velocity to launch the feature), but also a degraded offline-first experience from lagginess and crashes on cheap phones without a lot of processing power and memory.
 
 Collaborative data is not a future use-case we will ever need to support for the chat app. As previously mentioned, only one person can create and edit a message and this is true for any chat app.
 
 What are some valid and likely future features we would want to add for the OkCupid chat app? We can look to other chat apps to see what features they have that makes sense for a dating app.
 
-- **Threaded reply** - Very Likely. Almost all modern chat apps provide [threaded reply](https://www.engadget.com/2019-03-20-facebook-messenger-threads.html). Bumble, another dating app, already implements threaded reply in their chat app.
+- **Threaded reply** - Very Likely. Almost all modern chat apps support [threaded reply](https://www.engadget.com/2019-03-20-facebook-messenger-threads.html). Bumble, another dating app, already implements threaded reply in their chat app.
 - **Group chat** - Likely. OkCupid is one of the best dating apps for daters seeking non-traditional relationships and already provides the ability for partnered daters to link their profiles together. It would be on-brand for OkCupid to provide a way for daters to chat with multiple people at once.
 - **Un-send a message** - Unlikely because it is undesirable from a trust and safety standpoint, allowing bad actors to un-send a message will make it difficult to moderate a reported conversation. This feature is also not present in Bumble's chat app.
 - **Edit a sent message** - Unlikely. Same reason as un-send a message.
 
-## Identify Constraints
+### Identify Constraints
 
-**bias towards established patterns**
+Unconstrained problem solving can be liberating but also overwhelming when there are too many choices to consider.
 
-Identifying constraints are important too because
-Limitations in our solution space can be a good thing. It forces us to think creatively and come up with novel solutions. But it can also be a bad thing if we are too constrained by the limitations of our solution space. We want to be able to identify the constraints and biases in our solution space so that we can be aware of them and make conscious decisions to either work within the constraints or to break them.
+When we are searching for an optimal solution for a problem in a solution space, applying constraints can help us better scope our problem and refine our search to discover a simple and practical solution.
 
-- how long we have to implement this?
+There are two flavors of constraints in engineering problem-solving: feasibility and practicality.
 
-Simplifying assumptions we can make about the creation and update of the messages that it's managing.
+#### Feasibility
 
-There are three types of constraints
+Feasibility concerns technical constraints that are imposed by the current technology we are using.
 
-**1. Time and Effort**
+For example, a feasibility concern for the chat app may be memory availability on the device that the chat app runs on.
 
-Choosing a more robust solution that at a higher engineering cost is not always appropriate for a business that needs to be agile to test hypotheses and iterate quickly.
+A conversation can have arbitrarily large number of messages. If we load all the messages into memory without pagination when the app first mounts, we will quickly run out of memory and the app will crash.
+
+#### Practicality
+
+Practicality deals with business constraints like engineering resource, budget, timeline, and the tolerance for risk.
+
+Choosing to pursue a more technically complex and robust solution at a higher engineering cost is not always appropriate for a business that needs to be agile to test hypotheses and iterate quickly.
+
+A social media platform like OkCupid operates in a very competitive landscape so there's an urgency to launch quickly and iterate on experimental features in response to new market insights. A flexible architectural design that is easier and faster to implement but has more technical debt is often the right choice for OkCupid.
+
+Another practicality constraint is the tolerance for risk which depends on the business case for the feature. For example, if the KPI is measured in number of new user onboarding and conversion of these users to paid users, the business cost of shipping a broken onboarding flow or broken table-stakes feature like matching and chatting can be very high. In this case, it is better to trade off velocity for higher code quality.
+
+### Other Things We Want to Optimize for
+
+- Maintainability - Consistency with existing patterns of problem solving in the codebase
+- Regression prevention -
+  👎 modifying the server schema to keep track of some client state
+
+[Duplication is not always bad](https://xiaoyunyang.github.io/post/6-surprising-life-lessons-from-my-30s/#3-duplication-is-not-always-bad)! Sometimes it makes things simpler.
+
+## Solution Approaches and Their Limitations
+
+[code complexity](https://www.codegrip.tech/productivity/a-simple-understanding-of-code-complexity)
+
+A more technically complex solution may be more robust but it also introduces more risk of bugs and crashes. A more technically complex solution may also be more expensive to maintain and scale.
+
+There's non-recurring upfront cost to develope a solution and recurring cost to maintain and evolve the solution.
+
+The recurring cost can often be higher than the upfront cost because the upfront cost is amortized over the lifetime of the product.
+
+Engineering effort is required not only to implement the solution but also to maintain and evolve the solution over time. The more complex the solution, the more effort is required to maintain and evolve the solution.
+
+One way to offset the upfront cost is to use a third-party solution. But this comes with the risk of vendor lock-in and the cost of integration.
+
+To lower recurring cost, many code-bases use industry standards and have style guides to discourage deviations from existing patterns because inconsistencies in code-bases adds maintenance cost.
+
+Feasibility and practicality both influence design decisions.
+
+### Sub-Problems Solution Searching
+
+The solution search space can be partitioned into these non-overlapping areas:
+
+### Source of Truth
+
+### What's Real?
+
+We solve this problem by adding a status indicator like `sending...`, `sent`, `failed to send` under the message. The status indicator tells the user if the message has been actually sent and processed by server, which implies that the conversation partner is able to see that message. This is a common pattern in chat apps, and it is also a common pattern in other apps that use optimistic UI design.
+
+In this post, I will discuss how we added optimistic UI to the OkCupid Messenger. I will also discuss the tradeoffs we made in the design and implementation of this feature.
+
+An important question is do you need optimistic UI? If you are building a chat app that only supports text messages, then you probably don't need it. However, if you are building a chat app that supports sending photos, then you probably do need it because the cost of creating a photo message to send is high client-side as client devices have to compress the file before creating the photo message object to send to the server. From a user’s perspective, it is expensive to provide a photo to send as it requires scrolling through files on the computer or photo library on the phone or taking a photo directly from the camera or scroll through.
+
+Engineering effort is often spent on building out the backend of a system, and the frontend is often an afterthought. This is especially true for web applications, where the frontend is often a thin layer on top of a backend API.
+
+It's easy to get caught up in the details of a system, and lose sight of the big picture. In this post, I'll discuss how we designed the frontend of OkCupid Messenger to be fast and responsive, even when the backend is slow or unavailable.
+
+We looked at reference designs from other chat applications, and found that they were all too slow and unresponsive. We wanted to build a chat application that was fast and responsive, even when the backend was slow or unavailable.
+
+user experience. In this post, I'll discuss one of the tradeoffs we made in the OkCupid Messenger product, and how we used it to improve the user experience.
+
+maintainability and performance.
+
+Development time. Code complexity. Ease of debugging. These are all factors that engineers consider when designing a system. But there’s another factor that’s often overlooked: user experience.
+
+Product goals
+
+- In cases like these, the value of acting early, or precomputating, is called into question by uncertainty about the future.
+  Since the benefit of precomputation depends on a specific outcome of future events, it reflects a rather optimistic computation attitude with a confident outlook on the future.
+
+Precomputing vs Lazy Evaluation
+
+- Precomputing - benefit: efficient if you are optimistic about the future that the plan won’t change. Drawback - over-optimization. wasted effort if plans do change and your model for problem solving breakdown because the assumptions that underlie your solution approach changed
+
+### Preserving Order of Messages
+
+Sending multiple messages in a row while offline: some may succeed and some may succeed. The request may get processed by the API in a different order than when the message gets created. We use reference designs like other chat apps to inform the design of our chat app.
+
+The order of the messages has a direct impact on the chat experience because multiple users interact with the same dataset. If the other user responds to the most recent message in the chat but the most recent message is not the most recent in your chat, you may become very confused.
+
+Does this change the message order?
+
+```ts
+messagesCacheRef.current.delete(tempId);
+messagesCacheRef.current.set(realId, { message, tempId });
+```
+
+the temp one is deleted and the real one is added I think the real one gets put at the end instead of where the temp one was
+
+- An important assumption is nothing else get added to the cache between the time the temp message got added and the time the send mutation resolves (edited)
+- But that's not always a guarantee as you could get an instant event or a user generated message while the api request is pending on a slow network
+- Is there a data structure that provides O(1) lookup based on the key and LIFO
+- a separate array could be used to keep track of the id order, then the tempId gets swapped for the realID when it returns
+- So the case we want to handle is this: suppose we have 3 events. (A) user sends message A. (B) message A send request resolves with success (C) user sends message B. The assumption is Event A is always immediately followed by Event B. However, there could be a case where Event C happens after Event A and before Event B. The question is what do we do in this edge case
+- Our options are (1) keep the original order of message creation. So after send request resolves for message A, A still appears before B . (2) put message A after message B if the server resolves the send request for A after message B is added optimistically
+- The current implementation supports option (2). To support option (1) another data structure or a complicated version of the Map needs to be used
+- The downside of that is introducing another data structure splits the single source of truth into two sources of truth, which adds technical complexity of having to keep them synced and risks of bugs being introduced in the future when we want to update anything about the way we send messages (eg delete messages). Besides the added maintenance cost, there's also the added space and time complexity
+
+- I guess the Map could be an array then so the message at an index could be modified, and I don't think time complexity is a concern here since we are dealing with tens to hundreds of messages (traversing over that list should be less than a ms anyways)
+- It needs to be a map because we need quick lookup and update of the message based on the id when there's an instant event for message read or reaction or when you unblur an image (edited)
+- Array doesn't provide any advantages over the map because we will only add a message to the end, never in the middle. We don't need to look up a message by its insertion order. We need to look up a message by its id
+- I think it wouldn't make a difference map v array with the number of messages we are dealing with. using array.find or array.findIndex and then array[index] = updatedMessage wouldn't be significantly slower
+- An array is basically an implementation of a Map in which the key is the index. We will never need to look up a message based on the order of its insertion
+- but we only need to look up a message by its id when there is a tmpId replaced with a real id or an instant event?
+
+- We need to look up a message by its id for  read message instant event, unblur photo message, and reaction
+- We delete the temp message using its tempId when the send request resolves. Then we add the real message
+- Performance wise O(1) lookup and O(N) lookup may not look different on a desktop, but this also needs to work for mobile web on cheap phones (edited)
+- I don't think optimizing for performance here is a concern even on mw, maybe if we were dealing with millions of messages
+- It's not just optimizing for performance. It's much easier to do a map.get, map.set, and map.delete than array.find by id, array find by index then remove that element at that index
+- Even if you replace the map with the array, you still need the component state array to prevent app crash from hitting re-rendering limit
+- what's the re-rendering limit?
+- It's when you update a component state too much too fast and triggering a lot of deep rendering
+
+- If we get rid of the ref and just update the component state directly, it's going to crash the app even for like 10 messages. That was the first thing I tried. That's why I put the source of truth in ref
+- oh, then the array could be kept in a ref too
+- I don't think either one is a big deal, as long as we are ok with the message order changing
+- I tried that too but it doesn't always update when things change
+- that's strange, I think the Map is a good solution
+- Message order also changes in the iOS implementation
+
+I'm just copying what iOS, iMessage, and all the other chat apps do already
+
+The downside of option (1) is it may be a little jarring user experience to see the messages you are sending switching order
+
+I argue that option 1 is acceptable for the following reasons: (1) it's an edge case that's unlikely to happen unless you are on a really really slow network or you can send a new message at super human speed. (2) the order in which all the messages appear in steady state (ie when all the api requests have resolved and user has stopped typing) reflects the actual order of the messages server-side so if you were to refresh the page, nothing would change. (3) other messaging apps like iMessage implements it this way too
+
+I ran a quick experiment on iMessage. To simulate that case in which Event A , Event C, and Event B in that order, I sent two messages in offline mode. Event A = sending “1” in airplane mode. Event B = sending “2” in airplane mode. Event C =  retry sending “1” after turning data roaming back on. The send request resolves after Event C.
+
+{{< image classes="fancybox fig-50 clear" src="/post/images/offline-first-chat-app/imessage-0.png" thumbnail="/post/images/offline-first-chat-app/imessage-0.png" title="initial state">}}
+
+{{< image classes="fancybox fig-50 clear" src="/post/images/offline-first-chat-app/imessage-1.png" thumbnail="/post/images/offline-first-chat-app/imessage-1.png" title="initial state">}}
+
+As depicted in the screenshots, the original order in which the messages were added optimistically was not kept
+
+Based on the reasons above, my conclusion is the Map and the current implementation of the update operations to the Map is the most optimal and correct
+
+### Caching System
+
+Gotcha: Ordering of the resent message? It can be either. Go with what people are familiar with
+Use Reference designs - iOS okcupid app, iMessage, WhatsApp, Facebook messenger.
+
+Functional requirements - drives the regression testing
+
+Need to respect the original insertion order
+ID is created in the backend
+Access pattern for individual message - read receipt
+Optimistically updating the messages while not blocking users from creating new messages
+Resend a message
+
+I missed this - Pagination
+Forgot to add this to the regression testing plan
+
+Tradeoffs - what are we optimizing for? Finding the right balance depends on the engineering
+
+Choosing the right place for caching
+
+- Apollo client cache
+- Component state
+- Global state - Redux
+  Choosing the right data structure and policy for updating it
+- can be abstracted
+- Options: array, map, object
+
+Having multiple architectural patterns in the same codebase introduces cognitive complexity for the maintainers of the codebase.
+
+Currently, the source of truth for messages come from Apollo Client Cache. On initial messenger load, all the messages from conversationThread get pushed into the Apollo Client Cache. When you send a message, a few things happen:
+
+wrapping messages in something to also hold the metadata solves the optimistic sending
+
+- A temporary message with a temporary Id gets created and added to the Apollo Client Cache.
+- Send message mutation fires
+- Mutation resolves with success, the temporary message in the cache gets replaced by the real message
+
+Using Apollo Client Cache as the source of truth has a few disadvantages
+
+- data in the cache has to conform to the server-defined schema which prevents us from adding metadata like tempId or sendStatus to distinguishing optimistically updated outgoing messages from the real ones coming from the server
+- optimistically updated message cannot always mock all the required fields of the message such as the server generated message id. The consequence of that is the UI glitch after the message send mutation resolves where the optimistically added message unmounts and the server message mounts because the id, which is used as the key changed.
+
+We need a different place to store our source of truth for messages. A message can fall into one of the three categories:
+
+1. loaded from the server
+2. sent from the client, optimistically updated, pending server resolution of the mutation
+3. sent from the client, server resolved
+
+Our datastore needs to include the option to add metadata about the messages to distinguish these different type of messages
+
+There is an array of client-side datastore options to keep your data model:
+
+1. Apollo client cache - for client state based on API data
+2. React component state or ref - for client state that does not need to live beyond the lifecycle of the component
+3. Redux or React Context - for client state that needs to be shared across multiple pages
+4. Local storage - for client state that needs to persist across multiple sessions
+
+We can eliminate options 3 and 4 because we are getting rid of redux and we don’t need to the client state to be shared across multiple pages. Messages only need to exist in the context of the messenger.
+
+For reasons stated above, Apollo client cache is the most restrictive option for storing our data model because data in the cache has to conform to the server-defined schema which prevents us from implementing any sort of bookkeeping system using only the Apollo client cache.
+
+So we are left with option 2 to keep our source of truth for messages.
+
+#### Technical Complexity
+
+#### 1. Time and Effort
+
+These are business constraints.
 
 Thus, it's important to understand the business context of what you are building to effectively develop a solid solution that is not over-engineered.
 
-Trade off a richer user experience with added technical complexity.
+But on the mobile app versions, there’s usually no outbox or automatic resend. You have to manually trigger resend
 
-**2. Existing Patterns**
+#### 2. Adherence to Existing Patterns
+
+**bias towards established patterns**
+Popular chat apps like iMessage, Whatsapp, and Facebook Messenger all implement a desktop version that supports offline-mode. Many of these implementations rely on the concept of an outbox in which outgoing messages are queued if the device is offline. When the device is online again, the messages in the outbox can be sent out in batch or one-by-one in the order of creation.
 
 Use reference designs.
 
-Popular chat apps like iMessage, Whatsapp, and Facebook Messenger all implement a desktop version that supports offline-mode. Most implementations rely on the concept of an outbox in which outgoing messages are queued if the device is offline. When the device is online again, the messages in the outbox can be sent out in batch or one-by-one in the order of creation.
-
-Second, all codebases have styleguides and patterns. Don’t break too much from the existing patterns because that would make the codebase more difficult to maintain.
+Second,
 For our codebase, we use component state, Apollo client cache for state management
 
-**3. Regression**
+#### 3. Regression
 
 Are we upgrading something, not building something from scratch? It’s not a replacement, rather an improvement.
 
@@ -148,13 +351,9 @@ Don’t make too many sweeping changes unless it’s critical to the solution
 
 Don’t implement cool features at the cost of creating new bugs
 
-## Other Things We Want to Optimize for
-
-- Maintainability - Consistency with existing patterns of problem solving in the codebase
-- Regression prevention -
-  👎 modifying the server schema to keep track of some client state
-
-[Duplication is not always bad](https://xiaoyunyang.github.io/post/6-surprising-life-lessons-from-my-30s/#3-duplication-is-not-always-bad)! Sometimes it makes things simpler.
+- How easily can we change the backend?
+- how long we have to implement this?
+- Simplifying assumptions we can make about the creation and update of the messages that it's managing.
 
 With respect to persistence, design questions for the datastore
 
@@ -219,80 +418,32 @@ Originally designed as a mailbox where real time update is not needed. People’
 [offline-first apps](https://www.swyx.io/svelte-amplify-datastore)
 Having an explicit data layer that controls syncing with the server allows us to implement offline-first apps. This means that the app can be used even when the user is offline, and the app will sync with the server when the user is online again.
 
-## Sub-Problems Solution Searching
+### Steady State and Transient State
 
-The solution search space can be partitioned into these non-overlapping areas:
+Transient state of the sent/(un)read indicator the indicator always show under the last sent message.
 
-## The Solution Approaches and Their Limitations
+1. Initial state
+   {{< image classes="fancybox fig-50 clear" src="/post/images/offline-first-chat-app/indicator-0.png" thumbnail="/post/images/offline-first-chat-app/indicator-0.png" title="initial state">}}
 
-Gotcha: Ordering of the resent message? It can be either. Go with what people are familiar with
-Use Reference designs - iOS okcupid app, iMessage, WhatsApp, Facebook messenger.
+2. Press resend on "5":
 
-Functional requirements - drives the regression testing
+   {{< image classes="fancybox fig-50 clear" src="/post/images/offline-first-chat-app/indicator-1.png" thumbnail="/post/images/offline-first-chat-app/indicator-1.png" title="Press resend on 5">}}
 
-Need to respect the original insertion order
-ID is created in the backend
-Access pattern for individual message - read receipt
-Optimistically updating the messages while not blocking users from creating new messages
-Resend a message
+3. Target user reads "5" - read receipt processed correctly and indicator shown in the correct place.
 
-I missed this - Pagination
-Forgot to add this to the regression testing plan
+   {{< image classes="fancybox fig-50 clear" src="/post/images/offline-first-chat-app/indicator-1.png" thumbnail="/post/images/offline-first-chat-app/indicator-2.png" title="conversation partner reads 5">}}
 
-Tradeoffs - what are we optimizing for? Finding the right balance depends on the engineering
+## Update policy
 
-A social media platform like OkCupid operates in a very competitive landscape so moving quickly to launch and iterate on experimental features and respond to new market insights quickly. A flexible architectural design that is easier and faster to implement but has more technical debt is often the right choice for OkCupid.
+For updating the data layer we need to consider...
 
-Choosing the right place for caching
+Optimistic UI design works by simulating the result before the server responds. This means that the user sees the result of their action immediately, and the app will not need to wait until the server responds with the actual result to update the UI.
 
-- Apollo client cache
-- Component state
-- Global state - Redux
-  Choosing the right data structure and policy for updating it
-- can be abstracted
-- Options: array, map, object
+Locally operating on that data
 
-Having multiple architectural patterns in the same codebase introduces cognitive complexity for the maintainers of the codebase.
-
-[code complexity](https://www.codegrip.tech/productivity/a-simple-understanding-of-code-complexity)
+Although this was acceptable for sending simple messages in which the network delay did not result in any noticeable UI update delay, the delay in response is very noticeable for photo messages because sending a photo message is a significantly more expensive operation in the backend and API layer.
 
 ## It Works! What Could Have Been Done Better
-
-## Caching System
-
-Currently, the source of truth for messages come from Apollo Client Cache. On initial messenger load, all the messages from conversationThread get pushed into the Apollo Client Cache. When you send a message, a few things happen:
-
-wrapping messages in something to also hold the metadata solves the optimistic sending
-
-- A temporary message with a temporary Id gets created and added to the Apollo Client Cache.
-- Send message mutation fires
-- Mutation resolves with success, the temporary message in the cache gets replaced by the real message
-
-Using Apollo Client Cache as the source of truth has a few disadvantages
-
-- data in the cache has to conform to the server-defined schema which prevents us from adding metadata like tempId or sendStatus to distinguishing optimistically updated outgoing messages from the real ones coming from the server
-- optimistically updated message cannot always mock all the required fields of the message such as the server generated message id. The consequence of that is the UI glitch after the message send mutation resolves where the optimistically added message unmounts and the server message mounts because the id, which is used as the key changed.
-
-We need a different place to store our source of truth for messages. A message can fall into one of the three categories:
-
-1. loaded from the server
-2. sent from the client, optimistically updated, pending server resolution of the mutation
-3. sent from the client, server resolved
-
-Our datastore needs to include the option to add metadata about the messages to distinguish these different type of messages
-
-There is an array of client-side datastore options to keep your data model:
-
-1. Apollo client cache - for client state based on API data
-2. React component state or ref - for client state that does not need to live beyond the lifecycle of the component
-3. Redux or React Context - for client state that needs to be shared across multiple pages
-4. Local storage - for client state that needs to persist across multiple sessions
-
-We can eliminate options 3 and 4 because we are getting rid of redux and we don’t need to the client state to be shared across multiple pages. Messages only need to exist in the context of the messenger.
-
-For reasons stated above, Apollo client cache is the most restrictive option for storing our data model because data in the cache has to conform to the server-defined schema which prevents us from implementing any sort of bookkeeping system using only the Apollo client cache.
-
-So we are left with option 2 to keep our source of truth for messages.
 
 ## Messages Cache vs Messages State
 
@@ -367,123 +518,6 @@ To make the messenger app more resilient against future regressions, I added the
 ## Resending
 
 Allow a failed message to be resent. The input for the send mutation is created from the optimistically added message from the client messages cache which we added in a previous PR CE-548 Better Cache for Messages #6252. sendStatus, which is part of the metadata associated with each message entry in the client cache, is used to determine whether to render the retry CTA under a message. sendStatus is only available for messages which are created client-side and don't exist server-side. Thus only two sendStatuses - FAILED and SENDING - are defined.
-
-## Steady State and Transient State
-
-Transient state of the sent/(un)read indicator the indicator always show under the last sent message.
-
-1. Initial state
-   {{< image classes="fancybox fig-50 clear" src="/post/images/offline-first-chat-app/indicator-0.png" thumbnail="/post/images/offline-first-chat-app/indicator-0.png" title="initial state">}}
-
-2. Press resend on "5":
-
-   {{< image classes="fancybox fig-50 clear" src="/post/images/offline-first-chat-app/indicator-1.png" thumbnail="/post/images/offline-first-chat-app/indicator-1.png" title="Press resend on 5">}}
-
-3. Target user reads "5" - read receipt processed correctly and indicator shown in the correct place.
-
-   {{< image classes="fancybox fig-50 clear" src="/post/images/offline-first-chat-app/indicator-1.png" thumbnail="/post/images/offline-first-chat-app/indicator-2.png" title="conversation partner reads 5">}}
-
-## Update policy
-
-For updating the data layer we need to consider...
-
-Optimistic UI design works by simulating the result before the server responds. This means that the user sees the result of their action immediately, and the app will not need to wait until the server responds with the actual result to update the UI.
-
-Locally operating on that data
-
-Although this was acceptable for sending simple messages in which the network delay did not result in any noticeable UI update delay, the delay in response is very noticeable for photo messages because sending a photo message is a significantly more expensive operation in the backend and API layer.
-
-### Preserving Order of Messages
-
-Sending multiple messages in a row while offline: some may succeed and some may succeed. The request may get processed by the API in a different order than when the message gets created. We use reference designs like other chat apps to inform the design of our chat app.
-
-The order of the messages has a direct impact on the chat experience because multiple users interact with the same dataset. If the other user responds to the most recent message in the chat but the most recent message is not the most recent in your chat, you may become very confused.
-
-Does this change the message order?
-
-```ts
-messagesCacheRef.current.delete(tempId);
-messagesCacheRef.current.set(realId, { message, tempId });
-```
-
-the temp one is deleted and the real one is added I think the real one gets put at the end instead of where the temp one was
-
-- An important assumption is nothing else get added to the cache between the time the temp message got added and the time the send mutation resolves (edited)
-- But that's not always a guarantee as you could get an instant event or a user generated message while the api request is pending on a slow network
-- Is there a data structure that provides O(1) lookup based on the key and LIFO
-- a separate array could be used to keep track of the id order, then the tempId gets swapped for the realID when it returns
-- So the case we want to handle is this: suppose we have 3 events. (A) user sends message A. (B) message A send request resolves with success (C) user sends message B. The assumption is Event A is always immediately followed by Event B. However, there could be a case where Event C happens after Event A and before Event B. The question is what do we do in this edge case
-- Our options are (1) keep the original order of message creation. So after send request resolves for message A, A still appears before B . (2) put message A after message B if the server resolves the send request for A after message B is added optimistically
-- The current implementation supports option (2). To support option (1) another data structure or a complicated version of the Map needs to be used
-- The downside of that is introducing another data structure splits the single source of truth into two sources of truth, which adds technical complexity of having to keep them synced and risks of bugs being introduced in the future when we want to update anything about the way we send messages (eg delete messages). Besides the added maintenance cost, there's also the added space and time complexity
-
-- I guess the Map could be an array then so the message at an index could be modified, and I don't think time complexity is a concern here since we are dealing with tens to hundreds of messages (traversing over that list should be less than a ms anyways)
-- It needs to be a map because we need quick lookup and update of the message based on the id when there's an instant event for message read or reaction or when you unblur an image (edited)
-- Array doesn't provide any advantages over the map because we will only add a message to the end, never in the middle. We don't need to look up a message by its insertion order. We need to look up a message by its id
-- I think it wouldn't make a difference map v array with the number of messages we are dealing with. using array.find or array.findIndex and then array[index] = updatedMessage wouldn't be significantly slower
-- An array is basically an implementation of a Map in which the key is the index. We will never need to look up a message based on the order of its insertion
-- but we only need to look up a message by its id when there is a tmpId replaced with a real id or an instant event?
-
-- We need to look up a message by its id for  read message instant event, unblur photo message, and reaction
-- We delete the temp message using its tempId when the send request resolves. Then we add the real message
-- Performance wise O(1) lookup and O(N) lookup may not look different on a desktop, but this also needs to work for mobile web on cheap phones (edited)
-- I don't think optimizing for performance here is a concern even on mw, maybe if we were dealing with millions of messages
-- It's not just optimizing for performance. It's much easier to do a map.get, map.set, and map.delete than array.find by id, array find by index then remove that element at that index
-- Even if you replace the map with the array, you still need the component state array to prevent app crash from hitting re-rendering limit
-- what's the re-rendering limit?
-- It's when you update a component state too much too fast and triggering a lot of deep rendering
-
-- If we get rid of the ref and just update the component state directly, it's going to crash the app even for like 10 messages. That was the first thing I tried. That's why I put the source of truth in ref
-- oh, then the array could be kept in a ref too
-- I don't think either one is a big deal, as long as we are ok with the message order changing
-- I tried that too but it doesn't always update when things change
-- that's strange, I think the Map is a good solution
-- Message order also changes in the iOS implementation
-
-I'm just copying what iOS, iMessage, and all the other chat apps do already
-
-The downside of option (1) is it may be a little jarring user experience to see the messages you are sending switching order
-
-I argue that option 1 is acceptable for the following reasons: (1) it's an edge case that's unlikely to happen unless you are on a really really slow network or you can send a new message at super human speed. (2) the order in which all the messages appear in steady state (ie when all the api requests have resolved and user has stopped typing) reflects the actual order of the messages server-side so if you were to refresh the page, nothing would change. (3) other messaging apps like iMessage implements it this way too
-
-I ran a quick experiment on iMessage. To simulate that case in which Event A , Event C, and Event B in that order, I sent two messages in offline mode. Event A = sending “1” in airplane mode. Event B = sending “2” in airplane mode. Event C =  retry sending “1” after turning data roaming back on. The send request resolves after Event C.
-
-{{< image classes="fancybox fig-50 clear" src="/post/images/offline-first-chat-app/imessage-0.png" thumbnail="/post/images/offline-first-chat-app/imessage-0.png" title="initial state">}}
-
-{{< image classes="fancybox fig-50 clear" src="/post/images/offline-first-chat-app/imessage-1.png" thumbnail="/post/images/offline-first-chat-app/imessage-1.png" title="initial state">}}
-
-As depicted in the screenshots, the original order in which the messages were added optimistically was not kept
-
-Based on the reasons above, my conclusion is the Map and the current implementation of the update operations to the Map is the most optimal and correct
-
-### What's real?
-
-We solve this problem by adding a status indicator like `sending...`, `sent`, `failed to send` under the message. The status indicator tells the user if the message has been actually sent and processed by server, which implies that the conversation partner is able to see that message. This is a common pattern in chat apps, and it is also a common pattern in other apps that use optimistic UI design.
-
-In this post, I will discuss how we added optimistic UI to the OkCupid Messenger. I will also discuss the tradeoffs we made in the design and implementation of this feature.
-
-An important question is do you need optimistic UI? If you are building a chat app that only supports text messages, then you probably don't need it. However, if you are building a chat app that supports sending photos, then you probably do need it because the cost of creating a photo message to send is high client-side as client devices have to compress the file before creating the photo message object to send to the server. From a user’s perspective, it is expensive to provide a photo to send as it requires scrolling through files on the computer or photo library on the phone or taking a photo directly from the camera or scroll through.
-
-Engineering effort is often spent on building out the backend of a system, and the frontend is often an afterthought. This is especially true for web applications, where the frontend is often a thin layer on top of a backend API.
-
-It's easy to get caught up in the details of a system, and lose sight of the big picture. In this post, I'll discuss how we designed the frontend of OkCupid Messenger to be fast and responsive, even when the backend is slow or unavailable.
-
-We looked at reference designs from other chat applications, and found that they were all too slow and unresponsive. We wanted to build a chat application that was fast and responsive, even when the backend was slow or unavailable.
-
-user experience. In this post, I'll discuss one of the tradeoffs we made in the OkCupid Messenger product, and how we used it to improve the user experience.
-
-maintainability and performance.
-
-Development time. Code complexity. Ease of debugging. These are all factors that engineers consider when designing a system. But there’s another factor that’s often overlooked: user experience.
-
-Product goals
-
-- In cases like these, the value of acting early, or precomputating, is called into question by uncertainty about the future.
-  Since the benefit of precomputation depends on a specific outcome of future events, it reflects a rather optimistic computation attitude with a confident outlook on the future.
-
-Precomputing vs Lazy Evaluation
-
-- Precomputing - benefit: efficient if you are optimistic about the future that the plan won’t change. Drawback - over-optimization. wasted effort if plans do change and your model for problem solving breakdown because the assumptions that underlie your solution approach changed
 
 # Contract with GraphQL
 
