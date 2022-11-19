@@ -11,8 +11,8 @@ This is the source code of the website. There are essentially three repos in thi
 ### How to set up the project
 
 - Clone this repo and switch to `sourcecode` branch.
-- `cd` into the root directory and clone this repo again (remain on `master` branch), then rename this directory `public`.
-- Download the theme submodule: while on the `sourcecode` branch, do `git submodule update --init`.
+- `cd` into the root directory and clone this repo again, then rename this directory `public`.
+- Initialize the theme submodule: while on the `sourcecode` branch, do `git submodule update --init`.
 
 ### Development
 
