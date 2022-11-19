@@ -19,9 +19,9 @@ keywords:
   - React
   - User Experience
 autoThumbnailImage: false
-thumbnailImage: /post/images/optimistic-ui/thumb.png
-thumbnailImagePosition: top
-coverImage: /post/images/optimistic-ui/cover.png
+thumbnailImage: /post/images/offline-first-chat-app/cover.png
+thumbnailImagePosition: left
+coverImage: /post/images/offline-first-chat-app/cover.png
 ---
 
 The chat app is a table stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.
