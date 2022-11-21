@@ -1,7 +1,6 @@
 ---
 title: "The Design Behind OkCupid's Offline-first Chat App"
-date: 2022-11-18
-draft: true
+date: 2022-11-21
 categories:
   - blog
 tags:
