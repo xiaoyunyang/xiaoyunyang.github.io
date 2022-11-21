@@ -24,6 +24,8 @@ thumbnailImagePosition: left
 coverImage: /post/images/offline-first-chat-app/cover.png
 ---
 
+<!-- Photo by <a href="https://unsplash.com/@alexbemore?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alexander Shatov</a> on <a href="https://unsplash.com/s/photos/chat-app?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> -->
+
 The chat app is a table stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.
 
 In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.
@@ -182,9 +184,11 @@ When Alice and Bob first open their chat app, their replicas are populated by th
 
 Alice and Bob can make changes (mutations) to the source of truth in these ways:
 
-1. Send a message
+1. Send (Re-send) a message
 2. React to a message
 3. Send a read receipt
+
+{{< image classes="fancybox fig-100 clear" src="/post/images/offline-first-chat-app/chat-app-in-action-multiplayer.png" thumbnail="/post/images/offline-first-chat-app/chat-app-in-action-multiplayer.png" title="OkCupid chat app in action (multiplayer view)">}}
 
 Next, we will look at how we keep the replicas in sync with the source of truth when mutations are applies.
 
@@ -238,115 +242,74 @@ TODO: in the messages cache implementation, need to update the timestamp of mess
 
 ### Sub-problem 3: Conflict Resolution (Or Avoidance?)
 
-Bob's replica is modified by local action and remote updates. Conflict arises when the locally updated data disagrees with the data upstream.
+Each client's replica is modified by local action and remote updates. Conflict arises when the locally updated data disagrees with the data upstream.
 
-Because the replicas keep optimistic messages.
+Let's revisit the example when Alice and Bob are messaging each other.
 
-Let's revisit this example when Bob receives a message from Alice while also sending a message.
+When Alice sends `M1` to Bob, that mutation is propagated to Bob via a WebSocket event. You can think of the WebSocket event as a broadcast the server makes to all the clients that are subscribed to changes to the conversation thread. The server doesn't care who is on the receiving end of the broadcast. It announces to every participant of the conversation that something has changed and each participant needs to decide what to do with that information.
 
-Bob is made aware of the conflict when it gets an event
+{{< image classes="fancybox fig-100 clear" src="/post/images/offline-first-chat-app/mutation-propagation-m1.png" thumbnail="/post/images/offline-first-chat-app/mutation-propagation-m1.png" title="Mutation Propagation of M1">}}
 
+When Bob receives the WebSocket event, he needs to add `M1` to his replica because he doesn't have that message already. There are some nuances with how he should add the message to his replica which we'll get to that in the next section.
+
+But let's first focus on Alice. When Alice receives this event, she can do one of two things:
+
+1. Ignore the event or
+2. Process the event by making some changes to her replica without causing a conflict.
+
+If she chooses to process the event, what kind of conflict would arise if she were to add `M1` to her replica?
+
+Because Alice was the one who sent `M1`, she already added that message optimistically to her replica. Adding it again would cause duplication, which is a type of conflict. She can update her replica version of `M1` to reflect the server version. In particular, the server version differs from her replica version in an important way: the message `id` is different.
+
+The `id` is an important part of the message identity as it assigns uniqueness to each message in the replica collection. The `id` can be used to look up a particular message in the replica which supports various business logic. The `id` is also an important part of the view creation logic as it is used as the `key` in the React render function that maps an array of messages to JSX.
+
+Optimistic UI design works by simulating the result before the server responds. When Alice adds a message optimistically to her replica, she can simulate almost everything in the result except the `id` because that is decided when the server adds `M1` to the database. But she needs to pick something for the `id` before she can add the optimistic message to her replica.
+
+OkCupid's chat app implementation uses a pseudo-random generator to create a unique `id` for the optimistic message before adding it to the replica (let's call this `tempId`).
+
+```js
+function generateTemporaryMessageId() {
+  return `${Math.round(Math.random() * 10000)}`;
+}
+```
+
+The `tempId` looks something like `4306` while the real `id` looks something like `18325309058943693999`.
+
+If Alice gets an event announcing that a message with the `id` = `18325309058943693999` has been added to the conversation and if she decides to process this event, she will need to update the associated message in her replica to add the real (server-assigned) `id` for the message. But how does she know which of the optimistically-added messages in her replica to update?
+
+We are venturing into dangerous territories when the clients are in the business of reasoning about the provenance of data in its local copy. This could introduce a leaky abstraction problem wherein the client needs to know the implementation details of the server (e.g., how an `id` is picked), which can cause the system to be fragile and error-prone.
+
+But we must address this conflict and be able to distinguish what's real and what's optimistic in our replica because the replica data is used for business logic and drives the view. Simply ignoring the server-generated `id` and only use `tempId` would cause problems when we need to make another mutation to the message (e.g., marking the message as read which requires updating a property on the message in the replica). Replacing the `tempId` with the server-generated `id` will also cause problems because the message `id` is used as `key` by React to render the message. If we simply replace the `tempId` with the server-generated `id`, we are going to experience a very noticeable flicker where React will unmount the optimistically added message and mount the server-added messaged.
+
+{{< image classes="fancybox fig-50 clear" src="/post/images/offline-first-chat-app/flicker.gif" thumbnail="/post/images/offline-first-chat-app/flicker.gif" title="flickering from lack of conflict resolution on the id">}}
+
+In our conflict resolution policy, we must keep both server-generated `id` and `tempId`.
+
+Conflict resolution is a big topic in multiplayer functionalities implementation approaches for collaborative editing tools. [Operational Transformation](https://en.wikipedia.org/wiki/Operational_transformation) (implemented by Google Docs) and [Conflict-free Replicated Data Types](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) (CRDT) are the two main classes for conflict resolution strategies.
+
+Which conflict resolution strategy to use depends on the specific usage patterns for our application. Answering these questions a provided good starting point to narrow our technology selection for the chat app:
+
+- What is the nature of the data that is being collaborated on?
 - Does it need to be real-time?
 - What kind of mutations are supported?
-- What is the nature of the data that is being collaborated on?
 
-To satisfy our invariant and introduce the least friction in our user?
+Operational transform implemented by Google Docs is overkill for our chat app use case. For a two-player chat app, we don't need to worry about the case where two people are editing the same message property (e.g., body, reaction, read time) at the same time because that's not a valid use case. OkCupid's chat app does not even allow users to update the body of a sent message.
 
-[CRDT](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)
+If the chat app supports more than two players, then we need to implement conflict resolution for reactions and read times on a message. While that's a future use case we don't have to address now, it's worthwhile to make our solution design general enough to support an arbitrary number of multi-players to it can be easily scaled for that future use case (which we identified earlier as a likely future use case).
 
-**Causality preservation**
+A CRDT is an excellent choice for our problem because the data we are managing is a list of items.
 
-> ensures the execution order of causally dependent operations be the same as their natural cause-effect order during the process of collaboration.
+With CRDT, we get conflict resolution for free because a CRDT is a data structure that automatically resolves any inconsistencies that might occur during updates. The replicas are kept in CRDT and can be updated independently and concurrently without coordination with other replicas or the server. A final property of CRDT is eventual consistency, which will look at a little later.
 
-**Convergence**
+CRDT is a relatively new concept formalized in 2011 and popularized by collaboration tools like [Notion](https://www.notion.so/blog/data-model-behind-notion) and [Figma](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/)
 
-> ensures the replicated copies of the shared document be identical at all sites at quiescence (i.e., all generated operations have been executed at all sites)
+There are [various CRDTs to choose from](https://hal.inria.fr/inria-00555588/document). Notion and Figma both created their own CRDTs which target the specific problems they are solving. We will do the same for OkCupid's chat app.
 
-While we stand by the server version being the source of truth, there is a big downside to automatically syncing the replicas with the server state when the system reaches steady state: It can violate the invariant for our collection wherein messages are always ordered by the time they were created. This has some usability implications as it can create a jarring user experience to see the messages in the chat history suddenly change order.
+### Sub-problem 4: Eventual Consistency
 
-Choosing an appropriate final state when concurrent updates have occurred is called reconciliation. There are two approaches: First writer wins and first writer wins.
+Replicas can become out-of-sync with each other during the collaborative editing session but we need to guarantee that the states kept in the replica will eventually converge.
 
-[optimistic replication](https://en.wikipedia.org/wiki/Optimistic_replication) allows replicas to diverge. Replicas will reach [eventual consistency](https://en.wikipedia.org/wiki/Eventual_consistency) next time Alice and Bob syncs their replicas with the server state, which only happens when they refresh their chat apps (reload the page).
-
-This seems kind of a cheat but convergence upon system quiescence is a common strategy to achieve eventual consistency. This relieves us from having to implement an explicit reconciliation policy for the replicas which could be unnecessarily complex for our problem space.
-
-Consistency management is a big topic and there are implementations by Figma, Google Docs, and Quip. We will look at how we can implement a simple consistency management mechanism in our chat app.
-
-We need to find a way to keep the replicas in sync with the source of truth.
-
-In other words, we want to arrive at the same final state maintain consistency between all the copies of the conversation thread after .
-
-When do the replicas become out-of-date with the source of truth and each other?
-
-Consider this scenario:
-
-There are two main technologies used for consistency maintenance and concurrency control: operational transformation (OT) and conflict-free replicated data type (CRDT).
-
-But first, let's look at the problem of concurrency control in collaborative editing systems. At a high level, we need to worry about concurrency control whenever we deal with when multiple users are making changes to shared data at the same time.
-
-Final state and reconciliation are the two main approaches to concurrency control in collaborative editing systems.
-
-In our chat app, this means that Alice and Bob are both sending messages to each other at the same time.
-
-Alice's replica is modified by local action and remote updates.
-
-Technologies for supporting collaboration functionalities.
-
-Next we will look at how to apply these mutations to the replicas and the source of truth and keeping the replicas in sync with the source of truth.
-
-Much writing has been done on the topic of multiplayer functionalities implementation approaches in collaborative editing tools and there are many different approaches.
-
-In the most complicated case, we have apps like Google Docs where multiple people can be editing the same sentence.
-
-Operational transform implemented by Notion and Google Docs has t Figma has a more sophisticated implementation of collaborative editing than Notion
-
-Fortunately for the chat app, the data we are managing is not collaborative as only one person can create and edit a message. While this greatly simplifies the architecture as we don't have to worry about [conflict resolution](https://www.swyx.io/svelte-amplify-datastore#conflict-resolution), we still need to worry about updating and persisting a collection of messages, some of which are client-generated and don't exist server-side.
-
-Notion, another collaborative note-taking app, [solves this problem](https://www.notion.so/blog/data-model-behind-notion) by persisting the operations on the data (adding, deleting, editing) rather the the resultant data after applying the operations.
-
-The approach we will take is based on
-[Conflict-free Replicated Data Types](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) (CRDT).
-
-[Operational Transformation](https://en.wikipedia.org/wiki/Operational_transformation) (OT) algorithm.
-
-There are established patterns on how to implement multiplayer functionalities in collaborative editing systems that we can reference to build the chat app for OkCupid. this topic and we can learn from the experience of others.
-
-, we can simplify the solution approach significantly because we only need to support communications for two users. Another simplification is that we don't need to support concurrent editing of the same message because the .
-
-There are two techniques for maintaining consistency between multiple replica.
-
-- [Operational transformation](https://en.wikipedia.org/wiki/Operational_transformation) is overkill because we don't need to support concurrent editing of the same message.
-
-1. Distinguish which data exists locally and which data exists remotely
-
-- Make replicas of the conversation thread at two collaborating sites
-
-The replica drives the view!
-
-The server streams the latest state of the source of truth to the clients via a WebSocket connection. Each client figures out how to reconcile the latest state of the source of truth with the local state of the client.
-
-1. operation-based CRDT - replicas propagate states which are a list of operations that can be applied to the data to get the current state of the data. The data is not stored in the state but is derived from the operations.
-2. state-based CRDT
-
-This idea can be generalized to any kind of data that can be represented as a list of operations.
-
-We can have implement complicated system to deal with conflicts but we can
-
-Conflict resolution policy is the process of reconciling the differences between two replicas of the same data.
-
-conflicting changes will sometimes "flicker" when older acknowledged values temporarily overwrite newer unacknowledged ones. We want to avoid this flickering behavior. We will discard incoming changes from the server that conflict with the local state of the client.
-
-Re-parenting when the object's identity changes. We store a link to the parent as a property of the child. That way object identity is preserved. We have each parent store links to its child.
-
-We ensure that when the message changes its identity from temporary to real, we update the CRDT in an atomic operation.
-
-React will unmount the optimistically-added message and add the actual message.
-
-When the client wants to add a message to the thread, the update is always applied immediately to the replica since we want the chat experience to feel as responsive as possible. If the client gets another message from the server before the approval is received, we want the client to process that new message immediately as well.
-
-Conflict can arise when the server response comes back for that first message after the client has already added the second message to the replica. The server version (source of truth) and the client version (the replica) are out of sync.
-
-To better visualize this problem, let's look at the following scenario:
+To better visualize the problem of divergence, let's look at the following scenario:
 
 - At t = `T0`, Alice goes offline
 - At t = `T1`, Alice tried to send a messages `M1` (send fails)
@@ -379,25 +342,69 @@ We avoid the need to solve the conflict resolution problem by keeping the client
 
 The OkCupid chat app lets you go offline for an arbitrary amount of time and continue sending new messages. However, when you are online again, it doesn't automatically download all the messages sent to you when you were offline and re-apply your offline edits on top of the latest state.
 
-The lack of offline detection - this can be solved by polling.
+Choosing an appropriate final state when concurrent updates have occurred is called reconciliation and can be quite tricky to implement.
 
-We don't need to implement any conflict resolution because we don't do any polling of the latest server state, which is kind of a limitation of this approach but is good enough for OkCupid's use case. But if you are building a real-time chat app where simultaneous communication is a common use case (Slack), you will need to implement offline detection / polling and conflict resolution.
+For instance, there's a downside to simply syncing the replicas with the server state when the system reaches steady state: It can violate the invariant for our collection wherein messages are always ordered by the time they were created. This has some usability implications as it can create a jarring user experience to see the messages in the chat history suddenly change order.
 
-The client needs to reconcile the two messages.
-without the client needs to reconcile the two updates.
+[optimistic replication](https://en.wikipedia.org/wiki/Optimistic_replication) allows replicas to diverge. Replicas will reach [eventual consistency](https://en.wikipedia.org/wiki/Eventual_consistency) next time Alice and Bob syncs their replicas with the server state, which only happens when they refresh their chat apps (reload the page).
 
-instead of waiting for the server approval
-while we wait for acknowledgement from the server do this and we wait for the
+This seems like kind of a cheat but convergence upon system quiescence is a common strategy to achieve eventual consistency. This relieves us from having to implement an explicit reconciliation policy for the replicas which could be unnecessarily complex for our problem space.
 
-responds with the updated conversation thread, Alice's replica is updated with the new message.
+Avoiding reconciliation simplifies the implementation of our CDRT. The insufficient real-time support is a limitation of our approach but is good enough for OkCupid's use case because in a dating app, we don't expect people to be chatting simultaneously for a long period of time like they would in Slack.
 
-When Bob receives the message from Alice, Bob's replica of the conversation thread is updated with the new message.
+But if you are building a real-time chat app where simultaneous communication is a common use case, you will need to implement offline detection / polling the latest server data and merge the server data into the replica.
 
-We don't update our replica until the server has approved the request to update the source of truth
+### Sub-problem 5: Intention Preservation
+
+All the strategies for implementing collaborative editing tools are guided by a set of principles depending on which consistency model is used.
+
+For the implementation of OkCupid's chat app, the [CCI consistency model](https://www.cs.cityu.edu.hk/~jia/research/reduce98.pdf) was considered. It includes these three properties:
+
+**Causality preservation**
+
+> ensures the execution order of causally dependent operations be the same as their natural cause-effect order during the process of collaboration.
+
+**Convergence**
+
+> ensures the replicated copies of the shared document be identical at all sites at quiescence (i.e., the final result at the end of a collaborative editing session is consistent across all replicas).
+
+**Intention preservation**
+
+> ensures that the effect of executing an operation at remote sites achieves the same effect as executing this operation at the local site at the time of its generation.
+
+Causality preservation and convergence and are essential properties of any consistency model to ensure correctness of the system during and after a collaboration session.
+
+What is a collaborating session in the context of a chat app?
+
+That's when both Alice and Bob are online and actively participating in the conversation.
+
+The causally dependent operations include optimistically adding the message with client-generated `tempId` to the replica, then when the server approves the mutation, replace the optimistic message by the real message with the server-assigned `id`, including a tombstone for what it was before when it was optimistically added (we will talk about this later in the implementation of the chat app CRDT).
+
+While a serialization protocol can be used to achieve causality preservation, it cannot be used to achieve intention preservation. The reason is that the serialization protocol does not have access to the user's intention.
+
+Intention preservation is an obvious goal in a chat app because the point of the chat app is to facilitate a conversation between two people where messages are created in response to other messages. The order of messages _as they appear at each replica site_ is important for the conversation to make sense.
+
+Why we need intention preservation is best argued by considering a situation if we don't impose intention preservation:
+
+Alice asks Bob a question and sees that the question is optimistically added to her replica of the chat history. In the meantime, Bob is typing up a response to another question Alice asked a day before. If Alice is on a really slow network, Bob will not see her new question come into his chat history until some time after he sends his reply to her old question. Bob's intent is for Alice (the remote site) to see the new message as a response to her old question but because of network latency, Bob's message will be mis-understood by Alice as a response to her new question. Intention is not preserved.
+
+How do we prevent this misunderstanding? When Alice gets the event announcing that a message has been added to the conversation by Bob, rather than simply adding the message to the end of her chat history replica, she can perform some comparisons based on the message timestamps to insert the Bob's message in the right place in her chat history. This is possible because the real order of the messages is determined by the timestamp, which is created by the sender client at the time of creation (when the message is sent).
+
+TODO: add this timestamp comparison logic to the messages cache implementation.
 
 ## The Data Model for OkCupid's Chat App
 
 A CRDT is a data structure that can be replicated across multiple sites and can be updated concurrently at each site. It needs to satisfy these two properties:
+
+An important assumption is nothing else get added to the cache between the time the temp message got added and the time the send mutation resolves
+
+Re-parenting when the object's identity changes. We store a link to the parent as a property of the child. That way object identity is preserved. We have each parent store links to its child.
+
+We ensure that when the message changes its identity from temporary to real, we update the CRDT in an atomic operation.
+
+React will unmount the view optimistically-added message and add the actual message.
+
+When the client wants to add a message to the thread, the update is always applied immediately to the replica since we want the chat experience to feel as responsive as possible. If the client gets another message from the server before the approval is received, we want the client to process that new message immediately as well.
 
 1. Conflict-free
 2.
@@ -405,6 +412,81 @@ A CRDT is a data structure that can be replicated across multiple sites and can 
 The data structure is designed to be conflict-free which means that the data structure can be updated concurrently at each site without causing conflicts.
 
 True CRDTs are commonly used in distributed systems where there is no single central authority. But in our case, we have a central authority - the server. The server is the source of truth for the conversation thread and what the final state should be.
+
+An interesting observation here is
+
+To achieve causality preservation, convergence, and intention preservation, we have to relax the requirement for convergence.
+
+A very basic reconciliation strategy is when presented with two versions of the same data,
+
+[Tombstone](<https://en.wikipedia.org/wiki/Tombstone_(data_store)>) is a concept in the replica of a distributed data store to provide a record for when a piece of data is deleted.
+
+so she ignores this event.
+
+Bob's replica is updated with the new message `M1` when he receives the WebSocket event.
+
+This happens because the replicas keep optimistic messages.
+
+Bob is made aware of the conflict when it gets an event
+
+To satisfy our invariant and introduce the least friction in our user?
+
+[CRDT](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)
+
+Consistency management is a big topic and there are implementations by Figma, Google Docs, and Quip. We will look at how we can implement a simple consistency management mechanism in our chat app.
+
+We need to find a way to keep the replicas in sync with the source of truth.
+
+In other words, we want to arrive at the same final state maintain consistency between all the copies of the conversation thread after .
+
+When do the replicas become out-of-date with the source of truth and each other?
+
+Consider this scenario:
+
+There are two main technologies used for consistency maintenance and concurrency control: operational transformation (OT) and conflict-free replicated data type (CRDT).
+
+But first, let's look at the problem of concurrency control in collaborative editing systems. At a high level, we need to worry about concurrency control whenever we deal with when multiple users are making changes to shared data at the same time.
+
+Final state and reconciliation are the two main approaches to concurrency control in collaborative editing systems.
+
+In our chat app, this means that Alice and Bob are both sending messages to each other at the same time.
+
+Alice's replica is modified by local action and remote updates.
+
+Technologies for supporting collaboration functionalities.
+
+Next we will look at how to apply these mutations to the replicas and the source of truth and keeping the replicas in sync with the source of truth.
+
+There are established patterns on how to implement multiplayer functionalities in collaborative editing systems that we can reference to build the chat app for OkCupid. this topic and we can learn from the experience of others.
+
+, we can simplify the solution approach significantly because we only need to support communications for two users. Another simplification is that we don't need to support concurrent editing of the same message because the .
+
+There are two techniques for maintaining consistency between multiple replica.
+
+- [Operational transformation](https://en.wikipedia.org/wiki/Operational_transformation) is overkill because we don't need to support concurrent editing of the same message.
+
+1. Distinguish which data exists locally and which data exists remotely
+
+The replica drives the view!
+
+The server streams the latest state of the source of truth to the clients via a WebSocket connection. Each client figures out how to reconcile the latest state of the source of truth with the local state of the client.
+
+1. operation-based CRDT - replicas propagate states which are a list of operations that can be applied to the data to get the current state of the data. The data is not stored in the state but is derived from the operations.
+2. state-based CRDT
+
+This idea can be generalized to any kind of data that can be represented as a list of operations.
+
+We can have implement complicated system to deal with conflicts but we can
+
+The client needs to reconcile the two messages.
+without the client needs to reconcile the two updates.
+
+instead of waiting for the server approval
+while we wait for acknowledgement from the server do this and we wait for the
+
+When Bob receives the message from Alice, Bob's replica of the conversation thread is updated with the new message.
+
+We don't update our replica until the server has approved the request to update the source of truth
 
 ### Sub-problem 4: How to handle responses to mutation requests?
 
@@ -419,10 +501,7 @@ In concrete terms, we are building a collaborative
 For the data structure for replicas need to satisfy these properties:
 
 1. **Consistency** Conflict resolution, order preservation. Concurrent updates to multiple replicas of the same data, without coordination between the computers hosting the replicas, can result in inconsistencies between the replicas.
-2.
-3.
-4. Memory usage and performance
-5.
+2. Memory usage and performance
 
 Data storage location
 
@@ -495,7 +574,7 @@ messagesCacheRef.current.set(realId, { message, tempId });
 
 the temp one is deleted and the real one is added I think the real one gets put at the end instead of where the temp one was
 
-- An important assumption is nothing else get added to the cache between the time the temp message got added and the time the send mutation resolves (edited)
+-
 - But that's not always a guarantee as you could get an instant event or a user generated message while the api request is pending on a slow network
 - Is there a data structure that provides O(1) lookup based on the key and LIFO
 - a separate array could be used to keep track of the id order, then the tempId gets swapped for the realID when it returns
@@ -687,12 +766,6 @@ clearly partitioned and
 
 Persisting the data locally enables local manipulation of data but (and subsequent syncing)
 
-In collaboration tools Conflict resolution
-
-we need to store and they need to be associated
-
-Only implementing optimistic UI is not sufficient for offline-mode support because when the
-
 [This article](https://www.swyx.io/svelte-amplify-datastore) distinguishes
 
 offline-first app - local storage and manipulation of data (and subsequent syncing)
@@ -720,10 +793,6 @@ Transient state of the sent/(un)read indicator the indicator always show under t
 ## Update policy
 
 For updating the data layer we need to consider...
-
-Optimistic UI design works by simulating the result before the server responds. This means that the user sees the result of their action immediately, and the app will not need to wait until the server responds with the actual result to update the UI.
-
-Locally operating on that data
 
 Although this was acceptable for sending simple messages in which the network delay did not result in any noticeable UI update delay, the delay in response is very noticeable for photo messages because sending a photo message is a significantly more expensive operation in the backend and API layer.
 
