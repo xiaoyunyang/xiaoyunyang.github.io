@@ -133,14 +133,9 @@ Another practicality constraint is the tolerance for risk which depends on the b
 
 ### Other Things We Want to Optimize for
 
-TODO: edit this para
+**Maintainability** is a goal for any software engineering project. We want to make sure that the solution we implement is consistent with the existing patterns in the codebase and is easy to maintain.
 
-- Maintainability - Consistency with existing patterns of problem solving in the codebase
-- Regression prevention -
-
-[Duplication is not always bad](https://xiaoyunyang.github.io/post/6-surprising-life-lessons-from-my-30s/#3-duplication-is-not-always-bad)! Sometimes it makes things simpler.
-
-- [code complexity](https://www.codegrip.tech/productivity/a-simple-understanding-of-code-complexity)
+[Code complexity](https://www.codegrip.tech/productivity/a-simple-understanding-of-code-complexity) is a source of maintainability concern.
 
 A more technically complex solution may be more robust but it also introduces more risk of bugs and crashes. A more technically complex solution may also be more expensive to maintain and scale.
 
@@ -154,7 +149,9 @@ One way to offset the upfront cost is to use a third-party solution. But this co
 
 To lower recurring cost, many code-bases use industry standards and have style guides to discourage deviations from existing patterns because inconsistencies in code-bases adds maintenance cost.
 
-Feasibility and practicality both influence design decisions.
+Another way to lower maintainability cost is to avoid duplication of code. Duplication is generally considered tech debt it makes the code-base hard to evolve (you have to make the same changes in multiple places), which could introduce inconsistency in the code-base and bugs.
+
+However, [duplication is not always bad](https://xiaoyunyang.github.io/post/6-surprising-life-lessons-from-my-30s/#3-duplication-is-not-always-bad)! Sometimes it makes things simpler. As complexity can also be a source of maintainability concern. Sometimes it could be a good tradeoff to introduce a little bit of duplication for a lot of simplicity.
 
 ## Solution Approach
 
