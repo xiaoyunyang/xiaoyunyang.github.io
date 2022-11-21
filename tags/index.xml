@@ -8,20 +8,11 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Mon, 14 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Life</title>
-      <link>https://xiaoyunyang.github.io/tags/life/</link>
-      <pubDate>Mon, 14 Nov 2022 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
-      <guid>https://xiaoyunyang.github.io/tags/life/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Mon, 21 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Frontend</title>
       <link>https://xiaoyunyang.github.io/tags/frontend/</link>
-      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/tags/frontend/</guid>
       <description></description>
@@ -30,7 +21,7 @@
     <item>
       <title>Guide</title>
       <link>https://xiaoyunyang.github.io/tags/guide/</link>
-      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/tags/guide/</guid>
       <description></description>
@@ -39,7 +30,7 @@
     <item>
       <title>React</title>
       <link>https://xiaoyunyang.github.io/tags/react/</link>
-      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/tags/react/</guid>
       <description></description>
@@ -48,9 +39,18 @@
     <item>
       <title>UX</title>
       <link>https://xiaoyunyang.github.io/tags/ux/</link>
-      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate>
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/tags/ux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Life</title>
+      <link>https://xiaoyunyang.github.io/tags/life/</link>
+      <pubDate>Mon, 14 Nov 2022 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/tags/life/</guid>
       <description></description>
     </item>
     

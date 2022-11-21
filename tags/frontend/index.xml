@@ -8,7 +8,18 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Thu, 25 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/frontend/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/frontend/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Design Behind OkCupid&#39;s Offline-first Chat App</title>
+      <link>https://xiaoyunyang.github.io/post/the-design-behind-okcupids-offline-first-chat-app/</link>
+      <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate>
+      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/the-design-behind-okcupids-offline-first-chat-app/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;The chat app is a table stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.&lt;/p&gt;
+&lt;p&gt;In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Web Developer Playbook: Optimistic UI</title>
       <link>https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/</link>
