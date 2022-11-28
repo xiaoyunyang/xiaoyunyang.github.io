@@ -1,5 +1,5 @@
 ---
-title: "The Design Behind OkCupid's Offline-first Chat App"
+title: "Stash of The Design Behind OkCupid's Offline-first Chat App"
 date: 2022-11-18
 draft: true
 categories:
@@ -548,10 +548,6 @@ When the server receives
 timestamp for the message and sends the message to the server. The server does not change the timestamp.
 
 for the message be the time when the message is created at the client rather than when the message is added by the server.
-
-Propagate state by transmitting the update operation.
-
-[growth-only set](https://github.com/pfrazee/crdt_notes/tree/68c5fe81ade109446a9f4c24e03290ec5493031f#grow-only-set-g-set) is a set which only allows adds. Once added, cannot be removed.
 
 1. merging
 2.

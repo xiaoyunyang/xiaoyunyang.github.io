@@ -156,7 +156,7 @@ However, [duplication is not always bad](https://xiaoyunyang.github.io/post/6-su
 
 To make the chat app offline-first, we need to find a way to manage a collection of ordered data (messages between two users) which can be added to the collection by the server or by the user. Server-added messages come from an API request or a WebSocket event. Client-added messages come from the user sending a message.
 
-We can think of the offline-first chat app as a collaborative editing tool - two users are collaborating on the same conversation thread. The conversation thread is a collection of messages ordered by the time they were created.
+We can think of the offline-first chat app as a collaborative editing tool - two users are collaborating on the same conversation thread. The conversation thread is a collection of messages ordered by the time they were created. A collaborating session in the context of a chat app is when all the participants of the chat are online and actively contributing to the conversation.
 
 This insight provides a clear direction for our problem-solving because it helps us identify and tackle the sub-problems in collaborative editing systems using established design patterns.
 
@@ -180,7 +180,7 @@ When Alice and Bob first open their chat app, their replicas are populated by th
 
 Alice and Bob can make changes (mutations) to the source of truth in these ways:
 
-1. Send (Re-send) a message
+1. Send (and re-send) a message
 2. React to a message
 3. Send a read receipt
 
@@ -251,15 +251,9 @@ But let's first focus on Alice. When Alice receives this event, she can do one o
 1. Ignore the event or
 2. Process the event by making some changes to her replica without causing a conflict.
 
-If she chooses to process the event, what kind of conflict would arise if she were to add `M1` to her replica?
+Because Alice was the one who sent `M1`, she already added that message optimistically to her replica. Recall, optimistic UI works by simulating the result before the server responds. If the `M1` from the server is identical to the optimistically added `M1`, she can choose to ignore the event.
 
-Because Alice was the one who sent `M1`, she already added that message optimistically to her replica. Adding it again would cause duplication, which is a type of conflict. She can update her replica version of `M1` to reflect the server version. In particular, the server version differs from her replica version in an important way: the message `id` is different.
-
-The `id` is an important part of the message identity as it assigns uniqueness to each message in the replica collection. The `id` can be used to look up a particular message in the replica which supports various business logic. The `id` is also an important part of the view creation logic as it is used as the `key` in the React render function that maps an array of messages to JSX.
-
-Optimistic UI design works by simulating the result before the server responds. When Alice adds a message optimistically to her replica, she can simulate almost everything in the result except the `id` because that is decided when the server adds `M1` to the database. But she needs to pick something for the `id` before she can add the optimistic message to her replica.
-
-OkCupid's chat app implementation uses a pseudo-random generator to create a unique `id` for the optimistic message before adding it to the replica (let's call this `tempId`).
+However, in OkCupid's chat app, the real `id` is decided when a message is added to the database. The client implementation uses a pseudo-random generator to create a unique `id` for the optimistic message before adding it to the replica (let's call this `tempId`).
 
 ```js
 function generateTemporaryMessageId() {
@@ -269,35 +263,39 @@ function generateTemporaryMessageId() {
 
 The `tempId` looks something like `4306` while the real `id` looks something like `18325309058943693999`.
 
-If Alice gets an event announcing that a message with the `id` = `18325309058943693999` has been added to the conversation and if she decides to process this event, she will need to update the associated message in her replica to add the real (server-assigned) `id` for the message. But how does she know which of the optimistically-added messages in her replica to update?
+When Alice adds a message optimistically to her replica, she can simulate almost everything in the final result _except_ the `id`.
 
-We are venturing into dangerous territories when the clients are in the business of reasoning about the provenance of data in its local copy. This could introduce a leaky abstraction problem wherein the client needs to know the implementation details of the server (e.g., how an `id` is picked), which can cause the system to be fragile and error-prone.
+The `id` is an important part of the message identity as it assigns uniqueness to each message in the replica collection. The `id` can be used to look up a particular message in the replica which supports various business logic. The `id` is also an important part of the view creation logic as it is used as the `key` in the React render function that maps an array of messages to JSX.
 
-But we must address this conflict and be able to distinguish what's real and what's optimistic in our replica because the replica data is used for business logic and drives the view. Simply ignoring the server-generated `id` and only using `tempId` would cause problems when we need to make another mutation to the message (e.g., marking the message as read which requires updating a property on the message in the replica). Replacing the `tempId` with the server-generated `id` will also cause problems because the message `id` is used as the `key` by React to render the message. If we simply replace the `tempId` with the server-generated `id`, we are going to experience a very noticeable flicker where React will unmount the optimistically added message and mount the server-added message.
+Resolving conflict in the two different `id` versions should be avoided. We are venturing into dangerous territories when the clients are in the business of reasoning about the provenance of data in its local copy. This could introduce a leaky abstraction problem wherein the client needs to know the implementation details of the server (e.g., how an `id` is picked), which can cause the system to be fragile and error-prone.
 
-{{< image classes="fancybox fig-50 clear" src="/post/images/offline-first-chat-app/flicker.gif" thumbnail="/post/images/offline-first-chat-app/flicker.gif" title="flickering from lack of conflict resolution on the id">}}
+There are two ways to avoid performing conflict resolution on the `id`. Choosing which approach to pursue depends on the constraints and non-functional requirements imposed on the project. In particular, this is a tradeoff between technical complexity on the back-end vs front-end.
 
-In our conflict resolution policy, we must keep both server-generated `id` and `tempId`.
+#### Conflict Avoidance (server-side)
 
-Conflict resolution is a big topic in multiplayer functionalities implementation approaches for collaborative editing tools. [Operational Transformation](https://en.wikipedia.org/wiki/Operational_transformation) (implemented by Google Docs) and [Conflict-free Replicated Data Types](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) (CRDT) are the two main classes for conflict resolution strategies.
+A server-generated `id` for message was a constraint for the offline-first chat app project. The chat app was originally built to not be usable while offline. Users could not create new messages to be queued for sending while they are offline.
 
-Which conflict resolution strategy to use depends on the specific usage patterns for our application. Answering these questions a provided good starting point to narrow our technology selection for the chat app:
+If we were building an offline-first chat app from scratch, we could have totally avoided the two different versions of `id` by making the real `id` client-generated.
 
-- What is the nature of the data that is being collaborated on?
-- Does it need to be real-time?
-- What kind of mutations are supported?
+Here's the idea:
 
-Operational transform implemented by Google Docs is overkill for our chat app use case. For a two-player chat app, we don't need to worry about the case where two people are editing the same message property (e.g., body, reaction, read time) at the same time because that's not a valid use case. OkCupid's chat app does not even allow users to update the body of a sent message.
+- For the new message, the client generates a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) then send that to the server.
+- The server implements format check, duplicate check, and date check on the UUID. If any of these checks fail, reject the message send request.
 
-If the chat app supports more than two players, then we need to implement conflict resolution for reactions and read times on a message. While that's a future use case we don't have to address now, it's worthwhile to make our solution design general enough to support an arbitrary number of multi-players to it can be easily scaled for that future use case (which we identified earlier as a likely future use case).
+This approach does not alleviate the clients from tracking what's real and what's optimistic in their replicas but it significantly simplifies the replica implementation as it can be implemented as a [growth-only set](https://github.com/pfrazee/crdt_notes/tree/68c5fe81ade109446a9f4c24e03290ec5493031f#grow-only-set-g-set). A separate data structure can be used to track the outgoing messages that are not server-approved (e.g., a `Set` containing the UUIDs of messages in the outbox).
 
-A CRDT is an excellent choice for our problem because the data we are managing is a list of items.
+#### Conflict Avoidance (client-side)
 
-With CRDT, we get conflict resolution for free because a CRDT is a data structure that automatically resolves any inconsistencies that might occur during updates. The replicas are kept in CRDT and can be updated independently and concurrently without coordination with other replicas or the server. A final property of CRDT is eventual consistency, which will look at a little later.
+This is the approach taken for the OkCupid offline-first chat app implementation. The general idea is to implement a policy for "merging" the server-generated `id` into optimistically added message in the replica.
 
-CRDT is a relatively new concept formalized in 2011 and popularized by collaboration tools like [Notion](https://www.notion.so/blog/data-model-behind-notion) and [Figma](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/)
+For sent message in the replica, we must maintain both its the server-generated `id` and the `tempId`.
 
-There are [various CRDTs to choose from](https://hal.inria.fr/inria-00555588/document). Notion and Figma both created their own CRDTs which target the specific problems they are solving. We will do the same for OkCupid's chat app.
+- Because the replica data is used for business logic, simply ignoring the server-generated `id` and only using `tempId` would cause problems when we need to make another mutation to the message (e.g., marking the message as read which requires updating a property on the message in the replica).
+- Because the replica data also drives the view, replacing the `tempId` with the server-generated `id` will also cause problems because the message `id` is used as the `key` by React to render the message. If we simply replace the `tempId` with the server-generated `id`, we are going to experience a very noticeable flicker where React will unmount the optimistically added message and mount the server-added message.
+
+  {{< image classes="fancybox fig-100 clear" src="/post/images/offline-first-chat-app/flicker.gif" thumbnail="/post/images/offline-first-chat-app/flicker.gif" title="flickering from lack of conflict resolution on the id">}}
+
+The merge policy in more detail in the Solution Design section.
 
 ### Sub-problem 4: Eventual Consistency
 
@@ -367,10 +365,6 @@ For the implementation of OkCupid's chat app, the [CCI consistency model](https:
 > ensures that the effect of executing an operation at remote sites achieves the same effect as executing this operation at the local site at the time of its generation.
 
 Causality preservation and convergence are essential properties of any consistency model to ensure the correctness of the system during and after a collaboration session.
-
-What is a collaborating session in the context of a chat app?
-
-That's when both Alice and Bob are online and actively participating in the conversation.
 
 The causally dependent operations include optimistically adding the message with client-generated `tempId` to the replica, then when the server approves the mutation, replace the optimistic message with the real message with the server-assigned `id`, including a tombstone for what it was before when it was optimistically added (we will talk about this later in the implementation of the chat app CRDT).
 

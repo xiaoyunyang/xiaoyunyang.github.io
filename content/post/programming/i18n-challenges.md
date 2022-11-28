@@ -1,6 +1,6 @@
 ---
 title: "i18n Challenges and Solutions"
-date: 2022-11-25
+date: 2023-11-25
 categories:
   - blog
 tags:
@@ -22,9 +22,9 @@ I have recently open sourced a ESLint plugin for OkCupid. The plugin enforces lo
 
 ## What is Localization
 
-https://www.smartling.com/resources/101/localization-101/
+<https://www.smartling.com/resources/101/localization-101/>
 
-https://www.smartling.com/resources/101/how-to-localize-your-mobile-app/
+<https://www.smartling.com/resources/101/how-to-localize-your-mobile-app/>
 
 Localization is the process of preparing the software to be translated into multiple languages.
 
@@ -37,9 +37,6 @@ Without getting too much into the weeds,
 Another benefit is engineer recruiting as this tool is also useful for the general public. By associating OkCupid brand with the open source project, we hope it will attract engineering talent and improve brand recognition.
 
 We need to localize strings in our codebases in order to provide a our users we do not speak English.
-
-
-
 
 I previously worked at smartling.
 
@@ -57,16 +54,14 @@ How to come up with the rules?
 
 ## Linting
 
-> Linting is something that will save you time, not 
-My friend Bryan open sourced an ESLint plugin for Square. He gave a  at Ember Conf
+> Linting is something that will save you time, not
+> My friend Bryan open sourced an ESLint plugin for Square. He gave a at Ember Conf
 
-
-
-> A lot could be improved about the development process Developers often making the same mistakes again and again 
+> A lot could be improved about the development process Developers often making the same mistakes again and again
 
 ## Locale Fallback
 
-If you ever have to implement your own locale fallback, 
+If you ever have to implement your own locale fallback,
 
 ## Language Selector
 
@@ -80,11 +75,10 @@ There is a library [language-mapping-list](https://github.com/mozilla/language-m
 
 ## Concatenated Strings
 
-Avoid splitting sentences into several keys because that assumes grammar rules and sentence structures that may not work in other languages. Concatenation during 
+Avoid splitting sentences into several keys because that assumes grammar rules and sentence structures that may not work in other languages. Concatenation during
 
 . concatenating strings and placeholders to create sentences. This makes the order of the words hardcoded.
 
 Splitting sentences into several keys presumes grammar rules and a certain sentence structure. If you use conditional statements and conditionalize single terms or a portion of a sentence, the granularity of conditional text might cause confusion during the translation process.
 
-
-I spent the first day learning while . Reading [ESLint developer guides](https://eslint.org/docs/developer-guide/), tutorials and blog posts about how to write a plugin,  the some blog posts, tutorials, and studying other ESLint plugins, I 
+I spent the first day learning while . Reading [ESLint developer guides](https://eslint.org/docs/developer-guide/), tutorials and blog posts about how to write a plugin, the some blog posts, tutorials, and studying other ESLint plugins, I
