@@ -16,7 +16,7 @@
       <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/the-design-behind-okcupids-offline-first-chat-app/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;The chat app is a table stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.&lt;/p&gt;
+&lt;p&gt;The chat app is a table-stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.&lt;/p&gt;
 &lt;p&gt;In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.&lt;/p&gt;</description>
     </item>
     

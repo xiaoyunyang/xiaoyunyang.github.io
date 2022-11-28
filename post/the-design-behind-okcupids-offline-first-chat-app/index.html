@@ -16,7 +16,7 @@
     
   },
   "name":"Xiaoyun Yang",
-  "description":"\u003c!-- raw HTML omitted --\u003e\n\u003cp\u003eThe chat app is a table stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.\u003c\/p\u003e\n\u003cp\u003eIn this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.\u003c\/p\u003e",
+  "description":"\u003c!-- raw HTML omitted --\u003e\n\u003cp\u003eThe chat app is a table-stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.\u003c\/p\u003e\n\u003cp\u003eIn this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.\u003c\/p\u003e",
   "url":"https:\/\/xiaoyunyang.github.io\/post\/the-design-behind-okcupids-offline-first-chat-app\/",
   "keywords":"[Software Design, web development, JavaScript, Optimistic State Updates, Optimistic UI, Design Pattern, React, User Experience]"
 }
@@ -25,16 +25,16 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.101.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.106.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="Software Design, web development, JavaScript, Optimistic State Updates, Optimistic UI, Design Pattern, React, User Experience">
 <meta name="description" content="
-The chat app is a table stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.
+The chat app is a table-stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.
 In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.">
 
 
 <meta property="og:description" content="
-The chat app is a table stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.
+The chat app is a table-stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.
 In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Design Behind OkCupid&#39;s Offline-first Chat App">
@@ -43,10 +43,10 @@ In this article, we will explore the design of an offline-first chat app on the 
 <meta property="twitter:url" content="https://xiaoyunyang.github.io/post/the-design-behind-okcupids-offline-first-chat-app/">
 <meta property="og:site_name" content="Xiaoyun Yang">
 <meta property="og:description" content="
-The chat app is a table stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.
+The chat app is a table-stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.
 In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.">
 <meta name="twitter:description" content="
-The chat app is a table stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.
+The chat app is a table-stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.
 In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.">
 <meta property="og:locale" content="en-us">
 
@@ -328,7 +328,7 @@ In this article, we will explore the design of an offline-first chat app on the 
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<p>The chat app is a table stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.</p>
+<p>The chat app is a table-stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.</p>
 <p>In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.</p>
 <h1 id="table-of-contents">Table of Contents</h1>
 <nav id="TableOfContents">
@@ -367,7 +367,7 @@ In this article, we will explore the design of an offline-first chat app on the 
 <h2 id="why-do-we-need-the-chat-app-to-be-offline-first">Why do we need the chat app to be offline-first?</h2>
 <p>Quick response time from the server is not always achievable, especially when the user is on a slow network on a mobile device. Offline-mode support is common for mobile apps because mobile apps often have to deal with spotty internet connection.</p>
 <p>When do we need offline-mode support for a <em>web app</em>? There are two main reasons:</p>
-<p><strong>1. If the web app is used in a mobile web browser on a phone where reliable network connection is not guaranteed.</strong></p>
+<p><strong>1. If the web app is used in a mobile web browser on a phone where reliable network connections are not guaranteed.</strong></p>
 <p>It&rsquo;s common for a web app that runs in a desktop browser and the web app that runs in a mobile browser to share code (sometimes they are the same web app!). On mobile web, being offline is a real possibility.</p>
 <p><strong>2. If the web app is managing user-generated data that is expensive for the user to create.</strong></p>
 <p>In a chat app, it can be frustrating user experience if you spend a long time drafting a new message to be sent but the draft is not persisted when the message fails to send, forcing you to have to type it all up again.</p>
@@ -377,20 +377,20 @@ In this article, we will explore the design of an offline-first chat app on the 
 <p>An app that is designed to be offline-first supports unpredictable network latency by default.</p>
 <p>We can think of being offline to mean having infinite network response time.</p>
 <p>When the app is completely offline, the POST request for new content never resolves. If the app is designed to be offline-first, we would expect the app to still show the new content (responsiveness) and to still allow us to create newer content without losing the previously created new content (persistence).</p>
-<p>Responsiveness is achieved by applying <a href="https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/">optimistic UI techniques</a>. To make user interactions seem instant in a CRUD app, we can mock the expected server response before the server response is actually received and display the mocked response (the optimistic result). Optimistic results are things that exist client-side but not server-side.</p>
+<p>Responsiveness is achieved by applying <a href="https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/">optimistic UI techniques</a>. To make user interactions seem instant in a CRUD app, we can mock the expected server response before the server response is received and display the mocked response (the optimistic result). Optimistic results are things that exist client-side but not server-side.</p>
 <p>How and where we are storing the optimistic results becomes important when we want to provide persistence.</p>
-<p>Things can get very hairy when we need to persist an arbitrary number of optimistic results and these optimistic results needs to be displayed alongside things that exist server-side.</p>
+<p>Things can get very hairy when we need to persist an arbitrary number of optimistic results and these optimistic results need to be displayed alongside things that exist server-side.</p>
 <p>We will discuss that in more detail in the <a href="#solution-approach">solution approach</a> section. But first, let&rsquo;s look at the design decisions behind the offline-first OkCupid chat app.</p>
 <h2 id="architectural-design-considerations">Architectural Design Considerations</h2>
 <p>The previous section answers the question of <em>why</em> we need to have offline-mode for the chat app. This section answers the question of <em>How</em> we should implement an offline-first chat app <em>for OkCupid</em>.</p>
-<p>In general, to design a correct and future-proof solution, we must first consider the requirements and constraints to establish the boundaries for our problem solving. Second, we must decompose the problem into sub-problems and search through the solution space for the best way to solve these sub-problems.</p>
+<p>In general, to design a correct and future-proof solution, we must first consider the requirements and constraints to establish the boundaries for our problem-solving. Second, we must decompose the problem into sub-problems and search through the solution space for the best way to solve these sub-problems.</p>
 <h3 id="requirements-gathering">Requirements Gathering</h3>
 <p>Understanding the scope of the problem requires insight into the business context of the problem we are solving and how the solution will need to scale for future use cases.</p>
 <p>There are must-have and nice-to-have requirements for a modern chat app. The best way to enumerate the functional requirements for a feature is to use <a href="https://www.mountaingoatsoftware.com/agile/user-stories">user stories</a>. As a user, I want to be able to send and receive messages so that I can communicate with other users. More specifically,</p>
 <ul>
-<li>When I first open the chat app, I want to see the most recent messages exchanged me and the other user.</li>
+<li>When I first open the chat app, I want to see the most recent messages exchanged between me and the other user.</li>
 <li>I want to be able to draft a new message and send it to the other user.</li>
-<li>I want to see the new message I sent appear in the chat app immediately after I send it.</li>
+<li>I want to see the new message I sent to appear in the chat app immediately after I send it.</li>
 <li>I want to see the new message the other user sent appear in the chat app immediately after the other user sends it.</li>
 <li>When the other user sees my message, I want to immediately see the message marked as read.</li>
 <li>When I scroll up in the chat app, I want to see older messages appear.</li>
@@ -400,50 +400,50 @@ In this article, we will explore the design of an offline-first chat app on the 
 </ul>
 <p>Functional requirements include the features we need to support now but the solution design should also consider future features. The better we can anticipate future requirements, the better we can make good initial design decisions to create a robust and scalable solution that can easily adapt to new use cases.</p>
 <p>A non-scalable solution cannot evolve to support new requirements without costly refactoring or special-case handling, which introduces maintainability concerns. But when too much emphasis is put on future-proofing, we end up with an over-engineered solution that is also hard to scale and maintain.</p>
-<p>Scalability and maintainability are examples of <a href="https://www.altexsoft.com/blog/business/functional-and-non-functional-requirements-specification-and-types">non-functional and business requirements</a> that we also want to optimize for. For the chat app, we don&rsquo;t want to use a general offline-mode implementation that can be used for both collaborative data as well as non-collaborative data because this implementation can be very demanding on memory usage and computationally intensive. Using a memory and power intensive implementation not only causes unnecessary technical complexity in the implementation (bad for maintenance and velocity to launch the feature), but also a degraded offline-first experience from lagginess and crashes on cheap phones without a lot of processing power and memory.</p>
-<p>Collaborative data is not a future use-case we will ever need to support for the chat app. As previously mentioned, only one person can create and edit a message and this is true for any chat app.</p>
-<p>What are some valid and likely future features we would want to add for the OkCupid chat app? We can look to other chat apps to see what features they have that makes sense for a dating app.</p>
+<p>Scalability and maintainability are examples of <a href="https://www.altexsoft.com/blog/business/functional-and-non-functional-requirements-specification-and-types">non-functional and business requirements</a> that we also want to optimize for. For the chat app, we don&rsquo;t want to use a general offline-mode implementation that can be used for both collaborative data as well as non-collaborative data because this implementation can be very demanding on memory usage and computationally intensive. Using a memory- and power-intensive implementations not only causes unnecessary technical complexity in the implementation (bad for maintenance and velocity to launch the feature) but also a degraded offline-first experience from lagginess and crashes on cheap phones without a lot of processing power and memory.</p>
+<p>Collaborative data is not a future use case we will ever need to support for the chat app. As previously mentioned, only one person can create and edit a message and this is true for any chat app.</p>
+<p>What are some valid and likely future features we would want to ship for the OkCupid chat app? We can look to other chat apps to see what features they have that make sense for a dating app.</p>
 <ul>
-<li><strong>Threaded reply</strong> - Very Likely. Almost all modern chat apps support <a href="https://www.engadget.com/2019-03-20-facebook-messenger-threads.html">threaded reply</a>. Bumble, another dating app, already implements threaded reply in their chat app.</li>
+<li><strong>Threaded reply</strong> - Very Likely. Almost all modern chat apps support <a href="https://www.engadget.com/2019-03-20-facebook-messenger-threads.html">threaded reply</a>. Bumble, another dating app, already implements threaded replies in their chat app.</li>
 <li><strong>Group chat</strong> - Likely. OkCupid is one of the best dating apps for daters seeking non-traditional relationships and already provides the ability for partnered daters to link their profiles together. It would be on-brand for OkCupid to provide a way for daters to chat with multiple people at once.</li>
 <li><strong>Un-send a message</strong> - Unlikely because it is undesirable from a trust and safety standpoint, allowing bad actors to un-send a message will make it difficult to moderate a reported conversation. This feature is also not present in Bumble&rsquo;s chat app.</li>
 <li><strong>Edit a sent message</strong> - Unlikely. Same reason as un-send a message.</li>
 </ul>
 <h3 id="identify-constraints">Identify Constraints</h3>
-<p>Unconstrained problem solving can be liberating but also overwhelming when there are too many choices to consider.</p>
+<p>Unconstrained problem-solving can be liberating but also overwhelming when there are too many choices to consider.</p>
 <p>When we are searching for an optimal solution for a problem in a solution space, applying constraints can help us better scope our problem and refine our search to discover a simple and practical solution.</p>
 <p>There are two flavors of constraints in engineering problem-solving: feasibility and practicality.</p>
 <h4 id="feasibility">Feasibility</h4>
 <p>Feasibility concerns technical constraints that are imposed by the current technology we are using.</p>
 <p>For example, a feasibility concern for the chat app may be memory availability on the device that the chat app runs on.</p>
-<p>A conversation can have arbitrarily large number of messages. If we load all the messages into memory without pagination when the app first mounts, we will quickly run out of memory and the app will crash.</p>
+<p>A conversation can have an arbitrarily large number of messages. If we load all the messages into memory without pagination when the app first mounts, we will quickly run out of memory and the app will crash.</p>
 <h4 id="practicality">Practicality</h4>
-<p>Practicality deals with business constraints like engineering resource, budget, timeline, and the tolerance for risk.</p>
+<p>Practicality deals with business constraints like engineering resources, budget, timeline, and tolerance for risk.</p>
 <p>Choosing to pursue a more technically complex and robust solution at a higher engineering cost is not always appropriate for a business that needs to be agile to test hypotheses and iterate quickly.</p>
 <p>A social media platform like OkCupid operates in a very competitive landscape so there&rsquo;s an urgency to launch quickly and iterate on experimental features in response to new market insights. A flexible architectural design that is easier and faster to implement but has more technical debt is often the right choice for OkCupid.</p>
-<p>Another practicality constraint is the tolerance for risk which depends on the business case for the feature. For example, if the KPI is measured in number of new user onboarding and conversion of these users to paid users, the business cost of shipping a broken onboarding flow or broken table-stakes feature like matching and chatting can be very high. In this case, it is better to trade off velocity for higher code quality.</p>
+<p>Another practicality constraint is the tolerance for risk which depends on the business case for the feature. For example, if the KPI is measured in the number of new user onboarding and conversion of these users to paid users, the business cost of shipping a broken onboarding flow or broken table-stakes feature like matching and chatting can be very high. In this case, it is better to trade off velocity for higher code quality.</p>
 <h3 id="other-things-we-want-to-optimize-for">Other Things We Want to Optimize for</h3>
 <p><strong>Maintainability</strong> is a goal for any software engineering project. We want to make sure that the solution we implement is consistent with the existing patterns in the codebase and is easy to maintain.</p>
 <p><a href="https://www.codegrip.tech/productivity/a-simple-understanding-of-code-complexity">Code complexity</a> is a source of maintainability concern.</p>
 <p>A more technically complex solution may be more robust but it also introduces more risk of bugs and crashes. A more technically complex solution may also be more expensive to maintain and scale.</p>
-<p>There&rsquo;s non-recurring upfront cost to develope a solution and recurring cost to maintain and evolve the solution.</p>
+<p>There&rsquo;s a non-recurring upfront cost to develop a solution and recurring cost to maintain and evolve the solution.</p>
 <p>The recurring cost can often be higher than the upfront cost because the upfront cost is amortized over the lifetime of the product.</p>
 <p>Engineering effort is required not only to implement the solution but also to maintain and evolve the solution over time. The more complex the solution, the more effort is required to maintain and evolve the solution.</p>
 <p>One way to offset the upfront cost is to use a third-party solution. But this comes with the risk of vendor lock-in and the cost of integration.</p>
-<p>To lower recurring cost, many code-bases use industry standards and have style guides to discourage deviations from existing patterns because inconsistencies in code-bases adds maintenance cost.</p>
-<p>Another way to lower maintainability cost is to avoid duplication of code. Duplication is generally considered tech debt it makes the code-base hard to evolve (you have to make the same changes in multiple places), which could introduce inconsistency in the code-base and bugs.</p>
+<p>To lower recurring cost, many codebases use industry standards and have style guides to discourage deviations from existing patterns because inconsistencies in codebases add maintenance cost.</p>
+<p>Another way to lower maintenance costs is to avoid duplication of code. Duplication is generally considered tech debt it makes the codebase hard to evolve (you have to make the same changes in multiple places), which could introduce inconsistency in the codebase and bugs.</p>
 <p>However, <a href="https://xiaoyunyang.github.io/post/6-surprising-life-lessons-from-my-30s/#3-duplication-is-not-always-bad">duplication is not always bad</a>! Sometimes it makes things simpler. As complexity can also be a source of maintainability concern. Sometimes it could be a good tradeoff to introduce a little bit of duplication for a lot of simplicity.</p>
 <h2 id="solution-approach">Solution Approach</h2>
-<p>To make a the chat app offline-first, we need to find a way to manage a collection of ordered data (messages between two users) which can be added to the collection by the server or by the user. Server-added messages come from an API request or a WebSocket event. Client-added messages come from user sending a message.</p>
-<p>We can think of the offline-first chat app as a collaborative editing tool - two users are collaborating on the same conversation thread. The conversation thread is a collection of messages ordered by the time they were created.</p>
+<p>To make the chat app offline-first, we need to find a way to manage a collection of ordered data (messages between two users) which can be added to the collection by the server or by the user. Server-added messages come from an API request or a WebSocket event. Client-added messages come from the user sending a message.</p>
+<p>We can think of the offline-first chat app as a collaborative editing tool - two users are collaborating on the same conversation thread. The conversation thread is a collection of messages ordered by the time they were created. A collaborating session in the context of a chat app is when all the participants of the chat are online and actively contributing to the conversation.</p>
 <p>This insight provides a clear direction for our problem-solving because it helps us identify and tackle the sub-problems in collaborative editing systems using established design patterns.</p>
 <h3 id="sub-problem-1-source-of-truth">Sub-problem 1: Source of Truth</h3>
 <p>Offline-mode support is unachievable if we don&rsquo;t keep a local copy of the data that the client can operate on while offline.</p>
-<p>Replication is a fundamental idea in collaborative editing systems. The basic idea is that we let the server maintain the source of truth for the conversation thread and we make a copy of that conversation thread (replica) on each client.</p>
-<p>Each client operates on their own replica of based on events from the server or the user but only the server is allowed to make updates to the source of truth.</p>
-<p>The clients collaborate on making changes to the source of truth by sending update requests to the server and syncing server states with their respective replica state.</p>
-<p>Does the source of truth need to exist on the server? Not necessarily. In decentralized systems where there is no single authority to determine the final state that every client needs to be on. All replicas can reach <a href="https://en.wikipedia.org/wiki/Eventual_consistency">eventual consistency</a> using <a href="https://martinfowler.com/eaaDev/EventSourcing.html">techniques which are widely deployed in distributed systems</a> like massive multiplayer online games and peer-to-peer applications. It would be interesting to see how <a href="https://en.wikipedia.org/wiki/Distributed_computing">distributed computing</a> techniques can be applied to web applications so that our data is not owned by a centralized authority like OkCupid (the premise of the <a href="https://cointelegraph.com/blockchain-for-beginners/what-is-web-3-0-a-beginners-guide-to-the-decentralized-internet-of-the-future">Web 3 movement</a>).</p>
-<p>But in our Web 2 world, we have a server that is the gate-keeper for communications between two users as we see in this example.</p>
+<p>Replication is a fundamental idea in collaborative editing systems. The basic idea is that we let the server maintain the source of truth for the conversation thread and we make a copy (replica) of that conversation thread on each client.</p>
+<p>Each client operates on their replica based on events from the server or the user but only the server is allowed to make updates to the source of truth.</p>
+<p>The clients collaborate on making changes to the source of truth by sending update requests to the server and syncing server states with their respective replica states.</p>
+<p>Does the source of truth need to exist on the server? Not necessarily. In decentralized systems where there is no single authority to determine the final state that every client needs to be on. All replicas can reach <a href="https://en.wikipedia.org/wiki/Eventual_consistency">eventual consistency</a> using <a href="https://martinfowler.com/eaaDev/EventSourcing.html">techniques that are widely deployed in distributed systems</a> like massive-multiplayer-online-games and peer-to-peer applications. It would be interesting to see how <a href="https://en.wikipedia.org/wiki/Distributed_computing">distributed computing</a> techniques can be applied to web applications so that our data is not owned by a centralized authority like OkCupid (the premise of the <a href="https://cointelegraph.com/blockchain-for-beginners/what-is-web-3-0-a-beginners-guide-to-the-decentralized-internet-of-the-future">Web 3 movement</a>).</p>
+<p>But in our Web 2 world, we have a server that is the gatekeeper for communications between two users as we see in this example.</p>
 
  
   
@@ -491,7 +491,7 @@ In this article, we will explore the design of an offline-first chat app on the 
 <p>When Alice and Bob first open their chat app, their replicas are populated by the source of truth from the server via an API request. A WebSocket connection is also established between their clients and the OkCupid server to stream any updates to the source of truth.</p>
 <p>Alice and Bob can make changes (mutations) to the source of truth in these ways:</p>
 <ol>
-<li>Send (Re-send) a message</li>
+<li>Send (and re-send) a message</li>
 <li>React to a message</li>
 <li>Send a read receipt</li>
 </ol>
@@ -539,7 +539,7 @@ In this article, we will explore the design of an offline-first chat app on the 
 
   <div style="clear:both;"></div>
 
-<p>Next, we will look at how we keep the replicas in sync with the source of truth when mutations are applies.</p>
+<p>Next, we will look at how we keep the replicas in sync with the source of truth when mutations are applied.</p>
 <h3 id="sub-problem-2-consistency-maintenance">Sub-problem 2: Consistency Maintenance</h3>
 <p>In our chat app system, we have two replicas of the conversation thread on Alice and Bob&rsquo;s devices. We would like to keep the replicas in sync with each other. In a chat app, you can&rsquo;t really have a conversation when your replica is showing a different chat history than your conversation partner&rsquo;s replica.</p>
 <p>The replicas can become out of sync when Alice and Bob are proposing changes to the conversation thread (e.g., adding a new message to the thread or reacting to a message).</p>
@@ -589,7 +589,7 @@ In this article, we will explore the design of an offline-first chat app on the 
 
   <div style="clear:both;"></div>
 
-<p>In the real world, server and network latencies both contribute to the order in which mutation requests are processed and broadcasted, which affects what Alice and Bob eventually see in their steady state replicas after all the messages are done being sent and received.</p>
+<p>In the real world, server and network latencies both contribute to the order in which mutation requests are processed and broadcasted, which affects what Alice and Bob eventually see in their steady-state replicas after all the messages are done being sent and received.</p>
 <p>For instance, when the server receives the request from Alice, it needs to do some work which takes time. Maybe it runs some expensive checks on the incoming message for inappropriate content before it adds the message to the database (which also takes time) and broadcasts that mutation to Bob. You can implement timeouts in the server-client contract to provide some guarantee that the mutation will be successfully processed in a given window of time but there is still some variability in the server latency.</p>
 <p>This variability is a potential source of non-determinism and divergence (inconsistency) in the replicas.</p>
 
@@ -636,7 +636,7 @@ In this article, we will explore the design of an offline-first chat app on the 
 
   <div style="clear:both;"></div>
 
-<p>We also have to worry about network latency. As illustrated by the sloped lines in the figure below, it takes some time for request to travel from Alice&rsquo;s and Bob&rsquo;s devices to the server and from the mutation event to travel from the server to Alice and Bob through the WebSocket connection.</p>
+<p>We also have to worry about network latency. As illustrated by the sloped lines in the figure below, it takes some time for requests to travel from Alice&rsquo;s and Bob&rsquo;s devices to the server and from the mutation event to travel from the server to Alice and Bob through the WebSocket connection.</p>
 <p>Look what happens when Bob is on a really slow network.</p>
 
  
@@ -682,7 +682,7 @@ In this article, we will explore the design of an offline-first chat app on the 
 
   <div style="clear:both;"></div>
 
-<p>But there can be another configuration for the latencies stackup where the server will process Bob&rsquo;s request before Alice&rsquo;s request.</p>
+<p>But there can be another configuration for the latencies stack-up where the server will process Bob&rsquo;s request before Alice&rsquo;s request.</p>
 
  
   
@@ -727,19 +727,18 @@ In this article, we will explore the design of an offline-first chat app on the 
 
   <div style="clear:both;"></div>
 
-<p>In all these non-ideal real world cases, all the latencies in the system cause the replicas to diverge. In the modern era of multi-tiered network abstractions (NAT WiFi, VPN, cloud computing, Docker, etc.), trying to make predictions about how the different latencies will stack up is an exercise in futility. The final states of all the copies will be non-deterministic unless we implement some policy for reconciling the differences between these copies.</p>
-<p>TODO: overview about different reconciling policies</p>
-<p>In our example, we see a divergence in the order of <code>M1</code> and <code>M2</code> at the different replica sites and the server. Because we designate the server as the keeper of truth, the server version of the messages is a key component in our reconciliation strategy. However, we need to first address the non-determinism in the order of the messages that exists server-side.</p>
+<p>In all these non-ideal real-world cases, all the latencies in the system cause the replicas to diverge. In the modern era of multi-tiered network abstractions (NAT WiFi, VPN, cloud computing, Docker, etc.), trying to make predictions about how the different latencies will stack up is an exercise in futility. The final states of all the copies will be non-deterministic unless we implement some policy for reconciling the differences between these copies.</p>
+<p>In our example, we see a divergence in the order of <code>M1</code> and <code>M2</code> at the different replica sites and the server. Because we designate the server as the keeper of truth, the server version of the messages is a key component in our reconciliation strategy. However, we need to first address the non-determinism in the order of the messages that exist server-side.</p>
 <p>The invariant for our collection is that messages are always ordered by the time they were created. This needs to be true for all copies of the data (replicas and sources of truth).</p>
-<p><em>But there can be different interpretations for &ldquo;time of creation&rdquo;.</em> Is it the time when Alice sends <code>M1</code>? Or is it the time when the server adds <code>M1</code> to the database? What does &ldquo;time of creation&rdquo; for <code>M1</code> mean to Bob?</p>
-<p>If we were to make the &ldquo;time of creation&rdquo; be the time when the server adds the message, we would introduce more entropy into the system as we see in the last example where the server version of the message order is influenced by network latency.</p>
-<p>We can remove non-determinism in the server version of the messages order by forcing the server to recognize the &ldquo;time to creation&rdquo; for a message to be the time at which the client sends the mutation request to the server. This way, the &ldquo;time of creation&rdquo; as recognize by the server is consistent with the &ldquo;time of creation&rdquo; for the client (Recall when the client sends a message, it also adds the message optimistically to the replica).</p>
-<p>Now we have established that the timestamp is the basis for the <em>real</em> order of the messages and is consistent between the sender and the server, what about for the receiver?</p>
+<p><em>But there can be different interpretations of &ldquo;time of creation&rdquo;.</em> Is it the time when Alice sends <code>M1</code>? Or is it the time when the server adds <code>M1</code> to the database? What does &ldquo;time of creation&rdquo; for <code>M1</code> mean to Bob?</p>
+<p>If we were to make the &ldquo;time of creation&rdquo; be the time when the server adds the message, we would introduce more entropy into the system as we see in the last example where the server version of the order of the messages is influenced by network latency.</p>
+<p>We can remove non-determinism in the server version of the messages order by forcing the server to recognize the &ldquo;time of creation&rdquo; for a message to be the time at which the client sends the mutation request to the server. This way, the &ldquo;time of creation&rdquo; as recognized by the server is consistent with the &ldquo;time of creation&rdquo; for the client (Recall when the client sends a message, it also adds the message optimistically to the replica).</p>
+<p>Now we have established that the timestamp is the basis for the <em>real</em> order of the messages and is consistent between the sender and the server, what does &ldquo;time of creation&rdquo; mean for the receiver?</p>
 <p>TODO: in the messages cache implementation, need to update the timestamp of message that will be re-sent to reflect the retry send time rather than the time of the last send attempt.</p>
 <h3 id="sub-problem-3-conflict-resolution-or-avoidance">Sub-problem 3: Conflict Resolution (Or Avoidance?)</h3>
 <p>Each client&rsquo;s replica is modified by local action and remote updates. Conflict arises when the locally updated data disagrees with the data upstream.</p>
 <p>Let&rsquo;s revisit the example when Alice and Bob are messaging each other.</p>
-<p>When Alice sends <code>M1</code> to Bob, that mutation is propagated to Bob via a WebSocket event. You can think of the WebSocket event as a broadcast the server makes to all the clients that are subscribed to changes to the conversation thread. The server doesn&rsquo;t care who is on the receiving end of the broadcast. It announces to every participant of the conversation that something has changed and each participant needs to decide what to do with that information.</p>
+<p>When Alice sends <code>M1</code> to Bob, that mutation is propagated to Bob via a WebSocket event. You can think of the WebSocket event as a broadcast the server makes to all the clients that are subscribed to changes to the conversation thread. The server doesn&rsquo;t care who is on the receiving end of the broadcast. It announces to every participant in the conversation that something has changed and each participant needs to decide what to do with that information.</p>
 
  
   
@@ -790,76 +789,81 @@ In this article, we will explore the design of an offline-first chat app on the 
 <li>Ignore the event or</li>
 <li>Process the event by making some changes to her replica without causing a conflict.</li>
 </ol>
-<p>If she chooses to process the event, what kind of conflict would arise if she were to add <code>M1</code> to her replica?</p>
-<p>Because Alice was the one who sent <code>M1</code>, she already added that message optimistically to her replica. Adding it again would cause duplication, which is a type of conflict. She can update her replica version of <code>M1</code> to reflect the server version. In particular, the server version differs from her replica version in an important way: the message <code>id</code> is different.</p>
-<p>The <code>id</code> is an important part of the message identity as it assigns uniqueness to each message in the replica collection. The <code>id</code> can be used to look up a particular message in the replica which supports various business logic. The <code>id</code> is also an important part of the view creation logic as it is used as the <code>key</code> in the React render function that maps an array of messages to JSX.</p>
-<p>Optimistic UI design works by simulating the result before the server responds. When Alice adds a message optimistically to her replica, she can simulate almost everything in the result except the <code>id</code> because that is decided when the server adds <code>M1</code> to the database. But she needs to pick something for the <code>id</code> before she can add the optimistic message to her replica.</p>
-<p>OkCupid&rsquo;s chat app implementation uses a pseudo-random generator to create a unique <code>id</code> for the optimistic message before adding it to the replica (let&rsquo;s call this <code>tempId</code>).</p>
+<p>Because Alice was the one who sent <code>M1</code>, she already added that message optimistically to her replica. Recall, optimistic UI works by simulating the result before the server responds. If the <code>M1</code> from the server is identical to the optimistically added <code>M1</code>, she can choose to ignore the event.</p>
+<p>However, in OkCupid&rsquo;s chat app, the real <code>id</code> is decided when a message is added to the database. The client implementation uses a pseudo-random generator to create a unique <code>id</code> for the optimistic message before adding it to the replica (let&rsquo;s call this <code>tempId</code>).</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">generateTemporaryMessageId</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span>Math.<span style="color:#a6e22e">round</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">10000</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>The <code>tempId</code> looks something like <code>4306</code> while the real <code>id</code> looks something like <code>18325309058943693999</code>.</p>
-<p>If Alice gets an event announcing that a message with the <code>id</code> = <code>18325309058943693999</code> has been added to the conversation and if she decides to process this event, she will need to update the associated message in her replica to add the real (server-assigned) <code>id</code> for the message. But how does she know which of the optimistically-added messages in her replica to update?</p>
-<p>We are venturing into dangerous territories when the clients are in the business of reasoning about the provenance of data in its local copy. This could introduce a leaky abstraction problem wherein the client needs to know the implementation details of the server (e.g., how an <code>id</code> is picked), which can cause the system to be fragile and error-prone.</p>
-<p>But we must address this conflict and be able to distinguish what&rsquo;s real and what&rsquo;s optimistic in our replica because the replica data is used for business logic and drives the view. Simply ignoring the server-generated <code>id</code> and only use <code>tempId</code> would cause problems when we need to make another mutation to the message (e.g., marking the message as read which requires updating a property on the message in the replica). Replacing the <code>tempId</code> with the server-generated <code>id</code> will also cause problems because the message <code>id</code> is used as <code>key</code> by React to render the message. If we simply replace the <code>tempId</code> with the server-generated <code>id</code>, we are going to experience a very noticeable flicker where React will unmount the optimistically added message and mount the server-added messaged.</p>
+<p>When Alice adds a message optimistically to her replica, she can simulate almost everything in the final result <em>except</em> the <code>id</code>.</p>
+<p>The <code>id</code> is an important part of the message identity as it assigns uniqueness to each message in the replica collection. The <code>id</code> can be used to look up a particular message in the replica which supports various business logic. The <code>id</code> is also an important part of the view creation logic as it is used as the <code>key</code> in the React render function that maps an array of messages to JSX.</p>
+<p>Resolving conflict in the two different <code>id</code> versions should be avoided. We are venturing into dangerous territories when the clients are in the business of reasoning about the provenance of data in its local copy. This could introduce a leaky abstraction problem wherein the client needs to know the implementation details of the server (e.g., how an <code>id</code> is picked), which can cause the system to be fragile and error-prone.</p>
+<p>There are two ways to avoid performing conflict resolution on the <code>id</code>. Choosing which approach to pursue depends on the constraints and non-functional requirements imposed on the project. In particular, this is a tradeoff between technical complexity on the back-end vs front-end.</p>
+<h4 id="conflict-avoidance-server-side">Conflict Avoidance (server-side)</h4>
+<p>A server-generated <code>id</code> for message was a constraint for the offline-first chat app project. The chat app was originally built to not be usable while offline. Users could not create new messages to be queued for sending while they are offline.</p>
+<p>If we were building an offline-first chat app from scratch, we could have totally avoided the two different versions of <code>id</code> by making the real <code>id</code> client-generated.</p>
+<p>Here&rsquo;s the idea:</p>
+<ul>
+<li>For the new message, the client generates a <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a> then send that to the server.</li>
+<li>The server implements format check, duplicate check, and date check on the UUID. If any of these checks fail, reject the message send request.</li>
+</ul>
+<p>This approach does not alleviate the clients from tracking what&rsquo;s real and what&rsquo;s optimistic in their replicas but it significantly simplifies the replica implementation as it can be implemented as a <a href="https://github.com/pfrazee/crdt_notes/tree/68c5fe81ade109446a9f4c24e03290ec5493031f#grow-only-set-g-set">growth-only set</a>. A separate data structure can be used to track the outgoing messages that are not server-approved (e.g., a <code>Set</code> containing the UUIDs of messages in the outbox).</p>
+<h4 id="conflict-avoidance-client-side">Conflict Avoidance (client-side)</h4>
+<p>This is the approach taken for the OkCupid offline-first chat app implementation. The general idea is to implement a policy for &ldquo;merging&rdquo; the server-generated <code>id</code> into optimistically added message in the replica.</p>
+<p>For sent message in the replica, we must maintain both its the server-generated <code>id</code> and the <code>tempId</code>.</p>
+<ul>
+<li>
+<p>Because the replica data is used for business logic, simply ignoring the server-generated <code>id</code> and only using <code>tempId</code> would cause problems when we need to make another mutation to the message (e.g., marking the message as read which requires updating a property on the message in the replica).</p>
+</li>
+<li>
+<p>Because the replica data also drives the view, replacing the <code>tempId</code> with the server-generated <code>id</code> will also cause problems because the message <code>id</code> is used as the <code>key</code> by React to render the message. If we simply replace the <code>tempId</code> with the server-generated <code>id</code>, we are going to experience a very noticeable flicker where React will unmount the optimistically added message and mount the server-added message.</p>
 
- 
-  
-  
-  
-  
+   
+    
+    
+    
+    
+      
+        
+      
+    
+      
+        
+      
     
       
     
-  
-    
-      
-    
-  
-    
-  
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure fig-50" >
-  
-    <a class="fancybox" href="https://xiaoyunyang.github.io/post/images/offline-first-chat-app/flicker.gif" title="flickering from lack of conflict resolution on the id" data-fancybox="">
-  
-    <img class="fig-img" src="https://xiaoyunyang.github.io/post/images/offline-first-chat-app/flicker.gif"  alt="flickering from lack of conflict resolution on the id">
-  
-    </a>
   
    
-    <span class="caption">flickering from lack of conflict resolution on the id</span>
+    
+    
+    
+    
+      
+    
+      
+        
+      
+    
   
-</div>
+  <div class="figure fig-100" >
+    
+      <a class="fancybox" href="https://xiaoyunyang.github.io/post/images/offline-first-chat-app/flicker.gif" title="flickering from lack of conflict resolution on the id" data-fancybox="">
+    
+      <img class="fig-img" src="https://xiaoyunyang.github.io/post/images/offline-first-chat-app/flicker.gif"  alt="flickering from lack of conflict resolution on the id">
+    
+      </a>
+    
+     
+      <span class="caption">flickering from lack of conflict resolution on the id</span>
+    
+  </div>
+  
+    <div style="clear:both;"></div>
 
-  <div style="clear:both;"></div>
-
-<p>In our conflict resolution policy, we must keep both server-generated <code>id</code> and <code>tempId</code>.</p>
-<p>Conflict resolution is a big topic in multiplayer functionalities implementation approaches for collaborative editing tools. <a href="https://en.wikipedia.org/wiki/Operational_transformation">Operational Transformation</a> (implemented by Google Docs) and <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">Conflict-free Replicated Data Types</a> (CRDT) are the two main classes for conflict resolution strategies.</p>
-<p>Which conflict resolution strategy to use depends on the specific usage patterns for our application. Answering these questions a provided good starting point to narrow our technology selection for the chat app:</p>
-<ul>
-<li>What is the nature of the data that is being collaborated on?</li>
-<li>Does it need to be real-time?</li>
-<li>What kind of mutations are supported?</li>
+</li>
 </ul>
-<p>Operational transform implemented by Google Docs is overkill for our chat app use case. For a two-player chat app, we don&rsquo;t need to worry about the case where two people are editing the same message property (e.g., body, reaction, read time) at the same time because that&rsquo;s not a valid use case. OkCupid&rsquo;s chat app does not even allow users to update the body of a sent message.</p>
-<p>If the chat app supports more than two players, then we need to implement conflict resolution for reactions and read times on a message. While that&rsquo;s a future use case we don&rsquo;t have to address now, it&rsquo;s worthwhile to make our solution design general enough to support an arbitrary number of multi-players to it can be easily scaled for that future use case (which we identified earlier as a likely future use case).</p>
-<p>A CRDT is an excellent choice for our problem because the data we are managing is a list of items.</p>
-<p>With CRDT, we get conflict resolution for free because a CRDT is a data structure that automatically resolves any inconsistencies that might occur during updates. The replicas are kept in CRDT and can be updated independently and concurrently without coordination with other replicas or the server. A final property of CRDT is eventual consistency, which will look at a little later.</p>
-<p>CRDT is a relatively new concept formalized in 2011 and popularized by collaboration tools like <a href="https://www.notion.so/blog/data-model-behind-notion">Notion</a> and <a href="https://www.figma.com/blog/how-figmas-multiplayer-technology-works/">Figma</a></p>
-<p>There are <a href="https://hal.inria.fr/inria-00555588/document">various CRDTs to choose from</a>. Notion and Figma both created their own CRDTs which target the specific problems they are solving. We will do the same for OkCupid&rsquo;s chat app.</p>
+<p>The merge policy in more detail in the Solution Design section.</p>
 <h3 id="sub-problem-4-eventual-consistency">Sub-problem 4: Eventual Consistency</h3>
 <p>Replicas can become out-of-sync with each other during the collaborative editing session but we need to guarantee that the states kept in the replica will eventually converge.</p>
 <p>To better visualize the problem of divergence, let&rsquo;s look at the following scenario:</p>
@@ -881,15 +885,15 @@ M1
 M4
 M5
 M1
-</code></pre><p>What Bob sees is consistent with what the server sees at <code>T6</code> but there&rsquo;s a divergence (inconsistency) between Alice&rsquo;s chat history and Bob&rsquo;s chat history. This is because when Alice comes back online at <code>T3</code>, Alice&rsquo;s client does not downloads a fresh copy of the chat history from the server. It only syncs the messages sent after a new WebSocket connection is established.</p>
-<p>We avoid the need to solve the conflict resolution problem by keeping the client version after network connection is established again and not forcing it to be consistent with the server version. As there&rsquo;s no polling, the only server-driven update to the client replica is from WebSocket event.</p>
+</code></pre><p>What Bob sees is consistent with what the server sees at <code>T6</code> but there&rsquo;s a divergence (inconsistency) between Alice&rsquo;s chat history and Bob&rsquo;s chat history. This is because when Alice comes back online at <code>T3</code>, Alice&rsquo;s client does not download a fresh copy of the chat history from the server. It only syncs the messages sent after a new WebSocket connection is established.</p>
+<p>We avoid the need to solve the conflict resolution problem by keeping the client version after the network connection is established again and not forcing it to be consistent with the server version. As there&rsquo;s no polling, the only server-driven update to the client replica is from WebSocket events.</p>
 <p>The OkCupid chat app lets you go offline for an arbitrary amount of time and continue sending new messages. However, when you are online again, it doesn&rsquo;t automatically download all the messages sent to you when you were offline and re-apply your offline edits on top of the latest state.</p>
 <p>Choosing an appropriate final state when concurrent updates have occurred is called reconciliation and can be quite tricky to implement.</p>
-<p>For instance, there&rsquo;s a downside to simply syncing the replicas with the server state when the system reaches steady state: It can violate the invariant for our collection wherein messages are always ordered by the time they were created. This has some usability implications as it can create a jarring user experience to see the messages in the chat history suddenly change order.</p>
-<p><a href="https://en.wikipedia.org/wiki/Optimistic_replication">optimistic replication</a> allows replicas to diverge. Replicas will reach <a href="https://en.wikipedia.org/wiki/Eventual_consistency">eventual consistency</a> next time Alice and Bob syncs their replicas with the server state, which only happens when they refresh their chat apps (reload the page).</p>
+<p>For instance, there&rsquo;s a downside to simply syncing the replicas with the server state when the system reaches steady-state: It can violate the invariant for our collection wherein messages are always ordered by the time they were created. This has some usability implications as it can create a jarring user experience to see the messages in the chat history suddenly change order.</p>
+<p><a href="https://en.wikipedia.org/wiki/Optimistic_replication">optimistic replication</a> allows replicas to diverge. Replicas will reach <a href="https://en.wikipedia.org/wiki/Eventual_consistency">eventual consistency</a> the next time Alice and Bob sync their replicas with the server state, which only happens when they refresh their chat apps (reload the page).</p>
 <p>This seems like kind of a cheat but convergence upon system quiescence is a common strategy to achieve eventual consistency. This relieves us from having to implement an explicit reconciliation policy for the replicas which could be unnecessarily complex for our problem space.</p>
 <p>Avoiding reconciliation simplifies the implementation of our CDRT. The insufficient real-time support is a limitation of our approach but is good enough for OkCupid&rsquo;s use case because in a dating app, we don&rsquo;t expect people to be chatting simultaneously for a long period of time like they would in Slack.</p>
-<p>But if you are building a real-time chat app where simultaneous communication is a common use case, you will need to implement offline detection / polling the latest server data and merge the server data into the replica.</p>
+<p>But if you are building a real-time chat app where simultaneous communication is a common use case, you will need to implement offline detection/polling the latest server data and merge the server data into the replica.</p>
 <h3 id="sub-problem-5-intention-preservation">Sub-problem 5: Intention Preservation</h3>
 <p>All the strategies for implementing collaborative editing tools are guided by a set of principles depending on which consistency model is used.</p>
 <p>For the implementation of OkCupid&rsquo;s chat app, the <a href="https://www.cs.cityu.edu.hk/~jia/research/reduce98.pdf">CCI consistency model</a> was considered. It includes these three properties:</p>
@@ -905,15 +909,13 @@ M1
 <blockquote>
 <p>ensures that the effect of executing an operation at remote sites achieves the same effect as executing this operation at the local site at the time of its generation.</p>
 </blockquote>
-<p>Causality preservation and convergence and are essential properties of any consistency model to ensure correctness of the system during and after a collaboration session.</p>
-<p>What is a collaborating session in the context of a chat app?</p>
-<p>That&rsquo;s when both Alice and Bob are online and actively participating in the conversation.</p>
-<p>The causally dependent operations include optimistically adding the message with client-generated <code>tempId</code> to the replica, then when the server approves the mutation, replace the optimistic message by the real message with the server-assigned <code>id</code>, including a tombstone for what it was before when it was optimistically added (we will talk about this later in the implementation of the chat app CRDT).</p>
+<p>Causality preservation and convergence are essential properties of any consistency model to ensure the correctness of the system during and after a collaboration session.</p>
+<p>The causally dependent operations include optimistically adding the message with client-generated <code>tempId</code> to the replica, then when the server approves the mutation, replace the optimistic message with the real message with the server-assigned <code>id</code>, including a tombstone for what it was before when it was optimistically added (we will talk about this later in the implementation of the chat app CRDT).</p>
 <p>While a serialization protocol can be used to achieve causality preservation, it cannot be used to achieve intention preservation. The reason is that the serialization protocol does not have access to the user&rsquo;s intention.</p>
 <p>Intention preservation is an obvious goal in a chat app because the point of the chat app is to facilitate a conversation between two people where messages are created in response to other messages. The order of messages <em>as they appear at each replica site</em> is important for the conversation to make sense.</p>
 <p>Why we need intention preservation is best argued by considering a situation if we don&rsquo;t impose intention preservation:</p>
-<p>Alice asks Bob a question and sees that the question is optimistically added to her replica of the chat history. In the meantime, Bob is typing up a response to another question Alice asked a day before. If Alice is on a really slow network, Bob will not see her new question come into his chat history until some time after he sends his reply to her old question. Bob&rsquo;s intent is for Alice (the remote site) to see the new message as a response to her old question but because of network latency, Bob&rsquo;s message will be mis-understood by Alice as a response to her new question. Intention is not preserved.</p>
-<p>How do we prevent this misunderstanding? When Alice gets the event announcing that a message has been added to the conversation by Bob, rather than simply adding the message to the end of her chat history replica, she can perform some comparisons based on the message timestamps to insert the Bob&rsquo;s message in the right place in her chat history. This is possible because the real order of the messages is determined by the timestamp, which is created by the sender client at the time of creation (when the message is sent).</p>
+<p>Alice asks Bob a question and sees that the question is optimistically added to her replica of the chat history. In the meantime, Bob is typing up a response to another question Alice asked a day before. If Alice is on a really slow network, Bob will not see her new question come into his chat history until some time after he sends his reply to her old question. Bob&rsquo;s intent is for Alice (the remote site) to see the new message as a response to her old question but because of network latency, Bob&rsquo;s message will be misunderstood by Alice as a response to her new question. Bob&rsquo;s intention is not preserved.</p>
+<p>How do we prevent this misunderstanding? When Alice gets the event announcing that a message has been added to the conversation by Bob, rather than simply adding the message to the end of her chat history replica, she can perform some comparisons based on the message timestamps to insert Bob&rsquo;s message in the right place in her chat history. This is possible because the real order of the messages is determined by the timestamp, which is created by the sender client at the time of creation (when the message is sent).</p>
 <p>TODO: add this timestamp comparison logic to the messages cache implementation.</p>
 <h2 id="solution-design">Solution Design</h2>
 <h3 id="data-model">Data Model</h3>
