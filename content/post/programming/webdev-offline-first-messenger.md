@@ -382,11 +382,60 @@ TODO: add this timestamp comparison logic to the messages cache implementation.
 
 ## Solution Design
 
-### Data Model
+This section focuses on the implementation of the replica used in the OkCupid chat app.
+
+There are many optimistic replication and multiplayer functionalities implementations out there in collaborative editing tools such as [Google Docs](https://drive.googleblog.com/2010/09/whats-different-about-new-google-docs.html), [Notion](https://www.notion.so/blog/data-model-behind-notion), [Figma](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/), and [Peritext](https://www.inkandswitch.com/peritext/).
+
+Studying these reference designs helped us get some general ideas about how to design the architecture for our system but the specific architecture choice depends on the the specific usage patterns for our chat app.
+
+Answering these questions is a good starting point for the technology down-selection:
+
+1. What is the nature of the data that is being collaborated on?
+2. Does it need to be real-time (Synchronous)?
+3. What kind of mutations are supported?
+
+We will answer these questions and investigate a different aspect of the architecture in the following sections.
+
+### Replica Data Structure
+
+There are [two types of collaboration models](https://www.inkandswitch.com/peritext/#markdown-in-a-plain-text-crdt).
+
+1. The Google Docs model (pictured left) supports a real-time synchronous collaboration style where every update to the document form a single linear timeline.
+2. Asynchronous collaboration (pictured right) requires a Git-like model where users can create a private copy (branch) of the document and merge their branch into the main branch when they are ready to do so.
+
+{{< image classes="fancybox fig-100 clear" src="/post/images/offline-first-chat-app/sync-vs-async-collaboration-protocol.png" thumbnail="/post/images/offline-first-chat-app/sync-vs-async-collaboration-protocol.png" title="Synchronous vs Asynchronous Collaboration Protocol">}}
+
+The most suitable architecture for our chat app is
+
+. Answering these questions provided us good starting point to narrow our technology selection for the chat app:
+
+[Operational Transformation](https://en.wikipedia.org/wiki/Operational_transformation) (implemented by Google Docs) and [Conflict-free Replicated Data Types](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) (CRDT) are the two most common classes for conflict resolution strategies.
+
+In our offline-first chat app, we need to support real-time synchronous collaboration of a shared chat timeline. But the mutations are only adding (send a message) updating (reacting to a message and updating the read time of a message for read receipt).
+
+Most suitable
+
+The server and all the clients are managing their own copy of a [growth-only set](https://github.com/pfrazee/crdt_notes/tree/68c5fe81ade109446a9f4c24e03290ec5493031f#grow-only-set-g-set). The server propagates changes to the shared state to by transmitting the update operation. The server propagates changes to the shared state to by transmitting the update operation.
+
+The chat app belongs to the first variant of collaboration style.
+
+Operational transform [implemented in Google Docs](https://drive.googleblog.com/2010/09/whats-different-about-new-google-docs.html) is overkill for our chat app use case. For a two-player chat app, we don't need to worry about the case where two people are editing the same message property (e.g., body, reaction, read time) at the same time because that's not a valid use case. OkCupid's chat app does not even allow users to update the body of a sent message.
+
+If the chat app supports more than two players, then we need to implement conflict resolution for reactions and read times on a message. While that's a future use case we don't have to address now, it's worthwhile to make our solution design general enough to support an arbitrary number of multi-players to it can be easily scaled for that future use case (which we identified earlier as a likely future use case).
+
+A CRDT is an excellent choice for our problem because the data we are managing is a list of items.
+
+With CRDT, we get conflict resolution for free because a CRDT is a data structure that automatically resolves any inconsistencies that might occur during updates. The replicas are kept in CRDT and can be updated independently and concurrently without coordination with other replicas or the server. A final property of CRDT is eventual consistency, which will look at a little later.
+
+CRDT is a relatively new concept formalized in 2011 and popularized by collaboration tools like
+
+There are [various CRDTs to choose from](https://hal.inria.fr/inria-00555588/document). Notion and Figma both created their own CRDTs which target the specific problems they are solving. We will do the same for OkCupid's chat app.
 
 `Map` and Doubly Linked List
 
-### Conflict Resolution Policy
+### Merge Policy
+
+Server-Approved Sent
 
 - Delete Optimistic Message and replace with server-approved message
 - Tombstone
