@@ -28,7 +28,7 @@ I worked from home for almost 4 months since the start of the quarantine before 
 
 Look at the opportunity, cost, and affordability of buying a home. I bought my apartment during the COVID-19 pandemic. I looked at the opportunity cost, feasibility, and benefits:
 
-## Benefits:
+## Benefits
 
 - Mortgage is very low right now. Investors are turning to bonds. The fed just injected a lot of money into mortgage financing system in March.
 
@@ -50,6 +50,7 @@ Look at the opportunity, cost, and affordability of buying a home. I bought my a
 ## Opportunity Cost
 
 - Buying stocks is not a good idea because there are a lot of unknown about the true economic ramifications of the COVID-19 lock-down. Buying stocks is too risky now. Investors are selling stocks and buying bonds.
+- [NYT Rent vs Buy calculator](https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html)
 
 ## My Motivation for buying
 
