@@ -25,7 +25,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.106.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.113.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="">
 <meta name="description" content="by Xiaoyun Yang and Clyde Shaffer
@@ -353,16 +353,16 @@ I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus
 <p><img src="https://images2.imgbox.com/3b/f0/2Ket1SaB_o.jpg" alt="Moisture sensor and Arduino"></p>
 <p>Next, let&rsquo;s write the code to read moisture level. Follow the <a href="https://www.arduino.cc/en/Tutorial/ReadAnalogVoltage">getting started guide</a>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
-</span></span><span style="display:flex;"><span>  Serial.begin(<span style="color:#ae81ff">9600</span>);
+</span></span><span style="display:flex;"><span>  Serial.<span style="color:#a6e22e">begin</span>(<span style="color:#ae81ff">9600</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>() {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> sensorValue <span style="color:#f92672">=</span> analogRead(A0);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> sensorValue <span style="color:#f92672">=</span> <span style="color:#a6e22e">analogRead</span>(A0);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span> voltage<span style="color:#f92672">=</span> sensorValue <span style="color:#f92672">*</span> (<span style="color:#ae81ff">5.0</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1023.0</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span> threshold <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.2</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(voltage <span style="color:#f92672">&lt;</span> threshold) {
-</span></span><span style="display:flex;"><span>    Serial.println(<span style="color:#e6db74">&#34;water me&#34;</span>);
+</span></span><span style="display:flex;"><span>    Serial.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;water me&#34;</span>);
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Open Serial Monitor and see that when the moisture sensor is dry, a &ldquo;water me&rdquo; message is printed out!</p>
@@ -376,32 +376,32 @@ I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// put your setup code here, to run once:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  Serial.begin(<span style="color:#ae81ff">9600</span>);
-</span></span><span style="display:flex;"><span>  Serial.println(<span style="color:#e6db74">&#34;Motor test!&#34;</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  Serial.<span style="color:#a6e22e">begin</span>(<span style="color:#ae81ff">9600</span>);
+</span></span><span style="display:flex;"><span>  Serial.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Motor test!&#34;</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  motor.setSpeed(<span style="color:#ae81ff">200</span>);     <span style="color:#75715e">// set the speed to 200/255
+</span></span><span style="display:flex;"><span>  motor.<span style="color:#a6e22e">setSpeed</span>(<span style="color:#ae81ff">200</span>);     <span style="color:#75715e">// set the speed to 200/255
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>() {
-</span></span><span style="display:flex;"><span>  Serial.print(<span style="color:#e6db74">&#34;tick &#34;</span>);
-</span></span><span style="display:flex;"><span>  motor.run(FORWARD);      <span style="color:#75715e">// turn it on going forward
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  delay(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  Serial.<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;tick &#34;</span>);
+</span></span><span style="display:flex;"><span>  motor.<span style="color:#a6e22e">run</span>(FORWARD);      <span style="color:#75715e">// turn it on going forward
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  Serial.print(<span style="color:#e6db74">&#34;tock &#34;</span>);
-</span></span><span style="display:flex;"><span>  motor.run(BACKWARD);     <span style="color:#75715e">// the other way
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  delay(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  Serial.<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;tock &#34;</span>);
+</span></span><span style="display:flex;"><span>  motor.<span style="color:#a6e22e">run</span>(BACKWARD);     <span style="color:#75715e">// the other way
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  Serial.print(<span style="color:#e6db74">&#34;tack &#34;</span>);
-</span></span><span style="display:flex;"><span>  motor.run(RELEASE);      <span style="color:#75715e">// stopped
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  delay(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  Serial.<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;tack &#34;</span>);
+</span></span><span style="display:flex;"><span>  motor.<span style="color:#a6e22e">run</span>(RELEASE);      <span style="color:#75715e">// stopped
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> sensorValue <span style="color:#f92672">=</span> analogRead(A0);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> sensorValue <span style="color:#f92672">=</span> <span style="color:#a6e22e">analogRead</span>(A0);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span> voltage<span style="color:#f92672">=</span> sensorValue <span style="color:#f92672">*</span> (<span style="color:#ae81ff">5.0</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1023.0</span>);
-</span></span><span style="display:flex;"><span>  Serial.println(voltage);
+</span></span><span style="display:flex;"><span>  Serial.<span style="color:#a6e22e">println</span>(voltage);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span> threshold <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.2</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(voltage <span style="color:#f92672">&lt;</span> threshold) {
-</span></span><span style="display:flex;"><span>      Serial.println(<span style="color:#e6db74">&#34;water me&#34;</span>);
+</span></span><span style="display:flex;"><span>      Serial.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;water me&#34;</span>);
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>This is the result:</p>
@@ -422,24 +422,24 @@ I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus
 </span></span><span style="display:flex;"><span>AF_DCMotor <span style="color:#a6e22e">motor</span>(<span style="color:#ae81ff">1</span>, MOTOR12_1KHZ); <span style="color:#75715e">// create motor #1, 1KHz pwm
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
-</span></span><span style="display:flex;"><span>  Serial.begin(<span style="color:#ae81ff">9600</span>);
-</span></span><span style="display:flex;"><span>  Serial.println(<span style="color:#e6db74">&#34;Motor test!&#34;</span>);
+</span></span><span style="display:flex;"><span>  Serial.<span style="color:#a6e22e">begin</span>(<span style="color:#ae81ff">9600</span>);
+</span></span><span style="display:flex;"><span>  Serial.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Motor test!&#34;</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  motor.setSpeed(<span style="color:#ae81ff">200</span>);     <span style="color:#75715e">// set the speed to 200/255
+</span></span><span style="display:flex;"><span>  motor.<span style="color:#a6e22e">setSpeed</span>(<span style="color:#ae81ff">200</span>);     <span style="color:#75715e">// set the speed to 200/255
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>() {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> sensorValue <span style="color:#f92672">=</span> analogRead(A0);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> sensorValue <span style="color:#f92672">=</span> <span style="color:#a6e22e">analogRead</span>(A0);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span> voltage<span style="color:#f92672">=</span> sensorValue <span style="color:#f92672">*</span> (<span style="color:#ae81ff">5.0</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1023.0</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span> threshold <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.2</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(voltage <span style="color:#f92672">&lt;</span> threshold) {
-</span></span><span style="display:flex;"><span>    Serial.println(<span style="color:#e6db74">&#34;water me&#34;</span>);
-</span></span><span style="display:flex;"><span>    motor.run(FORWARD);      <span style="color:#75715e">// turn it on going forward
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    delay(<span style="color:#ae81ff">1000</span>);
-</span></span><span style="display:flex;"><span>    motor.run(RELEASE);
+</span></span><span style="display:flex;"><span>    Serial.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;water me&#34;</span>);
+</span></span><span style="display:flex;"><span>    motor.<span style="color:#a6e22e">run</span>(FORWARD);      <span style="color:#75715e">// turn it on going forward
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>    motor.<span style="color:#a6e22e">run</span>(RELEASE);
 </span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>    motor.run(RELEASE);
+</span></span><span style="display:flex;"><span>    motor.<span style="color:#a6e22e">run</span>(RELEASE);
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Integration Test for moisture sensor and motor controller <a href="https://youtu.be/IpDobGmHPro">Demo</a>:</p>
@@ -460,15 +460,15 @@ I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus
 <p><img src="https://images2.imgbox.com/3b/b2/LfsJOR4N_o.png" alt=""></p>
 <p>We programmed the Arduino with the 100/ms sampling rate.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
-</span></span><span style="display:flex;"><span>  Serial.begin(<span style="color:#ae81ff">9600</span>);
-</span></span><span style="display:flex;"><span>  Serial.println(<span style="color:#e6db74">&#34;Hello!&#34;</span>);
-</span></span><span style="display:flex;"><span>  pinMode(A0, INPUT);
+</span></span><span style="display:flex;"><span>  Serial.<span style="color:#a6e22e">begin</span>(<span style="color:#ae81ff">9600</span>);
+</span></span><span style="display:flex;"><span>  Serial.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hello!&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pinMode</span>(A0, INPUT);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>() {
-</span></span><span style="display:flex;"><span>  Serial.println(analogRead(A0));
-</span></span><span style="display:flex;"><span>  Serial.print(<span style="color:#e6db74">&#34; &#34;</span>);
-</span></span><span style="display:flex;"><span>  delay(<span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>  Serial.<span style="color:#a6e22e">println</span>(<span style="color:#a6e22e">analogRead</span>(A0));
+</span></span><span style="display:flex;"><span>  Serial.<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34; &#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">100</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>The Arduino is connected to a serial port on the computer. The following line of bash code dumps the output of the serial port into a file.</p>
 <pre tabindex="0"><code>$ cat  /dev/cu.usbmodem1411 &gt; moisturelog1.csv
@@ -604,7 +604,7 @@ s.setAttribute('data-timestamp', +new Date());
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2022 Xiaoyun Yang. All Rights Reserved
+    &copy; 2023 Xiaoyun Yang. All Rights Reserved
   </span>
 </footer>
 

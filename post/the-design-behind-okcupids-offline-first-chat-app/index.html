@@ -25,7 +25,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.106.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.113.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xiaoyun Yang">
 <meta name="keywords" content="Software Design, web development, JavaScript, Optimistic State Updates, Optimistic UI, Design Pattern, React, User Experience">
 <meta name="description" content="
@@ -353,8 +353,8 @@ In this article, we will explore the design of an offline-first chat app on the 
     </li>
     <li><a href="#solution-design">Solution Design</a>
       <ul>
-        <li><a href="#data-model">Data Model</a></li>
-        <li><a href="#conflict-resolution-policy">Conflict Resolution Policy</a></li>
+        <li><a href="#replica-data-structure">Replica Data Structure</a></li>
+        <li><a href="#merge-policy">Merge Policy</a></li>
         <li><a href="#local-storage">Local Storage</a></li>
         <li><a href="#update-event-handling">Update Event Handling</a></li>
         <li><a href="#view-rendering">View Rendering</a></li>
@@ -918,9 +918,82 @@ M1
 <p>How do we prevent this misunderstanding? When Alice gets the event announcing that a message has been added to the conversation by Bob, rather than simply adding the message to the end of her chat history replica, she can perform some comparisons based on the message timestamps to insert Bob&rsquo;s message in the right place in her chat history. This is possible because the real order of the messages is determined by the timestamp, which is created by the sender client at the time of creation (when the message is sent).</p>
 <p>TODO: add this timestamp comparison logic to the messages cache implementation.</p>
 <h2 id="solution-design">Solution Design</h2>
-<h3 id="data-model">Data Model</h3>
+<p>This section focuses on the implementation of the replica used in the OkCupid chat app.</p>
+<p>There are many optimistic replication and multiplayer functionalities implementations out there in collaborative editing tools such as <a href="https://drive.googleblog.com/2010/09/whats-different-about-new-google-docs.html">Google Docs</a>, <a href="https://www.notion.so/blog/data-model-behind-notion">Notion</a>, <a href="https://www.figma.com/blog/how-figmas-multiplayer-technology-works/">Figma</a>, and <a href="https://www.inkandswitch.com/peritext/">Peritext</a>.</p>
+<p>Studying these reference designs helped us get some general ideas about how to design the architecture for our system but the specific architecture choice depends on the the specific usage patterns for our chat app.</p>
+<p>Answering these questions is a good starting point for the technology down-selection:</p>
+<ol>
+<li>What is the nature of the data that is being collaborated on?</li>
+<li>Does it need to be real-time (Synchronous)?</li>
+<li>What kind of mutations are supported?</li>
+</ol>
+<p>We will answer these questions and investigate a different aspect of the architecture in the following sections.</p>
+<h3 id="replica-data-structure">Replica Data Structure</h3>
+<p>There are <a href="https://www.inkandswitch.com/peritext/#markdown-in-a-plain-text-crdt">two types of collaboration models</a>.</p>
+<ol>
+<li>The Google Docs model (pictured left) supports a real-time synchronous collaboration style where every update to the document form a single linear timeline.</li>
+<li>Asynchronous collaboration (pictured right) requires a Git-like model where users can create a private copy (branch) of the document and merge their branch into the main branch when they are ready to do so.</li>
+</ol>
+
+ 
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure fig-100" >
+  
+    <a class="fancybox" href="https://xiaoyunyang.github.io/post/images/offline-first-chat-app/sync-vs-async-collaboration-protocol.png" title="Synchronous vs Asynchronous Collaboration Protocol" data-fancybox="">
+  
+    <img class="fig-img" src="https://xiaoyunyang.github.io/post/images/offline-first-chat-app/sync-vs-async-collaboration-protocol.png"  alt="Synchronous vs Asynchronous Collaboration Protocol">
+  
+    </a>
+  
+   
+    <span class="caption">Synchronous vs Asynchronous Collaboration Protocol</span>
+  
+</div>
+
+  <div style="clear:both;"></div>
+
+<p>The most suitable architecture for our chat app is</p>
+<p>. Answering these questions provided us good starting point to narrow our technology selection for the chat app:</p>
+<p><a href="https://en.wikipedia.org/wiki/Operational_transformation">Operational Transformation</a> (implemented by Google Docs) and <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">Conflict-free Replicated Data Types</a> (CRDT) are the two most common classes for conflict resolution strategies.</p>
+<p>In our offline-first chat app, we need to support real-time synchronous collaboration of a shared chat timeline. But the mutations are only adding (send a message) updating (reacting to a message and updating the read time of a message for read receipt).</p>
+<p>Most suitable</p>
+<p>The server and all the clients are managing their own copy of a <a href="https://github.com/pfrazee/crdt_notes/tree/68c5fe81ade109446a9f4c24e03290ec5493031f#grow-only-set-g-set">growth-only set</a>. The server propagates changes to the shared state to by transmitting the update operation. The server propagates changes to the shared state to by transmitting the update operation.</p>
+<p>The chat app belongs to the first variant of collaboration style.</p>
+<p>Operational transform <a href="https://drive.googleblog.com/2010/09/whats-different-about-new-google-docs.html">implemented in Google Docs</a> is overkill for our chat app use case. For a two-player chat app, we don&rsquo;t need to worry about the case where two people are editing the same message property (e.g., body, reaction, read time) at the same time because that&rsquo;s not a valid use case. OkCupid&rsquo;s chat app does not even allow users to update the body of a sent message.</p>
+<p>If the chat app supports more than two players, then we need to implement conflict resolution for reactions and read times on a message. While that&rsquo;s a future use case we don&rsquo;t have to address now, it&rsquo;s worthwhile to make our solution design general enough to support an arbitrary number of multi-players to it can be easily scaled for that future use case (which we identified earlier as a likely future use case).</p>
+<p>A CRDT is an excellent choice for our problem because the data we are managing is a list of items.</p>
+<p>With CRDT, we get conflict resolution for free because a CRDT is a data structure that automatically resolves any inconsistencies that might occur during updates. The replicas are kept in CRDT and can be updated independently and concurrently without coordination with other replicas or the server. A final property of CRDT is eventual consistency, which will look at a little later.</p>
+<p>CRDT is a relatively new concept formalized in 2011 and popularized by collaboration tools like</p>
+<p>There are <a href="https://hal.inria.fr/inria-00555588/document">various CRDTs to choose from</a>. Notion and Figma both created their own CRDTs which target the specific problems they are solving. We will do the same for OkCupid&rsquo;s chat app.</p>
 <p><code>Map</code> and Doubly Linked List</p>
-<h3 id="conflict-resolution-policy">Conflict Resolution Policy</h3>
+<h3 id="merge-policy">Merge Policy</h3>
+<p>Server-Approved Sent</p>
 <ul>
 <li>Delete Optimistic Message and replace with server-approved message</li>
 <li>Tombstone</li>
@@ -980,7 +1053,7 @@ M1
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/how-i-get-100-hours-worth-of-work-done-in-a-40-hour-work-week/" data-tooltip="How I get 100 hours worth of work done in a 40 hour work week" aria-label="NEXT: How I get 100 hours worth of work done in a 40 hour work week">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -1064,7 +1137,7 @@ s.setAttribute('data-timestamp', +new Date());
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2022 Xiaoyun Yang. All Rights Reserved
+    &copy; 2023 Xiaoyun Yang. All Rights Reserved
   </span>
 </footer>
 
@@ -1077,7 +1150,7 @@ s.setAttribute('data-timestamp', +new Date());
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoyunyang.github.io/post/how-i-get-100-hours-worth-of-work-done-in-a-40-hour-work-week/" data-tooltip="How I get 100 hours worth of work done in a 40 hour work week" aria-label="NEXT: How I get 100 hours worth of work done in a 40 hour work week">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
