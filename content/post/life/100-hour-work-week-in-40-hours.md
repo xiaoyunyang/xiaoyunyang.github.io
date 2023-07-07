@@ -1,11 +1,25 @@
 ---
-title: "How I get 100 hours worth of work done in a 40 hour work week"
-date: 2023-07-07
+title: "How I get 100 Hours Worth of Work Done in a 40-hour Work Week"
+date: 2023-07-06
 categories:
   - blog
 tags:
   - Life
   - Productivity
+  - Entrepreneurship
+  - Career
+  - Guide
+keywords:
+  - Productivity
+  - Life Hack
+  - Entrepreneurship
+  - Career
+  - Guide
+  - Rock Climbing
+  - Alex Honnold
+  - Risk Mitigation
+  - Matterhorn
+  - Athletic Performance
 thumbnailImagePosition: left
 thumbnailImage: /post/images/100-hours/cover.png
 
