@@ -1,6 +1,6 @@
 ---
 title: "Stash of The Design Behind OkCupid's Offline-first Chat App"
-date: 2022-11-18
+date: 2023-12-18
 draft: true
 categories:
   - blog
@@ -797,7 +797,7 @@ Although this was acceptable for sending simple messages in which the network de
 
 - [https://felixgerschau.com/useref-react-hooks/](https://felixgerschau.com/useref-react-hooks/)
 - [https://www.smashingmagazine.com/2020/11/react-useref-hook/](https://www.smashingmagazine.com/2020/11/react-useref-hook/)
-  - In React, there are two rendering mechanisms, *shallow* and *deep* rendering. Shallow rendering affects just the component and not the children, while deep rendering affects the component itself and all of its children.
+  - In React, there are two rendering mechanisms, _shallow_ and _deep_ rendering. Shallow rendering affects just the component and not the children, while deep rendering affects the component itself and all of its children.
   - Deep re-rendering is used when an update is carried out on a state using the `useState` hook or an update to the component’s props.
   - **FORCING A DEEP RE-RENDER FOR `useRef` UPDATE**
     - Copy the value into a component state and conditionally update the state when there’s an event
@@ -831,7 +831,7 @@ Although this was acceptable for sending simple messages in which the network de
 
 ### Why Use Both Ref and State?
 
-In React, there are two rendering mechanisms, *shallow* and *deep* rendering. Shallow rendering affects just the component and not the children, while deep rendering affects the component itself and all of its children.
+In React, there are two rendering mechanisms, _shallow_ and _deep_ rendering. Shallow rendering affects just the component and not the children, while deep rendering affects the component itself and all of its children.
 
 We do not want every change to `messagesCacheRef` to cause deep rendering because that will exceed the re-rendering limit in react and cause a crash. So we keep this in a ref.
 
@@ -1181,7 +1181,7 @@ Optimistic update using a temp Id challenges:
 
 [https://tkdodo.eu/blog/react-query-render-optimizations](https://tkdodo.eu/blog/react-query-render-optimizations)
 
-While the above code works well, it can get out of sync quite easily. What if we want to react to the *error*, too? Or we start to use the *isLoading* flag? We have to keep the *notifyOnChangeProps* list in sync with whichever fields we are actually using in our components. If we forget to do that, and we only observe the *data* property, but get an *error* that we also display, our component will not re-render and is thus outdated. This is especially troublesome if we hard-code this in our custom hook, because the hook does not know what the component will actually use:
+While the above code works well, it can get out of sync quite easily. What if we want to react to the _error_, too? Or we start to use the _isLoading_ flag? We have to keep the _notifyOnChangeProps_ list in sync with whichever fields we are actually using in our components. If we forget to do that, and we only observe the _data_ property, but get an _error_ that we also display, our component will not re-render and is thus outdated. This is especially troublesome if we hard-code this in our custom hook, because the hook does not know what the component will actually use:
 
 1. Redux: Single source of truth
 2. Apollo client cache - only server data
@@ -1235,9 +1235,9 @@ const updateMessageStatus = useCallback(
 ## Apollo Client Reactive Variables
 
 - Apollo Client [reactive variables](https://www.apollographql.com/docs/react/local-state/reactive-variables) are great for representing local state:
-- Your Apollo Client queries can include **local-only fields** that *aren't* defined in your GraphQL server's schema. Use the `@client` directive on the field to indicate it’s local-only
+- Your Apollo Client queries can include **local-only fields** that _aren't_ defined in your GraphQL server's schema. Use the `@client` directive on the field to indicate it’s local-only
 - The values for these fields are calculated locally using any logic you want, such as reading data from `localStorage`.
-- a query can include both local-only fields *and* fields that are fetched from your GraphQL server.
+- a query can include both local-only fields _and_ fields that are fetched from your GraphQL server.
 
 [https://www.apollographql.com/docs/react/caching/cache-field-behavior/#the-read-function](https://www.apollographql.com/docs/react/caching/cache-field-behavior/#the-read-function)
 
