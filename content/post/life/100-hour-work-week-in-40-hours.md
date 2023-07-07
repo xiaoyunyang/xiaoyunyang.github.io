@@ -1,5 +1,5 @@
 ---
-title: "How I get 100 Hours Worth of Work Done in a 40-hour Work Week"
+title: "How I Get 100 Hours Worth of Work Done in a 40-hour Work Week"
 date: 2023-07-06
 categories:
   - blog
