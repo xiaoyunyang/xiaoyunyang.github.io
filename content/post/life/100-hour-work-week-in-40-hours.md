@@ -616,7 +616,7 @@ It’s also implemented in code to mitigate certain unexpected errors that happe
 
 To be the most bad-ass version of yourself, you have to be okay with being bad in the beginning and wisely invest your time, money, and energy to getting better.
 
-If you are choosing to do hard things, it’s important to ask: What’s the net benefit? What’s going to happen when I fail? Can I get back up and continue on my path if I fall?
+If you are choosing to do hard things, it’s important to ask: What’s the net benefit? What’s going to happen when I fail? Can I get back up and continue on my path if I fall? Then, commit to the work needed to get better. Surround yourself with coaches and cheerleaders.
 
 Know your limits and accept the reality that you are not a rubber band with infinite ability to stretch and snap back in shape. There’s a cost to getting stretched. There’s permanent damage that can be caused by getting stretched beyond your limits or going so far down the wrong path that you can’t get back to where you came from.
 
