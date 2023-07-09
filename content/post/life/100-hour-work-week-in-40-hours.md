@@ -491,7 +491,7 @@ Resource is defined as anything you need to perform at the highest level. This i
 
 One day I wanted to find out my upper limit for athletic performance and endurance. So I took a day off work, got a good night’s rest, and took 9 classes at Equinox. My day started at 6:30 am and ended at 8:30 pm.
 
-{{< image classes="fancybox fig-100" src="/post/images/100-hours/9-classes.png" thumbnail="/post/images/100-hours/9-classes.png" title="I took 9 gym classes in one day to see if my body was capable of handling it" >}}
+{{< image classes="fancybox fig-100" src="/post/images/100-hours/9-classes-mlk-2022.png" thumbnail="/post/images/100-hours/9-classes-mlk-2022.png" title="I took 9 gym classes in one day to see if my body was capable of handling it" >}}
 
 Because I had a day off from work, and as many classes as I’m able to take at any Equinox clubs in the city, I created this **un-constrained environment** that allowed me to experiment on determining what my limits are.
 
