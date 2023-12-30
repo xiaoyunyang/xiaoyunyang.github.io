@@ -1,0 +1,7 @@
+{
+  "[markdown]": {
+    "editor.defaultFormatter": "unifiedjs.vscode-remark",
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false
+  }
+}
