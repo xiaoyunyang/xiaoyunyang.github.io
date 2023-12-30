@@ -1,6 +1,6 @@
 ---
 title: "What Happens Under the Hood When you Visit a Website"
-date: 2023-10-01
+date: 2024-10-01
 categories:
   - blog
 tags:
@@ -112,7 +112,7 @@ How Github does it, here's the DOM from Github settings page:
 
 - CSRF concern mitigated by injecting a special field in the form like a one time hash that
 
-- Tabnabbing concern mitigated by using `rel="noopener noreferrer"` in anchors containing `target="\_blank". This post demonstrates the danger of tabnabbing https://mathiasbynens.github.io/rel-noopener/
+- Tabnabbing concern mitigated by using `rel="noopener noreferrer"` in anchors containing `target="\_blank". This post demonstrates the danger of tabnabbing <https://mathiasbynens.github.io/rel-noopener/>
 
 For more, read [this](https://github.com/asciidoctor/asciidoctor/issues/2071) and [this](https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/)
 

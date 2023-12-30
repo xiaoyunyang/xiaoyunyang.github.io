@@ -103,15 +103,11 @@ I calculate consequence as the `benefit - cost`. If the consequence of failure i
 
 The time you spend completing the action is always a cost (unless you are paying someone else to do it for you, in which case money becomes a cost instead of time). The longer something takes up your time, the more negative the consequence of failure becomes; however, `benefit - cost` can still be a positive number if the benefit outweighs the cost. For example,
 
-
 If the worst thing that could happen is still just do something. The more you do, the busier you’re going to get. This is because each task has multiple follow-on tasks. The task that doesn't have a follow-on task is probably not worth pursuing any longer.
-
 
 # Step 2: Sort The Tasks based on Priorities
 
 So that could quickly proliferate. So you need a way to prioritize what to work on. My algorithm for working on a task T is if I fail, did I just waste my time or did I gain some value? I rank the tasks based on the benefit minus cost if I fail at the task
-
-
 
 Do the sorting of tasks into a prioritized list ahead of the time of execution so you don’t have to think about what to work on next. You just do it.
 
@@ -123,7 +119,7 @@ Do the sorting of tasks into a prioritized list ahead of the time of execution s
 // TODO: Search-Sort tradeoff
 ```
 
-# Step 3:
+# Step 3
 
 ```js
 // TODO: Add this section

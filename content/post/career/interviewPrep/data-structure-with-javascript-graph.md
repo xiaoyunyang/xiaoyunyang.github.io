@@ -1,6 +1,6 @@
 ---
 title: "Data Structure with JavaScript Object: Graph"
-date: 2023-10-25
+date: 2024-10-25
 draft: true
 categories:
   - blog

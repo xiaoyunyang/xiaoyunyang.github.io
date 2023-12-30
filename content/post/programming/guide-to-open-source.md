@@ -1,6 +1,6 @@
 ---
 title: "A Guide to Open Sourcing"
-date: 2023-10-21
+date: 2024-10-21
 draft: true
 categories:
   - project

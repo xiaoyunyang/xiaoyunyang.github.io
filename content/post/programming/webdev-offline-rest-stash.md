@@ -1,6 +1,6 @@
 ---
 title: "Stash of The Design Behind OkCupid's Offline-first Chat App"
-date: 2023-12-18
+date: 2024-12-18
 draft: true
 categories:
   - blog

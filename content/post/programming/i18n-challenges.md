@@ -1,6 +1,6 @@
 ---
 title: "i18n Challenges and Solutions"
-date: 2023-11-25
+date: 2024-01-25
 categories:
   - blog
 tags:
