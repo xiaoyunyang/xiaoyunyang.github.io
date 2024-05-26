@@ -1,6 +1,7 @@
 ---
 title: "The Ultimate Life Setup Guide (2024)"
-date: 2023-12-26
+date: 2024-12-26
+draft: true
 categories:
   - blog
 tags:
@@ -28,13 +29,13 @@ How I have my life set up in 2024.
 
 ## Personal Finance
 
-### Wealth Management
-
 A big part of wealth management is to manage spending in such a way that you grow your wealth. I don't mean wealth in those abstract terms like "happiness" or "fulfillment". I mean wealth in the most concrete terms: money.
 
 This may sound counter intuitive. You may ask, "Don't I always lose money whenever I spend money?"
 
 Yes, you do lose money whenever you spend money, but your wealth can grow if you smartly spend your money.
+
+### The Cash Flow Equation
 
 Your wealth as measured by your net worth, is calculated by:
 
@@ -52,11 +53,47 @@ How do we lower our liabilities?
 
 I'm not going to say "by spending less money" because that implies a behavioral change, forming new habits, uprooting our lives, and re-evaluating our value systems, which are not easy to achieve or worth doing in many cases for the amount of money it saves.
 
-Instead, I will introduce some ways to improve your capital deployment strategies to maximize benefits and minimize risks.
+Instead, I will introduce some ways to spend the money you have to spend already in a different way to maximize benefits and minimize risks.
 
 ### Think Like a Fund Manager
 
-in private equity, capital deployment strategy is one that maximizes return and minimizes risks. In the context of personal finance specific to spending, you will always incur a loss when you spend; however we can rephrase our goal goal is to “maximize savings and minimize losses”.
+A fund manager's job is to grow a pool of wealth by spending money to make more money.  They put money into various asset classes like stocks, bonds, and debt financing with the expectation that more money will be returned with interest when the asset grows.
+
+The goal is not incur a loss when they spend that money by selecting appropriate capital deployment strategies that maximize return and minimize losses for their clients based on the client's appetite for risk.
+
+In the context of personal finance, we also start with a pool of money after payday that we can decide how to spend. The main difference is that we are both the client and the fund manager for our own personal fund.
+
+#### Reduce Liabilities
+
+There are living expenses that we must cover with that pool of money. These include paying rent, utilities, taxes, groceries, medical expenses, etc just like the fund manager has to use some of their clients' money to pay office rent, legal fees, taxes, and business operation costs. There's a cost for doing business/being alive which we cannot ignore.
+
+There are many ways to reduce our liabilities. The most common advise you may hear is to make some lifestyle cuts like moving to a cheaper apartment, not going to restaurants as often, and taking public transit instead of Uber. While these are effective ways to reduce liabilities, they are not easy to implement or that desirable.
+
+Fund managers are also thinking about ways to reduce their liabilities but they are not doing so by giving themselves a pay cut or reduced bonuses. Some examples include setting up their business entities in a way that minimizes fees and taxes and purchasing insurance to minimize their losses when there is a lawsuit.
+
+In the context of personal finance, we can also think about ways to reduce our liabilities without making lifestyle cuts. Just for tax liabilities alone, there are so many simple hacks that many people are not aware of. These includes
+
+- Setting up HSA to get a tax deduction for out-of-pocket medical expenses
+- If you own a home, you can get a tax deduction for mortgage interest and property taxes
+- If you have student loans, you can get a tax deduction for student loan interest
+- [Keep your dividend stocks in a non-taxable account](https://www.investopedia.com/articles/personal-finance/060915/how-are-dividends-iras-taxed.asp) like Roth IRA so to instead of a taxable account like Traditional IRA.
+- If you are self-employed or independent contractor, you can [get a tax deduction](https://www.freelancetaxation.com/what-should-freelancers-do-when-they-have-both-w-2-and-1099-income-and-expenses) for co-working spaces or home office expenses like internet and utilities and laptop.
+
+Many of these changes are not worth making because the amount of money saved is not worth the amount of time and effort it takes to make the change.
+
+After all the liabilities are paid, we have some money left over to spend on things that we will grow our wealth. This is where we can apply the same capital deployment strategies that fund managers use:
+
+to maximize the return on investment (ROI) for the client.
+
+There are different kinds of funds that cater to different kinds of investors. This ranges from mutual funds to hedge funds and crypto funds.
+
+inevitably fees for managing these funds and running the business (salaries, taxes, legal fees) which are expenses that cannot be categorized as investments  that cannot be used to . The fund manager's job is to maximize the return on investment (ROI) for the client while minimizing the fees.
+
+In the context of personal finance specific to spending, we also start with a pool of money that we have to spend. There are living expenses that we have to pay for which are just the cost of doing business.
+
+We can think of this pool of money as a fund that we manage. We can think of our spending as an investment in our lifestyle.
+
+and we have to  you will always incur a loss when you spend; however we can rephrase our goal to one that focuses on **maximizing savings and minimizing losses**.
 
 Savings comes in the form of cash back and point redemption for necessary travels. Losses come from paying interest on the credit card and spending above your means. Credit card reward incentive structures are designed to entice you to maximize loss. That’s how they make money.
 
@@ -68,7 +105,7 @@ This is also why the BILT mastercard, a credit card that rewards you 1x point fo
 
 ### Capital Deployment Strategies
 
-What do I mean by capital deployment strategies? When you spend money, three things need to happen:
+When you spend money, three things need to happen:
 
 1. **Budgeting**  - You commit a certain amount of your liquid asset to pay for things in a certain category.
 2. **Fundraising** - Getting your accounts ready to pay for the expenses. This involves making sure you have enough cash in your bank accounts to cover the credit card payments and making sure you have enough credit limit on your credit cards to cover the future expenses without going over 10% credit utilization (by paying down your credit cards).
@@ -90,7 +127,7 @@ In general, there are two types of expenses in life.
 
 The example expenses above are based on my spending habit. Your definition of routine and necessary may be different from mine. Heck, my definition next year may be different from this year. The point is to recognize the three styles of spending and apply the appropriate capital deployment strategies to maximize benefits and minimize excess spending.
 
-### Credit Cards
+### Credit Card Hacks
 
 In summary:
 
