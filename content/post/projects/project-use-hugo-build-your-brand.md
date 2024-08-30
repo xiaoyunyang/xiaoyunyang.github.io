@@ -24,6 +24,7 @@ It's not always clear why we need need a personal website. But here's the truth:
 <!--more-->
 
 ## What A Personal Brand Website Needs
+
 I need a website to:
 
 1. Showcase my projects,
@@ -35,6 +36,7 @@ Being able to easily generate and publish blog posts is another extremely benefi
 I've always find myself in a situation where I have thoughts and ideas but no single place to record and consolidate them all. There are times when I would give thoughtful comments for an article I read on Medium or Linkedin or go on some long rant on Facebook and thinking to myself: "man, I'm not going to be able to easily find this again when I want to share it with another person".
 
 ## Why Use A Static Site Generator
+
 My old personal website was built with vanilla HTML, React, Backbone.js (for routing) and [marked](https://github.com/markedjs/marked) for dynamically load markdown files. It was high maintenance and not scalable. Although I kinda set the website up to separate content from code, I still had to go into the code when I want to add more pages to the website. The website was set up to display three pages: Work, About, and Writing, which included links to articles I [published on Medium](https://medium.com/@xiaoyunyang/latest).
 
 My old website was bootstrapped. I wanted something set up quickly and didn't have a lot of time to architect it. I had on my todo-list for a long time to clean up the code for the website to also let it function as a blog.
@@ -44,6 +46,7 @@ One day I watched [a talk on YouTube](https://www.youtube.com/watch?v=KX4G49ZrvY
 This is when I decided to abandon my old website. I built my old website as a static site generator. Writing all the code myself and maintaining the codebase seems like a low-value added activity, especially when I can simply leverage existing static site generators. I rather spend my time creating content for my website and work on my [various other projects](http://xiaoyunyang.github.io/categories/projects/).
 
 ## Why I Chose Hugo
+
 I'm going with the git-backed option for a personal brand website because I want to use github to host my website for free and having an API to serve static files just seems like an overkill for a simple personal / blog website.
 
 I researched different options for [static site generators](https://www.netlify.com/blog/2016/05/02/top-ten-static-website-generators/). My criteria are:
@@ -63,7 +66,9 @@ From my research, a few static site generators impressed me:
 I ultimately went with Hugo because it's popular, has a plethora of [themes](https://themes.gohugo.io/) to choose from, lets you [host from github](https://gohugo.io/hosting-and-deployment/hosting-on-github/), and provides a simple workflow and a straightforward means of customizing your site.
 
 ## Creating A Website Powered By Hugo
+
 Setting up the Hugo project is easy enough with their [5-step Quick Start](https://gohugo.io/getting-started/quick-start/) Tutorial. Choosing a template took a while. The [Hugo templates](https://themes.gohugo.io/) are created by third party developers and are hosted from Github. I want a template that not only looks good, but has good documentation, lots of users, and is actively maintained. I ultimately went with the [tranquilpeak](https://github.com/kakawait/hugo-tranquilpeak-theme) template, which has the nice sidebar navigation that I adore, well maintained as an open source project, and has a good number of users.
 
 ## Conclusion
+
 I need a personal website to build my brand, assemble a portfolio for myself and let the world know who I am and what I care about by keeping a blog. I want to focus on the "what" and not the "how" for my personal website. Thus, I'm leveraging a static site generator like [Hugo](https://gohugo.io/).
