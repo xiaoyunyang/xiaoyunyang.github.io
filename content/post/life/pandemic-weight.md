@@ -1,6 +1,6 @@
 ---
 title: "How I Lost My Pandemic Weight and Got Ripped"
-date: 2024-12-27
+date: 2026-12-27
 categories:
   - blog
 tags:

@@ -1,6 +1,6 @@
 ---
 title: "The Ultimate Life Setup Guide (2024)"
-date: 2024-12-26
+date: 2026-12-26
 draft: true
 categories:
   - blog

@@ -1,6 +1,6 @@
 ---
 title: "What Happens Under the Hood When you Visit a Website"
-date: 2025-10-01
+date: 2028-10-01
 categories:
   - blog
 tags:
