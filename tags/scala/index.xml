@@ -8,24 +8,21 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Sun, 03 Dec 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/scala/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://xiaoyunyang.github.io/tags/scala/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How Functional Programming Promotes Developer Productivity</title>
       <link>https://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</link>
-      <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</guid>
       <description>&lt;p&gt;Functional Programming is more than just a buzzword these days. It&amp;rsquo;s super useful and makes you rethink everything you&amp;rsquo;ve learned about software.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Maintaining a Repository Of Learning For Scala</title>
       <link>https://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</link>
-      <pubDate>Sun, 12 Mar 2017 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sun, 12 Mar 2017 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</guid>
       <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

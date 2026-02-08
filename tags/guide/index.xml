@@ -8,190 +8,140 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Thu, 06 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/guide/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://xiaoyunyang.github.io/tags/guide/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How I Get 100 Hours Worth of Work Done in a 40-hour Work Week</title>
       <link>https://xiaoyunyang.github.io/post/how-i-get-100-hours-worth-of-work-done-in-a-40-hour-work-week/</link>
-      <pubDate>Thu, 06 Jul 2023 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 06 Jul 2023 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-i-get-100-hours-worth-of-work-done-in-a-40-hour-work-week/</guid>
-      <description>&lt;p&gt;I spend 3 hours at the gym every day, go on mountaineering and snowboarding trips every three months, work as a founding engineer at a Series A startup, and still have time for side projects like this blog post.&lt;/p&gt;
-&lt;p&gt;Someone recently asked me what’s my secret for getting all this done. How do I have time to do all these things?&lt;/p&gt;
-&lt;p&gt;In this blog post, I’ll share my secrets on how to be hyper-productive using some theories from business books I read and insights from science (e.g. three laws of thermodynamics), with examples from my experience climbing, training at the gym, and working as a software engineer.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I spend 3 hours at the gym every day, go on mountaineering and snowboarding trips every three months, work as a founding engineer at a Series A startup, and still have time for side projects like this blog post.&lt;/p&gt;&#xA;&lt;p&gt;Someone recently asked me what’s my secret for getting all this done. How do I have time to do all these things?&lt;/p&gt;&#xA;&lt;p&gt;In this blog post, I’ll share my secrets on how to be hyper-productive using some theories from business books I read and insights from science (e.g. three laws of thermodynamics), with examples from my experience climbing, training at the gym, and working as a software engineer.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Design Behind OkCupid&#39;s Offline-first Chat App</title>
       <link>https://xiaoyunyang.github.io/post/the-design-behind-okcupids-offline-first-chat-app/</link>
-      <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/the-design-behind-okcupids-offline-first-chat-app/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;The chat app is a table-stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.&lt;/p&gt;
-&lt;p&gt;In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.&lt;/p&gt;</description>
+      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;The chat app is a table-stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.&lt;/p&gt;&#xA;&lt;p&gt;In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Web Developer Playbook: Optimistic UI</title>
       <link>https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/</link>
-      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/</guid>
-      <description>&lt;p&gt;In classic implementations of a CRUD app, the client app makes a request to the server and only updates its display state if the server responds to the request. However, in many modern applications like chat apps and note taking apps, users expect the display state to immediately update after they initiate an action.&lt;/p&gt;
-&lt;p&gt;Quick response time from the server is not always achievable, especially when the user is on a slow network on a mobile device.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In classic implementations of a CRUD app, the client app makes a request to the server and only updates its display state if the server responds to the request. However, in many modern applications like chat apps and note taking apps, users expect the display state to immediately update after they initiate an action.&lt;/p&gt;&#xA;&lt;p&gt;Quick response time from the server is not always achievable, especially when the user is on a slow network on a mobile device.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Beyond Minimum Viable Product: A Lesson on Building Production-ready Software</title>
       <link>https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/</link>
-      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/</guid>
       <description>&lt;p&gt;What I learned working at a mature startup that&amp;rsquo;s building new things but also has a ton of customers and products in production.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Guide For Migrating Your Project to TypeScript</title>
       <link>https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/</link>
-      <pubDate>Wed, 24 Jul 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Wed, 24 Jul 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/</guid>
-      <description>&lt;p&gt;Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.&lt;/p&gt;
-&lt;p&gt;This post is a WIP.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.&lt;/p&gt;&#xA;&lt;p&gt;This post is a WIP.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Algorithm for Managing Stress</title>
       <link>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</link>
-      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</guid>
       <description>&lt;p&gt;What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&amp;rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &amp;ldquo;top 10 things you can do to &amp;hellip;.&amp;rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Get Started With Go</title>
       <link>https://xiaoyunyang.github.io/post/get-started-with-go/</link>
-      <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/get-started-with-go/</guid>
       <description>&lt;p&gt;Go is becoming pretty mainstream. Every job posting I&amp;rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cribsheet for JavaScript Coding Interview</title>
       <link>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</link>
-      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</guid>
-      <description>&lt;p&gt;The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&amp;rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Can you be productive with JavaScript?&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+      <description>&lt;p&gt;The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&amp;rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Can you be productive with JavaScript?&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
-    
     <item>
       <title>A Complete Guide To Deploying Your Web App To Amazon Web Service</title>
       <link>https://xiaoyunyang.github.io/post/a-complete-guide-to-deploying-your-web-app-to-amazon-web-service/</link>
-      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/a-complete-guide-to-deploying-your-web-app-to-amazon-web-service/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;This a comprehensive guide for how to containerize your Mongo-Express-React-Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&amp;rsquo;t work, how I prepared the app for deployment and accomplished the deployment.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;This a comprehensive guide for how to containerize your Mongo-Express-React-Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&amp;rsquo;t work, how I prepared the app for deployment and accomplished the deployment.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Web Developer Playbook: Rich Text Editor</title>
       <link>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</link>
-      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</guid>
-      <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s get started!&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&#xA;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s get started!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Web Developer Playbook: Slug</title>
       <link>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</link>
-      <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34;&gt;
-This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34;&gt;&#xA;This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Coding Interview: What to Expect</title>
       <link>https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</link>
-      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</guid>
       <description>&lt;p&gt;Being great at coding interviews doesn&amp;rsquo;t necessarily make you a great developer and being a great developer doesn&amp;rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Getting Started With Startup Seed Funding</title>
       <link>https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</link>
-      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</guid>
       <description>&lt;p&gt;This documents my journey applying to the National Science Foundation (NSF) Seed Fund for my startup, &lt;a href=&#34;https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/&#34;&gt;LooseLeaf&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Getting Started With The SAM Application</title>
       <link>https://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/</link>
-      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/</guid>
       <description>&lt;p&gt;The System for Award Management (SAM) is the primary registrant database for entities to do business with the U.S. Government. You must register with SAM before &lt;a href=&#34;https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/&#34;&gt;applying for a seed fund from the government&lt;/a&gt; for your startup.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Principles To Code By: How To Solve Problems With Code</title>
       <link>https://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</link>
-      <pubDate>Mon, 23 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 23 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</guid>
       <description>&lt;p&gt;What I love most about programming is the problem solving. I don&amp;rsquo;t believe anyone is born with problem solving skills. It&amp;rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&amp;rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Career Transition Guide For Overachievers</title>
       <link>https://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</link>
-      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</guid>
       <description>&lt;p&gt;Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&amp;rsquo;t have all the qualifications.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Everything You Need To Know About Git</title>
       <link>https://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/</link>
-      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/</guid>
       <description>&lt;p&gt;This is a cheatsheet of all the git commands that I&amp;rsquo;ve ever used in my career as a programmer and contributor of open source projects. I&amp;rsquo;m not a git power user (I use about three commands on a daily basis). From time to time, I still use this cheatsheet to for a quick lookup of a special command.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Let&#39;s Get Productive With JavaScript</title>
       <link>https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</link>
-      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</guid>
       <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just open up your browser&amp;rsquo;s console (hit &lt;code&gt;Cmd&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt; if you are using Chrome and Mac) and start typing.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JavaScript Antipatterns to Avoid</title>
       <link>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</guid>
       <description>&lt;p&gt;Sourcemaking provides a great discussions on all the anti-patterns.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

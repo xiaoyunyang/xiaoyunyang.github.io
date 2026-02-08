@@ -8,102 +8,77 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Thu, 06 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://xiaoyunyang.github.io/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How I Get 100 Hours Worth of Work Done in a 40-hour Work Week</title>
       <link>https://xiaoyunyang.github.io/post/how-i-get-100-hours-worth-of-work-done-in-a-40-hour-work-week/</link>
-      <pubDate>Thu, 06 Jul 2023 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 06 Jul 2023 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-i-get-100-hours-worth-of-work-done-in-a-40-hour-work-week/</guid>
-      <description>&lt;p&gt;I spend 3 hours at the gym every day, go on mountaineering and snowboarding trips every three months, work as a founding engineer at a Series A startup, and still have time for side projects like this blog post.&lt;/p&gt;
-&lt;p&gt;Someone recently asked me what’s my secret for getting all this done. How do I have time to do all these things?&lt;/p&gt;
-&lt;p&gt;In this blog post, I’ll share my secrets on how to be hyper-productive using some theories from business books I read and insights from science (e.g. three laws of thermodynamics), with examples from my experience climbing, training at the gym, and working as a software engineer.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I spend 3 hours at the gym every day, go on mountaineering and snowboarding trips every three months, work as a founding engineer at a Series A startup, and still have time for side projects like this blog post.&lt;/p&gt;&#xA;&lt;p&gt;Someone recently asked me what’s my secret for getting all this done. How do I have time to do all these things?&lt;/p&gt;&#xA;&lt;p&gt;In this blog post, I’ll share my secrets on how to be hyper-productive using some theories from business books I read and insights from science (e.g. three laws of thermodynamics), with examples from my experience climbing, training at the gym, and working as a software engineer.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How I Open Sourced An ESLint Plugin for OkCupid</title>
       <link>https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/</link>
-      <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/</guid>
-      <description>&lt;p&gt;We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?&lt;/p&gt;
-&lt;p&gt;I recently open sourced an &lt;a href=&#34;https://eslint.org/docs/about/&#34;&gt;ESLint&lt;/a&gt; plugin for OkCupid called &lt;a href=&#34;https://github.com/OkCupid/eslint-plugin-i18n-lingui&#34;&gt;&lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt;&lt;/a&gt;. The plugin is an extension for ESLint&amp;rsquo;s core static code analysis rules that enforces &lt;a href=&#34;https://www.smartling.com/resources/101/localization-101/&#34;&gt;localization&lt;/a&gt; best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.&lt;/p&gt;
-&lt;p&gt;This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.&lt;/p&gt;
-&lt;p&gt;Although this post will not discuss the localization best practices that &lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt; enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!&lt;/p&gt;</description>
+      <description>&lt;p&gt;We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?&lt;/p&gt;&#xA;&lt;p&gt;I recently open sourced an &lt;a href=&#34;https://eslint.org/docs/about/&#34;&gt;ESLint&lt;/a&gt; plugin for OkCupid called &lt;a href=&#34;https://github.com/OkCupid/eslint-plugin-i18n-lingui&#34;&gt;&lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt;&lt;/a&gt;. The plugin is an extension for ESLint&amp;rsquo;s core static code analysis rules that enforces &lt;a href=&#34;https://www.smartling.com/resources/101/localization-101/&#34;&gt;localization&lt;/a&gt; best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.&lt;/p&gt;&#xA;&lt;p&gt;This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.&lt;/p&gt;&#xA;&lt;p&gt;Although this post will not discuss the localization best practices that &lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt; enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How to Set Up Static Code Analysis For Your Project</title>
       <link>https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/</link>
-      <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png&#34; alt=&#34;Static code analysis&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&amp;rsquo;ll look at one of these tools, &lt;a href=&#34;https://www.sonarqube.org/&#34;&gt;SonarQube&lt;/a&gt;, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png&#34; alt=&#34;Static code analysis&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&amp;rsquo;ll look at one of these tools, &lt;a href=&#34;https://www.sonarqube.org/&#34;&gt;SonarQube&lt;/a&gt;, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Algorithm for Managing Stress</title>
       <link>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</link>
-      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</guid>
       <description>&lt;p&gt;What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&amp;rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &amp;ldquo;top 10 things you can do to &amp;hellip;.&amp;rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Single Page Application For Work</title>
       <link>https://xiaoyunyang.github.io/post/single-page-application-for-work/</link>
-      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/single-page-application-for-work/</guid>
       <description>&lt;p&gt;When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Coding Interview: What to Expect</title>
       <link>https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</link>
-      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</guid>
       <description>&lt;p&gt;Being great at coding interviews doesn&amp;rsquo;t necessarily make you a great developer and being a great developer doesn&amp;rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Career Transition Guide For Overachievers</title>
       <link>https://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</link>
-      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</guid>
       <description>&lt;p&gt;Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&amp;rsquo;t have all the qualifications.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Everything You Need To Know About Git</title>
       <link>https://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/</link>
-      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/</guid>
       <description>&lt;p&gt;This is a cheatsheet of all the git commands that I&amp;rsquo;ve ever used in my career as a programmer and contributor of open source projects. I&amp;rsquo;m not a git power user (I use about three commands on a daily basis). From time to time, I still use this cheatsheet to for a quick lookup of a special command.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Using Hugo To Build A Personal Brand Website</title>
       <link>https://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/</link>
-      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s not always clear why we need need a personal website. But here&amp;rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Why I Pay to Work At a Co-working Space</title>
       <link>https://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/</link>
-      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/</guid>
       <description>&lt;p&gt;If you asked me to give you three facts about myself, I would tell you (1) I&amp;rsquo;m a evening and weekend entrepreneur, (2) when I start working on something I enjoy, I can&amp;rsquo;t put it down, and (3) I love coffee. This a formula for disaster because I have a full time job that I have to show up to by 9AM and I&amp;rsquo;m a normal human person who needs at least 6 hours of sleep.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -8,101 +8,77 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Mon, 29 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/software-design/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://xiaoyunyang.github.io/tags/software-design/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How I Open Sourced An ESLint Plugin for OkCupid</title>
       <link>https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/</link>
-      <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/</guid>
-      <description>&lt;p&gt;We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?&lt;/p&gt;
-&lt;p&gt;I recently open sourced an &lt;a href=&#34;https://eslint.org/docs/about/&#34;&gt;ESLint&lt;/a&gt; plugin for OkCupid called &lt;a href=&#34;https://github.com/OkCupid/eslint-plugin-i18n-lingui&#34;&gt;&lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt;&lt;/a&gt;. The plugin is an extension for ESLint&amp;rsquo;s core static code analysis rules that enforces &lt;a href=&#34;https://www.smartling.com/resources/101/localization-101/&#34;&gt;localization&lt;/a&gt; best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.&lt;/p&gt;
-&lt;p&gt;This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.&lt;/p&gt;
-&lt;p&gt;Although this post will not discuss the localization best practices that &lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt; enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!&lt;/p&gt;</description>
+      <description>&lt;p&gt;We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?&lt;/p&gt;&#xA;&lt;p&gt;I recently open sourced an &lt;a href=&#34;https://eslint.org/docs/about/&#34;&gt;ESLint&lt;/a&gt; plugin for OkCupid called &lt;a href=&#34;https://github.com/OkCupid/eslint-plugin-i18n-lingui&#34;&gt;&lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt;&lt;/a&gt;. The plugin is an extension for ESLint&amp;rsquo;s core static code analysis rules that enforces &lt;a href=&#34;https://www.smartling.com/resources/101/localization-101/&#34;&gt;localization&lt;/a&gt; best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.&lt;/p&gt;&#xA;&lt;p&gt;This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.&lt;/p&gt;&#xA;&lt;p&gt;Although this post will not discuss the localization best practices that &lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt; enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Beyond Minimum Viable Product: A Lesson on Building Production-ready Software</title>
       <link>https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/</link>
-      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/</guid>
       <description>&lt;p&gt;What I learned working at a mature startup that&amp;rsquo;s building new things but also has a ton of customers and products in production.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Effective Unit Testing of React Components With Jest And Enzyme</title>
       <link>https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/</link>
-      <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/</guid>
       <description>&lt;p&gt;The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Guide For Migrating Your Project to TypeScript</title>
       <link>https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/</link>
-      <pubDate>Wed, 24 Jul 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Wed, 24 Jul 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/</guid>
-      <description>&lt;p&gt;Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.&lt;/p&gt;
-&lt;p&gt;This post is a WIP.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.&lt;/p&gt;&#xA;&lt;p&gt;This post is a WIP.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Web Developer Playbook: Slug</title>
       <link>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</link>
-      <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34;&gt;
-This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34;&gt;&#xA;This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How To Do Object Oriented Programming The Right Way</title>
       <link>https://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/</link>
-      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/</guid>
       <description>&lt;p&gt;Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&amp;rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Principles To Code By: How To Solve Problems With Code</title>
       <link>https://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</link>
-      <pubDate>Mon, 23 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 23 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</guid>
       <description>&lt;p&gt;What I love most about programming is the problem solving. I don&amp;rsquo;t believe anyone is born with problem solving skills. It&amp;rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&amp;rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Building an Isomorphic Webapp</title>
       <link>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</link>
-      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How Functional Programming Promotes Developer Productivity</title>
       <link>https://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</link>
-      <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</guid>
       <description>&lt;p&gt;Functional Programming is more than just a buzzword these days. It&amp;rsquo;s super useful and makes you rethink everything you&amp;rsquo;ve learned about software.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JavaScript Antipatterns to Avoid</title>
       <link>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</guid>
       <description>&lt;p&gt;Sourcemaking provides a great discussions on all the anti-patterns.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

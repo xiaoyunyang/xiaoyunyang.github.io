@@ -8,16 +8,14 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Fri, 11 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://xiaoyunyang.github.io/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Thirsty Plant: Automated Plant Waterer</title>
       <link>https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/</link>
-      <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/</guid>
-      <description>&lt;p&gt;&lt;em&gt;by &lt;a href=&#34;https://github.com/xiaoyunyang&#34;&gt;Xiaoyun Yang&lt;/a&gt; and &lt;a href=&#34;https://github.com/clydeshaffer&#34;&gt;Clyde Shaffer&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;I love indoor plants but I&amp;rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&amp;rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&amp;rsquo;s call it ThirstyPlant.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;by &lt;a href=&#34;https://github.com/xiaoyunyang&#34;&gt;Xiaoyun Yang&lt;/a&gt; and &lt;a href=&#34;https://github.com/clydeshaffer&#34;&gt;Clyde Shaffer&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;I love indoor plants but I&amp;rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&amp;rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&amp;rsquo;s call it ThirstyPlant.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

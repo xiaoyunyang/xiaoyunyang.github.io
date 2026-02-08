@@ -8,487 +8,343 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Thu, 06 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiaoyunyang.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://xiaoyunyang.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How I Get 100 Hours Worth of Work Done in a 40-hour Work Week</title>
       <link>https://xiaoyunyang.github.io/post/how-i-get-100-hours-worth-of-work-done-in-a-40-hour-work-week/</link>
-      <pubDate>Thu, 06 Jul 2023 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 06 Jul 2023 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-i-get-100-hours-worth-of-work-done-in-a-40-hour-work-week/</guid>
-      <description>&lt;p&gt;I spend 3 hours at the gym every day, go on mountaineering and snowboarding trips every three months, work as a founding engineer at a Series A startup, and still have time for side projects like this blog post.&lt;/p&gt;
-&lt;p&gt;Someone recently asked me what’s my secret for getting all this done. How do I have time to do all these things?&lt;/p&gt;
-&lt;p&gt;In this blog post, I’ll share my secrets on how to be hyper-productive using some theories from business books I read and insights from science (e.g. three laws of thermodynamics), with examples from my experience climbing, training at the gym, and working as a software engineer.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I spend 3 hours at the gym every day, go on mountaineering and snowboarding trips every three months, work as a founding engineer at a Series A startup, and still have time for side projects like this blog post.&lt;/p&gt;&#xA;&lt;p&gt;Someone recently asked me what’s my secret for getting all this done. How do I have time to do all these things?&lt;/p&gt;&#xA;&lt;p&gt;In this blog post, I’ll share my secrets on how to be hyper-productive using some theories from business books I read and insights from science (e.g. three laws of thermodynamics), with examples from my experience climbing, training at the gym, and working as a software engineer.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Design Behind OkCupid&#39;s Offline-first Chat App</title>
       <link>https://xiaoyunyang.github.io/post/the-design-behind-okcupids-offline-first-chat-app/</link>
-      <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/the-design-behind-okcupids-offline-first-chat-app/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;The chat app is a table-stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.&lt;/p&gt;
-&lt;p&gt;In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.&lt;/p&gt;</description>
+      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;The chat app is a table-stakes feature for any dating app. A responsive and reliable messaging experience encourages users to stay on the platform for communications. This is desirable from a trust and safety standpoint, as abusive messages produced on the platform can be effectively moderated and proper actions can be promptly taken.&lt;/p&gt;&#xA;&lt;p&gt;In this article, we will explore the design of an offline-first chat app on the OkCupid website, in particular, how we achieved responsiveness by implementing optimistic UI design patterns and reliability by incorporating a messages cache to support offline-mode.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>6 Surprising Life Lessons From My 30s</title>
       <link>https://xiaoyunyang.github.io/post/6-surprising-life-lessons-from-my-30s/</link>
-      <pubDate>Mon, 14 Nov 2022 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 14 Nov 2022 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/6-surprising-life-lessons-from-my-30s/</guid>
       <description>&lt;p&gt;A few weeks after I turned 30, the world went into a lock-down. During the COVID-19 pandemic, I&amp;rsquo;ve done a lot of growing and learning as there is a lot of time to reflect on our values and think about better ways to live a more fulfilling life. There are two categories of lessons I&amp;rsquo;ve learned in my 30s. First is how to make better tradeoffs - opportunity cost, money vs time, efficiency vs effectiveness, and quality vs quantity. Second is how to prioritize.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Web Developer Playbook: Optimistic UI</title>
       <link>https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/</link>
-      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-optimistic-ui/</guid>
-      <description>&lt;p&gt;In classic implementations of a CRUD app, the client app makes a request to the server and only updates its display state if the server responds to the request. However, in many modern applications like chat apps and note taking apps, users expect the display state to immediately update after they initiate an action.&lt;/p&gt;
-&lt;p&gt;Quick response time from the server is not always achievable, especially when the user is on a slow network on a mobile device.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In classic implementations of a CRUD app, the client app makes a request to the server and only updates its display state if the server responds to the request. However, in many modern applications like chat apps and note taking apps, users expect the display state to immediately update after they initiate an action.&lt;/p&gt;&#xA;&lt;p&gt;Quick response time from the server is not always achievable, especially when the user is on a slow network on a mobile device.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How I Open Sourced An ESLint Plugin for OkCupid</title>
       <link>https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/</link>
-      <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-i-open-sourced-an-eslint-plugin-for-okcupid/</guid>
-      <description>&lt;p&gt;We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?&lt;/p&gt;
-&lt;p&gt;I recently open sourced an &lt;a href=&#34;https://eslint.org/docs/about/&#34;&gt;ESLint&lt;/a&gt; plugin for OkCupid called &lt;a href=&#34;https://github.com/OkCupid/eslint-plugin-i18n-lingui&#34;&gt;&lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt;&lt;/a&gt;. The plugin is an extension for ESLint&amp;rsquo;s core static code analysis rules that enforces &lt;a href=&#34;https://www.smartling.com/resources/101/localization-101/&#34;&gt;localization&lt;/a&gt; best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.&lt;/p&gt;
-&lt;p&gt;This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.&lt;/p&gt;
-&lt;p&gt;Although this post will not discuss the localization best practices that &lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt; enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!&lt;/p&gt;</description>
+      <description>&lt;p&gt;We developers often find ourselves faced with a problem that seems general enough and common enough that someone else could have already developed a solution for it. But what if an existing solution does not exist?&lt;/p&gt;&#xA;&lt;p&gt;I recently open sourced an &lt;a href=&#34;https://eslint.org/docs/about/&#34;&gt;ESLint&lt;/a&gt; plugin for OkCupid called &lt;a href=&#34;https://github.com/OkCupid/eslint-plugin-i18n-lingui&#34;&gt;&lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt;&lt;/a&gt;. The plugin is an extension for ESLint&amp;rsquo;s core static code analysis rules that enforces &lt;a href=&#34;https://www.smartling.com/resources/101/localization-101/&#34;&gt;localization&lt;/a&gt; best practices by catching and fixing errors during development. The best practice rules were inspired by the learning pains from our efforts to localize our website.&lt;/p&gt;&#xA;&lt;p&gt;This post will discuss why we developed our own ESLint plugin, why we open sourced it, and the steps I took to open source a ESLint plugin.&lt;/p&gt;&#xA;&lt;p&gt;Although this post will not discuss the localization best practices that &lt;code&gt;eslint-plugin-i18n-lingui&lt;/code&gt; enforces or how to create an ESLint plugin, keep an eye out for future posts written specifically about these!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Modeling UI State Using A Finite State Machine</title>
       <link>https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/</link>
-      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/modeling-ui-state-using-a-finite-state-machine/</guid>
-      <description>&lt;p&gt;A finite state machine (FSM) is an architectural design pattern that allows us to model a large system as a collection of loosely coupled components. Each component in the system changes its behavior when the internal state changes. This pattern allows us to write flexible, reusable, and testable code. In this article, we will explore the use of FSM in building complex React components.&lt;/p&gt;
-&lt;p&gt;The primary use of FSM has been in &lt;a href=&#34;https://www.embedded.com/programming-embedded-systems-the-easy-way-with-state-machines/&#34;&gt;programming embedded systems&lt;/a&gt; but in recent years, there has been an emergence of FSM in other applications like &lt;a href=&#34;https://www.smashingmagazine.com/2018/01/rise-state-machines/&#34;&gt;managing states in the browser&lt;/a&gt;, &lt;a href=&#34;https://mind-simulation.com/en/blog/tech/using-finite-state-machines-to-model-behavior.html&#34;&gt;modeling behavior&lt;/a&gt;, and &lt;a href=&#34;https://www.hamidadelyar.com/blog/finite-state-machine-chatbot/&#34;&gt;building chatbots&lt;/a&gt;. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like &lt;a href=&#34;http://redux.js.org/&#34;&gt;Redux&lt;/a&gt; but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and &lt;a href=&#34;https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems&#34;&gt;delete-able&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;A finite state machine (FSM) is an architectural design pattern that allows us to model a large system as a collection of loosely coupled components. Each component in the system changes its behavior when the internal state changes. This pattern allows us to write flexible, reusable, and testable code. In this article, we will explore the use of FSM in building complex React components.&lt;/p&gt;&#xA;&lt;p&gt;The primary use of FSM has been in &lt;a href=&#34;https://www.embedded.com/programming-embedded-systems-the-easy-way-with-state-machines/&#34;&gt;programming embedded systems&lt;/a&gt; but in recent years, there has been an emergence of FSM in other applications like &lt;a href=&#34;https://www.smashingmagazine.com/2018/01/rise-state-machines/&#34;&gt;managing states in the browser&lt;/a&gt;, &lt;a href=&#34;https://mind-simulation.com/en/blog/tech/using-finite-state-machines-to-model-behavior.html&#34;&gt;modeling behavior&lt;/a&gt;, and &lt;a href=&#34;https://www.hamidadelyar.com/blog/finite-state-machine-chatbot/&#34;&gt;building chatbots&lt;/a&gt;. The goal of this post is not to evangelize FSM as a better state management solution than its alternatives like &lt;a href=&#34;http://redux.js.org/&#34;&gt;Redux&lt;/a&gt; but rather, to introduce a pattern for simplifying the architecture of a system and write robust code that is understandable, extendable, and &lt;a href=&#34;https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems&#34;&gt;delete-able&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>My Experience Buying a Home in NYC during the COVID-19 Pandemic</title>
       <link>https://xiaoyunyang.github.io/post/my-experience-buying-a-home-in-nyc-during-the-covid-19-pandemic/</link>
-      <pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/my-experience-buying-a-home-in-nyc-during-the-covid-19-pandemic/</guid>
       <description>&lt;p&gt;I worked from home for almost 4 months since the start of the quarantine before I got a monitor for working from home. I&amp;rsquo;m a programmer. I was under the impression that we were going to be able to go back to work first in April, then May. Now the government is saying August, but I no longer trust anything the government or the media says about the reopening timeline. I’m going to assume the worst that we are going to work from home until the vaccine becomes widely available. A realistic timeline for when that will be is late 2021, early 2022. I’m making preparations for a long term social distancing, work from home situation. Buying the monitor is the first step. I’m also getting a new set of furniture and moving to a bigger apartment so I’ll have a better time staying at home for an extended period of time. COVID-19 is the catalyst for me initiating the process of purchasing a home in NY, but I&amp;rsquo;ve always planned to purchase. This is my experience buying a home in NYC in the spring / summer of 2020.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How to Set Up Static Code Analysis For Your Project</title>
       <link>https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/</link>
-      <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-to-set-up-static-code-analysis-for-your-project/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png&#34; alt=&#34;Static code analysis&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&amp;rsquo;ll look at one of these tools, &lt;a href=&#34;https://www.sonarqube.org/&#34;&gt;SonarQube&lt;/a&gt;, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/sonarqube/cover-static-analysis.png&#34; alt=&#34;Static code analysis&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Static code analysis is a method for identifying bugs and other quality issues in the program by examining the source code without actually running it. This is achieved by scanning the codebase and tracing code paths to find common code smells, potential bugs, tech debt (e.g., duplicate code), unit test coverage, and code logic complexity. Static code analysis can be done manually but there are many static code analyzer tools to automate this. We&amp;rsquo;ll look at one of these tools, &lt;a href=&#34;https://www.sonarqube.org/&#34;&gt;SonarQube&lt;/a&gt;, and walk through the process of setting it up locally and adding a static code analysis step to the Continuous Integration/Continuous Delivery (CI/CD) process for your projects.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Beyond Minimum Viable Product: A Lesson on Building Production-ready Software</title>
       <link>https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/</link>
-      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/beyond-minimum-viable-product-a-lesson-on-building-production-ready-software/</guid>
       <description>&lt;p&gt;What I learned working at a mature startup that&amp;rsquo;s building new things but also has a ton of customers and products in production.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Effective Unit Testing of React Components With Jest And Enzyme</title>
       <link>https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/</link>
-      <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/effective-unit-testing-of-react-components-with-jest-and-enzyme/</guid>
       <description>&lt;p&gt;The purpose of this article is to (1) provide a high level discussion of testing and (2) offer some practical examples and best practice for writing automated unit tests for React Application using Jest and Enzyme.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Guide For Migrating Your Project to TypeScript</title>
       <link>https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/</link>
-      <pubDate>Wed, 24 Jul 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Wed, 24 Jul 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/a-guide-for-migrating-your-project-to-typescript/</guid>
-      <description>&lt;p&gt;Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.&lt;/p&gt;
-&lt;p&gt;This post is a WIP.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Introduction to TypeScript and guide for how to migrate your project from Flow to TypeScript.&lt;/p&gt;&#xA;&lt;p&gt;This post is a WIP.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Algorithm for Managing Stress</title>
       <link>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</link>
-      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/the-algorithm-for-managing-stress/</guid>
       <description>&lt;p&gt;What is stress? Stress is your subconscious telling you that you have sh*t to do. Feeling stressed about your health? Go to the gym everyday. Feeling stressed about your financial situation? Get a more high paying job. If only things were that simple. In this post, I&amp;rsquo;m going to teach you how to get rid your stress by understanding where your stress is coming from, then come up with an action plan and execute actions to address the source of your stress. This is not another &amp;ldquo;top 10 things you can do to &amp;hellip;.&amp;rdquo; article. I will be discussing specific algorithms and heuristics with roots in computer science and mathematics that can be followed for every step of your journey to eliminating the source of your stress.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Get Started With Go</title>
       <link>https://xiaoyunyang.github.io/post/get-started-with-go/</link>
-      <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/get-started-with-go/</guid>
       <description>&lt;p&gt;Go is becoming pretty mainstream. Every job posting I&amp;rsquo;ve seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Thirsty Plant: Automated Plant Waterer</title>
       <link>https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/</link>
-      <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/thirsty-plant-automated-plant-waterer/</guid>
-      <description>&lt;p&gt;&lt;em&gt;by &lt;a href=&#34;https://github.com/xiaoyunyang&#34;&gt;Xiaoyun Yang&lt;/a&gt; and &lt;a href=&#34;https://github.com/clydeshaffer&#34;&gt;Clyde Shaffer&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;I love indoor plants but I&amp;rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&amp;rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&amp;rsquo;s call it ThirstyPlant.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;by &lt;a href=&#34;https://github.com/xiaoyunyang&#34;&gt;Xiaoyun Yang&lt;/a&gt; and &lt;a href=&#34;https://github.com/clydeshaffer&#34;&gt;Clyde Shaffer&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;I love indoor plants but I&amp;rsquo;m bad a keeping them alive. I once had a cactus that died from thirst. I purchased a few Aqua Bulbs, which has been great help in keeping the big plant watered enough for me to get around to taking care of it. However, I can&amp;rsquo;t use the Aqua Bulb on my smaller plant. Also, Aqua Bulbs break easily and refilling it with water is always a hassle. This motivated me to build an automated plant waterer. Let&amp;rsquo;s call it ThirstyPlant.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>From Public Sector To Senior Software Engineer:  How I made the Transition</title>
       <link>https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/</link>
-      <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/</guid>
-      <description>&lt;p&gt;I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.&lt;/p&gt;
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-&lt;div class=&#34;figure fig-70&#34; &gt;
-  
-    &lt;a class=&#34;fancybox&#34; href=&#34;https://images2.imgbox.com/26/21/MQB5dNYd_o.png&#34; title=&#34;My KeyValues filter&#34; data-fancybox=&#34;&#34;&gt;
-  
-    &lt;img class=&#34;fig-img&#34; src=&#34;https://images2.imgbox.com/26/21/MQB5dNYd_o.png&#34;  alt=&#34;My KeyValues filter&#34;&gt;
-  
-    &lt;/a&gt;
-  
-   
-    &lt;span class=&#34;caption&#34;&gt;My KeyValues filter&lt;/span&gt;
-  
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.&lt;/p&gt;&#xA;&#xA;&#xA; &#xA;  &#xA;  &#xA;  &#xA;  &#xA;    &#xA;  &#xA;    &#xA;      &#xA;    &#xA;  &#xA;&#xA;&lt;div class=&#34;figure fig-70&#34; &gt;&#xA;  &#xA;    &lt;a class=&#34;fancybox&#34; href=&#34;https://images2.imgbox.com/26/21/MQB5dNYd_o.png&#34; title=&#34;My KeyValues filter&#34; data-fancybox=&#34;&#34;&gt;&#xA;  &#xA;    &lt;img class=&#34;fig-img&#34; src=&#34;https://images2.imgbox.com/26/21/MQB5dNYd_o.png&#34;  alt=&#34;My KeyValues filter&#34;&gt;&#xA;  &#xA;    &lt;/a&gt;&#xA;  &#xA;   &#xA;    &lt;span class=&#34;caption&#34;&gt;My KeyValues filter&lt;/span&gt;&#xA;  &#xA;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>When To Use Immutable Data Structures</title>
       <link>https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/</link>
-      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/when-to-use-immutable-data-structures/</guid>
-      <description>&lt;p&gt;Suppose you are asked this question during a technical interview:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;When do you use immutable (functional) data structures and when do you use mutable data structure?&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+      <description>&lt;p&gt;Suppose you are asked this question during a technical interview:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;When do you use immutable (functional) data structures and when do you use mutable data structure?&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
-    
     <item>
       <title>Security Considerations for Web Applications and Best Practices</title>
       <link>https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/</link>
-      <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/security-considerations-for-web-applications-and-best-practices/</guid>
       <description>&lt;p&gt;This article discusses some pitfalls and techniques for securiing your JavaScript application against attacks such as XSS, CSRF, reverse tabnabbing, and security considerations working with open source.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cribsheet for JavaScript Coding Interview</title>
       <link>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</link>
-      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/cribsheet-for-javascript-coding-interview/</guid>
-      <description>&lt;p&gt;The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&amp;rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Can you be productive with JavaScript?&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+      <description>&lt;p&gt;The coding interviews / coding challenges are designed to assess how productive someone can be with the language. In contrast to the algorithm whiteboarding interview, which assesses how the candidate go about solving a problem, or the architecture design interview, which assesses how the candidate&amp;rsquo;s experience in system engineering and product design, the coding interview is is utilized by the company interviewing you to answer one question:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Can you be productive with JavaScript?&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
-    
     <item>
       <title>A Complete Guide To Deploying Your Web App To Amazon Web Service</title>
       <link>https://xiaoyunyang.github.io/post/a-complete-guide-to-deploying-your-web-app-to-amazon-web-service/</link>
-      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/a-complete-guide-to-deploying-your-web-app-to-amazon-web-service/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;This a comprehensive guide for how to containerize your Mongo-Express-React-Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&amp;rsquo;t work, how I prepared the app for deployment and accomplished the deployment.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/deployapp/ecs-docker.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;This a comprehensive guide for how to containerize your Mongo-Express-React-Node (MERN) app with Docker and deploy it to Amazon Web Service (AWS) Elastic Container Service (ECS). I will share my research and lessons learned deploying a MERN app, including what worked, what didn&amp;rsquo;t work, how I prepared the app for deployment and accomplished the deployment.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Web Developer Playbook: Rich Text Editor</title>
       <link>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</link>
-      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-rich-text-editor/</guid>
-      <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.
-&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s get started!&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this article, I will show you add a rich text editor based on &lt;a href=&#34;https://draftjs.org/&#34;&gt;Draft.js&lt;/a&gt; to your web app. This post is part of the Web Developer Playbook series, created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&#xA;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/projects/draftjs.png&#34; alt=&#34;draftjs&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s get started!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Don&#39;t Quit Your Job To Be An Entrepreneur</title>
       <link>https://xiaoyunyang.github.io/post/dont-quit-your-job-to-be-an-entrepreneur/</link>
-      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/dont-quit-your-job-to-be-an-entrepreneur/</guid>
       <description>&lt;p&gt;People have different reasons to want to quit their 9-5 to pursue entrepreneurship full time. I was drawn to the opportunity to take something from idea to product and being able to “be my own boss”. We all want the lifestyle of a successful entrepreneur but you don’t need to have your own VC funded startup to build a great product.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Web Developer Playbook: Slug</title>
       <link>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</link>
-      <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sat, 14 Jul 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/web-developer-playbook-slug/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34;&gt;
-This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://xiaoyunyang.github.io/post/images/webdev-manual-cover.png&#34; alt=&#34;&#34;&gt;&#xA;This post is part of the Web Developer Playbook series, which are created to provide examples, best practice, and suggestions for designing and building web services. I will be using libraries from the JavaScript ecosystem (e.g., Node.js, React.js) in all my examples.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Getting Started With Career Pivot With LooseLeaf</title>
       <link>https://xiaoyunyang.github.io/post/getting-started-with-career-pivot-with-looseleaf/</link>
-      <pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/getting-started-with-career-pivot-with-looseleaf/</guid>
       <description>&lt;p&gt;This documents the market research I&amp;rsquo;ve completed for my startup, &lt;a href=&#34;https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/&#34;&gt;LooseLeaf&lt;/a&gt;. This is a long and exhaustive market research. There&amp;rsquo;s a &lt;a href=&#34;https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/#pre-submittal-feedback-optional&#34;&gt;TL;DR version of the value proposition&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Data Structure with JavaScript Object: Linked List</title>
       <link>https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/</link>
-      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/data-structure-with-javascript-object-linked-list/</guid>
       <description>&lt;p&gt;Linked list is like an array but more flexible. Elements in an array are stored contiguously in memory while linked lists are stored as nodes with two fields: current value and a pointer to the next thing in the list. We are going to implement linked list in JavaScript and go over some algorithms with the linked list.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Algos to Practice Whiteboarding for The Coding Interview</title>
       <link>https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</link>
-      <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/algos-to-practice-whiteboarding-for-the-coding-interview/</guid>
       <description>&lt;p&gt;We are going to go over a set of coding and whiteboard problems that would be asked during a coding interview. I&amp;rsquo;m drawing these problems from &lt;a href=&#34;https://leetcode.com/&#34;&gt;LeetCode&lt;/a&gt; and &lt;a href=&#34;https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=2E72V7DJM4CV4DNTBTKD&#34;&gt;Cracking the Coding Interview&lt;/a&gt;. They are a sample of the medium and hard problems that require a bit of thinking and and familiarity with some fundamental data structures in computer science.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Single Page Application For Work</title>
       <link>https://xiaoyunyang.github.io/post/single-page-application-for-work/</link>
-      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/single-page-application-for-work/</guid>
       <description>&lt;p&gt;When I work at my federal job on a close intranet network, we often had to access information from different databases and filesystems through custom or share point websites which did not have the best user interface. It was a pain point for me and many of my colleagues. I decided to make a set of single page applications (SPAs) with nicer UX for querying the databases and file systems.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Coding Interview: What to Expect</title>
       <link>https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</link>
-      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/the-coding-interview-what-to-expect/</guid>
       <description>&lt;p&gt;Being great at coding interviews doesn&amp;rsquo;t necessarily make you a great developer and being a great developer doesn&amp;rsquo;t necessarily make you great at interviews. However, you need to pass the interview to get the job. Most tech companies, public or startups, have started drawing from the same pool of interview material, adopted the same set of coding challenges and problems for candidates to solve. Coding interviews can be challenging and stressful, but with enough practice, research, and preparation, it can be very manageable.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Getting Started With Startup Seed Funding</title>
       <link>https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</link>
-      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/</guid>
       <description>&lt;p&gt;This documents my journey applying to the National Science Foundation (NSF) Seed Fund for my startup, &lt;a href=&#34;https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/&#34;&gt;LooseLeaf&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Getting Started With The SAM Application</title>
       <link>https://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/</link>
-      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/getting-started-with-the-sam-application/</guid>
       <description>&lt;p&gt;The System for Award Management (SAM) is the primary registrant database for entities to do business with the U.S. Government. You must register with SAM before &lt;a href=&#34;https://xiaoyunyang.github.io/post/getting-started-with-startup-seed-funding/&#34;&gt;applying for a seed fund from the government&lt;/a&gt; for your startup.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How To Do Object Oriented Programming The Right Way</title>
       <link>https://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/</link>
-      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-to-do-object-oriented-programming-the-right-way/</guid>
       <description>&lt;p&gt;Object Oriented Programming (OOP) is a software design pattern that allows you to think about problems in terms of objects and their interactions. OOP is typically done with classes or with prototypes. Most languages that implement OOP (e.g., Java, C++, Ruby, Python) use class-based inheritance. JavaScript implements OOP via Prototypal inheritance. In this article, I&amp;rsquo;m going to show you how to use both approaches for OOP in JavaScript, discuss the advantages and disadvantages of the two approaches of OOP and introduce an alternative for OOP for designing more modular and scalable applications.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Principles To Code By: How To Solve Problems With Code</title>
       <link>https://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</link>
-      <pubDate>Mon, 23 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 23 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/principles-to-code-by-how-to-solve-problems-with-code/</guid>
       <description>&lt;p&gt;What I love most about programming is the problem solving. I don&amp;rsquo;t believe anyone is born with problem solving skills. It&amp;rsquo;s a muscle that is built and sustained by repeated exercise. Like any exercise, there&amp;rsquo;s a set of guidelines to help you be more effective at developing your problem solving muscles. I will introduce 5 of the most important software design principles that have guided my problem solving process and show you how to apply these principles to solve a real problem.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Career Transition Guide For Overachievers</title>
       <link>https://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</link>
-      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/a-career-transition-guide-for-overachievers/</guid>
       <description>&lt;p&gt;Nothing strikes more anxiety and self-doubt than the dreaded job interview. The thought of participating in an activity designed for the sole purpose of evaluating your worth and the potential for rejection is enough to discourage many people from applying to jobs for which they lack all of the qualifications requested by the job posting. While qualification is important to accomplish the advertised job, it is not everything an employer looks for in a person they want to hire to be a part of the team, to grow with the company and help the company grow. The goal of this article is to provide a guide based on my personal experience for how to prepare for getting offers from jobs for which you don&amp;rsquo;t have all the qualifications.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Algorithms for Web Developers</title>
       <link>https://xiaoyunyang.github.io/post/algorithms-for-web-developers/</link>
-      <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/algorithms-for-web-developers/</guid>
       <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today, but when Brandon Eich first created JavaScript in 1995, it was not recognized as a general purpose programming language. JavaScript only ran in the browser and was primarily used to enhance the user interfaces of website (e.g., animation, effects upon hover), thus tightly coupled with the Data Object Model (DOM). In recent years, JavaScript has gotten a lot more useful as a general purpose language as it can be run independently from the DOM and browser. Additionally, JavaScript has also has gotten very sophisticated with the introduction of ES6 and ES7. With that, let&amp;rsquo;s take a look at how JavaScript can be used to solve fundamental problems in computer science. Specifically, let&amp;rsquo;s look at how to write algorithms and leverage data structures to help us solve problems using JavaScript.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Creating LooseLeaf: A Platform To Support The Future Of Work</title>
       <link>https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</link>
-      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/creating-looseleaf-a-platform-to-support-the-future-of-work/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://looseleafapp.com&#34;&gt;LooseLeaf&lt;/a&gt; is a passion project and a startup I&amp;rsquo;ve been building while serving a 5 year commitment in the military. I&amp;rsquo;ve been creating prototypes and iterating on the concept of LooseLeaf since 2015.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Everything You Need To Know About Git</title>
       <link>https://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/</link>
-      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/everything-you-need-to-know-about-git/</guid>
       <description>&lt;p&gt;This is a cheatsheet of all the git commands that I&amp;rsquo;ve ever used in my career as a programmer and contributor of open source projects. I&amp;rsquo;m not a git power user (I use about three commands on a daily basis). From time to time, I still use this cheatsheet to for a quick lookup of a special command.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Is Employee Loyalty Important?</title>
       <link>https://xiaoyunyang.github.io/post/is-employee-loyalty-important/</link>
-      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/is-employee-loyalty-important/</guid>
       <description>&lt;p&gt;High-value employees are a major assets for a strong company. Losing a high contributing team member could leave a void and impact the team&amp;rsquo;s morale and workflow. Investors are also concerned by high turnover rates, especially amongst the senior executives. Groupon had trouble retaining their senior executives, which contributed to &lt;a href=&#34;https://www.youtube.com/watch?v=zeNQE3VBRnQ&#34;&gt;an 85% drop in their value&lt;/a&gt; a year after going public. It&amp;rsquo;s clear we want to &lt;strong&gt;retain&lt;/strong&gt; high-valued employees, but is &lt;strong&gt;employee loyalty&lt;/strong&gt; the way to achieve retention?&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Using Hugo To Build A Personal Brand Website</title>
       <link>https://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/</link>
-      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/using-hugo-to-build-a-personal-brand-website/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s not always clear why we need need a personal website. But here&amp;rsquo;s the truth: we are a product (a brand) with unique skills to offer to prospective employees and customers. A website is an effective medium to let the world know who we are, what we are capable of, and what our values are. Building a personal website has never been easier these days with tools like &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Why I Pay to Work At a Co-working Space</title>
       <link>https://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/</link>
-      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/why-i-pay-to-work-at-a-co-working-space/</guid>
       <description>&lt;p&gt;If you asked me to give you three facts about myself, I would tell you (1) I&amp;rsquo;m a evening and weekend entrepreneur, (2) when I start working on something I enjoy, I can&amp;rsquo;t put it down, and (3) I love coffee. This a formula for disaster because I have a full time job that I have to show up to by 9AM and I&amp;rsquo;m a normal human person who needs at least 6 hours of sleep.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Building A React Native Travel App</title>
       <link>https://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</link>
-      <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/building-a-react-native-travel-app/</guid>
       <description>&lt;p&gt;When I was planning my trip to Japan with some friends, I thought why not to use this opportunity to make a ReactNative mobile app to help you plan and execute your travel itinerary.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Building an Isomorphic Webapp</title>
       <link>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</link>
-      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/building-an-isomorphic-webapp/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve always lived by the &amp;ldquo;Separation of Concern&amp;rdquo; principle when it comes to software design.  Recently, I&amp;rsquo;ve came to love a new design pattern for web apps called the isomorphic web app that sacrifices some of the simplicity of a SPA with a backend API for a significant boost in performance.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Let&#39;s Get Productive With JavaScript</title>
       <link>https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</link>
-      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/lets-get-productive-with-javascript/</guid>
       <description>&lt;p&gt;JavaScript is one of the most popular and versatile languages today. You can build anything in JavaScript: from full stack web apps, to cross platform mobile apps, to cross platform desktop apps. Here are some useful algorithms and syntax in JavaScript to help you be productive in JavaScript right away. No set up necessary. Just open up your browser&amp;rsquo;s console (hit &lt;code&gt;Cmd&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;C&lt;/code&gt; if you are using Chrome and Mac) and start typing.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How Formal Education May Close Doors To Opportunities</title>
       <link>https://xiaoyunyang.github.io/post/how-formal-education-may-close-doors-to-opportunities/</link>
-      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-formal-education-may-close-doors-to-opportunities/</guid>
       <description>&lt;p&gt;The average completion rate of Online Open Course (MOOC) certification programs is abysmally low. &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2889436&#34;&gt;A report published in 2016 by researchers at Harvard and MIT&lt;/a&gt; based on 4 years of data indicated an average certification completion rate of just 5.5%. This does not discredit MOOCs to be a good source of quality education content for those looking for good information to improve their understanding for a particular subject; however, the depressing statistics underlines a deeper concern with the ineffectiveness of using a college curriculum to steer people&amp;rsquo;s professional development.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Best Practices For State Management With React And Redux</title>
       <link>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</link>
-      <pubDate>Fri, 05 Jan 2018 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Fri, 05 Jan 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/best-practices-for-state-management-with-react-and-redux/</guid>
       <description>&lt;p&gt;In this post, I&amp;rsquo;ll share some best practices, tips, and practical examples for managing states and data in a frontend applications. Although the examples are targeted at frontend developers working with React and Redux, the best practices discussion are applicable for frontend developers working with any framework.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How Functional Programming Promotes Developer Productivity</title>
       <link>https://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</link>
-      <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/how-functional-programming-promotes-developer-productivity/</guid>
       <description>&lt;p&gt;Functional Programming is more than just a buzzword these days. It&amp;rsquo;s super useful and makes you rethink everything you&amp;rsquo;ve learned about software.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Maintaining a Repository Of Learning For Scala</title>
       <link>https://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</link>
-      <pubDate>Sun, 12 Mar 2017 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Sun, 12 Mar 2017 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/maintaining-a-repository-of-learning-for-scala/</guid>
       <description>&lt;p&gt;I maintain a knowledge repo on Github called &lt;a href=&#34;https://github.com/xiaoyunyang/coursera-scala-specialization&#34;&gt;coursera-scala-specialization&lt;/a&gt;. One reason I chose to learn Scala is that Scala is a good language to learn functional programming and Scala offers full the functional programming support, but it also lets you do imperative programming and object oriented programming, with seamless interoperability with Java. Functional programming is a good paradigm that lets you make programs that are concise and modular. This is important for developer productivity which I care most about at this time.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Creating NumberShapes: Math Learning Mobile Apps</title>
       <link>https://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/</link>
-      <pubDate>Wed, 12 Aug 2015 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Wed, 12 Aug 2015 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/creating-numbershapes-math-learning-mobile-apps/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://number-shapes.com&#34;&gt;NumberShapes&lt;/a&gt; is a collection of mobile apps that make numbers come alive through numerical visualizations and interactions. In 2014, I worked on the software development for the first few apps, which are iOS matching games that help young learners with familiarization of addition, subtraction, multiplication and other math facts.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>About Me</title>
       <link>https://xiaoyunyang.github.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/about/</guid>
-      <description>Hello I&amp;rsquo;m a software engineer and tech entrepreneur living in New York. In my spare time I like to contribute to open source software and tech blogs.
-I&amp;rsquo;m excited by opportunities that let me develop elegant solutions for obvious problems where there are no obvious solutions. I believe in automating wherever possible, and leveraging existing technology to quickly bootstrap solutions. My mantra is trial and error, which I apply to both building a startup as well as living a fulfilling life.</description>
+      <description>Hello I&amp;rsquo;m a software engineer and tech entrepreneur living in New York. In my spare time I like to contribute to open source software and tech blogs.&#xA;I&amp;rsquo;m excited by opportunities that let me develop elegant solutions for obvious problems where there are no obvious solutions. I believe in automating wherever possible, and leveraging existing technology to quickly bootstrap solutions. My mantra is trial and error, which I apply to both building a startup as well as living a fulfilling life.</description>
     </item>
-    
     <item>
       <title>JavaScript Antipatterns to Avoid</title>
       <link>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/javascript-antipatterns-to-avoid/</guid>
       <description>&lt;p&gt;Sourcemaking provides a great discussions on all the anti-patterns.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
