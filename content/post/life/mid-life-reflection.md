@@ -1,7 +1,6 @@
 ---
 title: "My Mid-life Reflection - spend time on what really matters"
 date: 2026-02-07
-draft: true
 categories:
   - blog
 tags:
