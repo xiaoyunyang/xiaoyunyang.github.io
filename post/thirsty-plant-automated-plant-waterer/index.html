@@ -82,9 +82,6 @@ I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus
 
 
 
-  <meta property="og:image" content="https://images2.imgbox.com/3b/f0/2Ket1SaB_o.jpg">
-  <meta property="twitter:image" content="https://images2.imgbox.com/3b/f0/2Ket1SaB_o.jpg">
-
 
     <title>Thirsty Plant: Automated Plant Waterer</title>
 
@@ -471,7 +468,7 @@ I love indoor plants but I&rsquo;m bad a keeping them alive. I once had a cactus
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">100</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>The Arduino is connected to a serial port on the computer. The following line of bash code dumps the output of the serial port into a file.</p>
-<pre tabindex="0"><code>$ cat  /dev/cu.usbmodem1411 &gt; moisturelog1.csv
+<pre tabindex="0"><code>cat  /dev/cu.usbmodem1411 &gt; moisturelog1.csv
 </code></pre><p>30 minutes worth of data is collected. The data in the csv file is then plotted.</p>
 <p><img src="https://images2.imgbox.com/7d/86/ybjw72Sy_o.png" alt=""></p>
 <p>Note:</p>

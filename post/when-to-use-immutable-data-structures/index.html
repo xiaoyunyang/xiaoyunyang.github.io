@@ -353,7 +353,7 @@ When do you use immutable (functional) data structures and when do you use mutab
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">newData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">concat</span>([<span style="color:#a6e22e">item</span>]) <span style="color:#75715e">// concat returns a new arr
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueImmutable</span>(<span style="color:#a6e22e">newData</span>)
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dequeue</span> <span style="color:#f92672">=</span> () =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">head</span>, ...<span style="color:#a6e22e">rest</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [<span style="color:#a6e22e">head</span>, <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueueImmutable</span>(<span style="color:#a6e22e">rest</span>)]

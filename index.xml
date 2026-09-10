@@ -8,8 +8,15 @@
     <language>en-us</language>
     <managingEditor>xiaoyun@looseleafapp.com (Xiaoyun Yang)</managingEditor>
     <webMaster>xiaoyun@looseleafapp.com (Xiaoyun Yang)</webMaster>
-    <lastBuildDate>Sat, 07 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://xiaoyunyang.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>100 Meditations: Notes to Myself </title>
+      <link>https://xiaoyunyang.github.io/post/100-meditations-notes-to-myself/</link>
+      <pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
+      <guid>https://xiaoyunyang.github.io/post/100-meditations-notes-to-myself/</guid>
+      <description>&lt;p&gt;Three years ago, I started contemplating starting a side business as a life coach. To prepare for that role, I decided it would be a good idea to practice being a life coach to myself.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>My Mid-life Reflection - spend time on what really matters</title>
       <link>https://xiaoyunyang.github.io/post/my-mid-life-reflection-spend-time-on-what-really-matters/</link>
@@ -120,7 +127,7 @@
       <link>https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/</link>
       <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate><author>xiaoyun@looseleafapp.com (Xiaoyun Yang)</author>
       <guid>https://xiaoyunyang.github.io/post/from-public-sector-to-senior-software-engineer-how-i-made-the-transition/</guid>
-      <description>&lt;p&gt;I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.&lt;/p&gt;&#xA;&#xA;&#xA; &#xA;  &#xA;  &#xA;  &#xA;  &#xA;    &#xA;  &#xA;    &#xA;      &#xA;    &#xA;  &#xA;&#xA;&lt;div class=&#34;figure fig-70&#34; &gt;&#xA;  &#xA;    &lt;a class=&#34;fancybox&#34; href=&#34;https://images2.imgbox.com/26/21/MQB5dNYd_o.png&#34; title=&#34;My KeyValues filter&#34; data-fancybox=&#34;&#34;&gt;&#xA;  &#xA;    &lt;img class=&#34;fig-img&#34; src=&#34;https://images2.imgbox.com/26/21/MQB5dNYd_o.png&#34;  alt=&#34;My KeyValues filter&#34;&gt;&#xA;  &#xA;    &lt;/a&gt;&#xA;  &#xA;   &#xA;    &lt;span class=&#34;caption&#34;&gt;My KeyValues filter&lt;/span&gt;&#xA;  &#xA;&lt;/div&gt;</description>
+      <description>&lt;p&gt;I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.&lt;/p&gt;</description>
     </item>
     <item>
       <title>When To Use Immutable Data Structures</title>

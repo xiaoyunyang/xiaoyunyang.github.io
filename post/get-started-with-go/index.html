@@ -78,9 +78,6 @@
 
 
 
-  <meta property="og:image" content="https://images2.imgbox.com/49/17/WNnaYp5v_o.png">
-  <meta property="twitter:image" content="https://images2.imgbox.com/49/17/WNnaYp5v_o.png">
-
 
     <title>Get Started With Go</title>
 
@@ -413,9 +410,9 @@
 
 <div class="figure fig-100 center" >
   
-    <a class="fancybox" href="https://images2.imgbox.com/70/3b/DVneDl91_o.png" title="Go is efficient and easy to write and manage" data-fancybox="">
+    <a class="fancybox" href="#ZgotmplZ" title="Go is efficient and easy to write and manage" data-fancybox="">
   
-    <img class="fig-img" src="https://images2.imgbox.com/70/3b/DVneDl91_o.png"  alt="Go is efficient and easy to write and manage">
+    <img class="fig-img" src="#ZgotmplZ"  alt="Go is efficient and easy to write and manage">
   
     </a>
   
@@ -433,14 +430,14 @@
 <ol>
 <li>
 <p>Add $GOPATH and $GOBIN</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ vim ~/.bash_profile
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim ~/.bash_profile
 </span></span></code></pre></div><p>Add the following lines to .bash_profile</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export GOPATH<span style="color:#f92672">=</span>$HOME/go
 </span></span><span style="display:flex;"><span>export GOBIN<span style="color:#f92672">=</span>$HOME/go/bin
 </span></span></code></pre></div></li>
 <li>
 <p>Refresh <code>.bash_profile</code> for the GOPATH and GOBIN to take effect:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ . ~/.bash_profile<span style="color:#e6db74">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>. ~/.bash_profile<span style="color:#e6db74">`</span>
 </span></span></code></pre></div></li>
 <li>
 <p>Verify paths</p>
@@ -488,20 +485,20 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Save the code to a file called <code>cat.go</code>. Then in the same directory, create two files:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ echo foo! &gt; foo
-</span></span><span style="display:flex;"><span>$ echo bar! &gt; bar
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo foo! &gt; foo
+</span></span><span style="display:flex;"><span>echo bar! &gt; bar
 </span></span></code></pre></div><p>Build the cat program in go:</p>
-<pre tabindex="0"><code>$ go build cat.go
+<pre tabindex="0"><code>go build cat.go
 </code></pre><p>Then we can run our cat program as such:</p>
 <pre tabindex="0"><code>$ ./cat foo bar
 foo!
 bar!
 </code></pre><p>We don&rsquo;t have to build a program to run it. Another way to run the program:</p>
-<pre tabindex="0"><code>$ go run cat.go foo bar
+<pre tabindex="0"><code>go run cat.go foo bar
 </code></pre><h1 id="dependencies">Dependencies</h1>
 <p>To use libraries created by the Go community in your code, we can use the <code>go get</code> command. A pre-requisite is to have <code>GOPATH</code> set.</p>
 <p>For example, let&rsquo;s use <a href="https://github.com/ajstarks/svgo">SVGo</a>:</p>
-<pre tabindex="0"><code>$ go get github.com/ajstarks/svgo
+<pre tabindex="0"><code>go get github.com/ajstarks/svgo
 </code></pre><p>The command above basically performs a <code>git clone</code> and download all the code from that repository into <code>$GOPATH/src/github.com/ajstarks/svgo</code>. After executing the command, you can use the svgo library as follows:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 </span></span><span style="display:flex;"><span>
