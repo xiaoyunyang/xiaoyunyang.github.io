@@ -6,8 +6,6 @@ categories:
 tags:
   - Open Source
   - Hardware
-thumbnailImagePosition: left
-thumbnailImage: https://images2.imgbox.com/3b/f0/2Ket1SaB_o.jpg
 ---
 
 _by [Xiaoyun Yang](https://github.com/xiaoyunyang) and [Clyde Shaffer](https://github.com/clydeshaffer)_
@@ -210,7 +208,7 @@ void loop() {
 The Arduino is connected to a serial port on the computer. The following line of bash code dumps the output of the serial port into a file.
 
 ```
-$ cat  /dev/cu.usbmodem1411 > moisturelog1.csv
+cat  /dev/cu.usbmodem1411 > moisturelog1.csv
 ```
 
 30 minutes worth of data is collected. The data in the csv file is then plotted.

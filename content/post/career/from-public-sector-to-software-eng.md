@@ -10,9 +10,6 @@ tags:
 
 I joined the US Navy after graduating from college. The service commitment is 5 years. At the end of my service commitment during my terminal leave, I obtained a position with a mature startup in NYC as a Senior Software Engineer. There were a lot of bumps in the road during the last five years, especially the last 3 weeks of my transition out of the Navy. I will share the story of how I prepared for my career transition and shed some light on how job search works today.
 
-{{< image classes="fancybox fig-70" src="https://images2.imgbox.com/26/21/MQB5dNYd_o.png"
-thumbnail="https://images2.imgbox.com/26/21/MQB5dNYd_o.png" title="My KeyValues filter">}}
-
 <!--more-->
 
 {{< toc >}}
@@ -108,7 +105,7 @@ If you are learning how to code, pick JavaScript to get really good at. Almost a
 
 **Pro-tip:** If you are looking to use JavaScript for your coding interview, You can easily implement any data structure you want from scratch using JavaScript's object and solve any type of classical algorithm problem.
 
-## Tell me about you.
+## Tell me about you
 
 If you are interviewing to join a Buddhist monastery, you may want to show some humility and tell them how much you don't know and want to learn and be enlightened. For any other job interviews - BRAG.
 
@@ -191,7 +188,7 @@ The response depends on which company you are interviewing with. Read the compan
 - follow through. Young companies have a lot of new initiatives occurring simultaneously. Need to let people know rationale for prioritization
 - having a company of teams working in sync, going in the same direction
 
-## Open ended technical question.
+## Open ended technical question
 
 If you are interviewing at a web technology company, sometimes they will ask:
 

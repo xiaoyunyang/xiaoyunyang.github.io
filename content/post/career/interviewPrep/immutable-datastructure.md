@@ -65,7 +65,7 @@ function QueueImmutable(dataIn = []) { // data is an optional parameter
     let newData = data.concat([item]) // concat returns a new arr
     return new QueueImmutable(newData)
   }
-  
+
   this.dequeue = () => {
     let [head, ...rest] = data
     return [head, new QueueImmutable(rest)]

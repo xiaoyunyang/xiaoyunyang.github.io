@@ -6,8 +6,6 @@ categories:
 tags:
   - Go
   - Guide
-thumbnailImagePosition: left
-thumbnailImage: https://images2.imgbox.com/49/17/WNnaYp5v_o.png
 ---
 
 Go is becoming pretty mainstream. Every job posting I've seen recently requires Go as a want-to-have or a need-to-have skill. This post serves as a guide to help you hit the ground running with Go.
@@ -56,8 +54,8 @@ There used to be a time when programmers have to make a tradeoff between and eff
 
 Go lets you write efficient and clean code.
 
-{{< image classes="fancybox fig-100 center clear" src="https://images2.imgbox.com/70/3b/DVneDl91_o.png"
-thumbnail="https://images2.imgbox.com/70/3b/DVneDl91_o.png" title="Go is efficient and easy to write and manage">}}
+{{< image classes="fancybox fig-100 center clear" src="<https://images2.imgbox.com/70/3b/DVneDl91_o.png>"
+thumbnail="<https://images2.imgbox.com/70/3b/DVneDl91_o.png>" title="Go is efficient and easy to write and manage">}}
 
 # Your First Go Program
 
@@ -70,7 +68,7 @@ Set up GOPATH and GOBIN:
 1. Add $GOPATH and $GOBIN
 
    ```bash
-   $ vim ~/.bash_profile
+   vim ~/.bash_profile
    ```
 
    Add the following lines to .bash_profile
@@ -83,7 +81,7 @@ Set up GOPATH and GOBIN:
 2. Refresh `.bash_profile` for the GOPATH and GOBIN to take effect:
 
    ```bash
-   $ . ~/.bash_profile`
+   . ~/.bash_profile`
    ```
 
 3. Verify paths
@@ -141,14 +139,14 @@ func main() {
 Save the code to a file called `cat.go`. Then in the same directory, create two files:
 
 ```bash
-$ echo foo! > foo
-$ echo bar! > bar
+echo foo! > foo
+echo bar! > bar
 ```
 
 Build the cat program in go:
 
 ```
-$ go build cat.go
+go build cat.go
 ```
 
 Then we can run our cat program as such:
@@ -162,7 +160,7 @@ bar!
 We don't have to build a program to run it. Another way to run the program:
 
 ```
-$ go run cat.go foo bar
+go run cat.go foo bar
 ```
 
 # Dependencies
@@ -172,7 +170,7 @@ To use libraries created by the Go community in your code, we can use the `go ge
 For example, let's use [SVGo](https://github.com/ajstarks/svgo):
 
 ```
-$ go get github.com/ajstarks/svgo
+go get github.com/ajstarks/svgo
 ```
 
 The command above basically performs a `git clone` and download all the code from that repository into `$GOPATH/src/github.com/ajstarks/svgo`. After executing the command, you can use the svgo library as follows:
